@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     style="@style/Theme.CintaLauncher.SearchResult.InstantAnswer.Card">
-    <io.posidon.android.cintalauncher.ui.view.SeeThoughView
+    <com.roy93group.cintalauncher.ui.view.SeeThoughView
         android:id="@+id/blur_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

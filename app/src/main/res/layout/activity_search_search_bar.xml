@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/search_bar"
     style="@style/Theme.CintaLauncher.SearchBar.Container">
-    <io.posidon.android.cintalauncher.ui.view.SeeThoughView
+    <com.roy93group.cintalauncher.ui.view.SeeThoughView
         android:id="@+id/blur_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

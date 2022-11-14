@@ -25,7 +25,7 @@ android {
             )
         }
     }
-    namespace = "io.posidon.android.cintalauncher"
+    namespace = "com.roy93group.cintalauncher"
 }
 
 dependencies {
