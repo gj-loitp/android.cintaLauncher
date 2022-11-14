@@ -45,7 +45,7 @@ class SearchActivity : FragmentActivity() {
 
     lateinit var adapter: SearchAdapter
     val settings = Settings()
-    val searcher = Searcher(
+    private val searcher = Searcher(
         settings,
         ::AppProvider,
         ::ContactProvider,
@@ -57,15 +57,15 @@ class SearchActivity : FragmentActivity() {
         adapter.update(list)
     }
 
-    val container by lazy { findViewById<View>(R.id.search_bar_container)!! }
-    val searchBar by lazy { findViewById<View>(R.id.search_bar)!! }
-    val blurBG by lazy { findViewById<SeeThoughView>(R.id.blur_bg)!! }
-
-    val wallpaperManager by lazy { getSystemService(WallpaperManager::class.java) }
+    val container: View by lazy { findViewById(R.id.search_bar_container) }
+    private val searchBar: View by lazy { findViewById(R.id.search_bar) }
+    private val blurBG: SeeThoughView by lazy { findViewById(R.id.blur_bg) }
+    private val wallpaperManager by lazy { getSystemService(WallpaperManager::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+
         settings.init(this)
         searcher.onCreate(this)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
@@ -75,19 +75,30 @@ class SearchActivity : FragmentActivity() {
             )
             thread(name = "onCreate color update", isDaemon = true) {
                 ColorPalette.onColorsChanged(
-                    this,
-                    settings.colorTheme,
-                    SearchActivity::loadColors
+                    context = this,
+                    colorTheme = settings.colorTheme,
+                    onFinished = SearchActivity::loadColors
                 ) {
                     wallpaperManager.getWallpaperColors(WallpaperManager.FLAG_SYSTEM)
                 }
             }
         }
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler)!!
-        adapter = SearchAdapter(this, recyclerView, false)
+
+        setupViews()
+
+    }
+
+    private fun setupViews() {
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler)
+        adapter = SearchAdapter(activity = this, recyclerView = recyclerView, isOnCard = false)
         recyclerView.run {
             layoutManager =
-                GridLayoutManager(this@SearchActivity, 3, RecyclerView.VERTICAL, false).apply {
+                GridLayoutManager(
+                    this@SearchActivity,
+                    3,
+                    RecyclerView.VERTICAL,
+                    false
+                ).apply {
                     spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                         override fun getSpanSize(i: Int): Int =
                             if (adapter?.getItemViewType(i) == SearchAdapter.RESULT_APP) 1
@@ -100,10 +111,10 @@ class SearchActivity : FragmentActivity() {
             }
         }
         findViewById<EditText>(R.id.search_bar_text).run {
-            doOnTextChanged { text, start, before, count ->
+            doOnTextChanged { text, _, _, _ ->
                 searcher.query(text)
             }
-            setOnEditorActionListener { v, actionId, event ->
+            setOnEditorActionListener { v, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     val viewSearch = Intent(Intent.ACTION_WEB_SEARCH)
                     viewSearch.putExtra(SearchManager.QUERY, v.text)
@@ -144,7 +155,7 @@ class SearchActivity : FragmentActivity() {
         }
     }
 
-    fun updateBlur() {
+    private fun updateBlur() {
         blurBG.drawable = BitmapDrawable(resources, acrylicBlur?.smoothBlur)
         window.decorView.background = LayerDrawable(
             arrayOf(
@@ -167,9 +178,9 @@ class SearchActivity : FragmentActivity() {
         if (which and WallpaperManager.FLAG_SYSTEM != 0) {
             loadBlur(wallpaperManager, ::updateBlur)
             ColorPalette.onColorsChanged(
-                this,
-                settings.colorTheme,
-                SearchActivity::loadColors
+                context = this,
+                colorTheme = settings.colorTheme,
+                onFinished = SearchActivity::loadColors
             ) { colors }
         }
     }
