@@ -15,21 +15,21 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.target.ViewTarget
 import com.roy93group.cintalauncher.R
-import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.data.feed.items.FeedItem
 import com.roy93group.cintalauncher.data.feed.items.FeedItemWithBigImage
+import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toFloatPixels
 
-open class FeedItemImageViewHolder(itemView: View) : FeedItemViewHolder(itemView) {
-    val image = itemView.findViewById<ImageView>(R.id.image)!!
-    val card = itemView.findViewById<CardView>(R.id.card)!!
-    val requestOptions = RequestOptions()
+open class FeedItemImageVH(itemView: View) : FeedItemVH(itemView) {
+    val image: ImageView = itemView.findViewById(R.id.image)
+    val card: CardView = itemView.findViewById(R.id.card)
+    private val requestOptions = RequestOptions()
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .downsample(DownsampleStrategy.AT_MOST)
         .sizeMultiplier(0.6f)
 
-    val imageRequestListener = object : RequestListener<Drawable> {
+    private val imageRequestListener = object : RequestListener<Drawable> {
         override fun onLoadFailed(
             e: GlideException?,
             model: Any?,

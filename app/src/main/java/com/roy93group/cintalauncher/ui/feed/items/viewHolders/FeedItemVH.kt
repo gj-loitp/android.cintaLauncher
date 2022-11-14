@@ -1,5 +1,6 @@
 package com.roy93group.cintalauncher.ui.feed.items.viewHolders
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.drawable.GradientDrawable
 import android.view.View
@@ -11,9 +12,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.cintalauncher.R
-import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.data.feed.items.FeedItem
 import com.roy93group.cintalauncher.data.feed.items.formatTimeAgo
+import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.ui.feed.items.ActionsAdapter
 import com.roy93group.cintalauncher.ui.view.SwipeLayout
 import com.roy93group.cintalauncher.ui.view.recycler.DividerItemDecorator
@@ -21,28 +22,37 @@ import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 import java.time.Instant
 
-open class FeedItemViewHolder(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
-    val swipeLayout = this.itemView as SwipeLayout
-    val container = itemView.findViewById<View>(R.id.container)!!
-    val source = itemView.findViewById<TextView>(R.id.source)!!
-    val separator = itemView.findViewById<View>(R.id.separator)!!
-    val time = itemView.findViewById<TextView>(R.id.time)!!
-    val title = itemView.findViewById<TextView>(R.id.title)!!
-    val description = itemView.findViewById<TextView>(R.id.description)!!
-    val icon = itemView.findViewById<ImageView>(R.id.icon)!!
-    val actionsContainer = itemView.findViewById<CardView>(R.id.actions_container)!!
-    val separatorDrawable = GradientDrawable().apply {
+open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
+    private val swipeLayout = this.itemView as SwipeLayout
+    val container: View = itemView.findViewById(R.id.container)
+    val source: TextView = itemView.findViewById(R.id.source)
+    val separator: View = itemView.findViewById(R.id.separator)
+    val time: TextView = itemView.findViewById(R.id.time)
+    val title: TextView = itemView.findViewById(R.id.title)
+    val description: TextView = itemView.findViewById(R.id.description)
+    val icon: ImageView = itemView.findViewById(R.id.icon)
+    private val actionsContainer: CardView = itemView.findViewById(R.id.actions_container)
+    private val separatorDrawable = GradientDrawable().apply {
         shape = GradientDrawable.RECTANGLE
         setSize(1.dp.toPixels(itemView), 0)
     }
-    val actions = actionsContainer.findViewById<RecyclerView>(R.id.actions_recycler)!!.apply {
-        layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        addItemDecoration(DividerItemDecorator(itemView.context, DividerItemDecoration.HORIZONTAL, separatorDrawable))
-        setOnTouchListener { v, _ ->
-            v.parent.requestDisallowInterceptTouchEvent(true)
-            false
+
+    @SuppressLint("ClickableViewAccessibility")
+    private val actions: RecyclerView =
+        actionsContainer.findViewById<RecyclerView>(R.id.actions_recycler).apply {
+            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            addItemDecoration(
+                DividerItemDecorator(
+                    itemView.context,
+                    DividerItemDecoration.HORIZONTAL,
+                    separatorDrawable
+                )
+            )
+            setOnTouchListener { v, _ ->
+                v.parent.requestDisallowInterceptTouchEvent(true)
+                false
+            }
         }
-    }
 
     override fun onBind(
         item: FeedItem,
@@ -50,9 +60,9 @@ open class FeedItemViewHolder(itemView: View) : FeedViewHolder(SwipeLayout(itemV
     ) {
         swipeLayout.reset()
         title.text = item.title
-        applyIfNotNull(description, item.description, TextView::setText)
-        applyIfNotNull(icon, item.sourceIcon, ImageView::setImageDrawable)
-        applyIfNotNull(source, item.source, TextView::setText)
+        applyIfNotNull(view = description, value = item.description, block = TextView::setText)
+        applyIfNotNull(view = icon, value = item.sourceIcon, block = ImageView::setImageDrawable)
+        applyIfNotNull(view = source, value = item.source, block = TextView::setText)
         itemView.setOnClickListener(item::onTap)
         icon.imageTintList = if (item.shouldTintIcon) ColorStateList.valueOf(color) else null
         if (item.actions.isEmpty()) {

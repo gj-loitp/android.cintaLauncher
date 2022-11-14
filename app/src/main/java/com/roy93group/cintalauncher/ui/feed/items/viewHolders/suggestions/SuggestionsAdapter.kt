@@ -1,5 +1,6 @@
 package com.roy93group.cintalauncher.ui.feed.items.viewHolders.suggestions
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -19,20 +20,23 @@ class SuggestionsAdapter(
     override fun getItemCount(): Int = items.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
-        return AppViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.app_card, parent, false) as CardView)
+        return AppViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.app_card, parent, false) as CardView
+        )
     }
 
     override fun onBindViewHolder(holder: AppViewHolder, i: Int) {
         val item = items[i]
         bindAppViewHolder(
-            holder,
-            item,
-            false,
-            activity,
+            holder = holder,
+            item = item,
+            isDimmed = false,
+            activity = activity,
         )
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(items: List<LauncherItem>) {
         this.items = items
         notifyDataSetChanged()

@@ -1,5 +1,6 @@
 package com.roy93group.cintalauncher.ui.feed.items.viewHolders.home
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -15,12 +16,18 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
     private var items = emptyList<Drawable>()
 
     class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val image = itemView.findViewById<ImageView>(R.id.image)
+        val image: ImageView = itemView.findViewById(R.id.image)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconViewHolder {
-        return IconViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.feed_home_notification_icon, parent, false))
+        return IconViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(
+                    /* resource = */ R.layout.feed_home_notification_icon,
+                    /* root = */parent,
+                    /* attachToRoot = */false
+                )
+        )
     }
 
     override fun onBindViewHolder(holder: IconViewHolder, i: Int) {
@@ -30,6 +37,7 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
 
     override fun getItemCount() = items.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(items: List<Drawable>): Boolean {
         val numberChanged = this.items.size != items.size
         this.items = items

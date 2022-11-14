@@ -9,19 +9,18 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.applyCanvas
 import androidx.core.graphics.toXfermode
 import com.roy93group.cintalauncher.R
-import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.data.feed.items.FeedItem
 import com.roy93group.cintalauncher.data.feed.items.FeedItemWithMedia
+import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 
-class FeedItemMediaViewHolder(
+class FeedItemMediaVH(
     itemView: View
-) : FeedItemViewHolder(itemView) {
+) : FeedItemVH(itemView) {
 
-    val cover = itemView.findViewById<ImageView>(R.id.image)
-
-    val previous = itemView.findViewById<ImageView>(R.id.button_previous)!!
-    val play = itemView.findViewById<ImageView>(R.id.button_play)!!
-    val next = itemView.findViewById<ImageView>(R.id.button_next)!!
+    private val cover: ImageView = itemView.findViewById(R.id.image)
+    private val previous: ImageView = itemView.findViewById(R.id.button_previous)
+    private val play: ImageView = itemView.findViewById(R.id.button_play)
+    private val next: ImageView = itemView.findViewById(R.id.button_next)
 
     override fun onBind(item: FeedItem, color: Int) {
         super.onBind(item, color)
@@ -34,33 +33,33 @@ class FeedItemMediaViewHolder(
         else {
             val paint = Paint().apply {
                 shader = LinearGradient(
-                    c.width.toFloat() / 2f,
-                    0f,
-                    c.width.toFloat(),
-                    0f,
-                    intArrayOf(
+                    /* x0 = */ c.width.toFloat() / 2f,
+                    /* y0 = */ 0f,
+                    /* x1 = */ c.width.toFloat(),
+                    /* y1 = */ 0f,
+                    /* colors = */ intArrayOf(
                         0,
-                        0x33000000.toInt(),
+                        0x33000000,
                         0x88000000.toInt(),
                         0xdd000000.toInt(),
                         0xff000000.toInt()
                     ),
-                    floatArrayOf(
+                    /* positions = */ floatArrayOf(
                         0f, .25f, .5f, .75f, 1f
                     ),
-                    Shader.TileMode.CLAMP
+                    /* tile = */ Shader.TileMode.CLAMP
                 )
                 xfermode = PorterDuff.Mode.DST_IN.toXfermode()
             }
             val paint2 = Paint().apply {
                 shader = LinearGradient(
-                    0f,
-                    0f,
-                    c.width.toFloat() * 1.5f,
-                    0f,
-                    0,
-                    item.color,
-                    Shader.TileMode.CLAMP
+                    /* x0 = */ 0f,
+                    /* y0 = */ 0f,
+                    /* x1 = */ c.width.toFloat() * 1.5f,
+                    /* y1 = */ 0f,
+                    /* color0 = */ 0,
+                    /* color1 = */ item.color,
+                    /* tile = */ Shader.TileMode.CLAMP
                 )
                 alpha = 100
                 xfermode = PorterDuff.Mode.DST_OVER.toXfermode()
@@ -68,7 +67,7 @@ class FeedItemMediaViewHolder(
             val w = c.width * 1.5f
             val bitmap = Bitmap.createBitmap(w.toInt(), c.height, c.config).applyCanvas {
                 val x = (width - c.width).toFloat()
-                drawBitmap(c, x, 0f, paint2)
+                drawBitmap(/* bitmap = */ c, /* left = */ x, /* top = */ 0f, /* paint = */ paint2)
                 drawRect(x, 0f, c.width.toFloat(), height.toFloat(), paint)
                 drawRect(0f, 0f, width.toFloat(), height.toFloat(), paint2)
             }
@@ -80,7 +79,11 @@ class FeedItemMediaViewHolder(
         title.setOnClickListener(item::onTap)
         description.setOnClickListener(item::onTap)
 
-        val titleColor = ColorUtils.blendARGB(ColorTheme.adjustColorForContrast(ColorTheme.uiBG, item.color), ColorTheme.uiTitle, .7f)
+        val titleColor = ColorUtils.blendARGB(
+            /* color1 = */ ColorTheme.adjustColorForContrast(ColorTheme.uiBG, item.color),
+            /* color2 = */ ColorTheme.uiTitle,
+            /* ratio = */ .7f
+        )
         val titleTintList = ColorStateList.valueOf(titleColor)
 
         previous.imageTintList = titleTintList
