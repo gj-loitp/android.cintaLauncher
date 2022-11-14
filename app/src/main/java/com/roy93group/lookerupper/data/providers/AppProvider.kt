@@ -6,21 +6,20 @@ import android.content.pm.LauncherApps
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.UserHandle
-import com.willowtreeapps.fuzzywuzzy.diffutils.FuzzySearch
 import com.roy93group.cintalauncher.providers.app.AppCollection
 import com.roy93group.cintalauncher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.cintalauncher.storage.Settings
-import io.posidon.android.launcherutils.AppLoader
-import io.posidon.android.launcherutils.IconConfig
 import com.roy93group.lookerupper.data.SearchQuery
 import com.roy93group.lookerupper.data.Searcher
 import com.roy93group.lookerupper.data.results.*
+import com.willowtreeapps.fuzzywuzzy.diffutils.FuzzySearch
+import io.posidon.android.launcherutils.AppLoader
+import io.posidon.android.launcherutils.IconConfig
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.math.pow
 
 class AppProvider(
-    val searcher: Searcher
+    private val searcher: Searcher
 ) : SearchProvider {
 
     class Collection(
@@ -41,31 +40,39 @@ class AppProvider(
             icon: Drawable,
             extra: AppLoader.ExtraAppInfo<AppCollection.ExtraIconData>,
         ) {
-            val app = AppResult(AppCollection.createApp(
-                packageName,
-                name,
-                profile,
-                label,
-                icon,
-                extra,
-                settings
-            ))
+            val app = AppResult(
+                AppCollection.createApp(
+                    packageName = packageName,
+                    name = name,
+                    profile = profile,
+                    label = label,
+                    icon = icon,
+                    extra = extra,
+                    settings = settings
+                )
+            )
             list += app
             val launcherApps = context.getSystemService(LauncherApps::class.java)
             staticShortcuts.addAll(app.getStaticShortcuts(launcherApps).map {
                 ShortcutResult(
-                    it,
-                    (it.longLabel ?: it.shortLabel).toString(),
-                    launcherApps.getShortcutIconDrawable(it, context.resources.displayMetrics.densityDpi) ?: ColorDrawable(),
-                    app
+                    shortcutInfo = it,
+                    title = (it.longLabel ?: it.shortLabel).toString(),
+                    icon = launcherApps.getShortcutIconDrawable(
+                        it,
+                        context.resources.displayMetrics.densityDpi
+                    ) ?: ColorDrawable(),
+                    app = app
                 )
             })
             dynamicShortcuts.addAll(app.getDynamicShortcuts(launcherApps).map {
                 ShortcutResult(
-                    it,
-                    (it.longLabel ?: it.shortLabel).toString(),
-                    launcherApps.getShortcutIconDrawable(it, context.resources.displayMetrics.densityDpi) ?: ColorDrawable(),
-                    app
+                    shortcutInfo = it,
+                    title = (it.longLabel ?: it.shortLabel).toString(),
+                    icon = launcherApps.getShortcutIconDrawable(
+                        it,
+                        context.resources.displayMetrics.densityDpi
+                    ) ?: ColorDrawable(),
+                    app = app
                 )
             })
         }
@@ -84,10 +91,10 @@ class AppProvider(
         }
     }
 
-    val appLoader = AppLoader { Collection(it, searcher.settings) }
+    private val appLoader = AppLoader { Collection(it, searcher.settings) }
     var apps = emptyList<AppResult>()
-    var staticShortcuts = emptyList<ShortcutResult>()
-    var dynamicShortcuts = emptyList<ShortcutResult>()
+    private var staticShortcuts = emptyList<ShortcutResult>()
+    private var dynamicShortcuts = emptyList<ShortcutResult>()
 
     override fun Activity.onCreate() {
         val iconConfig = IconConfig(
@@ -105,11 +112,16 @@ class AppProvider(
 
     override fun getResults(query: SearchQuery): List<SearchResult> {
         val results = LinkedList<SearchResult>()
-        val suggestions = SuggestionsManager.getSuggestions().let { it.subList(0, it.size.coerceAtMost(6)) }
+        val suggestions =
+            SuggestionsManager.getSuggestions().let { it.subList(0, it.size.coerceAtMost(6)) }
         apps.forEach {
             val i = suggestions.indexOf(it.app)
-            val suggestionFactor = if(i == -1) 0f else (suggestions.size - i).toFloat() / suggestions.size
-            val r = FuzzySearch.tokenSortPartialRatio(query.toString(), it.title) / 100f + suggestionFactor * 0.5f
+            val suggestionFactor =
+                if (i == -1) 0f else (suggestions.size - i).toFloat() / suggestions.size
+            val r = FuzzySearch.tokenSortPartialRatio(
+                query.toString(),
+                it.title
+            ) / 100f + suggestionFactor * 0.5f
             if (r > .8f) {
                 results += if (results.size < 6) {
                     it.relevance = Relevance(r.times(2f).coerceAtLeast(1f))
@@ -134,7 +146,8 @@ class AppProvider(
             val a = FuzzySearch.tokenSortPartialRatio(query.toString(), it.app.title) / 100f
             val r = (a * a * .2f + l * l).pow(.3f)
             if (r > .9f) {
-                it.relevance = Relevance(if (l >= .95) r.coerceAtLeast(0.98f) else r.coerceAtMost(0.9f))
+                it.relevance =
+                    Relevance(if (l >= .95) r.coerceAtLeast(0.98f) else r.coerceAtMost(0.9f))
                 results += it
             }
         }

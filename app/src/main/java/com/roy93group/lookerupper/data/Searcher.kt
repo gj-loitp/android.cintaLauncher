@@ -23,8 +23,10 @@ class Searcher(
     }
 
     fun query(query: CharSequence?) {
-        update(if (query == null) emptyList()
-        else query(SearchQuery(query)))
+        update(
+            if (query == null) emptyList()
+            else query(SearchQuery(query))
+        )
     }
 
     fun onCreate(activity: Activity) {

@@ -9,7 +9,7 @@ import androidx.palette.graphics.Palette
 import io.posidon.android.conveniencelib.drawable.toBitmap
 
 class ShortcutResult(
-    val shortcutInfo: ShortcutInfo,
+    private val shortcutInfo: ShortcutInfo,
     override val title: String,
     override val icon: Drawable,
     val app: AppResult
@@ -19,7 +19,7 @@ class ShortcutResult(
 
     override val subtitle get() = if (showSubtitle) app.title else null
     override var relevance = Relevance(0f)
-    override val onLongPress = null
+    override val onLongPress: Nothing? = null
 
     private val _color = run {
         val palette = Palette.from(icon.toBitmap()).generate()
@@ -39,6 +39,8 @@ class ShortcutResult(
         try {
             val launcherApps = view.context.getSystemService(LauncherApps::class.java)
             launcherApps.startShortcut(shortcutInfo, null, null)
-        } catch (e: Exception) { e.printStackTrace() }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }

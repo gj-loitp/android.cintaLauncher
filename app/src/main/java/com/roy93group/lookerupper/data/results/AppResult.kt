@@ -17,15 +17,15 @@ class AppResult(
 
     override var relevance = Relevance(0f)
 
-    inline fun getColor(): Int = app.getColor()
+    fun getColor(): Int = app.getColor()
 
     override fun open(view: View) {
-        app.open(view.context, view)
+        app.open(context = view.context, view = view)
     }
 
-    inline fun getStaticShortcuts(launcherApps: LauncherApps): List<ShortcutInfo> =
-        app.getStaticShortcuts(launcherApps)
+    fun getStaticShortcuts(launcherApps: LauncherApps): List<ShortcutInfo> =
+        app.getStaticShortcuts(launcherApps = launcherApps)
 
-    inline fun getDynamicShortcuts(launcherApps: LauncherApps): List<ShortcutInfo> =
-        app.getDynamicShortcuts(launcherApps)
+    fun getDynamicShortcuts(launcherApps: LauncherApps): List<ShortcutInfo> =
+        app.getDynamicShortcuts(launcherApps = launcherApps)
 }

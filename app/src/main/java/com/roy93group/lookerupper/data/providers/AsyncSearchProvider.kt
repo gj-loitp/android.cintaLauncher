@@ -5,14 +5,14 @@ import com.roy93group.lookerupper.data.Searcher
 import com.roy93group.lookerupper.data.results.SearchResult
 
 abstract class AsyncSearchProvider(
-    val searcher: Searcher
+    private val searcher: Searcher
 ) : SearchProvider {
 
-    val lastResults = HashMap<SearchQuery, List<SearchResult>>()
+    private val lastResults = HashMap<SearchQuery, List<SearchResult>>()
 
     override fun getResults(query: SearchQuery): List<SearchResult> {
         return lastResults.getOrElse(query) {
-            loadResults(query)
+            loadResults(query = query)
             emptyList()
         }
     }
