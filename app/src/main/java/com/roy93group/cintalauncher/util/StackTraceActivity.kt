@@ -120,9 +120,11 @@ class StackTraceActivity : FragmentActivity() {
         fun init(context: Context) {
             Thread.setDefaultUncaughtExceptionHandler { _, throwable ->
                 try {
-                    context.startActivity(Intent(context, StackTraceActivity::class.java)
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .putExtra("throwable", throwable))
+                    context.startActivity(
+                        Intent(context, StackTraceActivity::class.java)
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            .putExtra("throwable", throwable)
+                    )
                     Process.killProcess(Process.myPid())
                     exitProcess(0)
                 } catch (e: Throwable) {

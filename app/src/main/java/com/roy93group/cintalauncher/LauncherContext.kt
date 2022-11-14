@@ -12,10 +12,12 @@ import io.posidon.android.launcherutils.IconConfig
 
 class LauncherContext {
 
+    companion object {
+        private const val PINNED_KEY = "pinned_items"
+    }
+
     val feed = Feed()
-
     val settings = Settings()
-
     val appManager = AppManager()
 
     inner class AppManager {
@@ -29,11 +31,13 @@ class LauncherContext {
                 packPackages = settings.getStrings("icon_packs") ?: emptyArray(),
             )
 
-            appLoader.async(context, iconConfig) {
-                appsByName = it.byName
-                _pinnedItems = settings.getStrings(PINNED_KEY)?.mapNotNull { LauncherItem.parse(it, appsByName) }?.toMutableList() ?: ArrayList()
+            appLoader.async(context, iconConfig) { ac ->
+                appsByName = ac.byName
+                _pinnedItems = settings.getStrings(PINNED_KEY)
+                    ?.mapNotNull { LauncherItem.parse(it, appsByName) }?.toMutableList()
+                    ?: ArrayList()
                 SuggestionsManager.onAppsLoaded(this, context, settings)
-                onEnd(context, it)
+                onEnd(context, ac)
             }
         }
 
@@ -41,8 +45,10 @@ class LauncherContext {
             return App.parse(string, appsByName)
         }
 
+        @Suppress("unused")
         fun getAppByPackage(packageName: String): LauncherItem? = appsByName[packageName]?.first()
 
+        @Suppress("unused")
         fun pinItem(context: Context, launcherItem: LauncherItem, i: Int) {
             _pinnedItems.add(i, launcherItem)
             settings.edit(context) {
@@ -55,6 +61,7 @@ class LauncherContext {
             }
         }
 
+        @Suppress("unused")
         fun unpinItem(context: Context, i: Int) {
             _pinnedItems.removeAt(i)
             settings.edit(context) {
@@ -78,9 +85,5 @@ class LauncherContext {
         private var appsByName = HashMap<String, MutableList<App>>()
 
         private var _pinnedItems: MutableList<LauncherItem> = ArrayList()
-    }
-
-    companion object {
-        private const val PINNED_KEY = "pinned_items"
     }
 }

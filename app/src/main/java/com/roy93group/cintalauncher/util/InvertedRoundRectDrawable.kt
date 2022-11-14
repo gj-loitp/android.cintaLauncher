@@ -3,6 +3,7 @@ package com.roy93group.cintalauncher.util
 import android.graphics.*
 import android.graphics.drawable.Drawable
 
+@Suppress("unused")
 class InvertedRoundRectDrawable(
     /**
      * Array of 8 values, 4 pairs of [X,Y] radii
@@ -16,24 +17,24 @@ class InvertedRoundRectDrawable(
     innerColor: Int? = null
 ) : Drawable() {
 
-    var outerColor = outerColor
+    private var outerColor = outerColor
         set(value) {
             field = value
             outerPaint.color = value
         }
 
-    var innerColor = innerColor
+    private var innerColor = innerColor
         set(value) {
             field = value
             innerPaint.color = value ?: 0
         }
 
-    val outerPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+    private val outerPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         isAntiAlias = true
         this.color = this@InvertedRoundRectDrawable.outerColor
     }
 
-    val innerPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+    private val innerPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         isAntiAlias = true
         innerColor?.let {
             this.color = it

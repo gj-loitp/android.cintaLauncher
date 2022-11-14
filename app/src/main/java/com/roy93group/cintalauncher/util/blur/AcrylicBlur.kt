@@ -4,8 +4,8 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import io.posidon.android.conveniencelib.Device
-import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.drawable.toBitmap
+import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toFloatPixels
 import io.posidon.android.conveniencelib.units.toPixels
 import kotlin.concurrent.thread
@@ -22,6 +22,7 @@ class AcrylicBlur private constructor(
     val insaneBlur: Bitmap,
 ) {
 
+    @Suppress("unused")
     fun recycle() {
         fullBlur.recycle()
         smoothBlur.recycle()
@@ -42,7 +43,13 @@ class AcrylicBlur private constructor(
             val partialBlurSmall = fastBlur(b, .3.dp.toPixels(context))
             val nb = Bitmap.createScaledBitmap(smoothBlur, w, h, false)
             val fullBlur = NoiseBlur.blur(nb, 18.dp.toFloatPixels(context))
-            return AcrylicBlur(fullBlur, smoothBlur, partialBlurMedium, partialBlurSmall, insaneBlur)
+            return AcrylicBlur(
+                fullBlur,
+                smoothBlur,
+                partialBlurMedium,
+                partialBlurSmall,
+                insaneBlur
+            )
         }
 
         inline fun blurWallpaper(
@@ -53,7 +60,7 @@ class AcrylicBlur private constructor(
             onEnd(blurWallpaper(context, drawable))
         }
 
-        fun fastBlur(bitmap: Bitmap, radius: Int): Bitmap {
+        private fun fastBlur(bitmap: Bitmap, radius: Int): Bitmap {
             if (radius < 1) {
                 return bitmap
             }
@@ -217,7 +224,8 @@ class AcrylicBlur private constructor(
                 y = 0
                 while (y < h) {
                     // Preserve alpha channel: ( 0xff000000 & pix[yi] )
-                    pix[yi] = -0x1000000 and pix[yi] or (dv[rsum] shl 16) or (dv[gsum] shl 8) or dv[bsum]
+                    pix[yi] =
+                        -0x1000000 and pix[yi] or (dv[rsum] shl 16) or (dv[gsum] shl 8) or dv[bsum]
                     rsum -= routsum
                     gsum -= goutsum
                     bsum -= boutsum

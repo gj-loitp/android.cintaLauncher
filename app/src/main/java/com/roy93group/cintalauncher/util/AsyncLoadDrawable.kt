@@ -16,14 +16,14 @@ class AsyncLoadDrawable : Drawable(), Drawable.Callback {
 
     private var mCurrDrawable: Drawable? = ColorDrawable()
 
-    fun setDelegate(delegate: Drawable) {
+    private fun setDelegate(delegate: Drawable) {
         mCurrDrawable = delegate
         delegate.bounds = bounds
         if (delegate is Animatable) {
             delegate.callback = this
             delegate.setVisible(true, true)
             (delegate as Animatable).start()
-            Log.d("ALD", "Started the bugger")
+//            Log.d("ALD", "Started the bugger")
         }
     }
 
@@ -34,17 +34,15 @@ class AsyncLoadDrawable : Drawable(), Drawable.Callback {
 
     override fun draw(canvas: Canvas) {
         Log.d(TAG, "Asked to draw " + mCurrDrawable + " " + canvas.clipBounds)
-        mCurrDrawable!!.draw(canvas)
+        mCurrDrawable?.draw(canvas)
     }
 
     override fun onBoundsChange(bounds: Rect) {
-        if (mCurrDrawable != null) {
-            mCurrDrawable!!.bounds = bounds
-        }
+        mCurrDrawable?.bounds = bounds
     }
 
     override fun setChangingConfigurations(configs: Int) {
-        mCurrDrawable!!.changingConfigurations = configs
+        mCurrDrawable?.changingConfigurations = configs
     }
 
     override fun getChangingConfigurations(): Int = mCurrDrawable!!.changingConfigurations
@@ -52,19 +50,19 @@ class AsyncLoadDrawable : Drawable(), Drawable.Callback {
     override fun setDither(dither: Boolean) = mCurrDrawable!!.setDither(dither)
 
     override fun setFilterBitmap(filter: Boolean) {
-        mCurrDrawable!!.isFilterBitmap = filter
+        mCurrDrawable?.isFilterBitmap = filter
     }
 
     override fun setAlpha(alpha: Int) {
-        mCurrDrawable!!.alpha = alpha
+        mCurrDrawable?.alpha = alpha
     }
 
     override fun setColorFilter(cf: ColorFilter?) {
-        mCurrDrawable!!.colorFilter = cf
+        mCurrDrawable?.colorFilter = cf
     }
 
     override fun setColorFilter(color: Int, mode: PorterDuff.Mode) {
-        mCurrDrawable!!.setColorFilter(color, mode)
+        mCurrDrawable?.setColorFilter(color, mode)
     }
 
     override fun clearColorFilter() = mCurrDrawable!!.clearColorFilter()
@@ -117,21 +115,21 @@ class AsyncLoadDrawable : Drawable(), Drawable.Callback {
     // Callback Methods called from the delegate
     override fun invalidateDrawable(who: Drawable) {
         if (who === mCurrDrawable) {
-            Log.d("ALD", "invalidateDrawable who=$who")
+//            Log.d("ALD", "invalidateDrawable who=$who")
             invalidateSelf()
         }
     }
 
     override fun scheduleDrawable(who: Drawable, what: Runnable, `when`: Long) {
         if (who === mCurrDrawable) {
-            Log.d("ALD", "scheduleDrawable who=$who what=$what when=$`when`")
+//            Log.d("ALD", "scheduleDrawable who=$who what=$what when=$`when`")
             scheduleSelf(what, `when`)
         }
     }
 
     override fun unscheduleDrawable(who: Drawable, what: Runnable) {
         if (who === mCurrDrawable) {
-            Log.d("ALD", "unscheduleDrawable who=$who what=$what")
+//            Log.d("ALD", "unscheduleDrawable who=$who what=$what")
             unscheduleSelf(what)
         }
     }

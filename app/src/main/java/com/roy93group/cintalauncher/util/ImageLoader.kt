@@ -16,7 +16,14 @@ object ImageLoader {
         scaleIfSmaller: Boolean = true,
         onFinished: (img: Bitmap?) -> Unit
     ) = thread(name = "Image loading thread") {
-        onFinished(loadNullableBitmapOnCurrentThread(url, width, height, scaleIfSmaller))
+        onFinished(
+            loadNullableBitmapOnCurrentThread(
+                url = url,
+                width = width,
+                height = height,
+                scaleIfSmaller = scaleIfSmaller
+            )
+        )
     }
 
     fun loadNullableBitmapOnCurrentThread(
@@ -24,7 +31,7 @@ object ImageLoader {
         width: Int = AUTO,
         height: Int = AUTO,
         scaleIfSmaller: Boolean = true
-    ) : Bitmap? {
+    ): Bitmap? {
         var w = width
         var h = height
         var img: Bitmap? = null
@@ -34,16 +41,19 @@ object ImageLoader {
             }
             when {
                 w == AUTO && h == AUTO -> img = tmp
-                !scaleIfSmaller && (w > tmp.width || h > tmp.height) && w > tmp.width && h == AUTO || h > tmp.height && w == AUTO -> img = tmp
+                !scaleIfSmaller && (w > tmp.width || h > tmp.height) && w > tmp.width && h == AUTO || h > tmp.height && w == AUTO -> img =
+                    tmp
                 else -> {
-                    if (w == AUTO) w = h * tmp.width / tmp.height else if (h == AUTO) h = w * tmp.height / tmp.width
+                    if (w == AUTO) w = h * tmp.width / tmp.height else if (h == AUTO) h =
+                        w * tmp.height / tmp.width
                     img = Bitmap.createScaledBitmap(tmp, w, h, true)
                 }
             }
-        }
-        catch (e: IOException) {}
-        catch (e: Exception) { e.printStackTrace() }
-        catch (e: OutOfMemoryError) {
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } catch (e: OutOfMemoryError) {
             img?.recycle()
             img = null
             System.gc()
@@ -51,13 +61,19 @@ object ImageLoader {
         return img
     }
 
+    @Suppress("unused")
     inline fun loadBitmap(
         url: String,
         width: Int = AUTO,
         height: Int = AUTO,
         scaleIfSmaller: Boolean = true,
         crossinline onFinished: (img: Bitmap) -> Unit
-    ) = loadNullableBitmap(url, width, height, scaleIfSmaller) {
+    ) = loadNullableBitmap(
+        url = url,
+        width = width,
+        height = height,
+        scaleIfSmaller = scaleIfSmaller
+    ) {
         if (it != null) {
             onFinished(it)
         }

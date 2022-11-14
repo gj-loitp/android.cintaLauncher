@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Cinta</string>
-
-    <string name="dev_email">it@posidon.io</string>
-    <string name="crash_email_subject">Cinta launcher: crash log</string>
+    <string name="app_name">Dark</string>
+    <string name="dev_email">roy93group@gmail.com</string>
+    <string name="crash_email_subject">Dark launcher: crash log</string>
 </resources>
