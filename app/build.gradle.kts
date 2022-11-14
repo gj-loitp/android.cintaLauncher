@@ -4,15 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = 33
 
     defaultConfig {
-        applicationId = "io.posidon.android.cintalauncher"
+        applicationId = "com.roy93group.cintalauncher"
         minSdk = 26
-        targetSdk = 32
-        versionCode = 1
-        versionName = "22.0.0"
-
+        targetSdk = 33
+        versionCode = 20221114
+        versionName = "2022.11.14"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -20,7 +19,10 @@ android {
         getByName("release") {
             isMinifyEnabled = true
             isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     namespace = "io.posidon.android.cintalauncher"
