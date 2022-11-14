@@ -15,14 +15,14 @@ import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.data.feed.items.FeedItem
 import com.roy93group.cintalauncher.data.feed.items.formatTimeAgo
 import com.roy93group.cintalauncher.ui.feed.items.ActionsAdapter
-import com.roy93group.cintalauncher.ui.view.SwipeableLayout
+import com.roy93group.cintalauncher.ui.view.SwipeLayout
 import com.roy93group.cintalauncher.ui.view.recycler.DividerItemDecorator
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 import java.time.Instant
 
-open class FeedItemViewHolder(itemView: View) : FeedViewHolder(SwipeableLayout(itemView)) {
-    val swipeableLayout = this.itemView as SwipeableLayout
+open class FeedItemViewHolder(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
+    val swipeLayout = this.itemView as SwipeLayout
     val container = itemView.findViewById<View>(R.id.container)!!
     val source = itemView.findViewById<TextView>(R.id.source)!!
     val separator = itemView.findViewById<View>(R.id.separator)!!
@@ -48,7 +48,7 @@ open class FeedItemViewHolder(itemView: View) : FeedViewHolder(SwipeableLayout(i
         item: FeedItem,
         color: Int
     ) {
-        swipeableLayout.reset()
+        swipeLayout.reset()
         title.text = item.title
         applyIfNotNull(description, item.description, TextView::setText)
         applyIfNotNull(icon, item.sourceIcon, ImageView::setImageDrawable)
@@ -71,15 +71,15 @@ open class FeedItemViewHolder(itemView: View) : FeedViewHolder(SwipeableLayout(i
             time.isVisible = true
             time.text = item.formatTimeAgo(itemView.resources)
         }
-        swipeableLayout.onSwipeAway = item::onDismiss
-        swipeableLayout.isSwipeable = item.isDismissible
+        swipeLayout.onSwipeAway = item::onDismiss
+        swipeLayout.isSwipeAble = item.isDismissible
         source.setTextColor(color)
         title.setTextColor(ColorTheme.uiTitle)
         description.setTextColor(ColorTheme.uiDescription)
         time.setTextColor(ColorTheme.uiDescription)
         val bg = (ColorTheme.uiBG and 0xff000000.toInt()) or (ColorTheme.accentColor and 0x00ffffff)
-        swipeableLayout.setSwipeColor(bg)
-        swipeableLayout.setIconColor(ColorTheme.titleColorForBG(bg))
+        swipeLayout.setSwipeColor(bg)
+        swipeLayout.setIconColor(ColorTheme.titleColorForBG(bg))
         separator.setBackgroundColor(ColorTheme.uiHint and 0x00ffffff or 0x24ffffff)
     }
 }

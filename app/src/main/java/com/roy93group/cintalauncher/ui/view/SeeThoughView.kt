@@ -9,8 +9,8 @@ import io.posidon.android.conveniencelib.Device
 
 class SeeThoughView : View {
     constructor(c: Context) : super(c)
-    constructor(c: Context, a: AttributeSet?) : this(c, a, 0, 0)
-    constructor(c: Context, a: AttributeSet?, da: Int) : this(c, a, da, 0)
+    constructor(c: Context, a: AttributeSet?) : this(c = c, a = a, da = 0, dr = 0)
+    constructor(c: Context, a: AttributeSet?, da: Int) : this(c = c, a = a, da = da, dr = 0)
     constructor(c: Context, a: AttributeSet?, da: Int, dr: Int) : super(c, a, da, dr)
 
     var drawable: Drawable? = null
@@ -52,12 +52,12 @@ class SeeThoughView : View {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         setMeasuredDimension(
-            calculate(suggestedMinimumWidth, widthMeasureSpec),
-            calculate(suggestedMinimumHeight, heightMeasureSpec),
+            calculate(minSize = suggestedMinimumWidth, measureSpec = widthMeasureSpec),
+            calculate(minSize = suggestedMinimumHeight, measureSpec = heightMeasureSpec),
         )
     }
 
-    fun calculate(minSize: Int, measureSpec: Int): Int {
+    private fun calculate(minSize: Int, measureSpec: Int): Int {
         var result = minSize
         val mode = MeasureSpec.getMode(measureSpec)
         val specSize = MeasureSpec.getSize(measureSpec)

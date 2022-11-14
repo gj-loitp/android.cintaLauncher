@@ -20,8 +20,8 @@ import com.roy93group.cintalauncher.ui.drawer.AppDrawer
 import com.roy93group.cintalauncher.ui.view.scrollbar.alphabet.AlphabetScrollbarController
 import com.roy93group.cintalauncher.ui.view.scrollbar.hue.HueScrollbarController
 import io.posidon.android.conveniencelib.Device
-import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.getNavigationBarHeight
+import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 import kotlin.math.abs
 
@@ -35,9 +35,11 @@ class ScrollbarIconView @JvmOverloads constructor(
     val scrollBar = Scrollbar(context)
 
     private var currentWindow: PopupWindow? = null
+
     @Scrollbar.Orientation
     private var currentOrientation = Scrollbar.HORIZONTAL
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(e: MotionEvent): Boolean {
         when (e.action) {
             MotionEvent.ACTION_DOWN -> appDrawer?.open(this)
@@ -53,11 +55,25 @@ class ScrollbarIconView @JvmOverloads constructor(
                         showPopup(orientation)
                         currentOrientation = orientation
                     }
-                    currentWindow?.let { it.contentView.onTouchEvent(makeMotionEventForPopup(it.contentView, e)) }
+                    currentWindow?.let {
+                        it.contentView.onTouchEvent(
+                            makeMotionEventForPopup(
+                                contentView = it.contentView,
+                                e = e
+                            )
+                        )
+                    }
                 }
             }
             MotionEvent.ACTION_UP -> {
-                currentWindow?.let { it.contentView.onTouchEvent(makeMotionEventForPopup(it.contentView, e)) }
+                currentWindow?.let {
+                    it.contentView.onTouchEvent(
+                        makeMotionEventForPopup(
+                            contentView = it.contentView,
+                            e = e
+                        )
+                    )
+                }
                 currentWindow?.dismiss()
             }
         }
@@ -80,12 +96,15 @@ class ScrollbarIconView @JvmOverloads constructor(
     )
 
 
-    fun showPopup(@Scrollbar.Orientation orientation: Int) {
+    private fun showPopup(@Scrollbar.Orientation orientation: Int) {
         currentWindow?.dismiss()
         scrollBar.orientation = orientation
         scrollBar.controller.updateTheme(context)
-        scrollBar.background = ShapeDrawable(RoundRectShape(
-            FloatArray(8) { resources.getDimension(R.dimen.search_bar_radius) }, null, null)).apply {
+        scrollBar.background = ShapeDrawable(
+            RoundRectShape(
+                FloatArray(8) { resources.getDimension(R.dimen.search_bar_radius) }, null, null
+            )
+        ).apply {
             paint.color = ColorPalette.getCurrent().neutralVeryDark
         }
         val p = 24.dp.toPixels(this)
@@ -93,7 +112,10 @@ class ScrollbarIconView @JvmOverloads constructor(
             Scrollbar.HORIZONTAL -> scrollBar.setPadding(p, 0, p, 0)
             Scrollbar.VERTICAL -> scrollBar.setPadding(0, p, 0, p)
         }
-        scrollBar.typeface = ResourcesCompat.getFont(context, R.font.jet_brains_mono)!!
+        ResourcesCompat.getFont(context, R.font.jet_brains_mono)?.let {
+            scrollBar.typeface = it
+        }
+//        scrollBar.typeface = ResourcesCompat.getFont(context, R.font.jet_brains_mono)
         val location = IntArray(2)
         getLocationOnScreen(location)
         currentWindow = PopupWindow(
@@ -124,7 +146,8 @@ class ScrollbarIconView @JvmOverloads constructor(
                 },
                 when (orientation) {
                     Scrollbar.HORIZONTAL -> location[1]
-                    else -> Device.screenHeight(context) - location[1] - this@ScrollbarIconView.height + (appDrawer?.activity?.getNavigationBarHeight() ?: 0)
+                    else -> Device.screenHeight(context) - location[1] - this@ScrollbarIconView.height + (appDrawer?.activity?.getNavigationBarHeight()
+                        ?: 0)
                 },
             )
         }

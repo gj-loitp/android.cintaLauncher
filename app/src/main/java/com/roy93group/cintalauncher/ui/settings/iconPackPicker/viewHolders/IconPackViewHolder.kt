@@ -9,8 +9,8 @@ import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.ui.settings.iconPackPicker.IconPackPickerActivity
 
 class IconPackViewHolder(itemView: View, val type: Int) : RecyclerView.ViewHolder(itemView) {
-    val icon = itemView.findViewById<ImageView>(R.id.icon)
-    val text = itemView.findViewById<TextView>(R.id.text)
+    val icon: ImageView = itemView.findViewById(R.id.icon)
+    val text: TextView = itemView.findViewById(R.id.text)
 
     fun bind(iconPack: IconPackPickerActivity.IconPack) {
         text.text = iconPack.label

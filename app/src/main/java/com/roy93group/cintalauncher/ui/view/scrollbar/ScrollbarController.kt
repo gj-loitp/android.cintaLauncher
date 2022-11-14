@@ -14,7 +14,9 @@ abstract class ScrollbarController(val scrollbar: Scrollbar) {
     abstract val indexer: HighlightSectionIndexer
 
     abstract fun updateTheme(context: Context)
+
     abstract fun loadSections(apps: AppCollection)
+
     abstract fun createSectionHeaderItem(
         items: LinkedList<AppDrawerAdapter.DrawerItem>,
         section: List<App>

@@ -10,12 +10,6 @@ import io.posidon.android.conveniencelib.units.toFloatPixels
 
 interface HighlightSectionIndexer : SectionIndexer {
 
-    fun highlight(i: Int)
-    fun unhighlight()
-
-    fun isDimmed(app: App): Boolean
-    fun getHighlightI(): Int
-
     companion object {
         fun createHighlightDrawable(context: Context, accentColor: Int): ShapeDrawable {
             val bg = ShapeDrawable()
@@ -25,4 +19,9 @@ interface HighlightSectionIndexer : SectionIndexer {
             return bg
         }
     }
+
+    fun highlight(i: Int)
+    fun unhighlight()
+    fun isDimmed(app: App): Boolean
+    fun getHighlightI(): Int
 }

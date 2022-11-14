@@ -3,7 +3,7 @@ package com.roy93group.cintalauncher.ui.settings.feedChooser
 import android.content.Context
 import com.roy93group.cintalauncher.R
 
-class Suggestions (val context: Context) {
+class Suggestions(val context: Context) {
 
     val list = mapOf(
         "United States" to R.raw.suggestions_united_states,
@@ -19,7 +19,7 @@ class Suggestions (val context: Context) {
 
     val topics = arrayOfNulls<Topic>(list.size)
 
-    inline operator fun get(i: Int) = topics.getOrNull(i) ?: run {
+    operator fun get(i: Int) = topics.getOrNull(i) ?: run {
         val t = Topic(
             context,
             list.entries.elementAt(i).key,

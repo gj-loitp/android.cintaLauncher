@@ -2,9 +2,9 @@ package com.roy93group.cintalauncher.ui.view.scrollbar.alphabet
 
 import android.content.Context
 import android.graphics.Canvas
-import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.data.items.App
 import com.roy93group.cintalauncher.providers.app.AppCollection
+import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.ui.drawer.AppDrawerAdapter
 import com.roy93group.cintalauncher.ui.drawer.viewHolders.SectionHeaderItem
 import com.roy93group.cintalauncher.ui.view.scrollbar.Scrollbar
@@ -29,7 +29,7 @@ class AlphabetScrollbarController(
         paint.color = textColor
     }
 
-    var highlightColor = 0
+    private var highlightColor = 0
 
     override fun draw(canvas: Canvas) {
         if (this.indexer.sections.isNotEmpty()) {
@@ -72,8 +72,7 @@ class AlphabetScrollbarController(
         for (app in apps.list) {
             if (app.label.startsWith(currentChar, ignoreCase = true)) {
                 currentSection.add(app)
-            }
-            else currentSection = LinkedList<App>().apply {
+            } else currentSection = LinkedList<App>().apply {
                 add(app)
                 apps.sections.add(this)
                 currentChar = app.label[0].uppercaseChar()
@@ -85,13 +84,13 @@ class AlphabetScrollbarController(
         items: LinkedList<AppDrawerAdapter.DrawerItem>,
         section: List<App>
     ) {
-        items.add(SectionHeaderItem(section[0].label[0].uppercaseChar().toString()))
+        items.add(SectionHeaderItem(label = section[0].label[0].uppercaseChar().toString()))
     }
 
     override val indexer = AlphabetSectionIndexer()
 
     override fun updateAdapterIndexer(adapter: AppDrawerAdapter, appSections: List<List<App>>) {
-        indexer.updateSections(adapter, appSections)
+        indexer.updateSections(adapter = adapter, appSections = appSections)
         adapter.indexer = this.indexer
     }
 }

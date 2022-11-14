@@ -1,11 +1,11 @@
 package com.roy93group.cintalauncher.ui.settings.feedChooser
 
 import android.content.Context
-import org.json.JSONArray
 import io.posidon.android.conveniencelib.loadRaw
 import io.posidon.android.rsslib.RssSource
+import org.json.JSONArray
 
-class Topic (
+class Topic(
     val context: Context,
     val name: String,
     val id: Int
@@ -18,7 +18,8 @@ class Topic (
                 val obj = array.getJSONObject(it)
                 RssSource(
                     obj.getString("name"),
-                    obj.getString("url"), "")
+                    obj.getString("url"), ""
+                )
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -26,5 +27,5 @@ class Topic (
         }
     }
 
-    inline operator fun get(i: Int) = sources[i]
+    operator fun get(i: Int) = sources[i]
 }

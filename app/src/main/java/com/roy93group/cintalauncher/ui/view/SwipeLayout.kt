@@ -2,6 +2,7 @@ package com.roy93group.cintalauncher.ui.view
 
 import android.animation.Animator
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Rect
 import android.view.MotionEvent
@@ -20,28 +21,52 @@ import io.posidon.android.conveniencelib.units.toFloatPixels
 import io.posidon.android.conveniencelib.units.toPixels
 import kotlin.math.abs
 
-class SwipeableLayout(
-    val frontView: View,
-    var onSwipeAway: ((SwipeableLayout) -> Unit)? = null
+class SwipeLayout(
+    private val frontView: View,
+    var onSwipeAway: ((SwipeLayout) -> Unit)? = null
 ) : CardView(frontView.context) {
 
-    val closeIcon = ImageView(context).apply {
+    companion object {
+        private tailrec fun checkForHorizontalScroll(
+            ev: MotionEvent,
+            viewGroup: ViewGroup
+        ): Boolean {
+            for (i in 0 until viewGroup.childCount) {
+                val child = viewGroup.getChildAt(i)
+                val location = IntArray(2)
+                child.getLocationOnScreen(location)
+                if (child is ViewGroup &&
+                    location[0] <= ev.rawX && location[0] + child.measuredWidth >= ev.rawX &&
+                    location[1] <= ev.rawY && location[1] + child.measuredHeight >= ev.rawY
+                ) {
+                    val r = (child.canScrollHorizontally(1) || child.canScrollHorizontally(-1)) ||
+                            (child is RecyclerView && child.layoutManager?.canScrollHorizontally() == true) ||
+                            child is SwipeLayout
+                    if (r) return true
+                    return checkForHorizontalScroll(ev, child)
+                }
+            }
+            return false
+        }
+    }
+
+    private val closeIcon = ImageView(context).apply {
         setImageResource(R.drawable.ic_cross)
     }
 
-    val backView = FrameLayout(context).apply {
+    private val backView = FrameLayout(context).apply {
         addView(closeIcon)
         clipBounds = Rect(0, 0, 0, 0)
         visibility = GONE
     }
 
     fun setSwipeColor(color: Int) = backView.setBackgroundColor(color)
+
     fun setIconColor(value: Int) {
         closeIcon.imageTintList = ColorStateList.valueOf(value)
     }
 
-    var isSwipeable = true
-
+    var isSwipeAble = true
     var cornerRadiusCompensation = 0f
 
     override fun setOnClickListener(l: OnClickListener?) = frontView.setOnClickListener(l)
@@ -78,7 +103,9 @@ class SwipeableLayout(
 
     private val onAnimEndListener = object : Animator.AnimatorListener {
         private var isCanceled = false
+
         override fun onAnimationRepeat(animation: Animator) {}
+
         override fun onAnimationCancel(animation: Animator) {
             isCanceled = true
         }
@@ -91,8 +118,8 @@ class SwipeableLayout(
             state = null
             currentAnimator = null
             if (isCanceled) return
-            if (isSwipeable) {
-                onSwipeAway?.invoke(this@SwipeableLayout)
+            if (isSwipeAble) {
+                onSwipeAway?.invoke(this@SwipeLayout)
             } else bounceBack()
         }
     }
@@ -108,7 +135,7 @@ class SwipeableLayout(
                     else -> Rect(0, 0, 0, 0)
                 }
                 frontView.translationX = f
-                state!!.xOffset = f
+                state?.xOffset = f
             }
             setInterpolator(AnimUtils::springInterpolate)
             duration = 420L
@@ -144,11 +171,12 @@ class SwipeableLayout(
                 }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(ev: MotionEvent): Boolean {
         when (ev.action) {
             MotionEvent.ACTION_CANCEL -> bounceBack()
             MotionEvent.ACTION_MOVE -> {
-                state!!.xOffset = ev.x - state!!.initX
+                state?.xOffset = ev.x - state!!.initX
                 parent.requestDisallowInterceptTouchEvent(true)
                 currentAnimator?.cancel()
                 frontView.translationX = state!!.xOffset
@@ -179,12 +207,12 @@ class SwipeableLayout(
                 when {
                     state!!.xOffset > measuredWidth / 7 * 3 ||
                             state!!.xOffset > 64.dp.toFloatPixels(this) && ev.eventTime - ev.downTime < 160 -> {
-                        if (isSwipeable) sashayAway(1)
+                        if (isSwipeAble) sashayAway(1)
                         else bounceBack()
                     }
                     state!!.xOffset < -measuredWidth / 7 * 3 ||
                             state!!.xOffset < -(64.dp.toFloatPixels(this)) && ev.eventTime - ev.downTime < 160 -> {
-                        if (isSwipeable) sashayAway(-1)
+                        if (isSwipeAble) sashayAway(-1)
                         else bounceBack()
                     }
                     else -> bounceBack()
@@ -229,30 +257,6 @@ class SwipeableLayout(
                 backView.visibility = VISIBLE
             }
             super.onInterceptTouchEvent(ev)
-        }
-    }
-
-    companion object {
-        private tailrec fun checkForHorizontalScroll(
-            ev: MotionEvent,
-            viewGroup: ViewGroup
-        ): Boolean {
-            for (i in 0 until viewGroup.childCount) {
-                val child = viewGroup.getChildAt(i)
-                val location = IntArray(2)
-                child.getLocationOnScreen(location)
-                if (child is ViewGroup &&
-                    location[0] <= ev.rawX && location[0] + child.measuredWidth >= ev.rawX &&
-                    location[1] <= ev.rawY && location[1] + child.measuredHeight >= ev.rawY
-                ) {
-                    val r = (child.canScrollHorizontally(1) || child.canScrollHorizontally(-1)) ||
-                            (child is RecyclerView && child.layoutManager?.canScrollHorizontally() == true) ||
-                            child is SwipeableLayout
-                    if (r) return true
-                    return checkForHorizontalScroll(ev, child)
-                }
-            }
-            return false
         }
     }
 }

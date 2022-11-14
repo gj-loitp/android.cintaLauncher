@@ -14,12 +14,12 @@ class BackdropImageView : ImageView {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         setMeasuredDimension(
-            calculate(suggestedMinimumWidth, widthMeasureSpec),
-            calculate(suggestedMinimumHeight, heightMeasureSpec),
+            calculate(minSize = suggestedMinimumWidth, measureSpec = widthMeasureSpec),
+            calculate(minSize = suggestedMinimumHeight, measureSpec = heightMeasureSpec),
         )
     }
 
-    fun calculate(minSize: Int, measureSpec: Int): Int {
+    private fun calculate(minSize: Int, measureSpec: Int): Int {
         var result = minSize
         val mode = MeasureSpec.getMode(measureSpec)
         val specSize = MeasureSpec.getSize(measureSpec)

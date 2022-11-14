@@ -7,10 +7,15 @@ import com.roy93group.cintalauncher.R
 import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 
 class SectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val text = itemView.findViewById<TextView>(R.id.text)
+    val text: TextView = itemView.findViewById(R.id.text)
 
     fun bind(string: String) {
         text.text = string
-        text.setTextColor(ColorTheme.adjustColorForContrast(ColorTheme.uiBG, ColorTheme.accentColor))
+        text.setTextColor(
+            ColorTheme.adjustColorForContrast(
+                ColorTheme.uiBG,
+                ColorTheme.accentColor
+            )
+        )
     }
 }

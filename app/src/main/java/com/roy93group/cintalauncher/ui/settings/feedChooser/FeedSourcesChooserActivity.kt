@@ -1,5 +1,6 @@
 package com.roy93group.cintalauncher.ui.settings.feedChooser
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
@@ -24,31 +25,9 @@ import io.posidon.android.conveniencelib.vibrate
 
 class FeedSourcesChooserActivity : SettingsActivity() {
 
-    override fun init(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_settings_feed_chooser)
-
-        val grid = findViewById<RecyclerView>(R.id.recycler)
-        grid.layoutManager = GridLayoutManager(this, 2)
-        val padding = 4.dp.toPixels(this)
-        grid.setPadding(padding, getStatusBarHeight(), padding, getNavigationBarHeight() + padding)
-
-        val feedUrls =
-            settings.getStrings("feed:rss_sources")?.let { arrayListOf(*it) } ?: arrayListOf()
-
-        grid.adapter = FeedChooserAdapter(settings, feedUrls)
-        val fab = findViewById<ImageView>(R.id.add_button)
-        fab.backgroundTintList = ColorStateList.valueOf(ColorTheme.buttonColor)
-        fab.imageTintList =
-            ColorStateList.valueOf(ColorTheme.titleColorForBG(ColorTheme.buttonColor))
-        fab.setOnClickListener {
-            sourceEditPopup(it, settings, feedUrls, grid.adapter!!)
-        }
-        (fab.layoutParams as FrameLayout.LayoutParams).bottomMargin =
-            20.dp.toPixels(this) + getNavigationBarHeight()
-    }
-
     companion object {
-        inline fun sourceEditPopup(
+        @SuppressLint("NotifyDataSetChanged")
+        fun sourceEditPopup(
             parent: View,
             settings: Settings,
             feedUrls: ArrayList<String>,
@@ -68,11 +47,11 @@ class FeedSourcesChooserActivity : SettingsActivity() {
 
             val textColor = ColorTheme.cardDescription
             val hintColor = ColorTheme.cardHint
-            val input = content.findViewById<EditText>(R.id.title)!!
+            val input = content.findViewById<EditText>(R.id.title)
             input.setTextColor(textColor)
             input.setHintTextColor(hintColor)
 
-            content.findViewById<TextView>(R.id.done)!!.run {
+            content.findViewById<TextView>(R.id.done).run {
                 setTextColor(ColorTheme.titleColorForBG(ColorTheme.buttonColorCallToAction))
                 backgroundTintList = ColorStateList.valueOf(ColorTheme.buttonColorCallToAction)
                 setOnClickListener {
@@ -90,7 +69,7 @@ class FeedSourcesChooserActivity : SettingsActivity() {
 
             if (i == -1) {
                 val suggestions = Suggestions(context)
-                content.findViewById<ExpandableListView>(R.id.list)!!.apply {
+                content.findViewById<ExpandableListView>(R.id.list).apply {
                     visibility = View.VISIBLE
                     setAdapter(SuggestionsAdapter(suggestions))
                     setOnChildClickListener { _, _, topicI, sourceI, _ ->
@@ -102,10 +81,10 @@ class FeedSourcesChooserActivity : SettingsActivity() {
                     }
                     divider = null
                 }
-                content.findViewById<TextView>(R.id.remove)!!.visibility = View.GONE
+                content.findViewById<TextView>(R.id.remove).visibility = View.GONE
             } else {
                 val url = feedUrls[i]
-                content.findViewById<TextView>(R.id.remove)!!.run {
+                content.findViewById<TextView>(R.id.remove).run {
                     val hsl = FloatArray(3)
                     ColorUtils.colorToHSL(ColorTheme.buttonColor, hsl)
                     hsl[0] = 0f
@@ -127,4 +106,33 @@ class FeedSourcesChooserActivity : SettingsActivity() {
             dialog.showAtLocation(parent, Gravity.BOTTOM, 0, 0)
         }
     }
+
+    override fun init(savedInstanceState: Bundle?) {
+        setContentView(R.layout.activity_settings_feed_chooser)
+
+        val grid = findViewById<RecyclerView>(R.id.recycler)
+        grid.layoutManager = GridLayoutManager(this, 2)
+        val padding = 4.dp.toPixels(this)
+        grid.setPadding(padding, getStatusBarHeight(), padding, getNavigationBarHeight() + padding)
+
+        val feedUrls =
+            settings.getStrings("feed:rss_sources")?.let { arrayListOf(*it) } ?: arrayListOf()
+
+        grid.adapter = FeedChooserAdapter(settings, feedUrls)
+        val fab = findViewById<ImageView>(R.id.add_button)
+        fab.backgroundTintList = ColorStateList.valueOf(ColorTheme.buttonColor)
+        fab.imageTintList =
+            ColorStateList.valueOf(ColorTheme.titleColorForBG(ColorTheme.buttonColor))
+        fab.setOnClickListener {
+            sourceEditPopup(
+                parent = it,
+                settings = settings,
+                feedUrls = feedUrls,
+                adapter = grid.adapter!!
+            )
+        }
+        (fab.layoutParams as FrameLayout.LayoutParams).bottomMargin =
+            20.dp.toPixels(this) + getNavigationBarHeight()
+    }
+
 }

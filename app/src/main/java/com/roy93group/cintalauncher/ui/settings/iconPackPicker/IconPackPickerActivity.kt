@@ -2,6 +2,7 @@ package com.roy93group.cintalauncher.ui.settings.iconPackPicker
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import androidx.annotation.Keep
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
@@ -11,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.cintalauncher.R
 import com.roy93group.cintalauncher.ui.settings.SettingsActivity
 import com.roy93group.cintalauncher.ui.settings.iconPackPicker.viewHolders.IconPackViewHolder
-import io.posidon.android.launcherutils.IconTheming
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.conveniencelib.getStatusBarHeight
+import io.posidon.android.launcherutils.IconTheming
 import java.util.*
 
 class IconPackPickerActivity : SettingsActivity() {
@@ -23,19 +24,20 @@ class IconPackPickerActivity : SettingsActivity() {
 
         val iconPacks = IconTheming.getAvailableIconPacks(packageManager).mapTo(LinkedList()) {
             IconPack(
-                it.loadIcon(packageManager),
-                it.loadLabel(packageManager).toString(),
-                it.activityInfo.packageName
+                icon = it.loadIcon(packageManager),
+                label = it.loadLabel(packageManager).toString(),
+                packageName = it.activityInfo.packageName
             )
         }
 
         iconPacks.sortWith { o1, o2 ->
-            o1.label.compareTo(o2.label, ignoreCase = true)
+            o1.label.compareTo(other = o2.label, ignoreCase = true)
         }
 
         val chosenIconPacks = run {
             val list = LinkedList<IconPack>()
-            val strings = settings.getStrings("icon_packs")?.let(Array<String>::toMutableList) ?: return@run list
+            val strings = settings.getStrings("icon_packs")?.let(Array<String>::toMutableList)
+                ?: return@run list
             var deleted = false
             for (string in strings) {
                 val iconPack = iconPacks.find { it.packageName == string }
@@ -63,7 +65,12 @@ class IconPackPickerActivity : SettingsActivity() {
 
         recycler.setPadding(0, getStatusBarHeight(), 0, getNavigationBarHeight())
         recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        val adapter = IconPackPickerAdapter(settings, chosenIconPacks, iconPacks, systemPack)
+        val adapter = IconPackPickerAdapter(
+            settings = settings,
+            chosenIconPacks = chosenIconPacks,
+            availableIconPacks = iconPacks,
+            systemPack = systemPack
+        )
 
         recycler.adapter = adapter
         val th = ItemTouchHelper(TouchCallback(adapter))
@@ -74,7 +81,10 @@ class IconPackPickerActivity : SettingsActivity() {
         override fun getMovementFlags(
             recyclerView: RecyclerView,
             viewHolder: RecyclerView.ViewHolder
-        ) = makeMovementFlags(if (viewHolder is IconPackViewHolder && viewHolder.type != IconPackPickerAdapter.SYSTEM_ICON_PACK) UP or DOWN else 0, 0)
+        ) = makeMovementFlags(
+            if (viewHolder is IconPackViewHolder && viewHolder.type != IconPackPickerAdapter.SYSTEM_ICON_PACK) UP or DOWN else 0,
+            0
+        )
 
         override fun onSwiped(v: RecyclerView.ViewHolder, d: Int) {}
 
@@ -87,6 +97,7 @@ class IconPackPickerActivity : SettingsActivity() {
         }
     }
 
+    @Keep
     class IconPack(
         val icon: Drawable,
         val label: String,

@@ -35,7 +35,13 @@ class SuggestionsAdapter(
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    override fun getChildView(topicI: Int, sourceI: Int, isLast: Boolean, cv: View?, parent: ViewGroup): View {
+    override fun getChildView(
+        topicI: Int,
+        sourceI: Int,
+        isLast: Boolean,
+        cv: View?,
+        parent: ViewGroup
+    ): View {
         val convertView = (cv ?: TextView(parent.context).apply {
             val h = 16.dp.toPixels(this)
             setPadding(h + 16.dp.toPixels(this), 2.dp.toPixels(this), h, 8.dp.toPixels(this))

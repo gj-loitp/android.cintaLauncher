@@ -1,5 +1,6 @@
 package com.roy93group.cintalauncher.ui.view.scrollbar
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -15,15 +16,25 @@ import com.roy93group.cintalauncher.R
 import com.roy93group.cintalauncher.ui.view.scrollbar.hue.HueScrollbarController
 import kotlin.math.roundToInt
 
-open class Scrollbar : View {
+class Scrollbar : View {
+    @IntDef(VERTICAL, HORIZONTAL)
+    annotation class Orientation
+
+    companion object {
+        const val VERTICAL = 0
+        const val HORIZONTAL = 1
+    }
 
     var controller: ScrollbarController = HueScrollbarController(this)
 
     constructor(c: Context) : super(c) {
         boldTypeface = Typeface.create(paint.typeface, Typeface.BOLD)
     }
+
     constructor(c: Context, a: AttributeSet?) : this(c, a, 0, 0)
+
     constructor(c: Context, a: AttributeSet?, da: Int) : this(c, a, da, 0)
+
     constructor(c: Context, a: AttributeSet?, da: Int, dr: Int) : super(c, a, da, dr) {
         if (a != null) {
             val typedArray = c.obtainStyledAttributes(a, R.styleable.TextAppearance, da, dr)
@@ -65,6 +76,7 @@ open class Scrollbar : View {
             value?.addOnScrollListener(onScrollListener)
         }
 
+    @Suppress("unused")
     fun destroy() {
         recycler?.removeOnScrollListener(onScrollListener)
     }
@@ -79,6 +91,7 @@ open class Scrollbar : View {
         return super.performClick()
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_MOVE -> {
@@ -116,14 +129,16 @@ open class Scrollbar : View {
         l.scrollToPositionWithOffset(i, center)
     }
 
-    fun coordsToIndex(x: Float, y: Float): Int {
+    private fun coordsToIndex(x: Float, y: Float): Int {
         if (orientation == VERTICAL) {
-            val out = ((y - paddingTop) / (height - paddingTop - paddingBottom) * controller.indexer.sections.lastIndex).roundToInt()
+            val out =
+                ((y - paddingTop) / (height - paddingTop - paddingBottom) * controller.indexer.sections.lastIndex).roundToInt()
             if (out < 0) return 0
             if (out > controller.indexer.sections.lastIndex) return controller.indexer.sections.lastIndex
             return out
         } else {
-            val out = ((x - paddingLeft) / (width - paddingLeft - paddingRight) * controller.indexer.sections.lastIndex).roundToInt()
+            val out =
+                ((x - paddingLeft) / (width - paddingLeft - paddingRight) * controller.indexer.sections.lastIndex).roundToInt()
             if (out < 0) return 0
             if (out > controller.indexer.sections.lastIndex) return controller.indexer.sections.lastIndex
             return out
@@ -136,7 +151,7 @@ open class Scrollbar : View {
     var currentScrolledSectionEnd = -1
         private set
 
-    val onScrollListener = object : RecyclerView.OnScrollListener() {
+    private val onScrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             currentScrolledSectionStart = (recyclerView.layoutManager as LinearLayoutManager?)!!
                 .findFirstCompletelyVisibleItemPosition()
@@ -146,14 +161,5 @@ open class Scrollbar : View {
                 .let { if (it == -1) -1 else controller.indexer.getSectionForPosition(it) }
             invalidate()
         }
-    }
-
-    @IntDef(VERTICAL, HORIZONTAL)
-    annotation class Orientation
-
-    companion object {
-
-        const val VERTICAL = 0
-        const val HORIZONTAL = 1
     }
 }

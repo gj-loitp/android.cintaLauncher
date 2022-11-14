@@ -1,5 +1,6 @@
 package com.roy93group.cintalauncher.ui.view.scrollbar.hue
 
+import android.annotation.SuppressLint
 import com.roy93group.cintalauncher.data.items.App
 import com.roy93group.cintalauncher.ui.drawer.AppDrawerAdapter
 import com.roy93group.cintalauncher.ui.drawer.viewHolders.AppItem
@@ -13,6 +14,7 @@ class HueSectionIndexer(
     private var adapter: AppDrawerAdapter? = null
 
     override fun getSections(): Array<Float> = savedSections
+
     override fun getSectionForPosition(i: Int): Int {
         if (adapter == null) return -1
         val hue = (adapter!!.items[i] as? AppItem ?: return -1).item.hsl[0]
@@ -21,9 +23,12 @@ class HueSectionIndexer(
             d >= 0f && d < scrollbarController.step
         }
     }
+
     override fun getPositionForSection(i: Int): Int {
         if (adapter == null) return -1
-        return adapter!!.items.indexOfFirst { (it as? AppItem ?: return -1).item.hsl[0] == savedSections[i] }
+        return adapter!!.items.indexOfFirst {
+            (it as? AppItem ?: return -1).item.hsl[0] == savedSections[i]
+        }
     }
 
     fun updateSections(adapter: AppDrawerAdapter, appSections: List<List<App>>) {
@@ -34,6 +39,7 @@ class HueSectionIndexer(
     private var highlightI = -1
     override fun getHighlightI() = highlightI
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun highlight(i: Int) {
         val oldI = highlightI
         highlightI = i
@@ -42,6 +48,7 @@ class HueSectionIndexer(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun unhighlight() {
         highlightI = -1
         adapter?.notifyDataSetChanged()
@@ -49,7 +56,8 @@ class HueSectionIndexer(
 
     override fun isDimmed(app: App): Boolean =
         highlightI != -1 && adapter != null && run {
-            val d = app.hsl[0] - (adapter!!.items[highlightI] as? AppItem ?: return false).item.hsl[0]
+            val d =
+                app.hsl[0] - (adapter!!.items[highlightI] as? AppItem ?: return false).item.hsl[0]
             !(d >= 0f && d < scrollbarController.step)
         }
 }

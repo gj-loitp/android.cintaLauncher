@@ -11,8 +11,9 @@ class HorizontalAspectRatioLayout : FrameLayout {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int)
-        : super(context, attrs, defStyleAttr)
+            : super(context, attrs, defStyleAttr)
 
+    @Suppress("unused")
     constructor(
         context: Context,
         attrs: AttributeSet?,
@@ -23,7 +24,10 @@ class HorizontalAspectRatioLayout : FrameLayout {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(
             widthMeasureSpec,
-            MeasureSpec.makeMeasureSpec((MeasureSpec.getSize(widthMeasureSpec) / widthToHeight).toInt(), MeasureSpec.EXACTLY),
+            MeasureSpec.makeMeasureSpec(
+                (MeasureSpec.getSize(widthMeasureSpec) / widthToHeight).toInt(),
+                MeasureSpec.EXACTLY
+            ),
         )
     }
 }

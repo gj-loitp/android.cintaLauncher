@@ -17,12 +17,12 @@ class HueScrollbarController(
 ) : ScrollbarController(scrollbar) {
 
     private val paint by scrollbar::paint
-
     private var dotRadius = 0f
     private var activeDotRadius = 0f
 
     override fun draw(canvas: Canvas) {
-        val insideHeight = scrollbar.height - scrollbar.paddingTop - scrollbar.paddingBottom.toFloat()
+        val insideHeight =
+            scrollbar.height - scrollbar.paddingTop - scrollbar.paddingBottom.toFloat()
         val insideWidth = scrollbar.width - scrollbar.paddingLeft - scrollbar.paddingRight.toFloat()
         val (dotWidth, dotHeight) = if (scrollbar.orientation == Scrollbar.VERTICAL) {
             insideWidth / 2f + scrollbar.paddingLeft to insideHeight / indexer.sections.lastIndex.toFloat()
@@ -35,7 +35,8 @@ class HueScrollbarController(
             } else {
                 dotWidth * i + scrollbar.paddingLeft to dotHeight
             }
-            val isHighlighted = i >= scrollbar.currentScrolledSectionStart && i <= scrollbar.currentScrolledSectionEnd
+            val isHighlighted =
+                i >= scrollbar.currentScrolledSectionStart && i <= scrollbar.currentScrolledSectionEnd
             val hsl = floatArrayOf(indexer.sections[i], 1f, if (isHighlighted) 0.4f else 0.3f)
             paint.color = ColorUtils.HSLToColor(hsl)
             val r = if (isHighlighted) activeDotRadius else dotRadius
@@ -61,8 +62,7 @@ class HueScrollbarController(
             val currentHue = app.hsl[0]
             if (currentHue - startHue < step) {
                 section.add(app)
-            }
-            else section = LinkedList<App>().apply {
+            } else section = LinkedList<App>().apply {
                 add(app)
                 apps.sections.add(this)
                 startHue = currentHue
@@ -73,12 +73,13 @@ class HueScrollbarController(
     override fun createSectionHeaderItem(
         items: LinkedList<AppDrawerAdapter.DrawerItem>,
         section: List<App>
-    ) {}
+    ) {
+    }
 
     override val indexer = HueSectionIndexer(this)
 
     override fun updateAdapterIndexer(adapter: AppDrawerAdapter, appSections: List<List<App>>) {
-        indexer.updateSections(adapter, appSections)
+        indexer.updateSections(adapter = adapter, appSections = appSections)
         adapter.indexer = this.indexer
     }
 }

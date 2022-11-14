@@ -1,5 +1,6 @@
 package com.roy93group.cintalauncher.ui.view.scrollbar.alphabet
 
+import android.annotation.SuppressLint
 import com.roy93group.cintalauncher.data.items.App
 import com.roy93group.cintalauncher.ui.drawer.AppDrawerAdapter
 import com.roy93group.cintalauncher.ui.view.recycler.HighlightSectionIndexer
@@ -9,7 +10,10 @@ class AlphabetSectionIndexer : HighlightSectionIndexer {
     private var adapter: AppDrawerAdapter? = null
 
     override fun getSections(): Array<Char> = savedSections
-    override fun getSectionForPosition(i: Int): Int = adapter?.let { savedSections.indexOf(it.items[i].label[0].uppercaseChar()) } ?: 0
+
+    override fun getSectionForPosition(i: Int): Int =
+        adapter?.let { savedSections.indexOf(it.items[i].label[0].uppercaseChar()) } ?: 0
+
     override fun getPositionForSection(i: Int): Int {
         return adapter?.items?.indexOfFirst { it.label[0] == savedSections[i] } ?: 0
     }
@@ -22,6 +26,7 @@ class AlphabetSectionIndexer : HighlightSectionIndexer {
     private var highlightI = -1
     override fun getHighlightI() = highlightI
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun highlight(i: Int) {
         val oldI = highlightI
         highlightI = i
@@ -30,6 +35,7 @@ class AlphabetSectionIndexer : HighlightSectionIndexer {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun unhighlight() {
         highlightI = -1
         adapter?.notifyDataSetChanged()

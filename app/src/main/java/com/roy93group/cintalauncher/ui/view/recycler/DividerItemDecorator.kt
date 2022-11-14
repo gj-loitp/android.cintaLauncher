@@ -29,9 +29,9 @@ class DividerItemDecorator(
             return
         }
         if (orientation == VERTICAL) {
-            drawVertical(c, parent)
+            drawVertical(canvas = c, parent = parent)
         } else {
-            drawHorizontal(c, parent)
+            drawHorizontal(canvas = c, parent = parent)
         }
     }
 
