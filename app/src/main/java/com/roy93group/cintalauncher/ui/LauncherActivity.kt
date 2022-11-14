@@ -12,7 +12,6 @@ import android.graphics.*
 import android.graphics.drawable.*
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
@@ -54,28 +53,47 @@ var acrylicBlur: AcrylicBlur? = null
 
 class LauncherActivity : FragmentActivity() {
 
+    companion object {
+        fun Activity.loadBlur(wallpaperManager: WallpaperManager, updateBlur: () -> Unit) =
+            thread(isDaemon = true, name = "Blur thread") {
+                if (ActivityCompat.checkSelfPermission(
+                        /* context = */ this,
+                        /* permission = */ Manifest.permission.READ_EXTERNAL_STORAGE
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    if (acrylicBlur == null) return@thread
+                    acrylicBlur = null
+                    runOnUiThread(updateBlur)
+                    return@thread
+                }
+                val drawable = wallpaperManager.peekDrawable()
+                if (drawable == null) {
+                    if (acrylicBlur == null) return@thread
+                    acrylicBlur = null
+                    runOnUiThread(updateBlur)
+                    return@thread
+                }
+                AcrylicBlur.blurWallpaper(context = this, drawable = drawable) {
+                    acrylicBlur = it
+                    runOnUiThread(updateBlur)
+                }
+            }
+    }
+
     val launcherContext = LauncherContext()
-
     val settings by launcherContext::settings
-
-    val notificationProvider = NotificationProvider(this)
-    val mediaProvider = MediaProvider(this)
-    val suggestedAppsProvider = SuggestedAppsProvider()
-
-    val homeContainer by lazy { findViewById<View>(R.id.home_container) }
-    val feedRecycler by lazy { findViewById<RecyclerView>(R.id.feed_recycler)!! }
-
-    val blurBG by lazy { findViewById<View>(R.id.blur_bg)!! }
-
+    private val notificationProvider = NotificationProvider(this)
+    private val mediaProvider = MediaProvider(this)
+    private val suggestedAppsProvider = SuggestedAppsProvider()
+    private val homeContainer: View by lazy { findViewById(R.id.home_container) }
+    val feedRecycler: RecyclerView by lazy { findViewById(R.id.feed_recycler) }
+    val blurBG: View by lazy { findViewById(R.id.blur_bg) }
     val appDrawer by lazy { AppDrawer(this) }
     val bottomBar by lazy { BottomBar(this) }
     val feedProfiles by lazy { FeedProfiles(this) }
-
-    lateinit var feedAdapter: FeedAdapter
-
+    private lateinit var feedAdapter: FeedAdapter
     private lateinit var wallpaperManager: WallpaperManager
-
-    var colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
+    private var colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,7 +124,6 @@ class LauncherActivity : FragmentActivity() {
         }
 
         appDrawer.init()
-
         window.decorView.findViewById<View>(android.R.id.content).run {
             setOnTouchListener(::onTouch)
             setOnDragListener { _, event ->
@@ -152,9 +169,9 @@ class LauncherActivity : FragmentActivity() {
             )
             thread(name = "onCreate color update", isDaemon = true) {
                 ColorPalette.onColorsChanged(
-                    this,
-                    settings.colorTheme,
-                    LauncherActivity::updateColorTheme
+                    context = this,
+                    colorTheme = settings.colorTheme,
+                    onFinished = LauncherActivity::updateColorTheme
                 ) {
                     wallpaperManager.getWallpaperColors(WallpaperManager.FLAG_SYSTEM)
                 }
@@ -182,9 +199,9 @@ class LauncherActivity : FragmentActivity() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O_MR1) {
             thread(isDaemon = true) {
                 ColorPalette.onResumePreOMR1(
-                    this,
-                    settings.colorTheme,
-                    LauncherActivity::updateColorTheme
+                    context = this,
+                    colorTheme = settings.colorTheme,
+                    onFinished = LauncherActivity::updateColorTheme
                 )
                 onWallpaperChanged()
             }
@@ -206,7 +223,7 @@ class LauncherActivity : FragmentActivity() {
             appDrawer.close()
         }
         PopupUtils.dismissCurrent()
-        SuggestionsManager.onPause(settings, this)
+        SuggestionsManager.onPause(settings = settings, context = this)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -274,9 +291,9 @@ class LauncherActivity : FragmentActivity() {
         if (which and WallpaperManager.FLAG_SYSTEM != 0) {
             onWallpaperChanged()
             ColorPalette.onColorsChanged(
-                this,
-                settings.colorTheme,
-                LauncherActivity::updateColorTheme
+                context = this,
+                colorTheme = settings.colorTheme,
+                onFinished = LauncherActivity::updateColorTheme
             ) { colors }
         }
     }
@@ -285,21 +302,21 @@ class LauncherActivity : FragmentActivity() {
         colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
             ColorPalette.onColorsChanged(
-                this,
-                settings.colorTheme,
-                LauncherActivity::updateColorTheme
+                context = this,
+                colorTheme = settings.colorTheme,
+                onFinished = LauncherActivity::updateColorTheme
             ) {
                 wallpaperManager.getWallpaperColors(WallpaperManager.FLAG_SYSTEM)
             }
         } else ColorPalette.onResumePreOMR1(
-            this,
-            settings.colorTheme,
-            LauncherActivity::updateColorTheme
+            context = this,
+            colorTheme = settings.colorTheme,
+            onFinished = LauncherActivity::updateColorTheme
         )
     }
 
     private fun onWallpaperChanged() {
-        loadBlur(wallpaperManager, ::updateBlur)
+        loadBlur(wallpaperManager = wallpaperManager, updateBlur = ::updateBlur)
     }
 
     private fun handleGestureContract(intent: Intent) {
@@ -307,10 +324,10 @@ class LauncherActivity : FragmentActivity() {
         //gnc?.sendEndPosition(scrollBar.clipBounds.toRectF(), null)
     }
 
-    fun loadFeed(items: List<FeedItem>) {
+    private fun loadFeed(items: List<FeedItem>) {
         runOnUiThread {
             feedAdapter.updateItems(items)
-            Log.d("Cinta", "updated feed (${items.size} items)")
+//            Log.d("Cinta", "updated feed (${items.size} items)")
         }
     }
 
@@ -323,13 +340,13 @@ class LauncherActivity : FragmentActivity() {
             runOnUiThread {
                 bottomBar.onAppsLoaded()
             }
-            Log.d("Cinta", "updated apps (${apps.size} items)")
+//            Log.d("Cinta", "updated apps (${apps.size} items)")
         }
     }
 
-    fun onTouch(v: View, event: MotionEvent): Boolean {
+    private fun onTouch(v: View, event: MotionEvent): Boolean {
         if (event.action == MotionEvent.ACTION_UP)
-            LiveWallpaper.tap(v, event.rawX.toInt(), event.rawY.toInt())
+            LiveWallpaper.tap(view = v, x = event.rawX.toInt(), y = event.rawY.toInt())
         return false
     }
 
@@ -340,7 +357,6 @@ class LauncherActivity : FragmentActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
-
         val searchBarY =
             getNavigationBarHeight() + resources.getDimension(R.dimen.item_card_margin).toInt()
         val feedFilterY = searchBarY + resources.getDimension(R.dimen.search_bar_height).toInt()
@@ -359,32 +375,5 @@ class LauncherActivity : FragmentActivity() {
             getNavigationBarHeight() + resources.getDimension(R.dimen.item_card_margin).toInt()
         val feedFilterY = searchBarY + resources.getDimension(R.dimen.search_bar_height).toInt()
         return feedFilterY + resources.getDimension(R.dimen.feed_filter_height).toInt()
-    }
-
-    companion object {
-        fun Activity.loadBlur(wallpaperManager: WallpaperManager, updateBlur: () -> Unit) =
-            thread(isDaemon = true, name = "Blur thread") {
-                if (ActivityCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.READ_EXTERNAL_STORAGE
-                    ) != PackageManager.PERMISSION_GRANTED
-                ) {
-                    if (acrylicBlur == null) return@thread
-                    acrylicBlur = null
-                    runOnUiThread(updateBlur)
-                    return@thread
-                }
-                val drawable = wallpaperManager.peekDrawable()
-                if (drawable == null) {
-                    if (acrylicBlur == null) return@thread
-                    acrylicBlur = null
-                    runOnUiThread(updateBlur)
-                    return@thread
-                }
-                AcrylicBlur.blurWallpaper(this, drawable) {
-                    acrylicBlur = it
-                    runOnUiThread(updateBlur)
-                }
-            }
     }
 }
