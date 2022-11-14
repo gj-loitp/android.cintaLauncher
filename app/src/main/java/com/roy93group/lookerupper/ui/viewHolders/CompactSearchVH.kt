@@ -18,9 +18,9 @@ class CompactSearchVH(
     private val isOnCard: Boolean
 ) : SearchVH(itemView) {
 
-    val icon = itemView.findViewById<ImageView>(R.id.icon)!!
-    val text = itemView.findViewById<TextView>(R.id.text)!!
-    private val subtitle = itemView.findViewById<TextView>(R.id.subtitle)!!
+    val icon: ImageView = itemView.findViewById(R.id.icon)
+    val text: TextView = itemView.findViewById(R.id.text)
+    private val subtitle: TextView = itemView.findViewById(R.id.subtitle)
 
     override fun onBind(result: SearchResult) {
         result as CompactResult

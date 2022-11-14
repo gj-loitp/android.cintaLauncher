@@ -16,8 +16,8 @@ class ContactSearchVH(
     private val isOnCard: Boolean
 ) : SearchVH(itemView) {
 
-    val icon = itemView.findViewById<ImageView>(R.id.icon)!!
-    val text = itemView.findViewById<TextView>(R.id.text)!!
+    val icon: ImageView = itemView.findViewById(R.id.icon)
+    val text: TextView = itemView.findViewById(R.id.text)
 
     override fun onBind(result: SearchResult) {
         result as ContactResult

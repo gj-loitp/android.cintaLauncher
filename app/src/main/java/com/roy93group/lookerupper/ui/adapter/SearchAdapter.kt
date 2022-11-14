@@ -11,7 +11,7 @@ import com.roy93group.lookerupper.ui.viewHolders.AppSearchVH
 import com.roy93group.lookerupper.ui.viewHolders.CompactSearchVH
 import com.roy93group.lookerupper.ui.viewHolders.ContactSearchVH
 import com.roy93group.lookerupper.ui.viewHolders.SearchVH
-import com.roy93group.lookerupper.ui.viewHolders.instantAnswer.AnswerSearchVH
+import com.roy93group.lookerupper.ui.viewHolders.AnswerSearchVH
 
 class SearchAdapter(
     val activity: Activity,

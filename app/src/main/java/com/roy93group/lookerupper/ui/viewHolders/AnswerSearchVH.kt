@@ -1,4 +1,4 @@
-package com.roy93group.lookerupper.ui.viewHolders.instantAnswer
+package com.roy93group.lookerupper.ui.viewHolders
 
 import android.graphics.drawable.BitmapDrawable
 import android.view.View
@@ -13,7 +13,7 @@ import com.roy93group.cintalauncher.ui.acrylicBlur
 import com.roy93group.cintalauncher.ui.view.SeeThoughView
 import com.roy93group.lookerupper.data.results.InstantAnswerResult
 import com.roy93group.lookerupper.data.results.SearchResult
-import com.roy93group.lookerupper.ui.viewHolders.SearchVH
+import com.roy93group.lookerupper.ui.adapter.InfoBoxAdapter
 
 class AnswerSearchVH(
     itemView: View

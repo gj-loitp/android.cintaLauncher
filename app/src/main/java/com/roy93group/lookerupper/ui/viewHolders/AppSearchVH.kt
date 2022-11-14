@@ -21,10 +21,10 @@ class AppSearchVH(
     val activity: Activity
 ) : SearchVH(itemView) {
 
-    val icon = itemView.findViewById<ImageView>(R.id.icon_image)!!
-    val label = itemView.findViewById<TextView>(R.id.icon_text)!!
+    val icon: ImageView = itemView.findViewById(R.id.icon_image)
+    val label: TextView = itemView.findViewById(R.id.icon_text)
     val card = itemView as CardView
-    private val blurBG = itemView.findViewById<SeeThoughView>(R.id.blur_bg)!!
+    private val blurBG: SeeThoughView = itemView.findViewById(R.id.blur_bg)
 
     override fun onBind(result: SearchResult) {
         result as AppResult
