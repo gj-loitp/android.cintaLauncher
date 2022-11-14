@@ -18,7 +18,7 @@ import com.roy93group.cintalauncher.ui.pinned.PinnedItemsAdapter
 import com.roy93group.cintalauncher.ui.view.SeeThoughView
 import com.roy93group.cintalauncher.ui.view.scrollbar.Scrollbar
 import com.roy93group.cintalauncher.ui.view.scrollbar.ScrollbarIconView
-import com.roy93group.lookerupper.ui.SearchActivity
+import com.roy93group.lookerupper.ui.a.SearchActivity
 
 class BottomBar(val activity: LauncherActivity) {
 

@@ -12,15 +12,15 @@ import com.roy93group.lookerupper.data.results.CompactAppResult
 import com.roy93group.lookerupper.data.results.CompactResult
 import com.roy93group.lookerupper.data.results.SearchResult
 
-class CompactSearchViewHolder(
+class CompactSearchVH(
     itemView: View,
     val activity: Activity,
-    val isOnCard: Boolean
-) : SearchViewHolder(itemView) {
+    private val isOnCard: Boolean
+) : SearchVH(itemView) {
 
     val icon = itemView.findViewById<ImageView>(R.id.icon)!!
     val text = itemView.findViewById<TextView>(R.id.text)!!
-    val subtitle = itemView.findViewById<TextView>(R.id.subtitle)!!
+    private val subtitle = itemView.findViewById<TextView>(R.id.subtitle)!!
 
     override fun onBind(result: SearchResult) {
         result as CompactResult

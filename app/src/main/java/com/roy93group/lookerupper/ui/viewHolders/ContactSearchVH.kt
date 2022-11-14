@@ -11,21 +11,26 @@ import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.lookerupper.data.results.ContactResult
 import com.roy93group.lookerupper.data.results.SearchResult
 
-class ContactSearchViewHolder(
+class ContactSearchVH(
     itemView: View,
-    val isOnCard: Boolean
-) : SearchViewHolder(itemView) {
+    private val isOnCard: Boolean
+) : SearchVH(itemView) {
 
     val icon = itemView.findViewById<ImageView>(R.id.icon)!!
     val text = itemView.findViewById<TextView>(R.id.text)!!
 
     override fun onBind(result: SearchResult) {
         result as ContactResult
+
         Glide.with(itemView)
             .load(result.iconUri)
-            .placeholder(ContextCompat.getDrawable(itemView.context, R.drawable.placeholder_contact)!!.apply {
-                setTint(if (isOnCard) ColorTheme.cardHint else ColorTheme.uiHint)
-            })
+            .placeholder(
+                ContextCompat.getDrawable(
+                    itemView.context,
+                    R.drawable.placeholder_contact
+                )?.apply {
+                    setTint(if (isOnCard) ColorTheme.cardHint else ColorTheme.uiHint)
+                })
             .apply(RequestOptions.circleCropTransform())
             .into(icon)
         text.text = result.title

@@ -16,15 +16,15 @@ import com.roy93group.lookerupper.data.results.AppResult
 import com.roy93group.lookerupper.data.results.SearchResult
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 
-class AppSearchViewHolder(
+class AppSearchVH(
     itemView: View,
     val activity: Activity
-) : SearchViewHolder(itemView) {
+) : SearchVH(itemView) {
 
     val icon = itemView.findViewById<ImageView>(R.id.icon_image)!!
     val label = itemView.findViewById<TextView>(R.id.icon_text)!!
     val card = itemView as CardView
-    val blurBG = itemView.findViewById<SeeThoughView>(R.id.blur_bg)!!
+    private val blurBG = itemView.findViewById<SeeThoughView>(R.id.blur_bg)!!
 
     override fun onBind(result: SearchResult) {
         result as AppResult

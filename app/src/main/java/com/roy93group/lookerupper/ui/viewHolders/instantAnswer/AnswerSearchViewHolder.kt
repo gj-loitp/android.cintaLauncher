@@ -13,11 +13,11 @@ import com.roy93group.cintalauncher.ui.acrylicBlur
 import com.roy93group.cintalauncher.ui.view.SeeThoughView
 import com.roy93group.lookerupper.data.results.InstantAnswerResult
 import com.roy93group.lookerupper.data.results.SearchResult
-import com.roy93group.lookerupper.ui.viewHolders.SearchViewHolder
+import com.roy93group.lookerupper.ui.viewHolders.SearchVH
 
 class AnswerSearchViewHolder(
     itemView: View
-) : SearchViewHolder(itemView) {
+) : SearchVH(itemView) {
 
     val card = itemView.findViewById<CardView>(R.id.card)!!
     val title = card.findViewById<TextView>(R.id.title)!!

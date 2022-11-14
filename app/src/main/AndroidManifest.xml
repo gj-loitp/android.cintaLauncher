@@ -55,7 +55,7 @@
         </activity>
 
         <activity
-            android:name="com.roy93group.lookerupper.ui.SearchActivity"
+            android:name="com.roy93group.lookerupper.ui.a.SearchActivity"
             android:exported="true"
             android:taskAffinity="io.posidon.android.lookerupper.ui.SearchActivity">
             <intent-filter>

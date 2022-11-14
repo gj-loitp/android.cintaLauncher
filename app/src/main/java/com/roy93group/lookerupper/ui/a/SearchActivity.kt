@@ -1,4 +1,4 @@
-package com.roy93group.lookerupper.ui
+package com.roy93group.lookerupper.ui.a
 
 import android.app.SearchManager
 import android.app.WallpaperColors
@@ -25,8 +25,8 @@ import com.roy93group.cintalauncher.R
 import com.roy93group.cintalauncher.providers.color.ColorThemeOptions
 import com.roy93group.cintalauncher.providers.color.pallete.ColorPalette
 import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
-import com.roy93group.cintalauncher.storage.ColorThemeDayNightSetting.colorThemeDayNight
 import com.roy93group.cintalauncher.storage.ColorExtractorSetting.colorTheme
+import com.roy93group.cintalauncher.storage.ColorThemeDayNightSetting.colorThemeDayNight
 import com.roy93group.cintalauncher.storage.Settings
 import com.roy93group.cintalauncher.ui.LauncherActivity.Companion.loadBlur
 import com.roy93group.cintalauncher.ui.acrylicBlur
@@ -37,6 +37,7 @@ import com.roy93group.lookerupper.data.providers.AppProvider
 import com.roy93group.lookerupper.data.providers.ContactProvider
 import com.roy93group.lookerupper.data.providers.DuckDuckGoProvider
 import com.roy93group.lookerupper.data.results.SearchResult
+import com.roy93group.lookerupper.ui.adapter.SearchAdapter
 import kotlin.concurrent.thread
 import kotlin.math.abs
 
@@ -68,9 +69,16 @@ class SearchActivity : FragmentActivity() {
         settings.init(this)
         searcher.onCreate(this)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
-            wallpaperManager.addOnColorsChangedListener(::onColorsChangedListener, container.handler)
+            wallpaperManager.addOnColorsChangedListener(
+                ::onColorsChangedListener,
+                container.handler
+            )
             thread(name = "onCreate color update", isDaemon = true) {
-                ColorPalette.onColorsChanged(this, settings.colorTheme, SearchActivity::loadColors) {
+                ColorPalette.onColorsChanged(
+                    this,
+                    settings.colorTheme,
+                    SearchActivity::loadColors
+                ) {
                     wallpaperManager.getWallpaperColors(WallpaperManager.FLAG_SYSTEM)
                 }
             }
@@ -78,13 +86,14 @@ class SearchActivity : FragmentActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recycler)!!
         adapter = SearchAdapter(this, recyclerView, false)
         recyclerView.run {
-            layoutManager = GridLayoutManager(this@SearchActivity, 3, RecyclerView.VERTICAL, false).apply {
-                spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                    override fun getSpanSize(i: Int): Int =
-                        if (adapter?.getItemViewType(i) == SearchAdapter.RESULT_APP) 1
-                        else 3
+            layoutManager =
+                GridLayoutManager(this@SearchActivity, 3, RecyclerView.VERTICAL, false).apply {
+                    spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                        override fun getSpanSize(i: Int): Int =
+                            if (adapter?.getItemViewType(i) == SearchAdapter.RESULT_APP) 1
+                            else 3
+                    }
                 }
-            }
             this.adapter = this@SearchActivity.adapter
             container.post {
                 setPadding(paddingLeft, container.measuredHeight, paddingRight, paddingBottom)
@@ -137,15 +146,17 @@ class SearchActivity : FragmentActivity() {
 
     fun updateBlur() {
         blurBG.drawable = BitmapDrawable(resources, acrylicBlur?.smoothBlur)
-        window.decorView.background = LayerDrawable(arrayOf(
-            BitmapDrawable(resources, acrylicBlur?.partialBlurSmall),
-            BitmapDrawable(resources, acrylicBlur?.insaneBlur).also {
-                it.alpha = 80
-            },
-            ColorDrawable(ColorTheme.uiBG).also {
-                it.alpha = 120
-            },
-        ))
+        window.decorView.background = LayerDrawable(
+            arrayOf(
+                BitmapDrawable(resources, acrylicBlur?.partialBlurSmall),
+                BitmapDrawable(resources, acrylicBlur?.insaneBlur).also {
+                    it.alpha = 80
+                },
+                ColorDrawable(ColorTheme.uiBG).also {
+                    it.alpha = 120
+                },
+            )
+        )
     }
 
     @RequiresApi(Build.VERSION_CODES.O_MR1)
@@ -155,22 +166,28 @@ class SearchActivity : FragmentActivity() {
     ) {
         if (which and WallpaperManager.FLAG_SYSTEM != 0) {
             loadBlur(wallpaperManager, ::updateBlur)
-            ColorPalette.onColorsChanged(this, settings.colorTheme, SearchActivity::loadColors) { colors }
+            ColorPalette.onColorsChanged(
+                this,
+                settings.colorTheme,
+                SearchActivity::loadColors
+            ) { colors }
         }
     }
 
     private fun loadColors(palette: ColorPalette) {
         val colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
         ColorTheme.updateColorTheme(colorThemeOptions.createColorTheme(palette))
-        window.decorView.background = LayerDrawable(arrayOf(
-            BitmapDrawable(resources, acrylicBlur?.partialBlurSmall),
-            BitmapDrawable(resources, acrylicBlur?.insaneBlur).also {
-                it.alpha = 80
-            },
-            ColorDrawable(ColorTheme.uiBG).also {
-                it.alpha = 120
-            },
-        ))
+        window.decorView.background = LayerDrawable(
+            arrayOf(
+                BitmapDrawable(resources, acrylicBlur?.partialBlurSmall),
+                BitmapDrawable(resources, acrylicBlur?.insaneBlur).also {
+                    it.alpha = 80
+                },
+                ColorDrawable(ColorTheme.uiBG).also {
+                    it.alpha = 120
+                },
+            )
+        )
         searchBar.backgroundTintList =
             ColorStateList.valueOf(ColorTheme.searchBarBG)
         searchBar.findViewById<TextView>(R.id.search_bar_text).run {
