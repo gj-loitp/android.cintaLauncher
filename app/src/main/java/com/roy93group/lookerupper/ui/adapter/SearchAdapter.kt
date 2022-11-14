@@ -11,7 +11,7 @@ import com.roy93group.lookerupper.ui.viewHolders.AppSearchVH
 import com.roy93group.lookerupper.ui.viewHolders.CompactSearchVH
 import com.roy93group.lookerupper.ui.viewHolders.ContactSearchVH
 import com.roy93group.lookerupper.ui.viewHolders.SearchVH
-import com.roy93group.lookerupper.ui.viewHolders.instantAnswer.AnswerSearchViewHolder
+import com.roy93group.lookerupper.ui.viewHolders.instantAnswer.AnswerSearchVH
 
 class SearchAdapter(
     val activity: Activity,
@@ -45,7 +45,7 @@ class SearchAdapter(
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.search_result_contact, parent, false), isOnCard
             )
-            RESULT_ANSWER -> AnswerSearchViewHolder(
+            RESULT_ANSWER -> AnswerSearchVH(
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.search_result_answer, parent, false)
             )

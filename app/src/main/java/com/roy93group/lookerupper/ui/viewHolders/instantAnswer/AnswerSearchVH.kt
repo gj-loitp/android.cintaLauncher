@@ -15,26 +15,26 @@ import com.roy93group.lookerupper.data.results.InstantAnswerResult
 import com.roy93group.lookerupper.data.results.SearchResult
 import com.roy93group.lookerupper.ui.viewHolders.SearchVH
 
-class AnswerSearchViewHolder(
+class AnswerSearchVH(
     itemView: View
 ) : SearchVH(itemView) {
 
-    val card = itemView.findViewById<CardView>(R.id.card)!!
-    val title = card.findViewById<TextView>(R.id.title)!!
-    val description = card.findViewById<TextView>(R.id.description)!!
+    val card: CardView = itemView.findViewById(R.id.card)
+    val title: TextView = card.findViewById(R.id.title)
+    val description: TextView = card.findViewById(R.id.description)
 
-    val infoBoxAdapter = InfoBoxAdapter()
-    val infoBox = itemView.findViewById<RecyclerView>(R.id.info_box)!!.apply {
+    private val infoBoxAdapter = InfoBoxAdapter()
+    private val infoBox: RecyclerView = itemView.findViewById<RecyclerView>(R.id.info_box).apply {
         layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         adapter = infoBoxAdapter
     }
 
-    val actionsContainer = itemView.findViewById<CardView>(R.id.actions_container)!!
-    val sourceAction = actionsContainer.findViewById<TextView>(R.id.source)!!
-    val searchAction = actionsContainer.findViewById<TextView>(R.id.search)!!
-    val actionSeparator = actionsContainer.findViewById<View>(R.id.separator)!!
+    private val actionsContainer: CardView = itemView.findViewById(R.id.actions_container)
+    private val sourceAction: TextView = actionsContainer.findViewById(R.id.source)
+    private val searchAction: TextView = actionsContainer.findViewById(R.id.search)
+    private val actionSeparator: View = actionsContainer.findViewById(R.id.separator)
 
-    val blurBG = itemView.findViewById<SeeThoughView>(R.id.blur_bg)!!
+    private val blurBG: SeeThoughView = itemView.findViewById(R.id.blur_bg)
 
     override fun onBind(result: SearchResult) {
         result as InstantAnswerResult
@@ -47,7 +47,8 @@ class AnswerSearchViewHolder(
 
         title.text = result.title
         description.text = result.description
-        sourceAction.text = itemView.context.getString(R.string.read_more_at_source, result.sourceName)
+        sourceAction.text =
+            itemView.context.getString(R.string.read_more_at_source, result.sourceName)
 
         val bg = ColorTheme.buttonColor
         val fg = ColorTheme.titleColorForBG(bg)
