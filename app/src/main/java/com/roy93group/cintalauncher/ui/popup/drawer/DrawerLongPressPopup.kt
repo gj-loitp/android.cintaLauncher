@@ -1,5 +1,6 @@
 package com.roy93group.cintalauncher.ui.popup.drawer
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
@@ -28,6 +29,7 @@ import io.posidon.android.conveniencelib.Device
 
 object DrawerLongPressPopup {
 
+    @SuppressLint("InflateParams")
     fun show(
         parent: View,
         touchX: Float,
@@ -37,7 +39,8 @@ object DrawerLongPressPopup {
         reloadApps: () -> Unit,
     ) {
         val content = LayoutInflater.from(parent.context).inflate(R.layout.list_popup, null)
-        val window = PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
+        val window =
+            PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
         PopupUtils.setCurrent(window)
 
         content.findViewById<SeeThoughView>(R.id.blur_bg).run {
@@ -51,17 +54,19 @@ object DrawerLongPressPopup {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = ListPopupAdapter().apply {
                 fun update() {
-                    updateItems(createMainAdapter(
-                        parent.context,
-                        settings,
-                        reloadScrollbarController = {
-                            cardView.post {
-                                reloadApps()
-                                update()
-                            }
-                        },
-                        reloadApps = reloadApps,
-                    ))
+                    updateItems(
+                        createMainAdapter(
+                            parent.context,
+                            settings,
+                            reloadScrollbarController = {
+                                cardView.post {
+                                    reloadApps()
+                                    update()
+                                }
+                            },
+                            reloadApps = reloadApps,
+                        )
+                    )
                 }
                 update()
             }
@@ -81,29 +86,33 @@ object DrawerLongPressPopup {
     ): List<ListPopupItem> {
         return listOf(
             ListPopupItem(
-                context.getString(R.string.scrollbar_controller),
+                text = context.getString(R.string.scrollbar_controller),
                 description = context.resources.getStringArray(R.array.scrollbar_controllers)[settings.scrollbarController],
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_sorting),
             ) {
                 AlertDialog.Builder(context)
-                    .setSingleChoiceItems(R.array.scrollbar_controllers, settings.scrollbarController) { d, i ->
+                    .setSingleChoiceItems(
+                        R.array.scrollbar_controllers,
+                        settings.scrollbarController
+                    ) { d, i ->
                         settings.edit(context) {
-                            scrollbarController = context.resources.getStringArray(R.array.scrollbar_controllers_data)[i].toInt()
+                            scrollbarController =
+                                context.resources.getStringArray(R.array.scrollbar_controllers_data)[i].toInt()
                             reloadScrollbarController()
                         }
                         d.dismiss()
                     }
                     .show()
             },
-            ListPopupItem(context.getString(R.string.icons), isTitle = true),
+            ListPopupItem(text = context.getString(R.string.icons), isTitle = true),
             ListPopupItem(
-                context.getString(R.string.icon_packs),
+                text = context.getString(R.string.icon_packs),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_shapes),
             ) {
                 context.startActivity(Intent(context, IconPackPickerActivity::class.java))
             },
             ListPopupItem(
-                context.getString(R.string.reshape_adaptive_icons),
+                text = context.getString(R.string.reshape_adaptive_icons),
                 description = context.getString(R.string.reshape_adaptive_icons_explanation),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_shapes),
                 value = settings.doReshapeAdaptiveIcons,

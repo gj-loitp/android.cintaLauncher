@@ -1,5 +1,6 @@
 package com.roy93group.cintalauncher.ui.pinned
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ClipData
 import android.view.LayoutInflater
@@ -18,13 +19,11 @@ import io.posidon.android.conveniencelib.getNavigationBarHeight
 
 class PinnedItemsAdapter(
     launcherActivity: Activity,
-    val launcherContext: LauncherContext,
+    private val launcherContext: LauncherContext,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    val navbarHeight = launcherActivity.getNavigationBarHeight()
-
+    private val navbarHeight = launcherActivity.getNavigationBarHeight()
     private var dropTargetIndex = -1
-
     private var items: MutableList<LauncherItem> = ArrayList()
 
     override fun getItemCount(): Int = iToAdapterPosition(items.size)
@@ -33,7 +32,7 @@ class PinnedItemsAdapter(
         return if (dropTargetIndex == i) 1 else 0
     }
 
-    fun adapterPositionToI(position: Int): Int {
+    private fun adapterPositionToI(position: Int): Int {
         return when {
             dropTargetIndex == -1 -> position
             dropTargetIndex <= position -> position - 1
@@ -41,7 +40,7 @@ class PinnedItemsAdapter(
         }
     }
 
-    fun iToAdapterPosition(i: Int): Int {
+    private fun iToAdapterPosition(i: Int): Int {
         return when {
             dropTargetIndex == -1 -> i
             dropTargetIndex <= i -> i + 1
@@ -51,10 +50,14 @@ class PinnedItemsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            1 -> DropTargetViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.pinned_drop_target, parent, false) as ImageView)
-            else -> PinnedViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.pinned_item, parent, false) as ImageView)
+            1 -> DropTargetViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.pinned_drop_target, parent, false) as ImageView
+            )
+            else -> PinnedViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.pinned_item, parent, false) as ImageView
+            )
         }
     }
 
@@ -71,9 +74,9 @@ class PinnedItemsAdapter(
         val item = items[adapterPositionToI(ii)]
         holder as PinnedViewHolder
         bindPinnedViewHolder(
-            holder,
-            item,
-            navbarHeight,
+            holder = holder,
+            item = item,
+            navbarHeight = navbarHeight,
             onDragStart = {
                 val i = adapterPositionToI(holder.adapterPosition)
                 items.removeAt(i)
@@ -84,6 +87,7 @@ class PinnedItemsAdapter(
         )
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(items: List<LauncherItem>) {
         this.items = items.toMutableList()
         notifyDataSetChanged()
@@ -110,10 +114,14 @@ class PinnedItemsAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun onDrop(v: View, i: Int, clipData: ClipData) {
         if (i != dropTargetIndex) throw IllegalStateException("PinnedItemsAdapter -> i = $i, dropTargetIndex = $dropTargetIndex")
-        val item = launcherContext.appManager.parseLauncherItem(clipData.getItemAt(0).text.toString())!!
-        items.add(i, item)
+        val item =
+            launcherContext.appManager.parseLauncherItem(clipData.getItemAt(0).text.toString())
+        item?.let {
+            items.add(i, it)
+        }
         dropTargetIndex = -1
         notifyDataSetChanged()
         updatePins(v)

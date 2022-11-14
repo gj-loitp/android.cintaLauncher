@@ -7,6 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.cintalauncher.R
 
 class ShortcutViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val icon = itemView.findViewById<ImageView>(R.id.icon)!!
-    val label = itemView.findViewById<TextView>(R.id.text)!!
+    val icon: ImageView = itemView.findViewById(R.id.icon)
+    val label: TextView = itemView.findViewById(R.id.text)
 }

@@ -7,22 +7,25 @@ import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.cintalauncher.ui.popup.listPopup.ListPopupItem
 
-class ListPopupTitleViewHolder(itemView: View) : ListPopupViewHolder(itemView) {
+class ListPopupTitleVH(itemView: View) : ListPopupVH(itemView) {
 
-    val text = itemView.findViewById<TextView>(R.id.text)
-    val description = itemView.findViewById<TextView>(R.id.description)
-    val separator = itemView.findViewById<View>(R.id.separator)
+    val text: TextView = itemView.findViewById(R.id.text)
+    val description: TextView = itemView.findViewById(R.id.description)
+    val separator: View = itemView.findViewById(R.id.separator)
 
     override fun onBind(item: ListPopupItem) {
         text.text = item.text
         description.text = item.description
 
-        text.setTextColor(ColorTheme.adjustColorForContrast(ColorTheme.cardBG, ColorTheme.accentColor))
+        text.setTextColor(
+            ColorTheme.adjustColorForContrast(
+                ColorTheme.cardBG,
+                ColorTheme.accentColor
+            )
+        )
         separator.setBackgroundColor(ColorTheme.cardHint)
-
         itemView.setOnClickListener(item.onClick)
-
-        applyIfNotNull(description, item.description) { view, value ->
+        applyIfNotNull(view = description, value = item.description) { view, value ->
             view.text = value
             description.setTextColor(ColorTheme.cardDescription)
         }

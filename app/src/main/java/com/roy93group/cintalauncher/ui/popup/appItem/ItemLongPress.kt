@@ -1,5 +1,6 @@
 package com.roy93group.cintalauncher.ui.popup.appItem
 
+import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Context
@@ -25,10 +26,20 @@ import io.posidon.android.conveniencelib.vibrate
 object ItemLongPress {
 
     var currentPopup: PopupWindow? = null
-    fun makePopupWindow(context: Context, item: LauncherItem, backgroundColor: Int, textColor: Int, extraPopupWindow: PopupWindow?, onInfo: (View) -> Unit): PopupWindow {
+
+    @SuppressLint("InflateParams")
+    private fun makePopupWindow(
+        context: Context,
+        item: LauncherItem,
+        backgroundColor: Int,
+        textColor: Int,
+        extraPopupWindow: PopupWindow?,
+        onInfo: (View) -> Unit
+    ): PopupWindow {
         val content = LayoutInflater.from(context).inflate(R.layout.long_press_item_popup, null)
         if (item is App) {
-            val shortcuts = item.getStaticShortcuts(context.getSystemService(LauncherApps::class.java))
+            val shortcuts =
+                item.getStaticShortcuts(context.getSystemService(LauncherApps::class.java))
             if (shortcuts.isNotEmpty()) {
                 val recyclerView = content.findViewById<RecyclerView>(R.id.recycler)
                 recyclerView.isNestedScrollingEnabled = false
@@ -36,7 +47,8 @@ object ItemLongPress {
                 recyclerView.adapter = ShortcutAdapter(shortcuts, textColor)
             }
         }
-        val window = PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
+        val window =
+            PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
         window.setOnDismissListener {
             extraPopupWindow?.dismiss()
             currentPopup = null
@@ -61,15 +73,23 @@ object ItemLongPress {
         return window
     }
 
-    fun makeExtraPopupWindow(context: Context, shortcuts: List<ShortcutInfo>, backgroundColor: Int, textColor: Int): PopupWindow {
-        val content = LayoutInflater.from(context).inflate(R.layout.long_press_item_popup_extra, null)
+    @SuppressLint("InflateParams")
+    private fun makeExtraPopupWindow(
+        context: Context,
+        shortcuts: List<ShortcutInfo>,
+        backgroundColor: Int,
+        textColor: Int
+    ): PopupWindow {
+        val content =
+            LayoutInflater.from(context).inflate(R.layout.long_press_item_popup_extra, null)
         if (shortcuts.isNotEmpty()) {
             val recyclerView = content.findViewById<RecyclerView>(R.id.recycler)
             recyclerView.isNestedScrollingEnabled = false
             recyclerView.layoutManager = LinearLayoutManager(context)
             recyclerView.adapter = ShortcutAdapter(shortcuts, textColor)
         }
-        val window = PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
+        val window =
+            PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
 
         content.findViewById<CardView>(R.id.card).setCardBackgroundColor(backgroundColor)
 
@@ -89,27 +109,60 @@ object ItemLongPress {
         val context = view.context
         context.vibrate(14)
         val (x, y, gravity) = PopupUtils.getPopupLocationFromView(view, navbarHeight)
-        val dynamicShortcuts = (item as? App)?.getDynamicShortcuts(context.getSystemService(LauncherApps::class.java))?.let {
-            it.subList(0, it.size.coerceAtMost(5))
-        }
+        val dynamicShortcuts =
+            (item as? App)?.getDynamicShortcuts(context.getSystemService(LauncherApps::class.java))
+                ?.let {
+                    it.subList(0, it.size.coerceAtMost(5))
+                }
         val hasDynamicShortcuts = !dynamicShortcuts.isNullOrEmpty()
-        val extraPopupWindow = if (hasDynamicShortcuts) makeExtraPopupWindow(context, dynamicShortcuts!!, backgroundColor, textColor) else null
-        val popupWindow = makePopupWindow(context, item, backgroundColor, textColor, extraPopupWindow) {
-            item.showProperties(view, backgroundColor, textColor)
-        }
+        val extraPopupWindow = if (hasDynamicShortcuts) makeExtraPopupWindow(
+            context = context,
+            shortcuts = dynamicShortcuts!!,
+            backgroundColor = backgroundColor,
+            textColor = textColor
+        ) else null
+        val popupWindow =
+            makePopupWindow(
+                context = context,
+                item = item,
+                backgroundColor = backgroundColor,
+                textColor = textColor,
+                extraPopupWindow = extraPopupWindow
+            ) {
+                item.showProperties(view, backgroundColor, textColor)
+            }
         popupWindow.isFocusable = false
-        popupWindow.showAtLocation(view, gravity, x, y + (view.resources.getDimension(R.dimen.item_card_margin) * 2).toInt())
+        popupWindow.showAtLocation(
+            /* parent = */ view,
+            /* gravity = */ gravity,
+            /* x = */ x,
+            /* y = */ y + (view.resources.getDimension(R.dimen.item_card_margin) * 2).toInt()
+        )
 
         if (hasDynamicShortcuts) popupWindow.contentView.post {
-            extraPopupWindow!!.showAtLocation(view, gravity, x, y + popupWindow.contentView.height + (view.resources.getDimension(R.dimen.item_card_margin) * 4).toInt())
+            extraPopupWindow?.showAtLocation(
+                /* parent = */ view,
+                /* gravity = */
+                gravity,
+                /* x = */
+                x,
+                /* y = */
+                y + popupWindow.contentView.height + (view.resources.getDimension(R.dimen.item_card_margin) * 4).toInt()
+            )
         }
 
         val shadow = View.DragShadowBuilder(view)
         val clipData = ClipData(
-            item.label,
-            arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN),
-            ClipData.Item(item.toString()))
+            /* label = */ item.label,
+            /* mimeTypes = */ arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN),
+            /* item = */ ClipData.Item(item.toString())
+        )
 
-        view.startDragAndDrop(clipData, shadow, view, View.DRAG_FLAG_OPAQUE or View.DRAG_FLAG_GLOBAL)
+        view.startDragAndDrop(
+            /* data = */ clipData,
+            /* shadowBuilder = */ shadow,
+            /* myLocalState = */ view,
+            /* flags = */ View.DRAG_FLAG_OPAQUE or View.DRAG_FLAG_GLOBAL
+        )
     }
 }

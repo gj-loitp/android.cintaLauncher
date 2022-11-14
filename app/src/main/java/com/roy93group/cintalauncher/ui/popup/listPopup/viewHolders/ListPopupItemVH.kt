@@ -11,13 +11,10 @@ import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.cintalauncher.ui.popup.listPopup.ListPopupItem
 
-class ListPopupItemViewHolder(itemView: View) : ListPopupViewHolder(itemView) {
-
-    val icon = itemView.findViewById<ImageView>(R.id.icon)
-
-    val text = itemView.findViewById<TextView>(R.id.text)
-    val description = itemView.findViewById<TextView>(R.id.description)
-
+class ListPopupItemVH(itemView: View) : ListPopupVH(itemView) {
+    val icon: ImageView = itemView.findViewById(R.id.icon)
+    val text: TextView = itemView.findViewById(R.id.text)
+    val description: TextView = itemView.findViewById(R.id.description)
     val ripple = RippleDrawable(ColorStateList.valueOf(0), null, ColorDrawable(0xffffffff.toInt()))
 
     init {
@@ -29,16 +26,14 @@ class ListPopupItemViewHolder(itemView: View) : ListPopupViewHolder(itemView) {
         description.text = item.description
 
         text.setTextColor(ColorTheme.cardTitle)
-
         itemView.setOnClickListener(item.onClick)
-
         ripple.setColor(ColorStateList.valueOf(ColorTheme.accentColor and 0xffffff or 0x33000000))
 
-        applyIfNotNull(description, item.description) { view, value ->
+        applyIfNotNull(view = description, value = item.description) { view, value ->
             view.text = value
             description.setTextColor(ColorTheme.cardDescription)
         }
-        applyIfNotNull(icon, item.icon) { view, value ->
+        applyIfNotNull(view = icon, value = item.icon) { view, value ->
             view.setImageDrawable(value)
             view.imageTintList = ColorStateList.valueOf(ColorTheme.cardDescription)
         }

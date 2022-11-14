@@ -1,5 +1,6 @@
 package com.roy93group.cintalauncher.ui.popup.home
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
@@ -15,9 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.cintalauncher.R
 import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
+import com.roy93group.cintalauncher.storage.ColorExtractorSetting.colorTheme
 import com.roy93group.cintalauncher.storage.ColorThemeDayNightSetting.colorThemeDayNight
 import com.roy93group.cintalauncher.storage.ColorThemeDayNightSetting.setColorThemeDayNight
-import com.roy93group.cintalauncher.storage.ColorExtractorSetting.colorTheme
 import com.roy93group.cintalauncher.storage.Settings
 import com.roy93group.cintalauncher.ui.acrylicBlur
 import com.roy93group.cintalauncher.ui.popup.PopupUtils
@@ -33,6 +34,7 @@ import kotlin.concurrent.withLock
 
 object HomeLongPressPopup {
 
+    @SuppressLint("InflateParams")
     fun show(
         parent: View,
         touchX: Float,
@@ -42,7 +44,8 @@ object HomeLongPressPopup {
         reloadColorTheme: () -> Unit,
     ) {
         val content = LayoutInflater.from(parent.context).inflate(R.layout.list_popup, null)
-        val window = PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
+        val window =
+            PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
         PopupUtils.setCurrent(window)
 
         content.findViewById<SeeThoughView>(R.id.blur_bg).run {
@@ -85,14 +88,15 @@ object HomeLongPressPopup {
     ): List<ListPopupItem> {
         return listOf(
             ListPopupItem(
-                context.getString(R.string.color_theme_gen),
+                text = context.getString(R.string.color_theme_gen),
                 description = context.resources.getStringArray(R.array.color_theme_gens)[settings.colorTheme],
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_color_dropper),
             ) {
                 AlertDialog.Builder(context)
                     .setSingleChoiceItems(R.array.color_theme_gens, settings.colorTheme) { d, i ->
                         settings.edit(context) {
-                            colorTheme = context.resources.getStringArray(R.array.color_theme_gens_data)[i].toInt()
+                            colorTheme =
+                                context.resources.getStringArray(R.array.color_theme_gens_data)[i].toInt()
                             reloadColorTheme()
                         }
                         d.dismiss()
@@ -100,12 +104,15 @@ object HomeLongPressPopup {
                     .show()
             },
             ListPopupItem(
-                context.getString(R.string.color_theme_day_night),
+                text = context.getString(R.string.color_theme_day_night),
                 description = context.resources.getStringArray(R.array.color_theme_day_night)[settings.colorThemeDayNight.ordinal],
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_lightness),
             ) {
                 AlertDialog.Builder(context)
-                    .setSingleChoiceItems(R.array.color_theme_day_night, settings.colorThemeDayNight.ordinal) { d, i ->
+                    .setSingleChoiceItems(
+                        R.array.color_theme_day_night,
+                        settings.colorThemeDayNight.ordinal
+                    ) { d, i ->
                         settings.edit(context) {
                             setColorThemeDayNight(context.resources.getStringArray(R.array.color_theme_day_night_data)[i].toInt())
                             reloadColorTheme()
@@ -115,13 +122,13 @@ object HomeLongPressPopup {
                     .show()
             },
             ListPopupItem(
-                context.getString(R.string.rss_sources),
+                text = context.getString(R.string.rss_sources),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_news),
             ) {
                 context.startActivity(Intent(context, FeedSourcesChooserActivity::class.java))
             },
             ListPopupItem(
-                context.getString(R.string.icon_packs),
+                text = context.getString(R.string.icon_packs),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_shapes),
             ) {
                 context.startActivity(Intent(context, IconPackPickerActivity::class.java))

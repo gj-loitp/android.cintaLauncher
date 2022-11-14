@@ -11,6 +11,7 @@ object PopupUtils {
     private var currentPopup: PopupWindow? = null
 
     fun dismissCurrent() = currentPopup?.dismiss()
+
     fun setCurrent(popup: PopupWindow) {
         dismissCurrent()
         popup.setOnDismissListener {
@@ -22,7 +23,7 @@ object PopupUtils {
     /**
      * @return Triple(x, y, gravity)
      */
-    inline fun getPopupLocationFromView(
+    fun getPopupLocationFromView(
         view: View,
         navbarHeight: Int,
     ): Triple<Int, Int, Int> {
@@ -31,13 +32,22 @@ object PopupUtils {
             view.getLocationOnScreen(it)
         }
 
-        return getPopupLocation(view.context, location[0], location[1], view.measuredWidth, view.measuredHeight, navbarHeight, 0, 0)
+        return getPopupLocation(
+            context = view.context,
+            x = location[0],
+            y = location[1],
+            width = view.measuredWidth,
+            height = view.measuredHeight,
+            navbarHeight = navbarHeight,
+            offsetX = 0,
+            offsetY = 0
+        )
     }
 
     /**
      * @return Triple(x, y, gravity)
      */
-    inline fun getPopupLocation(
+    private fun getPopupLocation(
         context: Context,
         x: Int,
         y: Int,
@@ -69,6 +79,6 @@ object PopupUtils {
             screenHeight - y + navbarHeight
         } + offsetY
 
-        return Triple(x, y, gravity)
+        return Triple(first = x, second = y, third = gravity)
     }
 }

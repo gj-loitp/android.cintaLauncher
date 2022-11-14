@@ -12,7 +12,7 @@ import java.util.*
 
 class IntroActivity : FragmentActivity() {
 
-    val stack = LinkedList<FragmentWithNext>().apply {
+    private val stack = LinkedList<FragmentWithNext>().apply {
         push(SplashFragment())
     }
 
@@ -20,13 +20,17 @@ class IntroActivity : FragmentActivity() {
         stack.push(fragment)
         supportFragmentManager
             .beginTransaction()
-            .setCustomAnimations(R.anim.intro_fragment_slide_in_right, R.anim.intro_fragment_slide_out_left)
+            .setCustomAnimations(
+                R.anim.intro_fragment_slide_in_right,
+                R.anim.intro_fragment_slide_out_left
+            )
             .replace(R.id.fragment_container, fragment)
             .commit()
     }
 
+    @Suppress("unused")
     fun next(v: View) {
-        stack.peek()!!.next(this)
+        stack.peek()?.next(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +58,10 @@ class IntroActivity : FragmentActivity() {
             super.onBackPressed()
         else supportFragmentManager
             .beginTransaction()
-            .setCustomAnimations(R.anim.intro_fragment_slide_in_left, R.anim.intro_fragment_slide_out_right)
+            .setCustomAnimations(
+                R.anim.intro_fragment_slide_in_left,
+                R.anim.intro_fragment_slide_out_right
+            )
             .replace(R.id.fragment_container, stack.peek()!!)
             .commit()
     }
@@ -67,9 +74,10 @@ class IntroActivity : FragmentActivity() {
     }
 
     fun updateColorTheme() {
-        findViewById<ImageView>(R.id.button_next)!!.run {
+        findViewById<ImageView>(R.id.button_next).run {
             backgroundTintList = ColorStateList.valueOf(ColorTheme.buttonColorCallToAction)
-            imageTintList = ColorStateList.valueOf(ColorTheme.titleColorForBG(ColorTheme.buttonColorCallToAction))
+            imageTintList =
+                ColorStateList.valueOf(ColorTheme.titleColorForBG(ColorTheme.buttonColorCallToAction))
         }
         window.decorView.setBackgroundColor(ColorTheme.uiBG)
     }

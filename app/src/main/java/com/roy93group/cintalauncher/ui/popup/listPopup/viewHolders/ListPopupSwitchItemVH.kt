@@ -15,15 +15,12 @@ import com.roy93group.cintalauncher.ui.popup.listPopup.ListPopupItem
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 
-class ListPopupSwitchItemViewHolder(itemView: View) : ListPopupViewHolder(itemView) {
+class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
 
-    val icon = itemView.findViewById<ImageView>(R.id.icon)
-
-    val text = itemView.findViewById<TextView>(R.id.text)
-    val description = itemView.findViewById<TextView>(R.id.description)
-
-    val switch = itemView.findViewById<SwitchCompat>(R.id.toggle)
-
+    val icon: ImageView = itemView.findViewById(R.id.icon)
+    val text: TextView = itemView.findViewById(R.id.text)
+    val description: TextView = itemView.findViewById(R.id.description)
+    private val switch: SwitchCompat = itemView.findViewById(R.id.toggle)
     val ripple = RippleDrawable(ColorStateList.valueOf(0), null, ColorDrawable(0xffffffff.toInt()))
 
     init {
@@ -44,11 +41,11 @@ class ListPopupSwitchItemViewHolder(itemView: View) : ListPopupViewHolder(itemVi
 
         ripple.setColor(ColorStateList.valueOf(ColorTheme.accentColor and 0xffffff or 0x33000000))
 
-        applyIfNotNull(description, item.description) { view, value ->
+        applyIfNotNull(view = description, value = item.description) { view, value ->
             view.text = value
             description.setTextColor(ColorTheme.cardDescription)
         }
-        applyIfNotNull(icon, item.icon) { view, value ->
+        applyIfNotNull(view = icon, value = item.icon) { view, value ->
             view.setImageDrawable(value)
             view.imageTintList = ColorStateList.valueOf(ColorTheme.cardDescription)
         }
@@ -58,34 +55,48 @@ class ListPopupSwitchItemViewHolder(itemView: View) : ListPopupViewHolder(itemVi
 
     private fun generateTrackDrawable(context: Context): Drawable {
         val out = StateListDrawable()
-        out.addState(intArrayOf(android.R.attr.state_checked), generateBG(context, ColorTheme.accentColor and 0x00ffffff or 0x55000000))
-        out.addState(StateSet.WILD_CARD, generateBG(context, ColorTheme.cardHint and 0x00ffffff or 0x55000000))
+        out.addState(
+            intArrayOf(android.R.attr.state_checked),
+            generateBG(context, ColorTheme.accentColor and 0x00ffffff or 0x55000000)
+        )
+        out.addState(
+            StateSet.WILD_CARD,
+            generateBG(context, ColorTheme.cardHint and 0x00ffffff or 0x55000000)
+        )
         return out
     }
 
     private fun generateThumbDrawable(context: Context): Drawable {
         val out = StateListDrawable()
-        out.addState(intArrayOf(android.R.attr.state_checked), generateCircle(context, ColorTheme.accentColor))
-        out.addState(StateSet.WILD_CARD, generateCircle(context, ColorTheme.cardHint and 0x00ffffff or 0x55000000))
+        out.addState(
+            intArrayOf(android.R.attr.state_checked),
+            generateCircle(context, ColorTheme.accentColor)
+        )
+        out.addState(
+            StateSet.WILD_CARD,
+            generateCircle(context, ColorTheme.cardHint and 0x00ffffff or 0x55000000)
+        )
         return out
     }
 
-    fun generateCircle(context: Context, color: Int): Drawable {
+    private fun generateCircle(context: Context, color: Int): Drawable {
         val r = 18.dp.toPixels(context)
         val inset = 4.dp.toPixels(context)
-        return LayerDrawable(arrayOf(
-            GradientDrawable().apply {
-                shape = GradientDrawable.OVAL
-                setColor(color)
-                setSize(r, r)
-                setStroke(1, 0x33000000)
-            },
-        )).apply {
+        return LayerDrawable(
+            arrayOf(
+                GradientDrawable().apply {
+                    shape = GradientDrawable.OVAL
+                    setColor(color)
+                    setSize(r, r)
+                    setStroke(1, 0x33000000)
+                },
+            )
+        ).apply {
             setLayerInset(0, inset, inset, inset, inset)
         }
     }
 
-    fun generateBG(context: Context, color: Int): Drawable {
+    private fun generateBG(context: Context, color: Int): Drawable {
         return GradientDrawable().apply {
             cornerRadius = Float.MAX_VALUE
             setColor(color)
