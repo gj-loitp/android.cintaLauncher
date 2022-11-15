@@ -16,15 +16,17 @@ import android.view.*
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.view.updateLayoutParams
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.loitpcore.annotation.IsAutoAnimation
+import com.loitpcore.annotation.IsFullScreen
+import com.loitpcore.annotation.LogTag
+import com.loitpcore.core.base.BaseFontActivity
 import com.roy93group.launcher.LauncherContext
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.providers.app.AppCallback
 import com.roy93group.launcher.providers.app.AppCollection
-import com.roy93group.launcher.providers.color.ColorThemeOptions
 import com.roy93group.launcher.providers.color.pallete.ColorPalette
 import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.providers.feed.notification.MediaProvider
@@ -34,7 +36,6 @@ import com.roy93group.launcher.providers.feed.suggestions.SuggestedAppsProvider
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.storage.*
 import com.roy93group.launcher.storage.ColorExtractorSetting.colorTheme
-import com.roy93group.launcher.storage.ColorThemeDayNightSetting.colorThemeDayNight
 import com.roy93group.launcher.ui.bottomBar.BottomBar
 import com.roy93group.launcher.ui.drawer.AppDrawer
 import com.roy93group.launcher.ui.feed.FeedAdapter
@@ -51,7 +52,10 @@ import kotlin.math.abs
 var acrylicBlur: AcrylicBlur? = null
     private set
 
-class LauncherActivity : FragmentActivity() {
+@LogTag("LauncherActivity")
+@IsFullScreen(false)
+@IsAutoAnimation(false)
+class LauncherActivity : BaseFontActivity() {
 
     companion object {
         fun Activity.loadBlur(wallpaperManager: WallpaperManager, updateBlur: () -> Unit) =
@@ -85,26 +89,45 @@ class LauncherActivity : FragmentActivity() {
     private val notificationProvider = NotificationProvider(this)
     private val mediaProvider = MediaProvider(this)
     private val suggestedAppsProvider = SuggestedAppsProvider()
-    private val homeContainer: View by lazy { findViewById(R.id.home_container) }
-    val feedRecycler: RecyclerView by lazy { findViewById(R.id.feed_recycler) }
-    val blurBG: View by lazy { findViewById(R.id.blur_bg) }
-    val appDrawer by lazy { AppDrawer(this) }
-    val bottomBar by lazy { BottomBar(this) }
-    val feedProfiles by lazy { FeedProfiles(this) }
+    private val homeContainer: View by lazy {
+        findViewById(R.id.home_container)
+    }
+    val feedRecycler: RecyclerView by lazy {
+        findViewById(R.id.feed_recycler)
+    }
+    val blurBG: View by lazy {
+        findViewById(R.id.blur_bg)
+    }
+    val appDrawer by lazy {
+        AppDrawer(this)
+    }
+    val bottomBar by lazy {
+        BottomBar(this)
+    }
+    val feedProfiles by lazy {
+        FeedProfiles(this)
+    }
     private lateinit var feedAdapter: FeedAdapter
     private lateinit var wallpaperManager: WallpaperManager
-    private var colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
+//    private var colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
+
+    override fun setLayoutResourceId(): Int {
+        return R.layout.activity_launcher
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         StackTraceActivity.init(applicationContext)
-        setContentView(R.layout.activity_launcher)
         configureWindow()
         settings.init(applicationContext)
-        colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
+//        colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
         wallpaperManager = WallpaperManager.getInstance(this)
 
-        feedRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        feedRecycler.layoutManager = LinearLayoutManager(
+            /* context = */ this,
+            /* orientation = */RecyclerView.VERTICAL,
+            /* reverseLayout = */false
+        )
         feedAdapter = FeedAdapter(this)
         feedAdapter.setHasStableIds(true)
         feedRecycler.setItemViewCacheSize(20)
@@ -180,10 +203,15 @@ class LauncherActivity : FragmentActivity() {
         }
     }
 
-    override fun onBackPressed() {
+    override fun onBaseBackPressed() {
         if (appDrawer.isOpen) appDrawer.close()
         else feedRecycler.scrollToPosition(0)
     }
+
+//    override fun onBackPressed() {
+//        if (appDrawer.isOpen) appDrawer.close()
+//        else feedRecycler.scrollToPosition(0)
+//    }
 
     private var lastUpdateTime = System.currentTimeMillis()
 
@@ -271,8 +299,8 @@ class LauncherActivity : FragmentActivity() {
     }
 
     private fun updateColorTheme(colorPalette: ColorPalette) {
-        colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
-        ColorTheme.updateColorTheme(colorThemeOptions.createColorTheme(colorPalette))
+//        colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
+//        ColorTheme.updateColorTheme(colorThemeOptions.createColorTheme(colorPalette))
         runOnUiThread {
             feedAdapter.updateColorTheme()
             feedRecycler.setBackgroundColor(ColorTheme.uiBG and 0xffffff or 0xbb000000.toInt())
@@ -299,7 +327,7 @@ class LauncherActivity : FragmentActivity() {
     }
 
     fun reloadColorThemeSync() {
-        colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
+//        colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
             ColorPalette.onColorsChanged(
                 context = this,

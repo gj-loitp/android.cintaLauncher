@@ -17,6 +17,24 @@ import kotlin.system.exitProcess
 
 class StackTraceActivity : FragmentActivity() {
 
+    companion object {
+        fun init(context: Context) {
+            Thread.setDefaultUncaughtExceptionHandler { _, throwable ->
+                try {
+                    context.startActivity(
+                        Intent(context, StackTraceActivity::class.java)
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            .putExtra("throwable", throwable)
+                    )
+                    Process.killProcess(Process.myPid())
+                    exitProcess(0)
+                } catch (e: Throwable) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         try {
@@ -114,23 +132,5 @@ class StackTraceActivity : FragmentActivity() {
         append(e.className)
         append(".")
         append(e.methodName)
-    }
-
-    companion object {
-        fun init(context: Context) {
-            Thread.setDefaultUncaughtExceptionHandler { _, throwable ->
-                try {
-                    context.startActivity(
-                        Intent(context, StackTraceActivity::class.java)
-                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                            .putExtra("throwable", throwable)
-                    )
-                    Process.killProcess(Process.myPid())
-                    exitProcess(0)
-                } catch (e: Throwable) {
-                    e.printStackTrace()
-                }
-            }
-        }
     }
 }

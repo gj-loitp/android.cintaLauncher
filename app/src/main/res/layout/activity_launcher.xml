@@ -1,48 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.LauncherActivity"
+    android:id="@+id/home_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/home_container">
+    tools:context=".ui.LauncherActivity">
+
     <View
         android:id="@+id/blur_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:visibility="gone" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/feed_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"/>
+        android:clipToPadding="false" />
+
     <androidx.recyclerview.widget.RecyclerView
-        style="@style/Theme.AppLauncher.FeedFilters"
         android:id="@+id/feed_filters_recycler"
+        style="@style/Theme.AppLauncher.FeedFilters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"/>
-    <include layout="@layout/app_drawer"/>
+        android:layout_gravity="bottom" />
+
+    <include layout="@layout/app_drawer" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="vertical"
-        android:gravity="end">
+        android:gravity="end"
+        android:orientation="vertical">
+
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/back_button_container"
             style="@style/Theme.AppLauncher.SearchBar.Container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:visibility="gone">
+
             <ImageView
-                style="@style/Theme.AppLauncher.SearchBar.Icon"
                 android:id="@+id/back_button"
+                style="@style/Theme.AppLauncher.SearchBar.Icon"
                 android:layout_width="@dimen/search_bar_height"
                 android:layout_height="@dimen/search_bar_height"
-                android:src="@drawable/ic_cross"
-                android:background="@drawable/ripple"/>
+                android:background="@drawable/ripple"
+                android:src="@drawable/ic_cross" />
         </androidx.cardview.widget.CardView>
-        <include layout="@layout/activity_launcher_search_bar"/>
+
+        <include layout="@layout/activity_launcher_search_bar" />
     </LinearLayout>
 </FrameLayout>
