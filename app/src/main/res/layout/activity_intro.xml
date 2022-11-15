@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="bottom">
+    android:background="@color/black"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
     <FrameLayout
-        android:id="@+id/fragment_container"
+        android:id="@+id/flContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
-    <ImageView
-        style="@style/Theme.CintaLauncher.Intro.Slash.Button"
-        android:id="@+id/button_next"
+        android:layout_weight="1" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btNext"
+        style="@style/Theme.AppLauncher.Intro.Slash.Button"
         android:layout_width="match_parent"
-        android:src="@drawable/sign_continue"
-        android:onClick="next"/>
-</LinearLayout>
+        android:onClick="next"
+        android:src="@drawable/sign_continue" />
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryLight">#ffffff</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorEdgeEffect">#000000</color>
+    <color name="colorPrimaryTrans">#ff000000</color>
+    <color name="colorPrimary_600">#99000000</color>
+    <color name="colorAccent">#000000</color>\
+
     <color name="default_card_bg">#fff8f8f8</color>
     <color name="card_bg_dark">#171717</color>
     <color name="button_bg">#363636</color>

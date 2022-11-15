@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="bottom">
-    <ImageView
-        style="@style/Theme.CintaLauncher.Intro.Slash.Icon"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:src="@mipmap/ic_launcher"/>
-    <TextView
-        style="@style/Theme.CintaLauncher.Intro.Slash.Message"
+    android:background="@color/colorPrimary"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/w_100"
+        android:layout_height="@dimen/w_100"
+        android:layout_marginStart="@dimen/margin_padding_medium"
+        android:src="@drawable/ic_launcher"
+        android:tint="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/splash_message"/>
-</LinearLayout>
+        android:padding="@dimen/margin_padding_medium"
+        android:text="@string/splash_message"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_large" />
+</androidx.appcompat.widget.LinearLayoutCompat>
