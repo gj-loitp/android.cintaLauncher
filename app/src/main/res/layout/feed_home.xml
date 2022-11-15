@@ -18,13 +18,13 @@
             android:gravity="center_vertical">
             <TextClock
                 android:id="@+id/time"
-                style="@style/Theme.CintaLauncher.Time"
+                style="@style/Theme.AppLauncher.Time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:format24Hour="H:mm"
                 android:format12Hour="h:mm"/>
             <LinearLayout
-                style="@style/Theme.CintaLauncher.DayContainer"
+                style="@style/Theme.AppLauncher.DayContainer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -32,14 +32,14 @@
                 android:gravity="end">
                 <TextClock
                     android:id="@+id/week_day"
-                    style="@style/Theme.CintaLauncher.WeekDay"
+                    style="@style/Theme.AppLauncher.WeekDay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:format24Hour="cccc"
                     android:format12Hour="cccc"/>
                 <TextClock
                     android:id="@+id/date"
-                    style="@style/Theme.CintaLauncher.Date"
+                    style="@style/Theme.AppLauncher.Date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:format24Hour="d MMMM"

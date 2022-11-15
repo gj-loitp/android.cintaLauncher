@@ -7,31 +7,31 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Time" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Time" parent="Theme.AppLauncher">
         <item name="android:textSize">64sp</item>
 <!--        <item name="android:fontFamily">@font/barlow_regular</item>-->
         <item name="android:includeFontPadding">false</item>
         <item name="android:layout_marginStart">28dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.DayContainer" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.DayContainer" parent="Theme.AppLauncher">
         <item name="android:layout_marginEnd">28dp</item>
         <item name="android:paddingEnd">6dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.WeekDay" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.WeekDay" parent="Theme.AppLauncher">
         <item name="android:textSize">28sp</item>
 <!--        <item name="android:fontFamily">@font/barlow_regular</item>-->
         <item name="android:includeFontPadding">false</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Date" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Date" parent="Theme.AppLauncher">
         <item name="android:textSize">20sp</item>
 <!--        <item name="android:fontFamily">@font/barlow_regular</item>-->
         <item name="android:includeFontPadding">false</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Settings.Input" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Settings.Input" parent="Theme.AppLauncher">
         <item name="android:layout_height">52dp</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textAllCaps">false</item>
