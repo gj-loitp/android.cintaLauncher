@@ -4,6 +4,8 @@ import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseApplication
 import com.loitpcore.core.utilities.LUIUtil
 
+//TODO config gg drive
+
 //done
 //ic launcher
 @LogTag("LApplication")
