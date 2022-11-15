@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,9 +13,6 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.ColorThemeOptions
-import com.roy93group.launcher.providers.color.pallete.ColorPalette
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.util.FakeLauncherActivity
@@ -35,33 +31,33 @@ class FrmPermissions : FrmWithNext(R.layout.intro_permissions) {
     fun updatePermissionStatus() = updatePermissionStatus(requireView())
 
     private fun updatePermissionStatus(v: View) = v.apply {
-        val tickStorage = findViewById<ImageView>(R.id.tick_storage)
-        val tickContacts = findViewById<ImageView>(R.id.tick_contacts)
-        val tickNotifications = findViewById<ImageView>(R.id.tick_notifications)
-        val tickUsageAccess = findViewById<ImageView>(R.id.tick_usage_access)
+        val tickStorage = findViewById<ImageView>(R.id.tickStorage)
+        val tickContacts = findViewById<ImageView>(R.id.tickContacts)
+        val tickNotifications = findViewById<ImageView>(R.id.tickNotifications)
+        val tickUsageAccess = findViewById<ImageView>(R.id.tickUsageAccess)
         if (
             ContextCompat.checkSelfPermission(
                 context,
                 Manifest.permission.READ_EXTERNAL_STORAGE
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            findViewById<View>(R.id.button_storage).isVisible = false
+            findViewById<View>(R.id.buttonStorage).isVisible = false
             tickStorage.isVisible = true
-            ColorPalette.loadWallColorTheme(requireActivity() as IntroActivity) { a, palette ->
-                ColorTheme.updateColorTheme(
-                    ColorThemeOptions(ColorThemeOptions.DayNight.AUTO).createColorTheme(
-                        palette
-                    )
-                )
-                val tl = ColorStateList.valueOf(ColorTheme.accentColor)
-                tickStorage.imageTintList = tl
-                tickContacts.imageTintList = tl
-                tickNotifications.imageTintList = tl
-                tickUsageAccess.imageTintList = tl
-                a.updateColorTheme()
-            }
+//            ColorPalette.loadWallColorTheme(requireActivity() as IntroActivity) { a, palette ->
+//                ColorTheme.updateColorTheme(
+//                    ColorThemeOptions(ColorThemeOptions.DayNight.AUTO).createColorTheme(
+//                        palette
+//                    )
+//                )
+//                val tl = ColorStateList.valueOf(ColorTheme.accentColor)
+//                tickStorage.imageTintList = tl
+//                tickContacts.imageTintList = tl
+//                tickNotifications.imageTintList = tl
+//                tickUsageAccess.imageTintList = tl
+//                a.updateColorTheme()
+//            }
         } else {
-            findViewById<View>(R.id.button_storage).setOnClickListener(::requestStoragePermission)
+            findViewById<View>(R.id.buttonStorage).setOnClickListener(::requestStoragePermission)
         }
 
         if (
@@ -70,32 +66,33 @@ class FrmPermissions : FrmWithNext(R.layout.intro_permissions) {
                 Manifest.permission.READ_CONTACTS
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            findViewById<View>(R.id.button_contacts).isVisible = false
+            findViewById<View>(R.id.buttonContacts).isVisible = false
             tickContacts.isVisible = true
         } else {
-            findViewById<View>(R.id.button_contacts).setOnClickListener(::requestContactsPermission)
+            findViewById<View>(R.id.buttonContacts).setOnClickListener(::requestContactsPermission)
         }
 
         if (
             NotificationManagerCompat.getEnabledListenerPackages(context)
                 .contains(context.packageName)
         ) {
-            findViewById<View>(R.id.button_notifications).isVisible = false
+            findViewById<View>(R.id.buttonNotifications).isVisible = false
             tickNotifications.isVisible = true
         } else {
-            findViewById<View>(R.id.button_notifications).setOnClickListener(::requestNotificationsPermission)
+            findViewById<View>(R.id.buttonNotifications).setOnClickListener(::requestNotificationsPermission)
         }
 
         if (SuggestionsManager.checkUsageAccessPermission(context)) {
-            findViewById<View>(R.id.button_usage_access).isVisible = false
+            findViewById<View>(R.id.buttonUsageAccess).isVisible = false
             tickUsageAccess.isVisible = true
         } else {
-            findViewById<View>(R.id.button_usage_access).setOnClickListener(::requestUsageAccessPermission)
+            findViewById<View>(R.id.buttonUsageAccess).setOnClickListener(::requestUsageAccessPermission)
         }
     }
 
     override fun next(activity: IntroActivity) {
-        //activity.setFragment(QuickSettingsFragment())
+//        activity.setFragment(FrmQuickSettings())
+
         val home = ComponentName(requireContext(), LauncherActivity::class.java)
         requireContext().packageManager.setComponentEnabledSetting(
             /* p0 = */ home,

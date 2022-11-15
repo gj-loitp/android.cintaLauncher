@@ -37,13 +37,13 @@
                 android:text="@string/permission_storage_explanation" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/button_storage"
+                android:id="@+id/buttonStorage"
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/tick_storage"
+                android:id="@+id/tickStorage"
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
                 android:src="@drawable/ic_tick"
                 android:visibility="gone"
@@ -70,13 +70,13 @@
                 android:text="@string/permission_contacts_explanation" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/button_contacts"
+                android:id="@+id/buttonContacts"
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/tick_contacts"
+                android:id="@+id/tickContacts"
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
                 android:src="@drawable/ic_tick"
                 android:visibility="gone"
@@ -103,13 +103,13 @@
                 android:text="@string/permission_notifications_explanation" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/button_notifications"
+                android:id="@+id/buttonNotifications"
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/tick_notifications"
+                android:id="@+id/tickNotifications"
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
                 android:src="@drawable/ic_tick"
                 android:visibility="gone"
@@ -136,13 +136,13 @@
                 android:text="@string/permission_usage_access_explanation" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/button_usage_access"
+                android:id="@+id/buttonUsageAccess"
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/tick_usage_access"
+                android:id="@+id/tickUsageAccess"
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
                 android:src="@drawable/ic_tick"
                 android:visibility="gone"
