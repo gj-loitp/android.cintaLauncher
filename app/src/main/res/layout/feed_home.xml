@@ -1,69 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="bottom"
-    android:orientation="vertical"
-    android:id="@+id/vertical">
-    <LinearLayout
-        android:id="@+id/clock_container"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llClockContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <LinearLayout
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
             <TextClock
                 android:id="@+id/time"
                 style="@style/Theme.AppLauncher.Time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:format24Hour="H:mm"
-                android:format12Hour="h:mm"/>
-            <LinearLayout
+                android:format12Hour="h:mm"
+                android:format24Hour="H:mm" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
                 style="@style/Theme.AppLauncher.DayContainer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="end">
+                android:gravity="end"
+                android:orientation="vertical">
+
                 <TextClock
                     android:id="@+id/week_day"
                     style="@style/Theme.AppLauncher.WeekDay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:format24Hour="cccc"
-                    android:format12Hour="cccc"/>
+                    android:format12Hour="cccc"
+                    android:format24Hour="cccc" />
+
                 <TextClock
                     android:id="@+id/date"
                     style="@style/Theme.AppLauncher.Date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:format24Hour="d MMMM"
-                    android:format12Hour="d MMMM"/>
-            </LinearLayout>
-        </LinearLayout>
+                    android:format12Hour="d MMMM"
+                    android:format24Hour="d MMMM" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llNotificationIconContainer"
             style="@style/Theme.AppLauncher.NotificationIcons.Container"
-            android:id="@+id/notification_icon_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
             android:gravity="center_vertical"
-            android:layout_gravity="center_horizontal">
-            <TextView
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNotificationIconText"
                 style="@style/Theme.AppLauncher.NotificationIcons.Text"
-                android:id="@+id/notification_icon_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
+
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/notification_icon_list"
+                android:id="@+id/rvNotificationIconList"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+                android:layout_height="wrap_content" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>

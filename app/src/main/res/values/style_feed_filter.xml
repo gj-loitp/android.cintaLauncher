@@ -12,7 +12,7 @@
     </style>
 
     <style name="Theme.AppLauncher.FeedFilter.Container" parent="Theme.AppLauncher">
-        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingHorizontal">@dimen/margin_padding_medium</item>
         <item name="android:background">@drawable/ripple</item>
         <item name="android:minHeight">@dimen/feed_filter_height</item>
     </style>

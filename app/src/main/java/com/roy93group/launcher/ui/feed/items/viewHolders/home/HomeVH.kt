@@ -3,8 +3,8 @@ package com.roy93group.launcher.ui.feed.items.viewHolders.home
 import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,22 +23,22 @@ class HomeViewHolder(
     itemView: View,
 ) : RecyclerView.ViewHolder(itemView) {
 
-    private val clockContainer = itemView.findViewById<View>(R.id.clock_container)
+    private val clockContainer = itemView.findViewById<View>(R.id.llClockContainer)
     val weekDay: TextView = clockContainer.findViewById(R.id.week_day)
     val time: TextView = clockContainer.findViewById(R.id.time)
     val date: TextView = clockContainer.findViewById(R.id.date)
     private val notificationIconsAdapter = NotificationIconsAdapter()
     private val notificationIconsContainer =
-        itemView.findViewById<View>(R.id.notification_icon_container)
+        itemView.findViewById<View>(R.id.llNotificationIconContainer)
 
     @Suppress("unused")
     val notificationIconsRecycler: RecyclerView =
-        itemView.findViewById<RecyclerView>(R.id.notification_icon_list).apply {
+        itemView.findViewById<RecyclerView>(R.id.rvNotificationIconList).apply {
             layoutManager = LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
             adapter = notificationIconsAdapter
         }
-    val notificationIconsText: TextView = itemView.findViewById(R.id.notification_icon_text)
-    val vertical: LinearLayout = itemView.findViewById(R.id.vertical)
+    val notificationIconsText: TextView = itemView.findViewById(R.id.tvNotificationIconText)
+    val vertical: LinearLayoutCompat = itemView.findViewById(R.id.vertical)
 
     init {
         NotificationService.setOnUpdate(javaClass.name) { itemView.post(::updateNotificationIcons) }
