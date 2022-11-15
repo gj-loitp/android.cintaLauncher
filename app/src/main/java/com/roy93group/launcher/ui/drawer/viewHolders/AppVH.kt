@@ -23,7 +23,6 @@ import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
-import com.roy93group.launcher.ui.acrylicBlur
 import com.roy93group.launcher.ui.drawer.AppDrawer.Companion.WIDTH_TO_HEIGHT
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter.Companion.APP_ITEM
@@ -108,10 +107,10 @@ fun bindAppViewHolder(
     isDimmed: Boolean,
     activity: Activity,
 ) {
-    holder.blurBG.drawable = BitmapDrawable(
-        /* res = */ holder.itemView.resources,
-        /* bitmap = */acrylicBlur?.insaneBlur
-    )
+//    holder.blurBG.drawable = BitmapDrawable(
+//        /* res = */ holder.itemView.resources,
+//        /* bitmap = */acrylicBlur?.insaneBlur
+//    )
 
     val backgroundColor = ColorTheme.tintWithColor(ColorTheme.cardBG, item.getColor())
     holder.card.setCardBackgroundColor(backgroundColor)

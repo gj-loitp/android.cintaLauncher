@@ -9,7 +9,6 @@ import android.view.WindowManager
 import androidx.fragment.app.FragmentActivity
 import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.storage.Settings
-import com.roy93group.launcher.ui.acrylicBlur
 
 abstract class SettingsActivity : FragmentActivity() {
 
@@ -34,7 +33,7 @@ abstract class SettingsActivity : FragmentActivity() {
     private fun loadColors() {
         window.decorView.background = LayerDrawable(
             arrayOf(
-                BitmapDrawable(resources, acrylicBlur?.fullBlur),
+//                BitmapDrawable(resources, acrylicBlur?.fullBlur),
                 ColorDrawable(ColorTheme.uiBG),
             )
         )

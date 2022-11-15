@@ -19,7 +19,6 @@ import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.storage.DoReshapeAdaptiveIconsSetting.doReshapeAdaptiveIcons
 import com.roy93group.launcher.storage.ScrollbarControllerSetting.scrollbarController
 import com.roy93group.launcher.storage.Settings
-import com.roy93group.launcher.ui.acrylicBlur
 import com.roy93group.launcher.ui.popup.PopupUtils
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupAdapter
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
@@ -44,7 +43,7 @@ object DrawerLongPressPopup {
         PopupUtils.setCurrent(window)
 
         content.findViewById<SeeThoughView>(R.id.blurBg).run {
-            drawable = acrylicBlur?.fullBlur?.let { BitmapDrawable(parent.resources, it) }
+//            drawable = acrylicBlur?.fullBlur?.let { BitmapDrawable(parent.resources, it) }
             alpha = 0.1f
         }
 

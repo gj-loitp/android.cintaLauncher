@@ -3,7 +3,6 @@ package com.roy93group.launcher.ui.popup.home
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -20,13 +19,11 @@ import com.roy93group.launcher.storage.ColorExtractorSetting.colorTheme
 import com.roy93group.launcher.storage.ColorThemeDayNightSetting.colorThemeDayNight
 import com.roy93group.launcher.storage.ColorThemeDayNightSetting.setColorThemeDayNight
 import com.roy93group.launcher.storage.Settings
-import com.roy93group.launcher.ui.acrylicBlur
 import com.roy93group.launcher.ui.popup.PopupUtils
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupAdapter
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
 import com.roy93group.launcher.ui.settings.feedChooser.FeedSourcesChooserActivity
 import com.roy93group.launcher.ui.settings.iconPackPicker.IconPackPickerActivity
-import com.roy93group.launcher.ui.view.SeeThoughView
 import io.posidon.android.conveniencelib.Device
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.thread
@@ -41,16 +38,15 @@ object HomeLongPressPopup {
         touchY: Float,
         navbarHeight: Int,
         settings: Settings,
-        reloadColorTheme: () -> Unit,
     ) {
         val content = LayoutInflater.from(parent.context).inflate(R.layout.list_popup, null)
         val window =
             PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
         PopupUtils.setCurrent(window)
 
-        content.findViewById<SeeThoughView>(R.id.blurBg).run {
-            drawable = acrylicBlur?.fullBlur?.let { BitmapDrawable(parent.resources, it) }
-        }
+//        content.findViewById<SeeThoughView>(R.id.blurBg).run {
+//            drawable = acrylicBlur?.fullBlur?.let { BitmapDrawable(parent.resources, it) }
+//        }
 
         val cardView = content.findViewById<CardView>(R.id.card)
         cardView.setCardBackgroundColor(ColorTheme.cardBG)
@@ -62,7 +58,7 @@ object HomeLongPressPopup {
                     updateItems(createMainAdapter(parent.context, settings) {
                         thread(name = "Reloading color theme", isDaemon = true) {
                             updateLock.withLock {
-                                reloadColorTheme()
+//                                reloadColorTheme()
                                 cardView.post {
                                     cardView.setCardBackgroundColor(ColorTheme.cardBG)
                                     update()

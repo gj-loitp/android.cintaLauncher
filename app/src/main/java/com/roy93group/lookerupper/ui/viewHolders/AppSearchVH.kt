@@ -9,7 +9,6 @@ import androidx.cardview.widget.CardView
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
-import com.roy93group.launcher.ui.acrylicBlur
 import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
 import com.roy93group.launcher.ui.view.SeeThoughView
 import com.roy93group.lookerupper.data.results.AppResult
@@ -29,7 +28,7 @@ class AppSearchVH(
     override fun onBind(result: SearchResult) {
         result as AppResult
 
-        blurBG.drawable = BitmapDrawable(itemView.resources, acrylicBlur?.insaneBlur)
+//        blurBG.drawable = BitmapDrawable(itemView.resources, acrylicBlur?.insaneBlur)
 
         val backgroundColor = ColorTheme.tintWithColor(ColorTheme.cardBG, result.getColor())
         card.setCardBackgroundColor(backgroundColor)

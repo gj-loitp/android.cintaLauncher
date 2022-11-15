@@ -1,20 +1,13 @@
 package com.roy93group.launcher.ui
 
-import android.Manifest
-import android.app.Activity
-import android.app.WallpaperColors
-import android.app.WallpaperManager
 import android.content.Intent
 import android.content.pm.LauncherApps
-import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.*
 import android.graphics.drawable.*
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,15 +20,12 @@ import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.providers.app.AppCallback
 import com.roy93group.launcher.providers.app.AppCollection
-import com.roy93group.launcher.providers.color.pallete.ColorPalette
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.providers.feed.notification.MediaProvider
 import com.roy93group.launcher.providers.feed.notification.NotificationProvider
 import com.roy93group.launcher.providers.feed.rss.RssProvider
 import com.roy93group.launcher.providers.feed.suggestions.SuggestedAppsProvider
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.storage.*
-import com.roy93group.launcher.storage.ColorExtractorSetting.colorTheme
 import com.roy93group.launcher.ui.bottomBar.BottomBar
 import com.roy93group.launcher.ui.drawer.AppDrawer
 import com.roy93group.launcher.ui.feed.FeedAdapter
@@ -43,52 +33,52 @@ import com.roy93group.launcher.ui.feedProfiles.FeedProfiles
 import com.roy93group.launcher.ui.popup.PopupUtils
 import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
 import com.roy93group.launcher.util.StackTraceActivity
-import com.roy93group.launcher.util.blur.AcrylicBlur
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.launcherutils.LiveWallpaper
-import kotlin.concurrent.thread
 import kotlin.math.abs
 
-var acrylicBlur: AcrylicBlur? = null
-    private set
+//var acrylicBlur: AcrylicBlur? = null
+//    private set
 
 @LogTag("LauncherActivity")
 @IsFullScreen(false)
 @IsAutoAnimation(false)
 class LauncherActivity : BaseFontActivity() {
 
-    companion object {
-        fun Activity.loadBlur(wallpaperManager: WallpaperManager, updateBlur: () -> Unit) =
-            thread(isDaemon = true, name = "Blur thread") {
-                if (ActivityCompat.checkSelfPermission(
-                        /* context = */ this,
-                        /* permission = */ Manifest.permission.READ_EXTERNAL_STORAGE
-                    ) != PackageManager.PERMISSION_GRANTED
-                ) {
-                    if (acrylicBlur == null) return@thread
-                    acrylicBlur = null
-                    runOnUiThread(updateBlur)
-                    return@thread
-                }
-                val drawable = wallpaperManager.peekDrawable()
-                if (drawable == null) {
-                    if (acrylicBlur == null) return@thread
-                    acrylicBlur = null
-                    runOnUiThread(updateBlur)
-                    return@thread
-                }
-                AcrylicBlur.blurWallpaper(context = this, drawable = drawable) {
-                    acrylicBlur = it
-                    runOnUiThread(updateBlur)
-                }
-            }
-    }
+//    companion object {
+//        fun Activity.loadBlur(wallpaperManager: WallpaperManager, updateBlur: () -> Unit) =
+//            thread(isDaemon = true, name = "Blur thread") {
+//                if (ActivityCompat.checkSelfPermission(
+//                        /* context = */ this,
+//                        /* permission = */ Manifest.permission.READ_EXTERNAL_STORAGE
+//                    ) != PackageManager.PERMISSION_GRANTED
+//                ) {
+//                    if (acrylicBlur == null) return@thread
+//                    acrylicBlur = null
+//                    runOnUiThread(updateBlur)
+//                    return@thread
+//                }
+//                val drawable = wallpaperManager.peekDrawable()
+//                if (drawable == null) {
+//                    if (acrylicBlur == null) return@thread
+//                    acrylicBlur = null
+//                    runOnUiThread(updateBlur)
+//                    return@thread
+//                }
+//                AcrylicBlur.blurWallpaper(context = this, drawable = drawable) {
+//                    acrylicBlur = it
+//                    runOnUiThread(updateBlur)
+//                }
+//            }
+//    }
 
     val launcherContext = LauncherContext()
     val settings by launcherContext::settings
     private val notificationProvider = NotificationProvider(this)
     private val mediaProvider = MediaProvider(this)
     private val suggestedAppsProvider = SuggestedAppsProvider()
+
+    @Suppress("unused")
     private val homeContainer: View by lazy {
         findViewById(R.id.flHomeContainer)
     }
@@ -108,7 +98,7 @@ class LauncherActivity : BaseFontActivity() {
         FeedProfiles(this)
     }
     private lateinit var feedAdapter: FeedAdapter
-    private lateinit var wallpaperManager: WallpaperManager
+//    private lateinit var wallpaperManager: WallpaperManager
 //    private var colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
 
     override fun setLayoutResourceId(): Int {
@@ -121,7 +111,7 @@ class LauncherActivity : BaseFontActivity() {
         configureWindow()
         settings.init(applicationContext)
 //        colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
-        wallpaperManager = WallpaperManager.getInstance(this)
+//        wallpaperManager = WallpaperManager.getInstance(this)
 
         feedRecycler.layoutManager = LinearLayoutManager(
             /* context = */ this,
@@ -185,22 +175,22 @@ class LauncherActivity : BaseFontActivity() {
 
         loadApps()
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
-            wallpaperManager.addOnColorsChangedListener(
-                ::onColorsChangedListener,
-                feedRecycler.handler
-            )
-            thread(name = "onCreate color update", isDaemon = true) {
-                ColorPalette.onColorsChanged(
-                    context = this,
-                    colorTheme = settings.colorTheme,
-                    onFinished = LauncherActivity::updateColorTheme
-                ) {
-                    wallpaperManager.getWallpaperColors(WallpaperManager.FLAG_SYSTEM)
-                }
-            }
-            onWallpaperChanged()
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+//            wallpaperManager.addOnColorsChangedListener(
+//                ::onColorsChangedListener,
+//                feedRecycler.handler
+//            )
+//            thread(name = "onCreate color update", isDaemon = true) {
+//                ColorPalette.onColorsChanged(
+//                    context = this,
+//                    colorTheme = settings.colorTheme,
+//                    onFinished = LauncherActivity::updateColorTheme
+//                ) {
+//                    wallpaperManager.getWallpaperColors(WallpaperManager.FLAG_SYSTEM)
+//                }
+//            }
+//            onWallpaperChanged()
+//        }
     }
 
     override fun onBaseBackPressed() {
@@ -224,20 +214,20 @@ class LauncherActivity : BaseFontActivity() {
         if (shouldUpdate) {
             loadApps()
         }
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O_MR1) {
-            thread(isDaemon = true) {
-                ColorPalette.onResumePreOMR1(
-                    context = this,
-                    colorTheme = settings.colorTheme,
-                    onFinished = LauncherActivity::updateColorTheme
-                )
-                onWallpaperChanged()
-            }
-        } else {
-            if (acrylicBlur == null) {
-                loadBlur(wallpaperManager, ::updateBlur)
-            }
-        }
+//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O_MR1) {
+//            thread(isDaemon = true) {
+//                ColorPalette.onResumePreOMR1(
+//                    context = this,
+//                    colorTheme = settings.colorTheme,
+//                    onFinished = LauncherActivity::updateColorTheme
+//                )
+//                onWallpaperChanged()
+//            }
+//        } else {
+//            if (acrylicBlur == null) {
+//                loadBlur(wallpaperManager, ::updateBlur)
+//            }
+//        }
         val current = System.currentTimeMillis()
         if (shouldUpdate || current - lastUpdateTime > 1000L * 60L * 5L) {
             lastUpdateTime = current
@@ -273,80 +263,80 @@ class LauncherActivity : BaseFontActivity() {
         }
     }
 
-    fun updateBlur() {
-        blurBG.background = acrylicBlur?.let { b ->
-            LayerDrawable(
-                arrayOf(
-                    BitmapDrawable(resources, b.partialBlurSmall),
-                    BitmapDrawable(resources, b.partialBlurMedium),
-                    BitmapDrawable(resources, b.fullBlur),
-                    BitmapDrawable(resources, b.insaneBlur).also {
-                        it.alpha = 160
-                    },
-                )
-            )
-        }
-        bottomBar.blurBG.drawable = acrylicBlur?.smoothBlur?.let { BitmapDrawable(resources, it) }
-        homeContainer.background = acrylicBlur?.let { b ->
-            LayerDrawable(
-                arrayOf(
-                    BitmapDrawable(resources, b.smoothBlur).also {
-                        it.alpha = 100
-                    },
-                )
-            )
-        }
-    }
+//    fun updateBlur() {
+//        blurBG.background = acrylicBlur?.let { b ->
+//            LayerDrawable(
+//                arrayOf(
+//                    BitmapDrawable(resources, b.partialBlurSmall),
+//                    BitmapDrawable(resources, b.partialBlurMedium),
+//                    BitmapDrawable(resources, b.fullBlur),
+//                    BitmapDrawable(resources, b.insaneBlur).also {
+//                        it.alpha = 160
+//                    },
+//                )
+//            )
+//        }
+//        bottomBar.blurBG.drawable = acrylicBlur?.smoothBlur?.let { BitmapDrawable(resources, it) }
+//        homeContainer.background = acrylicBlur?.let { b ->
+//            LayerDrawable(
+//                arrayOf(
+//                    BitmapDrawable(resources, b.smoothBlur).also {
+//                        it.alpha = 100
+//                    },
+//                )
+//            )
+//        }
+//    }
 
-    private fun updateColorTheme(colorPalette: ColorPalette) {
+//    private fun updateColorTheme(colorPalette: ColorPalette) {
 //        colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
 //        ColorTheme.updateColorTheme(colorThemeOptions.createColorTheme(colorPalette))
-        runOnUiThread {
-            feedAdapter.updateColorTheme()
-            feedRecycler.setBackgroundColor(ColorTheme.uiBG and 0xffffff or 0xbb000000.toInt())
-            feedProfiles.updateColorTheme()
-            updateBlur()
-            appDrawer.updateColorTheme()
-            bottomBar.updateColorTheme()
-        }
-    }
+//        runOnUiThread {
+//            feedAdapter.updateColorTheme()
+//            feedRecycler.setBackgroundColor(ColorTheme.uiBG and 0xffffff or 0xbb000000.toInt())
+//            feedProfiles.updateColorTheme()
+//            updateBlur()
+//            appDrawer.updateColorTheme()
+//            bottomBar.updateColorTheme()
+//        }
+//    }
 
-    @RequiresApi(Build.VERSION_CODES.O_MR1)
-    fun onColorsChangedListener(
-        colors: WallpaperColors?,
-        which: Int
-    ) {
-        if (which and WallpaperManager.FLAG_SYSTEM != 0) {
-            onWallpaperChanged()
-            ColorPalette.onColorsChanged(
-                context = this,
-                colorTheme = settings.colorTheme,
-                onFinished = LauncherActivity::updateColorTheme
-            ) { colors }
-        }
-    }
+//    @RequiresApi(Build.VERSION_CODES.O_MR1)
+//    fun onColorsChangedListener(
+//        colors: WallpaperColors?,
+//        which: Int
+//    ) {
+//        if (which and WallpaperManager.FLAG_SYSTEM != 0) {
+//            onWallpaperChanged()
+//            ColorPalette.onColorsChanged(
+//                context = this,
+//                colorTheme = settings.colorTheme,
+//                onFinished = LauncherActivity::updateColorTheme
+//            ) { colors }
+//        }
+//    }
 
-    fun reloadColorThemeSync() {
-//        colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
-            ColorPalette.onColorsChanged(
-                context = this,
-                colorTheme = settings.colorTheme,
-                onFinished = LauncherActivity::updateColorTheme
-            ) {
-                wallpaperManager.getWallpaperColors(WallpaperManager.FLAG_SYSTEM)
-            }
-        } else ColorPalette.onResumePreOMR1(
-            context = this,
-            colorTheme = settings.colorTheme,
-            onFinished = LauncherActivity::updateColorTheme
-        )
-    }
+//    fun reloadColorThemeSync() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+//            ColorPalette.onColorsChanged(
+//                context = this,
+//                colorTheme = settings.colorTheme,
+//                onFinished = LauncherActivity::updateColorTheme
+//            ) {
+//                wallpaperManager.getWallpaperColors(WallpaperManager.FLAG_SYSTEM)
+//            }
+//        } else ColorPalette.onResumePreOMR1(
+//            context = this,
+//            colorTheme = settings.colorTheme,
+//            onFinished = LauncherActivity::updateColorTheme
+//        )
+//    }
 
-    private fun onWallpaperChanged() {
-        loadBlur(wallpaperManager = wallpaperManager, updateBlur = ::updateBlur)
-    }
+//    private fun onWallpaperChanged() {
+//        loadBlur(wallpaperManager = wallpaperManager, updateBlur = ::updateBlur)
+//    }
 
+    @Suppress("unused")
     private fun handleGestureContract(intent: Intent) {
         //val gnc = GestureNavContract.fromIntent(intent)
         //gnc?.sendEndPosition(scrollBar.clipBounds.toRectF(), null)

@@ -98,7 +98,7 @@ fun bindHomeViewHolder(
             touchY = popupY,
             navbarHeight = holder.launcherActivity.getNavigationBarHeight(),
             settings = holder.launcherContext.settings,
-            reloadColorTheme = holder.launcherActivity::reloadColorThemeSync
+//            reloadColorTheme = holder.launcherActivity::reloadColorThemeSync
         )
         true
     }

@@ -215,7 +215,7 @@ class AppDrawer(
             onEnd {
                 currentValueAnimator = null
                 activity.blurBG.isVisible = false
-                activity.updateBlur()
+//                activity.updateBlur()
             }
             start()
         }

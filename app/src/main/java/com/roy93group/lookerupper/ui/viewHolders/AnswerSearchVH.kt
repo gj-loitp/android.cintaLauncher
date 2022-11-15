@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.color.theme.ColorTheme
-import com.roy93group.launcher.ui.acrylicBlur
 import com.roy93group.launcher.ui.view.SeeThoughView
 import com.roy93group.lookerupper.data.results.InstantAnswerResult
 import com.roy93group.lookerupper.data.results.SearchResult
@@ -39,7 +38,7 @@ class AnswerSearchVH(
     override fun onBind(result: SearchResult) {
         result as InstantAnswerResult
 
-        blurBG.drawable = BitmapDrawable(itemView.resources, acrylicBlur?.smoothBlur)
+//        blurBG.drawable = BitmapDrawable(itemView.resources, acrylicBlur?.smoothBlur)
 
         card.setCardBackgroundColor(ColorTheme.cardBG)
         title.setTextColor(ColorTheme.cardTitle)
