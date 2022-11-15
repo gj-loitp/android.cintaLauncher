@@ -16,11 +16,11 @@ import io.posidon.android.conveniencelib.getNavigationBarHeight
 
 class SectionHeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    val textView = itemView.findViewById<TextView>(R.id.text)!!
+    val textView: TextView = itemView.findViewById(R.id.text)
 
     val highlightDrawable = HighlightSectionIndexer.createHighlightDrawable(
-        itemView.context,
-        0
+        context = itemView.context,
+        accentColor = 0
     )
 }
 
@@ -52,7 +52,14 @@ fun bindSectionHeaderViewHolder(
         false
     }
     holder.itemView.setOnLongClickListener {
-        DrawerLongPressPopup.show(holder.itemView, x, y, launcherActivity.getNavigationBarHeight(), launcherActivity.settings, launcherActivity::loadApps)
+        DrawerLongPressPopup.show(
+            parent = holder.itemView,
+            touchX = x,
+            touchY = y,
+            navbarHeight = launcherActivity.getNavigationBarHeight(),
+            settings = launcherActivity.settings,
+            reloadApps = launcherActivity::loadApps
+        )
         true
     }
 }

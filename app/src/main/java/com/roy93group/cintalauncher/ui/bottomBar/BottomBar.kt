@@ -24,7 +24,7 @@ class BottomBar(val activity: LauncherActivity) {
 
     val scrollBar: Scrollbar get() = appDrawerIcon.scrollBar
 
-    val view = activity.findViewById<CardView>(R.id.search_bar_container)!!.apply {
+    val view: CardView = activity.findViewById<CardView>(R.id.search_bar_container).apply {
         setOnClickListener {
             val context = it.context
             context.startActivity(
@@ -36,22 +36,33 @@ class BottomBar(val activity: LauncherActivity) {
         }
         setOnDragListener(::onDrag)
     }
-    private val searchIcon = view.findViewById<ImageView>(R.id.search_bar_icon)!!
-    val appDrawerIcon = view.findViewById<ScrollbarIconView>(R.id.app_drawer_icon)!!.apply {
-        appDrawer = activity.appDrawer
-    }
-    val appDrawerCloseIconContainer = activity.findViewById<CardView>(R.id.back_button_container)!!
-    @SuppressLint("ClickableViewAccessibility")
-    val appDrawerCloseIcon = appDrawerCloseIconContainer.findViewById<ImageView>(R.id.back_button)!!.apply {
-        setOnClickListener(activity.appDrawer::close)
-    }
-    val blurBG = view.findViewById<SeeThoughView>(R.id.search_bar_blur_bg)!!
+    private val searchIcon: ImageView = view.findViewById(R.id.search_bar_icon)
+    val appDrawerIcon: ScrollbarIconView =
+        view.findViewById<ScrollbarIconView>(R.id.app_drawer_icon).apply {
+            appDrawer = activity.appDrawer
+        }
+    val appDrawerCloseIconContainer: CardView =
+        activity.findViewById<CardView>(R.id.back_button_container)
 
-    val pinnedAdapter = PinnedItemsAdapter(activity, activity.launcherContext)
-    val pinnedRecycler = view.findViewById<RecyclerView>(R.id.pinned_recycler).apply {
-        layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
-        adapter = pinnedAdapter
-    }
+    @SuppressLint("ClickableViewAccessibility")
+    val appDrawerCloseIcon: ImageView =
+        appDrawerCloseIconContainer.findViewById<ImageView>(R.id.back_button).apply {
+            setOnClickListener(activity.appDrawer::close)
+        }
+    val blurBG: SeeThoughView = view.findViewById(R.id.search_bar_blur_bg)
+    private val pinnedAdapter = PinnedItemsAdapter(
+        launcherActivity = activity,
+        launcherContext = activity.launcherContext
+    )
+    private val pinnedRecycler: RecyclerView =
+        view.findViewById<RecyclerView>(R.id.pinned_recycler).apply {
+            layoutManager = LinearLayoutManager(
+                /* context = */ activity,
+                /* orientation = */RecyclerView.HORIZONTAL,
+                /* reverseLayout = */false
+            )
+            adapter = pinnedAdapter
+        }
 
     fun updateColorTheme() {
         view.setCardBackgroundColor(ColorTheme.searchBarBG)
@@ -65,25 +76,27 @@ class BottomBar(val activity: LauncherActivity) {
         updatePinned()
     }
 
-    fun showDropTarget(i: Int) {
+    private fun showDropTarget(i: Int) {
         if (i != -1) pinnedRecycler.isVisible = true
         pinnedAdapter.showDropTarget(i)
     }
 
-    fun getPinnedItemIndex(x: Float, y: Float): Int {
-        val i = ((x - (view.width - pinnedRecycler.width) / 2) * pinnedAdapter.itemCount / pinnedRecycler.width).toInt().coerceAtLeast(-1)
+    private fun getPinnedItemIndex(x: Float, y: Float): Int {
+        val i =
+            ((x - (view.width - pinnedRecycler.width) / 2) * pinnedAdapter.itemCount / pinnedRecycler.width).toInt()
+                .coerceAtLeast(-1)
         return if (i >= pinnedAdapter.itemCount) -1 else i
     }
 
-    fun onDrop(v: View, i: Int, clipData: ClipData) {
-        pinnedAdapter.onDrop(v, i, clipData)
+    private fun onDrop(v: View, i: Int, clipData: ClipData) {
+        pinnedAdapter.onDrop(v = v, i = i, clipData = clipData)
     }
 
-    fun updatePinned() {
+    private fun updatePinned() {
         pinnedAdapter.updateItems(activity.launcherContext.appManager.pinnedItems)
     }
 
-    fun onDrag(v: View, event: DragEvent): Boolean {
+    private fun onDrag(v: View, event: DragEvent): Boolean {
         when (event.action) {
             DragEvent.ACTION_DRAG_STARTED,
             DragEvent.ACTION_DRAG_ENTERED,

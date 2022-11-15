@@ -19,9 +19,9 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.roy93group.cintalauncher.R
-import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.data.items.App
 import com.roy93group.cintalauncher.data.items.LauncherItem
+import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.cintalauncher.ui.acrylicBlur
 import com.roy93group.cintalauncher.ui.drawer.AppDrawer.Companion.WIDTH_TO_HEIGHT
@@ -31,32 +31,28 @@ import com.roy93group.cintalauncher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.cintalauncher.ui.popup.appItem.ItemLongPress
 import com.roy93group.cintalauncher.ui.view.HorizontalAspectRatioLayout
 import com.roy93group.cintalauncher.ui.view.SeeThoughView
-import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.conveniencelib.drawable.toBitmap
+import io.posidon.android.conveniencelib.getNavigationBarHeight
 
 class AppViewHolder(
     val card: CardView
 ) : RecyclerView.ViewHolder(card) {
-    val icon = itemView.findViewById<ImageView>(R.id.icon_image)!!
-    val label = itemView.findViewById<TextView>(R.id.icon_text)!!
+    val icon: ImageView = itemView.findViewById(R.id.icon_image)
+    val label: TextView = itemView.findViewById(R.id.icon_text)
+    val iconSmall: ImageView = itemView.findViewById(R.id.icon_image_small)
+    val spacer: View = itemView.findViewById(R.id.spacer)
+    val lineTitle: TextView = itemView.findViewById(R.id.line_title)
+    val lineDescription: TextView = itemView.findViewById(R.id.line_description)
+    val imageView: ImageView = itemView.findViewById(R.id.background_image)
+    val blurBG: SeeThoughView = itemView.findViewById(R.id.blur_bg)
 
-    val iconSmall = itemView.findViewById<ImageView>(R.id.icon_image_small)!!
+    @Suppress("unused")
+    val aspect: HorizontalAspectRatioLayout =
+        itemView.findViewById<HorizontalAspectRatioLayout>(R.id.aspect).apply {
+            widthToHeight = WIDTH_TO_HEIGHT
+        }
 
-    val spacer = itemView.findViewById<View>(R.id.spacer)!!
-
-    val lineTitle = itemView.findViewById<TextView>(R.id.line_title)!!
-    val lineDescription = itemView.findViewById<TextView>(R.id.line_description)!!
-
-    val imageView = itemView.findViewById<ImageView>(R.id.background_image)!!
-
-    val blurBG = itemView.findViewById<SeeThoughView>(R.id.blur_bg)!!
-
-    val aspect = itemView.findViewById<HorizontalAspectRatioLayout>(R.id.aspect)!!.apply {
-        widthToHeight = WIDTH_TO_HEIGHT
-    }
-
-    val requestOptions = RequestOptions()
-        .downsample(DownsampleStrategy.AT_MOST)
+    val requestOptions = RequestOptions().downsample(DownsampleStrategy.AT_MOST)
 
     class ImageRequestListener(
         val holder: AppViewHolder,
@@ -76,16 +72,25 @@ class AppViewHolder(
             dataSource: DataSource?,
             isFirstResource: Boolean
         ): Boolean {
-            val palette = Palette.from(resource.toBitmap(32, 32)).generate()
-            val backgroundColor = ColorTheme.tintWithColor(ColorTheme.cardBG, palette.getDominantColor(color))
-            val actuallyBackgroundColor = ColorUtils.blendARGB(backgroundColor, color, holder.imageView.alpha)
+            val palette = Palette.from(resource.toBitmap(width = 32, height = 32)).generate()
+            val backgroundColor =
+                ColorTheme.tintWithColor(
+                    base = ColorTheme.cardBG,
+                    color = palette.getDominantColor(color)
+                )
+            val actuallyBackgroundColor =
+                ColorUtils.blendARGB(
+                    /* color1 = */ backgroundColor,
+                    /* color2 = */color,
+                    /* ratio = */holder.imageView.alpha
+                )
 
             holder.card.setCardBackgroundColor(backgroundColor)
             holder.label.setTextColor(ColorTheme.titleColorForBG(actuallyBackgroundColor))
             holder.lineTitle.setTextColor(ColorTheme.titleColorForBG(actuallyBackgroundColor))
             holder.lineDescription.setTextColor(ColorTheme.textColorForBG(actuallyBackgroundColor))
 
-            target.onResourceReady(resource, null)
+            target.onResourceReady(/* resource = */ resource, /* transition = */ null)
             return true
         }
     }
@@ -103,7 +108,10 @@ fun bindAppViewHolder(
     isDimmed: Boolean,
     activity: Activity,
 ) {
-    holder.blurBG.drawable = BitmapDrawable(holder.itemView.resources, acrylicBlur?.insaneBlur)
+    holder.blurBG.drawable = BitmapDrawable(
+        /* res = */ holder.itemView.resources,
+        /* bitmap = */acrylicBlur?.insaneBlur
+    )
 
     val backgroundColor = ColorTheme.tintWithColor(ColorTheme.cardBG, item.getColor())
     holder.card.setCardBackgroundColor(backgroundColor)
@@ -142,15 +150,15 @@ fun bindAppViewHolder(
 
     holder.itemView.setOnClickListener {
         SuggestionsManager.onItemOpened(it.context, item)
-        item.open(it.context.applicationContext, it)
+        item.open(context = it.context.applicationContext, view = it)
     }
     holder.itemView.setOnLongClickListener {
         ItemLongPress.onItemLongPress(
-            it,
-            backgroundColor,
-            ColorTheme.titleColorForBG(backgroundColor),
-            item,
-            activity.getNavigationBarHeight(),
+            view = it,
+            backgroundColor = backgroundColor,
+            textColor = ColorTheme.titleColorForBG(backgroundColor),
+            item = item,
+            navbarHeight = activity.getNavigationBarHeight(),
         )
         true
     }

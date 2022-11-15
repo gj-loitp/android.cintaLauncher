@@ -17,6 +17,11 @@ class AppDrawerAdapter(
     val launcherActivity: LauncherActivity
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    companion object {
+        const val SECTION_HEADER = 0
+        const val APP_ITEM = 1
+    }
+
     var indexer: HighlightSectionIndexer? = null
 
     interface DrawerItem {
@@ -32,10 +37,14 @@ class AppDrawerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            SECTION_HEADER -> SectionHeaderViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.app_drawer_section_header, parent, false))
-            APP_ITEM -> AppViewHolder(LayoutInflater.from(parent.context)
-                    .inflate(R.layout.app_card, parent, false) as CardView)
+            SECTION_HEADER -> SectionHeaderViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.app_drawer_section_header, parent, false)
+            )
+            APP_ITEM -> AppViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.app_card, parent, false) as CardView
+            )
             else -> throw RuntimeException("Invalid view holder type")
         }
     }
@@ -71,10 +80,5 @@ class AppDrawerAdapter(
         items = newItems.toTypedArray()
         controller.updateAdapterIndexer(this, appSections)
         activity.runOnUiThread(::notifyDataSetChanged)
-    }
-
-    companion object {
-        const val SECTION_HEADER = 0
-        const val APP_ITEM = 1
     }
 }

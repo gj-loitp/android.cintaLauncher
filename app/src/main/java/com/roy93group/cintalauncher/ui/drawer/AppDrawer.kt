@@ -14,8 +14,8 @@ import androidx.core.view.marginTop
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.cintalauncher.R
-import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.data.items.App
+import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
 import com.roy93group.cintalauncher.ui.LauncherActivity
 import com.roy93group.cintalauncher.ui.popup.appItem.ItemLongPress
 import com.roy93group.cintalauncher.ui.popup.drawer.DrawerLongPressPopup
@@ -34,32 +34,38 @@ class AppDrawer(
         const val WIDTH_TO_HEIGHT = 5f / 4f
     }
 
-    val view = activity.findViewById<View>(R.id.app_drawer_container)!!
-
+    val view: View = activity.findViewById(R.id.app_drawer_container)
     private val adapter = AppDrawerAdapter(activity)
-
-    private val recycler = view.findViewById<RecyclerView>(R.id.app_recycler)
-
+    private val recycler: RecyclerView = view.findViewById(R.id.app_recycler)
     private var popupX = 0f
     private var popupY = 0f
+
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
-        recycler.layoutManager = GridLayoutManager(view.context, COLUMNS, RecyclerView.VERTICAL, false).apply {
-            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(i: Int): Int {
-                    return when (adapter.getItemViewType(i)) {
-                        AppDrawerAdapter.APP_ITEM -> 1
-                        AppDrawerAdapter.SECTION_HEADER -> COLUMNS
-                        else -> -1
+        recycler.layoutManager =
+            GridLayoutManager(view.context, COLUMNS, RecyclerView.VERTICAL, false).apply {
+                spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(i: Int): Int {
+                        return when (adapter.getItemViewType(i)) {
+                            AppDrawerAdapter.APP_ITEM -> 1
+                            AppDrawerAdapter.SECTION_HEADER -> COLUMNS
+                            else -> -1
+                        }
                     }
                 }
             }
-        }
         recycler.adapter = adapter
 
         val onLongPress = Runnable {
             recycler.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            DrawerLongPressPopup.show(recycler, popupX, popupY, activity.getNavigationBarHeight(), activity.settings, activity::loadApps)
+            DrawerLongPressPopup.show(
+                parent = recycler,
+                touchX = popupX,
+                touchY = popupY,
+                navbarHeight = activity.getNavigationBarHeight(),
+                settings = activity.settings,
+                reloadApps = activity::loadApps
+            )
         }
         var lastRecyclerViewDownTouchEvent: MotionEvent? = null
         recycler.setOnTouchListener { v, event ->
@@ -70,7 +76,10 @@ class AppDrawer(
                     if (recycler.findChildViewUnder(event.x, event.y) == null) {
                         v.handler.removeCallbacks(onLongPress)
                         lastRecyclerViewDownTouchEvent = event
-                        v.handler.postDelayed(onLongPress, ViewConfiguration.getLongPressTimeout().toLong())
+                        v.handler.postDelayed(
+                            onLongPress,
+                            ViewConfiguration.getLongPressTimeout().toLong()
+                        )
                     }
                 }
                 MotionEvent.ACTION_MOVE -> if (lastRecyclerViewDownTouchEvent != null) {
@@ -95,7 +104,11 @@ class AppDrawer(
 
     fun update(scrollBar: Scrollbar, appSections: List<List<App>>) {
         this.appSections = appSections
-        adapter.updateAppSections(appSections, activity, scrollBar.controller)
+        adapter.updateAppSections(
+            appSections = appSections,
+            activity = activity,
+            controller = scrollBar.controller
+        )
         scrollBar.postInvalidate()
         view.postInvalidate()
         scrollBar.recycler = this@AppDrawer.recycler
@@ -115,7 +128,12 @@ class AppDrawer(
         if (isOpen) return
         ItemLongPress.currentPopup?.dismiss()
         val sbh = v.context.getStatusBarHeight()
-        recycler.setPadding(recycler.paddingLeft, sbh, recycler.paddingRight, activity.bottomBar.view.measuredHeight + activity.bottomBar.view.marginBottom + activity.bottomBar.view.marginTop)
+        recycler.setPadding(
+            recycler.paddingLeft,
+            sbh,
+            recycler.paddingRight,
+            activity.bottomBar.view.measuredHeight + activity.bottomBar.view.marginBottom + activity.bottomBar.view.marginTop
+        )
         view.isVisible = true
         activity.feedRecycler.stopScroll()
         activity.feedProfiles.feedFilterRecycler.animate()
@@ -157,6 +175,7 @@ class AppDrawer(
         }
     }
 
+    @Suppress("unused")
     fun close(v: View? = null) {
         activity.bottomBar.appDrawerCloseIconContainer.isVisible = false
         if (!isOpen) return
@@ -202,7 +221,7 @@ class AppDrawer(
         }
     }
 
-    fun updateBlurAnimation(x: Float) {
+    private fun updateBlurAnimation(x: Float) {
         val l = activity.blurBG.background as? LayerDrawable ?: return
         l.getDrawable(0).alpha = (255 * (x).coerceAtMost(1f)).toInt()
         l.getDrawable(1).alpha = (255 * (x - 1f).coerceAtLeast(0f).coerceAtMost(1f)).toInt()
