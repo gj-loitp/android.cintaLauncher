@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadingEdge="vertical"
-    android:requiresFadingEdge="vertical"
-    android:fadingEdgeLength="32dp">
+    android:fadingEdgeLength="32dp"
+    android:requiresFadingEdge="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="24dp">
+
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
-            android:textSize="24sp"
-            android:text="@string/cinta_launcher_crashed"/>
+            android:text="@string/cinta_launcher_crashed"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="@string/send_bug_report"
             android:layout_marginTop="64dp"
+            android:background="@drawable/button_bg_round"
             android:gravity="center_horizontal"
             android:paddingTop="15dp"
             android:paddingBottom="16dp"
-            android:background="@drawable/button_bg_round"/>
+            android:text="@string/send_bug_report"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/stack_trace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:textSize="14sp"
-            android:fontFamily="@font/jet_brains_mono"/>
+            android:textSize="14sp" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

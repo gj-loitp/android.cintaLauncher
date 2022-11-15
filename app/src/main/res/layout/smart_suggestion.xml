@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/card"
-    style="@style/Theme.CintaLauncher.Drawer.Item.Container">
+    style="@style/Theme.AppLauncher.Drawer.Item.Container">
     <com.roy93group.launcher.ui.view.SeeThoughView
         android:id="@+id/blur_bg"
         android:layout_width="match_parent"

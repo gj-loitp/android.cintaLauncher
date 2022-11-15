@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.CintaLauncher.Drawer.Container" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Drawer.Container" parent="Theme.AppLauncher">
         <item name="android:padding">0dp</item>
         <item name="android:background">#88000000</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Drawer.Recycler" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Drawer.Recycler" parent="Theme.AppLauncher">
         <item name="android:paddingTop">12dp</item>
         <item name="android:paddingHorizontal">10dp</item>
         <item name="android:paddingBottom">96dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Drawer.FloatingButton" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Drawer.FloatingButton" parent="Theme.AppLauncher">
         <item name="android:background">@drawable/round_bg</item>
         <item name="android:layout_margin">@dimen/app_drawer_fab</item>
         <item name="android:padding">4dp</item>
         <item name="android:elevation">32dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Drawer.FloatingButton.Icon" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Drawer.FloatingButton.Icon" parent="Theme.AppLauncher">
         <item name="android:padding">8dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Drawer.Item.Container" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Drawer.Item.Container" parent="Theme.AppLauncher">
         <item name="cardCornerRadius">@dimen/item_card_radius</item>
         <item name="android:layout_margin">@dimen/item_card_margin</item>
         <item name="android:elevation">@dimen/item_card_elevation</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Drawer.Item.Icon" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Drawer.Item.Icon" parent="Theme.AppLauncher">
         <item name="android:paddingHorizontal">8dp</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:layout_width">56dp</item>
         <item name="android:layout_height">48dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Drawer.Item.SmallIcon" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Drawer.Item.SmallIcon" parent="Theme.AppLauncher">
         <item name="android:layout_width">24dp</item>
         <item name="android:layout_height">24dp</item>
         <item name="android:layout_marginEnd">6dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Drawer.Item.Label" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Drawer.Item.Label" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:padding">8dp</item>
         <item name="android:textColor">@color/feed_card_text_light_title</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Drawer.Item.Extra.Line.Title" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Drawer.Item.Extra.Line.Title" parent="Theme.AppLauncher">
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">6dp</item>
         <item name="android:textSize">14sp</item>
@@ -56,7 +56,7 @@
         <item name="android:maxLines">1</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Drawer.Item.Extra.Line.Description" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Drawer.Item.Extra.Line.Description" parent="Theme.AppLauncher">
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">6dp</item>
         <item name="android:textSize">12sp</item>
@@ -64,10 +64,10 @@
         <item name="android:maxLines">1</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Drawer.SectionHeader" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Drawer.SectionHeader" parent="Theme.AppLauncher">
         <item name="android:paddingVertical">6dp</item>
         <item name="android:paddingStart">8dp</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">@font/jet_brains_mono</item>
+<!--        <item name="android:fontFamily">@font/jet_brains_mono</item>-->
     </style>
 </resources>

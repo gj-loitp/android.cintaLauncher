@@ -112,9 +112,9 @@ class ScrollbarIconView @JvmOverloads constructor(
             Scrollbar.HORIZONTAL -> scrollBar.setPadding(p, 0, p, 0)
             Scrollbar.VERTICAL -> scrollBar.setPadding(0, p, 0, p)
         }
-        ResourcesCompat.getFont(context, R.font.jet_brains_mono)?.let {
-            scrollBar.typeface = it
-        }
+//        ResourcesCompat.getFont(context, R.font.jet_brains_mono)?.let {
+//            scrollBar.typeface = it
+//        }
 //        scrollBar.typeface = ResourcesCompat.getFont(context, R.font.jet_brains_mono)
         val location = IntArray(2)
         getLocationOnScreen(location)

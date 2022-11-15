@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/card"
-    style="@style/Theme.CintaLauncher.Drawer.Item.Container">
+    style="@style/Theme.AppLauncher.Drawer.Item.Container">
     <com.roy93group.launcher.ui.view.HorizontalAspectRatioLayout
         android:id="@+id/aspect"
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:orientation="vertical"
             android:gravity="bottom">
             <ImageView
-                style="@style/Theme.CintaLauncher.Drawer.Item.Icon"
+                style="@style/Theme.AppLauncher.Drawer.Item.Icon"
                 android:id="@+id/icon_image"
                 android:cropToPadding="false"/>
             <View
@@ -38,9 +38,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                style="@style/Theme.CintaLauncher.Drawer.Item.Label">
+                style="@style/Theme.AppLauncher.Drawer.Item.Label">
                 <ImageView
-                    style="@style/Theme.CintaLauncher.Drawer.Item.SmallIcon"
+                    style="@style/Theme.AppLauncher.Drawer.Item.SmallIcon"
                     android:visibility="gone"
                     android:id="@+id/icon_image_small"/>
                 <TextView
@@ -53,13 +53,13 @@
                     android:maxLines="1"/>
             </LinearLayout>
             <TextView
-                style="@style/Theme.CintaLauncher.Drawer.Item.Extra.Line.Title"
+                style="@style/Theme.AppLauncher.Drawer.Item.Extra.Line.Title"
                 android:id="@+id/line_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"/>
             <TextView
-                style="@style/Theme.CintaLauncher.Drawer.Item.Extra.Line.Description"
+                style="@style/Theme.AppLauncher.Drawer.Item.Extra.Line.Description"
                 android:id="@+id/line_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
