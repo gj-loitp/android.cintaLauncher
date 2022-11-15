@@ -3,8 +3,8 @@ package com.roy93group.cintalauncher.data.feed.profiles
 import com.roy93group.cintalauncher.data.feed.items.FeedItem
 
 class ExtraFeedProfileSettings(
-    val onlyTheseSources: List<String>?,
-    val onlyThesePackages: List<String>?,
+    private val onlyTheseSources: List<String>?,
+    private val onlyThesePackages: List<String>?,
 ) {
     fun filter(item: FeedItem): Boolean {
         val packageName = item.meta?.sourcePackageName

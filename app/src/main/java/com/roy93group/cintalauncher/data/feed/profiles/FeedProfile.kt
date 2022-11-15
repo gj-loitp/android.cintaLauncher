@@ -9,13 +9,12 @@ import com.roy93group.cintalauncher.data.feed.items.isToday
 class FeedProfile(
     val name: String? = null,
     val icon: Drawable? = null,
-
     val showAppSuggestions: Boolean,
     val showMedia: Boolean,
     val showNews: Boolean,
     val showNotifications: Boolean,
     val onlyToday: Boolean,
-    val extraFeedProfileSettings: ExtraFeedProfileSettings? = null,
+    private val extraFeedProfileSettings: ExtraFeedProfileSettings? = null,
 ) {
     fun filter(item: FeedItem): Boolean {
         val today = !onlyToday || item.isToday()
@@ -23,6 +22,8 @@ class FeedProfile(
         val media = showMedia || item !is FeedItemWithMedia
         val notification = showNotifications || item.meta?.isNotification != true
         val news = showNews || item.meta?.isNotification == true
-        return today && suggestions && media && notification && news && extraFeedProfileSettings?.filter(item) ?: true
+        return today && suggestions && media && notification && news && extraFeedProfileSettings?.filter(
+            item = item
+        ) ?: true
     }
 }

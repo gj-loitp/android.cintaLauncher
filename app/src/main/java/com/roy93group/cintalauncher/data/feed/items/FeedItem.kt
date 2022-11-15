@@ -43,8 +43,8 @@ interface FeedItem {
 
 fun String.longHash(): Long {
     var h = 1125899906842597L // prime
-    for (i in 0 until length) {
-        h = 31 * h + this[i].code.toLong()
+    for (element in this) {
+        h = 31 * h + element.code.toLong()
     }
     return h
 }

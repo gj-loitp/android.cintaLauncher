@@ -1,7 +1,10 @@
 package com.roy93group.cintalauncher.providers.app
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.PorterDuff
 import android.graphics.drawable.*
 import android.graphics.drawable.shapes.RectShape
 import android.os.UserHandle
@@ -13,11 +16,9 @@ import com.roy93group.cintalauncher.data.items.App
 import com.roy93group.cintalauncher.storage.DoReshapeAdaptiveIconsSetting.doReshapeAdaptiveIcons
 import com.roy93group.cintalauncher.storage.Settings
 import com.roy93group.cintalauncher.ui.LauncherActivity
-import io.posidon.android.launcherutils.AppLoader
 import io.posidon.android.conveniencelib.drawable.toBitmap
+import io.posidon.android.launcherutils.AppLoader
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 class AppCollection(
     appCount: Int,
@@ -25,10 +26,9 @@ class AppCollection(
 ) : AppLoader.AppCollection<AppCollection.ExtraIconData> {
     val list = ArrayList<App>(appCount)
     val byName = HashMap<String, MutableList<App>>()
-
     val sections = LinkedList<List<App>>()
 
-    inline operator fun get(i: Int) = list[i]
+    operator fun get(i: Int) = list[i]
     inline val size get() = list.size
 
     override fun addApp(
@@ -45,21 +45,28 @@ class AppCollection(
         ) return
 
         val app = createApp(
-            packageName,
-            name,
-            profile,
-            label,
-            icon,
-            extra,
-            settings
+            packageName = packageName,
+            name = name,
+            profile = profile,
+            label = label,
+            icon = icon,
+            extra = extra,
+            settings = settings
         )
 
         list.add(app)
         putInMap(app)
     }
 
-    override fun modifyIcon(icon: Drawable, expandableBackground: Drawable?): Pair<Drawable, ExtraIconData> {
-        return modifyIcon(icon, expandableBackground, settings)
+    override fun modifyIcon(
+        icon: Drawable,
+        expandableBackground: Drawable?
+    ): Pair<Drawable, ExtraIconData> {
+        return modifyIcon(
+            icon = icon,
+            expandableBackground = expandableBackground,
+            settings = settings
+        )
     }
 
     private fun putInMap(app: App) {
@@ -80,25 +87,30 @@ class AppCollection(
 
     override fun finalize(context: Context) {
         list.sortWith { o1, o2 ->
-            o1.label.compareTo(o2.label, ignoreCase = true)
+            o1.label.compareTo(other = o2.label, ignoreCase = true)
         }
     }
 
     companion object {
 
-        fun modifyIcon(icon: Drawable, expandableBackground: Drawable?, settings: Settings): Pair<Drawable, ExtraIconData> {
+        fun modifyIcon(
+            icon: Drawable,
+            expandableBackground: Drawable?,
+            settings: Settings
+        ): Pair<Drawable, ExtraIconData> {
             var color = 0
             var hsl = FloatArray(3)
             var icon = icon
             var background = expandableBackground
 
             if (background != null) {
-                val palette = Palette.from(background.toBitmap(8, 8)).generate()
+                val palette =
+                    Palette.from(/* bitmap = */ background.toBitmap(width = 8, height = 8))
+                        .generate()
                 val d = palette.dominantSwatch
                 hsl = d?.hsl ?: hsl
                 color = d?.rgb ?: color
-            }
-            else if (settings.doReshapeAdaptiveIcons && icon is AdaptiveIconDrawable) {
+            } else if (settings.doReshapeAdaptiveIcons && icon is AdaptiveIconDrawable) {
                 val (i, b, c) = reshapeAdaptiveIcon(icon)
                 icon = i
                 background = b
@@ -126,10 +138,11 @@ class AppCollection(
             color = color and 0xffffff or 0xff000000.toInt()
 
             return icon to ExtraIconData(
-                background, color, hsl
+                background = background, color = color, hsl = hsl
             )
         }
 
+        @Suppress("unused")
         fun createApp(
             packageName: String,
             name: String,
@@ -141,21 +154,21 @@ class AppCollection(
         ): App {
 
             return App(
-                packageName,
-                name,
-                profile,
-                label,
-                icon,
-                extra.extraIconData.background,
-                extra.extraIconData.hsl,
-                extra.extraIconData.color
+                packageName = packageName,
+                name = name,
+                userHandle = profile,
+                label = label,
+                icon = icon,
+                background = extra.extraIconData.background,
+                hsl = extra.extraIconData.hsl,
+                _color = extra.extraIconData.color
             )
         }
 
         private fun scale(fg: Drawable): Drawable {
             return InsetDrawable(
-                fg,
-                -1 / 3f
+                /* drawable = */ fg,
+                /* inset = */ -1 / 3f
             )
         }
 
@@ -170,11 +183,24 @@ class AppCollection(
                 val width = fg.width
                 val height = fg.height
                 val canvas = Canvas(fg)
-                canvas.drawRect(6f, 6f, width - 6f, height - 6f, Paint().apply {
-                    xfermode = PorterDuff.Mode.CLEAR.toXfermode()
-                })
+                canvas.drawRect(
+                    /* left = */ 6f,
+                    /* top = */6f,
+                    /* right = */width - 6f,
+                    /* bottom = */height - 6f,
+                    /* paint = */Paint().apply {
+                        xfermode = PorterDuff.Mode.CLEAR.toXfermode()
+                    })
                 val pixels = IntArray(width * height)
-                fg.getPixels(pixels, 0, width, 0, 0, width, height)
+                fg.getPixels(
+                    /* pixels = */ pixels,
+                    /* offset = */0,
+                    /* stride = */width,
+                    /* x = */0,
+                    /* y = */0,
+                    /* width = */width,
+                    /* height = */height
+                )
                 for (pixel in pixels) {
                     if (Color.alpha(pixel) != 0) {
                         return@run true
@@ -194,18 +220,27 @@ class AppCollection(
                     }
                 }
                 is GradientDrawable -> {
-                    color = b.color?.defaultColor ?: Palette.from(b.toBitmap(8, 8)).generate().getDominantColor(0)
+                    color = b.color?.defaultColor ?: Palette.from(b.toBitmap(8, 8)).generate()
+                        .getDominantColor(0)
                     (if (isForegroundDangerous) icon else scale(icon.foreground)) to b.apply {
                         cornerRadius = 0f
                     }
                 }
                 else -> if (b != null) {
-                    val bitmap = b.toBitmap(32, 32)
-                    val px = b.toBitmap(1, 1).getPixel(0, 0)
+                    val bitmap = b.toBitmap(width = 32, height = 32)
+                    val px = b.toBitmap(width = 1, height = 1).getPixel(0, 0)
                     val width = bitmap.width
                     val height = bitmap.height
-                    val pixels = IntArray(width * height)
-                    bitmap.getPixels(pixels, 0, width, 0, 0, width, height)
+                    val pixels = IntArray(size = width * height)
+                    bitmap.getPixels(
+                        /* pixels = */ pixels,
+                        /* offset = */0,
+                        /* stride = */width,
+                        /* x = */0,
+                        /* y = */0,
+                        /* width = */width,
+                        /* height = */height
+                    )
                     var isOneColor = true
                     for (pixel in pixels) {
                         if (pixel != px) {
@@ -224,7 +259,7 @@ class AppCollection(
                 } else icon to null
             }
 
-            return Triple(foreground, background, color)
+            return Triple(first = foreground, second = background, third = color)
         }
     }
 
