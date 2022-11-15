@@ -1,7 +1,6 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
 import android.app.Activity
-import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -20,8 +19,8 @@ class AppSearchVH(
     val activity: Activity
 ) : SearchVH(itemView) {
 
-    val icon: ImageView = itemView.findViewById(R.id.icon_image)
-    val label: TextView = itemView.findViewById(R.id.icon_text)
+    val icon: ImageView = itemView.findViewById(R.id.ivIcon)
+    val label: TextView = itemView.findViewById(R.id.tvIconText)
     val card = itemView as CardView
     private val blurBG: SeeThoughView = itemView.findViewById(R.id.blurBg)
 

@@ -1,6 +1,5 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.suggestions
 
-import android.graphics.drawable.BitmapDrawable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -16,8 +15,8 @@ import com.roy93group.launcher.ui.view.SeeThoughView
 class SuggestionVH(
     val card: CardView
 ) : RecyclerView.ViewHolder(card) {
-    val icon: ImageView = itemView.findViewById(R.id.icon_image)
-    val label: TextView = itemView.findViewById(R.id.icon_text)
+    val icon: ImageView = itemView.findViewById(R.id.ivIcon)
+    val label: TextView = itemView.findViewById(R.id.tvIconText)
     private val blurBG: SeeThoughView = itemView.findViewById(R.id.blurBg)
 
     fun onBind(

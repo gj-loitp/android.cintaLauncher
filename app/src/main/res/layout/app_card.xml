@@ -1,69 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
-    style="@style/Theme.AppLauncher.Drawer.Item.Container">
+    style="@style/Theme.AppLauncher.Drawer.Item.Container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
     <com.roy93group.launcher.ui.view.HorizontalAspectRatioLayout
         android:id="@+id/aspect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.roy93group.launcher.ui.view.BackdropImageView
-            android:id="@+id/background_image"
+            android:id="@+id/ivBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:alpha="0.1"/>
+            android:alpha="0.1"
+            android:scaleType="centerCrop" />
+
         <com.roy93group.launcher.ui.view.SeeThoughView
             android:id="@+id/blurBg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.18"/>
-        <LinearLayout
+            android:alpha="0.18" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="bottom">
-            <ImageView
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivIcon"
                 style="@style/Theme.AppLauncher.Drawer.Item.Icon"
-                android:id="@+id/icon_image"
-                android:cropToPadding="false"/>
+                android:cropToPadding="false" />
+
             <View
                 android:id="@+id/spacer"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
-            <LinearLayout
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                style="@style/Theme.AppLauncher.Drawer.Item.Label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                style="@style/Theme.AppLauncher.Drawer.Item.Label">
-                <ImageView
+                android:paddingStart="@dimen/margin_padding_medium"
+                android:paddingEnd="@dimen/margin_padding_medium">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivIconSmall"
                     style="@style/Theme.AppLauncher.Drawer.Item.SmallIcon"
                     android:visibility="gone"
-                    android:id="@+id/icon_image_small"/>
-                <TextView
-                    android:id="@+id/icon_text"
+                    tools:visibility="visible" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvIconText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/margin_padding_medium"
+                    android:paddingEnd="@dimen/margin_padding_medium"
                     android:singleLine="true"
-                    android:maxLines="1"/>
-            </LinearLayout>
-            <TextView
+                    tools:text="@string/app_name" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLineTitle"
                 style="@style/Theme.AppLauncher.Drawer.Item.Extra.Line.Title"
-                android:id="@+id/line_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"/>
-            <TextView
+                android:layout_marginStart="@dimen/margin_padding_medium"
+                android:layout_marginEnd="@dimen/margin_padding_medium"
+                android:visibility="gone"
+                tools:text="@string/app_name"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLineDescription"
                 style="@style/Theme.AppLauncher.Drawer.Item.Extra.Line.Description"
-                android:id="@+id/line_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"/>
-        </LinearLayout>
+                android:layout_marginStart="@dimen/margin_padding_medium"
+                android:layout_marginEnd="@dimen/margin_padding_medium"
+                android:visibility="gone"
+                tools:text="@string/app_name"
+                tools:visibility="visible" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </com.roy93group.launcher.ui.view.HorizontalAspectRatioLayout>
 </androidx.cardview.widget.CardView>

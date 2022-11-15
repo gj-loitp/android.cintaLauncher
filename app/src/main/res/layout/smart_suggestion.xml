@@ -17,10 +17,10 @@
         android:gravity="center_vertical">
         <ImageView
             style="@style/Theme.AppLauncher.Suggestions.Item.Icon"
-            android:id="@+id/icon_image"/>
+            android:id="@+id/ivIcon"/>
         <TextView
             style="@style/Theme.AppLauncher.Suggestions.Item.Label"
-            android:id="@+id/icon_text"
+            android:id="@+id/tvIconText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

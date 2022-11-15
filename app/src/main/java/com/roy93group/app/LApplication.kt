@@ -4,9 +4,11 @@ import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseApplication
 import com.loitpcore.core.utilities.LUIUtil
 
+//TODO man hinh intro cho accept het cac permission moi cho next
 //TODO set background to black
 //TODO ripple activity intro
 //TODO config gg drive
+//TODO rate more share app
 
 //done
 //ic launcher

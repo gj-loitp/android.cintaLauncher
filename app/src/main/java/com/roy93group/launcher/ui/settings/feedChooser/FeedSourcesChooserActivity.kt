@@ -119,7 +119,7 @@ class FeedSourcesChooserActivity : SettingsActivity() {
             settings.getStrings("feed:rss_sources")?.let { arrayListOf(*it) } ?: arrayListOf()
 
         grid.adapter = FeedChooserAdapter(settings, feedUrls)
-        val fab = findViewById<ImageView>(R.id.add_button)
+        val fab = findViewById<ImageView>(R.id.btAdd)
         fab.backgroundTintList = ColorStateList.valueOf(ColorTheme.buttonColor)
         fab.imageTintList =
             ColorStateList.valueOf(ColorTheme.titleColorForBG(ColorTheme.buttonColor))

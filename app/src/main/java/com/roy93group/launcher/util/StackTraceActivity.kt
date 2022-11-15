@@ -41,7 +41,7 @@ class StackTraceActivity : FragmentActivity() {
             setContentView(R.layout.activity_stack_trace)
 
             val title = findViewById<TextView>(R.id.title)
-            val stackTrace = findViewById<TextView>(R.id.stack_trace)
+            val stackTrace = findViewById<TextView>(R.id.tvStackTrace)
             val send = findViewById<TextView>(R.id.send)
 
             val t = intent.extras!!["throwable"] as Throwable

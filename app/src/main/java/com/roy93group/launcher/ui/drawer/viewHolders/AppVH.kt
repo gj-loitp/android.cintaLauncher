@@ -1,7 +1,6 @@
 package com.roy93group.launcher.ui.drawer.viewHolders
 
 import android.app.Activity
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
@@ -36,13 +35,13 @@ import io.posidon.android.conveniencelib.getNavigationBarHeight
 class AppViewHolder(
     val card: CardView
 ) : RecyclerView.ViewHolder(card) {
-    val icon: ImageView = itemView.findViewById(R.id.icon_image)
-    val label: TextView = itemView.findViewById(R.id.icon_text)
-    val iconSmall: ImageView = itemView.findViewById(R.id.icon_image_small)
+    val icon: ImageView = itemView.findViewById(R.id.ivIcon)
+    val label: TextView = itemView.findViewById(R.id.tvIconText)
+    val iconSmall: ImageView = itemView.findViewById(R.id.ivIconSmall)
     val spacer: View = itemView.findViewById(R.id.spacer)
-    val lineTitle: TextView = itemView.findViewById(R.id.line_title)
-    val lineDescription: TextView = itemView.findViewById(R.id.line_description)
-    val imageView: ImageView = itemView.findViewById(R.id.background_image)
+    val lineTitle: TextView = itemView.findViewById(R.id.tvLineTitle)
+    val lineDescription: TextView = itemView.findViewById(R.id.tvLineDescription)
+    val imageView: ImageView = itemView.findViewById(R.id.ivBackground)
     val blurBG: SeeThoughView = itemView.findViewById(R.id.blurBg)
 
     @Suppress("unused")

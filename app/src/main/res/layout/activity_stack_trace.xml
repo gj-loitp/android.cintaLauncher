@@ -1,42 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:fadingEdge="vertical"
     android:fadingEdgeLength="32dp"
     android:requiresFadingEdge="vertical">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="@dimen/margin_padding_medium">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="@dimen/margin_padding_medium"
             android:text="@string/cinta_launcher_crashed"
-            android:textSize="24sp" />
+            android:textSize="@dimen/txt_largest" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="@dimen/margin_padding_medium"
             android:background="@drawable/button_bg_round"
             android:gravity="center_horizontal"
-            android:paddingTop="15dp"
-            android:paddingBottom="16dp"
+            android:paddingTop="@dimen/margin_padding_medium"
+            android:paddingBottom="@dimen/margin_padding_medium"
             android:text="@string/send_bug_report"
+            android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/stack_trace"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvStackTrace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:textSize="14sp" />
-    </LinearLayout>
+            android:layout_marginTop="@dimen/margin_padding_medium"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_medium"
+            tools:text="@string/app_name" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>
