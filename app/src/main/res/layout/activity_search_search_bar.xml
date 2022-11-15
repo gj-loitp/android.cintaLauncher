@@ -22,7 +22,7 @@
             android:layout_width="@dimen/search_bar_height"
             android:layout_height="@dimen/search_bar_height"
             android:src="@drawable/ic_search"
-            android:tint="@color/white" />
+            android:tint="@color/colorPrimary" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etSearchBarText"
@@ -36,7 +36,7 @@
             android:inputType="number|text|phone|datetime"
             android:lines="1"
             android:scrollHorizontally="true"
-            android:textCursorDrawable="@color/white">
+            android:textCursorDrawable="@color/colorPrimary">
 
             <requestFocus />
         </androidx.appcompat.widget.AppCompatEditText>

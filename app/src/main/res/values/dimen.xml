@@ -5,7 +5,7 @@
     <dimen name="feed_card_spacing">6dp</dimen>
     <dimen name="feed_card_action_radius">8dp</dimen>
     <dimen name="dock_corner_radius">26dp</dimen>
-    <dimen name="item_card_radius">16dp</dimen>
+    <dimen name="item_card_radius">45dp</dimen>
     <dimen name="item_card_elevation">2dp</dimen>
     <dimen name="item_card_margin">6dp</dimen>
     <dimen name="search_bar_height">56dp</dimen>
