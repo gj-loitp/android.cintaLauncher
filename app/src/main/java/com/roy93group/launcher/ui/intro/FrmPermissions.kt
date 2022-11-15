@@ -21,7 +21,7 @@ import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.util.FakeLauncherActivity
 
-class PermissionsFragment : FragmentWithNext(R.layout.intro_permissions) {
+class FrmPermissions : FrmWithNext(R.layout.intro_permissions) {
 
     override fun onCreateView(
         inflater: LayoutInflater,

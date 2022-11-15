@@ -1,124 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
+
+        <androidx.appcompat.widget.AppCompatTextView
             style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/permissions"/>
+            android:text="@string/permissions" />
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
+            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Container">
-            <TextView
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_storage"/>
-            <TextView
+                android:text="@string/permission_storage" />
+
+            <androidx.appcompat.widget.AppCompatTextView
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Explanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_storage_explanation"/>
-            <TextView
+                android:text="@string/permission_storage_explanation" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/button_storage"
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button_storage"/>
-            <ImageView
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
+                android:layout_height="wrap_content" />
+
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tick_storage"
+                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
+                android:src="@drawable/ic_tick"
                 android:visibility="gone"
-                android:src="@drawable/ic_tick"/>
-        </LinearLayout>
+                tools:visibility="visible" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <LinearLayout
+            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Container">
+            android:orientation="vertical">
+
             <TextView
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_contacts"/>
+                android:text="@string/permission_contacts" />
+
             <TextView
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Explanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_contacts_explanation"/>
+                android:text="@string/permission_contacts_explanation" />
+
             <TextView
+                android:id="@+id/button_contacts"
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button_contacts"/>
+                android:layout_height="wrap_content" />
+
             <ImageView
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
                 android:id="@+id/tick_contacts"
-                android:visibility="gone"
-                android:src="@drawable/ic_tick"/>
+                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
+                android:src="@drawable/ic_tick"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
+            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Container">
+            android:orientation="vertical">
+
             <TextView
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_notifications"/>
+                android:text="@string/permission_notifications" />
+
             <TextView
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Explanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_notifications_explanation"/>
+                android:text="@string/permission_notifications_explanation" />
+
             <TextView
+                android:id="@+id/button_notifications"
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button_notifications"/>
+                android:layout_height="wrap_content" />
+
             <ImageView
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
                 android:id="@+id/tick_notifications"
-                android:visibility="gone"
-                android:src="@drawable/ic_tick"/>
+                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
+                android:src="@drawable/ic_tick"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
+            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Container">
+            android:orientation="vertical">
+
             <TextView
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_usage_access"/>
+                android:text="@string/permission_usage_access" />
+
             <TextView
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Explanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_usage_access_explanation"/>
+                android:text="@string/permission_usage_access_explanation" />
+
             <TextView
+                android:id="@+id/button_usage_access"
                 style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button_usage_access"/>
+                android:layout_height="wrap_content" />
+
             <ImageView
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
                 android:id="@+id/tick_usage_access"
-                android:visibility="gone"
-                android:src="@drawable/ic_tick"/>
+                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
+                android:src="@drawable/ic_tick"
+                android:visibility="gone" />
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

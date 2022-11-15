@@ -19,11 +19,11 @@ class IntroActivity : BaseFontActivity() {
         return R.layout.activity_intro
     }
 
-    private val stack = LinkedList<FragmentWithNext>().apply {
-        push(SplashFragment())
+    private val stack = LinkedList<FrmWithNext>().apply {
+        push(FrmSplash())
     }
 
-    fun setFragment(fragment: FragmentWithNext) {
+    fun setFragment(fragment: FrmWithNext) {
         stack.push(fragment)
         supportFragmentManager
             .beginTransaction()
@@ -55,7 +55,7 @@ class IntroActivity : BaseFontActivity() {
 
     override fun onResume() {
         super.onResume()
-        (stack.peek() as? PermissionsFragment)?.updatePermissionStatus()
+        (stack.peek() as? FrmPermissions)?.updatePermissionStatus()
     }
 
     override fun onBaseBackPressed() {
@@ -89,7 +89,7 @@ class IntroActivity : BaseFontActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 0) {
-            (stack.peek() as? PermissionsFragment)?.updatePermissionStatus()
+            (stack.peek() as? FrmPermissions)?.updatePermissionStatus()
         }
     }
 
