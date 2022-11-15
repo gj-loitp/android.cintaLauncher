@@ -19,7 +19,7 @@
     </style>
 
     <style name="Theme.AppLauncher.SearchBar.Icon" parent="Theme.AppLauncher">
-        <item name="android:padding">8dp</item>
+        <item name="android:padding">@dimen/margin_padding_small</item>
     </style>
 
     <style name="Theme.AppLauncher.SearchResult.Container" parent="Theme.AppLauncher">

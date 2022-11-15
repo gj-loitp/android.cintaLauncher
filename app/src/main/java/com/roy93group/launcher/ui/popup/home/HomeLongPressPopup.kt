@@ -48,7 +48,7 @@ object HomeLongPressPopup {
             PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
         PopupUtils.setCurrent(window)
 
-        content.findViewById<SeeThoughView>(R.id.blur_bg).run {
+        content.findViewById<SeeThoughView>(R.id.blurBg).run {
             drawable = acrylicBlur?.fullBlur?.let { BitmapDrawable(parent.resources, it) }
         }
 

@@ -90,13 +90,13 @@ class LauncherActivity : BaseFontActivity() {
     private val mediaProvider = MediaProvider(this)
     private val suggestedAppsProvider = SuggestedAppsProvider()
     private val homeContainer: View by lazy {
-        findViewById(R.id.home_container)
+        findViewById(R.id.flHomeContainer)
     }
     val feedRecycler: RecyclerView by lazy {
-        findViewById(R.id.feed_recycler)
+        findViewById(R.id.rvFeed)
     }
     val blurBG: View by lazy {
-        findViewById(R.id.blur_bg)
+        findViewById(R.id.blurBg)
     }
     val appDrawer by lazy {
         AppDrawer(this)

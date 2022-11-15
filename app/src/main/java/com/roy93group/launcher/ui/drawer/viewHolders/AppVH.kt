@@ -44,7 +44,7 @@ class AppViewHolder(
     val lineTitle: TextView = itemView.findViewById(R.id.line_title)
     val lineDescription: TextView = itemView.findViewById(R.id.line_description)
     val imageView: ImageView = itemView.findViewById(R.id.background_image)
-    val blurBG: SeeThoughView = itemView.findViewById(R.id.blur_bg)
+    val blurBG: SeeThoughView = itemView.findViewById(R.id.blurBg)
 
     @Suppress("unused")
     val aspect: HorizontalAspectRatioLayout =

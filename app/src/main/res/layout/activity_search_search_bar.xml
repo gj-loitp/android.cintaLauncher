@@ -6,7 +6,7 @@
     android:id="@+id/search_bar"
     style="@style/Theme.AppLauncher.SearchBar.Container">
     <com.roy93group.launcher.ui.view.SeeThoughView
-        android:id="@+id/blur_bg"
+        android:id="@+id/blurBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.3"/>
@@ -16,7 +16,7 @@
         android:orientation="horizontal">
         <ImageView
             style="@style/Theme.AppLauncher.SearchBar.Icon"
-            android:id="@+id/search_bar_icon"
+            android:id="@+id/searchBarIcon"
             android:layout_width="@dimen/search_bar_height"
             android:layout_height="@dimen/search_bar_height"
             android:src="@drawable/ic_search"/>

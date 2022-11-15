@@ -11,7 +11,7 @@ class FeedProfiles(val activity: LauncherActivity) {
 
     private val feedFilterAdapter = FeedProfileAdapter(activity.launcherContext)
     val feedFilterRecycler: RecyclerView =
-        activity.findViewById<RecyclerView>(R.id.feed_filters_recycler).apply {
+        activity.findViewById<RecyclerView>(R.id.rvFeedFilters).apply {
             layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
             adapter = feedFilterAdapter
         }

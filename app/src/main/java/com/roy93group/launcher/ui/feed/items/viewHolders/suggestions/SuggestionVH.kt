@@ -19,7 +19,7 @@ class SuggestionVH(
 ) : RecyclerView.ViewHolder(card) {
     val icon: ImageView = itemView.findViewById(R.id.icon_image)
     val label: TextView = itemView.findViewById(R.id.icon_text)
-    private val blurBG: SeeThoughView = itemView.findViewById(R.id.blur_bg)
+    private val blurBG: SeeThoughView = itemView.findViewById(R.id.blurBg)
 
     fun onBind(
         item: LauncherItem,

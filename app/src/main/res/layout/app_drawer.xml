@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flAppDrawerContainer"
+    style="@style/Theme.AppLauncher.Drawer.Container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="gone"
-    android:focusable="true"
     android:clickable="true"
-    android:id="@+id/app_drawer_container"
-    style="@style/Theme.AppLauncher.Drawer.Container">
+    android:focusable="true"
+    android:visibility="gone"
+    tools:visibility="visible">
+
     <androidx.recyclerview.widget.RecyclerView
-        style="@style/Theme.AppLauncher.Drawer.Recycler"
-        android:id="@+id/app_recycler"
+        android:id="@+id/rvApp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"/>
+        android:clipToPadding="false" />
 </FrameLayout>

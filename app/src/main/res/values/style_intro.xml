@@ -24,22 +24,26 @@
 
     <style name="Theme.AppLauncher.Intro.Slash.Permissions.Title" parent="Theme.AppLauncher">
         <item name="android:textSize">@dimen/txt_largest</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:padding">@dimen/margin_padding_medium</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Theme.AppLauncher.Intro.Slash.Permissions.Item.Container" parent="Theme.AppLauncher">
         <item name="android:padding">24dp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="Theme.AppLauncher.Intro.Slash.Permissions.Item.Title" parent="Theme.AppLauncher">
         <item name="android:textSize">@dimen/txt_large</item>
         <item name="android:layout_marginBottom">@dimen/margin_padding_medium</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="Theme.AppLauncher.Intro.Slash.Permissions.Item.Explanation" parent="Theme.AppLauncher">
         <item name="android:textSize">@dimen/txt_medium</item>
         <item name="android:layout_marginBottom">@dimen/margin_padding_medium</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant" parent="Theme.AppLauncher">

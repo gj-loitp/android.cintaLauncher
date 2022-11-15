@@ -24,7 +24,7 @@ class BottomBar(val activity: LauncherActivity) {
 
     val scrollBar: Scrollbar get() = appDrawerIcon.scrollBar
 
-    val view: CardView = activity.findViewById<CardView>(R.id.search_bar_container).apply {
+    val view: CardView = activity.findViewById<CardView>(R.id.cvSearchBarContainer).apply {
         setOnClickListener {
             val context = it.context
             context.startActivity(
@@ -36,26 +36,26 @@ class BottomBar(val activity: LauncherActivity) {
         }
         setOnDragListener(::onDrag)
     }
-    private val searchIcon: ImageView = view.findViewById(R.id.search_bar_icon)
+    private val searchIcon: ImageView = view.findViewById(R.id.searchBarIcon)
     val appDrawerIcon: ScrollbarIconView =
-        view.findViewById<ScrollbarIconView>(R.id.app_drawer_icon).apply {
+        view.findViewById<ScrollbarIconView>(R.id.appDrawerIcon).apply {
             appDrawer = activity.appDrawer
         }
     val appDrawerCloseIconContainer: CardView =
-        activity.findViewById<CardView>(R.id.back_button_container)
+        activity.findViewById<CardView>(R.id.cvBackButtonContainer)
 
     @SuppressLint("ClickableViewAccessibility")
     val appDrawerCloseIcon: ImageView =
-        appDrawerCloseIconContainer.findViewById<ImageView>(R.id.back_button).apply {
+        appDrawerCloseIconContainer.findViewById<ImageView>(R.id.btBack).apply {
             setOnClickListener(activity.appDrawer::close)
         }
-    val blurBG: SeeThoughView = view.findViewById(R.id.search_bar_blur_bg)
+    val blurBG: SeeThoughView = view.findViewById(R.id.searchBarBlurBg)
     private val pinnedAdapter = PinnedItemsAdapter(
         launcherActivity = activity,
         launcherContext = activity.launcherContext
     )
     private val pinnedRecycler: RecyclerView =
-        view.findViewById<RecyclerView>(R.id.pinned_recycler).apply {
+        view.findViewById<RecyclerView>(R.id.rvPinned).apply {
             layoutManager = LinearLayoutManager(
                 /* context = */ activity,
                 /* orientation = */RecyclerView.HORIZONTAL,

@@ -2,7 +2,7 @@
 <ImageView
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/Theme.AppLauncher.SearchBar.Icon"
-    android:id="@+id/search_bar_icon"
+    android:id="@+id/searchBarIcon"
     android:layout_width="60dp"
     android:layout_height="@dimen/search_bar_height"
     android:background="@drawable/ripple"/>

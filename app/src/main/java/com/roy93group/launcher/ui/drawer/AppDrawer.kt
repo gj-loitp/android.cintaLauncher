@@ -34,9 +34,9 @@ class AppDrawer(
         const val WIDTH_TO_HEIGHT = 5f / 4f
     }
 
-    val view: View = activity.findViewById(R.id.app_drawer_container)
+    val view: View = activity.findViewById(R.id.flAppDrawerContainer)
     private val adapter = AppDrawerAdapter(activity)
-    private val recycler: RecyclerView = view.findViewById(R.id.app_recycler)
+    private val recycler: RecyclerView = view.findViewById(R.id.rvApp)
     private var popupX = 0f
     private var popupY = 0f
 

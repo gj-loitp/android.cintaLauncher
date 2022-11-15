@@ -10,7 +10,7 @@
         android:clipToPadding="false"
         android:paddingHorizontal="8dp"/>
     <FrameLayout
-        android:id="@+id/search_bar_container"
+        android:id="@+id/cvSearchBarContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp">

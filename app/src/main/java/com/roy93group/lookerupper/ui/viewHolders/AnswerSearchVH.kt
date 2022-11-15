@@ -34,7 +34,7 @@ class AnswerSearchVH(
     private val searchAction: TextView = actionsContainer.findViewById(R.id.search)
     private val actionSeparator: View = actionsContainer.findViewById(R.id.separator)
 
-    private val blurBG: SeeThoughView = itemView.findViewById(R.id.blur_bg)
+    private val blurBG: SeeThoughView = itemView.findViewById(R.id.blurBg)
 
     override fun onBind(result: SearchResult) {
         result as InstantAnswerResult

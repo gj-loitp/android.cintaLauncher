@@ -57,9 +57,9 @@ class SearchActivity : FragmentActivity() {
         adapter.update(list)
     }
 
-    val container: View by lazy { findViewById(R.id.search_bar_container) }
+    val container: View by lazy { findViewById(R.id.cvSearchBarContainer) }
     private val searchBar: View by lazy { findViewById(R.id.search_bar) }
-    private val blurBG: SeeThoughView by lazy { findViewById(R.id.blur_bg) }
+    private val blurBG: SeeThoughView by lazy { findViewById(R.id.blurBg) }
     private val wallpaperManager by lazy { getSystemService(WallpaperManager::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -205,7 +205,7 @@ class SearchActivity : FragmentActivity() {
             setTextColor(ColorTheme.searchBarFG)
             highlightColor = ColorTheme.searchBarFG and 0x00ffffff or 0x66000000
         }
-        searchBar.findViewById<ImageView>(R.id.search_bar_icon).imageTintList =
+        searchBar.findViewById<ImageView>(R.id.searchBarIcon).imageTintList =
             ColorStateList.valueOf(ColorTheme.searchBarFG)
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.Card">
     <com.roy93group.launcher.ui.view.SeeThoughView
-        android:id="@+id/blur_bg"
+        android:id="@+id/blurBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.3"/>

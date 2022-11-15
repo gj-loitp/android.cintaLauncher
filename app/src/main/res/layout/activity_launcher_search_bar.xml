@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/search_bar_container"
+    android:id="@+id/cvSearchBarContainer"
     style="@style/Theme.AppLauncher.SearchBar.Container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <com.roy93group.launcher.ui.view.SeeThoughView
-        android:id="@+id/search_bar_blur_bg"
+        android:id="@+id/searchBarBlurBg"
         android:layout_width="match_parent"
         android:layout_height="@dimen/search_bar_height"
         android:alpha="0.2" />
 
-    <ImageView
-        android:id="@+id/search_bar_icon"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/searchBarIcon"
         style="@style/Theme.AppLauncher.SearchBar.Icon"
         android:layout_width="@dimen/search_bar_height"
         android:layout_height="@dimen/search_bar_height"
@@ -20,13 +20,13 @@
         android:src="@drawable/ic_search" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pinned_recycler"
+        android:id="@+id/rvPinned"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/search_bar_height"
         android:layout_gravity="center_horizontal" />
 
     <com.roy93group.launcher.ui.view.scrollbar.ScrollbarIconView
-        android:id="@+id/app_drawer_icon"
+        android:id="@+id/appDrawerIcon"
         style="@style/Theme.AppLauncher.SearchBar.Icon"
         android:layout_width="@dimen/search_bar_height"
         android:layout_height="@dimen/search_bar_height"

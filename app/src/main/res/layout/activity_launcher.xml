@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home_container"
+    android:id="@+id/flHomeContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".ui.LauncherActivity">
 
     <View
-        android:id="@+id/blur_bg"
+        android:id="@+id/blurBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/feed_recycler"
+        android:id="@+id/rvFeed"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/feed_filters_recycler"
+        android:id="@+id/rvFeedFilters"
         style="@style/Theme.AppLauncher.FeedFilters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +29,7 @@
 
     <include layout="@layout/app_drawer" />
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -35,14 +37,15 @@
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/back_button_container"
+            android:id="@+id/cvBackButtonContainer"
             style="@style/Theme.AppLauncher.SearchBar.Container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone">
+            android:visibility="gone"
+            tools:visibility="visible">
 
-            <ImageView
-                android:id="@+id/back_button"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btBack"
                 style="@style/Theme.AppLauncher.SearchBar.Icon"
                 android:layout_width="@dimen/search_bar_height"
                 android:layout_height="@dimen/search_bar_height"
@@ -51,5 +54,5 @@
         </androidx.cardview.widget.CardView>
 
         <include layout="@layout/activity_launcher_search_bar" />
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </FrameLayout>
