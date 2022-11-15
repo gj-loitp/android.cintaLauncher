@@ -11,22 +11,17 @@ import kotlin.math.sign
 private var colorThemeInstance: ColorTheme = DarkColorTheme(DefaultPalette)
 
 interface ColorTheme {
-
     val accentColor: Int
-
     val uiBG: Int
     val uiTitle: Int
     val uiDescription: Int
     val uiHint: Int
-
     val cardBG: Int
     val cardTitle: Int
     val cardDescription: Int
     val cardHint: Int
-
     val buttonColor: Int
     val buttonColorCallToAction: Int
-
     val searchBarBG: Int
     val searchBarFG: Int
 
@@ -68,14 +63,14 @@ interface ColorTheme {
             get() = colorThemeInstance.searchBarFG
 
         override fun adjustColorForContrast(base: Int, tint: Int): Int =
-            colorThemeInstance.adjustColorForContrast(base, tint)
+            colorThemeInstance.adjustColorForContrast(base = base, tint = tint)
 
         override fun tileColor(iconBackgroundColor: Int): Int =
             colorThemeInstance.tileColor(iconBackgroundColor)
 
-
+        @Suppress("unused")
         fun tintPopup(color: Int): Int {
-            return tintWithColor(cardBG, tileColor(color))
+            return tintWithColor(base = cardBG, color = tileColor(color))
         }
 
         fun titleColorForBG(background: Int): Int {
@@ -89,7 +84,6 @@ interface ColorTheme {
         fun hintColorForBG(background: Int): Int {
             return (if (background.luminance > .6f) 0 else 0xffffff) or 0x55000000
         }
-
 
         fun tintWithColor(base: Int, color: Int): Int {
             val tintHSL = FloatArray(3)
@@ -121,13 +115,13 @@ interface ColorTheme {
                 }!!
             }
             val (hue, saturation) = run {
-                val targetness = (.9f - s * s * .38f).coerceAtLeast(0f)
+                val targetNess = (.9f - s * s * .38f).coerceAtLeast(0f)
                 val diff = run {
                     val a = targetHue - h
                     val b = 360f - abs(a)
                     if (abs(a) < b) a else b * a.sign
                 }
-                val rotation = targetness * diff
+                val rotation = targetNess * diff
                 val x = (h + rotation) % 360
                 val hue = if (x < 0) 360 + x else x
                 val sameness = (1 - abs(diff) / (360f / 2f))
@@ -146,9 +140,7 @@ interface ColorTheme {
             ColorUtils.colorToLAB(ColorUtils.HSLToColor(tmp), lab)
             lab[0] = (iconBackground[0] + 10).coerceAtLeast(20.0)
 
-            val tile = ColorUtils.LABToColor(lab[0], lab[1], lab[2])
-
-            return tile
+            return ColorUtils.LABToColor(lab[0], lab[1], lab[2])
         }
 
         fun labClosestVibrant(baseColor: Int, palette: Array<Int>): Int {
@@ -173,6 +165,7 @@ interface ColorTheme {
             return ColorUtils.LABToColor(tl, ta, tb)
         }
 
+        @Suppress("unused")
         fun darkestVisibleOn(backgroundColor: Int, color: Int): Int {
             val l = backgroundColor.luminance
             val lab = DoubleArray(3)

@@ -21,17 +21,22 @@ class ContextMap<T>(
         get() = contexts.values
 
     override fun containsKey(key: T) = contexts.containsKey(key)
+
     override fun containsValue(value: List<FloatArray>) = contexts.containsValue(value)
+
     override fun get(key: T) = contexts[key]
+
     override fun isEmpty() = contexts.isEmpty()
 
     private val lengthBuffer = FloatArray(contextDataSize)
+
     fun calculateDistance(currentContext: FloatArray, multipleContexts: List<FloatArray>): Float {
         return multipleContexts.map { d ->
             calculateDistance(currentContext, d)
         }.reduce(Float::times)
     }
-    fun calculateDistance(a: FloatArray, b: FloatArray): Float {
+
+    private fun calculateDistance(a: FloatArray, b: FloatArray): Float {
         a.forEachIndexed { i, fl ->
             lengthBuffer[i] = differentiator(i, fl, b[i])
             lengthBuffer[i] *= lengthBuffer[i]
@@ -39,7 +44,10 @@ class ContextMap<T>(
         return lengthBuffer.sum()
     }
 
-    fun trimContextListIfTooBig(list: List<FloatArray>, maxContexts: Int): List<FloatArray> {
+    private fun trimContextListIfTooBig(
+        list: List<FloatArray>,
+        maxContexts: Int
+    ): List<FloatArray> {
         val s = list.size
         return if (list.size > maxContexts) {
             val matches = list.mapIndexedTo(ArrayList()) { ai, a ->
@@ -50,7 +58,7 @@ class ContextMap<T>(
                     it.sortBy { (_, c) -> c }
                 }[0]
             }
-            matches.sortBy { (array, closest) ->
+            matches.sortBy { (_, closest) ->
                 closest.second
             }
             var amountOfFiledMixAttempts = 0
@@ -77,6 +85,9 @@ class ContextMap<T>(
     }
 
     fun push(item: T, data: FloatArray, maxContexts: Int) {
-        contexts[item] = contexts[item]?.plus(data)?.let { trimContextListIfTooBig(it, maxContexts) } ?: listOf(data)
+        contexts[item] =
+            contexts[item]?.plus(data)?.let { trimContextListIfTooBig(it, maxContexts) } ?: listOf(
+                data
+            )
     }
 }

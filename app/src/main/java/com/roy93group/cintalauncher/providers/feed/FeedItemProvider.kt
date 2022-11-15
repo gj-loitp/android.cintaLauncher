@@ -13,7 +13,9 @@ abstract class FeedItemProvider {
     protected inline val settings: Settings
         get() = feed.settings
 
-    fun get(): List<FeedItem> = itemCache ?: getUpdated().also { itemCache = it }
+    fun get(): List<FeedItem> = itemCache ?: getUpdated().also {
+        itemCache = it
+    }
 
     fun preInit(feed: Feed) {
         this.feed = feed

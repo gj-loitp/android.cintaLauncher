@@ -15,3 +15,4 @@ class NotificationProvider(val context: Context) : FeedItemProvider() {
         return NotificationService.notifications
     }
 }
+

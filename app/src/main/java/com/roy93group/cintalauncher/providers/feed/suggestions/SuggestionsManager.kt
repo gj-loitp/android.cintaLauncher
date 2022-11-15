@@ -17,7 +17,6 @@ import com.roy93group.cintalauncher.data.items.LauncherItem
 import com.roy93group.cintalauncher.storage.Settings
 import java.util.*
 import java.util.concurrent.locks.ReentrantLock
-import kotlin.collections.HashMap
 import kotlin.concurrent.thread
 import kotlin.concurrent.withLock
 import kotlin.math.abs
@@ -41,7 +40,9 @@ object SuggestionsManager {
 
     fun getSuggestions(): List<LauncherItem> = suggestions
 
-    fun getNonPinnedSuggestions(pinnedItems: List<LauncherItem>): List<LauncherItem> = suggestions - pinnedItems
+    @Suppress("unused")
+    fun getNonPinnedSuggestions(pinnedItems: List<LauncherItem>): List<LauncherItem> =
+        suggestions - pinnedItems
 
     fun onItemOpened(context: Context, item: LauncherItem) {
         thread(isDaemon = true, name = "SuggestionManager: saving opening context") {
@@ -59,19 +60,19 @@ object SuggestionsManager {
         context: Context,
         settings: Settings
     ) {
-        loadFromStorage(settings, context, appManager)
+        loadFromStorage(settings = settings, context = context, appManager = appManager)
         updateSuggestions(context)
     }
 
     fun onResume(context: Context, onEnd: () -> Unit) {
-        thread (isDaemon = true, name = "SuggestionManager: onResume") {
+        thread(isDaemon = true, name = "SuggestionManager: onResume") {
             updateSuggestions(context)
             onEnd()
         }
     }
 
     fun onPause(settings: Settings, context: Context) {
-        saveToStorage(settings, context)
+        saveToStorage(settings = settings, context = context)
     }
 
     private fun differentiator(i: Int, a: Float, b: Float): Float {
@@ -84,7 +85,7 @@ object SuggestionsManager {
     private fun saveItemOpenContext(context: Context, item: LauncherItem) {
         val data = FloatArray(CONTEXT_DATA_SIZE)
         getCurrentContext(context, data)
-        contextMap.push(item, data, MAX_CONTEXT_COUNT)
+        contextMap.push(item = item, data = data, maxContexts = MAX_CONTEXT_COUNT)
     }
 
     private fun updateSuggestions(context: Context) {
@@ -96,9 +97,9 @@ object SuggestionsManager {
 
             HashMap<String, UsageStats>().apply {
                 usageStatsManager.queryUsageStats(
-                    UsageStatsManager.INTERVAL_DAILY,
-                    c.timeInMillis,
-                    System.currentTimeMillis()
+                    /* intervalType = */ UsageStatsManager.INTERVAL_DAILY,
+                    /* beginTime = */ c.timeInMillis,
+                    /* endTime = */ System.currentTimeMillis()
                 ).forEach {
                     this[it.packageName] = it
                 }
@@ -119,10 +120,11 @@ object SuggestionsManager {
                             (c[Calendar.MINUTE] / 20f).coerceAtMost(1f).pow(2)
                         }
                     } else 0f
-
                     contextMap.calculateDistance(currentData, data) + timeF
                 }
-                sortedEntries.map { it.key }
+                sortedEntries.map {
+                    it.key
+                }
             }
         }
     }
@@ -131,16 +133,16 @@ object SuggestionsManager {
         val batteryManager = context.getSystemService(BatteryManager::class.java)
         val audioManager = context.getSystemService(AudioManager::class.java)
         val rightNow = Calendar.getInstance()
-
-        val batteryLevel = batteryManager
-            .getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
-        val isPluggedIn = batteryManager
-            .getIntProperty(BatteryManager.BATTERY_PROPERTY_STATUS) == BatteryManager.BATTERY_STATUS_CHARGING
-        val currentHourIn24Format = rightNow[Calendar.HOUR_OF_DAY] + rightNow[Calendar.MINUTE] / 60f + rightNow[Calendar.SECOND] / 60f / 60f
+        val batteryLevel = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
+        val isPluggedIn =
+            batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_STATUS) == BatteryManager.BATTERY_STATUS_CHARGING
+        val currentHourIn24Format =
+            rightNow[Calendar.HOUR_OF_DAY] + rightNow[Calendar.MINUTE] / 60f + rightNow[Calendar.SECOND] / 60f / 60f
         val isWeekend = rightNow[Calendar.DAY_OF_WEEK].let {
             it == Calendar.SATURDAY || it == Calendar.SUNDAY
         }
-        val isHeadSetConnected = audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS).isNotEmpty()
+        val isHeadSetConnected =
+            audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS).isNotEmpty()
         val connManager = context.getSystemService(WifiManager::class.java)
         val isWifiOn = connManager!!.isWifiEnabled
 
@@ -163,7 +165,8 @@ object SuggestionsManager {
                 appManager.parseLauncherItem(app)?.let { item ->
                     settings.getStrings("stats:app_opening_context:$app")
                         ?.map(String::toFloat)?.let { floats ->
-                            contextMap[item] = floats.chunked(CONTEXT_DATA_SIZE).map(List<Float>::toFloatArray)
+                            contextMap[item] =
+                                floats.chunked(CONTEXT_DATA_SIZE).map(List<Float>::toFloatArray)
                         }
                 } ?: settings.edit(context) {
                     setStrings("stats:app_opening_context:$app", null)

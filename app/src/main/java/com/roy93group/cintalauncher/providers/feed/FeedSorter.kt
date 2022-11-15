@@ -2,16 +2,15 @@ package com.roy93group.cintalauncher.providers.feed
 
 import com.roy93group.cintalauncher.data.feed.items.FeedItem
 import java.time.Instant
-import java.util.*
 
 object FeedSorter {
     fun rearrange(items: ArrayList<FeedItem>): List<FeedItem> {
-        items.sortByDescending(FeedSorter::sorter)
+        items.sortByDescending(selector = FeedSorter::sorter)
         return items
     }
 
     fun getMostRelevant(items: List<FeedItem>): FeedItem? {
-        return items.maxByOrNull(FeedSorter::sorter)
+        return items.maxByOrNull(selector = FeedSorter::sorter)
     }
 
     private fun sorter(it: FeedItem): Instant {

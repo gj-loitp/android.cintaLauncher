@@ -17,11 +17,16 @@ import java.time.Instant
 
 object MediaItemCreator {
 
-    fun create(context: Context, controller: MediaController, mediaMetadata: MediaMetadata): FeedItemWithMedia {
+    fun create(
+        context: Context,
+        controller: MediaController,
+        mediaMetadata: MediaMetadata
+    ): FeedItemWithMedia {
 
         val title = mediaMetadata.getString(MediaMetadata.METADATA_KEY_DISPLAY_TITLE)
             ?: mediaMetadata.getString(MediaMetadata.METADATA_KEY_TITLE)
             ?: null
+
         val subtitle = mediaMetadata.getString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE)
             ?: mediaMetadata.getString(MediaMetadata.METADATA_KEY_ARTIST)
             ?: mediaMetadata.getString(MediaMetadata.METADATA_KEY_ALBUM_ARTIST)
@@ -63,12 +68,12 @@ object MediaItemCreator {
         return object : FeedItemWithMedia {
             override val color = color
             override val title = title.toString()
-
             override val sourceIcon = sourceIcon
             override val shouldTintIcon = false
             override val description = subtitle
             override val source = label.toString()
             override val instant = Instant.MAX
+
             override fun onTap(view: View) {
                 controller.sessionActivity?.send()
             }
@@ -78,9 +83,11 @@ object MediaItemCreator {
             override fun previous(v: View) {
                 controller.transportControls.skipToPrevious()
             }
+
             override fun next(v: View) {
                 controller.transportControls.skipToNext()
             }
+
             override fun togglePause(v: ImageView) {
                 if (controller.playbackState?.state == PlaybackState.STATE_PLAYING) {
                     controller.transportControls.pause()
@@ -90,6 +97,7 @@ object MediaItemCreator {
                     v.setImageResource(R.drawable.ic_pause)
                 }
             }
+
             override fun isPlaying(): Boolean {
                 return controller.playbackState?.state == PlaybackState.STATE_PLAYING
             }

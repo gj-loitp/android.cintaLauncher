@@ -13,13 +13,13 @@ import com.roy93group.cintalauncher.providers.feed.AsyncFeedItemProvider
 import com.roy93group.cintalauncher.providers.feed.Feed.Companion.MAX_ITEMS_HINT
 import com.roy93group.cintalauncher.util.AsyncLoadDrawable
 import com.roy93group.cintalauncher.util.ImageLoader
-import io.posidon.android.rsslib.RssItem
 import io.posidon.android.rsslib.RSS
+import io.posidon.android.rsslib.RssItem
 
 object RssProvider : AsyncFeedItemProvider() {
 
     private val imageCache = HashMap<String, Drawable>()
-    
+
     private fun loadBitmap(url: String) = imageCache.getOrPut(url) {
         AsyncLoadDrawable.load {
             BitmapDrawable(ImageLoader.loadNullableBitmapOnCurrentThread(url))
@@ -39,7 +39,12 @@ object RssProvider : AsyncFeedItemProvider() {
 
     override fun loadItems(): List<FeedItem> {
         val items = ArrayList<RssItem>()
-        if (RSS.load(items, settings.getStrings("feed:rss_sources")?.toList() ?: emptyList(), MAX_ITEMS_HINT).isNotEmpty()) {
+        if (RSS.load(
+                output = items,
+                urls = settings.getStrings("feed:rss_sources")?.toList() ?: emptyList(),
+                maxItemsPerURL = MAX_ITEMS_HINT
+            ).isNotEmpty()
+        ) {
             return emptyList()
         }
         items.sort()
@@ -51,15 +56,18 @@ object RssProvider : AsyncFeedItemProvider() {
             println(it.title)
             if (it.img == null) {
                 object : FeedItem {
-                    override val color = if (it.source.accentColor == 0) 0 else (it.source.accentColor ?: 0) or 0xff000000.toInt()
+                    override val color =
+                        if (it.source.accentColor == 0) 0 else (it.source.accentColor
+                            ?: 0) or 0xff000000.toInt()
                     override val title = it.title
                     override val sourceIcon = it.source.iconUrl?.let(RssProvider::loadBitmap)
-                    override val description = null
+                    override val description: Nothing? = null
                     override val source: String = it.source.name
                     override val instant = it.time.toInstant()
                     override fun onTap(view: View) {
                         view.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(uid)))
                     }
+
                     override val isDismissible = false
                     override val shouldTintIcon = false
                     override val uid = it.link.trim { it <= ' ' }
@@ -69,18 +77,23 @@ object RssProvider : AsyncFeedItemProvider() {
             } else {
                 object : FeedItemWithBigImage {
                     override val image = it.img!!
-                    override val color = if (it.source.accentColor == 0) 0 else (it.source.accentColor ?: 0) or 0xff000000.toInt()
+                    override val color =
+                        if (it.source.accentColor == 0) 0 else (it.source.accentColor
+                            ?: 0) or 0xff000000.toInt()
                     override val title = it.title
                     override val sourceIcon = it.source.iconUrl?.let(RssProvider::loadBitmap)
-                    override val description = null
+                    override val description: Nothing? = null
                     override val source: String = it.source.name
                     override val instant = it.time.toInstant()
                     override fun onTap(view: View) {
                         view.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(uid)))
                     }
+
                     override val isDismissible = false
                     override val shouldTintIcon = false
-                    override val uid = it.link.trim { it <= ' ' }
+                    override val uid = it.link.trim {
+                        it <= ' '
+                    }
                     override val id = id
                     override val meta = meta
                 }

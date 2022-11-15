@@ -12,27 +12,30 @@ object ColorExtractorSetting {
 
     private const val KEY_COLOR_THEME = "color_theme"
 
+    @Suppress("unused")
     const val COLOR_THEME_PLAIN = 0
     const val COLOR_THEME_WALLPAPER_TINT = 1
     const val COLOR_THEME_WALLPAPER_TINT_SYSTEM_ASSISTED = 2
     const val COLOR_THEME_MONET = 3
 
-    const val COLOR_THEME_DEFAULT = COLOR_THEME_WALLPAPER_TINT
+    private const val COLOR_THEME_DEFAULT = COLOR_THEME_WALLPAPER_TINT
 }
 
 object ColorThemeDayNightSetting {
     val Settings.colorThemeDayNight: ColorThemeOptions.DayNight
         get() = ColorThemeOptions.DayNight.values()[get(KEY, DEFAULT)]
 
+    @Suppress("unused")
     var Settings.SettingsEditor.colorThemeDayNight: ColorThemeOptions.DayNight
         get() = ColorThemeOptions.DayNight.values()[settings[KEY, DEFAULT]]
         inline set(value) = setColorThemeDayNight(value.ordinal)
 
-    fun Settings.SettingsEditor.setColorThemeDayNight(i: Int) { KEY set i }
+    fun Settings.SettingsEditor.setColorThemeDayNight(i: Int) {
+        KEY set i
+    }
 
     private const val KEY = "color_theme:day_night"
-
-    const val DEFAULT = 0
+    private const val DEFAULT = 0
 }
 
 object ScrollbarControllerSetting {
@@ -45,12 +48,15 @@ object ScrollbarControllerSetting {
 
     private const val KEY_SCROLLBAR_CONTROLLER = "scrollbar_controller"
 
+    @Suppress("unused")
     const val SCROLLBAR_CONTROLLER_ALPHABETIC = 0
     const val SCROLLBAR_CONTROLLER_BY_HUE = 1
 
+    @Suppress("unused")
     const val SCROLLBAR_CONTROLLER_DEFAULT = SCROLLBAR_CONTROLLER_ALPHABETIC
 }
 
+@Suppress("unused")
 object DoReshapeAdaptiveIconsSetting {
     val Settings.doReshapeAdaptiveIcons: Boolean
         get() = get(KEY, DEFAULT)
@@ -61,5 +67,6 @@ object DoReshapeAdaptiveIconsSetting {
 
     private const val KEY = "icons:reshape_adaptive"
 
+    @Suppress("unused")
     const val DEFAULT = false
 }

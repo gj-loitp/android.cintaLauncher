@@ -16,31 +16,38 @@ import java.time.Instant
 
 object NotificationCreator {
 
-    inline fun getSmallIcon(context: Context, n: StatusBarNotification): Drawable? {
-        return n.notification.smallIcon?.loadDrawable(context) ?: n.notification.getLargeIcon()?.loadDrawable(context)
+    private fun getSmallIcon(context: Context, n: StatusBarNotification): Drawable? {
+        return n.notification.smallIcon?.loadDrawable(context) ?: n.notification.getLargeIcon()
+            ?.loadDrawable(context)
     }
 
-    inline fun getLargeIcon(context: Context, n: StatusBarNotification): Drawable? {
+    @Suppress("unused")
+    fun getLargeIcon(context: Context, n: StatusBarNotification): Drawable? {
         return n.notification.getLargeIcon()?.loadDrawable(context)
     }
 
-    inline fun getSource(context: Context, n: StatusBarNotification): String {
-        return context.packageManager.getApplicationLabel(context.packageManager.getApplicationInfo(n.packageName, 0)).toString()
+    private fun getSource(context: Context, n: StatusBarNotification): String {
+        return context.packageManager.getApplicationLabel(
+            context.packageManager.getApplicationInfo(
+                /* p0 = */ n.packageName,
+                /* p1 = */ 0
+            )
+        ).toString()
     }
 
-    inline fun getColor(n: StatusBarNotification): Int {
+    fun getColor(n: StatusBarNotification): Int {
         return n.notification.color
     }
 
-    inline fun getTitle(extras: Bundle): CharSequence? {
+    private fun getTitle(extras: Bundle): CharSequence? {
         val title = extras.getCharSequence(Notification.EXTRA_TITLE)
-        if (title == null || title.toString().replace(" ", "").isEmpty()) {
+        if (title == null || title.toString().replace(oldValue = " ", newValue = "").isEmpty()) {
             return null
         }
         return title
     }
 
-    inline fun getText(extras: Bundle): CharSequence? {
+    private fun getText(extras: Bundle): CharSequence? {
         val messages = extras.getParcelableArray(Notification.EXTRA_MESSAGES)
         return if (messages == null) {
             extras.getCharSequence(Notification.EXTRA_BIG_TEXT)
@@ -54,7 +61,7 @@ object NotificationCreator {
         }
     }
 
-    inline fun getBigImage(context: Context, extras: Bundle): Drawable? {
+    private fun getBigImage(context: Context, extras: Bundle): Drawable? {
         val b = extras[Notification.EXTRA_PICTURE] as Bitmap?
         if (b != null) {
             try {
@@ -70,7 +77,7 @@ object NotificationCreator {
         return null
     }
 
-    inline fun getImportance(importance: Int): Int {
+    private fun getImportance(importance: Int): Int {
         return when (importance) {
             NotificationManager.IMPORTANCE_NONE,
             NotificationManager.IMPORTANCE_MIN -> -1
@@ -82,7 +89,11 @@ object NotificationCreator {
         }
     }
 
-    fun create(context: Context, notification: StatusBarNotification, notificationService: NotificationService): FeedItem {
+    fun create(
+        context: Context,
+        notification: StatusBarNotification,
+        notificationService: NotificationService
+    ): FeedItem {
 
         val extras = notification.notification.extras
 
@@ -92,8 +103,8 @@ object NotificationCreator {
             title = text
             text = null
         }
-        val icon = getSmallIcon(context, notification)
-        val source = getSource(context, notification)
+        val icon = getSmallIcon(context = context, n = notification)
+        val source = getSource(context = context, n = notification)
 
         //println(extras.keySet().joinToString("\n") { "$it -> " + extras[it].toString() })
 
@@ -105,7 +116,8 @@ object NotificationCreator {
 
         val color = getColor(notification)
 
-        val channel = NotificationManagerCompat.from(context).getNotificationChannel(notification.notification.channelId)
+        val channel = NotificationManagerCompat.from(context)
+            .getNotificationChannel(/* channelId = */ notification.notification.channelId)
         val importance = channel?.importance?.let { getImportance(it) } ?: 0
 
         val actions = notification.notification.actions?.map { action ->
@@ -115,9 +127,9 @@ object NotificationCreator {
         }?.toTypedArray() ?: emptyArray()
 
         val id = (notification.id.toLong() shl 32 or
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) notification.uid.toLong()
-            else notification.packageName.hashCode().toLong()
-        ) xor (notification.tag?.longHash() ?: 0)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) notification.uid.toLong()
+                else notification.packageName.hashCode().toLong()
+                ) xor (notification.tag?.longHash() ?: 0)
 
         val uid = buildString {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -135,7 +147,6 @@ object NotificationCreator {
         }
 
         val isDismissible = notification.isClearable
-
         val autoCancel = notification.notification.flags and Notification.FLAG_AUTO_CANCEL != 0
 
         val meta = FeedItemMeta(
@@ -158,16 +169,17 @@ object NotificationCreator {
                         notification.notification.contentIntent?.send()
                         if (autoCancel)
                             notificationService.cancelNotification(notification.key)
-                    }
-                    catch (e: Exception) {
+                    } catch (e: Exception) {
                         notificationService.cancelNotification(notification.key)
                         e.printStackTrace()
                     }
                 }
+
                 override val isDismissible = isDismissible
                 override fun onDismiss(view: View) {
                     notificationService.cancelNotification(notification.key)
                 }
+
                 override val uid = uid
                 override val id = id
                 override val meta = meta
@@ -191,16 +203,17 @@ object NotificationCreator {
                         notification.notification.contentIntent?.send()
                         if (autoCancel)
                             notificationService.cancelNotification(notification.key)
-                    }
-                    catch (e: Exception) {
+                    } catch (e: Exception) {
                         notificationService.cancelNotification(notification.key)
                         e.printStackTrace()
                     }
                 }
+
                 override val isDismissible = isDismissible
                 override fun onDismiss(view: View) {
                     notificationService.cancelNotification(notification.key)
                 }
+
                 override val uid = uid
                 override val id = id
                 override val meta = meta
@@ -224,16 +237,17 @@ object NotificationCreator {
                         notification.notification.contentIntent?.send()
                         if (autoCancel)
                             notificationService.cancelNotification(notification.key)
-                    }
-                    catch (e: Exception) {
+                    } catch (e: Exception) {
                         notificationService.cancelNotification(notification.key)
                         e.printStackTrace()
                     }
                 }
+
                 override val isDismissible = isDismissible
                 override fun onDismiss(view: View) {
                     notificationService.cancelNotification(notification.key)
                 }
+
                 override val uid = uid
                 override val id = id
                 override val meta = meta
@@ -253,16 +267,17 @@ object NotificationCreator {
                     notification.notification.contentIntent?.send()
                     if (autoCancel)
                         notificationService.cancelNotification(notification.key)
-                }
-                catch (e: Exception) {
+                } catch (e: Exception) {
                     notificationService.cancelNotification(notification.key)
                     e.printStackTrace()
                 }
             }
+
             override val isDismissible = isDismissible
             override fun onDismiss(view: View) {
                 notificationService.cancelNotification(notification.key)
             }
+
             override val uid = uid
             override val id = id
             override val meta = meta

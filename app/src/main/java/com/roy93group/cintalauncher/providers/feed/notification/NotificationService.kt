@@ -20,18 +20,18 @@ import com.roy93group.cintalauncher.data.feed.items.FeedItem
 import com.roy93group.cintalauncher.data.feed.items.FeedItemWithMedia
 import com.roy93group.cintalauncher.providers.feed.media.MediaItemCreator
 import com.roy93group.cintalauncher.util.StackTraceActivity
-import java.util.*
 import java.util.concurrent.locks.ReentrantLock
-import kotlin.collections.HashMap
 import kotlin.concurrent.thread
 
 class NotificationService : NotificationListenerService() {
 
-    val componentName = ComponentName(BuildConfig.APPLICATION_ID, this::class.java.name)
+    private val componentName = ComponentName(BuildConfig.APPLICATION_ID, this::class.java.name)
 
     override fun onCreate() {
         StackTraceActivity.init(applicationContext)
-        if (!NotificationManagerCompat.getEnabledListenerPackages(applicationContext).contains(applicationContext.packageName)) {
+        if (!NotificationManagerCompat.getEnabledListenerPackages(applicationContext)
+                .contains(applicationContext.packageName)
+        ) {
             stopSelf()
         } else {
             val msm = getSystemService(MediaSessionManager::class.java)
@@ -50,14 +50,37 @@ class NotificationService : NotificationListenerService() {
         loadNotifications(activeNotifications)
     }
 
-    override fun onNotificationPosted(s: StatusBarNotification) = loadNotifications(activeNotifications)
-    override fun onNotificationPosted(s: StatusBarNotification?, rm: RankingMap?) = loadNotifications(activeNotifications)
-    override fun onNotificationRemoved(s: StatusBarNotification) = loadNotifications(activeNotifications)
-    override fun onNotificationRemoved(s: StatusBarNotification?, rm: RankingMap?) = loadNotifications(activeNotifications)
-    override fun onNotificationRemoved(s: StatusBarNotification, rm: RankingMap, reason: Int) = loadNotifications(activeNotifications)
-    override fun onNotificationRankingUpdate(rm: RankingMap) = loadNotifications(activeNotifications)
-    override fun onNotificationChannelModified(pkg: String, u: UserHandle, c: NotificationChannel, modifType: Int) = loadNotifications(activeNotifications)
-    override fun onNotificationChannelGroupModified(pkg: String, u: UserHandle, g: NotificationChannelGroup, modifType: Int) = loadNotifications(activeNotifications)
+    override fun onNotificationPosted(s: StatusBarNotification) =
+        loadNotifications(activeNotifications)
+
+    override fun onNotificationPosted(s: StatusBarNotification?, rm: RankingMap?) =
+        loadNotifications(activeNotifications)
+
+    override fun onNotificationRemoved(s: StatusBarNotification) =
+        loadNotifications(activeNotifications)
+
+    override fun onNotificationRemoved(s: StatusBarNotification?, rm: RankingMap?) =
+        loadNotifications(activeNotifications)
+
+    override fun onNotificationRemoved(s: StatusBarNotification, rm: RankingMap, reason: Int) =
+        loadNotifications(activeNotifications)
+
+    override fun onNotificationRankingUpdate(rm: RankingMap) =
+        loadNotifications(activeNotifications)
+
+    override fun onNotificationChannelModified(
+        pkg: String,
+        u: UserHandle,
+        c: NotificationChannel,
+        modifType: Int
+    ) = loadNotifications(activeNotifications)
+
+    override fun onNotificationChannelGroupModified(
+        pkg: String,
+        u: UserHandle,
+        g: NotificationChannelGroup,
+        modifType: Int
+    ) = loadNotifications(activeNotifications)
 
     private fun loadNotifications(notifications: Array<StatusBarNotification>?) {
         thread(name = "NotificationService loading thread", isDaemon = true) {
@@ -74,7 +97,8 @@ class NotificationService : NotificationListenerService() {
                             i++
                             continue
                         }
-                        val isSummary = notification.notification.flags and Notification.FLAG_GROUP_SUMMARY != 0
+                        val isSummary =
+                            notification.notification.flags and Notification.FLAG_GROUP_SUMMARY != 0
                         if (!isSummary) {
                             val isMusic = notification.notification.extras
                                 .getCharSequence(Notification.EXTRA_TEMPLATE) == Notification.MediaStyle::class.java.name
@@ -83,17 +107,18 @@ class NotificationService : NotificationListenerService() {
                                 continue
                             }
                             tmpNotifications += NotificationCreator.create(
-                                applicationContext,
-                                notification,
-                                this
+                                context = applicationContext,
+                                notification = notification,
+                                notificationService = this
                             )
                         }
                         i++
                     }
                 }
                 tmpNotifications = tmpNotifications.distinctBy { it.uid }.toMutableList()
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-            catch (e: Exception) { e.printStackTrace() }
             lock.lock()
             Companion.notifications = tmpNotifications
             listeners.forEach { (_, x) -> x() }
@@ -112,13 +137,27 @@ class NotificationService : NotificationListenerService() {
             return
         }
         val controller = pickController(controllers)
-        mediaItem = controller.metadata?.let { MediaItemCreator.create(applicationContext, controller, it) }
+        mediaItem =
+            controller.metadata?.let {
+                MediaItemCreator.create(
+                    context = applicationContext,
+                    controller = controller,
+                    mediaMetadata = it
+                )
+            }
         if (old != mediaItem) {
             onSummaryUpdate()
         }
         controller.registerCallback(object : MediaController.Callback() {
             override fun onMetadataChanged(metadata: MediaMetadata?) {
-                mediaItem = metadata?.let { MediaItemCreator.create(applicationContext, controller, it) }
+                mediaItem =
+                    metadata?.let {
+                        MediaItemCreator.create(
+                            context = applicationContext,
+                            controller = controller,
+                            mediaMetadata = it
+                        )
+                    }
                 onSummaryUpdate()
             }
         })
@@ -126,7 +165,9 @@ class NotificationService : NotificationListenerService() {
 
     companion object {
         fun init(context: Context) {
-            if (NotificationManagerCompat.getEnabledListenerPackages(context).contains(context.packageName)) {
+            if (NotificationManagerCompat.getEnabledListenerPackages(context)
+                    .contains(context.packageName)
+            ) {
                 context.startService(Intent(context, NotificationService::class.java))
             }
         }

@@ -11,7 +11,6 @@ import android.provider.MediaStore
 import android.widget.Toast
 import java.io.*
 
-
 object ExternalStorage {
 
     inline fun write(context: Context, name: String, fn: (OutputStream, String) -> Unit) {
@@ -22,7 +21,11 @@ object ExternalStorage {
         }
     }
 
-    inline fun writeOutsideScope(context: Context, name: String, fn: (OutputStream, String) -> Unit) {
+    inline fun writeOutsideScope(
+        context: Context,
+        name: String,
+        fn: (OutputStream, String) -> Unit
+    ) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             val values = ContentValues().apply {
                 put(MediaStore.Downloads.DISPLAY_NAME, name)
@@ -31,38 +34,64 @@ object ExternalStorage {
             }
 
             val collection = MediaStore.Downloads.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
-            val uri = context.contentResolver.insert(collection, values)!!
+            val uri = context.contentResolver.insert(collection, values)
 
-            context.contentResolver.openOutputStream(uri).use {
-                fn(it!!, "Download/$name")
+            uri?.let { u ->
+                context.contentResolver.openOutputStream(u).use { os ->
+                    os?.let {
+                        fn(it, "Download/$name")
+                    }
+                }
+
+                values.clear()
+                values.put(MediaStore.Downloads.IS_PENDING, 0)
+                context.contentResolver.update(
+                    /* uri = */ u,
+                    /* values = */values,
+                    /* where = */null,
+                    /* selectionArgs = */null
+                )
             }
-
-            values.clear()
-            values.put(MediaStore.Downloads.IS_PENDING, 0)
-            context.contentResolver.update(uri, values, null, null)
-        } else write(context, name, fn)
+        } else write(context = context, name = name, fn = fn)
     }
 
-    inline fun writeDataOutsideScope(context: Context, name: String, feedbackPopup: Boolean, block: (ObjectOutputStream) -> Unit) {
+    inline fun writeDataOutsideScope(
+        context: Context,
+        name: String,
+        feedbackPopup: Boolean,
+        block: (ObjectOutputStream) -> Unit
+    ) {
         writeOutsideScope(context, name) { o, path ->
             val out = ObjectOutputStream(o)
             try {
                 block(out)
-                if (feedbackPopup) Toast.makeText(context, "Saved: $path", Toast.LENGTH_LONG).show()
+                if (feedbackPopup) Toast.makeText(
+                    /* context = */ context,
+                    /* text = */"Saved: $path",
+                    /* duration = */Toast.LENGTH_LONG
+                ).show()
             } catch (e: Exception) {
                 e.printStackTrace()
-                if (feedbackPopup) Toast.makeText(context, "Error: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+                if (feedbackPopup) Toast.makeText(
+                    /* context = */ context,
+                    /* text = */ "Error: ${e.localizedMessage}",
+                    /* duration = */ Toast.LENGTH_LONG
+                ).show()
             }
         }
     }
 
     inline fun <T> read(context: Context, uri: Uri, block: (ObjectInputStream) -> T): T? {
-        return try { ObjectInputStream(context.contentResolver.openInputStream(uri)).use(block) }
-        catch (e: IOException) { null }
+        return try {
+            ObjectInputStream(context.contentResolver.openInputStream(uri)).use(block)
+        } catch (e: IOException) {
+            null
+        }
     }
 
     private const val FILE_REQUEST_CODE = 0xf113
 
+    @Suppress("unused")
     fun pickFile(activity: Activity, mime: String) {
         val intent = Intent()
         intent.action = Intent.ACTION_OPEN_DOCUMENT
@@ -71,9 +100,24 @@ object ExternalStorage {
         activity.startActivityForResult(intent, FILE_REQUEST_CODE)
     }
 
-    fun onActivityResultPickFile(activity: Activity, requestCode: Int, data: Intent?, fn: (InputStream?) -> Unit) {
+    @Suppress("unused")
+    fun onActivityResultPickFile(
+        activity: Activity,
+        requestCode: Int,
+        data: Intent?,
+        fn: (InputStream?) -> Unit
+    ) {
         if (requestCode == FILE_REQUEST_CODE) {
-            fn(try { activity.contentResolver.openInputStream(data!!.data!!)!! } catch (e: Exception) { null })
+            fn(
+                try {
+                    data?.data?.let { uri ->
+                        activity.contentResolver.openInputStream(uri)
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    null
+                }
+            )
         }
     }
 }

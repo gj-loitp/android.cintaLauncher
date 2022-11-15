@@ -10,22 +10,17 @@ import com.roy93group.cintalauncher.providers.color.theme.ColorTheme.Companion.l
 class DarkColorTheme(
     val palette: ColorPalette,
 ) : ColorTheme {
-
     override val accentColor = palette.primary
-
     override val uiBG = palette.neutralVeryDark
     override val uiTitle = palette.neutralVeryLight
     override val uiDescription = palette.neutralLight
     override val uiHint = palette.neutralMedium
-
     override val cardBG = palette.neutralDark
     override val cardTitle = palette.neutralVeryLight
     override val cardDescription = palette.neutralLight
     override val cardHint = palette.neutralMedium
-
     override val buttonColor = palette.neutralMedium
     override val buttonColorCallToAction = palette.secondary
-
     override val searchBarBG = palette.neutralDark
     override val searchBarFG = palette.neutralLight
 
@@ -47,25 +42,29 @@ class DarkColorTheme(
 
     override fun tileColor(iconBackgroundColor: Int) = when {
         iconBackgroundColor == 0 -> palette.neutralMedium
-        iconBackgroundColor.alpha == 0 -> labClosestVibrant(iconBackgroundColor, arrayOf(
-            palette.neutralVeryDark,
-            palette.neutralDark,
-            palette.neutralMedium,
-            palette.neutralLight,
-            palette.neutralVeryLight,
-            palette.primary,
-            palette.secondary,
-            ColorPalette.wallColor,
-        ))
-        else -> hueTintClosest(iconBackgroundColor, arrayOf(
-            palette.neutralVeryDark,
-            palette.neutralDark,
-            palette.neutralMedium,
-            palette.neutralLight,
-            palette.neutralVeryLight,
-            palette.primary,
-            palette.secondary,
-            ColorPalette.wallColor,
-        ))
+        iconBackgroundColor.alpha == 0 -> labClosestVibrant(
+            iconBackgroundColor, arrayOf(
+                palette.neutralVeryDark,
+                palette.neutralDark,
+                palette.neutralMedium,
+                palette.neutralLight,
+                palette.neutralVeryLight,
+                palette.primary,
+                palette.secondary,
+                ColorPalette.wallColor,
+            )
+        )
+        else -> hueTintClosest(
+            iconBackgroundColor, arrayOf(
+                palette.neutralVeryDark,
+                palette.neutralDark,
+                palette.neutralMedium,
+                palette.neutralLight,
+                palette.neutralVeryLight,
+                palette.primary,
+                palette.secondary,
+                ColorPalette.wallColor,
+            )
+        )
     }
 }

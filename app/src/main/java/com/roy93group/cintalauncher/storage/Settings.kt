@@ -9,8 +9,6 @@ import java.io.ObjectOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.locks.ReentrantLock
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 import kotlin.concurrent.thread
 import kotlin.concurrent.withLock
 
@@ -21,7 +19,7 @@ class Settings {
         const val SAVE_FILE = "settings"
     }
 
-    private abstract class Single <V> (
+    private abstract class Single<V>(
         val value: V
     ) {
         abstract fun toFloat(): Float
@@ -56,11 +54,8 @@ class Settings {
     }
 
     private val singles: HashMap<String, Single<*>> = HashMap()
-
     private val lists: HashMap<String, Array<String>> = HashMap()
-
     private var isInitialized: Boolean = false
-
     private val editor = SettingsEditor(this)
 
     class SettingsEditor(val settings: Settings) {
@@ -93,19 +88,19 @@ class Settings {
         }
 
         @JvmName("set1")
-        inline infix fun String.set(value: Int) = set(this, value)
+        infix fun String.set(value: Int) = set(this, value)
 
         @JvmName("set1")
-        inline infix fun String.set(value: Float) = set(this, value)
+        infix fun String.set(value: Float) = set(this, value)
 
         @JvmName("set1")
-        inline infix fun String.set(value: Boolean) = set(this, value)
+        infix fun String.set(value: Boolean) = set(this, value)
 
         @JvmName("set1")
-        inline infix fun String.set(value: String?) = set(this, value)
+        infix fun String.set(value: String?) = set(this, value)
 
         @JvmName("set1")
-        inline infix fun String.set(value: Array<String>?) = set(this, value)
+        infix fun String.set(value: Array<String>?) = set(this, value)
     }
 
     fun edit(context: Context, block: SettingsEditor.() -> Unit) {
@@ -117,20 +112,28 @@ class Settings {
         }
     }
 
+    @Suppress("unused")
     fun saveNow(context: Context) = settingsFileLock.withLock {
         PrivateStorage.write(context, SAVE_FILE, ::serializeData)
     }
 
-    inline operator fun get(key: String, default: Int): Int = getInt(key) ?: default
-    inline operator fun get(key: String, default: Float): Float = getFloat(key) ?: default
-    inline operator fun get(key: String, default: Boolean): Boolean = getBoolean(key) ?: default
-    inline operator fun get(key: String, default: String): String = getString(key) ?: default
+    operator fun get(key: String, default: Int): Int = getInt(key) ?: default
+    operator fun get(key: String, default: Float): Float = getFloat(key) ?: default
+    operator fun get(key: String, default: Boolean): Boolean = getBoolean(key) ?: default
+    operator fun get(key: String, default: String): String = getString(key) ?: default
 
+    @Suppress("unused")
     inline fun getIntOr(key: String, default: () -> Int): Int = getInt(key) ?: default()
-    inline fun getFloatOr(key: String, default: () -> Float): Float = getFloat(key) ?: default()
-    inline fun getBoolOr(key: String, default: () -> Boolean): Boolean = getBoolean(key) ?: default()
-    inline fun getStringOr(key: String, default: () -> String): String = getString(key) ?: default()
 
+    @Suppress("unused")
+    inline fun getFloatOr(key: String, default: () -> Float): Float = getFloat(key) ?: default()
+
+    @Suppress("unused")
+    inline fun getBoolOr(key: String, default: () -> Boolean): Boolean =
+        getBoolean(key) ?: default()
+
+    @Suppress("unused")
+    inline fun getStringOr(key: String, default: () -> String): String = getString(key) ?: default()
 
     fun getInt(key: String): Int? {
         return singles[key]?.toInt()
@@ -155,7 +158,7 @@ class Settings {
     fun init(context: Context) {
         settingsFileLock.withLock {
             if (!isInitialized) {
-                PrivateStorage.read(context, SAVE_FILE, ::initializeData)
+                PrivateStorage.read(context = context, path = SAVE_FILE, block = ::initializeData)
                 isInitialized = true
             }
         }
@@ -170,16 +173,16 @@ class Settings {
                 ?: string.toFloatOrNull()?.let(::SingleFloat)
                 ?: string.let(::SingleString)
         } or
-        fill(lists, root.getJSONArray("list")) {
-            val json = getJSONArray(it)
-            val list = ArrayList<String>()
-            var i = 0
-            while (i < json.length()) {
-                list.add(json.getString(i))
-                i++
-            }
-            list.toTypedArray()
-        }
+                fill(lists, root.getJSONArray("list")) {
+                    val json = getJSONArray(it)
+                    val list = ArrayList<String>()
+                    var i = 0
+                    while (i < json.length()) {
+                        list.add(json.getString(i))
+                        i++
+                    }
+                    list.toTypedArray()
+                }
     }
 
     private fun serializeData(out: ObjectOutputStream) {
@@ -225,27 +228,30 @@ class Settings {
         return hasUpdated
     }
 
+    @Suppress("unused")
     fun saveBackup(context: Context) {
         settingsFileLock.withLock {
             ExternalStorage.writeDataOutsideScope(
-                context,
-                "${
+                context = context,
+                name = "${
                     SimpleDateFormat(
                         "'home_'MMMd-HHmmss",
                         Locale.getDefault()
                     ).format(Date())
                 }.cintabackup",
-                true, ::serializeData
+                feedbackPopup = true, block = ::serializeData
             )
         }
     }
 
+    @Suppress("unused")
     fun restoreFromBackup(context: Context, uri: Uri) {
         settingsFileLock.withLock {
             ExternalStorage.read(context, uri, ::initializeData)
         }
     }
 
+    @Suppress("unused")
     fun clearAllInformation() {
         settingsFileLock.withLock {
             singles.clear()
@@ -258,7 +264,11 @@ class Settings {
      */
     fun reload(context: Context): Boolean {
         return settingsFileLock.withLock {
-            PrivateStorage.read(context, SAVE_FILE, ::initializeData) != false
+            PrivateStorage.read(
+                context = context,
+                path = SAVE_FILE,
+                block = ::initializeData
+            ) != false
         }
     }
 }

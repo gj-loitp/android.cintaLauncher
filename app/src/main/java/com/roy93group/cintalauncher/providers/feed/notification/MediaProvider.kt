@@ -7,8 +7,8 @@ import com.roy93group.cintalauncher.providers.feed.FeedItemProvider
 class MediaProvider(val context: Context) : FeedItemProvider() {
 
     override fun onInit() {
-        NotificationService.init(context)
-        NotificationService.setOnUpdate(javaClass.name, ::update)
+        NotificationService.init(context = context)
+        NotificationService.setOnUpdate(key = javaClass.name, onUpdate = ::update)
     }
 
     override fun getUpdated(): List<FeedItem> {
