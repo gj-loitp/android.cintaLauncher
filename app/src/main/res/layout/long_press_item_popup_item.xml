@@ -5,10 +5,10 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical">
     <ImageView
-        style="@style/Theme.CintaLauncher.ItemPopup.Shortcut.Icon"
+        style="@style/Theme.AppLauncher.ItemPopup.Shortcut.Icon"
         android:id="@+id/icon"/>
     <TextView
-        style="@style/Theme.CintaLauncher.ItemPopup.Shortcut.Label"
+        style="@style/Theme.AppLauncher.ItemPopup.Shortcut.Label"
         android:id="@+id/text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

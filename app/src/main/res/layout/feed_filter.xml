@@ -4,18 +4,18 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/card"
-    style="@style/Theme.CintaLauncher.FeedFilter.Card">
+    style="@style/Theme.AppLauncher.FeedFilter.Card">
     <LinearLayout
-        style="@style/Theme.CintaLauncher.FeedFilter.Container"
+        style="@style/Theme.AppLauncher.FeedFilter.Container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical">
         <ImageView
-            style="@style/Theme.CintaLauncher.FeedFilter.Icon"
+            style="@style/Theme.AppLauncher.FeedFilter.Icon"
             android:id="@+id/icon"/>
         <TextView
-            style="@style/Theme.CintaLauncher.FeedFilter.Text"
+            style="@style/Theme.AppLauncher.FeedFilter.Text"
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

@@ -5,21 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
-    style="@style/Theme.CintaLauncher.SearchResult.Container">
+    style="@style/Theme.AppLauncher.SearchResult.Container">
     <ImageView
-        style="@style/Theme.CintaLauncher.SearchResult.Simple.Icon"
+        style="@style/Theme.AppLauncher.SearchResult.Simple.Icon"
         android:id="@+id/icon"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
-            style="@style/Theme.CintaLauncher.SearchResult.Simple.Title"
+            style="@style/Theme.AppLauncher.SearchResult.Simple.Title"
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
-            style="@style/Theme.CintaLauncher.SearchResult.Simple.Subtitle"
+            style="@style/Theme.AppLauncher.SearchResult.Simple.Subtitle"
             android:id="@+id/subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

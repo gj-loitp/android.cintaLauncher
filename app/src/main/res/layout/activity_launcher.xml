@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"/>
     <androidx.recyclerview.widget.RecyclerView
-        style="@style/Theme.CintaLauncher.FeedFilters"
+        style="@style/Theme.AppLauncher.FeedFilters"
         android:id="@+id/feed_filters_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,10 +33,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/back_button_container"
-            style="@style/Theme.CintaLauncher.SearchBar.Container"
+            style="@style/Theme.AppLauncher.SearchBar.Container"
             android:visibility="gone">
             <ImageView
-                style="@style/Theme.CintaLauncher.SearchBar.Icon"
+                style="@style/Theme.AppLauncher.SearchBar.Icon"
                 android:id="@+id/back_button"
                 android:layout_width="@dimen/search_bar_height"
                 android:layout_height="@dimen/search_bar_height"

@@ -48,7 +48,7 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/Theme.CintaLauncher.NotificationIcons.Container"
+            style="@style/Theme.AppLauncher.NotificationIcons.Container"
             android:id="@+id/notification_icon_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
             android:gravity="center_vertical"
             android:layout_gravity="center_horizontal">
             <TextView
-                style="@style/Theme.CintaLauncher.NotificationIcons.Text"
+                style="@style/Theme.AppLauncher.NotificationIcons.Text"
                 android:id="@+id/notification_icon_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

@@ -5,14 +5,14 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:id="@+id/action_container"
-    style="@style/Theme.CintaLauncher.FeedCard.Action.Container">
+    style="@style/Theme.AppLauncher.FeedCard.Action.Container">
     <ImageView
         android:id="@+id/action_icon"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_gravity="center_vertical"/>
     <TextView
-        style="@style/Theme.CintaLauncher.FeedCard.Action.Text"
+        style="@style/Theme.AppLauncher.FeedCard.Action.Text"
         android:id="@+id/action_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

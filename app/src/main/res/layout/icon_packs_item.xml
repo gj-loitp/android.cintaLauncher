@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
-    style="@style/Theme.CintaLauncher.SearchResult.Container">
+    style="@style/Theme.AppLauncher.SearchResult.Container">
     <ImageView
-        style="@style/Theme.CintaLauncher.IconPackPicker.Item.Icon"
+        style="@style/Theme.AppLauncher.IconPackPicker.Item.Icon"
         android:id="@+id/icon"
         android:layout_width="64dp"
         android:layout_height="64dp"/>
     <TextView
-        style="@style/Theme.CintaLauncher.IconPackPicker.Item.Title"
+        style="@style/Theme.AppLauncher.IconPackPicker.Item.Title"
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

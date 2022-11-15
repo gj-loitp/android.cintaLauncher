@@ -5,40 +5,40 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:id="@+id/container"
-    style="@style/Theme.CintaLauncher.FeedCard.CardBehind">
+    style="@style/Theme.AppLauncher.FeedCard.CardBehind">
     <View
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginBottom="@dimen/feed_card_padding_vertical"/>
     <LinearLayout
-        style="@style/Theme.CintaLauncher.FeedCard.Header"
+        style="@style/Theme.AppLauncher.FeedCard.Header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical">
         <ImageView
-            style="@style/Theme.CintaLauncher.FeedCard.SourceIcon"
+            style="@style/Theme.AppLauncher.FeedCard.SourceIcon"
             android:id="@+id/icon"/>
         <TextView
-            style="@style/Theme.CintaLauncher.FeedCard.Source"
+            style="@style/Theme.AppLauncher.FeedCard.Source"
             android:id="@+id/source"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <TextView
-            style="@style/Theme.CintaLauncher.FeedCard.Time"
+            style="@style/Theme.AppLauncher.FeedCard.Time"
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
     <TextView
-        style="@style/Theme.CintaLauncher.FeedCard.Title"
+        style="@style/Theme.AppLauncher.FeedCard.Title"
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView
-        style="@style/Theme.CintaLauncher.FeedCard.Description"
+        style="@style/Theme.AppLauncher.FeedCard.Description"
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

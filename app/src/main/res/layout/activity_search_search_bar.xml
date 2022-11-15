@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/search_bar"
-    style="@style/Theme.CintaLauncher.SearchBar.Container">
+    style="@style/Theme.AppLauncher.SearchBar.Container">
     <com.roy93group.launcher.ui.view.SeeThoughView
         android:id="@+id/blur_bg"
         android:layout_width="match_parent"
@@ -15,13 +15,13 @@
         android:layout_height="@dimen/search_bar_height"
         android:orientation="horizontal">
         <ImageView
-            style="@style/Theme.CintaLauncher.SearchBar.Icon"
+            style="@style/Theme.AppLauncher.SearchBar.Icon"
             android:id="@+id/search_bar_icon"
             android:layout_width="@dimen/search_bar_height"
             android:layout_height="@dimen/search_bar_height"
             android:src="@drawable/ic_search"/>
         <EditText
-            style="@style/Theme.CintaLauncher.SearchBar.Text"
+            style="@style/Theme.AppLauncher.SearchBar.Text"
             android:id="@+id/search_bar_text"
             android:layout_width="0dp"
             android:layout_height="@dimen/search_bar_height"

@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.CintaLauncher.FeedCard.ImageCard" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.FeedCard.ImageCard" parent="Theme.AppLauncher">
         <item name="cardCornerRadius">@dimen/item_card_radius</item>
         <item name="android:layout_marginHorizontal">8dp</item>
         <item name="android:elevation">4dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedCard.CardBehind" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.FeedCard.CardBehind" parent="Theme.AppLauncher">
         <item name="android:paddingHorizontal">@dimen/feed_card_padding</item>
         <item name="android:paddingBottom">@dimen/feed_card_padding_vertical</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedCard.Time" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.FeedCard.Time" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/feed_card_text_dark_description</item>
         <item name="android:maxLines">1</item>
         <item name="android:paddingHorizontal">8dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedCard.Header" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.FeedCard.Header" parent="Theme.AppLauncher">
         <item name="android:layout_marginBottom">8dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedCard.Source" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.FeedCard.Source" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/feed_card_text_dark_description</item>
         <item name="android:maxLines">1</item>
@@ -32,50 +32,50 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedCard.SourceIcon" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.FeedCard.SourceIcon" parent="Theme.AppLauncher">
         <item name="android:tint">@color/feed_card_text_dark_title</item>
         <item name="android:paddingHorizontal">8dp</item>
         <item name="android:layout_width">32dp</item>
         <item name="android:layout_height">16dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedCard.Title" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.FeedCard.Title" parent="Theme.AppLauncher">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/feed_card_text_dark_title</item>
         <item name="android:textStyle">bold</item>
         <item name="android:paddingHorizontal">@dimen/feed_card_spacing</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedCard.Description" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.FeedCard.Description" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/feed_card_text_dark_description</item>
         <item name="android:paddingHorizontal">@dimen/feed_card_spacing</item>
         <item name="android:paddingTop">@dimen/feed_card_spacing</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedCard.Actions.Container" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.FeedCard.Actions.Container" parent="Theme.AppLauncher">
         <item name="android:layout_marginTop">8dp</item>
         <item name="cardCornerRadius">@dimen/feed_card_action_radius</item>
         <item name="android:layout_margin">8dp</item>
         <item name="android:elevation">4dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedCard.Action.Container" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.FeedCard.Action.Container" parent="Theme.AppLauncher">
         <item name="android:paddingVertical">8dp</item>
         <item name="android:paddingHorizontal">15dp</item>
         <item name="android:background">@drawable/ripple</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedCard.Action.Text" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.FeedCard.Action.Text" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/accent</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Empty.Container" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Empty.Container" parent="Theme.AppLauncher">
         <item name="android:layout_height">156dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Empty.Description" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.Empty.Description" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
     </style>
 </resources>

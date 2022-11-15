@@ -16,10 +16,10 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
         <ImageView
-            style="@style/Theme.CintaLauncher.Suggestions.Item.Icon"
+            style="@style/Theme.AppLauncher.Suggestions.Item.Icon"
             android:id="@+id/icon_image"/>
         <TextView
-            style="@style/Theme.CintaLauncher.Suggestions.Item.Label"
+            style="@style/Theme.AppLauncher.Suggestions.Item.Label"
             android:id="@+id/icon_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

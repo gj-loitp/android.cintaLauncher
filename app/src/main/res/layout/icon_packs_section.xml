@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
-    style="@style/Theme.CintaLauncher.SearchResult.Container">
+    style="@style/Theme.AppLauncher.SearchResult.Container">
     <TextView
-        style="@style/Theme.CintaLauncher.IconPackPicker.Section.Title"
+        style="@style/Theme.AppLauncher.IconPackPicker.Section.Title"
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.CintaLauncher.SummaryItem.Container" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.SummaryItem.Container" parent="Theme.AppLauncher">
         <item name="android:padding">6dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SummaryItem.Source" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.SummaryItem.Source" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:maxLines">1</item>
@@ -13,60 +13,57 @@
         <item name="android:ellipsize">end</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SummaryItem.SourceIcon" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.SummaryItem.SourceIcon" parent="Theme.AppLauncher">
         <item name="android:tint">#ffffff</item>
         <item name="android:padding">4dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SummaryItem.Description" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.SummaryItem.Description" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:padding">@dimen/feed_card_spacing</item>
     </style>
 
-
-    <style name="Theme.CintaLauncher.MediaSummaryItem.Container" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.MediaSummaryItem.Container" parent="Theme.AppLauncher">
         <item name="cardCornerRadius">@dimen/item_card_radius</item>
         <item name="android:layout_margin">@dimen/item_card_margin</item>
         <item name="android:elevation">@dimen/item_card_elevation</item>
     </style>
 
-    <style name="Theme.CintaLauncher.MediaSummaryItem.Title" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.MediaSummaryItem.Title" parent="Theme.AppLauncher">
         <item name="android:paddingHorizontal">@dimen/feed_card_spacing</item>
         <item name="android:paddingTop">@dimen/feed_card_spacing</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:ellipsize">end</item>
         <item name="android:lines">1</item>
-
         <item name="android:shadowColor">#ff000000</item>
         <item name="android:shadowDy">4</item>
         <item name="android:shadowRadius">15</item>
     </style>
 
-    <style name="Theme.CintaLauncher.MediaSummaryItem.Description" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.MediaSummaryItem.Description" parent="Theme.AppLauncher">
         <item name="android:paddingHorizontal">@dimen/feed_card_spacing</item>
         <item name="android:paddingBottom">8dp</item>
         <item name="android:textSize">15sp</item>
         <item name="android:ellipsize">end</item>
         <item name="android:lines">1</item>
-
         <item name="android:shadowColor">#ff000000</item>
         <item name="android:shadowDy">4</item>
         <item name="android:shadowRadius">12</item>
     </style>
 
-    <style name="Theme.CintaLauncher.NotificationIcons.Container" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.NotificationIcons.Container" parent="Theme.AppLauncher">
         <item name="android:padding">10dp</item>
         <item name="android:layout_margin">@dimen/item_card_margin</item>
     </style>
 
-    <style name="Theme.CintaLauncher.NotificationIcons.Text" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.NotificationIcons.Text" parent="Theme.AppLauncher">
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginHorizontal">6dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.NotificationIcons.Icon" parent="Theme.AppLauncher">
+    <style name="Theme.AppLauncher.NotificationIcons.Icon" parent="Theme.AppLauncher">
         <item name="android:layout_width">16dp</item>
         <item name="android:layout_height">16dp</item>
         <item name="android:layout_marginHorizontal">6dp</item>
