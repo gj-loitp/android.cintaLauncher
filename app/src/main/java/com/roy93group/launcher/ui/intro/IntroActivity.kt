@@ -1,16 +1,13 @@
 package com.roy93group.launcher.ui.intro
 
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import com.loitpcore.annotation.IsAutoAnimation
 import com.loitpcore.annotation.IsFullScreen
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import java.util.*
 
 @LogTag("IntroActivity")
@@ -61,10 +58,10 @@ class IntroActivity : BaseFontActivity() {
         (stack.peek() as? PermissionsFragment)?.updatePermissionStatus()
     }
 
-    override fun onBackPressed() {
+    override fun onBaseBackPressed() {
         stack.pop()
         if (stack.isEmpty())
-            super.onBackPressed()
+            super.onBaseBackPressed()
         else supportFragmentManager
             .beginTransaction()
             .setCustomAnimations(
@@ -74,6 +71,20 @@ class IntroActivity : BaseFontActivity() {
             .replace(R.id.flContainer, stack.peek()!!)
             .commit()
     }
+
+//    override fun onBackPressed() {
+//        stack.pop()
+//        if (stack.isEmpty())
+//            super.onBackPressed()
+//        else supportFragmentManager
+//            .beginTransaction()
+//            .setCustomAnimations(
+//                R.anim.slide_in_left,
+//                R.anim.slide_out_right
+//            )
+//            .replace(R.id.flContainer, stack.peek()!!)
+//            .commit()
+//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
