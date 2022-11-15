@@ -91,7 +91,7 @@ class SearchActivity : FragmentActivity() {
                 setPadding(paddingLeft, container.measuredHeight, paddingRight, paddingBottom)
             }
         }
-        findViewById<EditText>(R.id.search_bar_text).run {
+        findViewById<EditText>(R.id.etSearchBarText).run {
             doOnTextChanged { text, _, _, _ ->
                 searcher.query(text)
             }

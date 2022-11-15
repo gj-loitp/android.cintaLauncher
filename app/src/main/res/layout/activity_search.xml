@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingHorizontal="8dp"/>
+        android:clipToPadding="false" />
+
     <FrameLayout
         android:id="@+id/cvSearchBarContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp">
-        <include layout="@layout/activity_search_search_bar"/>
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/activity_search_search_bar" />
     </FrameLayout>
 </merge>

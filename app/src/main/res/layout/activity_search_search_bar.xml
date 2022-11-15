@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cvSearchBar"
+    style="@style/Theme.AppLauncher.SearchBar.Container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/search_bar"
-    style="@style/Theme.AppLauncher.SearchBar.Container">
+    android:layout_height="wrap_content">
+
     <com.roy93group.launcher.ui.view.SeeThoughView
         android:id="@+id/blurBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.3"/>
-    <LinearLayout
+        android:alpha="0.3" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="@dimen/search_bar_height"
         android:orientation="horizontal">
-        <ImageView
-            style="@style/Theme.AppLauncher.SearchBar.Icon"
+
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/searchBarIcon"
+            style="@style/Theme.AppLauncher.SearchBar.Icon"
             android:layout_width="@dimen/search_bar_height"
             android:layout_height="@dimen/search_bar_height"
-            android:src="@drawable/ic_search"/>
-        <EditText
+            android:src="@drawable/ic_search"
+            android:tint="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etSearchBarText"
             style="@style/Theme.AppLauncher.SearchBar.Text"
-            android:id="@+id/search_bar_text"
             android:layout_width="0dp"
             android:layout_height="@dimen/search_bar_height"
             android:layout_weight="1"
             android:gravity="center_vertical"
+            android:imeOptions="actionSearch"
             android:includeFontPadding="false"
-            android:scrollHorizontally="true"
-            android:lines="1"
             android:inputType="number|text|phone|datetime"
-            android:imeOptions="actionSearch">
-            <requestFocus/>
-        </EditText>
-    </LinearLayout>
+            android:lines="1"
+            android:scrollHorizontally="true">
+
+            <requestFocus />
+        </androidx.appcompat.widget.AppCompatEditText>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.cardview.widget.CardView>
