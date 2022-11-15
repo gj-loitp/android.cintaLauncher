@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.CintaLauncher.SearchBar.Container" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchBar.Container" parent="Theme.AppLauncher">
         <item name="cardCornerRadius">@dimen/search_bar_radius</item>
         <item name="android:padding">4dp</item>
 
@@ -8,7 +8,7 @@
         <item name="android:elevation">@dimen/item_card_elevation</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchBar.Text" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchBar.Text" parent="Theme.AppLauncher">
         <item name="android:background">@null</item>
         <item name="android:textSize">16sp</item>
         <item name="android:paddingEnd">12dp</item>
@@ -18,35 +18,35 @@
         <item name="android:clipToPadding">false</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchBar.Icon" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchBar.Icon" parent="Theme.AppLauncher">
         <item name="android:padding">8dp</item>
     </style>
 
 
-    <style name="Theme.CintaLauncher.SearchResult.Container" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.Container" parent="Theme.AppLauncher">
         <item name="android:paddingHorizontal">6dp</item>
         <item name="android:paddingVertical">4dp</item>
     </style>
 
 
-    <style name="Theme.CintaLauncher.SearchResult.Simple.Icon" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.Simple.Icon" parent="Theme.AppLauncher">
         <item name="android:padding">8dp</item>
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">48dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchResult.Simple.Title" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.Simple.Title" parent="Theme.AppLauncher">
         <item name="android:paddingHorizontal">8dp</item>
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchResult.Simple.Subtitle" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.Simple.Subtitle" parent="Theme.AppLauncher">
         <item name="android:paddingHorizontal">8dp</item>
         <item name="android:textSize">15sp</item>
     </style>
 
 
-    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Card" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Card" parent="Theme.AppLauncher">
         <item name="cardCornerRadius">@dimen/item_card_radius</item>
         <item name="cardBackgroundColor">@color/default_card_bg</item>
 
@@ -54,7 +54,7 @@
         <item name="android:elevation">@dimen/item_card_elevation</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Source" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Source" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/feed_card_text_dark_description</item>
         <item name="android:maxLines">1</item>
@@ -63,26 +63,26 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Title" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Title" parent="Theme.AppLauncher">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/feed_card_text_dark_title</item>
         <item name="android:textStyle">bold</item>
         <item name="android:paddingHorizontal">@dimen/feed_card_spacing</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Description" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Description" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/feed_card_text_dark_description</item>
         <item name="android:paddingHorizontal">@dimen/feed_card_spacing</item>
         <item name="android:paddingTop">@dimen/feed_card_spacing</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Actions.Container" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Actions.Container" parent="Theme.AppLauncher">
         <item name="android:layout_margin">6dp</item>
         <item name="cardCornerRadius">6dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.ActionText" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.ActionText" parent="Theme.AppLauncher">
         <item name="android:paddingVertical">6dp</item>
         <item name="android:paddingHorizontal">12dp</item>
         <item name="android:background">@drawable/ripple</item>
@@ -90,21 +90,21 @@
         <item name="android:textColor">@color/accent</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Infobox.List" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Infobox.List" parent="Theme.AppLauncher">
         <item name="android:paddingTop">@dimen/feed_card_spacing</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Infobox.Separator" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Infobox.Separator" parent="Theme.AppLauncher">
         <item name="android:layout_marginHorizontal">@dimen/feed_card_spacing</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Infobox.Label" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Infobox.Label" parent="Theme.AppLauncher">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/feed_card_text_dark_title</item>
         <item name="android:padding">@dimen/feed_card_spacing</item>
     </style>
 
-    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Infobox.Value" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.SearchResult.InstantAnswer.Infobox.Value" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/feed_card_text_dark_title</item>
         <item name="android:padding">@dimen/feed_card_spacing</item>

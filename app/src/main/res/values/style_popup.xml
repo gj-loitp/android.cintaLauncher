@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.CintaLauncher.ListPopup.Container" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ListPopup.Container" parent="Theme.AppLauncher">
         <item name="cardBackgroundColor">@color/drawer_bottom_bar</item>
         <item name="cardCornerRadius">@dimen/item_card_radius</item>
 
@@ -8,50 +8,50 @@
         <item name="android:elevation">@dimen/item_card_elevation</item>
     </style>
 
-    <style name="Theme.CintaLauncher.ListPopup.Recycler" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ListPopup.Recycler" parent="Theme.AppLauncher">
         <item name="android:paddingVertical">8dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.ListPopup.Item.Container" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ListPopup.Item.Container" parent="Theme.AppLauncher">
         <item name="android:minHeight">50dp</item>
         <item name="android:layout_marginEnd">8dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.ListPopup.Item.Icon" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ListPopup.Item.Icon" parent="Theme.AppLauncher">
         <item name="android:padding">12dp</item>
         <item name="android:layout_width">50dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_marginEnd">-8dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.ListPopup.Item.Label" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ListPopup.Item.Label" parent="Theme.AppLauncher">
         <item name="android:textSize">18sp</item>
         <item name="android:layout_marginStart">2dp</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
-    <style name="Theme.CintaLauncher.ListPopup.Item.Description" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ListPopup.Item.Description" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:layout_marginStart">2dp</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
-    <style name="Theme.CintaLauncher.ListPopup.Item.Switch" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ListPopup.Item.Switch" parent="Theme.AppLauncher">
         <item name="android:layout_margin">8dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.ListPopup.Title.Separator" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ListPopup.Title.Separator" parent="Theme.AppLauncher">
         <item name="android:layout_marginTop">8dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.ListPopup.Title.Label" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ListPopup.Title.Label" parent="Theme.AppLauncher">
         <item name="android:textSize">24sp</item>
         <item name="android:paddingHorizontal">14dp</item>
         <item name="android:paddingVertical">8dp</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
-    <style name="Theme.CintaLauncher.ListPopup.Title.Description" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ListPopup.Title.Description" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:paddingHorizontal">14dp</item>
         <item name="android:paddingVertical">8dp</item>
@@ -59,19 +59,19 @@
     </style>
 
 
-    <style name="Theme.CintaLauncher.ItemPopup.Container" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ItemPopup.Container" parent="Theme.AppLauncher">
         <item name="cardBackgroundColor">@color/drawer_bottom_bar</item>
         <item name="cardCornerRadius">@dimen/item_card_radius</item>
         <item name="android:elevation">@dimen/item_card_elevation</item>
     </style>
 
-    <style name="Theme.CintaLauncher.ItemPopup.Shortcut.Icon" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ItemPopup.Shortcut.Icon" parent="Theme.AppLauncher">
         <item name="android:padding">10dp</item>
         <item name="android:layout_width">50dp</item>
         <item name="android:layout_height">50dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.ItemPopup.Shortcut.Label" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.ItemPopup.Shortcut.Label" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:layout_marginStart">2dp</item>
         <item name="android:layout_marginEnd">18dp</item>

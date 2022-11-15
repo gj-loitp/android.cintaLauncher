@@ -1,27 +1,27 @@
 <resources>
-    <style name="Theme.CintaLauncher.FeedFilters" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.FeedFilters" parent="Theme.AppLauncher">
         <item name="android:layout_margin">3dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedFilter.Card" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.FeedFilter.Card" parent="Theme.AppLauncher">
         <item name="cardCornerRadius">@dimen/feed_filter_radius</item>
         <item name="android:elevation">@dimen/item_card_elevation</item>
         <item name="android:layout_marginVertical">@dimen/item_card_margin</item>
         <item name="android:layout_marginHorizontal">3dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedFilter.Container" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.FeedFilter.Container" parent="Theme.AppLauncher">
         <item name="android:paddingHorizontal">16dp</item>
         <item name="android:background">@drawable/ripple</item>
         <item name="android:minHeight">@dimen/feed_filter_height</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedFilter.Text" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.FeedFilter.Text" parent="Theme.AppLauncher">
         <item name="android:paddingHorizontal">8dp</item>
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.FeedFilter.Icon" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.FeedFilter.Icon" parent="Theme.AppLauncher">
         <item name="android:layout_width">24dp</item>
         <item name="android:layout_height">24dp</item>
     </style>

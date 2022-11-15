@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.CintaLauncher.Intro.Slash.Icon" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.Intro.Slash.Icon" parent="Theme.AppLauncher">
         <item name="android:layout_width">64dp</item>
         <item name="android:layout_height">64dp</item>
         <item name="android:layout_marginStart">24dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Intro.Slash.Message" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.Intro.Slash.Message" parent="Theme.AppLauncher">
         <item name="android:textSize">32sp</item>
         <item name="android:padding">24dp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Intro.Slash.Button" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.Intro.Slash.Button" parent="Theme.AppLauncher">
         <item name="android:layout_height">56dp</item>
         <item name="android:padding">16dp</item>
         <item name="android:layout_margin">24dp</item>
@@ -22,7 +22,7 @@
         <item name="android:tint">#ffffff</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Intro.Slash.Permissions.Title" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.Intro.Slash.Permissions.Title" parent="Theme.AppLauncher">
         <item name="android:textSize">32sp</item>
         <item name="android:padding">24dp</item>
         <item name="android:textStyle">bold</item>
@@ -31,11 +31,11 @@
         <item name="android:shadowColor">#33000000</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Intro.Slash.Permissions.Item.Container" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.Intro.Slash.Permissions.Item.Container" parent="Theme.AppLauncher">
         <item name="android:padding">24dp</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Intro.Slash.Permissions.Item.Title" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.Intro.Slash.Permissions.Item.Title" parent="Theme.AppLauncher">
         <item name="android:textSize">20sp</item>
         <item name="android:layout_marginBottom">12dp</item>
         <item name="android:textStyle">bold</item>
@@ -44,7 +44,7 @@
         <item name="android:shadowColor">#33000000</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Intro.Slash.Permissions.Item.Explanation" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.Intro.Slash.Permissions.Item.Explanation" parent="Theme.AppLauncher">
         <item name="android:textSize">14sp</item>
         <item name="android:layout_marginBottom">14dp</item>
         <item name="android:shadowRadius">10</item>
@@ -52,7 +52,7 @@
         <item name="android:shadowColor">#33000000</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Intro.Slash.Permissions.Item.Grant" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.Intro.Slash.Permissions.Item.Grant" parent="Theme.AppLauncher">
         <item name="android:text">@string/grant_permissions</item>
         <item name="android:paddingVertical">8dp</item>
         <item name="android:paddingHorizontal">16dp</item>
@@ -63,7 +63,7 @@
         <item name="android:backgroundTint">#ffffff</item>
     </style>
 
-    <style name="Theme.CintaLauncher.Intro.Slash.Permissions.Item.Tick" parent="Theme.CintaLauncher">
+    <style name="Theme.CintaLauncher.Intro.Slash.Permissions.Item.Tick" parent="Theme.AppLauncher">
         <item name="android:layout_width">32dp</item>
         <item name="android:layout_height">32dp</item>
         <item name="android:tint">@color/accent</item>

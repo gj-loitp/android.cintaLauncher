@@ -27,7 +27,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CintaLauncher">
+        android:theme="@style/Theme.AppLauncher">
 
         <service
             android:name=".providers.feed.notification.NotificationService"
