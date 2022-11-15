@@ -4,6 +4,8 @@ import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseApplication
 import com.loitpcore.core.utilities.LUIUtil
 
+//TODO set background to black
+//TODO ripple activity intro
 //TODO config gg drive
 
 //done

@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.roy93group.launcher.ui.view.SeeThoughView
-        android:id="@+id/blurBg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.3" />
+<!--    <com.roy93group.launcher.ui.view.SeeThoughView-->
+<!--        android:id="@+id/blurBg"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:alpha="0.3" />-->
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -35,7 +35,8 @@
             android:includeFontPadding="false"
             android:inputType="number|text|phone|datetime"
             android:lines="1"
-            android:scrollHorizontally="true">
+            android:scrollHorizontally="true"
+            android:textCursorDrawable="@color/white">
 
             <requestFocus />
         </androidx.appcompat.widget.AppCompatEditText>
