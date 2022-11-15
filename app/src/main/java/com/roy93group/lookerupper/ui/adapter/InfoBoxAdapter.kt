@@ -4,8 +4,8 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.cintalauncher.R
-import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
+import com.roy93group.launcher.R
+import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.lookerupper.ui.viewHolders.InfoboxEntryVH
 
 class InfoBoxAdapter : RecyclerView.Adapter<InfoboxEntryVH>() {

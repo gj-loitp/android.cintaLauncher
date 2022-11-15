@@ -7,10 +7,10 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.cintalauncher.R
-import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
-import com.roy93group.cintalauncher.ui.acrylicBlur
-import com.roy93group.cintalauncher.ui.view.SeeThoughView
+import com.roy93group.launcher.R
+import com.roy93group.launcher.providers.color.theme.ColorTheme
+import com.roy93group.launcher.ui.acrylicBlur
+import com.roy93group.launcher.ui.view.SeeThoughView
 import com.roy93group.lookerupper.data.results.InstantAnswerResult
 import com.roy93group.lookerupper.data.results.SearchResult
 import com.roy93group.lookerupper.ui.adapter.InfoBoxAdapter

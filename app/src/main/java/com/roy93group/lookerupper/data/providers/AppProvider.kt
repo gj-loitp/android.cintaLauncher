@@ -6,9 +6,9 @@ import android.content.pm.LauncherApps
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.UserHandle
-import com.roy93group.cintalauncher.providers.app.AppCollection
-import com.roy93group.cintalauncher.providers.feed.suggestions.SuggestionsManager
-import com.roy93group.cintalauncher.storage.Settings
+import com.roy93group.launcher.providers.app.AppCollection
+import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
+import com.roy93group.launcher.storage.Settings
 import com.roy93group.lookerupper.data.SearchQuery
 import com.roy93group.lookerupper.data.Searcher
 import com.roy93group.lookerupper.data.results.*

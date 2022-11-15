@@ -1,7 +1,7 @@
 package com.roy93group.lookerupper.data
 
 import android.app.Activity
-import com.roy93group.cintalauncher.storage.Settings
+import com.roy93group.launcher.storage.Settings
 import com.roy93group.lookerupper.data.providers.SearchProvider
 import com.roy93group.lookerupper.data.results.SearchResult
 import java.util.*

@@ -1,0 +1,8 @@
+package com.roy93group.launcher.data.feed.items
+
+class FeedItemMeta(
+    val sourcePackageName: String? = null,
+    val sourceUrl: String? = null,
+    val importance: Int = 0,
+    val isNotification: Boolean = false
+)

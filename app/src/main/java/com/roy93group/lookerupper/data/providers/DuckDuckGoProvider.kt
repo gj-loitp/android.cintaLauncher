@@ -1,7 +1,7 @@
 package com.roy93group.lookerupper.data.providers
 
 import android.app.Activity
-import com.roy93group.cintalauncher.BuildConfig
+import com.roy93group.launcher.BuildConfig
 import com.roy93group.lookerupper.data.SearchQuery
 import com.roy93group.lookerupper.data.Searcher
 import com.roy93group.lookerupper.data.results.InstantAnswerResult

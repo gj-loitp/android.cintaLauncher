@@ -4,10 +4,10 @@ import android.app.Activity
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.roy93group.cintalauncher.R
-import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
-import com.roy93group.cintalauncher.providers.feed.suggestions.SuggestionsManager
-import com.roy93group.cintalauncher.ui.feed.items.viewHolders.applyIfNotNull
+import com.roy93group.launcher.R
+import com.roy93group.launcher.providers.color.theme.ColorTheme
+import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
+import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.lookerupper.data.results.CompactAppResult
 import com.roy93group.lookerupper.data.results.CompactResult
 import com.roy93group.lookerupper.data.results.SearchResult

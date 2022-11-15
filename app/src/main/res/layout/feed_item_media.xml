@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <com.roy93group.cintalauncher.ui.view.BackdropImageView
+    <com.roy93group.launcher.ui.view.BackdropImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

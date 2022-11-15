@@ -4,7 +4,7 @@ import android.content.pm.LauncherApps
 import android.content.pm.ShortcutInfo
 import android.graphics.drawable.Drawable
 import android.view.View
-import com.roy93group.cintalauncher.data.items.App
+import com.roy93group.launcher.data.items.App
 
 class AppResult(
     val app: App

@@ -3,9 +3,9 @@ package com.roy93group.lookerupper.data.results
 import android.app.Activity
 import android.graphics.drawable.Drawable
 import android.view.View
-import com.roy93group.cintalauncher.data.items.App
-import com.roy93group.cintalauncher.providers.color.theme.ColorTheme
-import com.roy93group.cintalauncher.ui.popup.appItem.ItemLongPress
+import com.roy93group.launcher.data.items.App
+import com.roy93group.launcher.providers.color.theme.ColorTheme
+import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 
 class CompactAppResult(

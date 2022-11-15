@@ -3,7 +3,7 @@ package com.roy93group.lookerupper.ui.viewHolders
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.cintalauncher.R
+import com.roy93group.launcher.R
 
 class InfoboxEntryVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val label: TextView = itemView.findViewById(R.id.label)

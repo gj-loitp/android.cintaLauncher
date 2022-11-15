@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/card"
     style="@style/Theme.CintaLauncher.ListPopup.Container">
-    <com.roy93group.cintalauncher.ui.view.SeeThoughView
+    <com.roy93group.launcher.ui.view.SeeThoughView
         android:id="@+id/blur_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

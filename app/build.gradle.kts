@@ -25,7 +25,7 @@ android {
             )
         }
     }
-    namespace = "com.roy93group.cintalauncher"
+    namespace = "com.roy93group.launcher"
 }
 
 dependencies {

@@ -5,7 +5,7 @@ import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.cintalauncher.R
+import com.roy93group.launcher.R
 import com.roy93group.lookerupper.data.results.*
 import com.roy93group.lookerupper.ui.viewHolders.AppSearchVH
 import com.roy93group.lookerupper.ui.viewHolders.CompactSearchVH
