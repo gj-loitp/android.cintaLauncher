@@ -11,7 +11,6 @@ import androidx.core.graphics.toXfermode
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemWithMedia
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 
 class FeedItemMediaVH(
     itemView: View
@@ -80,8 +79,8 @@ class FeedItemMediaVH(
         description.setOnClickListener(item::onTap)
 
         val titleColor = ColorUtils.blendARGB(
-            /* color1 = */ ColorTheme.adjustColorForContrast(ColorTheme.uiBG, item.color),
-            /* color2 = */ ColorTheme.uiTitle,
+            /* color1 = */ Color.RED,
+            /* color2 = */ Color.GREEN,
             /* ratio = */ .7f
         )
         val titleTintList = ColorStateList.valueOf(titleColor)

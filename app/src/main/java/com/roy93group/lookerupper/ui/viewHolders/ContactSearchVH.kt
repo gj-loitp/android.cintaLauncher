@@ -1,5 +1,6 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
+import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -7,7 +8,6 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.lookerupper.data.results.ContactResult
 import com.roy93group.lookerupper.data.results.SearchResult
 
@@ -29,12 +29,12 @@ class ContactSearchVH(
                     itemView.context,
                     R.drawable.placeholder_contact
                 )?.apply {
-                    setTint(if (isOnCard) ColorTheme.cardHint else ColorTheme.uiHint)
+                    setTint(if (isOnCard) Color.GREEN else Color.GREEN)
                 })
             .apply(RequestOptions.circleCropTransform())
             .into(icon)
         text.text = result.title
-        text.setTextColor(if (isOnCard) ColorTheme.cardTitle else ColorTheme.uiTitle)
+        text.setTextColor(if (isOnCard) Color.GREEN else Color.BLUE)
         itemView.setOnClickListener(result::open)
     }
 }

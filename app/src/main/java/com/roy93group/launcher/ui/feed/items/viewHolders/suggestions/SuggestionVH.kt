@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.suggestions
 
+import android.graphics.Color
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -26,7 +27,7 @@ class SuggestionVH(
 //        blurBG.drawable =
 //            BitmapDrawable(/* res = */ itemView.resources, /* bitmap = */ acrylicBlur?.insaneBlur)
 
-        val backgroundColor = ColorTheme.tintWithColor(ColorTheme.cardBG, item.getColor())
+        val backgroundColor = ColorTheme.tintWithColor(Color .RED, item.getColor())
         card.setCardBackgroundColor(backgroundColor)
         label.text = item.label
         label.setTextColor(ColorTheme.titleColorForBG(backgroundColor))

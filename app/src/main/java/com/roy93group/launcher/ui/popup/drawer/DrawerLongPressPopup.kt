@@ -3,6 +3,7 @@ package com.roy93group.launcher.ui.popup.drawer
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.storage.DoReshapeAdaptiveIconsSetting.doReshapeAdaptiveIcons
 import com.roy93group.launcher.storage.ScrollbarControllerSetting.scrollbarController
 import com.roy93group.launcher.storage.Settings
@@ -47,7 +47,7 @@ object DrawerLongPressPopup {
         }
 
         val cardView = content.findViewById<CardView>(R.id.card)
-        cardView.setCardBackgroundColor(ColorTheme.cardBG)
+        cardView.setCardBackgroundColor(Color.RED)
         content.findViewById<RecyclerView>(R.id.recycler).apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = ListPopupAdapter().apply {

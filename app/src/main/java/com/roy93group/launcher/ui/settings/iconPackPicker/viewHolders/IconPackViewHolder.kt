@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui.settings.iconPackPicker.viewHolders
 
+import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,6 +16,6 @@ class IconPackViewHolder(itemView: View, val type: Int) : RecyclerView.ViewHolde
     fun bind(iconPack: IconPackPickerActivity.IconPack) {
         text.text = iconPack.label
         icon.setImageDrawable(iconPack.icon)
-        text.setTextColor(ColorTheme.uiDescription)
+        text.setTextColor(Color .RED)
     }
 }

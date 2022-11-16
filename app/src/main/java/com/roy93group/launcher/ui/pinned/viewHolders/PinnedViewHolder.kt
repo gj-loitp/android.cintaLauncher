@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui.pinned.viewHolders
 
+import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
@@ -26,7 +27,7 @@ fun bindPinnedViewHolder(
         item.open(context = it.context.applicationContext, view = it)
     }
     holder.itemView.setOnLongClickListener {
-        val backgroundColor = ColorTheme.tintWithColor(ColorTheme.cardBG, item.getColor())
+        val backgroundColor = ColorTheme.tintWithColor(Color.RED, item.getColor())
         ItemLongPress.onItemLongPress(
             view = it,
             backgroundColor = backgroundColor,

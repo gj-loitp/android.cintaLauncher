@@ -1,6 +1,7 @@
 package com.roy93group.launcher.ui.settings.feedChooser
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
@@ -26,7 +27,7 @@ class SuggestionsAdapter(
             val h = 16.dp.toPixels(this)
             val v = 8.dp.toPixels(this)
             setPadding(h, v + 8.dp.toPixels(this), h, v)
-            val textColor = ColorTheme.uiDescription
+            val textColor = Color.RED
             setTextColor(textColor)
             textSize = 20f
         }) as TextView
@@ -45,7 +46,7 @@ class SuggestionsAdapter(
         val convertView = (cv ?: TextView(parent.context).apply {
             val h = 16.dp.toPixels(this)
             setPadding(h + 16.dp.toPixels(this), 2.dp.toPixels(this), h, 8.dp.toPixels(this))
-            val textColor = ColorTheme.uiDescription
+            val textColor = Color.RED
             setTextColor(textColor)
             textSize = 16f
         }) as TextView

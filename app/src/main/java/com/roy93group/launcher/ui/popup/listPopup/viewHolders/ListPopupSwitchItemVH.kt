@@ -2,6 +2,7 @@ package com.roy93group.launcher.ui.popup.listPopup.viewHolders
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.drawable.*
 import android.util.StateSet
 import android.view.View
@@ -35,19 +36,19 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
             switch.toggle()
         }
 
-        text.setTextColor(ColorTheme.cardTitle)
+        text.setTextColor(Color .RED)
         switch.trackDrawable = generateTrackDrawable(itemView.context)
         switch.thumbDrawable = generateThumbDrawable(itemView.context)
 
-        ripple.setColor(ColorStateList.valueOf(ColorTheme.accentColor and 0xffffff or 0x33000000))
+        ripple.setColor(ColorStateList.valueOf(Color .RED and 0xffffff or 0x33000000))
 
         applyIfNotNull(view = description, value = item.description) { view, value ->
             view.text = value
-            description.setTextColor(ColorTheme.cardDescription)
+            description.setTextColor(Color .RED)
         }
         applyIfNotNull(view = icon, value = item.icon) { view, value ->
             view.setImageDrawable(value)
-            view.imageTintList = ColorStateList.valueOf(ColorTheme.cardDescription)
+            view.imageTintList = ColorStateList.valueOf(Color .RED)
         }
         switch.isChecked = (item.value as? Boolean) ?: false
         switch.setOnCheckedChangeListener(item.onToggle!!)
@@ -57,11 +58,11 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
         val out = StateListDrawable()
         out.addState(
             intArrayOf(android.R.attr.state_checked),
-            generateBG(context, ColorTheme.accentColor and 0x00ffffff or 0x55000000)
+            generateBG(context, Color .RED and 0x00ffffff or 0x55000000)
         )
         out.addState(
             StateSet.WILD_CARD,
-            generateBG(context, ColorTheme.cardHint and 0x00ffffff or 0x55000000)
+            generateBG(context, Color .RED and 0x00ffffff or 0x55000000)
         )
         return out
     }
@@ -70,11 +71,11 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
         val out = StateListDrawable()
         out.addState(
             intArrayOf(android.R.attr.state_checked),
-            generateCircle(context, ColorTheme.accentColor)
+            generateCircle(context, Color .RED)
         )
         out.addState(
             StateSet.WILD_CARD,
-            generateCircle(context, ColorTheme.cardHint and 0x00ffffff or 0x55000000)
+            generateCircle(context, Color .RED and 0x00ffffff or 0x55000000)
         )
         return out
     }

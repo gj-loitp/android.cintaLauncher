@@ -1,9 +1,9 @@
 package com.roy93group.launcher.ui.popup.listPopup.viewHolders
 
+import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
 
@@ -17,17 +17,12 @@ class ListPopupTitleVH(itemView: View) : ListPopupVH(itemView) {
         text.text = item.text
         description.text = item.description
 
-        text.setTextColor(
-            ColorTheme.adjustColorForContrast(
-                ColorTheme.cardBG,
-                ColorTheme.accentColor
-            )
-        )
-        separator.setBackgroundColor(ColorTheme.cardHint)
+        text.setTextColor(Color.YELLOW)
+        separator.setBackgroundColor(Color.YELLOW)
         itemView.setOnClickListener(item.onClick)
         applyIfNotNull(view = description, value = item.description) { view, value ->
             view.text = value
-            description.setTextColor(ColorTheme.cardDescription)
+            description.setTextColor(Color.YELLOW)
         }
     }
 }

@@ -4,6 +4,7 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Process
@@ -83,11 +84,11 @@ class StackTraceActivity : FragmentActivity() {
             }
 
             try {
-                window.decorView.setBackgroundColor(ColorTheme.uiBG)
-                send.backgroundTintList = ColorStateList.valueOf(ColorTheme.buttonColorCallToAction)
-                send.setTextColor(ColorTheme.titleColorForBG(ColorTheme.buttonColorCallToAction))
-                title.setTextColor(ColorTheme.uiTitle)
-                stackTrace.setTextColor(ColorTheme.uiDescription)
+                window.decorView.setBackgroundColor(Color.YELLOW)
+                send.backgroundTintList = ColorStateList.valueOf(Color.GREEN)
+                send.setTextColor(ColorTheme.titleColorForBG(Color.GREEN))
+                title.setTextColor(Color.GREEN)
+                stackTrace.setTextColor(Color.GREEN)
             } catch (e: Throwable) {
                 e.printStackTrace()
             }

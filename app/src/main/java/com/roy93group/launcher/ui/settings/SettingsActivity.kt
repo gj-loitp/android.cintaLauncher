@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui.settings
 
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.LayerDrawable
@@ -34,7 +35,7 @@ abstract class SettingsActivity : FragmentActivity() {
         window.decorView.background = LayerDrawable(
             arrayOf(
 //                BitmapDrawable(resources, acrylicBlur?.fullBlur),
-                ColorDrawable(ColorTheme.uiBG),
+                ColorDrawable(Color.YELLOW),
             )
         )
     }

@@ -2,6 +2,7 @@ package com.roy93group.launcher.ui.settings.feedChooser
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.view.Gravity
@@ -48,18 +49,18 @@ class FeedSourcesChooserActivity : SettingsActivity() {
 
             content.run {
                 setBackgroundResource(R.drawable.card)
-                backgroundTintList = ColorStateList.valueOf(ColorTheme.cardBG)
+                backgroundTintList = ColorStateList.valueOf(Color.RED)
             }
 
-            val textColor = ColorTheme.cardDescription
-            val hintColor = ColorTheme.cardHint
+            val textColor = Color.RED
+            val hintColor = Color.RED
             val input = content.findViewById<EditText>(R.id.title)
             input.setTextColor(textColor)
             input.setHintTextColor(hintColor)
 
             content.findViewById<TextView>(R.id.done).run {
-                setTextColor(ColorTheme.titleColorForBG(ColorTheme.buttonColorCallToAction))
-                backgroundTintList = ColorStateList.valueOf(ColorTheme.buttonColorCallToAction)
+                setTextColor(ColorTheme.titleColorForBG(Color.RED))
+                backgroundTintList = ColorStateList.valueOf(Color.RED)
                 setOnClickListener {
                     dialog.dismiss()
 
@@ -92,7 +93,7 @@ class FeedSourcesChooserActivity : SettingsActivity() {
                 val url = feedUrls[i]
                 content.findViewById<TextView>(R.id.remove).run {
                     val hsl = FloatArray(3)
-                    ColorUtils.colorToHSL(ColorTheme.buttonColor, hsl)
+                    ColorUtils.colorToHSL(Color.RED, hsl)
                     hsl[0] = 0f
                     hsl[1] = hsl[1].coerceAtLeast(0.3f)
                     val bg = ColorUtils.HSLToColor(hsl)
@@ -126,9 +127,9 @@ class FeedSourcesChooserActivity : SettingsActivity() {
 
         grid.adapter = FeedChooserAdapter(settings, feedUrls)
         val fab = findViewById<ImageView>(R.id.btAdd)
-        fab.backgroundTintList = ColorStateList.valueOf(ColorTheme.buttonColor)
+        fab.backgroundTintList = ColorStateList.valueOf(Color.RED)
         fab.imageTintList =
-            ColorStateList.valueOf(ColorTheme.titleColorForBG(ColorTheme.buttonColor))
+            ColorStateList.valueOf(ColorTheme.titleColorForBG(Color.RED))
         fab.setOnClickListener {
             sourceEditPopup(
                 parent = it,

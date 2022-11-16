@@ -1,10 +1,10 @@
 package com.roy93group.launcher.ui.settings.iconPackPicker.viewHolders
 
+import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 
 class SectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val text: TextView = itemView.findViewById(R.id.text)
@@ -12,10 +12,7 @@ class SectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(string: String) {
         text.text = string
         text.setTextColor(
-            ColorTheme.adjustColorForContrast(
-                ColorTheme.uiBG,
-                ColorTheme.accentColor
-            )
+            Color.RED
         )
     }
 }

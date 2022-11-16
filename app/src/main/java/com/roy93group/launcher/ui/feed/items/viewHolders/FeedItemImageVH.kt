@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders
 
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
@@ -17,7 +18,6 @@ import com.bumptech.glide.request.target.ViewTarget
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemWithBigImage
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toFloatPixels
 
@@ -63,7 +63,7 @@ open class FeedItemImageVH(itemView: View) : FeedItemVH(itemView) {
     override fun onBind(item: FeedItem, color: Int) {
         super.onBind(item, color)
         item as FeedItemWithBigImage
-        card.setCardBackgroundColor(ColorTheme.cardBG)
+        card.setCardBackgroundColor(Color.RED)
         Glide.with(itemView.context)
             .load(item.image)
             .apply(requestOptions)

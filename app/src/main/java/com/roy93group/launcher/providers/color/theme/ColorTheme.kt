@@ -2,76 +2,17 @@ package com.roy93group.launcher.providers.color.theme
 
 import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.luminance
-import com.roy93group.launcher.providers.color.pallete.DefaultPalette
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sign
 
-private var colorThemeInstance: ColorTheme = DarkColorTheme(DefaultPalette)
-
 interface ColorTheme {
-    val accentColor: Int
-    val uiBG: Int
-    val uiTitle: Int
-    val uiDescription: Int
-    val uiHint: Int
-    val cardBG: Int
-    val cardTitle: Int
-    val cardDescription: Int
-    val cardHint: Int
-    val buttonColor: Int
-    val buttonColorCallToAction: Int
-    val searchBarBG: Int
-    val searchBarFG: Int
-
     fun adjustColorForContrast(base: Int, tint: Int): Int
 
     fun tileColor(iconBackgroundColor: Int): Int
 
-    companion object : ColorTheme {
-
-        fun updateColorTheme(colorTheme: ColorTheme) {
-            colorThemeInstance = colorTheme
-        }
-
-        override val accentColor: Int
-            get() = colorThemeInstance.accentColor
-        override val uiBG: Int
-            get() = colorThemeInstance.uiBG
-        override val uiTitle: Int
-            get() = colorThemeInstance.uiTitle
-        override val uiDescription: Int
-            get() = colorThemeInstance.uiDescription
-        override val uiHint: Int
-            get() = colorThemeInstance.uiHint
-        override val cardBG: Int
-            get() = colorThemeInstance.cardBG
-        override val cardTitle: Int
-            get() = colorThemeInstance.cardTitle
-        override val cardDescription: Int
-            get() = colorThemeInstance.cardDescription
-        override val cardHint: Int
-            get() = colorThemeInstance.cardHint
-        override val buttonColor: Int
-            get() = colorThemeInstance.buttonColor
-        override val buttonColorCallToAction: Int
-            get() = colorThemeInstance.buttonColorCallToAction
-        override val searchBarBG: Int
-            get() = colorThemeInstance.searchBarBG
-        override val searchBarFG: Int
-            get() = colorThemeInstance.searchBarFG
-
-        override fun adjustColorForContrast(base: Int, tint: Int): Int =
-            colorThemeInstance.adjustColorForContrast(base = base, tint = tint)
-
-        override fun tileColor(iconBackgroundColor: Int): Int =
-            colorThemeInstance.tileColor(iconBackgroundColor)
-
-        @Suppress("unused")
-        fun tintPopup(color: Int): Int {
-            return tintWithColor(base = cardBG, color = tileColor(color))
-        }
+    companion object {
 
         fun titleColorForBG(background: Int): Int {
             return (if (background.luminance > .6f) 0 else 0xffffff) or 0xff000000.toInt()

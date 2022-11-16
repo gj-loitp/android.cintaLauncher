@@ -2,6 +2,7 @@ package com.roy93group.launcher.ui.feed.items.viewHolders
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.ImageView
@@ -69,7 +70,7 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
             actionsContainer.isVisible = false
         } else {
             actionsContainer.isVisible = true
-            val bg = ColorTheme.buttonColor
+            val bg = Color.RED
             actionsContainer.setCardBackgroundColor(bg)
             val fg = ColorTheme.titleColorForBG(bg)
             actions.adapter = ActionsAdapter(item.actions, fg)
@@ -84,12 +85,12 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
         swipeLayout.onSwipeAway = item::onDismiss
         swipeLayout.isSwipeAble = item.isDismissible
         source.setTextColor(color)
-        title.setTextColor(ColorTheme.uiTitle)
-        description.setTextColor(ColorTheme.uiDescription)
-        time.setTextColor(ColorTheme.uiDescription)
-        val bg = (ColorTheme.uiBG and 0xff000000.toInt()) or (ColorTheme.accentColor and 0x00ffffff)
+        title.setTextColor(Color.RED)
+        description.setTextColor(Color.RED)
+        time.setTextColor(Color.RED)
+        val bg = (Color.RED and 0xff000000.toInt()) or (Color.RED and 0x00ffffff)
         swipeLayout.setSwipeColor(bg)
         swipeLayout.setIconColor(ColorTheme.titleColorForBG(bg))
-        separator.setBackgroundColor(ColorTheme.uiHint and 0x00ffffff or 0x24ffffff)
+        separator.setBackgroundColor(Color.RED and 0x00ffffff or 0x24ffffff)
     }
 }

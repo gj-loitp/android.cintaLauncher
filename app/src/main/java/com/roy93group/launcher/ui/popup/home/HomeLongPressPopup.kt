@@ -3,6 +3,7 @@ package com.roy93group.launcher.ui.popup.home
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +15,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.theme.ColorTheme
-import com.roy93group.launcher.storage.ColorExtractorSetting.colorTheme
-import com.roy93group.launcher.storage.ColorThemeDayNightSetting.colorThemeDayNight
-import com.roy93group.launcher.storage.ColorThemeDayNightSetting.setColorThemeDayNight
 import com.roy93group.launcher.storage.Settings
 import com.roy93group.launcher.ui.popup.PopupUtils
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupAdapter
@@ -49,7 +46,7 @@ object HomeLongPressPopup {
 //        }
 
         val cardView = content.findViewById<CardView>(R.id.card)
-        cardView.setCardBackgroundColor(ColorTheme.cardBG)
+        cardView.setCardBackgroundColor(Color.RED)
         content.findViewById<RecyclerView>(R.id.recycler).apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = ListPopupAdapter().apply {
@@ -60,7 +57,7 @@ object HomeLongPressPopup {
                             updateLock.withLock {
 //                                reloadColorTheme()
                                 cardView.post {
-                                    cardView.setCardBackgroundColor(ColorTheme.cardBG)
+                                    cardView.setCardBackgroundColor(Color.RED)
                                     update()
                                 }
                             }
@@ -85,14 +82,12 @@ object HomeLongPressPopup {
         return listOf(
             ListPopupItem(
                 text = context.getString(R.string.color_theme_gen),
-                description = context.resources.getStringArray(R.array.color_theme_gens)[settings.colorTheme],
+                description = context.resources.getStringArray(R.array.color_theme_gens)[Color.RED],
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_color_dropper),
             ) {
                 AlertDialog.Builder(context)
-                    .setSingleChoiceItems(R.array.color_theme_gens, settings.colorTheme) { d, i ->
+                    .setSingleChoiceItems(R.array.color_theme_gens, Color.RED) { d, i ->
                         settings.edit(context) {
-                            colorTheme =
-                                context.resources.getStringArray(R.array.color_theme_gens_data)[i].toInt()
                             reloadColorTheme()
                         }
                         d.dismiss()
@@ -101,16 +96,15 @@ object HomeLongPressPopup {
             },
             ListPopupItem(
                 text = context.getString(R.string.color_theme_day_night),
-                description = context.resources.getStringArray(R.array.color_theme_day_night)[settings.colorThemeDayNight.ordinal],
+                description = context.resources.getStringArray(R.array.color_theme_day_night)[Color.RED],
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_lightness),
             ) {
                 AlertDialog.Builder(context)
                     .setSingleChoiceItems(
                         R.array.color_theme_day_night,
-                        settings.colorThemeDayNight.ordinal
+                        Color .RED
                     ) { d, i ->
                         settings.edit(context) {
-                            setColorThemeDayNight(context.resources.getStringArray(R.array.color_theme_day_night_data)[i].toInt())
                             reloadColorTheme()
                         }
                         d.dismiss()

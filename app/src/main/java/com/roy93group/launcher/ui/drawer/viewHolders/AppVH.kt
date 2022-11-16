@@ -17,7 +17,6 @@ import com.bumptech.glide.request.target.Target
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.data.items.LauncherItem
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter.Companion.APP_ITEM
@@ -62,10 +61,7 @@ class AppViewHolder(
         ): Boolean {
             val palette = Palette.from(resource.toBitmap(width = 32, height = 32)).generate()
             val backgroundColor =
-                ColorTheme.tintWithColor(
-                    base = ColorTheme.cardBG,
-                    color = palette.getDominantColor(color)
-                )
+                palette.getDominantColor(color)
 
             holder.cardView.setCardBackgroundColor(backgroundColor)
 
@@ -86,7 +82,7 @@ fun bindAppViewHolder(
     item: LauncherItem,
     isDimmed: Boolean,
 ) {
-    val backgroundColor = ColorTheme.tintWithColor(ColorTheme.cardBG, item.getColor())
+    val backgroundColor = item.getColor()
     holder.cardView.setCardBackgroundColor(backgroundColor)
     holder.cardView.alpha = if (isDimmed) .3f else 1f
     holder.tvIconText.text = item.label

@@ -1,6 +1,7 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.home
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
@@ -10,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.LauncherContext
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.providers.feed.notification.NotificationService
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.popup.home.HomeLongPressPopup
@@ -78,10 +78,10 @@ fun bindHomeViewHolder(
     holder: HomeViewHolder
 ) {
     holder.updateNotificationIcons()
-    holder.time.setTextColor(ColorTheme.uiTitle)
-    holder.date.setTextColor(ColorTheme.uiDescription)
-    holder.weekDay.setTextColor(ColorTheme.uiDescription)
-    holder.notificationIconsText.setTextColor(ColorTheme.uiTitle)
+    holder.time.setTextColor(Color.RED)
+    holder.date.setTextColor(Color.RED)
+    holder.weekDay.setTextColor(Color.RED)
+    holder.notificationIconsText.setTextColor(Color.RED)
     holder.itemView.setOnTouchListener { _, e ->
         when (e.action and MotionEvent.ACTION_MASK) {
             MotionEvent.ACTION_DOWN -> {

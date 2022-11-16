@@ -2,6 +2,7 @@ package com.roy93group.launcher.ui.feedProfiles
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -43,7 +44,7 @@ class FeedProfileAdapter(
         val item = items[i]
         applyIfNotNull(view = holder.text, value = item.name, block = TextView::setText)
         applyIfNotNull(view = holder.icon, value = item.icon, block = ImageView::setImageDrawable)
-        val bgColor = if (selection == i) ColorTheme.accentColor else ColorTheme.searchBarBG
+        val bgColor = if (selection == i) Color.RED else Color.GREEN
         val fgColor = ColorTheme.textColorForBG(bgColor)
         holder.card.setCardBackgroundColor(bgColor)
         holder.text.setTextColor(fgColor)

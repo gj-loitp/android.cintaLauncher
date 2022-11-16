@@ -2,9 +2,9 @@ package com.roy93group.launcher.ui.view.scrollbar.alphabet
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.providers.app.AppCollection
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
 import com.roy93group.launcher.ui.drawer.viewHolders.SectionHeaderItem
 import com.roy93group.launcher.ui.view.scrollbar.Scrollbar
@@ -62,7 +62,7 @@ class AlphabetScrollbarController(
         paint.apply {
             textSize = 16.dp.toFloatPixels(scrollbar)
         }
-        highlightColor = ColorTheme.accentColor
+        highlightColor = Color.RED
         scrollbar.invalidate()
     }
 

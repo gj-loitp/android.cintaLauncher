@@ -1,6 +1,7 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
 import android.app.Activity
+import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -29,7 +30,7 @@ class AppSearchVH(
 
 //        blurBG.drawable = BitmapDrawable(itemView.resources, acrylicBlur?.insaneBlur)
 
-        val backgroundColor = ColorTheme.tintWithColor(ColorTheme.cardBG, result.getColor())
+        val backgroundColor = ColorTheme.tintWithColor(Color.GREEN, result.getColor())
         card.setCardBackgroundColor(backgroundColor)
         label.text = result.title
         label.setTextColor(ColorTheme.titleColorForBG(backgroundColor))

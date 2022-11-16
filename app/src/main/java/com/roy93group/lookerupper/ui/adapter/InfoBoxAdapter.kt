@@ -1,6 +1,7 @@
 package com.roy93group.lookerupper.ui.adapter
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -23,9 +24,9 @@ class InfoBoxAdapter : RecyclerView.Adapter<InfoboxEntryVH>() {
         holder.label.text = e.first
         holder.value.text = e.second
 
-        holder.label.setTextColor(ColorTheme.cardTitle)
-        holder.value.setTextColor(ColorTheme.cardDescription)
-        holder.separator.setBackgroundColor(ColorTheme.hintColorForBG(ColorTheme.cardBG))
+        holder.label.setTextColor(Color.GREEN)
+        holder.value.setTextColor(Color.GREEN)
+        holder.separator.setBackgroundColor(ColorTheme.hintColorForBG(Color.GREEN))
     }
 
     override fun getItemCount() = entries.size

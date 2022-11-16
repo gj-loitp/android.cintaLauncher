@@ -10,7 +10,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.PopupWindow
-import androidx.core.content.res.ResourcesCompat
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.color.pallete.ColorPalette
 import com.roy93group.launcher.storage.ScrollbarControllerSetting

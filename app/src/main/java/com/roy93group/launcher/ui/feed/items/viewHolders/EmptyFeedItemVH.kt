@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders
 
+import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -14,5 +15,5 @@ fun bindEmptyFeedItemViewHolder(
     holder: EmptyFeedItemViewHolder
 ) {
     holder.text.text = holder.itemView.context.getString(R.string.no_feed_items)
-    holder.text.setTextColor(ColorTheme.uiDescription)
+    holder.text.setTextColor(Color .RED)
 }

@@ -1,6 +1,7 @@
 package com.roy93group.lookerupper.data.results
 
 import android.app.Activity
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.View
 import com.roy93group.launcher.data.items.App
@@ -21,7 +22,7 @@ class CompactAppResult(
 
     override var relevance = Relevance(0f)
     override val onLongPress = { v: View, activity: Activity ->
-        val backgroundColor = ColorTheme.tintWithColor(ColorTheme.cardBG, getColor())
+        val backgroundColor = ColorTheme.tintWithColor(Color .RED, getColor())
         ItemLongPress.onItemLongPress(
             view = v,
             backgroundColor = backgroundColor,

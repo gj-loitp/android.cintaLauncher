@@ -1,6 +1,7 @@
 package com.roy93group.launcher.ui.feed
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -109,17 +110,7 @@ class FeedAdapter(
         }
         val item = getFeedItem(i)
         val k = item.sourceIcon to item.color
-        val color = themedColorCache.getOrPut(k) {
-            val color = colorCache.getOrPut(k) {
-                if (item.shouldTintIcon || item.sourceIcon == null) {
-                    if (item.color == 0) ColorTheme.accentColor else item.color
-                } else if (item.color != 0) item.color else {
-                    val accent = ColorTheme.accentColor
-                    Palette.from(item.sourceIcon!!.toBitmap()).generate().getDominantColor(accent)
-                }
-            }
-            ColorTheme.adjustColorForContrast(ColorTheme.uiBG, color)
-        }
+        val color = Color.RED
         holder as FeedViewHolder
         holder.onBind(item, color)
         if (holder !is FeedItemVH) return

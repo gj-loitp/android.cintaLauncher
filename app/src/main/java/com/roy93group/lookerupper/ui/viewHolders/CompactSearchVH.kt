@@ -1,11 +1,11 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
 import android.app.Activity
+import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.lookerupper.data.results.CompactAppResult
@@ -27,8 +27,8 @@ class CompactSearchVH(
         icon.setImageDrawable(result.icon)
         text.text = result.title
         applyIfNotNull(subtitle, result.subtitle, TextView::setText)
-        text.setTextColor(if (isOnCard) ColorTheme.cardTitle else ColorTheme.uiTitle)
-        subtitle.setTextColor(if (isOnCard) ColorTheme.cardDescription else ColorTheme.uiDescription)
+        text.setTextColor(if (isOnCard) Color.RED else Color.GREEN)
+        subtitle.setTextColor(if (isOnCard) Color.RED else Color.RED)
         itemView.setOnClickListener {
             if (result is CompactAppResult) {
                 SuggestionsManager.onItemOpened(it.context, result.app)

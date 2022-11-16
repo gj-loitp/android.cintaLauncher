@@ -1,6 +1,7 @@
 package com.roy93group.launcher.ui.pinned.viewHolders
 
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.providers.color.theme.ColorTheme
@@ -12,5 +13,5 @@ class DropTargetViewHolder(
 fun bindDropTargetViewHolder(
     holder: DropTargetViewHolder,
 ) {
-    holder.icon.imageTintList = ColorStateList.valueOf(ColorTheme.searchBarFG)
+    holder.icon.imageTintList = ColorStateList.valueOf(Color .RED)
 }
