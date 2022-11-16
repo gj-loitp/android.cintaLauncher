@@ -1,7 +1,6 @@
 package com.roy93group.launcher.providers.color.pallete
 
 import android.Manifest
-import android.app.WallpaperColors
 import android.app.WallpaperManager
 import android.content.Context
 import android.content.pm.PackageManager
@@ -29,13 +28,6 @@ interface ColorPalette {
             get() = colorPaletteInstance.estimatedWallColor
 
         private var colorPaletteInstance: ColorPalette = DefaultPalette
-
-        @RequiresApi(Build.VERSION_CODES.O_MR1)
-        fun getSystemWallColorPalette(
-            context: Context,
-            colors: WallpaperColors
-        ): AndroidOMR1Palette =
-            AndroidOMR1Palette(context = context, colors = colors)
 
         @RequiresApi(Build.VERSION_CODES.S)
         fun getMonetColorPalette(
@@ -72,19 +64,6 @@ interface ColorPalette {
             }
         }
 
-        @RequiresApi(Build.VERSION_CODES.O_MR1)
-        fun <A : Context> loadSystemWallColorTheme(
-            context: A,
-            onFinished: (A, ColorPalette) -> Unit,
-            colors: WallpaperColors
-        ) {
-            val newColorTheme = getSystemWallColorPalette(context = context, colors = colors)
-            if (newColorTheme != colorPaletteInstance) {
-                colorPaletteInstance = newColorTheme
-                onFinished(context, colorPaletteInstance)
-            }
-        }
-
         @RequiresApi(Build.VERSION_CODES.S)
         fun <A : Context> loadMonetColorTheme(
             context: A,
@@ -103,32 +82,6 @@ interface ColorPalette {
         ) {
             colorPaletteInstance = DefaultPalette
             onFinished(context, colorPaletteInstance)
-        }
-
-        @RequiresApi(Build.VERSION_CODES.O_MR1)
-        fun <A : Context> onColorsChanged(
-            context: A,
-            colorTheme: Int,
-            onFinished: (A, ColorPalette) -> Unit,
-            colors: () -> WallpaperColors?,
-        ) {
-            when (colorTheme) {
-                ColorExtractorSetting.COLOR_THEME_WALLPAPER_TINT -> loadWallColorTheme(
-                    context,
-                    onFinished
-                )
-                ColorExtractorSetting.COLOR_THEME_WALLPAPER_TINT_SYSTEM_ASSISTED -> colors()?.let {
-                    loadSystemWallColorTheme(
-                        context = context,
-                        onFinished = onFinished,
-                        colors = it
-                    )
-                } ?: loadDefaultColorTheme(context = context, onFinished = onFinished)
-                ColorExtractorSetting.COLOR_THEME_MONET -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    loadMonetColorTheme(context = context, onFinished = onFinished)
-                } else loadDefaultColorTheme(context = context, onFinished = onFinished)
-                else -> loadDefaultColorTheme(context = context, onFinished = onFinished)
-            }
         }
 
         fun <A : Context> onResumePreOMR1(

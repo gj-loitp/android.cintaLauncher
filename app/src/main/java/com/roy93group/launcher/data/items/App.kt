@@ -16,6 +16,13 @@ import com.roy93group.launcher.providers.feed.FeedSorter
 import com.roy93group.launcher.providers.feed.notification.NotificationService
 import io.posidon.android.conveniencelib.isInstalled
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class App(
     val packageName: String,
     val name: String,
@@ -28,7 +35,10 @@ class App(
 ) : LauncherItem {
 
     companion object {
-        fun parse(string: String, appsByName: HashMap<String, MutableList<App>>): App? {
+        fun parse(
+            string: String,
+            appsByName: HashMap<String, MutableList<App>>
+        ): App? {
             val (packageName, name, u) = string.split('/')
             val userHandle = u.toInt()
             return appsByName[packageName]?.find {

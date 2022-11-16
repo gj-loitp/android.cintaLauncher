@@ -6,6 +6,13 @@ import android.view.View
 import com.roy93group.launcher.R
 import java.time.Instant
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 interface FeedItem {
     val color: Int
     val title: String

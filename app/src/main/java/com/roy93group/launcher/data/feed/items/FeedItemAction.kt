@@ -3,6 +3,13 @@ package com.roy93group.launcher.data.feed.items
 import android.graphics.drawable.Drawable
 import android.view.View
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 data class FeedItemAction(
     val text: String,
     val icon: Drawable? = null,

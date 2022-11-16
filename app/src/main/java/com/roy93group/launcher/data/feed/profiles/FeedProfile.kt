@@ -6,6 +6,13 @@ import com.roy93group.launcher.data.feed.items.FeedItemSuggestedApps
 import com.roy93group.launcher.data.feed.items.FeedItemWithMedia
 import com.roy93group.launcher.data.feed.items.isToday
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class FeedProfile(
     val name: String? = null,
     val icon: Drawable? = null,

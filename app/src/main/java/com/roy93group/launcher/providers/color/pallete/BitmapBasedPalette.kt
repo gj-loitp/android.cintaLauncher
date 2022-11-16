@@ -6,6 +6,13 @@ import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.sign
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class BitmapBasedPalette(
     wallpaper: Palette,
 ) : ColorPalette {
