@@ -39,11 +39,11 @@ class AppDrawerAdapter(
         return when (viewType) {
             SECTION_HEADER -> SectionHeaderViewHolder(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.app_drawer_section_header, parent, false)
+                    .inflate(R.layout.view_app_drawer_section_header, parent, false)
             )
             APP_ITEM -> AppViewHolder(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.app_card, parent, false) as CardView
+                    .inflate(R.layout.view_app_card, parent, false) as CardView
             )
             else -> throw RuntimeException("Invalid view holder type")
         }

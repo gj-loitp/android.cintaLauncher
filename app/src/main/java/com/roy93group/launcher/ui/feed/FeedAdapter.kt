@@ -90,7 +90,7 @@ class FeedAdapter(
             )
             TYPE_EMPTY -> EmptyFeedItemViewHolder(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.feed_item_empty, parent, false)
+                    .inflate(R.layout.view_feed_item_empty, parent, false)
             )
             else -> throw RuntimeException("Invalid view holder type")
         }

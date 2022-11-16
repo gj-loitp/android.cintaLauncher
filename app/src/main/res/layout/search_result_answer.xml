@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.Actions.Container"
-            android:id="@+id/actions_container">
+            android:id="@+id/cvActionsContainer">
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

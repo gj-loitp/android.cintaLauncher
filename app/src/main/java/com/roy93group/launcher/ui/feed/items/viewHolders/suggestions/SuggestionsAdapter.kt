@@ -22,7 +22,7 @@ class SuggestionsAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
         return AppViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.app_card, parent, false) as CardView
+                .inflate(R.layout.view_app_card, parent, false) as CardView
         )
     }
 

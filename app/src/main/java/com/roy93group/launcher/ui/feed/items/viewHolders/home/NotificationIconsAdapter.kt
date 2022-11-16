@@ -23,7 +23,7 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
         return IconViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(
-                    /* resource = */ R.layout.feed_home_notification_icon,
+                    /* resource = */ R.layout.view_feed_home_notification_icon,
                     /* root = */parent,
                     /* attachToRoot = */false
                 )

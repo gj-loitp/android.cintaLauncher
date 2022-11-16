@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="3"
                 android:ellipsize="end"/>
-            <include layout="@layout/feed_item_actions"/>
+            <include layout="@layout/view_feed_item_actions"/>
         </LinearLayout>
         <androidx.cardview.widget.CardView
             android:id="@+id/card"

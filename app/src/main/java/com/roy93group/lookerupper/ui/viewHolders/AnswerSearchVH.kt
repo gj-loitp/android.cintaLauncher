@@ -1,6 +1,5 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
-import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -28,7 +27,7 @@ class AnswerSearchVH(
         adapter = infoBoxAdapter
     }
 
-    private val actionsContainer: CardView = itemView.findViewById(R.id.actions_container)
+    private val actionsContainer: CardView = itemView.findViewById(R.id.cvActionsContainer)
     private val sourceAction: TextView = actionsContainer.findViewById(R.id.source)
     private val searchAction: TextView = actionsContainer.findViewById(R.id.search)
     private val actionSeparator: View = actionsContainer.findViewById(R.id.separator)

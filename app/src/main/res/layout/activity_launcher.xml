@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom" />
 
-    <include layout="@layout/app_drawer" />
+    <include layout="@layout/view_app_drawer" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"

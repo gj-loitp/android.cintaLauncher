@@ -19,8 +19,8 @@ class ActionsAdapter(
 
     class ActionViewHolder(actionButtonTextColor: Int, itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-        val icon: ImageView = itemView.findViewById(R.id.action_icon)
-        val text: TextView = itemView.findViewById<TextView>(R.id.action_text).apply {
+        val icon: ImageView = itemView.findViewById(R.id.ivActionIcon)
+        val text: TextView = itemView.findViewById<TextView>(R.id.tvActionText).apply {
             setTextColor(actionButtonTextColor)
         }
     }
@@ -28,7 +28,7 @@ class ActionsAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActionViewHolder {
         return ActionViewHolder(
             actionButtonTextColor, LayoutInflater.from(parent.context)
-                .inflate(R.layout.feed_item_action, parent, false)
+                .inflate(R.layout.view_feed_item_action, parent, false)
         )
     }
 

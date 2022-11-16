@@ -31,7 +31,7 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
     val title: TextView = itemView.findViewById(R.id.title)
     val description: TextView = itemView.findViewById(R.id.description)
     val icon: ImageView = itemView.findViewById(R.id.icon)
-    private val actionsContainer: CardView = itemView.findViewById(R.id.actions_container)
+    private val actionsContainer: CardView = itemView.findViewById(R.id.cvActionsContainer)
     private val separatorDrawable = GradientDrawable().apply {
         shape = GradientDrawable.RECTANGLE
         setSize(1.dp.toPixels(itemView), 0)
@@ -39,7 +39,7 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
 
     @SuppressLint("ClickableViewAccessibility")
     private val actions: RecyclerView =
-        actionsContainer.findViewById<RecyclerView>(R.id.actions_recycler).apply {
+        actionsContainer.findViewById<RecyclerView>(R.id.rvActions).apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             addItemDecoration(
                 DividerItemDecorator(

@@ -44,5 +44,5 @@
         android:layout_height="wrap_content"
         android:maxLines="5"
         android:ellipsize="end"/>
-    <include layout="@layout/feed_item_actions"/>
+    <include layout="@layout/view_feed_item_actions"/>
 </LinearLayout>
