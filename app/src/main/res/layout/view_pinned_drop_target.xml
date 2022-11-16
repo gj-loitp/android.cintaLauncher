@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/searchBarIcon"
+    style="@style/Theme.AppLauncher.SearchBar.Icon"
+    android:layout_width="@dimen/search_bar_height"
+    android:layout_height="@dimen/search_bar_height"
+    android:src="@drawable/ic_plus" />

@@ -35,19 +35,19 @@ class SearchAdapter(
         return when (viewType) {
             RESULT_APP -> AppSearchVH(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.smart_suggestion, parent, false), activity
+                    .inflate(R.layout.view_smart_suggestion, parent, false), activity
             )
             RESULT_COMPACT -> CompactSearchVH(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.search_result_compact, parent, false), activity, isOnCard
+                    .inflate(R.layout.view_search_result_compact, parent, false), activity, isOnCard
             )
             RESULT_CONTACT -> ContactSearchVH(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.search_result_contact, parent, false), isOnCard
+                    .inflate(R.layout.view_search_result_contact, parent, false), isOnCard
             )
             RESULT_ANSWER -> AnswerSearchVH(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.search_result_answer, parent, false)
+                    .inflate(R.layout.view_search_result_answer, parent, false)
             )
             else -> throw Exception("Invalid view type")
         }

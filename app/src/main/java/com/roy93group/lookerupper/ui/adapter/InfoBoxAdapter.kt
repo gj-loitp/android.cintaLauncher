@@ -15,7 +15,7 @@ class InfoBoxAdapter : RecyclerView.Adapter<InfoboxEntryVH>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         InfoboxEntryVH(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.search_result_answer_info_box_entry, parent, false)
+                .inflate(R.layout.view_search_result_answer_info_box_entry, parent, false)
         )
 
     override fun onBindViewHolder(holder: InfoboxEntryVH, i: Int) {

@@ -39,7 +39,7 @@ object HomeLongPressPopup {
         navbarHeight: Int,
         settings: Settings,
     ) {
-        val content = LayoutInflater.from(parent.context).inflate(R.layout.list_popup, null)
+        val content = LayoutInflater.from(parent.context).inflate(R.layout.view_list_popup, null)
         val window =
             PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
         PopupUtils.setCurrent(window)

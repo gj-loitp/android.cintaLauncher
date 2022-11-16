@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.LauncherActivity
 
-class FrmQuickSettings : FrmWithNext(R.layout.intro_settings) {
+class FrmQuickSettings : FrmWithNext(R.layout.frm_intro_settings) {
     override fun next(activity: IntroActivity) {
         val home = ComponentName(requireContext(), LauncherActivity::class.java)
         requireContext().packageManager.setComponentEnabledSetting(

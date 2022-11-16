@@ -1,71 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card"
+    style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.Card"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.Card">
+    android:layout_height="wrap_content">
+
     <com.roy93group.launcher.ui.view.SeeThoughView
         android:id="@+id/blurBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.3"/>
-    <LinearLayout
+        android:alpha="0.3" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        style="@style/Theme.AppLauncher.SearchResult.Container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/feed_card_padding"
-        style="@style/Theme.AppLauncher.SearchResult.Container">
-        <TextView
-            style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.Title"
+        android:padding="@dimen/margin_padding_medium">
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/title"
+            style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.Title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.Description"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/description"
+            style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="5"
-            android:ellipsize="end"/>
+            android:ellipsize="end"
+            android:maxLines="5" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvInfoBox"
             style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.Infobox.List"
-            android:id="@+id/info_box"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/cvActionsContainer"
             style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.Actions.Container"
-            android:id="@+id/cvActionsContainer">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <LinearLayout
+
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <TextView
-                        style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.ActionText"
+
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/source"
+                        style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.ActionText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_gravity="center_vertical" />
+
                     <View
                         android:id="@+id/separator"
                         android:layout_width="1dp"
-                        android:layout_height="match_parent"/>
-                    <TextView
-                        style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.ActionText"
+                        android:layout_height="match_parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/search"
+                        style="@style/Theme.AppLauncher.SearchResult.InstantAnswer.ActionText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="@string/search_in_duckduckgo"/>
-                </LinearLayout>
+                        android:text="@string/search_in_duckduckgo" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
             </HorizontalScrollView>
         </androidx.cardview.widget.CardView>
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.cardview.widget.CardView>

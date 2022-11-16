@@ -30,19 +30,19 @@
     </style>
 
     <style name="Theme.AppLauncher.SearchResult.Simple.Icon" parent="Theme.AppLauncher">
-        <item name="android:padding">8dp</item>
+        <item name="android:padding">@dimen/margin_padding_small</item>
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">48dp</item>
     </style>
 
     <style name="Theme.AppLauncher.SearchResult.Simple.Title" parent="Theme.AppLauncher">
-        <item name="android:paddingHorizontal">8dp</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:paddingHorizontal">@dimen/margin_padding_small</item>
+        <item name="android:textSize">@dimen/txt_medium</item>
     </style>
 
     <style name="Theme.AppLauncher.SearchResult.Simple.Subtitle" parent="Theme.AppLauncher">
-        <item name="android:paddingHorizontal">8dp</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:paddingHorizontal">@dimen/margin_padding_small</item>
+        <item name="android:textSize">@dimen/txt_medium</item>
     </style>
 
     <style name="Theme.AppLauncher.SearchResult.InstantAnswer.Card" parent="Theme.AppLauncher">
@@ -62,21 +62,21 @@
     </style>
 
     <style name="Theme.AppLauncher.SearchResult.InstantAnswer.Title" parent="Theme.AppLauncher">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/txt_medium</item>
         <item name="android:textColor">@color/feed_card_text_dark_title</item>
         <item name="android:textStyle">bold</item>
         <item name="android:paddingHorizontal">@dimen/feed_card_spacing</item>
     </style>
 
     <style name="Theme.AppLauncher.SearchResult.InstantAnswer.Description" parent="Theme.AppLauncher">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/txt_medium</item>
         <item name="android:textColor">@color/feed_card_text_dark_description</item>
         <item name="android:paddingHorizontal">@dimen/feed_card_spacing</item>
         <item name="android:paddingTop">@dimen/feed_card_spacing</item>
     </style>
 
     <style name="Theme.AppLauncher.SearchResult.InstantAnswer.Actions.Container" parent="Theme.AppLauncher">
-        <item name="android:layout_margin">6dp</item>
+        <item name="android:layout_margin">@dimen/margin_padding_small</item>
         <item name="cardCornerRadius">6dp</item>
     </style>
 
@@ -97,13 +97,13 @@
     </style>
 
     <style name="Theme.AppLauncher.SearchResult.InstantAnswer.Infobox.Label" parent="Theme.AppLauncher">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/txt_medium</item>
         <item name="android:textColor">@color/feed_card_text_dark_title</item>
         <item name="android:padding">@dimen/feed_card_spacing</item>
     </style>
 
     <style name="Theme.AppLauncher.SearchResult.InstantAnswer.Infobox.Value" parent="Theme.AppLauncher">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/txt_medium</item>
         <item name="android:textColor">@color/feed_card_text_dark_title</item>
         <item name="android:padding">@dimen/feed_card_spacing</item>
     </style>

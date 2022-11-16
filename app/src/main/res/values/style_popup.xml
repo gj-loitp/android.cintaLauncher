@@ -25,7 +25,7 @@
     </style>
 
     <style name="Theme.AppLauncher.ListPopup.Item.Label" parent="Theme.AppLauncher">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/txt_medium</item>
         <item name="android:layout_marginStart">2dp</item>
         <item name="android:includeFontPadding">false</item>
     </style>
@@ -37,7 +37,7 @@
     </style>
 
     <style name="Theme.AppLauncher.ListPopup.Item.Switch" parent="Theme.AppLauncher">
-        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_margin">@dimen/margin_padding_small</item>
     </style>
 
     <style name="Theme.AppLauncher.ListPopup.Title.Separator" parent="Theme.AppLauncher">
@@ -65,15 +65,15 @@
     </style>
 
     <style name="Theme.AppLauncher.ItemPopup.Shortcut.Icon" parent="Theme.AppLauncher">
-        <item name="android:padding">10dp</item>
+        <item name="android:padding">@dimen/margin_padding_small</item>
         <item name="android:layout_width">50dp</item>
         <item name="android:layout_height">50dp</item>
     </style>
 
     <style name="Theme.AppLauncher.ItemPopup.Shortcut.Label" parent="Theme.AppLauncher">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/txt_medium</item>
         <item name="android:layout_marginStart">2dp</item>
-        <item name="android:layout_marginEnd">18dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_padding_medium</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 </resources>

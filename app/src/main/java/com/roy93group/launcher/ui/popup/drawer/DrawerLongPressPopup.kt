@@ -3,7 +3,6 @@ package com.roy93group.launcher.ui.popup.drawer
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -37,7 +36,7 @@ object DrawerLongPressPopup {
         settings: Settings,
         reloadApps: () -> Unit,
     ) {
-        val content = LayoutInflater.from(parent.context).inflate(R.layout.list_popup, null)
+        val content = LayoutInflater.from(parent.context).inflate(R.layout.view_list_popup, null)
         val window =
             PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
         PopupUtils.setCurrent(window)

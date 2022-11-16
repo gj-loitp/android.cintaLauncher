@@ -9,6 +9,8 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO ripple activity intro
 //TODO config gg drive
 //TODO rate more share app
+//TODO firebase
+//TODO tich hop he sinh thai app roy93group
 
 //done
 //ic launcher

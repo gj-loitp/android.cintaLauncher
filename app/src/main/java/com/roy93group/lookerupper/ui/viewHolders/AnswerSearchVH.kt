@@ -22,7 +22,7 @@ class AnswerSearchVH(
     val description: TextView = card.findViewById(R.id.description)
 
     private val infoBoxAdapter = InfoBoxAdapter()
-    private val infoBox: RecyclerView = itemView.findViewById<RecyclerView>(R.id.info_box).apply {
+    private val infoBox: RecyclerView = itemView.findViewById<RecyclerView>(R.id.rvInfoBox).apply {
         layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         adapter = infoBoxAdapter
     }

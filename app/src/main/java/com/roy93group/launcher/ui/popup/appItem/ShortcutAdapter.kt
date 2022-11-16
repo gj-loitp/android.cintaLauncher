@@ -18,7 +18,7 @@ class ShortcutAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShortcutViewHolder {
         return ShortcutViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.long_press_item_popup_item, parent, false)
+                .inflate(R.layout.view_long_press_item_popup_item, parent, false)
         )
     }
 

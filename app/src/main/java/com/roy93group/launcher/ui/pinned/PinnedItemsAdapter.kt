@@ -52,11 +52,11 @@ class PinnedItemsAdapter(
         return when (viewType) {
             1 -> DropTargetViewHolder(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.pinned_drop_target, parent, false) as ImageView
+                    .inflate(R.layout.view_pinned_drop_target, parent, false) as ImageView
             )
             else -> PinnedViewHolder(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.pinned_item, parent, false) as ImageView
+                    .inflate(R.layout.view_pinned_item, parent, false) as ImageView
             )
         }
     }

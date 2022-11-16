@@ -36,7 +36,7 @@ object ItemLongPress {
         extraPopupWindow: PopupWindow?,
         onInfo: (View) -> Unit
     ): PopupWindow {
-        val content = LayoutInflater.from(context).inflate(R.layout.long_press_item_popup, null)
+        val content = LayoutInflater.from(context).inflate(R.layout.view_long_press_item_popup, null)
         if (item is App) {
             val shortcuts =
                 item.getStaticShortcuts(context.getSystemService(LauncherApps::class.java))
@@ -54,9 +54,9 @@ object ItemLongPress {
             currentPopup = null
         }
 
-        val propertiesButton = content.findViewById<View>(R.id.properties_item)
-        val propertiesText = propertiesButton.findViewById<TextView>(R.id.properties_text)
-        val propertiesIcon = propertiesButton.findViewById<ImageView>(R.id.properties_icon)
+        val propertiesButton = content.findViewById<View>(R.id.llPropertiesItem)
+        val propertiesText = propertiesButton.findViewById<TextView>(R.id.tvPropertiesText)
+        val propertiesIcon = propertiesButton.findViewById<ImageView>(R.id.ivPropertiesIcon)
 
         propertiesText.setTextColor(textColor)
         propertiesIcon.imageTintList = ColorStateList.valueOf(textColor)
@@ -81,7 +81,7 @@ object ItemLongPress {
         textColor: Int
     ): PopupWindow {
         val content =
-            LayoutInflater.from(context).inflate(R.layout.long_press_item_popup_extra, null)
+            LayoutInflater.from(context).inflate(R.layout.view_long_press_item_popup_extra, null)
         if (shortcuts.isNotEmpty()) {
             val recyclerView = content.findViewById<RecyclerView>(R.id.recycler)
             recyclerView.isNestedScrollingEnabled = false

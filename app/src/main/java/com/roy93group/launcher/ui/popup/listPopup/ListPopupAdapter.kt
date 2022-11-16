@@ -24,14 +24,14 @@ class ListPopupAdapter : RecyclerView.Adapter<ListPopupVH>() {
         return when (viewType) {
             1 -> ListPopupTitleVH(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.list_popup_title, parent, false)
+                    .inflate(R.layout.view_list_popup_title, parent, false)
             )
             2 -> ListPopupSwitchItemVH(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.list_popup_switch_item, parent, false)
+                    .inflate(R.layout.view_list_popup_switch_item, parent, false)
             )
             else -> ListPopupItemVH(
-                LayoutInflater.from(parent.context).inflate(R.layout.list_popup_item, parent, false)
+                LayoutInflater.from(parent.context).inflate(R.layout.view_list_popup_item, parent, false)
             )
         }
     }
