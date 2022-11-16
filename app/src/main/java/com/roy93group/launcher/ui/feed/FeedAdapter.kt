@@ -2,22 +2,25 @@ package com.roy93group.launcher.ui.feed
 
 import android.content.Context
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.*
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.feed.items.viewHolders.*
 import com.roy93group.launcher.ui.feed.items.viewHolders.home.HomeViewHolder
 import com.roy93group.launcher.ui.feed.items.viewHolders.home.bindHomeViewHolder
 import com.roy93group.launcher.ui.feed.items.viewHolders.suggestions.SuggestedVH
-import io.posidon.android.conveniencelib.drawable.toBitmap
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class FeedAdapter(
     val activity: LauncherActivity
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -97,9 +100,6 @@ class FeedAdapter(
         }
     }
 
-    private val themedColorCache = HashMap<Pair<Drawable?, Int>, Int>()
-    private val colorCache = HashMap<Pair<Drawable?, Int>, Int>()
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, i: Int) {
         if (i == 0) {
             return bindHomeViewHolder(holder as HomeViewHolder)
@@ -109,7 +109,6 @@ class FeedAdapter(
             return
         }
         val item = getFeedItem(i)
-        val k = item.sourceIcon to item.color
         val color = Color.RED
         holder as FeedViewHolder
         holder.onBind(item, color)
@@ -133,14 +132,6 @@ class FeedAdapter(
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         this.items = items
         diffResult.dispatchUpdatesTo(this)
-    }
-
-    fun onFeedInitialized() {
-    }
-
-    fun updateColorTheme() {
-        themedColorCache.clear()
-        notifyItemRangeChanged(0, itemCount)
     }
 
 }

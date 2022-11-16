@@ -4,6 +4,13 @@ import androidx.recyclerview.widget.DiffUtil
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemSuggestedApps
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class FeedDiffCallback(
     private val old: List<FeedItem>,
     private val new: List<FeedItem>

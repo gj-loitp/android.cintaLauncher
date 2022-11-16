@@ -101,9 +101,6 @@ class LauncherActivity : BaseFontActivity() {
             suggestedAppsProvider,
             onUpdate = this::loadFeed
         ) {
-            runOnUiThread {
-                feedAdapter.onFeedInitialized()
-            }
         }
 
         appDrawer.init()

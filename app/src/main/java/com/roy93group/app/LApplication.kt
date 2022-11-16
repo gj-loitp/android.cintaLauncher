@@ -24,6 +24,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO animation intro
 //TODO keep vi tri cua app drawer
 //TODO policy
+//TODO add gallery
 
 //done
 //ic launcher

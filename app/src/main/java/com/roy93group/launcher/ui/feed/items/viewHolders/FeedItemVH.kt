@@ -16,7 +16,7 @@ import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.formatTimeAgo
 import com.roy93group.launcher.providers.color.theme.ColorTheme
-import com.roy93group.launcher.ui.feed.items.ActionsAdapter
+import com.roy93group.launcher.ui.feed.ActionsAdapter
 import com.roy93group.launcher.ui.view.SwipeLayout
 import com.roy93group.launcher.ui.view.recycler.DividerItemDecorator
 import io.posidon.android.conveniencelib.units.dp
@@ -72,8 +72,7 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
             actionsContainer.isVisible = true
             val bg = Color.RED
             actionsContainer.setCardBackgroundColor(bg)
-            val fg = ColorTheme.titleColorForBG(bg)
-            actions.adapter = ActionsAdapter(item.actions, fg)
+            actions.adapter = ActionsAdapter(item.actions)
             separatorDrawable.setColor(ColorTheme.hintColorForBG(bg))
         }
         if (item.instant == Instant.MAX) {

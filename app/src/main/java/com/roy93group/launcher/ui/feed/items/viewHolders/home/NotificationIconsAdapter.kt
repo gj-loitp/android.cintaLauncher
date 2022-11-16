@@ -10,8 +10,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.IconViewHolder>() {
 
     private var items = emptyList<Drawable>()
@@ -33,7 +39,7 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
 
     override fun onBindViewHolder(holder: IconViewHolder, i: Int) {
         holder.image.setImageDrawable(items[i])
-        holder.image.imageTintList = ColorStateList.valueOf(Color .RED)
+        holder.image.imageTintList = ColorStateList.valueOf(Color.RED)
     }
 
     override fun getItemCount() = items.size
