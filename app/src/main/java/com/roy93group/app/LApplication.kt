@@ -21,6 +21,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO tich hop he sinh thai app roy93group
 //TODO animation intro
 //TODO keep vi tri cua app drawer
+//TODO policy
 
 //done
 //ic launcher

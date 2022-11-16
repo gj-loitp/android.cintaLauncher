@@ -13,6 +13,13 @@ import com.roy93group.launcher.ui.view.recycler.HighlightSectionIndexer
 import com.roy93group.launcher.ui.view.scrollbar.ScrollbarController
 import java.util.*
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class AppDrawerAdapter(
     val launcherActivity: LauncherActivity
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -53,16 +60,16 @@ class AppDrawerAdapter(
         val item = items[i]
         when (holder.itemViewType) {
             SECTION_HEADER -> bindSectionHeaderViewHolder(
-                holder as SectionHeaderViewHolder,
-                item as SectionHeaderItem,
-                indexer?.getHighlightI() == i,
-                launcherActivity
+                holder = holder as SectionHeaderViewHolder,
+                item = item as SectionHeaderItem,
+                isHighlighted = indexer?.getHighlightI() == i,
+                launcherActivity = launcherActivity
             )
             APP_ITEM -> bindAppViewHolder(
-                holder as AppViewHolder,
-                (item as AppItem).item,
-                indexer?.isDimmed(item.item) ?: false,
-                launcherActivity,
+                holder = holder as AppViewHolder,
+                item = (item as AppItem).item,
+                isDimmed = indexer?.isDimmed(item.item) ?: false,
+                activity = launcherActivity,
             )
         }
     }
