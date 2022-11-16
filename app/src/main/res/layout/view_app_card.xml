@@ -1,94 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
-    style="@style/Theme.AppLauncher.Drawer.Item.Container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/w_3"
+    app:cardCornerRadius="@dimen/round_medium"
+    app:cardUseCompatPadding="true">
 
-    <com.roy93group.launcher.ui.view.HorizontalAspectRatioLayout
-        android:id="@+id/aspect"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <com.roy93group.launcher.ui.view.BackdropImageView
-            android:id="@+id/ivBackground"
+        <com.loitpcore.views.layout.square.LSquareFrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0.1"
-            android:scaleType="centerCrop" />
+            android:layout_height="match_parent">
 
-        <com.roy93group.launcher.ui.view.SeeThoughView
-            android:id="@+id/blurBg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0.18" />
+            <com.roy93group.launcher.ui.view.BackdropImageView
+                android:id="@+id/ivBackground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.5"
+                android:scaleType="centerCrop" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:src="@drawable/ic_launcher" />
+        </com.loitpcore.views.layout.square.LSquareFrameLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivIcon"
-                style="@style/Theme.AppLauncher.Drawer.Item.Icon"
-                android:cropToPadding="false" />
-
-            <View
-                android:id="@+id/spacer"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_padding_small">
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                style="@style/Theme.AppLauncher.Drawer.Item.Label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/margin_padding_medium"
-                android:paddingEnd="@dimen/margin_padding_medium">
+                android:gravity="center">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivIconSmall"
-                    style="@style/Theme.AppLauncher.Drawer.Item.SmallIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:visibility="gone"
+                    tools:src="@drawable/ic_launcher"
                     tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvIconText"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:includeFontPadding="false"
                     android:maxLines="1"
                     android:paddingStart="@dimen/margin_padding_medium"
                     android:paddingEnd="@dimen/margin_padding_medium"
                     android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_small"
                     tools:text="@string/app_name" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvLineTitle"
-                style="@style/Theme.AppLauncher.Drawer.Item.Extra.Line.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_padding_medium"
-                android:layout_marginEnd="@dimen/margin_padding_medium"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_small"
                 android:visibility="gone"
                 tools:text="@string/app_name"
                 tools:visibility="visible" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvLineDescription"
-                style="@style/Theme.AppLauncher.Drawer.Item.Extra.Line.Description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_padding_medium"
-                android:layout_marginEnd="@dimen/margin_padding_medium"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_small"
                 android:visibility="gone"
                 tools:text="@string/app_name"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </com.roy93group.launcher.ui.view.HorizontalAspectRatioLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.cardview.widget.CardView>

@@ -11,6 +11,7 @@ import com.loitpcore.core.utilities.LUIUtil
  * +840766040293
  * freuss47@gmail.com
  */
+//TODO thay cac late in
 //TODO sort app drawer theo tan suat, cai nao cang nhieu text cang to
 //TODO man hinh intro cho accept het cac permission moi cho next
 //TODO set background to black

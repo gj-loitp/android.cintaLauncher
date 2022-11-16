@@ -31,79 +31,33 @@ class AppDrawer(
 ) {
 
     companion object {
-        const val COLUMNS = 4
-        const val WIDTH_TO_HEIGHT = 5f / 4f
+        const val COLUMNS = 5
     }
 
     val view: View = activity.findViewById(R.id.flAppDrawerContainer)
     private val adapter = AppDrawerAdapter(activity)
     private val rvApp: RecyclerView = view.findViewById(R.id.rvApp)
-//    private var popupX = 0f
-//    private var popupY = 0f
 
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
-        rvApp.layoutManager =
-            GridLayoutManager(
-                /* context = */ view.context,
-                /* spanCount = */COLUMNS,
-                /* orientation = */RecyclerView.VERTICAL,
-                /* reverseLayout = */false
-            ).apply {
-                spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                    override fun getSpanSize(i: Int): Int {
-                        return when (adapter.getItemViewType(i)) {
-                            AppDrawerAdapter.APP_ITEM -> 1
-                            AppDrawerAdapter.SECTION_HEADER -> COLUMNS
-                            else -> -1
-                        }
+        rvApp.layoutManager = GridLayoutManager(
+            /* context = */ view.context,
+            /* spanCount = */COLUMNS,
+            /* orientation = */RecyclerView.VERTICAL,
+            /* reverseLayout = */false
+        ).apply {
+            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(i: Int): Int {
+                    return when (adapter.getItemViewType(i)) {
+                        AppDrawerAdapter.APP_ITEM -> 1
+                        AppDrawerAdapter.SECTION_HEADER -> COLUMNS
+                        else -> -1
                     }
                 }
             }
+        }
         rvApp.adapter = adapter
 
-//        val onLongPress = Runnable {
-//            rvApp.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-//            DrawerLongPressPopup.show(
-//                parent = rvApp,
-//                touchX = popupX,
-//                touchY = popupY,
-//                navbarHeight = activity.getNavigationBarHeight(),
-//                settings = activity.settings,
-//                reloadApps = activity::loadApps
-//            )
-//        }
-//        var lastRecyclerViewDownTouchEvent: MotionEvent? = null
-//        rvApp.setOnTouchListener { v, event ->
-//            when (event.action and MotionEvent.ACTION_MASK) {
-//                MotionEvent.ACTION_DOWN -> {
-//                    popupX = event.rawX
-//                    popupY = event.rawY
-//                    if (rvApp.findChildViewUnder(event.x, event.y) == null) {
-//                        v.handler.removeCallbacks(onLongPress)
-//                        lastRecyclerViewDownTouchEvent = event
-//                        v.handler.postDelayed(
-//                            onLongPress,
-//                            ViewConfiguration.getLongPressTimeout().toLong()
-//                        )
-//                    }
-//                }
-//                MotionEvent.ACTION_MOVE -> if (lastRecyclerViewDownTouchEvent != null) {
-//                    val xDelta = abs(popupX - event.x)
-//                    val yDelta = abs(popupY - event.y)
-//                    if (xDelta >= 10 || yDelta >= 10) {
-//                        v.handler.removeCallbacks(onLongPress)
-//                        lastRecyclerViewDownTouchEvent = null
-//                    }
-//                }
-//                MotionEvent.ACTION_CANCEL,
-//                MotionEvent.ACTION_UP -> {
-//                    v.handler.removeCallbacks(onLongPress)
-//                    lastRecyclerViewDownTouchEvent = null
-//                }
-//            }
-//            false
-//        }
     }
 
     private var appSections: List<List<App>>? = null
@@ -122,11 +76,6 @@ class AppDrawer(
         view.postInvalidate()
         scrollBar.recycler = this@AppDrawer.rvApp
     }
-
-//    fun updateColorTheme() {
-//        view.background = ColorDrawable(ColorTheme.uiBG and 0xffffff or 0xbb000000.toInt())
-//        adapter.notifyItemRangeChanged(0, adapter.itemCount)
-//    }
 
     val isOpen get() = view.isVisible
 
