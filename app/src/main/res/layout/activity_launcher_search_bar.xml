@@ -12,7 +12,6 @@
     <!--        android:alpha="0.2" />-->
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/searchBarIcon"
         style="@style/Theme.AppLauncher.SearchBar.Icon"
         android:layout_width="@dimen/search_bar_height"
         android:layout_height="@dimen/search_bar_height"
