@@ -16,7 +16,6 @@ import com.loitpcore.core.utilities.LAppResource
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.formatTimeAgo
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.ui.feed.ActionsAdapter
 import com.roy93group.launcher.ui.view.SwipeLayout
 import com.roy93group.launcher.ui.view.recycler.DividerItemDecorator
@@ -43,7 +42,10 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
     private val cvActionsContainer: CardView = itemView.findViewById(R.id.cvActionsContainer)
     private val separatorDrawable = GradientDrawable().apply {
         shape = GradientDrawable.RECTANGLE
-        setSize(1.dp.toPixels(itemView), 0)
+        setSize(
+            /* width = */ 1.dp.toPixels(itemView),
+            /* height = */ 0
+        )
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -82,10 +84,7 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
             cvActionsContainer.isVisible = false
         } else {
             cvActionsContainer.isVisible = true
-            val bg = Color.BLUE
-            cvActionsContainer.setCardBackgroundColor(bg)
             rvActions.adapter = ActionsAdapter(item.actions)
-            separatorDrawable.setColor(ColorTheme.hintColorForBG(bg))
         }
         if (item.instant == Instant.MAX) {
             time.isVisible = false
@@ -95,8 +94,7 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
         }
         swipeLayout.onSwipeAway = item::onDismiss
         swipeLayout.isSwipeAble = item.isDismissible
-        swipeLayout.setSwipeColor(LAppResource.getColor(R.color.darkRed))
+        swipeLayout.setSwipeColor(LAppResource.getColor(R.color.indianRed))
         swipeLayout.setIconColor(Color.WHITE)
-        separator.setBackgroundColor(Color.WHITE)
     }
 }
