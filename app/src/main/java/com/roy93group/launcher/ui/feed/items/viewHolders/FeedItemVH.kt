@@ -12,6 +12,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.loitpcore.core.utilities.LAppResource
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.formatTimeAgo
@@ -23,6 +24,13 @@ import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 import java.time.Instant
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
     private val swipeLayout = this.itemView as SwipeLayout
     val container: View = itemView.findViewById(R.id.container)
@@ -32,21 +40,25 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
     val title: TextView = itemView.findViewById(R.id.title)
     val description: TextView = itemView.findViewById(R.id.description)
     val icon: ImageView = itemView.findViewById(R.id.icon)
-    private val actionsContainer: CardView = itemView.findViewById(R.id.cvActionsContainer)
+    private val cvActionsContainer: CardView = itemView.findViewById(R.id.cvActionsContainer)
     private val separatorDrawable = GradientDrawable().apply {
         shape = GradientDrawable.RECTANGLE
         setSize(1.dp.toPixels(itemView), 0)
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private val actions: RecyclerView =
-        actionsContainer.findViewById<RecyclerView>(R.id.rvActions).apply {
-            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+    private val rvActions: RecyclerView =
+        cvActionsContainer.findViewById<RecyclerView>(R.id.rvActions).apply {
+            layoutManager = LinearLayoutManager(
+                /* context = */ context,
+                /* orientation = */RecyclerView.HORIZONTAL,
+                /* reverseLayout = */false
+            )
             addItemDecoration(
                 DividerItemDecorator(
-                    itemView.context,
-                    DividerItemDecoration.HORIZONTAL,
-                    separatorDrawable
+                    context = itemView.context,
+                    orientation = DividerItemDecoration.HORIZONTAL,
+                    divider = separatorDrawable
                 )
             )
             setOnTouchListener { v, _ ->
@@ -67,12 +79,12 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
         itemView.setOnClickListener(item::onTap)
         icon.imageTintList = if (item.shouldTintIcon) ColorStateList.valueOf(color) else null
         if (item.actions.isEmpty()) {
-            actionsContainer.isVisible = false
+            cvActionsContainer.isVisible = false
         } else {
-            actionsContainer.isVisible = true
-            val bg = Color.RED
-            actionsContainer.setCardBackgroundColor(bg)
-            actions.adapter = ActionsAdapter(item.actions)
+            cvActionsContainer.isVisible = true
+            val bg = Color.BLUE
+            cvActionsContainer.setCardBackgroundColor(bg)
+            rvActions.adapter = ActionsAdapter(item.actions)
             separatorDrawable.setColor(ColorTheme.hintColorForBG(bg))
         }
         if (item.instant == Instant.MAX) {
@@ -83,13 +95,8 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
         }
         swipeLayout.onSwipeAway = item::onDismiss
         swipeLayout.isSwipeAble = item.isDismissible
-        source.setTextColor(color)
-        title.setTextColor(Color.RED)
-        description.setTextColor(Color.RED)
-        time.setTextColor(Color.RED)
-        val bg = (Color.RED and 0xff000000.toInt()) or (Color.RED and 0x00ffffff)
-        swipeLayout.setSwipeColor(bg)
-        swipeLayout.setIconColor(ColorTheme.titleColorForBG(bg))
-        separator.setBackgroundColor(Color.RED and 0x00ffffff or 0x24ffffff)
+        swipeLayout.setSwipeColor(LAppResource.getColor(R.color.darkRed))
+        swipeLayout.setIconColor(Color.WHITE)
+        separator.setBackgroundColor(Color.WHITE)
     }
 }

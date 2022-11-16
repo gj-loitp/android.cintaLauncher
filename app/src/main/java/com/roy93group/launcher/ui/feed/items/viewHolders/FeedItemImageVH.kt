@@ -21,6 +21,13 @@ import com.roy93group.launcher.data.feed.items.FeedItemWithBigImage
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toFloatPixels
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 open class FeedItemImageVH(itemView: View) : FeedItemVH(itemView) {
     val image: ImageView = itemView.findViewById(R.id.image)
     val card: CardView = itemView.findViewById(R.id.card)
@@ -63,7 +70,7 @@ open class FeedItemImageVH(itemView: View) : FeedItemVH(itemView) {
     override fun onBind(item: FeedItem, color: Int) {
         super.onBind(item, color)
         item as FeedItemWithBigImage
-        card.setCardBackgroundColor(Color.RED)
+//        card.setCardBackgroundColor(Color.RED)
         Glide.with(itemView.context)
             .load(item.image)
             .apply(requestOptions)
