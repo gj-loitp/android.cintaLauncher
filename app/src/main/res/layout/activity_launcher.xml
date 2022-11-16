@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/flHomeContainer"
     android:layout_width="match_parent"
@@ -38,10 +39,13 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvBackButtonContainer"
-            style="@style/Theme.AppLauncher.SearchBar.Container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_small"
+            android:elevation="@dimen/w_3"
             android:visibility="gone"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/w_45"
             tools:visibility="visible">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -50,7 +54,9 @@
                 android:layout_width="@dimen/search_bar_height"
                 android:layout_height="@dimen/search_bar_height"
                 android:background="@drawable/ripple"
-                android:src="@drawable/ic_cross" />
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_cross"
+                android:tint="@color/colorPrimary" />
         </androidx.cardview.widget.CardView>
 
         <include layout="@layout/activity_launcher_search_bar" />
