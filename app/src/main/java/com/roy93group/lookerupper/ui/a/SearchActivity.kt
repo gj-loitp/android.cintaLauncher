@@ -8,9 +8,12 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.loitpcore.annotation.IsAutoAnimation
+import com.loitpcore.annotation.IsFullScreen
+import com.loitpcore.annotation.LogTag
+import com.loitpcore.core.base.BaseFontActivity
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.Settings
 import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
@@ -22,7 +25,10 @@ import com.roy93group.lookerupper.data.results.SearchResult
 import com.roy93group.lookerupper.ui.adapter.SearchAdapter
 import kotlin.math.abs
 
-class SearchActivity : FragmentActivity() {
+@LogTag("SearchActivity")
+@IsFullScreen(false)
+@IsAutoAnimation(false)
+class SearchActivity : BaseFontActivity() {
 
     lateinit var adapter: SearchAdapter
     val settings = Settings()
@@ -39,13 +45,13 @@ class SearchActivity : FragmentActivity() {
     }
 
     val container: View by lazy { findViewById(R.id.cvSearchBarContainer) }
-//    private val searchBar: View by lazy { findViewById(R.id.search_bar) }
-//    private val blurBG: SeeThoughView by lazy { findViewById(R.id.blurBg) }
-//    private val wallpaperManager by lazy { getSystemService(WallpaperManager::class.java) }
+
+    override fun setLayoutResourceId(): Int {
+        return R.layout.activity_search
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search)
 
         settings.init(this)
         searcher.onCreate(this)
@@ -75,10 +81,10 @@ class SearchActivity : FragmentActivity() {
         recyclerView.run {
             layoutManager =
                 GridLayoutManager(
-                    this@SearchActivity,
-                    3,
-                    RecyclerView.VERTICAL,
-                    false
+                    /* context = */ this@SearchActivity,
+                    /* spanCount = */ 3,
+                    /* orientation = */ RecyclerView.VERTICAL,
+                    /* reverseLayout = */ false
                 ).apply {
                     spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                         override fun getSpanSize(i: Int): Int =
@@ -135,58 +141,4 @@ class SearchActivity : FragmentActivity() {
             }
         }
     }
-
-//    private fun updateBlur() {
-//        blurBG.drawable = BitmapDrawable(resources, acrylicBlur?.smoothBlur)
-//        window.decorView.background = LayerDrawable(
-//            arrayOf(
-//                BitmapDrawable(resources, acrylicBlur?.partialBlurSmall),
-//                BitmapDrawable(resources, acrylicBlur?.insaneBlur).also {
-//                    it.alpha = 80
-//                },
-//                ColorDrawable(ColorTheme.uiBG).also {
-//                    it.alpha = 120
-//                },
-//            )
-//        )
-//    }
-
-//    @RequiresApi(Build.VERSION_CODES.O_MR1)
-//    fun onColorsChangedListener(
-//        colors: WallpaperColors?,
-//        which: Int
-//    ) {
-//        if (which and WallpaperManager.FLAG_SYSTEM != 0) {
-//            loadBlur(wallpaperManager, ::updateBlur)
-//            ColorPalette.onColorsChanged(
-//                context = this,
-//                colorTheme = settings.colorTheme,
-//                onFinished = SearchActivity::loadColors
-//            ) { colors }
-//        }
-//    }
-
-//    private fun loadColors(palette: ColorPalette) {
-//        val colorThemeOptions = ColorThemeOptions(settings.colorThemeDayNight)
-//        ColorTheme.updateColorTheme(colorThemeOptions.createColorTheme(palette))
-//        window.decorView.background = LayerDrawable(
-//            arrayOf(
-//                BitmapDrawable(resources, acrylicBlur?.partialBlurSmall),
-//                BitmapDrawable(resources, acrylicBlur?.insaneBlur).also {
-//                    it.alpha = 80
-//                },
-//                ColorDrawable(ColorTheme.uiBG).also {
-//                    it.alpha = 120
-//                },
-//            )
-//        )
-//        searchBar.backgroundTintList =
-//            ColorStateList.valueOf(ColorTheme.searchBarBG)
-//        searchBar.findViewById<TextView>(R.id.search_bar_text).run {
-//            setTextColor(ColorTheme.searchBarFG)
-//            highlightColor = ColorTheme.searchBarFG and 0x00ffffff or 0x66000000
-//        }
-//        searchBar.findViewById<ImageView>(R.id.searchBarIcon).imageTintList =
-//            ColorStateList.valueOf(ColorTheme.searchBarFG)
-//    }
 }

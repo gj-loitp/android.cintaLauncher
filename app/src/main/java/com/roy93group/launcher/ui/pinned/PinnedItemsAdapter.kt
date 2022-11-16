@@ -17,6 +17,13 @@ import com.roy93group.launcher.ui.pinned.viewHolders.bindDropTargetViewHolder
 import com.roy93group.launcher.ui.pinned.viewHolders.bindPinnedViewHolder
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class PinnedItemsAdapter(
     launcherActivity: Activity,
     private val launcherContext: LauncherContext,
@@ -48,7 +55,10 @@ class PinnedItemsAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): RecyclerView.ViewHolder {
         return when (viewType) {
             1 -> DropTargetViewHolder(
                 LayoutInflater.from(parent.context)
@@ -62,10 +72,13 @@ class PinnedItemsAdapter(
     }
 
     private fun updatePins(v: View) {
-        launcherContext.appManager.setPinned(v.context, ArrayList(items))
+        launcherContext.appManager.setPinned(context = v.context, pinned = ArrayList(items))
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, ii: Int) {
+    override fun onBindViewHolder(
+        holder: RecyclerView.ViewHolder,
+        ii: Int
+    ) {
         if (ii == dropTargetIndex) {
             holder as DropTargetViewHolder
             bindDropTargetViewHolder(holder)
@@ -78,10 +91,10 @@ class PinnedItemsAdapter(
             item = item,
             navbarHeight = navbarHeight,
             onDragStart = {
-                val i = adapterPositionToI(holder.adapterPosition)
+                val i = adapterPositionToI(holder.bindingAdapterPosition)
                 items.removeAt(i)
-                dropTargetIndex = holder.adapterPosition
-                notifyItemChanged(holder.adapterPosition)
+                dropTargetIndex = holder.bindingAdapterPosition
+                notifyItemChanged(holder.bindingAdapterPosition)
                 updatePins(it)
             },
         )
@@ -115,7 +128,11 @@ class PinnedItemsAdapter(
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun onDrop(v: View, i: Int, clipData: ClipData) {
+    fun onDrop(
+        v: View,
+        i: Int,
+        clipData: ClipData
+    ) {
         if (i != dropTargetIndex) throw IllegalStateException("PinnedItemsAdapter -> i = $i, dropTargetIndex = $dropTargetIndex")
         val item =
             launcherContext.appManager.parseLauncherItem(clipData.getItemAt(0).text.toString())

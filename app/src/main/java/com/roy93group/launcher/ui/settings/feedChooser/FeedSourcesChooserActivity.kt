@@ -26,7 +26,7 @@ import io.posidon.android.conveniencelib.vibrate
 class FeedSourcesChooserActivity : SettingsActivity() {
 
     companion object {
-        @SuppressLint("NotifyDataSetChanged")
+        @SuppressLint("NotifyDataSetChanged", "InflateParams")
         fun sourceEditPopup(
             parent: View,
             settings: Settings,
@@ -37,8 +37,14 @@ class FeedSourcesChooserActivity : SettingsActivity() {
             val context = parent.context
             context.vibrate(14)
             val content =
-                LayoutInflater.from(context).inflate(R.layout.view_feed_chooser_option_edit_dialog, null)
-            val dialog = PopupWindow(content, Device.screenWidth(context), WRAP_CONTENT, true)
+                LayoutInflater.from(context)
+                    .inflate(R.layout.view_feed_chooser_option_edit_dialog, null)
+            val dialog = PopupWindow(
+                /* contentView = */ content,
+                /* width = */Device.screenWidth(context),
+                /* height = */WRAP_CONTENT,
+                /* focusable = */true
+            )
 
             content.run {
                 setBackgroundResource(R.drawable.card)

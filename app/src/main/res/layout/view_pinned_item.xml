@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.AppCompatImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/searchBarIcon"
-    style="@style/Theme.AppLauncher.SearchBar.Icon"
     android:layout_width="60dp"
     android:layout_height="@dimen/search_bar_height"
-    android:background="@drawable/ripple" />
+    android:background="@drawable/ripple"
+    android:padding="@dimen/margin_padding_small"
+    tools:src="@drawable/ic_launcher" />

@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.roy93group.launcher.ui.view.SeeThoughView
-        android:id="@+id/searchBarBlurBg"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/search_bar_height"
-        android:alpha="0.2" />
+<!--    <com.roy93group.launcher.ui.view.SeeThoughView-->
+    <!--        android:id="@+id/searchBarBlurBg"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="@dimen/search_bar_height"-->
+    <!--        android:alpha="0.2" />-->
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/searchBarIcon"

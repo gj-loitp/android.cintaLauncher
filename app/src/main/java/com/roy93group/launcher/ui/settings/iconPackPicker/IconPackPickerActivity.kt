@@ -18,6 +18,7 @@ import io.posidon.android.launcherutils.IconTheming
 import java.util.*
 
 class IconPackPickerActivity : SettingsActivity() {
+
     override fun init(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_settings_icon_pack_picker)
         val recycler = findViewById<RecyclerView>(R.id.recycler)

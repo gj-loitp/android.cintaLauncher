@@ -3,7 +3,6 @@ package com.roy93group.launcher.ui.bottomBar
 import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.view.DragEvent
 import android.view.View
 import android.widget.ImageView
@@ -12,14 +11,19 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.pinned.PinnedItemsAdapter
-import com.roy93group.launcher.ui.view.SeeThoughView
 import com.roy93group.launcher.ui.view.scrollbar.Scrollbar
 import com.roy93group.launcher.ui.view.scrollbar.ScrollbarIconView
 import com.roy93group.lookerupper.ui.a.SearchActivity
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class BottomBar(val activity: LauncherActivity) {
 
     val scrollBar: Scrollbar get() = appDrawerIcon.scrollBar
@@ -36,20 +40,22 @@ class BottomBar(val activity: LauncherActivity) {
         }
         setOnDragListener(::onDrag)
     }
-    private val searchIcon: ImageView = view.findViewById(R.id.searchBarIcon)
+
+    //    private val searchIcon: ImageView = view.findViewById(R.id.searchBarIcon)
     val appDrawerIcon: ScrollbarIconView =
         view.findViewById<ScrollbarIconView>(R.id.appDrawerIcon).apply {
             appDrawer = activity.appDrawer
         }
-    val appDrawerCloseIconContainer: CardView =
-        activity.findViewById<CardView>(R.id.cvBackButtonContainer)
+    val appDrawerCloseIconContainer: CardView = activity.findViewById(R.id.cvBackButtonContainer)
 
     @SuppressLint("ClickableViewAccessibility")
+    @Suppress("unused")
     val appDrawerCloseIcon: ImageView =
         appDrawerCloseIconContainer.findViewById<ImageView>(R.id.btBack).apply {
             setOnClickListener(activity.appDrawer::close)
         }
-    val blurBG: SeeThoughView = view.findViewById(R.id.searchBarBlurBg)
+
+    //    val blurBG: SeeThoughView = view.findViewById(R.id.searchBarBlurBg)
     private val pinnedAdapter = PinnedItemsAdapter(
         launcherActivity = activity,
         launcherContext = activity.launcherContext
@@ -64,13 +70,13 @@ class BottomBar(val activity: LauncherActivity) {
             adapter = pinnedAdapter
         }
 
-    fun updateColorTheme() {
-        view.setCardBackgroundColor(ColorTheme.searchBarBG)
-        appDrawerCloseIconContainer.setCardBackgroundColor(ColorTheme.searchBarBG)
-        searchIcon.imageTintList = ColorStateList.valueOf(ColorTheme.searchBarFG)
-        appDrawerCloseIcon.imageTintList = ColorStateList.valueOf(ColorTheme.searchBarFG)
-        appDrawerIcon.imageTintList = ColorStateList.valueOf(ColorTheme.searchBarFG)
-    }
+//    fun updateColorTheme() {
+//        view.setCardBackgroundColor(ColorTheme.searchBarBG)
+//        appDrawerCloseIconContainer.setCardBackgroundColor(ColorTheme.searchBarBG)
+//        searchIcon.imageTintList = ColorStateList.valueOf(ColorTheme.searchBarFG)
+//        appDrawerCloseIcon.imageTintList = ColorStateList.valueOf(ColorTheme.searchBarFG)
+//        appDrawerIcon.imageTintList = ColorStateList.valueOf(ColorTheme.searchBarFG)
+//    }
 
     fun onAppsLoaded() {
         updatePinned()
@@ -81,14 +87,21 @@ class BottomBar(val activity: LauncherActivity) {
         pinnedAdapter.showDropTarget(i)
     }
 
-    private fun getPinnedItemIndex(x: Float, y: Float): Int {
+    private fun getPinnedItemIndex(
+        x: Float,
+        y: Float
+    ): Int {
         val i =
             ((x - (view.width - pinnedRecycler.width) / 2) * pinnedAdapter.itemCount / pinnedRecycler.width).toInt()
                 .coerceAtLeast(-1)
         return if (i >= pinnedAdapter.itemCount) -1 else i
     }
 
-    private fun onDrop(v: View, i: Int, clipData: ClipData) {
+    private fun onDrop(
+        v: View,
+        i: Int,
+        clipData: ClipData
+    ) {
         pinnedAdapter.onDrop(v = v, i = i, clipData = clipData)
     }
 
@@ -96,7 +109,10 @@ class BottomBar(val activity: LauncherActivity) {
         pinnedAdapter.updateItems(activity.launcherContext.appManager.pinnedItems)
     }
 
-    private fun onDrag(v: View, event: DragEvent): Boolean {
+    private fun onDrag(
+        v: View,
+        event: DragEvent
+    ): Boolean {
         when (event.action) {
             DragEvent.ACTION_DRAG_STARTED,
             DragEvent.ACTION_DRAG_ENTERED,
@@ -116,7 +132,7 @@ class BottomBar(val activity: LauncherActivity) {
                 val i = getPinnedItemIndex(event.x, event.y)
                 if (i == -1)
                     return false
-                onDrop(v, i, event.clipData)
+                onDrop(v = v, i = i, clipData = event.clipData)
             }
         }
         return true

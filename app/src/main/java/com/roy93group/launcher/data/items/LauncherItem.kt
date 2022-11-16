@@ -6,10 +6,20 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.view.View
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 interface LauncherItem {
     companion object {
-        fun parse(string: String, appsByName: HashMap<String, MutableList<App>>): LauncherItem? {
-            return App.parse(string, appsByName)
+        fun parse(
+            string: String,
+            appsByName: HashMap<String, MutableList<App>>
+        ): LauncherItem? {
+            return App.parse(string = string, appsByName = appsByName)
         }
     }
 
@@ -31,7 +41,11 @@ interface LauncherItem {
 }
 
 @Suppress("unused")
-fun LauncherItem.showProperties(view: View, backgroundColor: Int, textColor: Int) {
+fun LauncherItem.showProperties(
+    view: View,
+    backgroundColor: Int,
+    textColor: Int
+) {
     if (this is App) {
         view.context.startActivity(
             Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
