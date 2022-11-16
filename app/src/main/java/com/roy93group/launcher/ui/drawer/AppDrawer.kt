@@ -2,8 +2,6 @@ package com.roy93group.launcher.ui.drawer
 
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.LayerDrawable
 import android.view.*
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
@@ -15,7 +13,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
 import com.roy93group.launcher.ui.popup.drawer.DrawerLongPressPopup
@@ -25,6 +22,13 @@ import io.posidon.android.conveniencelib.getStatusBarHeight
 import io.posidon.android.conveniencelib.onEnd
 import kotlin.math.abs
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class AppDrawer(
     val activity: LauncherActivity
 ) {
@@ -43,7 +47,12 @@ class AppDrawer(
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
         recycler.layoutManager =
-            GridLayoutManager(view.context, COLUMNS, RecyclerView.VERTICAL, false).apply {
+            GridLayoutManager(
+                /* context = */ view.context,
+                /* spanCount = */COLUMNS,
+                /* orientation = */RecyclerView.VERTICAL,
+                /* reverseLayout = */false
+            ).apply {
                 spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                     override fun getSpanSize(i: Int): Int {
                         return when (adapter.getItemViewType(i)) {
@@ -100,9 +109,12 @@ class AppDrawer(
         }
     }
 
-    var appSections: List<List<App>>? = null
+    private var appSections: List<List<App>>? = null
 
-    fun update(scrollBar: Scrollbar, appSections: List<List<App>>) {
+    fun update(
+        scrollBar: Scrollbar,
+        appSections: List<List<App>>
+    ) {
         this.appSections = appSections
         adapter.updateAppSections(
             appSections = appSections,
@@ -114,10 +126,10 @@ class AppDrawer(
         scrollBar.recycler = this@AppDrawer.recycler
     }
 
-    fun updateColorTheme() {
-        view.background = ColorDrawable(ColorTheme.uiBG and 0xffffff or 0xbb000000.toInt())
-        adapter.notifyItemRangeChanged(0, adapter.itemCount)
-    }
+//    fun updateColorTheme() {
+//        view.background = ColorDrawable(ColorTheme.uiBG and 0xffffff or 0xbb000000.toInt())
+//        adapter.notifyItemRangeChanged(0, adapter.itemCount)
+//    }
 
     val isOpen get() = view.isVisible
 
@@ -157,19 +169,13 @@ class AppDrawer(
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
             .onEnd { view.isVisible = true }
-        activity.blurBG.isVisible = true
         val s = currentValueAnimator?.animatedValue as Float? ?: 0f
         currentValueAnimator?.cancel()
-        activity.blurBG.isVisible = true
         currentValueAnimator = ValueAnimator.ofFloat(s, 3f).apply {
-            addUpdateListener {
-                updateBlurAnimation(it.animatedValue as Float)
-            }
             interpolator = DecelerateInterpolator()
             duration = 200
             onEnd {
                 currentValueAnimator = null
-                activity.blurBG.isVisible = true
             }
             start()
         }
@@ -205,27 +211,13 @@ class AppDrawer(
             .onEnd { view.isVisible = false }
         val s = currentValueAnimator?.animatedValue as Float? ?: 3f
         currentValueAnimator?.cancel()
-        activity.blurBG.isVisible = true
         currentValueAnimator = ValueAnimator.ofFloat(s, 0f).apply {
-            addUpdateListener {
-                updateBlurAnimation(it.animatedValue as Float)
-            }
             interpolator = AccelerateInterpolator()
             duration = 135
             onEnd {
                 currentValueAnimator = null
-                activity.blurBG.isVisible = false
-//                activity.updateBlur()
             }
             start()
         }
-    }
-
-    private fun updateBlurAnimation(x: Float) {
-        val l = activity.blurBG.background as? LayerDrawable ?: return
-        l.getDrawable(0).alpha = (255 * (x).coerceAtMost(1f)).toInt()
-        l.getDrawable(1).alpha = (255 * (x - 1f).coerceAtLeast(0f).coerceAtMost(1f)).toInt()
-        l.getDrawable(2).alpha = (255 * (x - 2f).coerceAtLeast(0f)).toInt()
-        l.getDrawable(3).alpha = (120 * ((x - .5f) / 2.5f).coerceAtLeast(0f)).toInt()
     }
 }

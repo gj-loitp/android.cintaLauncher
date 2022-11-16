@@ -10,6 +10,13 @@ import com.roy93group.launcher.storage.Settings
 import io.posidon.android.launcherutils.AppLoader
 import io.posidon.android.launcherutils.IconConfig
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class LauncherContext {
 
     companion object {

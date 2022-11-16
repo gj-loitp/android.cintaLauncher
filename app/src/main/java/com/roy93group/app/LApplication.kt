@@ -4,6 +4,14 @@ import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseApplication
 import com.loitpcore.core.utilities.LUIUtil
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+//TODO sort app drawer theo tan suat, cai nao cang nhieu text cang to
 //TODO man hinh intro cho accept het cac permission moi cho next
 //TODO set background to black
 //TODO ripple activity intro

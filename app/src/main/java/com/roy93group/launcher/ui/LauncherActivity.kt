@@ -37,6 +37,13 @@ import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.launcherutils.LiveWallpaper
 import kotlin.math.abs
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 @LogTag("LauncherActivity")
 @IsFullScreen(false)
 @IsAutoAnimation(false)
@@ -55,9 +62,9 @@ class LauncherActivity : BaseFontActivity() {
     val feedRecycler: RecyclerView by lazy {
         findViewById(R.id.rvFeed)
     }
-    val blurBG: View by lazy {
-        findViewById(R.id.blurBg)
-    }
+//    val blurBG: View by lazy {
+//        findViewById(R.id.blurBg)
+//    }
     val appDrawer by lazy {
         AppDrawer(this)
     }
@@ -146,11 +153,6 @@ class LauncherActivity : BaseFontActivity() {
         if (appDrawer.isOpen) appDrawer.close()
         else feedRecycler.scrollToPosition(0)
     }
-
-//    override fun onBackPressed() {
-//        if (appDrawer.isOpen) appDrawer.close()
-//        else feedRecycler.scrollToPosition(0)
-//    }
 
     private var lastUpdateTime = System.currentTimeMillis()
 
