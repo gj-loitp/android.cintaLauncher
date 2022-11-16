@@ -15,6 +15,13 @@ import com.roy93group.launcher.data.feed.items.FeedItemWithMedia
 import com.roy93group.launcher.data.feed.items.longHash
 import java.time.Instant
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 object MediaItemCreator {
 
     fun create(

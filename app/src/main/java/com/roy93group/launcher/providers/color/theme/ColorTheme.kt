@@ -2,16 +2,15 @@ package com.roy93group.launcher.providers.color.theme
 
 import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.luminance
-import kotlin.math.abs
-import kotlin.math.max
-import kotlin.math.min
-import kotlin.math.sign
 
-interface ColorTheme {
-    fun adjustColorForContrast(base: Int, tint: Int): Int
-
-    fun tileColor(iconBackgroundColor: Int): Int
-
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+class ColorTheme {
     companion object {
 
         fun titleColorForBG(background: Int): Int {
@@ -33,77 +32,6 @@ interface ColorTheme {
             ColorUtils.colorToHSL(base, baseHSL)
             tintHSL[2] = baseHSL[2]
             return ColorUtils.HSLToColor(tintHSL) and 0xffffff or (base and 0xff000000.toInt())
-        }
-
-        fun hueTintClosest(baseColor: Int, palette: Array<Int>): Int {
-            val tmp = FloatArray(3)
-            ColorUtils.colorToHSL(baseColor, tmp)
-            val h = tmp[0]
-            val s = tmp[1]
-            val l = tmp[2]
-            val isDesaturated = s < 1f || l == 1f || l < .001f
-            val (targetHue, targetSaturation, targetLightness) = run {
-                palette.map { color ->
-                    FloatArray(3).also { ColorUtils.colorToHSL(color, it) }
-                }.minByOrNull { (targetHue, targetSaturation, targetLightness) ->
-                    val hd = if (isDesaturated) 0f else {
-                        val rd = abs(h - targetHue)
-                        min(360f - rd, rd)
-                    }
-                    val sd = abs(s - targetSaturation)
-                    val ld = abs(l - targetLightness)
-                    hd * hd * 4 + sd * sd * 1 + ld * ld * 2
-                }!!
-            }
-            val (hue, saturation) = run {
-                val targetNess = (.9f - s * s * .38f).coerceAtLeast(0f)
-                val diff = run {
-                    val a = targetHue - h
-                    val b = 360f - abs(a)
-                    if (abs(a) < b) a else b * a.sign
-                }
-                val rotation = targetNess * diff
-                val x = (h + rotation) % 360
-                val hue = if (x < 0) 360 + x else x
-                val sameness = (1 - abs(diff) / (360f / 2f))
-                val saturation = s * sameness
-                hue to saturation
-            }
-
-            tmp[0] = hue
-            val ss = targetSaturation + .5f
-            tmp[1] = saturation * (ss * ss).coerceAtMost(1.25f)
-
-            val iconBackground = DoubleArray(3)
-            ColorUtils.colorToLAB(baseColor, iconBackground)
-
-            val lab = DoubleArray(3)
-            ColorUtils.colorToLAB(ColorUtils.HSLToColor(tmp), lab)
-            lab[0] = (iconBackground[0] + 10).coerceAtLeast(20.0)
-
-            return ColorUtils.LABToColor(lab[0], lab[1], lab[2])
-        }
-
-        fun labClosestVibrant(baseColor: Int, palette: Array<Int>): Int {
-            val tmp = DoubleArray(3)
-            ColorUtils.colorToLAB(baseColor, tmp)
-            val l = tmp[0]
-            val a = tmp[1]
-            val b = tmp[2]
-            val (tl, ta, tb) = run {
-                palette.map { color ->
-                    DoubleArray(3).also { ColorUtils.colorToLAB(color, it) }
-                }.minByOrNull { (tl, ta, tb) ->
-                    val ld = abs(l - tl) / 100
-                    val ad = abs(a - ta) / 128.0 / 2.0
-                    val bd = abs(b - tb) / 128.0 / 2.0
-                    val s = max((abs(ta) / 128.0), (abs(tb) / 128.0))
-                    val si = (1 - s)
-                    ad * ad + bd * bd + ld * ld * 2 + si * si * 2
-                }!!
-            }
-
-            return ColorUtils.LABToColor(tl, ta, tb)
         }
 
         @Suppress("unused")

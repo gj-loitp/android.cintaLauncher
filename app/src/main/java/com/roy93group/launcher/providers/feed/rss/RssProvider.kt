@@ -16,6 +16,13 @@ import com.roy93group.launcher.util.ImageLoader
 import io.posidon.android.rsslib.RSS
 import io.posidon.android.rsslib.RssItem
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 object RssProvider : AsyncFeedItemProvider() {
 
     private val imageCache = HashMap<String, Drawable>()

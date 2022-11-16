@@ -2,6 +2,7 @@ package com.roy93group.launcher.ui.view.scrollbar
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
 import android.util.AttributeSet
@@ -11,7 +12,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.PopupWindow
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.pallete.ColorPalette
 import com.roy93group.launcher.storage.ScrollbarControllerSetting
 import com.roy93group.launcher.storage.ScrollbarControllerSetting.scrollbarController
 import com.roy93group.launcher.storage.Settings
@@ -104,7 +104,7 @@ class ScrollbarIconView @JvmOverloads constructor(
                 FloatArray(8) { resources.getDimension(R.dimen.search_bar_radius) }, null, null
             )
         ).apply {
-            paint.color = ColorPalette.getCurrent().neutralVeryDark
+            paint.color = Color.YELLOW
         }
         val p = 24.dp.toPixels(this)
         when (orientation) {

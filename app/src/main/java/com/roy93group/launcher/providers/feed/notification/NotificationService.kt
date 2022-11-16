@@ -23,6 +23,13 @@ import com.roy93group.launcher.util.StackTraceActivity
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.thread
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class NotificationService : NotificationListenerService() {
 
     private val componentName = ComponentName(BuildConfig.APPLICATION_ID, this::class.java.name)

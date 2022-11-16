@@ -7,6 +7,13 @@ import com.roy93group.launcher.data.feed.items.longHash
 import com.roy93group.launcher.providers.feed.FeedItemProvider
 import java.time.Instant
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class SuggestedAppsProvider : FeedItemProvider() {
 
     override fun getUpdated(): List<FeedItem> {

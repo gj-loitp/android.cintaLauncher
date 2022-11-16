@@ -23,6 +23,13 @@ import kotlin.math.abs
 import kotlin.math.min
 import kotlin.math.pow
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 object SuggestionsManager {
 
     private const val CONTEXT_DATA_HOUR_OF_DAY = 0
@@ -42,7 +49,7 @@ object SuggestionsManager {
 
     @Suppress("unused")
     fun getNonPinnedSuggestions(pinnedItems: List<LauncherItem>): List<LauncherItem> =
-        suggestions - pinnedItems
+        suggestions - pinnedItems.toSet()
 
     fun onItemOpened(context: Context, item: LauncherItem) {
         thread(isDaemon = true, name = "SuggestionManager: saving opening context") {
