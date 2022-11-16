@@ -32,7 +32,6 @@ class SuggestionsAdapter(
             holder = holder,
             item = item,
             isDimmed = false,
-            activity = activity,
         )
     }
 

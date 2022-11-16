@@ -62,9 +62,6 @@ class LauncherActivity : BaseFontActivity() {
     val feedRecycler: RecyclerView by lazy {
         findViewById(R.id.rvFeed)
     }
-//    val blurBG: View by lazy {
-//        findViewById(R.id.blurBg)
-//    }
     val appDrawer by lazy {
         AppDrawer(this)
     }
@@ -97,7 +94,7 @@ class LauncherActivity : BaseFontActivity() {
         feedRecycler.adapter = feedAdapter
 
         launcherContext.feed.init(
-            settings,
+            settings = settings,
             notificationProvider,
             RssProvider,
             mediaProvider,
@@ -144,21 +141,24 @@ class LauncherActivity : BaseFontActivity() {
         }
 
         val launcherApps = getSystemService(LauncherApps::class.java)
-        launcherApps.registerCallback(AppCallback(::loadApps))
+        launcherApps.registerCallback(AppCallback(callback = ::loadApps))
 
         loadApps()
     }
 
     override fun onBaseBackPressed() {
-        if (appDrawer.isOpen) appDrawer.close()
-        else feedRecycler.scrollToPosition(0)
+        if (appDrawer.isOpen) {
+            appDrawer.close()
+        } else {
+            feedRecycler.scrollToPosition(0)
+        }
     }
 
     private var lastUpdateTime = System.currentTimeMillis()
 
     override fun onResume() {
         super.onResume()
-        SuggestionsManager.onResume(this) {
+        SuggestionsManager.onResume(context = this) {
             suggestedAppsProvider.update()
         }
         val shouldUpdate = settings.reload(applicationContext)
@@ -209,7 +209,6 @@ class LauncherActivity : BaseFontActivity() {
     private fun loadFeed(items: List<FeedItem>) {
         runOnUiThread {
             feedAdapter.updateItems(items)
-//            Log.d("Cinta", "updated feed (${items.size} items)")
         }
     }
 
@@ -218,7 +217,7 @@ class LauncherActivity : BaseFontActivity() {
             suggestedAppsProvider.update()
             bottomBar.appDrawerIcon.reloadController(settings)
             bottomBar.scrollBar.controller.loadSections(apps)
-            appDrawer.update(bottomBar.scrollBar, apps.sections)
+            appDrawer.update(scrollBar = bottomBar.scrollBar, appSections = apps.sections)
             runOnUiThread {
                 bottomBar.onAppsLoaded()
             }
@@ -226,7 +225,10 @@ class LauncherActivity : BaseFontActivity() {
         }
     }
 
-    private fun onTouch(v: View, event: MotionEvent): Boolean {
+    private fun onTouch(
+        v: View,
+        event: MotionEvent
+    ): Boolean {
         if (event.action == MotionEvent.ACTION_UP)
             LiveWallpaper.tap(view = v, x = event.rawX.toInt(), y = event.rawY.toInt())
         return false
@@ -243,7 +245,7 @@ class LauncherActivity : BaseFontActivity() {
             getNavigationBarHeight() + resources.getDimension(R.dimen.item_card_margin).toInt()
         val feedFilterY = searchBarY + resources.getDimension(R.dimen.search_bar_height).toInt()
 
-        bottomBar.view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+        bottomBar.cvSearchBarContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             bottomMargin = searchBarY
         }
 

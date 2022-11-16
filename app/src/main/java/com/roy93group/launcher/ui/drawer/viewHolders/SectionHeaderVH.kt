@@ -21,7 +21,7 @@ import io.posidon.android.conveniencelib.getNavigationBarHeight
  * freuss47@gmail.com
  */
 class SectionHeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val textView: TextView = itemView.findViewById(R.id.text)
+    val text: TextView = itemView.findViewById(R.id.text)
 }
 
 class SectionHeaderItem(override val label: String) : AppDrawerAdapter.DrawerItem {
@@ -35,13 +35,13 @@ fun bindSectionHeaderViewHolder(
     isHighlighted: Boolean,
     launcherActivity: LauncherActivity
 ) {
-    holder.textView.text = item.label
+    holder.text.text = item.label
     if (isHighlighted) {
         holder.itemView.setBackgroundColor(LAppResource.getColor(R.color.white))
-        holder.textView.setTextColor(LAppResource.getColor(R.color.colorPrimary))
+        holder.text.setTextColor(LAppResource.getColor(R.color.colorPrimary))
     } else {
         holder.itemView.setBackgroundColor(LAppResource.getColor(R.color.transparent))
-        holder.textView.setTextColor(LAppResource.getColor(R.color.white))
+        holder.text.setTextColor(LAppResource.getColor(R.color.white))
     }
 
     var x = 0f

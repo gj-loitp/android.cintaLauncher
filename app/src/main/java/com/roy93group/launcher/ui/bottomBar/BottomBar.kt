@@ -28,42 +28,41 @@ class BottomBar(val activity: LauncherActivity) {
 
     val scrollBar: Scrollbar get() = appDrawerIcon.scrollBar
 
-    val view: CardView = activity.findViewById<CardView>(R.id.cvSearchBarContainer).apply {
-        setOnClickListener {
-            val context = it.context
-            context.startActivity(
-                Intent(
-                    context,
-                    SearchActivity::class.java
-                ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            )
+    val cvSearchBarContainer: CardView =
+        activity.findViewById<CardView>(R.id.cvSearchBarContainer).apply {
+            setOnClickListener {
+                val context = it.context
+                context.startActivity(
+                    Intent(
+                        context,
+                        SearchActivity::class.java
+                    ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                )
+            }
+            setOnDragListener(::onDrag)
         }
-        setOnDragListener(::onDrag)
-    }
 
-    //    private val searchIcon: ImageView = view.findViewById(R.id.searchBarIcon)
     val appDrawerIcon: ScrollbarIconView =
-        view.findViewById<ScrollbarIconView>(R.id.appDrawerIcon).apply {
+        cvSearchBarContainer.findViewById<ScrollbarIconView>(R.id.appDrawerIcon).apply {
             appDrawer = activity.appDrawer
         }
-    val appDrawerCloseIconContainer: CardView = activity.findViewById(R.id.cvBackButtonContainer)
+    val cvBackButtonContainer: CardView = activity.findViewById(R.id.cvBackButtonContainer)
 
     @SuppressLint("ClickableViewAccessibility")
     @Suppress("unused")
     val appDrawerCloseIcon: ImageView =
-        appDrawerCloseIconContainer.findViewById<ImageView>(R.id.btBack).apply {
+        cvBackButtonContainer.findViewById<ImageView>(R.id.btBack).apply {
             this.setOnClickListener {
                 activity.appDrawer.close()
             }
         }
 
-    //    val blurBG: SeeThoughView = view.findViewById(R.id.searchBarBlurBg)
     private val pinnedAdapter = PinnedItemsAdapter(
         launcherActivity = activity,
         launcherContext = activity.launcherContext
     )
     private val pinnedRecycler: RecyclerView =
-        view.findViewById<RecyclerView>(R.id.rvPinned).apply {
+        cvSearchBarContainer.findViewById<RecyclerView>(R.id.rvPinned).apply {
             layoutManager = LinearLayoutManager(
                 /* context = */ activity,
                 /* orientation = */RecyclerView.HORIZONTAL,
@@ -71,14 +70,6 @@ class BottomBar(val activity: LauncherActivity) {
             )
             adapter = pinnedAdapter
         }
-
-//    fun updateColorTheme() {
-//        view.setCardBackgroundColor(ColorTheme.searchBarBG)
-//        appDrawerCloseIconContainer.setCardBackgroundColor(ColorTheme.searchBarBG)
-//        searchIcon.imageTintList = ColorStateList.valueOf(ColorTheme.searchBarFG)
-//        appDrawerCloseIcon.imageTintList = ColorStateList.valueOf(ColorTheme.searchBarFG)
-//        appDrawerIcon.imageTintList = ColorStateList.valueOf(ColorTheme.searchBarFG)
-//    }
 
     fun onAppsLoaded() {
         updatePinned()
@@ -94,7 +85,7 @@ class BottomBar(val activity: LauncherActivity) {
         y: Float
     ): Int {
         val i =
-            ((x - (view.width - pinnedRecycler.width) / 2) * pinnedAdapter.itemCount / pinnedRecycler.width).toInt()
+            ((x - (cvSearchBarContainer.width - pinnedRecycler.width) / 2) * pinnedAdapter.itemCount / pinnedRecycler.width).toInt()
                 .coerceAtLeast(-1)
         return if (i >= pinnedAdapter.itemCount) -1 else i
     }

@@ -41,7 +41,9 @@ class LauncherContext {
             appLoader.async(context, iconConfig) { ac ->
                 appsByName = ac.byName
                 _pinnedItems = settings.getStrings(PINNED_KEY)
-                    ?.mapNotNull { LauncherItem.parse(it, appsByName) }?.toMutableList()
+                    ?.mapNotNull {
+                        LauncherItem.parse(it, appsByName)
+                    }?.toMutableList()
                     ?: ArrayList()
                 SuggestionsManager.onAppsLoaded(this, context, settings)
                 onEnd(context, ac)

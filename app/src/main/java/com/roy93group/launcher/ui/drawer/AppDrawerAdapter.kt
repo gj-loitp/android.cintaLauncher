@@ -69,7 +69,6 @@ class AppDrawerAdapter(
                 holder = holder as AppViewHolder,
                 item = (item as AppItem).item,
                 isDimmed = indexer?.isDimmed(item.item) ?: false,
-                activity = launcherActivity,
             )
         }
     }

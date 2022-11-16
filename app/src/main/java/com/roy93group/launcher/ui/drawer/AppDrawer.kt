@@ -82,7 +82,7 @@ class AppDrawer(
     private var currentValueAnimator: ValueAnimator? = null
 
     fun open(v: View) {
-        activity.bottomBar.appDrawerCloseIconContainer.isVisible = true
+        activity.bottomBar.cvBackButtonContainer.isVisible = true
         if (isOpen) return
         ItemLongPress.currentPopup?.dismiss()
         val sbh = v.context.getStatusBarHeight()
@@ -90,7 +90,7 @@ class AppDrawer(
             rvApp.paddingLeft,
             sbh,
             rvApp.paddingRight,
-            activity.bottomBar.view.measuredHeight + activity.bottomBar.view.marginBottom + activity.bottomBar.view.marginTop
+            activity.bottomBar.cvSearchBarContainer.measuredHeight + activity.bottomBar.cvSearchBarContainer.marginBottom + activity.bottomBar.cvSearchBarContainer.marginTop
         )
         flAppDrawerContainer.isVisible = true
         activity.feedRecycler.stopScroll()
@@ -128,7 +128,7 @@ class AppDrawer(
     }
 
     fun close() {
-        activity.bottomBar.appDrawerCloseIconContainer.isVisible = false
+        activity.bottomBar.cvBackButtonContainer.isVisible = false
         if (!isOpen) return
         ItemLongPress.currentPopup?.dismiss()
         activity.feedProfiles.feedFilterRecycler.isVisible = true
