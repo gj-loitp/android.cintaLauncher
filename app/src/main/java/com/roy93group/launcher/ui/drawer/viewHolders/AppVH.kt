@@ -78,9 +78,9 @@ class AppViewHolder(
                 )
 
             holder.cardView.setCardBackgroundColor(backgroundColor)
-            holder.tvIconText.setTextColor(ColorTheme.titleColorForBG(actuallyBackgroundColor))
-            holder.tvLineTitle.setTextColor(ColorTheme.titleColorForBG(actuallyBackgroundColor))
-            holder.tvLineDescription.setTextColor(ColorTheme.textColorForBG(actuallyBackgroundColor))
+//            holder.tvIconText.setTextColor(ColorTheme.titleColorForBG(actuallyBackgroundColor))
+//            holder.tvLineTitle.setTextColor(ColorTheme.titleColorForBG(actuallyBackgroundColor))
+//            holder.tvLineDescription.setTextColor(ColorTheme.textColorForBG(actuallyBackgroundColor))
 
             target.onResourceReady(/* resource = */ resource, /* transition = */ null)
             return true
@@ -104,9 +104,9 @@ fun bindAppViewHolder(
     holder.cardView.setCardBackgroundColor(backgroundColor)
     holder.cardView.alpha = if (isDimmed) .3f else 1f
     holder.tvIconText.text = item.label
-    holder.tvIconText.setTextColor(ColorTheme.titleColorForBG(backgroundColor))
-    holder.tvLineTitle.setTextColor(ColorTheme.titleColorForBG(backgroundColor))
-    holder.tvLineDescription.setTextColor(ColorTheme.textColorForBG(backgroundColor))
+//    holder.tvIconText.setTextColor(ColorTheme.titleColorForBG(backgroundColor))
+//    holder.tvLineTitle.setTextColor(ColorTheme.titleColorForBG(backgroundColor))
+//    holder.tvLineDescription.setTextColor(ColorTheme.textColorForBG(backgroundColor))
 
     val banner = (item as? App)?.getBanner()
     if (banner?.text == null && banner?.title == null) {
@@ -137,14 +137,14 @@ fun bindAppViewHolder(
         SuggestionsManager.onItemOpened(it.context, item)
         item.open(context = it.context.applicationContext, view = it)
     }
-    holder.itemView.setOnLongClickListener {
-        ItemLongPress.onItemLongPress(
-            view = it,
-            backgroundColor = backgroundColor,
-            textColor = ColorTheme.titleColorForBG(backgroundColor),
-            item = item,
-            navbarHeight = activity.getNavigationBarHeight(),
-        )
-        true
-    }
+//    holder.itemView.setOnLongClickListener {
+//        ItemLongPress.onItemLongPress(
+//            view = it,
+//            backgroundColor = backgroundColor,
+//            textColor = ColorTheme.titleColorForBG(backgroundColor),
+//            item = item,
+//            navbarHeight = activity.getNavigationBarHeight(),
+//        )
+//        true
+//    }
 }
