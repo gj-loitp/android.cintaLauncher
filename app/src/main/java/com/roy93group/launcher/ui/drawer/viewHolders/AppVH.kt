@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.graphics.ColorUtils
 import androidx.core.view.isVisible
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
@@ -60,11 +61,8 @@ class AppViewHolder(
             isFirstResource: Boolean
         ): Boolean {
             val palette = Palette.from(resource.toBitmap(width = 32, height = 32)).generate()
-            val backgroundColor =
-                palette.getDominantColor(color)
-
+            val backgroundColor = palette.getDominantColor(color)
             holder.cardView.setCardBackgroundColor(backgroundColor)
-
             target.onResourceReady(/* resource = */ resource, /* transition = */ null)
             return true
         }
@@ -80,11 +78,9 @@ class AppItem(val item: App) : AppDrawerAdapter.DrawerItem {
 fun bindAppViewHolder(
     holder: AppViewHolder,
     item: LauncherItem,
-    isDimmed: Boolean,
 ) {
-    val backgroundColor = item.getColor()
+    val backgroundColor = ColorUtils.setAlphaComponent(item.getColor(), 80)
     holder.cardView.setCardBackgroundColor(backgroundColor)
-    holder.cardView.alpha = if (isDimmed) .3f else 1f
     holder.tvIconText.text = item.label
 
     val banner = (item as? App)?.getBanner()

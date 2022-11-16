@@ -68,7 +68,6 @@ class AppDrawerAdapter(
             APP_ITEM -> bindAppViewHolder(
                 holder = holder as AppViewHolder,
                 item = (item as AppItem).item,
-                isDimmed = indexer?.isDimmed(item.item) ?: false,
             )
         }
     }

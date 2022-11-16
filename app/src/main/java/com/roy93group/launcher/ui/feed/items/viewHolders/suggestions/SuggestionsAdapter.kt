@@ -31,7 +31,6 @@ class SuggestionsAdapter(
         bindAppViewHolder(
             holder = holder,
             item = item,
-            isDimmed = false,
         )
     }
 
