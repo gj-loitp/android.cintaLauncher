@@ -2,6 +2,7 @@ package com.roy93group.app
 
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseApplication
+import com.loitpcore.core.common.Constants
 import com.loitpcore.core.utilities.LUIUtil
 
 /**
@@ -33,8 +34,7 @@ class LApplication : BaseApplication() {
         super.onCreate()
 
 //        ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_SLIDE_LEFT
-//        LUIUtil.fontForAll = Constants.FONT_PATH
-
+        LUIUtil.fontForAll = Constants.FONT_PATH
         LUIUtil.setDarkTheme(true)
     }
 

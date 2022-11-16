@@ -1,9 +1,11 @@
 package com.roy93group.launcher.ui.drawer.viewHolders
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
+import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.loitpcore.core.utilities.LAppResource
 import com.roy93group.launcher.R
@@ -37,11 +39,10 @@ fun bindSectionHeaderViewHolder(
 ) {
     holder.text.text = item.label
     if (isHighlighted) {
-        holder.itemView.setBackgroundColor(LAppResource.getColor(R.color.white))
-        holder.text.setTextColor(LAppResource.getColor(R.color.colorPrimary))
+        val color = ColorUtils.setAlphaComponent(Color.WHITE, 80)
+        holder.itemView.setBackgroundColor(color)
     } else {
         holder.itemView.setBackgroundColor(LAppResource.getColor(R.color.transparent))
-        holder.text.setTextColor(LAppResource.getColor(R.color.white))
     }
 
     var x = 0f
