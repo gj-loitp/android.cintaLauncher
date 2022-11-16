@@ -37,7 +37,7 @@ class FeedSourcesChooserActivity : SettingsActivity() {
             val context = parent.context
             context.vibrate(14)
             val content =
-                LayoutInflater.from(context).inflate(R.layout.feed_chooser_option_edit_dialog, null)
+                LayoutInflater.from(context).inflate(R.layout.view_feed_chooser_option_edit_dialog, null)
             val dialog = PopupWindow(content, Device.screenWidth(context), WRAP_CONTENT, true)
 
             content.run {

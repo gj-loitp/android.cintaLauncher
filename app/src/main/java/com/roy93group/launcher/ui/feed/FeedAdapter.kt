@@ -62,31 +62,31 @@ class FeedAdapter(
         return when (viewType) {
             TYPE_HOME -> HomeViewHolder(
                 activity, activity.launcherContext, LayoutInflater.from(parent.context)
-                    .inflate(R.layout.feed_home, parent, false)
+                    .inflate(R.layout.view_feed_home, parent, false)
             ).also { homeViewHolder = it }
             TYPE_PLAIN -> FeedItemVH(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.feed_item_plain, parent, false)
+                    .inflate(R.layout.view_feed_item_plain, parent, false)
             )
             TYPE_SMALL -> FeedItemSmallVH(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.feed_item_small, parent, false)
+                    .inflate(R.layout.view_feed_item_small, parent, false)
             )
             TYPE_BIG_IMAGE -> FeedItemImageVH(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.feed_item_image, parent, false)
+                    .inflate(R.layout.view_feed_item_image, parent, false)
             )
             TYPE_PROGRESS -> FeedItemProgressVH(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.feed_item_progress, parent, false)
+                    .inflate(R.layout.view_feed_item_progress, parent, false)
             )
             TYPE_MEDIA -> FeedItemMediaVH(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.feed_item_media, parent, false)
+                    .inflate(R.layout.view_feed_item_media, parent, false)
             )
             TYPE_SUGGESTED -> SuggestedVH(
                 activity, LayoutInflater.from(parent.context)
-                    .inflate(R.layout.feed_item_suggested_apps, parent, false)
+                    .inflate(R.layout.view_feed_item_suggested_apps, parent, false)
             )
             TYPE_EMPTY -> EmptyFeedItemViewHolder(
                 LayoutInflater.from(parent.context)

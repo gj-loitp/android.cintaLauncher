@@ -25,8 +25,8 @@
     </style>
 
     <style name="Theme.AppLauncher.SearchResult.Container" parent="Theme.AppLauncher">
-        <item name="android:paddingHorizontal">6dp</item>
-        <item name="android:paddingVertical">4dp</item>
+        <item name="android:paddingHorizontal">@dimen/margin_padding_small</item>
+        <item name="android:paddingVertical">@dimen/margin_padding_small</item>
     </style>
 
     <style name="Theme.AppLauncher.SearchResult.Simple.Icon" parent="Theme.AppLauncher">

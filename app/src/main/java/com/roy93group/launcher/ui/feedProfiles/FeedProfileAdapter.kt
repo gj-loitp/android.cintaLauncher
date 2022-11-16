@@ -25,7 +25,7 @@ class FeedProfileAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedFilterVH {
         return FeedFilterVH(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.feed_filter, parent, false)
+                .inflate(R.layout.view_feed_filter, parent, false)
         ).apply {
             itemView.setOnClickListener {
                 val oldSelection = selection

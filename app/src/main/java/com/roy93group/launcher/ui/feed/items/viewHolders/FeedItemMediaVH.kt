@@ -18,8 +18,8 @@ class FeedItemMediaVH(
 ) : FeedItemVH(itemView) {
 
     private val cover: ImageView = itemView.findViewById(R.id.image)
-    private val previous: ImageView = itemView.findViewById(R.id.button_previous)
-    private val play: ImageView = itemView.findViewById(R.id.button_play)
+    private val previous: ImageView = itemView.findViewById(R.id.buttonPrevious)
+    private val play: ImageView = itemView.findViewById(R.id.buttonPlay)
     private val next: ImageView = itemView.findViewById(R.id.btNext)
 
     override fun onBind(item: FeedItem, color: Int) {

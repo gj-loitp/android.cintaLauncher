@@ -35,15 +35,15 @@ class IconPackPickerAdapter(
         return when (viewType) {
             SECTION -> SectionViewHolder(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.icon_packs_section, parent, false)
+                    .inflate(R.layout.view_icon_packs_section, parent, false)
             )
             SYSTEM_ICON_PACK -> IconPackViewHolder(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.icon_packs_item, parent, false), SYSTEM_ICON_PACK
+                    .inflate(R.layout.view_icon_packs_item, parent, false), SYSTEM_ICON_PACK
             )
             else -> IconPackViewHolder(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.icon_packs_item, parent, false), viewType
+                    .inflate(R.layout.view_icon_packs_item, parent, false), viewType
             )
         }
     }

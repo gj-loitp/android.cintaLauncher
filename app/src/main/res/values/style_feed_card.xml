@@ -3,7 +3,7 @@
 
     <style name="Theme.AppLauncher.FeedCard.ImageCard" parent="Theme.AppLauncher">
         <item name="cardCornerRadius">@dimen/item_card_radius</item>
-        <item name="android:layout_marginHorizontal">8dp</item>
+        <item name="android:layout_marginHorizontal">@dimen/margin_padding_small</item>
         <item name="android:elevation">4dp</item>
     </style>
 
@@ -13,18 +13,18 @@
     </style>
 
     <style name="Theme.AppLauncher.FeedCard.Time" parent="Theme.AppLauncher">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/txt_medium</item>
         <item name="android:textColor">@color/feed_card_text_dark_description</item>
         <item name="android:maxLines">1</item>
-        <item name="android:paddingHorizontal">8dp</item>
+        <item name="android:paddingHorizontal">@dimen/margin_padding_small</item>
     </style>
 
     <style name="Theme.AppLauncher.FeedCard.Header" parent="Theme.AppLauncher">
-        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_padding_small</item>
     </style>
 
     <style name="Theme.AppLauncher.FeedCard.Source" parent="Theme.AppLauncher">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/txt_medium</item>
         <item name="android:textColor">@color/feed_card_text_dark_description</item>
         <item name="android:maxLines">1</item>
         <item name="android:singleLine">true</item>
@@ -34,20 +34,20 @@
 
     <style name="Theme.AppLauncher.FeedCard.SourceIcon" parent="Theme.AppLauncher">
         <item name="android:tint">@color/feed_card_text_dark_title</item>
-        <item name="android:paddingHorizontal">8dp</item>
+        <item name="android:paddingHorizontal">@dimen/margin_padding_small</item>
         <item name="android:layout_width">32dp</item>
         <item name="android:layout_height">16dp</item>
     </style>
 
     <style name="Theme.AppLauncher.FeedCard.Title" parent="Theme.AppLauncher">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/txt_medium</item>
         <item name="android:textColor">@color/feed_card_text_dark_title</item>
         <item name="android:textStyle">bold</item>
         <item name="android:paddingHorizontal">@dimen/feed_card_spacing</item>
     </style>
 
     <style name="Theme.AppLauncher.FeedCard.Description" parent="Theme.AppLauncher">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/txt_medium</item>
         <item name="android:textColor">@color/feed_card_text_dark_description</item>
         <item name="android:paddingHorizontal">@dimen/feed_card_spacing</item>
         <item name="android:paddingTop">@dimen/feed_card_spacing</item>

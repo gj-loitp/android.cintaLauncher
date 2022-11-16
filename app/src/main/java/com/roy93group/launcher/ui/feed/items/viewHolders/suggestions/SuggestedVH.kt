@@ -18,7 +18,7 @@ class SuggestedVH(
     val separator: View = itemView.findViewById(R.id.separator)
 
     val adapter = SuggestionsAdapter(launcherActivity)
-    val recycler: RecyclerView = itemView.findViewById<RecyclerView>(R.id.recents_recycler).apply {
+    val recycler: RecyclerView = itemView.findViewById<RecyclerView>(R.id.rvRecents).apply {
         layoutManager = GridLayoutManager(
             /* context = */ itemView.context,
             /* spanCount = */3,
