@@ -31,17 +31,17 @@ class AppDrawer(
 ) {
 
     companion object {
-        const val COLUMNS = 5
+        const val COLUMNS = 4
     }
 
-    val view: View = activity.findViewById(R.id.flAppDrawerContainer)
+    private val flAppDrawerContainer: View = activity.findViewById(R.id.flAppDrawerContainer)
     private val adapter = AppDrawerAdapter(activity)
-    private val rvApp: RecyclerView = view.findViewById(R.id.rvApp)
+    private val rvApp: RecyclerView = flAppDrawerContainer.findViewById(R.id.rvApp)
 
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
         rvApp.layoutManager = GridLayoutManager(
-            /* context = */ view.context,
+            /* context = */ flAppDrawerContainer.context,
             /* spanCount = */COLUMNS,
             /* orientation = */RecyclerView.VERTICAL,
             /* reverseLayout = */false
@@ -73,11 +73,11 @@ class AppDrawer(
             controller = scrollBar.controller
         )
         scrollBar.postInvalidate()
-        view.postInvalidate()
+        flAppDrawerContainer.postInvalidate()
         scrollBar.recycler = this@AppDrawer.rvApp
     }
 
-    val isOpen get() = view.isVisible
+    val isOpen get() = flAppDrawerContainer.isVisible
 
     private var currentValueAnimator: ValueAnimator? = null
 
@@ -92,7 +92,7 @@ class AppDrawer(
             rvApp.paddingRight,
             activity.bottomBar.view.measuredHeight + activity.bottomBar.view.marginBottom + activity.bottomBar.view.marginTop
         )
-        view.isVisible = true
+        flAppDrawerContainer.isVisible = true
         activity.feedRecycler.stopScroll()
         activity.feedProfiles.feedFilterRecycler.animate()
             .alpha(0f)
@@ -107,14 +107,14 @@ class AppDrawer(
             .setDuration(100)
             .setInterpolator(AccelerateInterpolator())
             .onEnd { activity.feedRecycler.isInvisible = true }
-        view.animate()
+        flAppDrawerContainer.animate()
             .alpha(1f)
             .scaleX(1f)
             .scaleY(1f)
             .setStartDelay(0)
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
-            .onEnd { view.isVisible = true }
+            .onEnd { flAppDrawerContainer.isVisible = true }
         val s = currentValueAnimator?.animatedValue as Float? ?: 0f
         currentValueAnimator?.cancel()
         currentValueAnimator = ValueAnimator.ofFloat(s, 3f).apply {
@@ -146,14 +146,14 @@ class AppDrawer(
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
             .onEnd { activity.feedRecycler.isInvisible = false }
-        view.animate()
+        flAppDrawerContainer.animate()
             .alpha(0f)
             .scaleX(1.1f)
             .scaleY(1.1f)
             .setStartDelay(0)
             .setDuration(100)
             .setInterpolator(AccelerateInterpolator())
-            .onEnd { view.isVisible = false }
+            .onEnd { flAppDrawerContainer.isVisible = false }
         val s = currentValueAnimator?.animatedValue as Float? ?: 3f
         currentValueAnimator?.cancel()
         currentValueAnimator = ValueAnimator.ofFloat(s, 0f).apply {

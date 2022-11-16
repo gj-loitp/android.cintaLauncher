@@ -28,15 +28,22 @@ import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
 import io.posidon.android.conveniencelib.drawable.toBitmap
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 
+/**
+ * Updated by Loitp on 2022.12.16
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class AppViewHolder(
-    val card: CardView
-) : RecyclerView.ViewHolder(card) {
-    val icon: ImageView = itemView.findViewById(R.id.ivIcon)
-    val label: TextView = itemView.findViewById(R.id.tvIconText)
-    val iconSmall: ImageView = itemView.findViewById(R.id.ivIconSmall)
-    val lineTitle: TextView = itemView.findViewById(R.id.tvLineTitle)
-    val lineDescription: TextView = itemView.findViewById(R.id.tvLineDescription)
-    val imageView: ImageView = itemView.findViewById(R.id.ivBackground)
+    val cardView: CardView
+) : RecyclerView.ViewHolder(cardView) {
+    val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon)
+    val tvIconText: TextView = itemView.findViewById(R.id.tvIconText)
+    val ivIconSmall: ImageView = itemView.findViewById(R.id.ivIconSmall)
+    val tvLineTitle: TextView = itemView.findViewById(R.id.tvLineTitle)
+    val tvLineDescription: TextView = itemView.findViewById(R.id.tvLineDescription)
+    val ivBackground: ImageView = itemView.findViewById(R.id.ivBackground)
     val requestOptions = RequestOptions().downsample(DownsampleStrategy.AT_MOST)
 
     class ImageRequestListener(
@@ -67,13 +74,13 @@ class AppViewHolder(
                 ColorUtils.blendARGB(
                     /* color1 = */ backgroundColor,
                     /* color2 = */color,
-                    /* ratio = */holder.imageView.alpha
+                    /* ratio = */holder.ivBackground.alpha
                 )
 
-            holder.card.setCardBackgroundColor(backgroundColor)
-            holder.label.setTextColor(ColorTheme.titleColorForBG(actuallyBackgroundColor))
-            holder.lineTitle.setTextColor(ColorTheme.titleColorForBG(actuallyBackgroundColor))
-            holder.lineDescription.setTextColor(ColorTheme.textColorForBG(actuallyBackgroundColor))
+            holder.cardView.setCardBackgroundColor(backgroundColor)
+            holder.tvIconText.setTextColor(ColorTheme.titleColorForBG(actuallyBackgroundColor))
+            holder.tvLineTitle.setTextColor(ColorTheme.titleColorForBG(actuallyBackgroundColor))
+            holder.tvLineDescription.setTextColor(ColorTheme.textColorForBG(actuallyBackgroundColor))
 
             target.onResourceReady(/* resource = */ resource, /* transition = */ null)
             return true
@@ -94,36 +101,36 @@ fun bindAppViewHolder(
     activity: Activity,
 ) {
     val backgroundColor = ColorTheme.tintWithColor(ColorTheme.cardBG, item.getColor())
-    holder.card.setCardBackgroundColor(backgroundColor)
-    holder.card.alpha = if (isDimmed) .3f else 1f
-    holder.label.text = item.label
-    holder.label.setTextColor(ColorTheme.titleColorForBG(backgroundColor))
-    holder.lineTitle.setTextColor(ColorTheme.titleColorForBG(backgroundColor))
-    holder.lineDescription.setTextColor(ColorTheme.textColorForBG(backgroundColor))
+    holder.cardView.setCardBackgroundColor(backgroundColor)
+    holder.cardView.alpha = if (isDimmed) .3f else 1f
+    holder.tvIconText.text = item.label
+    holder.tvIconText.setTextColor(ColorTheme.titleColorForBG(backgroundColor))
+    holder.tvLineTitle.setTextColor(ColorTheme.titleColorForBG(backgroundColor))
+    holder.tvLineDescription.setTextColor(ColorTheme.textColorForBG(backgroundColor))
 
     val banner = (item as? App)?.getBanner()
     if (banner?.text == null && banner?.title == null) {
-        holder.iconSmall.isVisible = false
-        holder.icon.isVisible = true
-        holder.icon.setImageDrawable(item.icon)
+        holder.ivIconSmall.isVisible = false
+        holder.ivIcon.isVisible = true
+        holder.ivIcon.setImageDrawable(item.icon)
     } else {
-        holder.iconSmall.isVisible = true
-        holder.icon.isVisible = false
-        holder.iconSmall.setImageDrawable(item.icon)
+        holder.ivIconSmall.isVisible = true
+        holder.ivIcon.isVisible = false
+        holder.ivIconSmall.setImageDrawable(item.icon)
     }
-    applyIfNotNull(holder.lineTitle, banner?.title, TextView::setText)
-    applyIfNotNull(holder.lineDescription, banner?.text, TextView::setText)
+    applyIfNotNull(view = holder.tvLineTitle, value = banner?.title, block = TextView::setText)
+    applyIfNotNull(view = holder.tvLineDescription, value = banner?.text, block = TextView::setText)
     if (banner?.background == null) {
-        holder.imageView.isVisible = false
+        holder.ivBackground.isVisible = false
     } else {
-        holder.imageView.isVisible = true
-        holder.imageView.setImageDrawable(null)
-        holder.imageView.alpha = banner.bgOpacity
+        holder.ivBackground.isVisible = true
+        holder.ivBackground.setImageDrawable(null)
+        holder.ivBackground.alpha = banner.bgOpacity
         Glide.with(holder.itemView.context)
             .load(banner.background)
             .apply(holder.requestOptions)
             .listener(AppViewHolder.ImageRequestListener(holder, item.getColor()))
-            .into(holder.imageView)
+            .into(holder.ivBackground)
     }
 
     holder.itemView.setOnClickListener {
