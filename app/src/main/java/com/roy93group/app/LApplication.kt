@@ -11,6 +11,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO rate more share app
 //TODO firebase
 //TODO tich hop he sinh thai app roy93group
+//TODO animation intro
 
 //done
 //ic launcher

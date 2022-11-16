@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">Color launcher</string>
-    <string name="dev_email">roy93group@gmail.com</string>
-    <string name="crash_email_subject">Color launcher: crash log</string>
-</resources>

@@ -1,4 +1,7 @@
 <resources>
+    <string name="app_name">Color launcher</string>
+    <string name="dev_email">roy93group@gmail.com</string>
+    <string name="crash_email_subject">Color launcher: crash log</string>
     <string name="cinta_launcher_crashed">Color launcher crashed</string>
     <string name="send_bug_report">Send bug report</string>
     <string name="read_more_at_source">More at %s</string>
