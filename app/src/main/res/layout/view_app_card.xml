@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="@dimen/margin_padding_small"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 tools:src="@drawable/ic_launcher" />
         </com.loitpcore.views.layout.square.LSquareFrameLayout>
 
@@ -50,18 +50,17 @@
                     android:id="@+id/ivIconSmall"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:layout_marginEnd="@dimen/margin_padding_small"
                     android:visibility="gone"
                     tools:src="@drawable/ic_launcher"
                     tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvIconText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
                     android:maxLines="1"
-                    android:paddingStart="@dimen/margin_padding_medium"
-                    android:paddingEnd="@dimen/margin_padding_medium"
                     android:singleLine="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/txt_small"
@@ -73,7 +72,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:gravity="center"
                 android:maxLines="1"
                 android:textColor="@color/white"
                 android:textSize="@dimen/txt_small"
@@ -86,7 +84,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:gravity="center"
                 android:maxLines="1"
                 android:textColor="@color/white"
                 android:textSize="@dimen/txt_small"
