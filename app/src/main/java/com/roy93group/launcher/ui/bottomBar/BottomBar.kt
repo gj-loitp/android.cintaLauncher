@@ -52,7 +52,9 @@ class BottomBar(val activity: LauncherActivity) {
     @Suppress("unused")
     val appDrawerCloseIcon: ImageView =
         appDrawerCloseIconContainer.findViewById<ImageView>(R.id.btBack).apply {
-            setOnClickListener(activity.appDrawer::close)
+            this.setOnClickListener {
+                activity.appDrawer.close()
+            }
         }
 
     //    val blurBG: SeeThoughView = view.findViewById(R.id.searchBarBlurBg)

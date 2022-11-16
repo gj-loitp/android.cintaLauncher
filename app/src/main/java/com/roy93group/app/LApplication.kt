@@ -20,6 +20,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO firebase
 //TODO tich hop he sinh thai app roy93group
 //TODO animation intro
+//TODO keep vi tri cua app drawer
 
 //done
 //ic launcher

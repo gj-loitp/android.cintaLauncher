@@ -15,12 +15,9 @@ import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
-import com.roy93group.launcher.ui.popup.drawer.DrawerLongPressPopup
 import com.roy93group.launcher.ui.view.scrollbar.Scrollbar
-import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.conveniencelib.getStatusBarHeight
 import io.posidon.android.conveniencelib.onEnd
-import kotlin.math.abs
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -34,19 +31,19 @@ class AppDrawer(
 ) {
 
     companion object {
-        const val COLUMNS = 3
+        const val COLUMNS = 4
         const val WIDTH_TO_HEIGHT = 5f / 4f
     }
 
     val view: View = activity.findViewById(R.id.flAppDrawerContainer)
     private val adapter = AppDrawerAdapter(activity)
-    private val recycler: RecyclerView = view.findViewById(R.id.rvApp)
-    private var popupX = 0f
-    private var popupY = 0f
+    private val rvApp: RecyclerView = view.findViewById(R.id.rvApp)
+//    private var popupX = 0f
+//    private var popupY = 0f
 
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
-        recycler.layoutManager =
+        rvApp.layoutManager =
             GridLayoutManager(
                 /* context = */ view.context,
                 /* spanCount = */COLUMNS,
@@ -63,50 +60,50 @@ class AppDrawer(
                     }
                 }
             }
-        recycler.adapter = adapter
+        rvApp.adapter = adapter
 
-        val onLongPress = Runnable {
-            recycler.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            DrawerLongPressPopup.show(
-                parent = recycler,
-                touchX = popupX,
-                touchY = popupY,
-                navbarHeight = activity.getNavigationBarHeight(),
-                settings = activity.settings,
-                reloadApps = activity::loadApps
-            )
-        }
-        var lastRecyclerViewDownTouchEvent: MotionEvent? = null
-        recycler.setOnTouchListener { v, event ->
-            when (event.action and MotionEvent.ACTION_MASK) {
-                MotionEvent.ACTION_DOWN -> {
-                    popupX = event.rawX
-                    popupY = event.rawY
-                    if (recycler.findChildViewUnder(event.x, event.y) == null) {
-                        v.handler.removeCallbacks(onLongPress)
-                        lastRecyclerViewDownTouchEvent = event
-                        v.handler.postDelayed(
-                            onLongPress,
-                            ViewConfiguration.getLongPressTimeout().toLong()
-                        )
-                    }
-                }
-                MotionEvent.ACTION_MOVE -> if (lastRecyclerViewDownTouchEvent != null) {
-                    val xDelta = abs(popupX - event.x)
-                    val yDelta = abs(popupY - event.y)
-                    if (xDelta >= 10 || yDelta >= 10) {
-                        v.handler.removeCallbacks(onLongPress)
-                        lastRecyclerViewDownTouchEvent = null
-                    }
-                }
-                MotionEvent.ACTION_CANCEL,
-                MotionEvent.ACTION_UP -> {
-                    v.handler.removeCallbacks(onLongPress)
-                    lastRecyclerViewDownTouchEvent = null
-                }
-            }
-            false
-        }
+//        val onLongPress = Runnable {
+//            rvApp.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+//            DrawerLongPressPopup.show(
+//                parent = rvApp,
+//                touchX = popupX,
+//                touchY = popupY,
+//                navbarHeight = activity.getNavigationBarHeight(),
+//                settings = activity.settings,
+//                reloadApps = activity::loadApps
+//            )
+//        }
+//        var lastRecyclerViewDownTouchEvent: MotionEvent? = null
+//        rvApp.setOnTouchListener { v, event ->
+//            when (event.action and MotionEvent.ACTION_MASK) {
+//                MotionEvent.ACTION_DOWN -> {
+//                    popupX = event.rawX
+//                    popupY = event.rawY
+//                    if (rvApp.findChildViewUnder(event.x, event.y) == null) {
+//                        v.handler.removeCallbacks(onLongPress)
+//                        lastRecyclerViewDownTouchEvent = event
+//                        v.handler.postDelayed(
+//                            onLongPress,
+//                            ViewConfiguration.getLongPressTimeout().toLong()
+//                        )
+//                    }
+//                }
+//                MotionEvent.ACTION_MOVE -> if (lastRecyclerViewDownTouchEvent != null) {
+//                    val xDelta = abs(popupX - event.x)
+//                    val yDelta = abs(popupY - event.y)
+//                    if (xDelta >= 10 || yDelta >= 10) {
+//                        v.handler.removeCallbacks(onLongPress)
+//                        lastRecyclerViewDownTouchEvent = null
+//                    }
+//                }
+//                MotionEvent.ACTION_CANCEL,
+//                MotionEvent.ACTION_UP -> {
+//                    v.handler.removeCallbacks(onLongPress)
+//                    lastRecyclerViewDownTouchEvent = null
+//                }
+//            }
+//            false
+//        }
     }
 
     private var appSections: List<List<App>>? = null
@@ -123,7 +120,7 @@ class AppDrawer(
         )
         scrollBar.postInvalidate()
         view.postInvalidate()
-        scrollBar.recycler = this@AppDrawer.recycler
+        scrollBar.recycler = this@AppDrawer.rvApp
     }
 
 //    fun updateColorTheme() {
@@ -140,10 +137,10 @@ class AppDrawer(
         if (isOpen) return
         ItemLongPress.currentPopup?.dismiss()
         val sbh = v.context.getStatusBarHeight()
-        recycler.setPadding(
-            recycler.paddingLeft,
+        rvApp.setPadding(
+            rvApp.paddingLeft,
             sbh,
-            recycler.paddingRight,
+            rvApp.paddingRight,
             activity.bottomBar.view.measuredHeight + activity.bottomBar.view.marginBottom + activity.bottomBar.view.marginTop
         )
         view.isVisible = true
@@ -181,8 +178,7 @@ class AppDrawer(
         }
     }
 
-    @Suppress("unused")
-    fun close(v: View? = null) {
+    fun close() {
         activity.bottomBar.appDrawerCloseIconContainer.isVisible = false
         if (!isOpen) return
         ItemLongPress.currentPopup?.dismiss()
