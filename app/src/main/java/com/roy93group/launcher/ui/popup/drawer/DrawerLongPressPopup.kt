@@ -3,7 +3,6 @@ package com.roy93group.launcher.ui.popup.drawer
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -22,9 +21,15 @@ import com.roy93group.launcher.ui.popup.PopupUtils
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupAdapter
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
 import com.roy93group.launcher.ui.settings.iconPackPicker.IconPackPickerActivity
-import com.roy93group.launcher.ui.view.SeeThoughView
 import io.posidon.android.conveniencelib.Device
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 object DrawerLongPressPopup {
 
     @SuppressLint("InflateParams")
@@ -41,21 +46,21 @@ object DrawerLongPressPopup {
             PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
         PopupUtils.setCurrent(window)
 
-        content.findViewById<SeeThoughView>(R.id.blurBg).run {
-//            drawable = acrylicBlur?.fullBlur?.let { BitmapDrawable(parent.resources, it) }
-            alpha = 0.1f
-        }
+//        content.findViewById<SeeThoughView>(R.id.blurBg).run {
+////            drawable = acrylicBlur?.fullBlur?.let { BitmapDrawable(parent.resources, it) }
+//            alpha = 0.1f
+//        }
 
         val cardView = content.findViewById<CardView>(R.id.card)
-        cardView.setCardBackgroundColor(Color.RED)
+//        cardView.setCardBackgroundColor(Color.RED)
         content.findViewById<RecyclerView>(R.id.recycler).apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = ListPopupAdapter().apply {
                 fun update() {
                     updateItems(
                         createMainAdapter(
-                            parent.context,
-                            settings,
+                            context = parent.context,
+                            settings = settings,
                             reloadScrollbarController = {
                                 cardView.post {
                                     reloadApps()
@@ -114,7 +119,7 @@ object DrawerLongPressPopup {
                 description = context.getString(R.string.reshape_adaptive_icons_explanation),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_shapes),
                 value = settings.doReshapeAdaptiveIcons,
-                onToggle = { v, value ->
+                onToggle = { _, value ->
                     settings.edit(context) {
                         doReshapeAdaptiveIcons = value
                         reloadApps()

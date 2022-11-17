@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
-    style="@style/Theme.AppLauncher.ItemPopup.Container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/w_3"
+    app:cardBackgroundColor="@color/aqua"
+    app:cardCornerRadius="@dimen/round_medium"
+    app:cardUseCompatPadding="true">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -23,18 +27,22 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivPropertiesIcon"
-                style="@style/Theme.AppLauncher.ItemPopup.Shortcut.Icon"
+                android:layout_width="@dimen/w_50"
+                android:layout_height="@dimen/w_50"
+                android:padding="@dimen/margin_padding_small"
                 android:src="@drawable/ic_info" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPropertiesText"
-                style="@style/Theme.AppLauncher.ItemPopup.Shortcut.Label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:includeFontPadding="false"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="@string/properties" />
+                android:text="@string/properties"
+                android:textColor="@color/red"
+                android:textSize="@dimen/txt_medium" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.cardview.widget.CardView>

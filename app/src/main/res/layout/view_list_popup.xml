@@ -9,12 +9,6 @@
     app:cardCornerRadius="@dimen/round_medium"
     app:cardUseCompatPadding="true">
 
-    <!--    <com.roy93group.launcher.ui.view.SeeThoughView-->
-    <!--        android:id="@+id/blurBg"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:alpha="0.2" />-->
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

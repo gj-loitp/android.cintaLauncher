@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icon"
-        style="@style/Theme.AppLauncher.ItemPopup.Shortcut.Icon" />
+        android:layout_width="@dimen/w_50"
+        android:layout_height="@dimen/w_50"
+        android:padding="@dimen/margin_padding_small"
+        tools:src="@drawable/ic_launcher"
+        tools:tint="@color/white" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text"
-        style="@style/Theme.AppLauncher.ItemPopup.Shortcut.Label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:includeFontPadding="false"
         android:maxLines="1"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textSize="@dimen/txt_medium" />
 </androidx.appcompat.widget.LinearLayoutCompat>

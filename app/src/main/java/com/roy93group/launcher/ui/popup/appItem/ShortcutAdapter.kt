@@ -8,6 +8,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class ShortcutAdapter(
     private val shortcuts: List<ShortcutInfo>,
     private val txtColor: Int
@@ -25,18 +32,22 @@ class ShortcutAdapter(
     override fun onBindViewHolder(holder: ShortcutViewHolder, i: Int) {
         val s = shortcuts[i]
         holder.label.text = s.shortLabel
-        holder.label.setTextColor(txtColor)
+//        holder.label.setTextColor(txtColor)
         val launcherApps =
             holder.itemView.context.getSystemService(Context.LAUNCHER_APPS_SERVICE) as LauncherApps
         holder.icon.setImageDrawable(
             launcherApps.getShortcutIconDrawable(
-                s,
-                holder.itemView.resources.displayMetrics.densityDpi
+                /* shortcut = */ s,
+                /* density = */ holder.itemView.resources.displayMetrics.densityDpi
             )
         )
         holder.itemView.setOnClickListener {
             ItemLongPress.currentPopup?.dismiss()
-            launcherApps.startShortcut(s, null, null)
+            launcherApps.startShortcut(
+                /* shortcut = */ s,
+                /* sourceBounds = */null,
+                /* startActivityOptions = */null
+            )
         }
     }
 }
