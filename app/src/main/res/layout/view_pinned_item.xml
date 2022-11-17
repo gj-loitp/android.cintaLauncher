@@ -5,4 +5,5 @@
     android:layout_height="@dimen/search_bar_height"
     android:background="@drawable/ripple"
     android:padding="@dimen/margin_padding_small"
+    android:tint="@color/white"
     tools:src="@drawable/ic_launcher" />
