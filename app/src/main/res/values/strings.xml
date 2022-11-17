@@ -24,9 +24,6 @@
     <string name="today">Today</string>
     <!-- filters end -->
     <!-- settings start -->
-    <string name="color_theme_gen">Color theme generator</string>
-    <string name="color_theme_day_night">Lightness mode</string>
-    <string name="rss_sources">News sources</string>
     <string name="scrollbar_controller">App sorting</string>
     <string name="icons">Icons</string>
     <string name="reshape_adaptive_icons">Reshape adaptive icons</string>
