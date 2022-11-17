@@ -4,20 +4,19 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:gravity="bottom"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/margin_padding_medium">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="@dimen/w_100"
         android:layout_height="@dimen/w_100"
-        android:layout_marginStart="@dimen/margin_padding_medium"
         android:src="@drawable/ic_launcher"
         android:tint="@color/white" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/margin_padding_medium"
         android:text="@string/splash_message"
         android:textColor="@color/white"
-        android:textSize="@dimen/txt_large" />
+        android:textSize="@dimen/txt_50" />
 </androidx.appcompat.widget.LinearLayoutCompat>

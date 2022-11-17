@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/colorPrimary"
     android:gravity="bottom"
     android:orientation="vertical">
 
@@ -12,10 +13,15 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.manojbhadane.QButton
         android:id="@+id/btNext"
-        style="@style/Theme.AppLauncher.Intro.Slash.Button"
         android:layout_width="match_parent"
-        android:onClick="next"
-        android:src="@drawable/sign_continue" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_padding_medium"
+        android:text="@string/next"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/txt_medium"
+        app:qb_backgroundColor="@color/white"
+        app:qb_radius="100" />
 </androidx.appcompat.widget.LinearLayoutCompat>

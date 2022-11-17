@@ -2,8 +2,7 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
-    <!--
-    TODO: add icon pack support, and then an icon pack setting here
-    -->
+
 </androidx.appcompat.widget.LinearLayoutCompat>
