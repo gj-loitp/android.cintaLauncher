@@ -1,16 +1,21 @@
 package com.roy93group.launcher.ui.settings
 
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.fragment.app.FragmentActivity
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.storage.Settings
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 abstract class SettingsActivity : FragmentActivity() {
 
     val settings = Settings()
@@ -34,7 +39,6 @@ abstract class SettingsActivity : FragmentActivity() {
     private fun loadColors() {
         window.decorView.background = LayerDrawable(
             arrayOf(
-//                BitmapDrawable(resources, acrylicBlur?.fullBlur),
                 ColorDrawable(Color.YELLOW),
             )
         )

@@ -1,8 +1,17 @@
 package com.roy93group.launcher.ui.settings.feedChooser
 
 import android.content.Context
+import androidx.annotation.Keep
 import com.roy93group.launcher.R
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+@Keep
 class Suggestions(val context: Context) {
 
     val list = mapOf(

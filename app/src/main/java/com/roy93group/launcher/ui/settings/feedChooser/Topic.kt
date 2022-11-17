@@ -5,6 +5,13 @@ import io.posidon.android.conveniencelib.loadRaw
 import io.posidon.android.rsslib.RssSource
 import org.json.JSONArray
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class Topic(
     val context: Context,
     val name: String,

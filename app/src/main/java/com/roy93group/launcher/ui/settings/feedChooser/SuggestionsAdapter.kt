@@ -1,15 +1,20 @@
 package com.roy93group.launcher.ui.settings.feedChooser
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import android.widget.TextView
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class SuggestionsAdapter(
     val suggestions: Suggestions
 ) : BaseExpandableListAdapter() {
@@ -27,8 +32,8 @@ class SuggestionsAdapter(
             val h = 16.dp.toPixels(this)
             val v = 8.dp.toPixels(this)
             setPadding(h, v + 8.dp.toPixels(this), h, v)
-            val textColor = Color.RED
-            setTextColor(textColor)
+//            val textColor = Color.RED
+//            setTextColor(textColor)
             textSize = 20f
         }) as TextView
         convertView.text = suggestions[topicI].name
@@ -46,8 +51,8 @@ class SuggestionsAdapter(
         val convertView = (cv ?: TextView(parent.context).apply {
             val h = 16.dp.toPixels(this)
             setPadding(h + 16.dp.toPixels(this), 2.dp.toPixels(this), h, 8.dp.toPixels(this))
-            val textColor = Color.RED
-            setTextColor(textColor)
+//            val textColor = Color.RED
+//            setTextColor(textColor)
             textSize = 16f
         }) as TextView
         convertView.text = suggestions[topicI][sourceI].name

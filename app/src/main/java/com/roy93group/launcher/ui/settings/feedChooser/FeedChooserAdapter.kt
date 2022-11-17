@@ -1,7 +1,5 @@
 package com.roy93group.launcher.ui.settings.feedChooser
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.Settings
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class FeedChooserAdapter(
     private val settings: Settings,
     private val feedUrls: ArrayList<String>
@@ -18,16 +23,16 @@ class FeedChooserAdapter(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var card: LinearLayout = itemView.findViewById(R.id.card)
-        var text: TextView = itemView.findViewById(R.id.txt)
+        var txt: TextView = itemView.findViewById(R.id.txt)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, i: Int) {
         val url = feedUrls[i]
-        holder.text.text = url
+        holder.txt.text = url
 
-        holder.card.backgroundTintList = ColorStateList.valueOf(Color.YELLOW)
-        holder.text.setTextColor(Color.RED)
-        holder.text.setOnLongClickListener {
+//        holder.card.backgroundTintList = ColorStateList.valueOf(Color.YELLOW)
+//        holder.txt.setTextColor(Color.RED)
+        holder.txt.setOnLongClickListener {
             FeedSourcesChooserActivity.sourceEditPopup(it, settings, feedUrls, this, i)
             true
         }

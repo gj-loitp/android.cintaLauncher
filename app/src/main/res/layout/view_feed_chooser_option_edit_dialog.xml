@@ -17,13 +17,20 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/title"
-        style="@style/Theme.AppLauncher.Settings.Input"
         android:layout_width="match_parent"
+        android:layout_height="@dimen/w_55"
         android:layout_margin="@dimen/margin_padding_medium"
+        android:background="@drawable/input_bg"
+        android:gravity="start|center_vertical"
         android:hint="@string/example_feed_url"
+        android:includeFontPadding="false"
         android:inputType="textUri"
         android:paddingTop="@dimen/margin_padding_medium"
-        android:paddingBottom="@dimen/margin_padding_medium" />
+        android:paddingBottom="@dimen/margin_padding_medium"
+        android:textAllCaps="false"
+        android:textColor="@color/deepPink"
+        android:textColorHint="@color/red"
+        android:textSize="@dimen/txt_medium" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -41,7 +48,8 @@
             android:paddingTop="@dimen/margin_padding_medium"
             android:paddingRight="@dimen/margin_padding_medium"
             android:paddingBottom="@dimen/margin_padding_medium"
-            android:text="@string/done" />
+            android:text="@string/done"
+            android:textColor="@color/deepPink" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/remove"
@@ -49,12 +57,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_padding_medium"
             android:background="@drawable/button_bg_round"
-            android:backgroundTint="#33ff5555"
             android:paddingLeft="@dimen/margin_padding_medium"
             android:paddingTop="@dimen/margin_padding_medium"
             android:paddingRight="@dimen/margin_padding_medium"
             android:paddingBottom="@dimen/margin_padding_medium"
             android:text="@string/remove"
-            android:textColor="#ff5555" />
+            android:textColor="@color/green" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

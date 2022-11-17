@@ -10,6 +10,13 @@ import com.roy93group.launcher.ui.settings.iconPackPicker.viewHolders.IconPackVi
 import com.roy93group.launcher.ui.settings.iconPackPicker.viewHolders.SectionViewHolder
 import java.util.*
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class IconPackPickerAdapter(
     val settings: Settings,
     private val chosenIconPacks: LinkedList<IconPackPickerActivity.IconPack>,
@@ -31,7 +38,10 @@ class IconPackPickerAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): RecyclerView.ViewHolder {
         return when (viewType) {
             SECTION -> SectionViewHolder(
                 LayoutInflater.from(parent.context)
@@ -48,7 +58,10 @@ class IconPackPickerAdapter(
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, i: Int) {
+    override fun onBindViewHolder(
+        holder: RecyclerView.ViewHolder,
+        i: Int
+    ) {
         when (i) {
             0 -> (holder as SectionViewHolder).bind(holder.itemView.context.getString(R.string.chosen))
             1 + chosenIconPacks.size + 1 -> (holder as SectionViewHolder).bind(
@@ -74,7 +87,7 @@ class IconPackPickerAdapter(
         viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
-        val toPosition = target.adapterPosition
+        val toPosition = target.bindingAdapterPosition
         if (target !is IconPackViewHolder && toPosition == 0) {
             return false
         }
@@ -82,7 +95,7 @@ class IconPackPickerAdapter(
             return false
         }
 
-        val fromPosition = viewHolder.adapterPosition
+        val fromPosition = viewHolder.bindingAdapterPosition
         var changed = false
         val chosenIconPacksSize = chosenIconPacks.size
         val isFromAvailable = fromPosition >= 1 + chosenIconPacksSize + 1

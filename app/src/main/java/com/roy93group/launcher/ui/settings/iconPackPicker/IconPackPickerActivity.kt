@@ -17,6 +17,13 @@ import io.posidon.android.conveniencelib.getStatusBarHeight
 import io.posidon.android.launcherutils.IconTheming
 import java.util.*
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class IconPackPickerActivity : SettingsActivity() {
 
     override fun init(savedInstanceState: Bundle?) {
