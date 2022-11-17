@@ -11,6 +11,13 @@ import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.ui.drawer.viewHolders.AppViewHolder
 import com.roy93group.launcher.ui.drawer.viewHolders.bindAppViewHolder
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class SuggestionsAdapter(
     val activity: Activity,
 ) : RecyclerView.Adapter<AppViewHolder>() {

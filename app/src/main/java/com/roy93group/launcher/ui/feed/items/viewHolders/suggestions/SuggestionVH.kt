@@ -10,28 +10,24 @@ import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
-import com.roy93group.launcher.ui.view.SeeThoughView
 
 @Suppress("unused")
 class SuggestionVH(
     val card: CardView
 ) : RecyclerView.ViewHolder(card) {
-    val icon: ImageView = itemView.findViewById(R.id.ivIcon)
-    val label: TextView = itemView.findViewById(R.id.tvIconText)
-    private val blurBG: SeeThoughView = itemView.findViewById(R.id.blurBg)
+    private val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon)
+    private val tvIconText: TextView = itemView.findViewById(R.id.tvIconText)
 
     fun onBind(
         item: LauncherItem,
         navbarHeight: Int,
     ) {
-//        blurBG.drawable =
-//            BitmapDrawable(/* res = */ itemView.resources, /* bitmap = */ acrylicBlur?.insaneBlur)
 
-        val backgroundColor = ColorTheme.tintWithColor(Color .RED, item.getColor())
+        val backgroundColor = ColorTheme.tintWithColor(Color.RED, item.getColor())
         card.setCardBackgroundColor(backgroundColor)
-        label.text = item.label
-        label.setTextColor(ColorTheme.titleColorForBG(backgroundColor))
-        icon.setImageDrawable(item.icon)
+        tvIconText.text = item.label
+        tvIconText.setTextColor(ColorTheme.titleColorForBG(backgroundColor))
+        ivIcon.setImageDrawable(item.icon)
 
         itemView.setOnClickListener {
             SuggestionsManager.onItemOpened(it.context, item)

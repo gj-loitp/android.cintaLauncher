@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
-    style="@style/Theme.AppLauncher.ListPopup.Container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/w_3"
+    app:cardBackgroundColor="@color/yellow"
+    app:cardCornerRadius="@dimen/round_medium"
+    app:cardUseCompatPadding="true">
 
-    <com.roy93group.launcher.ui.view.SeeThoughView
-        android:id="@+id/blurBg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.2" />
+    <!--    <com.roy93group.launcher.ui.view.SeeThoughView-->
+    <!--        android:id="@+id/blurBg"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:alpha="0.2" />-->
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -18,9 +22,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
-            style="@style/Theme.AppLauncher.ListPopup.Recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clipToPadding="false" />
+            android:clipToPadding="false"
+            android:paddingVertical="@dimen/margin_padding_small" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.cardview.widget.CardView>

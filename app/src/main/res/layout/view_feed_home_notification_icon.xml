@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.AppCompatImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/image"
-    style="@style/Theme.AppLauncher.NotificationIcons.Icon" />
+    android:layout_width="@dimen/w_20"
+    android:layout_height="@dimen/w_20"
+    android:layout_marginHorizontal="@dimen/margin_padding_small" />

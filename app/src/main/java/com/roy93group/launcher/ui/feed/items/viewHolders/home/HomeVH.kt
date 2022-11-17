@@ -23,26 +23,33 @@ class HomeViewHolder(
     itemView: View,
 ) : RecyclerView.ViewHolder(itemView) {
 
-    private val clockContainer = itemView.findViewById<View>(R.id.llClockContainer)
-    val weekDay: TextView = clockContainer.findViewById(R.id.week_day)
-    val time: TextView = clockContainer.findViewById(R.id.time)
-    val date: TextView = clockContainer.findViewById(R.id.date)
+    private val llClockContainer = itemView.findViewById<View>(R.id.llClockContainer)
+    val tvWeekDay: TextView = llClockContainer.findViewById(R.id.tvWeekDay)
+    val tvTime: TextView = llClockContainer.findViewById(R.id.tvTime)
+    val tvDate: TextView = llClockContainer.findViewById(R.id.tvDate)
     private val notificationIconsAdapter = NotificationIconsAdapter()
-    private val notificationIconsContainer =
+    private val llNotificationIconContainer =
         itemView.findViewById<View>(R.id.llNotificationIconContainer)
 
     @Suppress("unused")
-    val notificationIconsRecycler: RecyclerView =
+    val rvNotificationIconList: RecyclerView =
         itemView.findViewById<RecyclerView>(R.id.rvNotificationIconList).apply {
-            layoutManager = LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(
+                    /* context = */ itemView.context,
+                    /* orientation = */RecyclerView.HORIZONTAL,
+                    /* reverseLayout = */false
+                )
             adapter = notificationIconsAdapter
         }
-    val notificationIconsText: TextView = itemView.findViewById(R.id.tvNotificationIconText)
-    val vertical: LinearLayoutCompat = itemView.findViewById(R.id.vertical)
+    val tvNotificationIconText: TextView = itemView.findViewById(R.id.tvNotificationIconText)
+    val llVertical: LinearLayoutCompat = itemView.findViewById(R.id.llVertical)
 
     init {
-        NotificationService.setOnUpdate(javaClass.name) { itemView.post(::updateNotificationIcons) }
-        clockContainer.setPadding(
+        NotificationService.setOnUpdate(javaClass.name) {
+            itemView.post(::updateNotificationIcons)
+        }
+        llClockContainer.setPadding(
             /* left = */ 0,
             /* top = */itemView.context.getStatusBarHeight(),
             /* right = */0,
@@ -53,13 +60,15 @@ class HomeViewHolder(
     fun updateNotificationIcons() {
         val icons = NotificationService.notifications.groupBy {
             it.sourceIcon?.constantState
-        }.mapNotNull { it.key?.newDrawable() }
+        }.mapNotNull {
+            it.key?.newDrawable()
+        }
         if (icons.isEmpty()) {
-            notificationIconsContainer.isVisible = false
+            llNotificationIconContainer.isVisible = false
         } else {
-            notificationIconsContainer.isVisible = true
+            llNotificationIconContainer.isVisible = true
             if (notificationIconsAdapter.updateItems(icons)) {
-                notificationIconsText.text =
+                tvNotificationIconText.text =
                     itemView.resources.getQuantityString(
                         R.plurals.x_notifications,
                         icons.size,
@@ -78,10 +87,10 @@ fun bindHomeViewHolder(
     holder: HomeViewHolder
 ) {
     holder.updateNotificationIcons()
-    holder.time.setTextColor(Color.RED)
-    holder.date.setTextColor(Color.RED)
-    holder.weekDay.setTextColor(Color.RED)
-    holder.notificationIconsText.setTextColor(Color.RED)
+    holder.tvTime.setTextColor(Color.RED)
+    holder.tvDate.setTextColor(Color.RED)
+    holder.tvWeekDay.setTextColor(Color.RED)
+    holder.tvNotificationIconText.setTextColor(Color.RED)
     holder.itemView.setOnTouchListener { _, e ->
         when (e.action and MotionEvent.ACTION_MASK) {
             MotionEvent.ACTION_DOWN -> {
@@ -91,15 +100,15 @@ fun bindHomeViewHolder(
         }
         false
     }
-    holder.itemView.setOnLongClickListener {
-        HomeLongPressPopup.show(
-            parent = it,
-            touchX = popupX,
-            touchY = popupY,
-            navbarHeight = holder.launcherActivity.getNavigationBarHeight(),
-            settings = holder.launcherContext.settings,
-//            reloadColorTheme = holder.launcherActivity::reloadColorThemeSync
-        )
-        true
-    }
+//    holder.itemView.setOnLongClickListener {
+//        HomeLongPressPopup.show(
+//            parent = it,
+//            touchX = popupX,
+//            touchY = popupY,
+//            navbarHeight = holder.launcherActivity.getNavigationBarHeight(),
+//            settings = holder.launcherContext.settings,
+////            reloadColorTheme = holder.launcherActivity::reloadColorThemeSync
+//        )
+//        true
+//    }
 }

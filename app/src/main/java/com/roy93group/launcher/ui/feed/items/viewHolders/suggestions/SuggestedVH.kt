@@ -10,6 +10,13 @@ import com.roy93group.launcher.data.feed.items.FeedItemSuggestedApps
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.feed.items.viewHolders.FeedViewHolder
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class SuggestedVH(
     val launcherActivity: LauncherActivity,
     itemView: View,
@@ -18,7 +25,7 @@ class SuggestedVH(
     val separator: View = itemView.findViewById(R.id.separator)
 
     val adapter = SuggestionsAdapter(launcherActivity)
-    val recycler: RecyclerView = itemView.findViewById<RecyclerView>(R.id.rvRecents).apply {
+    val rvRecents: RecyclerView = itemView.findViewById<RecyclerView>(R.id.rvRecents).apply {
         layoutManager = GridLayoutManager(
             /* context = */ itemView.context,
             /* spanCount = */3,
@@ -30,7 +37,7 @@ class SuggestedVH(
 
     override fun onBind(item: FeedItem, color: Int) {
         item as FeedItemSuggestedApps
-        separator.setBackgroundColor(/* color = */ Color.RED and 0x00ffffff or 0x24ffffff)
+        separator.setBackgroundColor(Color.RED)
         adapter.updateItems(item.apps)
     }
 }

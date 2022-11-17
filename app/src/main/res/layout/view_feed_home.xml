@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/vertical"
+    android:id="@+id/llVertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="bottom"
@@ -19,53 +19,61 @@
             android:orientation="horizontal">
 
             <TextClock
-                android:id="@+id/time"
-                style="@style/Theme.AppLauncher.Time"
+                android:id="@+id/tvTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding_medium"
                 android:format12Hour="h:mm"
-                android:format24Hour="H:mm" />
+                android:format24Hour="H:mm"
+                android:includeFontPadding="false"
+                android:textSize="64sp" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                style="@style/Theme.AppLauncher.DayContainer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_padding_medium"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingStart="@dimen/margin_padding_small"
+                android:paddingEnd="@dimen/margin_padding_small">
 
                 <TextClock
-                    android:id="@+id/week_day"
-                    style="@style/Theme.AppLauncher.WeekDay"
+                    android:id="@+id/tvWeekDay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:format12Hour="cccc"
-                    android:format24Hour="cccc" />
+                    android:format24Hour="cccc"
+                    android:includeFontPadding="false"
+                    android:textSize="@dimen/txt_larger" />
 
                 <TextClock
-                    android:id="@+id/date"
-                    style="@style/Theme.AppLauncher.Date"
+                    android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:format12Hour="d MMMM"
-                    android:format24Hour="d MMMM" />
+                    android:format24Hour="d MMMM"
+                    android:includeFontPadding="false"
+                    android:textSize="@dimen/txt_large" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/llNotificationIconContainer"
-            style="@style/Theme.AppLauncher.NotificationIcons.Container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/margin_padding_small"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="@dimen/margin_padding_medium">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvNotificationIconText"
-                style="@style/Theme.AppLauncher.NotificationIcons.Text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_padding_small"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNotificationIconList"

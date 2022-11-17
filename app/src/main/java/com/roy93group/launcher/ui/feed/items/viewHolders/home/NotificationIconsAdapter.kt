@@ -1,8 +1,6 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.home
 
 import android.annotation.SuppressLint
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
@@ -39,7 +37,7 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
 
     override fun onBindViewHolder(holder: IconViewHolder, i: Int) {
         holder.image.setImageDrawable(items[i])
-        holder.image.imageTintList = ColorStateList.valueOf(Color.RED)
+//        holder.image.imageTintList = ColorStateList.valueOf(Color.RED)
     }
 
     override fun getItemCount() = items.size

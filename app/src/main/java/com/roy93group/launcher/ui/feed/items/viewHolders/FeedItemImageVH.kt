@@ -30,6 +30,7 @@ import io.posidon.android.conveniencelib.units.toFloatPixels
 open class FeedItemImageVH(itemView: View) : FeedItemVH(itemView) {
     val image: ImageView = itemView.findViewById(R.id.image)
     val card: CardView = itemView.findViewById(R.id.card)
+
     private val requestOptions = RequestOptions()
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .downsample(DownsampleStrategy.AT_MOST)

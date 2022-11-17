@@ -31,7 +31,7 @@
             android:layout_weight="1" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/time"
+            android:id="@+id/tvTime"
             style="@style/Theme.AppLauncher.FeedCard.Time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

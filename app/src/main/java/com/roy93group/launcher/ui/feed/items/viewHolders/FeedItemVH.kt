@@ -34,7 +34,7 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
     val container: View = itemView.findViewById(R.id.container)
     val source: TextView = itemView.findViewById(R.id.source)
     val separator: View = itemView.findViewById(R.id.separator)
-    val time: TextView = itemView.findViewById(R.id.time)
+    val time: TextView = itemView.findViewById(R.id.tvTime)
     val title: TextView = itemView.findViewById(R.id.title)
     val description: TextView = itemView.findViewById(R.id.description)
     val icon: ImageView = itemView.findViewById(R.id.icon)
