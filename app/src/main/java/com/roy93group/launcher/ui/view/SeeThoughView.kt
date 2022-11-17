@@ -7,6 +7,14 @@ import android.util.AttributeSet
 import android.view.View
 import io.posidon.android.conveniencelib.Device
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+
 class SeeThoughView : View {
     constructor(c: Context) : super(c)
     constructor(c: Context, a: AttributeSet?) : this(c = c, a = a, da = 0, dr = 0)
@@ -50,14 +58,20 @@ class SeeThoughView : View {
         }
     }
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+    override fun onMeasure(
+        widthMeasureSpec: Int,
+        heightMeasureSpec: Int
+    ) {
         setMeasuredDimension(
             calculate(minSize = suggestedMinimumWidth, measureSpec = widthMeasureSpec),
             calculate(minSize = suggestedMinimumHeight, measureSpec = heightMeasureSpec),
         )
     }
 
-    private fun calculate(minSize: Int, measureSpec: Int): Int {
+    private fun calculate(
+        minSize: Int,
+        measureSpec: Int
+    ): Int {
         var result = minSize
         val mode = MeasureSpec.getMode(measureSpec)
         val specSize = MeasureSpec.getSize(measureSpec)

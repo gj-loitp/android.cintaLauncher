@@ -13,13 +13,21 @@ import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toFloatPixels
 import java.util.*
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+
 class AlphabetScrollbarController(
     scrollbar: Scrollbar
 ) : ScrollbarController(scrollbar) {
 
     private val paint by scrollbar::paint
 
-    var textColor = 0x88ffffff.toInt()
+    var textColor = Color.RED
         set(value) {
             field = value
             paint.color = value
@@ -62,7 +70,7 @@ class AlphabetScrollbarController(
         paint.apply {
             textSize = 16.dp.toFloatPixels(scrollbar)
         }
-        highlightColor = Color.RED
+        highlightColor = Color.GREEN
         scrollbar.invalidate()
     }
 
@@ -89,7 +97,10 @@ class AlphabetScrollbarController(
 
     override val indexer = AlphabetSectionIndexer()
 
-    override fun updateAdapterIndexer(adapter: AppDrawerAdapter, appSections: List<List<App>>) {
+    override fun updateAdapterIndexer(
+        adapter: AppDrawerAdapter,
+        appSections: List<List<App>>
+    ) {
         indexer.updateSections(adapter = adapter, appSections = appSections)
         adapter.indexer = this.indexer
     }

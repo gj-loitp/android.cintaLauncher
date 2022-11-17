@@ -12,6 +12,14 @@ import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toFloatPixels
 import java.util.*
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+
 class HueScrollbarController(
     scrollbar: Scrollbar
 ) : ScrollbarController(scrollbar) {
@@ -78,7 +86,10 @@ class HueScrollbarController(
 
     override val indexer = HueSectionIndexer(this)
 
-    override fun updateAdapterIndexer(adapter: AppDrawerAdapter, appSections: List<List<App>>) {
+    override fun updateAdapterIndexer(
+        adapter: AppDrawerAdapter,
+        appSections: List<List<App>>
+    ) {
         indexer.updateSections(adapter = adapter, appSections = appSections)
         adapter.indexer = this.indexer
     }

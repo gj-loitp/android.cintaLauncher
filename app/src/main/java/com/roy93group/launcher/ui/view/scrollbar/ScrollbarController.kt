@@ -8,6 +8,14 @@ import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
 import com.roy93group.launcher.ui.view.recycler.HighlightSectionIndexer
 import java.util.*
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+
 abstract class ScrollbarController(val scrollbar: Scrollbar) {
     abstract fun draw(canvas: Canvas)
 
@@ -22,5 +30,8 @@ abstract class ScrollbarController(val scrollbar: Scrollbar) {
         section: List<App>
     )
 
-    abstract fun updateAdapterIndexer(adapter: AppDrawerAdapter, appSections: List<List<App>>)
+    abstract fun updateAdapterIndexer(
+        adapter: AppDrawerAdapter,
+        appSections: List<List<App>>
+    )
 }

@@ -24,6 +24,14 @@ import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 import kotlin.math.abs
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+
 @SuppressLint("AppCompatCustomView")
 class ScrollbarIconView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
@@ -56,8 +64,7 @@ class ScrollbarIconView @JvmOverloads constructor(
                     }
                     currentWindow?.let {
                         it.contentView.onTouchEvent(
-                            makeMotionEventForPopup(
-                                contentView = it.contentView,
+                            it.contentView.makeMotionEventForPopup(
                                 e = e
                             )
                         )
@@ -67,8 +74,7 @@ class ScrollbarIconView @JvmOverloads constructor(
             MotionEvent.ACTION_UP -> {
                 currentWindow?.let {
                     it.contentView.onTouchEvent(
-                        makeMotionEventForPopup(
-                            contentView = it.contentView,
+                        it.contentView.makeMotionEventForPopup(
                             e = e
                         )
                     )
@@ -79,12 +85,12 @@ class ScrollbarIconView @JvmOverloads constructor(
         return true
     }
 
-    private fun makeMotionEventForPopup(contentView: View, e: MotionEvent) = MotionEvent.obtain(
+    private fun View.makeMotionEventForPopup(e: MotionEvent) = MotionEvent.obtain(
         e.downTime,
         e.eventTime,
         e.action,
-        contentView.width - this.width + e.x,
-        contentView.height - this.height + e.y,
+        width - this@ScrollbarIconView.width + e.x,
+        height - this@ScrollbarIconView.height + e.y,
         e.pressure,
         e.size,
         e.metaState,
@@ -93,7 +99,6 @@ class ScrollbarIconView @JvmOverloads constructor(
         e.deviceId,
         e.edgeFlags,
     )
-
 
     private fun showPopup(@Scrollbar.Orientation orientation: Int) {
         currentWindow?.dismiss()
@@ -104,7 +109,7 @@ class ScrollbarIconView @JvmOverloads constructor(
                 FloatArray(8) { resources.getDimension(R.dimen.search_bar_radius) }, null, null
             )
         ).apply {
-            paint.color = Color.YELLOW
+            paint.color = Color.RED
         }
         val p = 24.dp.toPixels(this)
         when (orientation) {

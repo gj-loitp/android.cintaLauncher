@@ -4,6 +4,14 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+
 class HorizontalAspectRatioLayout : FrameLayout {
 
     var widthToHeight = 1f
@@ -21,7 +29,10 @@ class HorizontalAspectRatioLayout : FrameLayout {
         defStyleRes: Int
     ) : super(context, attrs, defStyleAttr, defStyleRes)
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+    override fun onMeasure(
+        widthMeasureSpec: Int,
+        heightMeasureSpec: Int
+    ) {
         super.onMeasure(
             widthMeasureSpec,
             MeasureSpec.makeMeasureSpec(

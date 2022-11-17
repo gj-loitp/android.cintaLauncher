@@ -5,6 +5,14 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.ImageView
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+
 @SuppressLint("AppCompatCustomView")
 class BackdropImageView : ImageView {
     constructor(c: Context) : super(c)

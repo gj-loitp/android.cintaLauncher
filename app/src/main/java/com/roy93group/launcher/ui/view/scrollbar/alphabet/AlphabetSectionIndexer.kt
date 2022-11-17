@@ -5,6 +5,14 @@ import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
 import com.roy93group.launcher.ui.view.recycler.HighlightSectionIndexer
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+
 class AlphabetSectionIndexer : HighlightSectionIndexer {
     private var savedSections = emptyArray<Char>()
     private var adapter: AppDrawerAdapter? = null
@@ -18,7 +26,10 @@ class AlphabetSectionIndexer : HighlightSectionIndexer {
         return adapter?.items?.indexOfFirst { it.label[0] == savedSections[i] } ?: 0
     }
 
-    fun updateSections(adapter: AppDrawerAdapter, appSections: List<List<App>>) {
+    fun updateSections(
+        adapter: AppDrawerAdapter,
+        appSections: List<List<App>>
+    ) {
         this.adapter = adapter
         savedSections = Array(appSections.size) { appSections[it][0].label[0].uppercaseChar() }
     }

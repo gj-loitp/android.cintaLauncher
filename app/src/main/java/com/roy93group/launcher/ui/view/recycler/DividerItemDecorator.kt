@@ -8,6 +8,14 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.roundToInt
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+
 class DividerItemDecorator(
     context: Context,
     val orientation: Int,
@@ -24,7 +32,11 @@ class DividerItemDecorator(
 
     private val bounds = Rect()
 
-    override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+    override fun onDraw(
+        c: Canvas,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
         if (parent.layoutManager == null) {
             return
         }
@@ -35,7 +47,10 @@ class DividerItemDecorator(
         }
     }
 
-    private fun drawVertical(canvas: Canvas, parent: RecyclerView) {
+    private fun drawVertical(
+        canvas: Canvas,
+        parent: RecyclerView
+    ) {
         canvas.save()
         val left: Int
         val right: Int
@@ -62,7 +77,10 @@ class DividerItemDecorator(
         canvas.restore()
     }
 
-    private fun drawHorizontal(canvas: Canvas, parent: RecyclerView) {
+    private fun drawHorizontal(
+        canvas: Canvas,
+        parent: RecyclerView
+    ) {
         canvas.save()
         val top: Int
         val bottom: Int

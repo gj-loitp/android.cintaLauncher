@@ -6,6 +6,14 @@ import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
 import com.roy93group.launcher.ui.drawer.viewHolders.AppItem
 import com.roy93group.launcher.ui.view.recycler.HighlightSectionIndexer
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+
 class HueSectionIndexer(
     private val scrollbarController: HueScrollbarController
 ) : HighlightSectionIndexer {
