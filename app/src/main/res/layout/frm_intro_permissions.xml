@@ -52,9 +52,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_medium"
                 app:qb_backgroundColor="@color/white"
-                app:qb_radius="100"
-                app:qb_strokeColor="@color/white"
-                app:qb_strokeWidth="5" />
+                app:qb_radius="100" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickStorage"
@@ -98,9 +96,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_medium"
                 app:qb_backgroundColor="@color/white"
-                app:qb_radius="100"
-                app:qb_strokeColor="@color/white"
-                app:qb_strokeWidth="5" />
+                app:qb_radius="100" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickContacts"
@@ -144,9 +140,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_medium"
                 app:qb_backgroundColor="@color/white"
-                app:qb_radius="100"
-                app:qb_strokeColor="@color/white"
-                app:qb_strokeWidth="5" />
+                app:qb_radius="100" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickNotifications"
@@ -190,9 +184,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_medium"
                 app:qb_backgroundColor="@color/white"
-                app:qb_radius="100"
-                app:qb_strokeColor="@color/white"
-                app:qb_strokeWidth="5" />
+                app:qb_radius="100" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickUsageAccess"
