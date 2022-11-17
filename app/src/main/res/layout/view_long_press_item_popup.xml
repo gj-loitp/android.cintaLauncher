@@ -26,14 +26,12 @@
             android:gravity="center_vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivPropertiesIcon"
                 android:layout_width="@dimen/w_50"
                 android:layout_height="@dimen/w_50"
                 android:padding="@dimen/margin_padding_small"
                 android:src="@drawable/ic_info" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvPropertiesText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
