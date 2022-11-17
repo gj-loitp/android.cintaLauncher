@@ -31,7 +31,7 @@ class AppDrawer(
 ) {
 
     companion object {
-        const val COLUMNS = 4
+        const val COLUMNS = 1
     }
 
     private val flAppDrawerContainer: View = activity.findViewById(R.id.flAppDrawerContainer)
