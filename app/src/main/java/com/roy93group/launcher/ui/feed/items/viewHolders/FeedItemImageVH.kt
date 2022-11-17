@@ -69,7 +69,6 @@ open class FeedItemImageVH(itemView: View) : FeedItemVH(itemView) {
     override fun onBind(item: FeedItem, color: Int) {
         super.onBind(item, color)
         item as FeedItemWithBigImage
-//        card.setCardBackgroundColor(Color.RED)
         Glide.with(itemView.context)
             .load(item.image)
             .apply(requestOptions)

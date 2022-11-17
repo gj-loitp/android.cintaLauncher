@@ -1,6 +1,5 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders
 
-import android.content.res.ColorStateList
 import android.graphics.*
 import android.view.HapticFeedbackConstants
 import android.view.View
@@ -12,14 +11,21 @@ import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemWithMedia
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class FeedItemMediaVH(
     itemView: View
 ) : FeedItemVH(itemView) {
 
     private val cover: ImageView = itemView.findViewById(R.id.image)
-    private val previous: ImageView = itemView.findViewById(R.id.buttonPrevious)
-    private val play: ImageView = itemView.findViewById(R.id.buttonPlay)
-    private val next: ImageView = itemView.findViewById(R.id.btNext)
+    private val buttonPrevious: ImageView = itemView.findViewById(R.id.buttonPrevious)
+    private val buttonPlay: ImageView = itemView.findViewById(R.id.buttonPlay)
+    private val btNext: ImageView = itemView.findViewById(R.id.btNext)
 
     override fun onBind(item: FeedItem, color: Int) {
         super.onBind(item, color)
@@ -27,9 +33,9 @@ class FeedItemMediaVH(
         item as FeedItemWithMedia
 
         val c = item.image as? Bitmap
-        if (c == null)
+        if (c == null) {
             cover.setImageDrawable(null)
-        else {
+        } else {
             val paint = Paint().apply {
                 shader = LinearGradient(
                     /* x0 = */ c.width.toFloat() / 2f,
@@ -80,28 +86,27 @@ class FeedItemMediaVH(
 
         val titleColor = ColorUtils.blendARGB(
             /* color1 = */ Color.RED,
-            /* color2 = */ Color.GREEN,
+            /* color2 = */ Color.WHITE,
             /* ratio = */ .7f
         )
-        val titleTintList = ColorStateList.valueOf(titleColor)
+//        val titleTintList = ColorStateList.valueOf(titleColor)
+//        buttonPrevious.imageTintList = titleTintList
+//        buttonPlay.imageTintList = titleTintList
+//        btNext.imageTintList = titleTintList
 
-        previous.imageTintList = titleTintList
-        play.imageTintList = titleTintList
-        next.imageTintList = titleTintList
+        buttonPlay.setImageResource(if (item.isPlaying()) R.drawable.ic_pause else R.drawable.ic_play)
 
-        play.setImageResource(if (item.isPlaying()) R.drawable.ic_pause else R.drawable.ic_play)
-
-        previous.setOnClickListener {
-            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+        buttonPrevious.setOnClickListener {
+//            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             item.previous(it)
         }
-        next.setOnClickListener {
-            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+        btNext.setOnClickListener {
+//            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             item.next(it)
         }
-        play.setOnClickListener {
+        buttonPlay.setOnClickListener {
             it as ImageView
-            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+//            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             item.togglePause(it)
         }
     }
