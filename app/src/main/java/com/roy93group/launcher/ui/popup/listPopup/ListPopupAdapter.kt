@@ -10,6 +10,13 @@ import com.roy93group.launcher.ui.popup.listPopup.viewHolders.ListPopupSwitchIte
 import com.roy93group.launcher.ui.popup.listPopup.viewHolders.ListPopupTitleVH
 import com.roy93group.launcher.ui.popup.listPopup.viewHolders.ListPopupVH
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class ListPopupAdapter : RecyclerView.Adapter<ListPopupVH>() {
 
     override fun getItemViewType(i: Int): Int {
@@ -31,7 +38,8 @@ class ListPopupAdapter : RecyclerView.Adapter<ListPopupVH>() {
                     .inflate(R.layout.view_list_popup_switch_item, parent, false)
             )
             else -> ListPopupItemVH(
-                LayoutInflater.from(parent.context).inflate(R.layout.view_list_popup_item, parent, false)
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.view_list_popup_item, parent, false)
             )
         }
     }

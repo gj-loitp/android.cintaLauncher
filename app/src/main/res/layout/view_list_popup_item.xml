@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Theme.AppLauncher.ListPopup.Item.Container"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/w_50">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icon"
-        style="@style/Theme.AppLauncher.ListPopup.Item.Icon" />
+        android:layout_width="@dimen/w_50"
+        android:layout_height="@dimen/w_50"
+        tools:src="@drawable/ic_launcher"
+        tools:tint="@color/white" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="0dp"
@@ -19,14 +23,20 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text"
-            style="@style/Theme.AppLauncher.ListPopup.Item.Label"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textColor="@color/red"
+            android:textSize="@dimen/txt_medium"
+            tools:text="@string/app_name" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/description"
-            style="@style/Theme.AppLauncher.ListPopup.Item.Description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textColor="@color/indianRed"
+            android:textSize="@dimen/txt_medium"
+            tools:text="@string/app_name" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

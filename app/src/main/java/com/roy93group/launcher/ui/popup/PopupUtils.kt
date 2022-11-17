@@ -6,6 +6,13 @@ import android.view.View
 import android.widget.PopupWindow
 import io.posidon.android.conveniencelib.Device
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 object PopupUtils {
 
     private var currentPopup: PopupWindow? = null

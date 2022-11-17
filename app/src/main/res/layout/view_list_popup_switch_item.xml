@@ -1,38 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Theme.AppLauncher.ListPopup.Item.Container"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/w_50">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icon"
-        style="@style/Theme.AppLauncher.ListPopup.Item.Icon" />
+        android:layout_width="@dimen/w_50"
+        android:layout_height="@dimen/w_50"
+        tools:src="@drawable/ic_launcher"
+        tools:tint="@color/white" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="@dimen/margin_padding_small"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingVertical="4dp">
+        android:paddingVertical="@dimen/margin_padding_small">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text"
-            style="@style/Theme.AppLauncher.ListPopup.Item.Label"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_medium"
+            tools:text="@string/app_name" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/description"
-            style="@style/Theme.AppLauncher.ListPopup.Item.Description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/txt_medium"
+            tools:text="@string/app_name" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/toggle"
-        style="@style/Theme.AppLauncher.ListPopup.Item.Switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </androidx.appcompat.widget.LinearLayoutCompat>
