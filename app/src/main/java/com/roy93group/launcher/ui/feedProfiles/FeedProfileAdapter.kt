@@ -1,8 +1,6 @@
 package com.roy93group.launcher.ui.feedProfiles
 
 import android.annotation.SuppressLint
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -11,9 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.LauncherContext
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.profiles.FeedProfile
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class FeedProfileAdapter(
     private val launcherContext: LauncherContext
 ) : RecyclerView.Adapter<FeedFilterVH>() {
@@ -30,11 +34,11 @@ class FeedProfileAdapter(
         ).apply {
             itemView.setOnClickListener {
                 val oldSelection = selection
-                selection = adapterPosition
+                selection = bindingAdapterPosition
                 if (oldSelection != selection) {
                     notifyItemChanged(oldSelection)
                     notifyItemChanged(selection)
-                    launcherContext.feed.setProfile(items[adapterPosition])
+                    launcherContext.feed.setProfile(items[bindingAdapterPosition])
                 }
             }
         }
@@ -44,11 +48,11 @@ class FeedProfileAdapter(
         val item = items[i]
         applyIfNotNull(view = holder.text, value = item.name, block = TextView::setText)
         applyIfNotNull(view = holder.icon, value = item.icon, block = ImageView::setImageDrawable)
-        val bgColor = if (selection == i) Color.RED else Color.GREEN
-        val fgColor = ColorTheme.textColorForBG(bgColor)
-        holder.card.setCardBackgroundColor(bgColor)
-        holder.text.setTextColor(fgColor)
-        holder.icon.imageTintList = ColorStateList.valueOf(fgColor)
+//        val bgColor = if (selection == i) Color.RED else Color.GREEN
+//        val fgColor = ColorTheme.textColorForBG(bgColor)
+//        holder.card.setCardBackgroundColor(bgColor)
+//        holder.text.setTextColor(fgColor)
+//        holder.icon.imageTintList = ColorStateList.valueOf(fgColor)
     }
 
     @SuppressLint("NotifyDataSetChanged")

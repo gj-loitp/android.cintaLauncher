@@ -94,7 +94,7 @@ class AppDrawer(
         )
         flAppDrawerContainer.isVisible = true
         activity.feedRecycler.stopScroll()
-        activity.feedProfiles.feedFilterRecycler.animate()
+        activity.feedProfiles.rvFeedFilters.animate()
             .alpha(0f)
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
@@ -131,8 +131,8 @@ class AppDrawer(
         activity.bottomBar.cvBackButtonContainer.isVisible = false
         if (!isOpen) return
         ItemLongPress.currentPopup?.dismiss()
-        activity.feedProfiles.feedFilterRecycler.isVisible = true
-        activity.feedProfiles.feedFilterRecycler.animate()
+        activity.feedProfiles.rvFeedFilters.isVisible = true
+        activity.feedProfiles.rvFeedFilters.animate()
             .alpha(1f)
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())

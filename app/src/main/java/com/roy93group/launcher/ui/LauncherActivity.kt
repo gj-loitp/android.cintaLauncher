@@ -246,7 +246,7 @@ class LauncherActivity : BaseFontActivity() {
             bottomMargin = searchBarY
         }
 
-        feedProfiles.feedFilterRecycler.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+        feedProfiles.rvFeedFilters.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             bottomMargin = feedFilterY
         }
     }

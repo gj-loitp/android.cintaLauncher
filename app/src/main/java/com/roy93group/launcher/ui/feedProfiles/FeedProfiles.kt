@@ -7,12 +7,23 @@ import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.profiles.FeedProfile
 import com.roy93group.launcher.ui.LauncherActivity
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class FeedProfiles(val activity: LauncherActivity) {
 
     private val feedFilterAdapter = FeedProfileAdapter(activity.launcherContext)
-    val feedFilterRecycler: RecyclerView =
+    val rvFeedFilters: RecyclerView =
         activity.findViewById<RecyclerView>(R.id.rvFeedFilters).apply {
-            layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(
+                /* context = */ activity,
+                /* orientation = */RecyclerView.HORIZONTAL,
+                /* reverseLayout = */false
+            )
             adapter = feedFilterAdapter
         }
 
@@ -56,7 +67,7 @@ class FeedProfiles(val activity: LauncherActivity) {
         )
     }
 
-    fun updateColorTheme() {
-        feedFilterAdapter.updateColorTheme()
-    }
+//    fun updateColorTheme() {
+//        feedFilterAdapter.updateColorTheme()
+//    }
 }
