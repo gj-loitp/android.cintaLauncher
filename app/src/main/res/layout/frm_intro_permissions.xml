@@ -22,6 +22,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_medium"
             android:animateLayoutChanges="true"
             android:orientation="vertical">
 
@@ -37,17 +38,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/permission_storage_explanation"
                 android:textColor="@color/white"
-                android:textSize="@dimen/txt_medium" />
+                android:textSize="@dimen/txt_small" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonStorage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_small"
                 android:background="@drawable/button_bg_round"
                 android:backgroundTint="@color/white"
                 android:paddingHorizontal="@dimen/margin_padding_medium"
-                android:paddingVertical="@dimen/margin_padding_small"
                 android:text="@string/grant_permissions"
+                android:textAllCaps="false"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_medium" />
 
@@ -80,17 +82,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/permission_contacts_explanation"
                 android:textColor="@color/white"
-                android:textSize="@dimen/txt_medium" />
+                android:textSize="@dimen/txt_small" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonContacts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_small"
                 android:background="@drawable/button_bg_round"
                 android:backgroundTint="@color/white"
                 android:paddingHorizontal="@dimen/margin_padding_medium"
-                android:paddingVertical="@dimen/margin_padding_small"
                 android:text="@string/grant_permissions"
+                android:textAllCaps="false"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_medium" />
 
@@ -123,17 +126,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/permission_notifications_explanation"
                 android:textColor="@color/white"
-                android:textSize="@dimen/txt_medium" />
+                android:textSize="@dimen/txt_small" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonNotifications"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_small"
                 android:background="@drawable/button_bg_round"
                 android:backgroundTint="@color/white"
                 android:paddingHorizontal="@dimen/margin_padding_medium"
-                android:paddingVertical="@dimen/margin_padding_small"
                 android:text="@string/grant_permissions"
+                android:textAllCaps="false"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_medium" />
 
@@ -166,17 +170,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/permission_usage_access_explanation"
                 android:textColor="@color/white"
-                android:textSize="@dimen/txt_medium" />
+                android:textSize="@dimen/txt_small" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonUsageAccess"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_small"
                 android:background="@drawable/button_bg_round"
                 android:backgroundTint="@color/white"
                 android:paddingHorizontal="@dimen/margin_padding_medium"
-                android:paddingVertical="@dimen/margin_padding_small"
                 android:text="@string/grant_permissions"
+                android:textAllCaps="false"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_medium" />
 
