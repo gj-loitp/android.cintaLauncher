@@ -8,17 +8,4 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
-    <style name="Theme.AppLauncher.Settings.Input" parent="Theme.AppLauncher">
-        <item name="android:layout_height">52dp</item>
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">@dimen/txt_medium</item>
-        <item name="android:gravity">start|center_vertical</item>
-        <item name="android:paddingStart">@dimen/margin_padding_medium</item>
-        <item name="android:paddingEnd">@dimen/margin_padding_medium</item>
-        <item name="android:clipToPadding">false</item>
-        <item name="android:textColor">@color/feed_card_text_light_description</item>
-        <item name="android:textColorHint">#252627</item>
-        <item name="android:background">@drawable/input_bg</item>
-    </style>
 </resources>
