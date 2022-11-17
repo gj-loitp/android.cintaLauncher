@@ -9,142 +9,183 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/margin_padding_medium">
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/permissions" />
+            android:text="@string/permissions"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_50" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_storage" />
+                android:text="@string/permission_storage"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_large" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Explanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_storage_explanation" />
+                android:text="@string/permission_storage_explanation"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/buttonStorage"
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_bg_round"
+                android:backgroundTint="@color/white"
+                android:paddingHorizontal="@dimen/margin_padding_medium"
+                android:paddingVertical="@dimen/margin_padding_small"
+                android:text="@string/grant_permissions"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickStorage"
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
+                android:layout_width="@dimen/w_50"
+                android:layout_height="@dimen/w_50"
                 android:src="@drawable/ic_tick"
+                android:tint="@color/white"
                 android:visibility="gone"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_medium"
             android:animateLayoutChanges="true"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_contacts" />
+                android:text="@string/permission_contacts"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_large" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Explanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_contacts_explanation" />
+                android:text="@string/permission_contacts_explanation"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/buttonContacts"
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_bg_round"
+                android:backgroundTint="@color/white"
+                android:paddingHorizontal="@dimen/margin_padding_medium"
+                android:paddingVertical="@dimen/margin_padding_small"
+                android:text="@string/grant_permissions"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickContacts"
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
+                android:layout_width="@dimen/w_50"
+                android:layout_height="@dimen/w_50"
                 android:src="@drawable/ic_tick"
+                android:tint="@color/white"
                 android:visibility="gone"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_medium"
             android:animateLayoutChanges="true"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_notifications" />
+                android:text="@string/permission_notifications"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_large" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Explanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_notifications_explanation" />
+                android:text="@string/permission_notifications_explanation"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/buttonNotifications"
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_bg_round"
+                android:backgroundTint="@color/white"
+                android:paddingHorizontal="@dimen/margin_padding_medium"
+                android:paddingVertical="@dimen/margin_padding_small"
+                android:text="@string/grant_permissions"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickNotifications"
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
+                android:layout_width="@dimen/w_50"
+                android:layout_height="@dimen/w_50"
                 android:src="@drawable/ic_tick"
+                android:tint="@color/white"
                 android:visibility="gone"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_medium"
             android:animateLayoutChanges="true"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_usage_access" />
+                android:text="@string/permission_usage_access"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_large" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Explanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/permission_usage_access_explanation" />
+                android:text="@string/permission_usage_access_explanation"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/buttonUsageAccess"
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Grant"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_bg_round"
+                android:backgroundTint="@color/white"
+                android:paddingHorizontal="@dimen/margin_padding_medium"
+                android:paddingVertical="@dimen/margin_padding_small"
+                android:text="@string/grant_permissions"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickUsageAccess"
-                style="@style/Theme.AppLauncher.Intro.Slash.Permissions.Item.Tick"
+                android:layout_width="@dimen/w_50"
+                android:layout_height="@dimen/w_50"
                 android:src="@drawable/ic_tick"
+                android:tint="@color/white"
                 android:visibility="gone"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>

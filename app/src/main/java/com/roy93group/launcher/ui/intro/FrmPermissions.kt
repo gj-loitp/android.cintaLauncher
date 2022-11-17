@@ -17,6 +17,13 @@ import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.util.FakeLauncherActivity
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
 
     override fun onCreateView(
@@ -43,21 +50,10 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
         ) {
             findViewById<View>(R.id.buttonStorage).isVisible = false
             tickStorage.isVisible = true
-//            ColorPalette.loadWallColorTheme(requireActivity() as IntroActivity) { a, palette ->
-//                ColorTheme.updateColorTheme(
-//                    ColorThemeOptions(ColorThemeOptions.DayNight.AUTO).createColorTheme(
-//                        palette
-//                    )
-//                )
-//                val tl = ColorStateList.valueOf(ColorTheme.accentColor)
-//                tickStorage.imageTintList = tl
-//                tickContacts.imageTintList = tl
-//                tickNotifications.imageTintList = tl
-//                tickUsageAccess.imageTintList = tl
-//                a.updateColorTheme()
-//            }
         } else {
-            findViewById<View>(R.id.buttonStorage).setOnClickListener(::requestStoragePermission)
+            findViewById<View>(R.id.buttonStorage).setOnClickListener {
+                requestStoragePermission()
+            }
         }
 
         if (
@@ -69,7 +65,9 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
             findViewById<View>(R.id.buttonContacts).isVisible = false
             tickContacts.isVisible = true
         } else {
-            findViewById<View>(R.id.buttonContacts).setOnClickListener(::requestContactsPermission)
+            findViewById<View>(R.id.buttonContacts).setOnClickListener {
+                requestContactsPermission()
+            }
         }
 
         if (
@@ -127,8 +125,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
         )
     }
 
-    @Suppress("unused")
-    private fun requestStoragePermission(v: View) {
+    private fun requestStoragePermission() {
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.READ_EXTERNAL_STORAGE
@@ -142,8 +139,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
         }
     }
 
-    @Suppress("unused")
-    private fun requestContactsPermission(v: View) {
+    private fun requestContactsPermission() {
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.READ_CONTACTS
