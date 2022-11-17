@@ -53,24 +53,6 @@
         <item name="android:paddingTop">@dimen/feed_card_spacing</item>
     </style>
 
-    <style name="Theme.AppLauncher.FeedCard.Actions.Container" parent="Theme.AppLauncher">
-        <item name="android:layout_marginTop">@dimen/margin_padding_small</item>
-        <item name="cardCornerRadius">@dimen/feed_card_action_radius</item>
-        <item name="android:layout_margin">@dimen/margin_padding_small</item>
-        <item name="android:elevation">4dp</item>
-    </style>
-
-    <style name="Theme.AppLauncher.FeedCard.Action.Container" parent="Theme.AppLauncher">
-        <item name="android:paddingVertical">@dimen/margin_padding_small</item>
-        <item name="android:paddingHorizontal">@dimen/margin_padding_medium</item>
-        <item name="android:background">@drawable/ripple</item>
-    </style>
-
-    <style name="Theme.AppLauncher.FeedCard.Action.Text" parent="Theme.AppLauncher">
-        <item name="android:textSize">@dimen/txt_medium</item>
-        <item name="android:textColor">@color/colorPrimary</item>
-    </style>
-
     <style name="Theme.AppLauncher.Empty.Container" parent="Theme.AppLauncher">
         <item name="android:layout_height">156dp</item>
     </style>

@@ -1,19 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.AppLauncher.NotificationIcons.Container" parent="Theme.AppLauncher">
-        <item name="android:padding">@dimen/margin_padding_medium</item>
-        <item name="android:layout_margin">@dimen/item_card_margin</item>
-    </style>
-
-    <style name="Theme.AppLauncher.NotificationIcons.Text" parent="Theme.AppLauncher">
-        <item name="android:textSize">@dimen/txt_medium</item>
-        <item name="android:layout_marginHorizontal">6dp</item>
-    </style>
-
-    <style name="Theme.AppLauncher.NotificationIcons.Icon" parent="Theme.AppLauncher">
-        <item name="android:layout_width">16dp</item>
-        <item name="android:layout_height">16dp</item>
-        <item name="android:layout_marginHorizontal">6dp</item>
-    </style>
 </resources>

@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.AppLauncher.ListPopup.Container" parent="Theme.AppLauncher">
-        <item name="cardBackgroundColor">@color/drawer_bottom_bar</item>
-        <item name="cardCornerRadius">@dimen/item_card_radius</item>
-        <item name="android:layout_margin">@dimen/item_card_margin</item>
-        <item name="android:elevation">@dimen/item_card_elevation</item>
-    </style>
-
-    <style name="Theme.AppLauncher.ListPopup.Recycler" parent="Theme.AppLauncher">
-        <item name="android:paddingVertical">8dp</item>
-    </style>
-
     <style name="Theme.AppLauncher.ListPopup.Item.Container" parent="Theme.AppLauncher">
         <item name="android:minHeight">50dp</item>
         <item name="android:layout_marginEnd">8dp</item>
