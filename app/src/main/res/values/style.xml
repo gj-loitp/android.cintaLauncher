@@ -2,9 +2,9 @@
 
     <style name="Theme.AppLauncher" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowShowWallpaper">true</item>
-        <item name="android:windowBackground">?attr/themeBackgroundColor</item>
-        <item name="android:statusBarColor">?attr/themeBackgroundColor</item>
-        <item name="android:navigationBarColor">?attr/themeBackgroundColor</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
