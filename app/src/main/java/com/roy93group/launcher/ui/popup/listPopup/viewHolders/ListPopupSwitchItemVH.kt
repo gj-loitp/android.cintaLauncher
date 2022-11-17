@@ -1,32 +1,40 @@
 package com.roy93group.launcher.ui.popup.listPopup.viewHolders
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.drawable.*
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
+import android.graphics.drawable.StateListDrawable
 import android.util.StateSet
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.SwitchCompat
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 
+/**
+ * Updated by Loitp on 2022.12.17
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
 
     val icon: ImageView = itemView.findViewById(R.id.icon)
     val text: TextView = itemView.findViewById(R.id.text)
     val description: TextView = itemView.findViewById(R.id.description)
     private val switch: SwitchCompat = itemView.findViewById(R.id.toggle)
-    val ripple = RippleDrawable(ColorStateList.valueOf(0), null, ColorDrawable(0xffffffff.toInt()))
+//    val ripple = RippleDrawable(ColorStateList.valueOf(0), null, ColorDrawable(0xffffffff.toInt()))
 
-    init {
-        itemView.background = ripple
-    }
+//    init {
+//        itemView.background = ripple
+//    }
 
     override fun onBind(item: ListPopupItem) {
         text.text = item.text
@@ -36,33 +44,33 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
             switch.toggle()
         }
 
-        text.setTextColor(Color .RED)
+//        text.setTextColor(Color.RED)
         switch.trackDrawable = generateTrackDrawable(itemView.context)
         switch.thumbDrawable = generateThumbDrawable(itemView.context)
 
-        ripple.setColor(ColorStateList.valueOf(Color .RED and 0xffffff or 0x33000000))
+//        ripple.setColor(ColorStateList.valueOf(Color.RED and 0xffffff or 0x33000000))
 
         applyIfNotNull(view = description, value = item.description) { view, value ->
             view.text = value
-            description.setTextColor(Color .RED)
+//            description.setTextColor(Color.RED)
         }
         applyIfNotNull(view = icon, value = item.icon) { view, value ->
             view.setImageDrawable(value)
-            view.imageTintList = ColorStateList.valueOf(Color .RED)
+//            view.imageTintList = ColorStateList.valueOf(Color.RED)
         }
         switch.isChecked = (item.value as? Boolean) ?: false
-        switch.setOnCheckedChangeListener(item.onToggle!!)
+        switch.setOnCheckedChangeListener(item.onToggle)
     }
 
     private fun generateTrackDrawable(context: Context): Drawable {
         val out = StateListDrawable()
         out.addState(
             intArrayOf(android.R.attr.state_checked),
-            generateBG(context, Color .RED and 0x00ffffff or 0x55000000)
+            generateBG(context, Color.RED and 0x00ffffff or 0x55000000)
         )
         out.addState(
             StateSet.WILD_CARD,
-            generateBG(context, Color .RED and 0x00ffffff or 0x55000000)
+            generateBG(context, Color.RED and 0x00ffffff or 0x55000000)
         )
         return out
     }
@@ -71,11 +79,11 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
         val out = StateListDrawable()
         out.addState(
             intArrayOf(android.R.attr.state_checked),
-            generateCircle(context, Color .RED)
+            generateCircle(context, Color.RED)
         )
         out.addState(
             StateSet.WILD_CARD,
-            generateCircle(context, Color .RED and 0x00ffffff or 0x55000000)
+            generateCircle(context, Color.RED and 0x00ffffff or 0x55000000)
         )
         return out
     }

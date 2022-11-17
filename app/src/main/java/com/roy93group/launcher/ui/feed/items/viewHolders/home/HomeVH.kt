@@ -13,8 +13,6 @@ import com.roy93group.launcher.LauncherContext
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.notification.NotificationService
 import com.roy93group.launcher.ui.LauncherActivity
-import com.roy93group.launcher.ui.popup.home.HomeLongPressPopup
-import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.conveniencelib.getStatusBarHeight
 
 class HomeViewHolder(
