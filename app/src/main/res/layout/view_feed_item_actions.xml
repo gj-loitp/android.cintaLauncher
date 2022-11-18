@@ -4,9 +4,10 @@
     android:id="@+id/cvActionsContainer"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_padding_small"
-    android:elevation="@dimen/w_3"
-    app:cardCornerRadius="@dimen/round_medium">
+    app:cardBackgroundColor="@color/red"
+    app:cardCornerRadius="@dimen/round_large"
+    app:cardElevation="@dimen/w_3"
+    app:cardUseCompatPadding="true">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvActions"
