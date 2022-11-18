@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.AppLauncher.Suggestions.Item.Icon" parent="Theme.AppLauncher">
-        <item name="android:padding">@dimen/margin_padding_small</item>
-        <item name="android:layout_width">48dp</item>
-        <item name="android:layout_height">48dp</item>
-    </style>
-
-    <style name="Theme.AppLauncher.Suggestions.Item.Label" parent="Theme.AppLauncher">
-        <item name="android:textSize">@dimen/txt_medium</item>
-        <item name="android:layout_marginEnd">@dimen/margin_padding_small</item>
-        <item name="android:layout_marginStart">-2dp</item>
-    </style>
 </resources>

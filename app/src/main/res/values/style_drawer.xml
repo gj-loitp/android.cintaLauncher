@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.AppLauncher.Drawer.Item.Container" parent="Theme.AppLauncher">
-        <item name="cardCornerRadius">@dimen/item_card_radius</item>
-        <item name="android:layout_margin">@dimen/item_card_margin</item>
-        <item name="android:elevation">@dimen/item_card_elevation</item>
-    </style>
 </resources>
