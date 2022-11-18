@@ -1,47 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:fadingEdge="vertical"
-    android:fadingEdgeLength="32dp"
-    android:requiresFadingEdge="vertical">
+    android:orientation="vertical">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.core.widget.NestedScrollView
+        style="@style/ScrollVertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_padding_medium">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cinta_launcher_crashed"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_50" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStackTrace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_medium"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_small"
+                tools:text="@string/app_name" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.manojbhadane.QButton
+        android:id="@+id/send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/margin_padding_medium">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_padding_medium"
-            android:text="@string/cinta_launcher_crashed"
-            android:textSize="@dimen/txt_largest" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/send"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_padding_medium"
-            android:background="@drawable/button_bg_round"
-            android:gravity="center_horizontal"
-            android:paddingTop="@dimen/margin_padding_medium"
-            android:paddingBottom="@dimen/margin_padding_medium"
-            android:text="@string/send_bug_report"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvStackTrace"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_padding_medium"
-            android:textColor="@color/white"
-            android:textSize="@dimen/txt_medium"
-            tools:text="@string/app_name" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.core.widget.NestedScrollView>
+        android:layout_margin="@dimen/margin_padding_medium"
+        android:background="@drawable/button_bg_round"
+        android:text="@string/send_bug_report"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_medium"
+        app:qb_backgroundColor="@color/colorPrimary"
+        app:qb_radius="100"
+        app:qb_strokeColor="@color/white"
+        app:qb_strokeWidth="5" />
+</androidx.appcompat.widget.LinearLayoutCompat>

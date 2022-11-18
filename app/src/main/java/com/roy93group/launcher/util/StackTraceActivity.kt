@@ -3,20 +3,30 @@ package com.roy93group.launcher.util
 import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Process
 import android.widget.TextView
 import androidx.core.app.ShareCompat
-import androidx.fragment.app.FragmentActivity
+import com.loitpcore.annotation.IsAutoAnimation
+import com.loitpcore.annotation.IsFullScreen
+import com.loitpcore.annotation.LogTag
+import com.loitpcore.core.base.BaseFontActivity
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
-import com.roy93group.launcher.providers.color.theme.ColorTheme
 import kotlin.system.exitProcess
 
-class StackTraceActivity : FragmentActivity() {
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
+@LogTag("LauncherActivity")
+@IsFullScreen(false)
+@IsAutoAnimation(false)
+class StackTraceActivity : BaseFontActivity() {
 
     companion object {
         fun init(context: Context) {
@@ -36,13 +46,20 @@ class StackTraceActivity : FragmentActivity() {
         }
     }
 
+    override fun setLayoutResourceId(): Int {
+        return R.layout.activity_stack_trace
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        try {
-            setContentView(R.layout.activity_stack_trace)
 
+        setupViews()
+    }
+
+    private fun setupViews() {
+        try {
             val title = findViewById<TextView>(R.id.title)
-            val stackTrace = findViewById<TextView>(R.id.tvStackTrace)
+            val tvStackTrace = findViewById<TextView>(R.id.tvStackTrace)
             val send = findViewById<TextView>(R.id.send)
 
             val t = intent.extras!!["throwable"] as Throwable
@@ -72,7 +89,7 @@ class StackTraceActivity : FragmentActivity() {
                 }
             }
 
-            stackTrace.text = str
+            tvStackTrace.text = str
 
             send.setOnClickListener {
                 ShareCompat.IntentBuilder(this)
@@ -83,15 +100,15 @@ class StackTraceActivity : FragmentActivity() {
                     .startChooser()
             }
 
-            try {
-                window.decorView.setBackgroundColor(Color.YELLOW)
-                send.backgroundTintList = ColorStateList.valueOf(Color.GREEN)
-                send.setTextColor(ColorTheme.titleColorForBG(Color.GREEN))
-                title.setTextColor(Color.GREEN)
-                stackTrace.setTextColor(Color.GREEN)
-            } catch (e: Throwable) {
-                e.printStackTrace()
-            }
+//            try {
+//                window.decorView.setBackgroundColor(Color.YELLOW)
+//                send.backgroundTintList = ColorStateList.valueOf(Color.GREEN)
+//                send.setTextColor(ColorTheme.titleColorForBG(Color.GREEN))
+//                title.setTextColor(Color.GREEN)
+//                tvStackTrace.setTextColor(Color.GREEN)
+//            } catch (e: Throwable) {
+//                e.printStackTrace()
+//            }
         } catch (e: Throwable) {
             e.printStackTrace()
         }

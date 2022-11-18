@@ -6,6 +6,13 @@ import java.io.IOException
 import java.net.URL
 import kotlin.concurrent.thread
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 object ImageLoader {
     const val AUTO = -1
 

@@ -6,13 +6,30 @@ import android.graphics.drawable.Animatable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import android.util.Log
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
 import kotlin.concurrent.thread
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class AsyncLoadDrawable : Drawable(), Drawable.Callback {
+    companion object {
+        fun load(function: () -> Drawable): AsyncLoadDrawable {
+            return AsyncLoadDrawable().also {
+                thread(name = "AsyncLoadDrawable loading thread", isDaemon = true) {
+                    it.onLoad(function())
+                }
+            }
+        }
+
+        private const val TAG = "ALD"
+    }
 
     private var mCurrDrawable: Drawable? = ColorDrawable()
 
@@ -21,7 +38,10 @@ class AsyncLoadDrawable : Drawable(), Drawable.Callback {
         delegate.bounds = bounds
         if (delegate is Animatable) {
             delegate.callback = this
-            delegate.setVisible(true, true)
+            delegate.setVisible(
+                /* visible = */true,
+                /* restart = */true
+            )
             (delegate as Animatable).start()
 //            Log.d("ALD", "Started the bugger")
         }
@@ -33,7 +53,6 @@ class AsyncLoadDrawable : Drawable(), Drawable.Callback {
     }
 
     override fun draw(canvas: Canvas) {
-        Log.d(TAG, "Asked to draw " + mCurrDrawable + " " + canvas.clipBounds)
         mCurrDrawable?.draw(canvas)
     }
 
@@ -61,7 +80,10 @@ class AsyncLoadDrawable : Drawable(), Drawable.Callback {
         mCurrDrawable?.colorFilter = cf
     }
 
-    override fun setColorFilter(color: Int, mode: PorterDuff.Mode) {
+    override fun setColorFilter(
+        color: Int,
+        mode: PorterDuff.Mode
+    ) {
         mCurrDrawable?.setColorFilter(color, mode)
     }
 
@@ -93,7 +115,10 @@ class AsyncLoadDrawable : Drawable(), Drawable.Callback {
 
     override fun getCurrent(): Drawable = mCurrDrawable!!
 
-    override fun setVisible(visible: Boolean, restart: Boolean): Boolean =
+    override fun setVisible(
+        visible: Boolean,
+        restart: Boolean
+    ): Boolean =
         mCurrDrawable!!.setVisible(visible, restart)
 
     override fun getOpacity(): Int = mCurrDrawable!!.opacity
@@ -120,29 +145,25 @@ class AsyncLoadDrawable : Drawable(), Drawable.Callback {
         }
     }
 
-    override fun scheduleDrawable(who: Drawable, what: Runnable, `when`: Long) {
+    override fun scheduleDrawable(
+        who: Drawable,
+        what: Runnable,
+        `when`: Long
+    ) {
         if (who === mCurrDrawable) {
 //            Log.d("ALD", "scheduleDrawable who=$who what=$what when=$`when`")
             scheduleSelf(what, `when`)
         }
     }
 
-    override fun unscheduleDrawable(who: Drawable, what: Runnable) {
+    override fun unscheduleDrawable(
+        who: Drawable,
+        what: Runnable
+    ) {
         if (who === mCurrDrawable) {
 //            Log.d("ALD", "unscheduleDrawable who=$who what=$what")
             unscheduleSelf(what)
         }
     }
 
-    companion object {
-        fun load(function: () -> Drawable): AsyncLoadDrawable {
-            return AsyncLoadDrawable().also {
-                thread(name = "AsyncLoadDrawable loading thread", isDaemon = true) {
-                    it.onLoad(function())
-                }
-            }
-        }
-
-        private const val TAG = "ALD"
-    }
 }
