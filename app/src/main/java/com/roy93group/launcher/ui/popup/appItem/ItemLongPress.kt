@@ -45,7 +45,7 @@ object ItemLongPress {
             val shortcuts =
                 item.getStaticShortcuts(context.getSystemService(LauncherApps::class.java))
             if (shortcuts.isNotEmpty()) {
-                val recyclerView = card.findViewById<RecyclerView>(R.id.recycler)
+                val recyclerView = card.findViewById<RecyclerView>(R.id.recyclerView)
                 recyclerView.isNestedScrollingEnabled = false
                 recyclerView.layoutManager = LinearLayoutManager(context)
                 recyclerView.adapter = ShortcutAdapter(shortcuts = shortcuts, txtColor = textColor)
@@ -91,7 +91,7 @@ object ItemLongPress {
         val content =
             LayoutInflater.from(context).inflate(R.layout.view_long_press_item_popup_extra, null)
         if (shortcuts.isNotEmpty()) {
-            val recyclerView = content.findViewById<RecyclerView>(R.id.recycler)
+            val recyclerView = content.findViewById<RecyclerView>(R.id.recyclerView)
             recyclerView.isNestedScrollingEnabled = false
             recyclerView.layoutManager = LinearLayoutManager(context)
             recyclerView.adapter = ShortcutAdapter(shortcuts, textColor)

@@ -18,6 +18,13 @@ import io.posidon.android.launcherutils.IconConfig
 import java.util.*
 import kotlin.math.pow
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class AppProvider(
     private val searcher: Searcher
 ) : SearchProvider {

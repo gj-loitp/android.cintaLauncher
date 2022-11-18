@@ -25,6 +25,13 @@ import com.roy93group.lookerupper.data.results.SearchResult
 import com.roy93group.lookerupper.ui.adapter.SearchAdapter
 import kotlin.math.abs
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 @LogTag("SearchActivity")
 @IsFullScreen(false)
 @IsAutoAnimation(false)
@@ -55,41 +62,24 @@ class SearchActivity : BaseFontActivity() {
 
         settings.init(this)
         searcher.onCreate(this)
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
-//            wallpaperManager.addOnColorsChangedListener(
-//                ::onColorsChangedListener,
-//                container.handler
-//            )
-//            thread(name = "onCreate color update", isDaemon = true) {
-//                ColorPalette.onColorsChanged(
-//                    context = this,
-//                    colorTheme = settings.colorTheme,
-//                    onFinished = SearchActivity::loadColors
-//                ) {
-//                    wallpaperManager.getWallpaperColors(WallpaperManager.FLAG_SYSTEM)
-//                }
-//            }
-//        }
-
         setupViews()
-
     }
 
     private fun setupViews() {
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         adapter = SearchAdapter(activity = this, recyclerView = recyclerView, isOnCard = false)
         recyclerView.run {
             layoutManager =
                 GridLayoutManager(
                     /* context = */ this@SearchActivity,
-                    /* spanCount = */ 3,
+                    /* spanCount = */ 2,
                     /* orientation = */ RecyclerView.VERTICAL,
                     /* reverseLayout = */ false
                 ).apply {
                     spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                         override fun getSpanSize(i: Int): Int =
                             if (adapter?.getItemViewType(i) == SearchAdapter.RESULT_APP) 1
-                            else 3
+                            else 2
                     }
                 }
             this.adapter = this@SearchActivity.adapter

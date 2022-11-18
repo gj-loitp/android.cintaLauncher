@@ -2,6 +2,13 @@ package com.roy93group.lookerupper.data.results
 
 import android.view.View
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 interface SearchResult {
     val title: String
     val relevance: Relevance

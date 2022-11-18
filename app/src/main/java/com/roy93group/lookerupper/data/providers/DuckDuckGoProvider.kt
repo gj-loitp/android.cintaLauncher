@@ -7,6 +7,13 @@ import com.roy93group.lookerupper.data.Searcher
 import com.roy93group.lookerupper.data.results.InstantAnswerResult
 import io.posidon.android.libduckduckgo.DuckDuckGo
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class DuckDuckGoProvider(searcher: Searcher) : AsyncSearchProvider(searcher) {
 
     override fun Activity.onCreate() {

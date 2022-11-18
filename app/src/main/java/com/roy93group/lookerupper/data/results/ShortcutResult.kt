@@ -8,6 +8,13 @@ import android.view.View
 import androidx.palette.graphics.Palette
 import io.posidon.android.conveniencelib.drawable.toBitmap
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class ShortcutResult(
     private val shortcutInfo: ShortcutInfo,
     override val title: String,

@@ -120,7 +120,7 @@ class FeedSourcesChooserActivity : SettingsActivity() {
     override fun init(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_settings_feed_chooser)
 
-        val grid = findViewById<RecyclerView>(R.id.recycler)
+        val grid = findViewById<RecyclerView>(R.id.recyclerView)
         grid.layoutManager = GridLayoutManager(this, 2)
         val padding = 4.dp.toPixels(this)
         grid.setPadding(padding, getStatusBarHeight(), padding, getNavigationBarHeight() + padding)

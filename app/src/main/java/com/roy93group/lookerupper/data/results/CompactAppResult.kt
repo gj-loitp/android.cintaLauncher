@@ -1,14 +1,17 @@
 package com.roy93group.lookerupper.data.results
 
 import android.app.Activity
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.View
 import com.roy93group.launcher.data.items.App
-import com.roy93group.launcher.providers.color.theme.ColorTheme
-import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
-import io.posidon.android.conveniencelib.getNavigationBarHeight
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class CompactAppResult(
     val app: App
 ) : CompactResult() {
@@ -17,19 +20,18 @@ class CompactAppResult(
     inline val name: String get() = app.name
     override val title: String get() = app.label
     override val icon: Drawable get() = app.icon
-
     override val subtitle: Nothing? get() = null
-
     override var relevance = Relevance(0f)
+
     override val onLongPress = { v: View, activity: Activity ->
-        val backgroundColor = ColorTheme.tintWithColor(Color .RED, getColor())
-        ItemLongPress.onItemLongPress(
-            view = v,
-            backgroundColor = backgroundColor,
-            textColor = ColorTheme.titleColorForBG(background = backgroundColor),
-            item = app,
-            navbarHeight = activity.getNavigationBarHeight(),
-        )
+//        val backgroundColor = ColorTheme.tintWithColor(Color.RED, getColor())
+//        ItemLongPress.onItemLongPress(
+//            view = v,
+//            backgroundColor = backgroundColor,
+//            textColor = ColorTheme.titleColorForBG(background = backgroundColor),
+//            item = app,
+//            navbarHeight = activity.getNavigationBarHeight(),
+//        )
         true
     }
 

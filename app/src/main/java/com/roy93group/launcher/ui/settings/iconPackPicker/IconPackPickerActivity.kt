@@ -28,7 +28,7 @@ class IconPackPickerActivity : SettingsActivity() {
 
     override fun init(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_settings_icon_pack_picker)
-        val recycler = findViewById<RecyclerView>(R.id.recycler)
+        val recycler = findViewById<RecyclerView>(R.id.recyclerView)
 
         val iconPacks = IconTheming.getAvailableIconPacks(packageManager).mapTo(LinkedList()) {
             IconPack(

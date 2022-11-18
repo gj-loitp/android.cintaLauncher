@@ -6,6 +6,13 @@ import com.roy93group.lookerupper.data.providers.SearchProvider
 import com.roy93group.lookerupper.data.results.SearchResult
 import java.util.*
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class Searcher(
     val settings: Settings,
     vararg providers: (Searcher) -> SearchProvider,

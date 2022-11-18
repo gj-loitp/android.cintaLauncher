@@ -53,7 +53,7 @@ object DrawerLongPressPopup {
 
         val cardView = content.findViewById<CardView>(R.id.card)
 //        cardView.setCardBackgroundColor(Color.RED)
-        content.findViewById<RecyclerView>(R.id.recycler).apply {
+        content.findViewById<RecyclerView>(R.id.recyclerView).apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = ListPopupAdapter().apply {
                 fun update() {

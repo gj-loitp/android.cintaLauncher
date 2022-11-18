@@ -7,6 +7,13 @@ import android.net.Uri
 import android.provider.ContactsContract
 import android.view.View
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class ContactResult private constructor(
     override var title: String,
     val iconUri: Uri?,
