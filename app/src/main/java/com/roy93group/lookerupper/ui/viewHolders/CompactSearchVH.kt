@@ -1,7 +1,6 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
 import android.app.Activity
-import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,6 +11,13 @@ import com.roy93group.lookerupper.data.results.CompactAppResult
 import com.roy93group.lookerupper.data.results.CompactResult
 import com.roy93group.lookerupper.data.results.SearchResult
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class CompactSearchVH(
     itemView: View,
     val activity: Activity,
@@ -26,15 +32,15 @@ class CompactSearchVH(
         result as CompactResult
         icon.setImageDrawable(result.icon)
         text.text = result.title
-        applyIfNotNull(subtitle, result.subtitle, TextView::setText)
-        text.setTextColor(if (isOnCard) Color.RED else Color.GREEN)
-        subtitle.setTextColor(if (isOnCard) Color.RED else Color.RED)
+        applyIfNotNull(view = subtitle, value = result.subtitle, block = TextView::setText)
+//        text.setTextColor(if (isOnCard) Color.RED else Color.GREEN)
+//        subtitle.setTextColor(if (isOnCard) Color.RED else Color.RED)
         itemView.setOnClickListener {
             if (result is CompactAppResult) {
                 SuggestionsManager.onItemOpened(it.context, result.app)
             }
             result.open(it)
         }
-        itemView.setOnLongClickListener(result.onLongPress?.let { { v -> it(v, activity) } })
+//        itemView.setOnLongClickListener(result.onLongPress?.let { { v -> it(v, activity) } })
     }
 }

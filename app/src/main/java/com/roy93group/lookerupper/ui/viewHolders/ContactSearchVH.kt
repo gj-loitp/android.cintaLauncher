@@ -1,6 +1,5 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
-import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -11,6 +10,13 @@ import com.roy93group.launcher.R
 import com.roy93group.lookerupper.data.results.ContactResult
 import com.roy93group.lookerupper.data.results.SearchResult
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class ContactSearchVH(
     itemView: View,
     private val isOnCard: Boolean
@@ -29,12 +35,12 @@ class ContactSearchVH(
                     itemView.context,
                     R.drawable.placeholder_contact
                 )?.apply {
-                    setTint(if (isOnCard) Color.GREEN else Color.GREEN)
+//                    setTint(if (isOnCard) Color.GREEN else Color.GREEN)
                 })
             .apply(RequestOptions.circleCropTransform())
             .into(icon)
         text.text = result.title
-        text.setTextColor(if (isOnCard) Color.GREEN else Color.BLUE)
+//        text.setTextColor(if (isOnCard) Color.GREEN else Color.BLUE)
         itemView.setOnClickListener(result::open)
     }
 }
