@@ -8,13 +8,6 @@
     android:background="@color/colorPrimary"
     tools:context=".ui.LauncherActivity">
 
-<!--    <View-->
-    <!--        android:id="@+id/blurBg"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:visibility="gone"-->
-    <!--        tools:visibility="visible" />-->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFeed"
         android:layout_width="match_parent"

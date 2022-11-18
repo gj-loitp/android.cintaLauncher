@@ -24,6 +24,7 @@
             android:layout_height="@dimen/search_bar_height"
             android:layout_weight="1"
             android:gravity="center_vertical"
+            android:hint="@string/search"
             android:imeOptions="actionSearch"
             android:includeFontPadding="false"
             android:inputType="number|text|phone|datetime"

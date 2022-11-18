@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
-    style="@style/Theme.AppLauncher.Drawer.Item.Container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <com.roy93group.launcher.ui.view.SeeThoughView
-        android:id="@+id/blurBg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.5" />
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/round_medium"
+    app:cardElevation="@dimen/w_3"
+    app:cardUseCompatPadding="true">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -19,16 +17,20 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivIcon"
-            style="@style/Theme.AppLauncher.Suggestions.Item.Icon" />
+            android:layout_width="@dimen/w_50"
+            android:layout_height="@dimen/w_50"
+            tools:src="@drawable/ic_launcher"
+            tools:tint="@color/white" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvIconText"
-            style="@style/Theme.AppLauncher.Suggestions.Item.Label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:includeFontPadding="false"
             android:maxLines="1"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_medium" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.cardview.widget.CardView>

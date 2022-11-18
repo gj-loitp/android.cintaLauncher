@@ -7,17 +7,27 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
 import com.roy93group.lookerupper.data.results.*
-import com.roy93group.lookerupper.ui.viewHolders.AppSearchVH
-import com.roy93group.lookerupper.ui.viewHolders.CompactSearchVH
-import com.roy93group.lookerupper.ui.viewHolders.ContactSearchVH
-import com.roy93group.lookerupper.ui.viewHolders.SearchVH
-import com.roy93group.lookerupper.ui.viewHolders.AnswerSearchVH
+import com.roy93group.lookerupper.ui.viewHolders.*
 
+/**
+ * Updated by Loitp on 2022.12.18
+ * Galaxy One company,
+ * Vietnam
+ * +840766040293
+ * freuss47@gmail.com
+ */
 class SearchAdapter(
     val activity: Activity,
     val recyclerView: RecyclerView,
     private val isOnCard: Boolean
 ) : RecyclerView.Adapter<SearchVH>() {
+
+    companion object {
+        const val RESULT_APP = 0
+        const val RESULT_CONTACT = 2
+        const val RESULT_ANSWER = 3
+        const val RESULT_COMPACT = 4
+    }
 
     private var results = emptyList<SearchResult>()
 
@@ -63,12 +73,5 @@ class SearchAdapter(
     fun update(results: List<SearchResult>) {
         this.results = results
         notifyDataSetChanged()
-    }
-
-    companion object {
-        const val RESULT_APP = 0
-        const val RESULT_CONTACT = 2
-        const val RESULT_ANSWER = 3
-        const val RESULT_COMPACT = 4
     }
 }
