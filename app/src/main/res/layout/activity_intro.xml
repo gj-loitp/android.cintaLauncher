@@ -20,8 +20,10 @@
         android:layout_margin="@dimen/margin_padding_medium"
         android:text="@string/next"
         android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/white"
         android:textSize="@dimen/txt_medium"
-        app:qb_backgroundColor="@color/white"
-        app:qb_radius="100" />
+        app:qb_backgroundColor="@color/colorPrimary"
+        app:qb_radius="100"
+        app:qb_strokeColor="@color/white"
+        app:qb_strokeWidth="5" />
 </androidx.appcompat.widget.LinearLayoutCompat>

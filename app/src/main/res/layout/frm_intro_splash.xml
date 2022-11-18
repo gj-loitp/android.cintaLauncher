@@ -16,7 +16,8 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:includeFontPadding="false"
         android:text="@string/splash_message"
         android:textColor="@color/white"
-        android:textSize="@dimen/txt_largest" />
+        android:textSize="@dimen/txt_50" />
 </androidx.appcompat.widget.LinearLayoutCompat>
