@@ -15,37 +15,28 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.loitpcore.views.layout.square.LSquareFrameLayout
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivIcon"
             android:layout_width="@dimen/w_55"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_padding_small">
+            android:layout_height="@dimen/w_55"
+            android:scaleType="fitCenter"
+            android:visibility="gone"
+            tools:src="@drawable/ic_launcher"
+            tools:visibility="visible" />
 
-            <com.roy93group.launcher.ui.view.BackdropImageView
-                android:id="@+id/ivBackground"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivIcon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitCenter"
-                tools:src="@drawable/ic_launcher" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivIconSmall"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitCenter"
-                android:visibility="gone"
-                tools:src="@drawable/ic_launcher"
-                tools:visibility="visible" />
-        </com.loitpcore.views.layout.square.LSquareFrameLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivIconSmall"
+            android:layout_width="@dimen/w_55"
+            android:layout_height="@dimen/w_55"
+            android:scaleType="fitCenter"
+            android:visibility="gone"
+            tools:src="@drawable/ic_launcher"
+            tools:visibility="visible" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_small"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="@dimen/margin_padding_small">
