@@ -30,11 +30,6 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
     val text: TextView = itemView.findViewById(R.id.text)
     val description: TextView = itemView.findViewById(R.id.description)
     private val switch: SwitchCompat = itemView.findViewById(R.id.toggle)
-//    val ripple = RippleDrawable(ColorStateList.valueOf(0), null, ColorDrawable(0xffffffff.toInt()))
-
-//    init {
-//        itemView.background = ripple
-//    }
 
     override fun onBind(item: ListPopupItem) {
         text.text = item.text
@@ -44,19 +39,14 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
             switch.toggle()
         }
 
-//        text.setTextColor(Color.RED)
         switch.trackDrawable = generateTrackDrawable()
         switch.thumbDrawable = generateThumbDrawable(itemView.context)
 
-//        ripple.setColor(ColorStateList.valueOf(Color.RED and 0xffffff or 0x33000000))
-
         applyIfNotNull(view = description, value = item.description) { view, value ->
             view.text = value
-//            description.setTextColor(Color.RED)
         }
         applyIfNotNull(view = icon, value = item.icon) { view, value ->
             view.setImageDrawable(value)
-//            view.imageTintList = ColorStateList.valueOf(Color.RED)
         }
         switch.isChecked = (item.value as? Boolean) ?: false
         switch.setOnCheckedChangeListener(item.onToggle)
