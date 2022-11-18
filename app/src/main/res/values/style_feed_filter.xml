@@ -1,7 +1,0 @@
-<resources>
-
-    <style name="Theme.AppLauncher.FeedFilters" parent="Theme.AppLauncher">
-        <item name="android:layout_margin">3dp</item>
-    </style>
-
-</resources>
