@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/margin_padding_small"
-    android:layout_marginVertical="@dimen/margin_padding_small"
-    android:elevation="@dimen/w_3"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/round_medium"
+    app:cardElevation="@dimen/w_3"
     app:cardUseCompatPadding="true">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/deepPink"
         android:gravity="center_vertical"
         android:minHeight="@dimen/feed_filter_height"
         android:orientation="horizontal"
@@ -22,13 +21,17 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/icon"
             android:layout_width="@dimen/w_25"
-            android:layout_height="@dimen/w_25" />
+            android:layout_height="@dimen/w_25"
+            tools:src="@drawable/ic_launcher" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_small"
             android:paddingHorizontal="@dimen/margin_padding_small"
-            android:textSize="@dimen/txt_medium" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_medium"
+            tools:text="@string/app_name" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.cardview.widget.CardView>

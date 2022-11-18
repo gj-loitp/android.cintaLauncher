@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_padding_medium"
         android:text="@string/next"
-        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/txt_medium"
         app:qb_backgroundColor="@color/colorPrimary"

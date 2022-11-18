@@ -26,6 +26,7 @@
                 android:format12Hour="h:mm"
                 android:format24Hour="H:mm"
                 android:includeFontPadding="false"
+                android:textColor="@color/white"
                 android:textSize="64sp" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -45,6 +46,7 @@
                     android:format12Hour="cccc"
                     android:format24Hour="cccc"
                     android:includeFontPadding="false"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/txt_larger" />
 
                 <TextClock
@@ -54,6 +56,7 @@
                     android:format12Hour="d MMMM"
                     android:format24Hour="d MMMM"
                     android:includeFontPadding="false"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/txt_large" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>

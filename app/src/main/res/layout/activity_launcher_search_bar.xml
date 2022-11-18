@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cvSearchBarContainer"
-    style="@style/Theme.AppLauncher.SearchBar.Container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/round_large"
+    app:cardElevation="@dimen/w_3"
+    app:cardUseCompatPadding="true">
 
     <androidx.appcompat.widget.AppCompatImageView
-        style="@style/Theme.AppLauncher.SearchBar.Icon"
         android:layout_width="@dimen/search_bar_height"
         android:layout_height="@dimen/search_bar_height"
         android:layout_gravity="start"
+        android:padding="@dimen/margin_padding_small"
         android:src="@drawable/ic_search" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -20,9 +24,9 @@
 
     <com.roy93group.launcher.ui.view.scrollbar.ScrollbarIconView
         android:id="@+id/appDrawerIcon"
-        style="@style/Theme.AppLauncher.SearchBar.Icon"
         android:layout_width="@dimen/search_bar_height"
         android:layout_height="@dimen/search_bar_height"
         android:layout_gravity="end"
+        android:padding="@dimen/margin_padding_small"
         android:src="@drawable/ic_drawer_scroll" />
 </androidx.cardview.widget.CardView>

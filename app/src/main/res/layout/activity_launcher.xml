@@ -16,7 +16,6 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFeedFilters"
-        style="@style/Theme.AppLauncher.FeedFilters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom" />
@@ -35,18 +34,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_padding_small"
-            android:elevation="@dimen/w_3"
             android:visibility="gone"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="@dimen/w_45"
+            app:cardElevation="@dimen/w_3"
+            app:cardUseCompatPadding="true"
             tools:visibility="visible">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btBack"
-                style="@style/Theme.AppLauncher.SearchBar.Icon"
                 android:layout_width="@dimen/search_bar_height"
                 android:layout_height="@dimen/search_bar_height"
-                android:background="@drawable/ripple"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_cross"
                 android:tint="@color/colorPrimary" />

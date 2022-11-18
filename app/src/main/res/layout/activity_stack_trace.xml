@@ -35,7 +35,7 @@
                 android:layout_marginTop="@dimen/margin_padding_medium"
                 android:textColor="@color/white"
                 android:textSize="@dimen/txt_small"
-                tools:text="@string/app_name" />
+                tools:text="@string/large_dummy_text" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 
