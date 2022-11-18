@@ -58,7 +58,7 @@ class StackTraceActivity : BaseFontActivity() {
 
     private fun setupViews() {
         try {
-            val title = findViewById<TextView>(R.id.title)
+            findViewById<TextView>(R.id.title)
             val tvStackTrace = findViewById<TextView>(R.id.tvStackTrace)
             val send = findViewById<TextView>(R.id.send)
 

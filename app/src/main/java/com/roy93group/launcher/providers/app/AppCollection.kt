@@ -57,8 +57,7 @@ class AppCollection(
             profile = profile,
             label = label,
             icon = icon,
-            extra = extra,
-            settings = settings
+            extra = extra
         )
 
         list.add(app)
@@ -157,7 +156,6 @@ class AppCollection(
             label: String,
             icon: Drawable,
             extra: AppLoader.ExtraAppInfo<ExtraIconData>,
-            settings: Settings,
         ): App {
 
             return App(

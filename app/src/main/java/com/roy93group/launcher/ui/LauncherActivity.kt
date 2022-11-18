@@ -193,12 +193,11 @@ class LauncherActivity : BaseFontActivity() {
         super.onNewIntent(intent)
         val isActionMain = Intent.ACTION_MAIN == intent.action
         if (isActionMain) {
-            handleGestureContract(intent)
+            handleGestureContract()
         }
     }
 
-    @Suppress("unused")
-    private fun handleGestureContract(intent: Intent) {
+    private fun handleGestureContract() {
         //val gnc = GestureNavContract.fromIntent(intent)
         //gnc?.sendEndPosition(scrollBar.clipBounds.toRectF(), null)
     }

@@ -36,7 +36,6 @@ class SuggestionVH(
         itemView.setOnLongClickListener {
             ItemLongPress.onItemLongPress(
                 view = it,
-                backgroundColor = backgroundColor,
                 textColor = ColorTheme.titleColorForBG(backgroundColor),
                 item = item,
                 navbarHeight = navbarHeight,

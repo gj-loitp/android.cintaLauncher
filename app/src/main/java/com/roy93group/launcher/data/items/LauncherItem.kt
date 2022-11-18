@@ -42,9 +42,7 @@ interface LauncherItem {
 
 @Suppress("unused")
 fun LauncherItem.showProperties(
-    view: View,
-    backgroundColor: Int,
-    textColor: Int
+    view: View
 ) {
     if (this is App) {
         view.context.startActivity(

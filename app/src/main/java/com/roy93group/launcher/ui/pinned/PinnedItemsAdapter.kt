@@ -89,14 +89,6 @@ class PinnedItemsAdapter(
         bindPinnedViewHolder(
             holder = holder,
             item = item,
-            navbarHeight = navbarHeight,
-            onDragStart = {
-                val i = adapterPositionToI(holder.bindingAdapterPosition)
-                items.removeAt(i)
-                dropTargetIndex = holder.bindingAdapterPosition
-                notifyItemChanged(holder.bindingAdapterPosition)
-                updatePins(it)
-            },
         )
     }
 

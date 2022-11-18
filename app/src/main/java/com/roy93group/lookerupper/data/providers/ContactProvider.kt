@@ -5,7 +5,6 @@ import android.app.Activity
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import com.roy93group.lookerupper.data.SearchQuery
-import com.roy93group.lookerupper.data.Searcher
 import com.roy93group.lookerupper.data.results.ContactResult
 import com.roy93group.lookerupper.data.results.Relevance
 import com.roy93group.lookerupper.data.results.SearchResult
@@ -19,9 +18,7 @@ import java.util.*
  * +840766040293
  * freuss47@gmail.com
  */
-class ContactProvider(
-    searcher: Searcher
-) : SearchProvider {
+class ContactProvider : SearchProvider {
 
     var contacts: Collection<ContactResult> = emptyList()
 

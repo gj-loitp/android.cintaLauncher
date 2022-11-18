@@ -1,6 +1,5 @@
 package com.roy93group.launcher.ui.pinned.viewHolders
 
-import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.data.items.LauncherItem
@@ -21,8 +20,6 @@ class PinnedViewHolder(
 fun bindPinnedViewHolder(
     holder: PinnedViewHolder,
     item: LauncherItem,
-    navbarHeight: Int,
-    onDragStart: (view: View) -> Unit = {},
 ) {
     holder.icon.setImageDrawable(item.icon)
 

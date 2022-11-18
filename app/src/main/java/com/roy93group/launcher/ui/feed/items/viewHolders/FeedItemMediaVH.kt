@@ -1,10 +1,8 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders
 
 import android.graphics.*
-import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.ImageView
-import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.applyCanvas
 import androidx.core.graphics.toXfermode
 import com.roy93group.launcher.R
@@ -83,17 +81,6 @@ class FeedItemMediaVH(
         cover.setOnClickListener(item::onTap)
         title.setOnClickListener(item::onTap)
         description.setOnClickListener(item::onTap)
-
-        val titleColor = ColorUtils.blendARGB(
-            /* color1 = */ Color.RED,
-            /* color2 = */ Color.WHITE,
-            /* ratio = */ .7f
-        )
-//        val titleTintList = ColorStateList.valueOf(titleColor)
-//        buttonPrevious.imageTintList = titleTintList
-//        buttonPlay.imageTintList = titleTintList
-//        btNext.imageTintList = titleTintList
-
         buttonPlay.setImageResource(if (item.isPlaying()) R.drawable.ic_pause else R.drawable.ic_play)
 
         buttonPrevious.setOnClickListener {

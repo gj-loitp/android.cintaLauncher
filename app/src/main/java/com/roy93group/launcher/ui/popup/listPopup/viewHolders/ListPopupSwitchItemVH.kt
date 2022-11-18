@@ -45,7 +45,7 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
         }
 
 //        text.setTextColor(Color.RED)
-        switch.trackDrawable = generateTrackDrawable(itemView.context)
+        switch.trackDrawable = generateTrackDrawable()
         switch.thumbDrawable = generateThumbDrawable(itemView.context)
 
 //        ripple.setColor(ColorStateList.valueOf(Color.RED and 0xffffff or 0x33000000))
@@ -62,15 +62,15 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
         switch.setOnCheckedChangeListener(item.onToggle)
     }
 
-    private fun generateTrackDrawable(context: Context): Drawable {
+    private fun generateTrackDrawable(): Drawable {
         val out = StateListDrawable()
         out.addState(
             intArrayOf(android.R.attr.state_checked),
-            generateBG(context, Color.RED and 0x00ffffff or 0x55000000)
+            generateBG(Color.RED and 0x00ffffff or 0x55000000)
         )
         out.addState(
             StateSet.WILD_CARD,
-            generateBG(context, Color.RED and 0x00ffffff or 0x55000000)
+            generateBG(Color.RED and 0x00ffffff or 0x55000000)
         )
         return out
     }
@@ -105,7 +105,7 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
         }
     }
 
-    private fun generateBG(context: Context, color: Int): Drawable {
+    private fun generateBG(color: Int): Drawable {
         return GradientDrawable().apply {
             cornerRadius = Float.MAX_VALUE
             setColor(color)

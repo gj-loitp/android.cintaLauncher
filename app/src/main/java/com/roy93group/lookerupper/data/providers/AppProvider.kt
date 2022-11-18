@@ -54,8 +54,7 @@ class AppProvider(
                     profile = profile,
                     label = label,
                     icon = icon,
-                    extra = extra,
-                    settings = settings
+                    extra = extra
                 )
             )
             list += app

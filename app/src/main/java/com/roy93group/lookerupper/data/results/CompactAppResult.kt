@@ -23,7 +23,7 @@ class CompactAppResult(
     override val subtitle: Nothing? get() = null
     override var relevance = Relevance(0f)
 
-    override val onLongPress = { v: View, activity: Activity ->
+    override val onLongPress = { _: View, _: Activity ->
 //        val backgroundColor = ColorTheme.tintWithColor(Color.RED, getColor())
 //        ItemLongPress.onItemLongPress(
 //            view = v,

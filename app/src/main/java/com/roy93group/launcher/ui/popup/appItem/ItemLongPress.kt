@@ -34,7 +34,6 @@ object ItemLongPress {
     private fun makePopupWindow(
         context: Context,
         item: LauncherItem,
-        backgroundColor: Int,
         textColor: Int,
         extraPopupWindow: PopupWindow?,
         onInfo: (View) -> Unit
@@ -85,7 +84,6 @@ object ItemLongPress {
     private fun makeExtraPopupWindow(
         context: Context,
         shortcuts: List<ShortcutInfo>,
-        backgroundColor: Int,
         textColor: Int
     ): PopupWindow {
         val content =
@@ -113,7 +111,6 @@ object ItemLongPress {
 
     fun onItemLongPress(
         view: View,
-        backgroundColor: Int,
         textColor: Int,
         item: LauncherItem,
         navbarHeight: Int,
@@ -134,18 +131,16 @@ object ItemLongPress {
         val extraPopupWindow = if (hasDynamicShortcuts) makeExtraPopupWindow(
             context = context,
             shortcuts = dynamicShortcuts!!,
-            backgroundColor = backgroundColor,
             textColor = textColor
         ) else null
         val popupWindow =
             makePopupWindow(
                 context = context,
                 item = item,
-                backgroundColor = backgroundColor,
                 textColor = textColor,
                 extraPopupWindow = extraPopupWindow
             ) {
-                item.showProperties(view, backgroundColor, textColor)
+                item.showProperties(view)
             }
         popupWindow.isFocusable = false
         popupWindow.showAtLocation(
