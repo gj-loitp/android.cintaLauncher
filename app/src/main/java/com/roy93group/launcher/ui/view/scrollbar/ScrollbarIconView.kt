@@ -2,7 +2,6 @@ package com.roy93group.launcher.ui.view.scrollbar
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
 import android.util.AttributeSet
@@ -11,6 +10,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.PopupWindow
+import com.loitpcore.core.utilities.LAppResource
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.ScrollbarControllerSetting
 import com.roy93group.launcher.storage.ScrollbarControllerSetting.scrollbarController
@@ -52,7 +52,8 @@ class ScrollbarIconView @JvmOverloads constructor(
             MotionEvent.ACTION_DOWN -> appDrawer?.open(this)
             MotionEvent.ACTION_MOVE -> {
                 val d = abs(e.x / e.y)
-                val orientation = if (d > 1f) Scrollbar.HORIZONTAL else Scrollbar.VERTICAL
+//                val orientation = if (d > 1f) Scrollbar.HORIZONTAL else Scrollbar.VERTICAL
+                val orientation = Scrollbar.HORIZONTAL
                 if (currentWindow == null) {
                     showPopup(orientation)
                     currentOrientation = orientation
@@ -106,10 +107,14 @@ class ScrollbarIconView @JvmOverloads constructor(
         scrollBar.controller.updateTheme(context)
         scrollBar.background = ShapeDrawable(
             RoundRectShape(
-                FloatArray(8) { resources.getDimension(R.dimen.round_medium) }, null, null
+                /* outerRadii = */ FloatArray(size = 8) {
+                    resources.getDimension(R.dimen.round_large)
+                },
+                /* inset = */ null,
+                /* innerRadii = */ null
             )
         ).apply {
-            paint.color = Color.RED
+            paint.color = LAppResource.getColor(R.color.white)
         }
         val p = 24.dp.toPixels(this)
         when (orientation) {
@@ -139,15 +144,19 @@ class ScrollbarIconView @JvmOverloads constructor(
             }
 
             showAtLocation(
+                /* parent = */
                 this@ScrollbarIconView,
+                /* gravity = */
                 when (orientation) {
                     Scrollbar.HORIZONTAL -> Gravity.TOP
                     else -> Gravity.BOTTOM or Gravity.START
                 },
+                /* x = */
                 when (orientation) {
                     Scrollbar.HORIZONTAL -> 0
                     else -> location[0]
                 },
+                /* y = */
                 when (orientation) {
                     Scrollbar.HORIZONTAL -> location[1]
                     else -> Device.screenHeight(context) - location[1] - this@ScrollbarIconView.height + (appDrawer?.activity?.getNavigationBarHeight()

@@ -12,6 +12,7 @@ import android.widget.ImageView
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.LauncherActivity
@@ -194,6 +195,9 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
     }
 
     private fun isFullPermission(): Boolean {
+        if (BuildConfig.DEBUG) {
+            return true
+        }
         return (tickStorage?.isVisible == true
                 && tickContacts?.isVisible == true
                 && tickNotifications?.isVisible == true
