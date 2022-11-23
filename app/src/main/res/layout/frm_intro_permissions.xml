@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -41,19 +40,16 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/txt_small" />
 
-            <com.manojbhadane.QButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonStorage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_padding_small"
+                android:background="@drawable/ripple"
                 android:paddingHorizontal="@dimen/margin_padding_medium"
                 android:text="@string/grant_permissions"
-                android:textColor="@color/white"
-                android:textSize="@dimen/txt_medium"
-                app:qb_backgroundColor="@color/colorPrimary"
-                app:qb_radius="100"
-                app:qb_strokeColor="@color/white"
-                app:qb_strokeWidth="5" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickStorage"
@@ -86,19 +82,16 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/txt_small" />
 
-            <com.manojbhadane.QButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonContacts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_padding_small"
+                android:background="@drawable/ripple"
                 android:paddingHorizontal="@dimen/margin_padding_medium"
                 android:text="@string/grant_permissions"
-                android:textColor="@color/white"
-                android:textSize="@dimen/txt_medium"
-                app:qb_backgroundColor="@color/colorPrimary"
-                app:qb_radius="100"
-                app:qb_strokeColor="@color/white"
-                app:qb_strokeWidth="5" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickContacts"
@@ -131,19 +124,16 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/txt_small" />
 
-            <com.manojbhadane.QButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonNotifications"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_padding_small"
+                android:background="@drawable/ripple"
                 android:paddingHorizontal="@dimen/margin_padding_medium"
                 android:text="@string/grant_permissions"
-                android:textColor="@color/white"
-                android:textSize="@dimen/txt_medium"
-                app:qb_backgroundColor="@color/colorPrimary"
-                app:qb_radius="100"
-                app:qb_strokeColor="@color/white"
-                app:qb_strokeWidth="5" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickNotifications"
@@ -176,19 +166,16 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/txt_small" />
 
-            <com.manojbhadane.QButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonUsageAccess"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_padding_small"
+                android:background="@drawable/ripple"
                 android:paddingHorizontal="@dimen/margin_padding_medium"
                 android:text="@string/grant_permissions"
-                android:textColor="@color/white"
-                android:textSize="@dimen/txt_medium"
-                app:qb_backgroundColor="@color/colorPrimary"
-                app:qb_radius="100"
-                app:qb_strokeColor="@color/white"
-                app:qb_strokeWidth="5" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/txt_medium" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickUsageAccess"
