@@ -4,7 +4,6 @@
     <dimen name="feed_card_padding_vertical">20dp</dimen>
     <dimen name="feed_card_spacing">6dp</dimen>
     <dimen name="item_card_radius">16dp</dimen>
-    <dimen name="item_card_elevation">2dp</dimen>
     <dimen name="item_card_margin">6dp</dimen>
     <dimen name="search_bar_height">56dp</dimen>
     <dimen name="search_bar_radius">@dimen/item_card_radius</dimen>
