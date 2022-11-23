@@ -48,6 +48,7 @@
     <string name="permission_usage_access_explanation">Cinta will see which apps you use, to improve the app suggestions</string>
     <string name="no_feed_items">Nothing here</string>
     <string name="next">Next</string>
+    <string name="pls_grant_permission_first">Please grant these permission first</string>
     <!-- permissions end -->
     <!-- first time screen end -->
 </resources>

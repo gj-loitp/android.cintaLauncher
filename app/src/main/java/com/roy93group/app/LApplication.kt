@@ -14,7 +14,6 @@ import com.loitpcore.core.utilities.LUIUtil
  */
 //TODO thay cac late in
 //TODO sort app drawer theo tan suat, cai nao cang nhieu text cang to
-//TODO man hinh intro cho accept het cac permission moi cho next
 //TODO set background to black
 //TODO ripple activity intro
 //TODO config gg drive
@@ -29,6 +28,7 @@ import com.loitpcore.core.utilities.LUIUtil
 
 //done
 //ic launcher
+//man hinh intro cho accept het cac permission moi cho next
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
 

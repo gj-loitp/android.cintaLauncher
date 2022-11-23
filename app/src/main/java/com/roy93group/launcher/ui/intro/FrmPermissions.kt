@@ -26,6 +26,11 @@ import com.roy93group.launcher.util.FakeLauncherActivity
  */
 class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
 
+    private var tickStorage: ImageView? = null
+    private var tickContacts: ImageView? = null
+    private var tickNotifications: ImageView? = null
+    private var tickUsageAccess: ImageView? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,13 +40,25 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
             ?.apply(::updatePermissionStatus)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupViews()
+    }
+
+    private fun setupViews() {
+        view?.let { v ->
+            tickStorage = v.findViewById(R.id.tickStorage)
+            tickContacts = v.findViewById(R.id.tickContacts)
+            tickNotifications = v.findViewById(R.id.tickNotifications)
+            tickUsageAccess = v.findViewById(R.id.tickUsageAccess)
+        }
+    }
+
+
     fun updatePermissionStatus() = updatePermissionStatus(requireView())
 
     private fun updatePermissionStatus(v: View) = v.apply {
-        val tickStorage = findViewById<ImageView>(R.id.tickStorage)
-        val tickContacts = findViewById<ImageView>(R.id.tickContacts)
-        val tickNotifications = findViewById<ImageView>(R.id.tickNotifications)
-        val tickUsageAccess = findViewById<ImageView>(R.id.tickUsageAccess)
         if (
             ContextCompat.checkSelfPermission(
                 context,
@@ -49,7 +66,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             findViewById<View>(R.id.buttonStorage).isVisible = false
-            tickStorage.isVisible = true
+            tickStorage?.isVisible = true
         } else {
             findViewById<View>(R.id.buttonStorage).setOnClickListener {
                 requestStoragePermission()
@@ -63,7 +80,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             findViewById<View>(R.id.buttonContacts).isVisible = false
-            tickContacts.isVisible = true
+            tickContacts?.isVisible = true
         } else {
             findViewById<View>(R.id.buttonContacts).setOnClickListener {
                 requestContactsPermission()
@@ -75,36 +92,39 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                 .contains(context.packageName)
         ) {
             findViewById<View>(R.id.buttonNotifications).isVisible = false
-            tickNotifications.isVisible = true
+            tickNotifications?.isVisible = true
         } else {
             findViewById<View>(R.id.buttonNotifications).setOnClickListener(::requestNotificationsPermission)
         }
 
         if (SuggestionsManager.checkUsageAccessPermission(context)) {
             findViewById<View>(R.id.buttonUsageAccess).isVisible = false
-            tickUsageAccess.isVisible = true
+            tickUsageAccess?.isVisible = true
         } else {
             findViewById<View>(R.id.buttonUsageAccess).setOnClickListener(::requestUsageAccessPermission)
         }
     }
 
     override fun next(activity: IntroActivity) {
-//        activity.setFragment(FrmQuickSettings())
-
-        val home = ComponentName(requireContext(), LauncherActivity::class.java)
-        requireContext().packageManager.setComponentEnabledSetting(
-            /* p0 = */ home,
-            /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-            /* p2 = */ PackageManager.DONT_KILL_APP
-        )
-        val intro = ComponentName(requireContext(), IntroActivity::class.java.name + "Alias")
-        requireContext().packageManager.setComponentEnabledSetting(
-            /* p0 = */ intro,
-            /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-            /* p2 = */ PackageManager.DONT_KILL_APP
-        )
-        startActivity(Intent(requireContext(), LauncherActivity::class.java))
-        chooseLauncher()
+        if (isFullPermission()) {
+//            activity.setFragment(FrmQuickSettings())
+            val home = ComponentName(requireContext(), LauncherActivity::class.java)
+            requireContext().packageManager.setComponentEnabledSetting(
+                /* p0 = */ home,
+                /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                /* p2 = */ PackageManager.DONT_KILL_APP
+            )
+            val intro = ComponentName(requireContext(), IntroActivity::class.java.name + "Alias")
+            requireContext().packageManager.setComponentEnabledSetting(
+                /* p0 = */ intro,
+                /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                /* p2 = */ PackageManager.DONT_KILL_APP
+            )
+            startActivity(Intent(requireContext(), LauncherActivity::class.java))
+            chooseLauncher()
+        } else {
+            activity.showShortError(getString(R.string.pls_grant_permission_first))
+        }
     }
 
     private fun chooseLauncher() {
@@ -171,5 +191,12 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                 Intent.FLAG_ACTIVITY_NEW_TASK
             )
         )
+    }
+
+    private fun isFullPermission(): Boolean {
+        return (tickStorage?.isVisible == true
+                && tickContacts?.isVisible == true
+                && tickNotifications?.isVisible == true
+                && tickUsageAccess?.isVisible == true)
     }
 }
