@@ -2,11 +2,11 @@ package com.roy93group.launcher.ui.intro
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.widget.AppCompatButton
 import com.loitpcore.annotation.IsAutoAnimation
 import com.loitpcore.annotation.IsFullScreen
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
-import com.manojbhadane.QButton
 import com.roy93group.launcher.R
 import java.util.*
 
@@ -52,7 +52,7 @@ class IntroActivity : BaseFontActivity() {
                 .commit()
         }
 
-        findViewById<QButton>(R.id.btNext).setOnClickListener {
+        findViewById<AppCompatButton>(R.id.btNext).setOnClickListener {
             stack.peek()?.next(this)
         }
     }
