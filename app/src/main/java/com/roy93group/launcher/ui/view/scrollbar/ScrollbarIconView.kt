@@ -10,7 +10,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.PopupWindow
-import com.loitpcore.core.utilities.LAppResource
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.ScrollbarControllerSetting
 import com.roy93group.launcher.storage.ScrollbarControllerSetting.scrollbarController
@@ -114,7 +114,7 @@ class ScrollbarIconView @JvmOverloads constructor(
                 /* innerRadii = */ null
             )
         ).apply {
-            paint.color = LAppResource.getColor(R.color.white)
+            paint.color = C.COLOR_FAST_SCROLL_BACKGROUND
         }
         val p = 16.dp.toPixels(this)
         when (orientation) {
