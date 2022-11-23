@@ -116,7 +116,7 @@ class ScrollbarIconView @JvmOverloads constructor(
         ).apply {
             paint.color = LAppResource.getColor(R.color.white)
         }
-        val p = 24.dp.toPixels(this)
+        val p = 16.dp.toPixels(this)
         when (orientation) {
             Scrollbar.HORIZONTAL -> scrollBar.setPadding(p, 0, p, 0)
             Scrollbar.VERTICAL -> scrollBar.setPadding(0, p, 0, p)
