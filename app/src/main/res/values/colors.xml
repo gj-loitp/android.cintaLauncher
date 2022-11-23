@@ -6,7 +6,4 @@
     <color name="colorEdgeEffect">#000000</color>
     <color name="colorPrimaryTrans">#ff000000</color>
     <color name="colorAccent">#000000</color>\
-    <color name="feed_card_text_dark_title">#ff000000</color>
-    <color name="feed_card_text_dark_description">#d2000000</color>
-    <color name="accent">#ff9249</color>
 </resources>

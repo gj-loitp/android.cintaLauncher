@@ -74,7 +74,7 @@
 
             <meta-data
                 android:name="com.android.systemui.action_assist_icon"
-                android:resource="@mipmap/ic_launcher" />
+                android:resource="@drawable/ic_launcher" />
         </activity>
 
         <activity android:name=".ui.settings.feedChooser.FeedSourcesChooserActivity" />

@@ -106,7 +106,7 @@ class ScrollbarIconView @JvmOverloads constructor(
         scrollBar.controller.updateTheme(context)
         scrollBar.background = ShapeDrawable(
             RoundRectShape(
-                FloatArray(8) { resources.getDimension(R.dimen.search_bar_radius) }, null, null
+                FloatArray(8) { resources.getDimension(R.dimen.round_medium) }, null, null
             )
         ).apply {
             paint.color = Color.RED

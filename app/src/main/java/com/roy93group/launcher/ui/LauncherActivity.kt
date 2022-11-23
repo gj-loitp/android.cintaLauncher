@@ -238,7 +238,7 @@ class LauncherActivity : BaseFontActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
         val searchBarY =
-            getNavigationBarHeight() + resources.getDimension(R.dimen.item_card_margin).toInt()
+            getNavigationBarHeight() + resources.getDimension(R.dimen.margin_padding_medium).toInt()
         val feedFilterY = searchBarY + resources.getDimension(R.dimen.search_bar_height).toInt()
 
         bottomBar.cvSearchBarContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
@@ -252,8 +252,8 @@ class LauncherActivity : BaseFontActivity() {
 
     fun getFeedBottomMargin(): Int {
         val searchBarY =
-            getNavigationBarHeight() + resources.getDimension(R.dimen.item_card_margin).toInt()
+            getNavigationBarHeight() + resources.getDimension(R.dimen.margin_padding_medium).toInt()
         val feedFilterY = searchBarY + resources.getDimension(R.dimen.search_bar_height).toInt()
-        return feedFilterY + resources.getDimension(R.dimen.feed_filter_height).toInt()
+        return feedFilterY + resources.getDimension(R.dimen.w_40).toInt()
     }
 }

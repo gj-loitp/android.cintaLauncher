@@ -147,7 +147,7 @@ object ItemLongPress {
             /* parent = */ view,
             /* gravity = */ gravity,
             /* x = */ x,
-            /* y = */ y + (view.resources.getDimension(R.dimen.item_card_margin) * 2).toInt()
+            /* y = */ y + (view.resources.getDimension(R.dimen.margin_padding_medium) * 2).toInt()
         )
 
         if (hasDynamicShortcuts) popupWindow.contentView.post {
@@ -158,7 +158,7 @@ object ItemLongPress {
                 /* x = */
                 x,
                 /* y = */
-                y + popupWindow.contentView.height + (view.resources.getDimension(R.dimen.item_card_margin) * 4).toInt()
+                y + popupWindow.contentView.height + (view.resources.getDimension(R.dimen.margin_padding_medium) * 4).toInt()
             )
         }
 

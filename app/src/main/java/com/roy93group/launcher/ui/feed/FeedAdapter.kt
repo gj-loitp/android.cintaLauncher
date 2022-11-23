@@ -114,7 +114,7 @@ class FeedAdapter(
         holder.onBind(item, color)
         if (holder !is FeedItemVH) return
         val verticalPadding =
-            holder.itemView.resources.getDimension(R.dimen.feed_card_padding_vertical).toInt()
+            holder.itemView.resources.getDimension(R.dimen.margin_padding_medium).toInt()
         holder.container.setPadding(
             /* left = */
             holder.container.paddingLeft,

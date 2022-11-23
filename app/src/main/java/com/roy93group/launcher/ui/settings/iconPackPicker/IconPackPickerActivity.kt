@@ -66,7 +66,7 @@ class IconPackPickerActivity : SettingsActivity() {
         }
 
         val systemPack = IconPack(
-            ContextCompat.getDrawable(this, R.mipmap.ic_launcher)!!,
+            ContextCompat.getDrawable(this, R.drawable.ic_launcher)!!,
             getString(R.string.system),
             "system"
         )
