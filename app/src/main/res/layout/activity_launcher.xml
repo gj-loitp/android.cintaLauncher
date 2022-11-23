@@ -36,7 +36,7 @@
             android:layout_marginEnd="@dimen/margin_padding_medium"
             android:layout_marginBottom="@dimen/margin_padding_medium"
             android:visibility="gone"
-            app:cardBackgroundColor="@color/white"
+            app:cardBackgroundColor="@color/colorPrimary2"
             app:cardCornerRadius="@dimen/w_45"
             app:cardElevation="@dimen/w_3"
             app:cardUseCompatPadding="false"
