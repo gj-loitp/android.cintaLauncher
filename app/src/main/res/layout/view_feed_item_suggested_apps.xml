@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
-    style="@style/Theme.AppLauncher.FeedCard.CardBehind"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -9,8 +8,8 @@
     <View
         android:id="@+id/separator"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="@dimen/feed_card_padding_vertical" />
+        android:layout_height="@dimen/w_1"
+        android:background="@color/violet" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecents"

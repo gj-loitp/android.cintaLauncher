@@ -9,7 +9,8 @@
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_1"
-        android:layout_marginHorizontal="@dimen/margin_padding_medium" />
+        android:layout_marginHorizontal="@dimen/margin_padding_medium"
+        android:background="@color/pineGreen" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"

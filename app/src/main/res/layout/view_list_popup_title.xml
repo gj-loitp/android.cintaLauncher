@@ -9,7 +9,8 @@
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_1"
-        android:layout_marginTop="@dimen/margin_padding_small" />
+        android:layout_marginTop="@dimen/margin_padding_small"
+        android:background="@color/white" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text"
