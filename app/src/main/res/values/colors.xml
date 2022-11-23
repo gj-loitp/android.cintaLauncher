@@ -5,5 +5,7 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorEdgeEffect">#000000</color>
     <color name="colorPrimaryTrans">#ff000000</color>
-    <color name="colorAccent">#000000</color>\
+    <color name="colorAccent">#000000</color>
+
+    <color name="colorPrimary2">#8BC34A</color>
 </resources>

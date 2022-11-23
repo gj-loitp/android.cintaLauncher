@@ -11,12 +11,12 @@
         android:layout_width="@dimen/w_100"
         android:layout_height="@dimen/w_100"
         android:src="@drawable/ic_launcher"
-        android:tint="@color/white" />
+        android:tint="@color/colorPrimary2" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/splash_message"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimary2"
         android:textSize="@dimen/txt_50" />
 </androidx.appcompat.widget.LinearLayoutCompat>

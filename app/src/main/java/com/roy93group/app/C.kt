@@ -1,6 +1,5 @@
 package com.roy93group.app
 
-import android.graphics.Color
 import com.loitpcore.core.utilities.LAppResource
 import com.roy93group.launcher.R
 
@@ -12,7 +11,10 @@ import com.roy93group.launcher.R
  * freuss47@gmail.com
  */
 object C {
-    val COLOR_FAST_SCROLL_TEXT = LAppResource.getColor(R.color.colorPrimary)
-    const val COLOR_FAST_SCROLL_TEXT_HIGHLIGHT = Color.RED
-    const val COLOR_FAST_SCROLL_BACKGROUND = Color.WHITE
+    val COLOR_PRIMARY = LAppResource.getColor(R.color.colorPrimary)
+    val COLOR_PRIMARY_2 = LAppResource.getColor(R.color.colorPrimary2)
+
+    val COLOR_FAST_SCROLL_TEXT = COLOR_PRIMARY
+    val COLOR_FAST_SCROLL_TEXT_HIGHLIGHT = COLOR_PRIMARY_2
+    val COLOR_FAST_SCROLL_BACKGROUND = LAppResource.getColor(R.color.white)
 }

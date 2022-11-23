@@ -12,6 +12,7 @@ import com.loitpcore.core.utilities.LUIUtil
  * +840766040293
  * freuss47@gmail.com
  */
+//TODO lam man hinh choose fav color first intro
 //TODO thay cac late in
 //TODO sort app drawer theo tan suat, cai nao cang nhieu text cang to
 //TODO set background to black
