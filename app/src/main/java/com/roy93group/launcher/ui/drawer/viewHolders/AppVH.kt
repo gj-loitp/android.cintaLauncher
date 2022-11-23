@@ -1,6 +1,5 @@
 package com.roy93group.launcher.ui.drawer.viewHolders
 
-import android.graphics.Color
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -42,9 +41,9 @@ fun bindAppViewHolder(
     holder: AppViewHolder,
     item: LauncherItem,
 ) {
-//    val backgroundColor = ColorUtils.setAlphaComponent(item.getColor(), 80)
-//    holder.cardView.setCardBackgroundColor(backgroundColor)
-    holder.cardView.setCardBackgroundColor(Color.TRANSPARENT)
+    val backgroundColor = ColorUtils.setAlphaComponent(item.getColor(), 90)
+    holder.cardView.setCardBackgroundColor(backgroundColor)
+//    holder.cardView.setCardBackgroundColor(Color.TRANSPARENT)
 
     holder.tvIconText.text = item.label
 
