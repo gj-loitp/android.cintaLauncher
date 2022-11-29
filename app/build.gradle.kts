@@ -30,7 +30,7 @@ android {
 
 dependencies {
     implementation("com.github.tplloi:base:4.5.3")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.21")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.22")
     implementation("com.willowtreeapps:fuzzywuzzy-kotlin-jvm:0.9.0")
     implementation("com.github.bumptech.glide:glide:4.14.2")
     implementation("io.posidon:android.launcherUtils:30aa020c1a")
