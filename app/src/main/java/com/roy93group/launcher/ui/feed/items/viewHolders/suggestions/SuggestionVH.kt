@@ -34,12 +34,12 @@ class SuggestionVH(
             item.open(it.context.applicationContext, it)
         }
         itemView.setOnLongClickListener {
-            ItemLongPress.onItemLongPress(
-                view = it,
-                textColor = ColorTheme.titleColorForBG(backgroundColor),
-                item = item,
-                navbarHeight = navbarHeight,
-            )
+//            ItemLongPress.onItemLongPress(
+//                view = it,
+//                textColor = ColorTheme.titleColorForBG(backgroundColor),
+//                item = item,
+//                navbarHeight = navbarHeight,
+//            )
             true
         }
     }

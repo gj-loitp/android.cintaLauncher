@@ -16,6 +16,6 @@ object C {
     val COLOR_PRIMARY_2 = LAppResource.getColor(R.color.colorPrimary2)
 
     val COLOR_FAST_SCROLL_TEXT = COLOR_PRIMARY
-    const val COLOR_FAST_SCROLL_TEXT_HIGHLIGHT = Color.RED
+    const val COLOR_FAST_SCROLL_TEXT_HIGHLIGHT = Color.WHITE
     val COLOR_FAST_SCROLL_BACKGROUND = COLOR_PRIMARY_2
 }
