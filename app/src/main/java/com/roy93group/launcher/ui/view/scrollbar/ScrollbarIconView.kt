@@ -132,7 +132,9 @@ class ScrollbarIconView @JvmOverloads constructor(
         currentWindow = PopupWindow(
             /* contentView = */ scrollBar,
             /* width = */ when (orientation) {
-                Scrollbar.HORIZONTAL -> -Device.screenWidth(context) + (location[0] + this@ScrollbarIconView.width) * 2
+                Scrollbar.HORIZONTAL -> {
+                    -Device.screenWidth(context) + (location[0] + this@ScrollbarIconView.width) * 2
+                }
                 else -> this@ScrollbarIconView.height
             },
             /* height = */ when (orientation) {
