@@ -14,13 +14,15 @@ import com.roy93group.launcher.ui.settings.iconPackPicker.IconPackPickerActivity
  * +840766040293
  * freuss47@gmail.com
  */
-class IconPackViewHolder(itemView: View, val type: Int) : RecyclerView.ViewHolder(itemView) {
+class IconPackViewHolder(
+    itemView: View,
+    val type: Int
+) : RecyclerView.ViewHolder(itemView) {
     val icon: ImageView = itemView.findViewById(R.id.icon)
     val text: TextView = itemView.findViewById(R.id.text)
 
     fun bind(iconPack: IconPackPickerActivity.IconPack) {
         text.text = iconPack.label
         icon.setImageDrawable(iconPack.icon)
-//        text.setTextColor(Color.RED)
     }
 }
