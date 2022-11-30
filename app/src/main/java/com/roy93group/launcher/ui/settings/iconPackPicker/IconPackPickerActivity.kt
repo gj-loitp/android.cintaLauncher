@@ -3,12 +3,15 @@ package com.roy93group.launcher.ui.settings.iconPackPicker
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.annotation.Keep
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.loitpcore.core.ext.setSafeOnClickListener
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.settings.SettingsActivity
 import com.roy93group.launcher.ui.settings.iconPackPicker.viewHolders.IconPackViewHolder
@@ -16,6 +19,7 @@ import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.conveniencelib.getStatusBarHeight
 import io.posidon.android.launcherutils.IconTheming
 import java.util.*
+
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -28,7 +32,13 @@ class IconPackPickerActivity : SettingsActivity() {
 
     override fun init(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_settings_icon_pack_picker)
+
+        setupViews()
+    }
+
+    private fun setupViews() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val btGetMoreThemes = findViewById<AppCompatButton>(R.id.btGetMoreThemes)
 
         val iconPacks = IconTheming.getAvailableIconPacks(packageManager).mapTo(LinkedList()) {
             IconPack(
@@ -92,6 +102,10 @@ class IconPackPickerActivity : SettingsActivity() {
         recyclerView.adapter = adapter
         val th = ItemTouchHelper(TouchCallback(adapter))
         th.attachToRecyclerView(recyclerView)
+
+        btGetMoreThemes.setSafeOnClickListener {
+            C.searchIconPack(this)
+        }
     }
 
     class TouchCallback(val adapter: IconPackPickerAdapter) : ItemTouchHelper.Callback() {

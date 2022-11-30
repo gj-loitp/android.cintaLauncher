@@ -23,24 +23,24 @@ abstract class SettingsActivity : FragmentActivity() {
     final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) window.setDecorFitsSystemWindows(false)
-        else window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) window.setDecorFitsSystemWindows(false)
+//        else window.setFlags(
+//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+//        )
         settings.init(applicationContext)
-        loadColors()
+//        loadColors()
 
         init(savedInstanceState)
     }
 
     abstract fun init(savedInstanceState: Bundle?)
 
-    private fun loadColors() {
-        window.decorView.background = LayerDrawable(
-            arrayOf(
-                ColorDrawable(C.COLOR_PRIMARY),
-            )
-        )
-    }
+//    private fun loadColors() {
+//        window.decorView.background = LayerDrawable(
+//            arrayOf(
+//                ColorDrawable(C.COLOR_PRIMARY),
+//            )
+//        )
+//    }
 }
