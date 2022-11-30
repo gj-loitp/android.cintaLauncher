@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.loitpcore.core.utilities.LAppResource
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
@@ -39,8 +40,9 @@ fun bindSectionHeaderViewHolder(
 ) {
     holder.text.text = item.label
     if (isHighlighted) {
-        val color = ColorUtils.setAlphaComponent(Color.WHITE, 80)
-        holder.itemView.setBackgroundColor(color)
+//        val color = ColorUtils.setAlphaComponent(Color.WHITE, 80)
+//        holder.itemView.setBackgroundColor(color)
+        holder.itemView.setBackgroundColor(C.COLOR_PRIMARY_2)
     } else {
         holder.itemView.setBackgroundColor(LAppResource.getColor(R.color.transparent))
     }
@@ -57,6 +59,7 @@ fun bindSectionHeaderViewHolder(
         false
     }
     holder.itemView.setOnLongClickListener {
+        //TODO move to setting
         DrawerLongPressPopup.show(
             parent = holder.itemView,
             touchX = x,

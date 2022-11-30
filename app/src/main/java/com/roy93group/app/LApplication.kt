@@ -26,6 +26,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO policy
 //TODO add gallery
 //TODO uninstall app
+//TODO firebase
 
 //done
 //ic launcher
