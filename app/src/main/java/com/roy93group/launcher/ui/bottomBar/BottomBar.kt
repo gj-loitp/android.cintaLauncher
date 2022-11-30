@@ -1,15 +1,14 @@
 package com.roy93group.launcher.ui.bottomBar
 
-import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.Intent
 import android.view.DragEvent
 import android.view.View
-import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.loitpcore.core.utilities.LScreenUtil
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.LauncherActivity
@@ -49,26 +48,23 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         cvSearchBarContainer.findViewById<ScrollbarIconView>(R.id.appDrawerIcon).apply {
             appDrawer = launcherActivity.appDrawer
         }
-    val cvBackButtonContainer: CardView = launcherActivity.findViewById(R.id.cvBackButtonContainer)
-    val cvSetting: CardView = launcherActivity.findViewById<CardView?>(R.id.cvSetting).apply {
-        this.setOnClickListener {
-            DrawerLongPressPopup.show(
-                parent = this,
-                touchX = LScreenUtil.screenWidth / 2f,
-                touchY = LScreenUtil.screenHeight / 2f,
-                navbarHeight = launcherActivity.getNavigationBarHeight(),
-                settings = launcherActivity.settings,
-                reloadApps = launcherActivity::loadApps
-            )
-        }
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    @Suppress("unused")
-    val appDrawerCloseIcon: ImageView =
-        cvBackButtonContainer.findViewById<ImageView>(R.id.btBack).apply {
+    val cvBackButtonContainer: FloatingActionButton =
+        launcherActivity.findViewById<FloatingActionButton>(R.id.fabBack).apply {
             this.setOnClickListener {
                 launcherActivity.appDrawer.close()
+            }
+        }
+    val cvSetting: FloatingActionButton =
+        launcherActivity.findViewById<FloatingActionButton>(R.id.fabSetting).apply {
+            this.setOnClickListener {
+                DrawerLongPressPopup.show(
+                    parent = this,
+                    touchX = LScreenUtil.screenWidth / 2f,
+                    touchY = LScreenUtil.screenHeight / 2f,
+                    navbarHeight = launcherActivity.getNavigationBarHeight(),
+                    settings = launcherActivity.settings,
+                    reloadApps = launcherActivity::loadApps
+                )
             }
         }
 

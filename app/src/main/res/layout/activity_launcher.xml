@@ -29,50 +29,33 @@
         android:gravity="end"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvSetting"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabSetting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_padding_medium"
             android:layout_marginBottom="@dimen/margin_padding_medium"
+            android:backgroundTint="@color/colorPrimary2"
+            android:contentDescription="@string/app_name"
+            android:tint="@color/colorPrimary"
             android:visibility="gone"
-            app:cardBackgroundColor="@color/colorPrimary2"
-            app:cardCornerRadius="@dimen/w_45"
-            app:cardElevation="@dimen/w_3"
-            app:cardUseCompatPadding="false"
-            tools:visibility="visible">
+            app:borderWidth="0dp"
+            app:srcCompat="@drawable/ic_settings_black_48dp"
+            tools:visibility="visible" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/search_bar_height"
-                android:layout_height="@dimen/search_bar_height"
-                android:padding="@dimen/margin_padding_small"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_settings_black_48dp"
-                android:tint="@color/colorPrimary" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvBackButtonContainer"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_padding_medium"
             android:layout_marginBottom="@dimen/margin_padding_medium"
+            android:backgroundTint="@color/colorPrimary2"
+            android:contentDescription="@string/app_name"
+            android:tint="@color/colorPrimary"
             android:visibility="gone"
-            app:cardBackgroundColor="@color/colorPrimary2"
-            app:cardCornerRadius="@dimen/w_45"
-            app:cardElevation="@dimen/w_3"
-            app:cardUseCompatPadding="false"
-            tools:visibility="visible">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btBack"
-                android:layout_width="@dimen/search_bar_height"
-                android:layout_height="@dimen/search_bar_height"
-                android:padding="@dimen/margin_padding_small"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_cross"
-                android:tint="@color/colorPrimary" />
-        </androidx.cardview.widget.CardView>
+            app:borderWidth="0dp"
+            app:srcCompat="@drawable/ic_cross"
+            tools:visibility="visible" />
 
         <include layout="@layout/activity_launcher_search_bar" />
     </androidx.appcompat.widget.LinearLayoutCompat>
