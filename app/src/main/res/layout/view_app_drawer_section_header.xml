@@ -4,14 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:background="@color/colorPrimary2">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_padding_medium"
-        android:textColor="@color/colorPrimary2"
+        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_largest"
         tools:text="@string/app_name" />
 </androidx.appcompat.widget.LinearLayoutCompat>
