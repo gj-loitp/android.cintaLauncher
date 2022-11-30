@@ -217,7 +217,6 @@ class LauncherActivity : BaseFontActivity() {
             runOnUiThread {
                 bottomBar.onAppsLoaded()
             }
-//            Log.d("Cinta", "updated apps (${apps.size} items)")
         }
     }
 

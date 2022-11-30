@@ -10,12 +10,15 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.loitpcore.core.utilities.LScreenUtil
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.pinned.PinnedItemsAdapter
+import com.roy93group.launcher.ui.popup.drawer.DrawerLongPressPopup
 import com.roy93group.launcher.ui.view.scrollbar.Scrollbar
 import com.roy93group.launcher.ui.view.scrollbar.ScrollbarIconView
 import com.roy93group.lookerupper.ui.a.SearchActivity
+import io.posidon.android.conveniencelib.getNavigationBarHeight
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -24,12 +27,12 @@ import com.roy93group.lookerupper.ui.a.SearchActivity
  * +840766040293
  * freuss47@gmail.com
  */
-class BottomBar(val activity: LauncherActivity) {
+class BottomBar(val launcherActivity: LauncherActivity) {
 
     val scrollBar: Scrollbar get() = appDrawerIcon.scrollBar
 
     val cvSearchBarContainer: CardView =
-        activity.findViewById<CardView>(R.id.cvSearchBarContainer).apply {
+        launcherActivity.findViewById<CardView>(R.id.cvSearchBarContainer).apply {
             setOnClickListener {
                 val context = it.context
                 context.startActivity(
@@ -44,27 +47,39 @@ class BottomBar(val activity: LauncherActivity) {
 
     val appDrawerIcon: ScrollbarIconView =
         cvSearchBarContainer.findViewById<ScrollbarIconView>(R.id.appDrawerIcon).apply {
-            appDrawer = activity.appDrawer
+            appDrawer = launcherActivity.appDrawer
         }
-    val cvBackButtonContainer: CardView = activity.findViewById(R.id.cvBackButtonContainer)
+    val cvBackButtonContainer: CardView = launcherActivity.findViewById(R.id.cvBackButtonContainer)
+    val cvSetting: CardView = launcherActivity.findViewById<CardView?>(R.id.cvSetting).apply {
+        this.setOnClickListener {
+            DrawerLongPressPopup.show(
+                parent = this,
+                touchX = LScreenUtil.screenWidth / 2f,
+                touchY = LScreenUtil.screenHeight / 2f,
+                navbarHeight = launcherActivity.getNavigationBarHeight(),
+                settings = launcherActivity.settings,
+                reloadApps = launcherActivity::loadApps
+            )
+        }
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     @Suppress("unused")
     val appDrawerCloseIcon: ImageView =
         cvBackButtonContainer.findViewById<ImageView>(R.id.btBack).apply {
             this.setOnClickListener {
-                activity.appDrawer.close()
+                launcherActivity.appDrawer.close()
             }
         }
 
     private val pinnedAdapter = PinnedItemsAdapter(
-        launcherActivity = activity,
-        launcherContext = activity.launcherContext
+        launcherActivity = launcherActivity,
+        launcherContext = launcherActivity.launcherContext
     )
     private val pinnedRecycler: RecyclerView =
         cvSearchBarContainer.findViewById<RecyclerView>(R.id.rvPinned).apply {
             layoutManager = LinearLayoutManager(
-                /* context = */ activity,
+                /* context = */ launcherActivity,
                 /* orientation = */RecyclerView.HORIZONTAL,
                 /* reverseLayout = */false
             )
@@ -99,7 +114,7 @@ class BottomBar(val activity: LauncherActivity) {
     }
 
     private fun updatePinned() {
-        pinnedAdapter.updateItems(activity.launcherContext.appManager.pinnedItems)
+        pinnedAdapter.updateItems(launcherActivity.launcherContext.appManager.pinnedItems)
     }
 
     private fun onDrag(
@@ -111,7 +126,7 @@ class BottomBar(val activity: LauncherActivity) {
             DragEvent.ACTION_DRAG_ENTERED,
             DragEvent.ACTION_DRAG_LOCATION -> {
                 val i = getPinnedItemIndex(event.x, event.y)
-                val pinnedItems = activity.launcherContext.appManager.pinnedItems
+                val pinnedItems = launcherActivity.launcherContext.appManager.pinnedItems
                 showDropTarget(if (i == -1) pinnedItems.size else i)
             }
             DragEvent.ACTION_DRAG_ENDED -> {

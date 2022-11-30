@@ -83,6 +83,7 @@ class AppDrawer(
 
     fun open(v: View) {
         activity.bottomBar.cvBackButtonContainer.isVisible = true
+        activity.bottomBar.cvSetting.isVisible = true
         if (isOpen) return
         ItemLongPress.currentPopup?.dismiss()
         val sbh = v.context.getStatusBarHeight()
@@ -98,7 +99,9 @@ class AppDrawer(
             .alpha(0f)
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
-            .onEnd { activity.feedRecycler.isVisible = false }
+            .onEnd {
+                activity.feedRecycler.isVisible = false
+            }
         activity.feedRecycler.animate()
             .alpha(0f)
             .scaleX(1.1f)
@@ -106,7 +109,9 @@ class AppDrawer(
             .setStartDelay(0)
             .setDuration(100)
             .setInterpolator(AccelerateInterpolator())
-            .onEnd { activity.feedRecycler.isInvisible = true }
+            .onEnd {
+                activity.feedRecycler.isInvisible = true
+            }
         flAppDrawerContainer.animate()
             .alpha(1f)
             .scaleX(1f)
@@ -114,7 +119,9 @@ class AppDrawer(
             .setStartDelay(0)
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
-            .onEnd { flAppDrawerContainer.isVisible = true }
+            .onEnd {
+                flAppDrawerContainer.isVisible = true
+            }
         val s = currentValueAnimator?.animatedValue as Float? ?: 0f
         currentValueAnimator?.cancel()
         currentValueAnimator = ValueAnimator.ofFloat(s, 3f).apply {
@@ -129,6 +136,7 @@ class AppDrawer(
 
     fun close() {
         activity.bottomBar.cvBackButtonContainer.isVisible = false
+        activity.bottomBar.cvSetting.isVisible = false
         if (!isOpen) return
         ItemLongPress.currentPopup?.dismiss()
         activity.feedProfiles.rvFeedFilters.isVisible = true
@@ -136,7 +144,9 @@ class AppDrawer(
             .alpha(1f)
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
-            .onEnd { activity.feedRecycler.isVisible = true }
+            .onEnd {
+                activity.feedRecycler.isVisible = true
+            }
         activity.feedRecycler.isInvisible = false
         activity.feedRecycler.animate()
             .alpha(1f)
@@ -145,7 +155,9 @@ class AppDrawer(
             .setStartDelay(0)
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
-            .onEnd { activity.feedRecycler.isInvisible = false }
+            .onEnd {
+                activity.feedRecycler.isInvisible = false
+            }
         flAppDrawerContainer.animate()
             .alpha(0f)
             .scaleX(1.1f)
@@ -153,7 +165,9 @@ class AppDrawer(
             .setStartDelay(0)
             .setDuration(100)
             .setInterpolator(AccelerateInterpolator())
-            .onEnd { flAppDrawerContainer.isVisible = false }
+            .onEnd {
+                flAppDrawerContainer.isVisible = false
+            }
         val s = currentValueAnimator?.animatedValue as Float? ?: 3f
         currentValueAnimator?.cancel()
         currentValueAnimator = ValueAnimator.ofFloat(s, 0f).apply {

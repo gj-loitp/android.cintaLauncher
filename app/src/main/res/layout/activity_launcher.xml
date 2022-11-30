@@ -11,8 +11,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFeed"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false" />
+        android:layout_height="match_parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFeedFilters"
@@ -26,8 +25,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:animateLayoutChanges="true"
         android:gravity="end"
         android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_padding_medium"
+            android:layout_marginBottom="@dimen/margin_padding_medium"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/colorPrimary2"
+            app:cardCornerRadius="@dimen/w_45"
+            app:cardElevation="@dimen/w_3"
+            app:cardUseCompatPadding="false"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/search_bar_height"
+                android:layout_height="@dimen/search_bar_height"
+                android:padding="@dimen/margin_padding_small"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_settings_black_48dp"
+                android:tint="@color/colorPrimary" />
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvBackButtonContainer"
@@ -46,6 +68,7 @@
                 android:id="@+id/btBack"
                 android:layout_width="@dimen/search_bar_height"
                 android:layout_height="@dimen/search_bar_height"
+                android:padding="@dimen/margin_padding_small"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_cross"
                 android:tint="@color/colorPrimary" />
