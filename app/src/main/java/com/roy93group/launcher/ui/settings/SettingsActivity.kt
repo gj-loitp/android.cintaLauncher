@@ -1,12 +1,12 @@
 package com.roy93group.launcher.ui.settings
 
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.fragment.app.FragmentActivity
+import com.roy93group.app.C
 import com.roy93group.launcher.storage.Settings
 
 /**
@@ -39,7 +39,7 @@ abstract class SettingsActivity : FragmentActivity() {
     private fun loadColors() {
         window.decorView.background = LayerDrawable(
             arrayOf(
-                ColorDrawable(Color.YELLOW),
+                ColorDrawable(C.COLOR_PRIMARY),
             )
         )
     }

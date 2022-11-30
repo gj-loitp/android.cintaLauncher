@@ -28,7 +28,7 @@ class IconPackPickerActivity : SettingsActivity() {
 
     override fun init(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_settings_icon_pack_picker)
-        val recycler = findViewById<RecyclerView>(R.id.recyclerView)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
         val iconPacks = IconTheming.getAvailableIconPacks(packageManager).mapTo(LinkedList()) {
             IconPack(
@@ -66,13 +66,22 @@ class IconPackPickerActivity : SettingsActivity() {
         }
 
         val systemPack = IconPack(
-            ContextCompat.getDrawable(this, R.drawable.ic_launcher)!!,
-            getString(R.string.system),
-            "system"
+            icon = ContextCompat.getDrawable(this, R.drawable.ic_launcher)!!,
+            label = getString(R.string.system),
+            packageName = "system"
         )
 
-        recycler.setPadding(0, getStatusBarHeight(), 0, getNavigationBarHeight())
-        recycler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        recyclerView.setPadding(
+            /* left = */ 0,
+            /* top = */ getStatusBarHeight(),
+            /* right = */ 0,
+            /* bottom = */ getNavigationBarHeight()
+        )
+        recyclerView.layoutManager = LinearLayoutManager(
+            /* context = */ this,
+            /* orientation = */ RecyclerView.VERTICAL,
+            /* reverseLayout = */ false
+        )
         val adapter = IconPackPickerAdapter(
             settings = settings,
             chosenIconPacks = chosenIconPacks,
@@ -80,9 +89,9 @@ class IconPackPickerActivity : SettingsActivity() {
             systemPack = systemPack
         )
 
-        recycler.adapter = adapter
+        recyclerView.adapter = adapter
         val th = ItemTouchHelper(TouchCallback(adapter))
-        th.attachToRecyclerView(recycler)
+        th.attachToRecyclerView(recyclerView)
     }
 
     class TouchCallback(val adapter: IconPackPickerAdapter) : ItemTouchHelper.Callback() {
@@ -94,14 +103,22 @@ class IconPackPickerActivity : SettingsActivity() {
             0
         )
 
-        override fun onSwiped(v: RecyclerView.ViewHolder, d: Int) {}
+        override fun onSwiped(
+            v: RecyclerView.ViewHolder,
+            d: Int
+        ) {
+        }
 
         override fun onMove(
             recyclerView: RecyclerView,
             viewHolder: RecyclerView.ViewHolder,
             target: RecyclerView.ViewHolder
         ): Boolean {
-            return adapter.onItemMove(recyclerView.context, viewHolder, target)
+            return adapter.onItemMove(
+                context = recyclerView.context,
+                viewHolder = viewHolder,
+                target = target
+            )
         }
     }
 
