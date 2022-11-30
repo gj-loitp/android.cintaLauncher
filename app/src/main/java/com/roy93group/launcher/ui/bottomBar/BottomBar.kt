@@ -58,6 +58,7 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         launcherActivity.findViewById<FloatingActionButton>(R.id.fabSetting).apply {
             this.setOnClickListener {
                 DrawerLongPressPopup.show(
+                    launcherActivity = launcherActivity,
                     parent = this,
                     touchX = LScreenUtil.screenWidth / 2f,
                     touchY = LScreenUtil.screenHeight / 2f,

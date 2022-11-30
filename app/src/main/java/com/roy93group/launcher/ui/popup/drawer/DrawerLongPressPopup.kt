@@ -7,16 +7,17 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.ListPopupWindow
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.loitpcore.core.utilities.LAppResource
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.DoReshapeAdaptiveIconsSetting.doReshapeAdaptiveIcons
 import com.roy93group.launcher.storage.ScrollbarControllerSetting.scrollbarController
 import com.roy93group.launcher.storage.Settings
+import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.popup.PopupUtils
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupAdapter
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
@@ -34,6 +35,7 @@ object DrawerLongPressPopup {
 
     @SuppressLint("InflateParams")
     fun show(
+        launcherActivity: LauncherActivity,
         parent: View,
         touchX: Float,
         touchY: Float,
@@ -59,6 +61,7 @@ object DrawerLongPressPopup {
                 fun update() {
                     updateItems(
                         createMainAdapter(
+                            launcherActivity = launcherActivity,
                             context = parent.context,
                             settings = settings,
                             reloadScrollbarController = {
@@ -82,6 +85,7 @@ object DrawerLongPressPopup {
     }
 
     private fun createMainAdapter(
+        launcherActivity: LauncherActivity,
         context: Context,
         settings: Settings,
         reloadScrollbarController: () -> Unit,
@@ -93,19 +97,29 @@ object DrawerLongPressPopup {
                 description = context.resources.getStringArray(R.array.scrollbar_controllers)[settings.scrollbarController],
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_sorting),
             ) {
-                AlertDialog.Builder(context)
-                    .setSingleChoiceItems(
-                        R.array.scrollbar_controllers,
-                        settings.scrollbarController
-                    ) { d, i ->
+                launcherActivity.showBottomSheetOptionFragment(
+                    isCancelableFragment = true,
+                    isShowIvClose = true,
+                    title = LAppResource.getString(R.string.setting),
+                    message = LAppResource.getString(R.string.app_sorting),
+                    textButton1 = LAppResource.getString(R.string.alphabetic),
+                    textButton2 = LAppResource.getString(R.string.by_hue),
+                    onClickButton1 = {
                         settings.edit(context) {
-                            scrollbarController =
-                                context.resources.getStringArray(R.array.scrollbar_controllers_data)[i].toInt()
+                            scrollbarController = 0
                             reloadScrollbarController()
                         }
-                        d.dismiss()
+                    },
+                    onClickButton2 = {
+                        settings.edit(context) {
+                            scrollbarController = 1
+                            reloadScrollbarController()
+                        }
+                    },
+                    onDismiss = {
+                        //do nothing
                     }
-                    .show()
+                )
             },
             ListPopupItem(text = context.getString(R.string.icons), isTitle = true),
             ListPopupItem(

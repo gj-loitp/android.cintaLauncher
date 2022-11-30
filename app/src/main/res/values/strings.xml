@@ -18,12 +18,9 @@
         <item quantity="other">%1$d notifications</item>
         <item quantity="two">%1$d notifications</item>
     </plurals>
-    <!-- filters start -->
     <string name="news">News</string>
     <string name="notifications">Notifications</string>
     <string name="today">Today</string>
-    <!-- filters end -->
-    <!-- settings start -->
     <string name="scrollbar_controller">App sorting</string>
     <string name="icons">Icons</string>
     <string name="reshape_adaptive_icons">Reshape adaptive icons</string>
@@ -32,10 +29,7 @@
     <string name="chosen">Chosen</string>
     <string name="available">Available</string>
     <string name="system">System</string>
-    <!-- settings end -->
-    <!-- first time screen start -->
     <string name="splash_message">Automated customization</string>
-    <!-- permissions start -->
     <string name="permissions">Permissions</string>
     <string name="grant_permissions">Grant permissions</string>
     <string name="permission_storage">Storage</string>
@@ -49,6 +43,8 @@
     <string name="no_feed_items">Nothing here</string>
     <string name="next">Next</string>
     <string name="pls_grant_permission_first">Please grant these permission first</string>
-    <!-- permissions end -->
-    <!-- first time screen end -->
+    <string name="setting">Setting</string>
+    <string name="alphabetic">Alphabetic</string>
+    <string name="by_hue">By hue</string>
+    <string name="app_sorting">App sorting</string>
 </resources>

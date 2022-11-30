@@ -8,7 +8,6 @@ package com.roy93group.launcher.storage
  * freuss47@gmail.com
  */
 
-
 object ScrollbarControllerSetting {
     val Settings.scrollbarController: Int
         get() = get(KEY_SCROLLBAR_CONTROLLER, SCROLLBAR_CONTROLLER_DEFAULT)
