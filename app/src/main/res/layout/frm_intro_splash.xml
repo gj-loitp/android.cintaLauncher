@@ -18,5 +18,6 @@
         android:layout_height="wrap_content"
         android:text="@string/splash_message"
         android:textColor="@color/colorPrimary2"
-        android:textSize="@dimen/txt_50" />
+        android:textSize="@dimen/txt_50"
+        android:textStyle="bold" />
 </androidx.appcompat.widget.LinearLayoutCompat>

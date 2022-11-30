@@ -20,5 +20,6 @@
         android:background="@drawable/ripple"
         android:text="@string/next"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/txt_medium" />
+        android:textSize="@dimen/txt_medium"
+        android:textStyle="bold" />
 </androidx.appcompat.widget.LinearLayoutCompat>

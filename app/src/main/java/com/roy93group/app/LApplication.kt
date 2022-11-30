@@ -38,7 +38,7 @@ class LApplication : BaseApplication() {
         super.onCreate()
 
 //        ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_SLIDE_LEFT
-        LUIUtil.fontForAll = Constants.FONT_PATH
+//        LUIUtil.fontForAll = Constants.FONT_PATH
         LUIUtil.setDarkTheme(true)
     }
 

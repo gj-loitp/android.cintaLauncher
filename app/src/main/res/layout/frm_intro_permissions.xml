@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:text="@string/permissions"
             android:textColor="@color/colorPrimary2"
-            android:textSize="@dimen/txt_50" />
+            android:textSize="@dimen/txt_50"
+            android:textStyle="bold" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -31,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/permission_storage"
                 android:textColor="@color/colorPrimary2"
-                android:textSize="@dimen/txt_large" />
+                android:textSize="@dimen/txt_large"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -49,7 +51,8 @@
                 android:paddingHorizontal="@dimen/margin_padding_medium"
                 android:text="@string/grant_permissions"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/txt_medium" />
+                android:textSize="@dimen/txt_medium"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickStorage"
@@ -73,7 +76,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/permission_contacts"
                 android:textColor="@color/colorPrimary2"
-                android:textSize="@dimen/txt_large" />
+                android:textSize="@dimen/txt_large"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -91,7 +95,8 @@
                 android:paddingHorizontal="@dimen/margin_padding_medium"
                 android:text="@string/grant_permissions"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/txt_medium" />
+                android:textSize="@dimen/txt_medium"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickContacts"
@@ -115,7 +120,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/permission_notifications"
                 android:textColor="@color/colorPrimary2"
-                android:textSize="@dimen/txt_large" />
+                android:textSize="@dimen/txt_large"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -133,7 +139,8 @@
                 android:paddingHorizontal="@dimen/margin_padding_medium"
                 android:text="@string/grant_permissions"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/txt_medium" />
+                android:textSize="@dimen/txt_medium"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickNotifications"
@@ -157,7 +164,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/permission_usage_access"
                 android:textColor="@color/colorPrimary2"
-                android:textSize="@dimen/txt_large" />
+                android:textSize="@dimen/txt_large"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -175,7 +183,8 @@
                 android:paddingHorizontal="@dimen/margin_padding_medium"
                 android:text="@string/grant_permissions"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/txt_medium" />
+                android:textSize="@dimen/txt_medium"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickUsageAccess"
