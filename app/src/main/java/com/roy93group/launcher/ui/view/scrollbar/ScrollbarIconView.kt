@@ -49,7 +49,9 @@ class ScrollbarIconView @JvmOverloads constructor(
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(e: MotionEvent): Boolean {
         when (e.action) {
-            MotionEvent.ACTION_DOWN -> appDrawer?.open(this)
+            MotionEvent.ACTION_DOWN -> {
+                appDrawer?.open(this)
+            }
             MotionEvent.ACTION_MOVE -> {
                 val d = abs(e.x / e.y)
 //                val orientation = if (d > 1f) Scrollbar.HORIZONTAL else Scrollbar.VERTICAL
@@ -128,16 +130,16 @@ class ScrollbarIconView @JvmOverloads constructor(
         val location = IntArray(2)
         getLocationOnScreen(location)
         currentWindow = PopupWindow(
-            scrollBar,
-            when (orientation) {
+            /* contentView = */ scrollBar,
+            /* width = */ when (orientation) {
                 Scrollbar.HORIZONTAL -> -Device.screenWidth(context) + (location[0] + this@ScrollbarIconView.width) * 2
                 else -> this@ScrollbarIconView.height
             },
-            when (orientation) {
+            /* height = */ when (orientation) {
                 Scrollbar.HORIZONTAL -> this@ScrollbarIconView.width
                 else -> Device.screenHeight(context) * 2 / 3
             },
-            true
+            /* focusable = */ true
         ).apply {
             setOnDismissListener {
                 currentWindow = null
