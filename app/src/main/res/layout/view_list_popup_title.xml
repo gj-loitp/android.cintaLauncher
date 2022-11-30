@@ -3,23 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <View
-        android:id="@+id/separator"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/w_1"
-        android:layout_marginTop="@dimen/margin_padding_small"
-        android:background="@color/white" />
+    android:orientation="vertical"
+    android:paddingStart="@dimen/margin_padding_medium"
+    android:paddingEnd="@dimen/margin_padding_medium"
+    android:paddingTop="@dimen/margin_padding_small"
+    android:paddingBottom="@dimen/margin_padding_small"
+    tools:background="@color/colorPrimary2">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:includeFontPadding="false"
         android:maxLines="1"
         android:singleLine="true"
-        android:textColor="@color/yellow"
+        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_large"
         tools:text="@string/app_name" />
 
@@ -27,10 +24,9 @@
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:includeFontPadding="false"
         android:maxLines="1"
         android:singleLine="true"
-        android:textColor="@color/orangeRed"
-        android:textSize="@dimen/txt_medium"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/txt_small"
         tools:text="@string/app_name" />
 </androidx.appcompat.widget.LinearLayoutCompat>

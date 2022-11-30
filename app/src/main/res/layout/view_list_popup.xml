@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="@dimen/w_3"
-    app:cardBackgroundColor="@color/yellow"
+    app:cardBackgroundColor="@color/colorPrimary2"
     app:cardCornerRadius="@dimen/round_medium"
-    app:cardUseCompatPadding="true">
+    app:cardElevation="@dimen/w_3"
+    app:cardUseCompatPadding="true"
+    app:strokeColor="@color/colorPrimary"
+    app:strokeWidth="@dimen/w_1">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_padding_small"
+        android:paddingBottom="@dimen/margin_padding_small">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:paddingVertical="@dimen/margin_padding_small" />
+            android:layout_height="wrap_content" />
     </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

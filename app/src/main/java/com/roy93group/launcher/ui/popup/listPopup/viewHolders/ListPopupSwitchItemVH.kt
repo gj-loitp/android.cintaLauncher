@@ -1,7 +1,6 @@
 package com.roy93group.launcher.ui.popup.listPopup.viewHolders
 
 import android.content.Context
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
@@ -11,6 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.SwitchCompat
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
@@ -56,11 +56,11 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
         val out = StateListDrawable()
         out.addState(
             intArrayOf(android.R.attr.state_checked),
-            generateBG(Color.RED and 0x00ffffff or 0x55000000)
+            generateBG(C.COLOR_PRIMARY)
         )
         out.addState(
             StateSet.WILD_CARD,
-            generateBG(Color.RED and 0x00ffffff or 0x55000000)
+            generateBG(C.COLOR_PRIMARY)
         )
         return out
     }
@@ -69,11 +69,11 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
         val out = StateListDrawable()
         out.addState(
             intArrayOf(android.R.attr.state_checked),
-            generateCircle(context, Color.RED)
+            generateCircle(context, C.COLOR_PRIMARY_2)
         )
         out.addState(
             StateSet.WILD_CARD,
-            generateCircle(context, Color.RED and 0x00ffffff or 0x55000000)
+            generateCircle(context, C.COLOR_PRIMARY_2)
         )
         return out
     }
