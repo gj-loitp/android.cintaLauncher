@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cvActionsContainer"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/red"
-    app:cardCornerRadius="@dimen/round_large"
+    android:layout_gravity="end"
+    android:layout_marginTop="@dimen/margin_padding_small"
+    app:cardBackgroundColor="@color/colorPrimary2"
+    app:cardCornerRadius="@dimen/round_largest"
     app:cardElevation="@dimen/w_3"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="false">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvActions"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</androidx.cardview.widget.CardView>
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/view_feed_item_action" />
+</com.google.android.material.card.MaterialCardView>

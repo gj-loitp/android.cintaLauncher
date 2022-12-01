@@ -25,11 +25,15 @@ class ActionsAdapter(
 
     class ActionViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
+
         val ivActionIcon: ImageView = itemView.findViewById(R.id.ivActionIcon)
         val tvActionText: TextView = itemView.findViewById(R.id.tvActionText)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActionViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ActionViewHolder {
         return ActionViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.view_feed_item_action, parent, false)

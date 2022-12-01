@@ -1,7 +1,6 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.ImageView
@@ -11,7 +10,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.loitpcore.core.utilities.LAppResource
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.formatTimeAgo
@@ -33,12 +32,12 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
     private val swipeLayout = this.itemView as SwipeLayout
     val container: View = itemView.findViewById(R.id.container)
     val source: TextView = itemView.findViewById(R.id.source)
-    val separator: View = itemView.findViewById(R.id.separator)
-    val time: TextView = itemView.findViewById(R.id.tvTime)
+    private val tvTime: TextView = itemView.findViewById(R.id.tvTime)
     val title: TextView = itemView.findViewById(R.id.title)
     val description: TextView = itemView.findViewById(R.id.description)
     val icon: ImageView = itemView.findViewById(R.id.icon)
     private val cvActionsContainer: CardView = itemView.findViewById(R.id.cvActionsContainer)
+
     private val separatorDrawable = GradientDrawable().apply {
         shape = GradientDrawable.RECTANGLE
         setSize(
@@ -73,9 +72,11 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
     ) {
         swipeLayout.reset()
         title.text = item.title
+
         applyIfNotNull(view = description, value = item.description, block = TextView::setText)
         applyIfNotNull(view = icon, value = item.sourceIcon, block = ImageView::setImageDrawable)
         applyIfNotNull(view = source, value = item.source, block = TextView::setText)
+
         itemView.setOnClickListener(item::onTap)
         if (item.actions.isEmpty()) {
             cvActionsContainer.isVisible = false
@@ -84,14 +85,14 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
             rvActions.adapter = ActionsAdapter(item.actions)
         }
         if (item.instant == Instant.MAX) {
-            time.isVisible = false
+            tvTime.isVisible = false
         } else {
-            time.isVisible = true
-            time.text = item.formatTimeAgo(itemView.resources)
+            tvTime.isVisible = true
+            tvTime.text = item.formatTimeAgo(itemView.resources)
         }
         swipeLayout.onSwipeAway = item::onDismiss
         swipeLayout.isSwipeAble = item.isDismissible
-        swipeLayout.setSwipeColor(LAppResource.getColor(R.color.red))
-        swipeLayout.setIconColor(Color.WHITE)
+        swipeLayout.setSwipeColor(C.COLOR_PRIMARY_2)
+        swipeLayout.setIconColor(C.COLOR_PRIMARY)
     }
 }

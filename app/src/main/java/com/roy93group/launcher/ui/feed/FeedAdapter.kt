@@ -70,7 +70,9 @@ class FeedAdapter(
                 launcherActivity = activity,
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_home, parent, false)
-            ).also { homeViewHolder = it }
+            ).also {
+                homeViewHolder = it
+            }
             TYPE_PLAIN -> FeedItemVH(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_plain, parent, false)
