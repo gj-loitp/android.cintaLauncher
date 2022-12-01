@@ -72,14 +72,14 @@ class SearchActivity : BaseFontActivity() {
             layoutManager =
                 GridLayoutManager(
                     /* context = */ this@SearchActivity,
-                    /* spanCount = */ 2,
+                    /* spanCount = */ 3,
                     /* orientation = */ RecyclerView.VERTICAL,
                     /* reverseLayout = */ false
                 ).apply {
                     spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                         override fun getSpanSize(i: Int): Int =
                             if (adapter?.getItemViewType(i) == SearchAdapter.RESULT_APP) 1
-                            else 2
+                            else 3
                     }
                 }
             this.adapter = this@SearchActivity.adapter

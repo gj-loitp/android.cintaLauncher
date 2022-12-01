@@ -51,8 +51,7 @@ class SearchAdapter(
             RESULT_COMPACT -> CompactSearchVH(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_search_result_compact, parent, false),
-                activity = activity,
-                isOnCard = isOnCard
+                activity = activity
             )
             RESULT_CONTACT -> ContactSearchVH(
                 itemView = LayoutInflater.from(parent.context)

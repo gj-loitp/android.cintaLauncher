@@ -20,8 +20,7 @@ import com.roy93group.lookerupper.data.results.SearchResult
  */
 class CompactSearchVH(
     itemView: View,
-    val activity: Activity,
-    private val isOnCard: Boolean
+    val activity: Activity
 ) : SearchVH(itemView) {
 
     val icon: ImageView = itemView.findViewById(R.id.icon)
@@ -33,14 +32,12 @@ class CompactSearchVH(
         icon.setImageDrawable(result.icon)
         text.text = result.title
         applyIfNotNull(view = subtitle, value = result.subtitle, block = TextView::setText)
-//        text.setTextColor(if (isOnCard) Color.RED else Color.GREEN)
-//        subtitle.setTextColor(if (isOnCard) Color.RED else Color.RED)
+
         itemView.setOnClickListener {
             if (result is CompactAppResult) {
                 SuggestionsManager.onItemOpened(it.context, result.app)
             }
             result.open(it)
         }
-//        itemView.setOnLongClickListener(result.onLongPress?.let { { v -> it(v, activity) } })
     }
 }
