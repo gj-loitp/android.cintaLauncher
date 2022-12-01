@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.graphics.ColorUtils
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
@@ -41,13 +40,11 @@ class AppItem(val item: App) : AppDrawerAdapter.DrawerItem {
 fun bindAppViewHolder(
     holder: AppViewHolder,
     item: LauncherItem,
+    isFromSuggest: Boolean
 ) {
 //    val backgroundColor = ColorUtils.setAlphaComponent(item.getColor(), 90)
 //    holder.cardView.setCardBackgroundColor(backgroundColor)
-
     holder.cardView.setCardBackgroundColor(Color.TRANSPARENT)
-
-    holder.tvIconText.text = item.label
 
     val banner = (item as? App)?.getBanner()
     if (banner?.text == null && banner?.title == null) {
@@ -59,11 +56,27 @@ fun bindAppViewHolder(
         holder.ivIcon.isVisible = false
         holder.ivIconSmall.setImageDrawable(item.icon)
     }
-    applyIfNotNull(view = holder.tvLineTitle, value = banner?.title, block = TextView::setText)
-    applyIfNotNull(view = holder.tvLineDescription, value = banner?.text, block = TextView::setText)
+
+    holder.tvIconText.text = item.label
+    if (isFromSuggest) {
+        holder.tvIconText.isVisible = true
+        holder.tvLineTitle.isVisible = false
+        holder.tvLineDescription.isVisible = false
+    } else {
+        applyIfNotNull(
+            view = holder.tvLineTitle,
+            value = banner?.title,
+            block = TextView::setText
+        )
+        applyIfNotNull(
+            view = holder.tvLineDescription,
+            value = banner?.text,
+            block = TextView::setText
+        )
+    }
 
     holder.itemView.setOnClickListener {
-        SuggestionsManager.onItemOpened(it.context, item)
+        SuggestionsManager.onItemOpened(context = it.context, item = item)
         item.open(context = it.context.applicationContext, view = it)
     }
 }

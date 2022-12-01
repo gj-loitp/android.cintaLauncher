@@ -26,18 +26,25 @@ class SuggestionsAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AppViewHolder {
         return AppViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.view_app_card, parent, false) as CardView
         )
     }
 
-    override fun onBindViewHolder(holder: AppViewHolder, i: Int) {
+    override fun onBindViewHolder(
+        holder: AppViewHolder,
+        i: Int
+    ) {
         val item = items[i]
         bindAppViewHolder(
             holder = holder,
             item = item,
+            isFromSuggest = true
         )
     }
 

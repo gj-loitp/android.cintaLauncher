@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,10 +10,14 @@
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_1"
-        android:background="@color/violet" />
+        android:alpha="0.5"
+        android:background="@color/colorPrimary2" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecents"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_padding_small"
+        android:paddingBottom="@dimen/margin_padding_small"
+        tools:listitem="@layout/view_app_card" />
 </androidx.appcompat.widget.LinearLayoutCompat>

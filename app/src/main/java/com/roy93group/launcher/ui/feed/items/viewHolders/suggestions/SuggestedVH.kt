@@ -1,6 +1,5 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.suggestions
 
-import android.graphics.Color
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,13 +21,13 @@ class SuggestedVH(
     itemView: View,
 ) : FeedViewHolder(itemView) {
 
-    val separator: View = itemView.findViewById(R.id.separator)
-
     val adapter = SuggestionsAdapter(launcherActivity)
+
+    @Suppress("unused")
     val rvRecents: RecyclerView = itemView.findViewById<RecyclerView>(R.id.rvRecents).apply {
         layoutManager = GridLayoutManager(
             /* context = */ itemView.context,
-            /* spanCount = */3,
+            /* spanCount = */2,
             /* orientation = */RecyclerView.VERTICAL,
             /* reverseLayout = */false
         )
@@ -37,7 +36,6 @@ class SuggestedVH(
 
     override fun onBind(item: FeedItem) {
         item as FeedItemSuggestedApps
-        separator.setBackgroundColor(Color.RED)
         adapter.updateItems(item.apps)
     }
 }
