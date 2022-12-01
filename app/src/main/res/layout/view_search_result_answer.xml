@@ -77,7 +77,6 @@
                         tools:text="@string/app_name" />
 
                     <View
-                        android:id="@+id/separator"
                         android:layout_width="@dimen/w_1"
                         android:layout_height="match_parent"
                         android:background="@color/colorPrimary" />

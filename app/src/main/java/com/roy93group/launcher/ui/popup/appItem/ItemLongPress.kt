@@ -1,8 +1,6 @@
 package com.roy93group.launcher.ui.popup.appItem
 
 import android.annotation.SuppressLint
-import android.content.ClipData
-import android.content.ClipDescription
 import android.content.Context
 import android.content.pm.LauncherApps
 import android.content.pm.ShortcutInfo
@@ -15,9 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.data.items.LauncherItem
-import com.roy93group.launcher.data.items.showProperties
-import com.roy93group.launcher.ui.popup.PopupUtils
-import io.posidon.android.conveniencelib.vibrate
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -107,73 +102,5 @@ object ItemLongPress {
         window.isFocusable = false
 
         return window
-    }
-
-    fun onItemLongPress(
-        view: View,
-        textColor: Int,
-        item: LauncherItem,
-        navbarHeight: Int,
-    ) {
-        currentPopup?.dismiss()
-        val context = view.context
-        context.vibrate(14)
-        val (x, y, gravity) = PopupUtils.getPopupLocationFromView(
-            view = view,
-            navbarHeight = navbarHeight
-        )
-        val dynamicShortcuts =
-            (item as? App)?.getDynamicShortcuts(context.getSystemService(LauncherApps::class.java))
-                ?.let {
-                    it.subList(0, it.size.coerceAtMost(5))
-                }
-        val hasDynamicShortcuts = !dynamicShortcuts.isNullOrEmpty()
-        val extraPopupWindow = if (hasDynamicShortcuts) makeExtraPopupWindow(
-            context = context,
-            shortcuts = dynamicShortcuts!!,
-            textColor = textColor
-        ) else null
-        val popupWindow =
-            makePopupWindow(
-                context = context,
-                item = item,
-                textColor = textColor,
-                extraPopupWindow = extraPopupWindow
-            ) {
-                item.showProperties(view)
-            }
-        popupWindow.isFocusable = false
-        popupWindow.showAtLocation(
-            /* parent = */ view,
-            /* gravity = */ gravity,
-            /* x = */ x,
-            /* y = */ y + (view.resources.getDimension(R.dimen.margin_padding_medium) * 2).toInt()
-        )
-
-        if (hasDynamicShortcuts) popupWindow.contentView.post {
-            extraPopupWindow?.showAtLocation(
-                /* parent = */ view,
-                /* gravity = */
-                gravity,
-                /* x = */
-                x,
-                /* y = */
-                y + popupWindow.contentView.height + (view.resources.getDimension(R.dimen.margin_padding_medium) * 4).toInt()
-            )
-        }
-
-        val shadow = View.DragShadowBuilder(view)
-        val clipData = ClipData(
-            /* label = */ item.label,
-            /* mimeTypes = */ arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN),
-            /* item = */ ClipData.Item(item.toString())
-        )
-
-        view.startDragAndDrop(
-            /* data = */ clipData,
-            /* shadowBuilder = */ shadow,
-            /* myLocalState = */ view,
-            /* flags = */ View.DRAG_FLAG_OPAQUE or View.DRAG_FLAG_GLOBAL
-        )
     }
 }

@@ -9,7 +9,6 @@ import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.providers.color.theme.ColorTheme
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
-import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
 
 @Suppress("unused")
 class SuggestionVH(

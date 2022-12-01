@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cvSearchBarContainer"
     android:layout_width="match_parent"
@@ -11,7 +11,9 @@
     app:cardBackgroundColor="@color/colorPrimary2"
     app:cardCornerRadius="@dimen/round_large"
     app:cardElevation="@dimen/w_3"
-    app:cardUseCompatPadding="false">
+    app:cardUseCompatPadding="false"
+    app:strokeColor="@color/colorPrimary"
+    app:strokeWidth="@dimen/w_1">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="@dimen/search_bar_height"
@@ -34,4 +36,4 @@
         android:layout_gravity="end"
         android:padding="@dimen/margin_padding_small"
         android:src="@drawable/ic_drawer_scroll" />
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
