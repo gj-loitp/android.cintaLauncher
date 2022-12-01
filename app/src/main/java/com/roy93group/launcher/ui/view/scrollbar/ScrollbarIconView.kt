@@ -24,6 +24,7 @@ import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 import kotlin.math.abs
 
+
 /**
  * Updated by Loitp on 2022.12.17
  * Galaxy One company,
@@ -47,31 +48,38 @@ class ScrollbarIconView @JvmOverloads constructor(
     @Scrollbar.Orientation
     private var currentOrientation = Scrollbar.HORIZONTAL
 
+    private var counter = 0
+    private val countDetectMoving = 10
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(e: MotionEvent): Boolean {
+
         when (e.action) {
             MotionEvent.ACTION_DOWN -> {
                 appDrawer?.open(this)
             }
             MotionEvent.ACTION_MOVE -> {
-                val d = abs(e.x / e.y)
+                counter++
+                if (counter > countDetectMoving) {
+                    val d = abs(e.x / e.y)
 //                val orientation = if (d > 1f) Scrollbar.HORIZONTAL else Scrollbar.VERTICAL
-                val orientation = Scrollbar.HORIZONTAL
-                if (currentWindow == null) {
-                    showPopup(orientation)
-                    currentOrientation = orientation
-                } else {
-                    if ((d > 2f || d < 0.5f) && e.y * e.y + e.x * e.x > width * height && (e.y < 0 || currentOrientation == Scrollbar.VERTICAL) && currentOrientation != orientation) {
-                        currentWindow?.dismiss()
+                    val orientation = Scrollbar.HORIZONTAL
+                    if (currentWindow == null) {
                         showPopup(orientation)
                         currentOrientation = orientation
-                    }
-                    currentWindow?.let {
-                        it.contentView.onTouchEvent(
-                            it.contentView.makeMotionEventForPopup(
-                                e = e
+                    } else {
+                        if ((d > 2f || d < 0.5f) && e.y * e.y + e.x * e.x > width * height && (e.y < 0 || currentOrientation == Scrollbar.VERTICAL) && currentOrientation != orientation) {
+                            currentWindow?.dismiss()
+                            showPopup(orientation)
+                            currentOrientation = orientation
+                        }
+                        currentWindow?.let {
+                            it.contentView.onTouchEvent(
+                                it.contentView.makeMotionEventForPopup(
+                                    e = e
+                                )
                             )
-                        )
+                        }
                     }
                 }
             }
@@ -84,6 +92,7 @@ class ScrollbarIconView @JvmOverloads constructor(
                     )
                     it.dismiss()
                 }
+                counter = 0
             }
         }
         return true
