@@ -77,6 +77,9 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
         applyIfNotNull(view = icon, value = item.sourceIcon, block = ImageView::setImageDrawable)
         applyIfNotNull(view = source, value = item.source, block = TextView::setText)
 
+        title.isVisible = item.title.isNotEmpty()
+        description.isVisible = !item.description.isNullOrEmpty()
+
         itemView.setOnClickListener(item::onTap)
         if (item.actions.isEmpty()) {
             cvActionsContainer.isVisible = false
