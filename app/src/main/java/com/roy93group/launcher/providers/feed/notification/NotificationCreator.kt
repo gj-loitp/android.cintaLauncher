@@ -23,17 +23,26 @@ import java.time.Instant
  */
 object NotificationCreator {
 
-    private fun getSmallIcon(context: Context, n: StatusBarNotification): Drawable? {
+    private fun getSmallIcon(
+        context: Context,
+        n: StatusBarNotification
+    ): Drawable? {
         return n.notification.smallIcon?.loadDrawable(context) ?: n.notification.getLargeIcon()
             ?.loadDrawable(context)
     }
 
     @Suppress("unused")
-    fun getLargeIcon(context: Context, n: StatusBarNotification): Drawable? {
+    fun getLargeIcon(
+        context: Context,
+        n: StatusBarNotification
+    ): Drawable? {
         return n.notification.getLargeIcon()?.loadDrawable(context)
     }
 
-    private fun getSource(context: Context, n: StatusBarNotification): String {
+    private fun getSource(
+        context: Context,
+        n: StatusBarNotification
+    ): String {
         return context.packageManager.getApplicationLabel(
             context.packageManager.getApplicationInfo(
                 /* p0 = */ n.packageName,
@@ -68,7 +77,10 @@ object NotificationCreator {
         }
     }
 
-    private fun getBigImage(context: Context, extras: Bundle): Drawable? {
+    private fun getBigImage(
+        context: Context,
+        extras: Bundle
+    ): Drawable? {
         val b = extras[Notification.EXTRA_PICTURE] as Bitmap?
         if (b != null) {
             try {
