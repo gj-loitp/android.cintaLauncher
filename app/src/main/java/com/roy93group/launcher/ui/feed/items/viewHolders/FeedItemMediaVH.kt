@@ -1,6 +1,7 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders
 
 import android.graphics.*
+import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.ImageView
 import androidx.core.graphics.applyCanvas
@@ -20,7 +21,7 @@ class FeedItemMediaVH(
     itemView: View
 ) : FeedItemVH(itemView) {
 
-    private val cover: ImageView = itemView.findViewById(R.id.image)
+    private val image: ImageView = itemView.findViewById(R.id.image)
     private val buttonPrevious: ImageView = itemView.findViewById(R.id.buttonPrevious)
     private val buttonPlay: ImageView = itemView.findViewById(R.id.buttonPlay)
     private val btNext: ImageView = itemView.findViewById(R.id.btNext)
@@ -32,7 +33,7 @@ class FeedItemMediaVH(
 
         val c = item.image as? Bitmap
         if (c == null) {
-            cover.setImageDrawable(null)
+            image.setImageDrawable(null)
         } else {
             val paint = Paint().apply {
                 shader = LinearGradient(
@@ -74,26 +75,26 @@ class FeedItemMediaVH(
                 drawRect(x, 0f, c.width.toFloat(), height.toFloat(), paint)
                 drawRect(0f, 0f, width.toFloat(), height.toFloat(), paint2)
             }
-            cover.setImageBitmap(bitmap)
+            image.setImageBitmap(bitmap)
         }
 
 
-        cover.setOnClickListener(item::onTap)
+        image.setOnClickListener(item::onTap)
         title.setOnClickListener(item::onTap)
         description.setOnClickListener(item::onTap)
         buttonPlay.setImageResource(if (item.isPlaying()) R.drawable.ic_pause else R.drawable.ic_play)
 
         buttonPrevious.setOnClickListener {
-//            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             item.previous(it)
         }
         btNext.setOnClickListener {
-//            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             item.next(it)
         }
         buttonPlay.setOnClickListener {
             it as ImageView
-//            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             item.togglePause(it)
         }
     }
