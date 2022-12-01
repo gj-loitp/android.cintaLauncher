@@ -26,7 +26,10 @@ abstract class AsyncSearchProvider(
 
     abstract fun loadResults(query: SearchQuery)
 
-    fun update(query: SearchQuery, results: List<SearchResult>) {
+    fun update(
+        query: SearchQuery,
+        results: List<SearchResult>
+    ) {
         lastResults[query] = results
         searcher.query(query.text)
     }

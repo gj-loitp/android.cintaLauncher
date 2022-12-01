@@ -97,7 +97,12 @@ class AppProvider(
         }
     }
 
-    private val appLoader = AppLoader { Collection(it, searcher.settings) }
+    private val appLoader = AppLoader {
+        Collection(
+            size = it,
+            settings = searcher.settings
+        )
+    }
     var apps = emptyList<AppResult>()
     private var staticShortcuts = emptyList<ShortcutResult>()
     private var dynamicShortcuts = emptyList<ShortcutResult>()
@@ -109,7 +114,7 @@ class AppProvider(
             packPackages = searcher.settings.getStrings("icon_packs") ?: emptyArray(),
         )
 
-        appLoader.async(this, iconConfig) {
+        appLoader.async(context = this, iconConfig = iconConfig) {
             apps = it.list
             staticShortcuts = it.staticShortcuts
             dynamicShortcuts = it.dynamicShortcuts
@@ -119,14 +124,16 @@ class AppProvider(
     override fun getResults(query: SearchQuery): List<SearchResult> {
         val results = LinkedList<SearchResult>()
         val suggestions =
-            SuggestionsManager.getSuggestions().let { it.subList(0, it.size.coerceAtMost(6)) }
+            SuggestionsManager.getSuggestions().let {
+                it.subList(fromIndex = 0, toIndex = it.size.coerceAtMost(6))
+            }
         apps.forEach {
             val i = suggestions.indexOf(it.app)
             val suggestionFactor =
                 if (i == -1) 0f else (suggestions.size - i).toFloat() / suggestions.size
             val r = FuzzySearch.tokenSortPartialRatio(
-                query.toString(),
-                it.title
+                s1 = query.toString(),
+                s2 = it.title
             ) / 100f + suggestionFactor * 0.5f
             if (r > .8f) {
                 results += if (results.size < 6) {
