@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
@@ -8,14 +8,18 @@
     app:cardBackgroundColor="@color/transparent"
     app:cardCornerRadius="0dp"
     app:cardElevation="@dimen/w_3"
-    app:cardUseCompatPadding="false">
+    app:cardUseCompatPadding="false"
+    app:strokeColor="@color/colorPrimary"
+    app:strokeWidth="@dimen/w_1">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingTop="@dimen/margin_padding_medium">
+        android:paddingTop="@dimen/margin_padding_medium"
+        android:paddingBottom="@dimen/margin_padding_tiny"
+        tools:background="@color/red">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivIcon"
@@ -36,4 +40,4 @@
             android:textStyle="bold"
             tools:text="@string/app_name" />
     </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
