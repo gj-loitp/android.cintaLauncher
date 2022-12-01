@@ -15,7 +15,6 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO thay cac late in
 //TODO sort app drawer theo tan suat, cai nao cang nhieu text cang to
 //TODO set background to black
-//TODO ripple activity intro
 //TODO config gg drive
 //TODO rate more share app
 //TODO firebase
@@ -24,9 +23,9 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO policy
 //TODO add gallery
 //TODO uninstall app
-//TODO firebase
 
 //done
+//ripple activity intro
 //ic launcher
 //man hinh intro cho accept het cac permission moi cho next
 //keep vi tri cua app drawer

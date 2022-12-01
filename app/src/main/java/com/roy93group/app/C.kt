@@ -1,9 +1,15 @@
 package com.roy93group.app
 
 import android.app.Activity
+import android.content.Context
+import android.content.Context.VIBRATOR_SERVICE
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 import com.loitpcore.core.utilities.LAppResource
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.launcher.R
@@ -36,5 +42,23 @@ object C {
         } catch (ex: Exception) {
             LSocialUtil.moreApp(activity)
         }
+    }
+
+    fun vibrate() {
+        val vib = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager =
+                LAppResource.application.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            vibratorManager.defaultVibrator
+        } else {
+            @Suppress("DEPRECATION")
+            LAppResource.application.getSystemService(VIBRATOR_SERVICE) as Vibrator
+        }
+
+        vib.vibrate(
+            VibrationEffect.createOneShot(
+                /* milliseconds = */ 10,
+                /* amplitude = */ VibrationEffect.DEFAULT_AMPLITUDE
+            )
+        )
     }
 }

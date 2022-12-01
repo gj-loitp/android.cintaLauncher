@@ -61,6 +61,11 @@ class ScrollbarIconView @JvmOverloads constructor(
             MotionEvent.ACTION_MOVE -> {
                 counter++
                 if (counter > countDetectMoving) {
+
+                    if (counter % 10 == 0) {
+                        C.vibrate()
+                    }
+
                     val d = abs(e.x / e.y)
 //                val orientation = if (d > 1f) Scrollbar.HORIZONTAL else Scrollbar.VERTICAL
                     val orientation = Scrollbar.HORIZONTAL
