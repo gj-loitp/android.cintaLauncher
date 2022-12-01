@@ -34,7 +34,8 @@ import kotlin.math.abs
 
 @SuppressLint("AppCompatCustomView")
 class ScrollbarIconView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
+    context: Context,
+    attrs: AttributeSet? = null
 ) : ImageView(context, attrs) {
 
     var appDrawer: AppDrawer? = null
@@ -81,8 +82,8 @@ class ScrollbarIconView @JvmOverloads constructor(
                             e = e
                         )
                     )
+                    it.dismiss()
                 }
-                currentWindow?.dismiss()
             }
         }
         return true
