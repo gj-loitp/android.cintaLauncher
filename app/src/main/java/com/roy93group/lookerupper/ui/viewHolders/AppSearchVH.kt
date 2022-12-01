@@ -28,15 +28,11 @@ class AppSearchVH(
 
     override fun onBind(result: SearchResult) {
         result as AppResult
-
-//        val backgroundColor = ColorTheme.tintWithColor(Color.GREEN, result.getColor())
-//        card.setCardBackgroundColor(backgroundColor)
         tvIconText.text = result.title
-//        tvIconText.setTextColor(ColorTheme.titleColorForBG(backgroundColor))
         ivIcon.setImageDrawable(result.icon)
 
         itemView.setOnClickListener {
-            SuggestionsManager.onItemOpened(it.context, result.app)
+            SuggestionsManager.onItemOpened(context = it.context, item = result.app)
             result.open(it)
         }
 //        itemView.setOnLongClickListener {

@@ -49,7 +49,9 @@ class SearchActivity : BaseFontActivity() {
         adapter.update(list)
     }
 
-    val container: View by lazy { findViewById(R.id.cvSearchBarContainer) }
+    val container: View by lazy {
+        findViewById(R.id.cvSearchBarContainer)
+    }
 
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_search

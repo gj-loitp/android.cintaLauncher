@@ -44,19 +44,23 @@ class SearchAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchVH {
         return when (viewType) {
             RESULT_APP -> AppSearchVH(
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.view_smart_suggestion, parent, false), activity
+                itemView = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.view_smart_suggestion, parent, false),
+                activity = activity
             )
             RESULT_COMPACT -> CompactSearchVH(
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.view_search_result_compact, parent, false), activity, isOnCard
+                itemView = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.view_search_result_compact, parent, false),
+                activity = activity,
+                isOnCard = isOnCard
             )
             RESULT_CONTACT -> ContactSearchVH(
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.view_search_result_contact, parent, false), isOnCard
+                itemView = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.view_search_result_contact, parent, false),
+                isOnCard = isOnCard
             )
             RESULT_ANSWER -> AnswerSearchVH(
-                LayoutInflater.from(parent.context)
+                itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_search_result_answer, parent, false)
             )
             else -> throw Exception("Invalid view type")
