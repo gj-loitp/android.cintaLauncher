@@ -2,7 +2,6 @@ package com.roy93group.app
 
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseApplication
-import com.loitpcore.core.common.Constants
 import com.loitpcore.core.utilities.LUIUtil
 
 /**
@@ -22,7 +21,6 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO firebase
 //TODO tich hop he sinh thai app roy93group
 //TODO animation intro
-//TODO keep vi tri cua app drawer
 //TODO policy
 //TODO add gallery
 //TODO uninstall app
@@ -31,6 +29,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //done
 //ic launcher
 //man hinh intro cho accept het cac permission moi cho next
+//keep vi tri cua app drawer
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
 
