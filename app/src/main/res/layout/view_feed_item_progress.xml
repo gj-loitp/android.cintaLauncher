@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingStart="@dimen/margin_padding_medium"
+    android:paddingEnd="@dimen/margin_padding_medium">
 
     <View
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_1"
-        android:background="@color/white" />
+        android:alpha="0.5"
+        android:background="@color/colorPrimary2" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_padding_medium"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -23,8 +26,8 @@
             android:id="@+id/icon"
             android:layout_width="32dp"
             android:layout_height="16dp"
-            app:tint="@color/deepPink"
-            tools:src="@drawable/ic_launcher" />
+            tools:src="@drawable/ic_launcher"
+            tools:tint="@color/colorPrimary2" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/source"
@@ -34,23 +37,26 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:singleLine="true"
-            android:textColor="@color/yellow"
-            android:textSize="@dimen/txt_medium"
+            android:textColor="@color/colorPrimary2"
+            android:textSize="@dimen/txt_large"
+            android:textStyle="bold"
             tools:text="@string/app_name" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:alpha="0.8"
             android:maxLines="1"
-            android:textColor="@color/yellow"
-            android:textSize="@dimen/txt_medium"
-            tools:text="@string/app_name" />
+            android:textColor="@color/colorPrimary2"
+            android:textSize="@dimen/txt_small"
+            tools:text="1d" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_padding_small"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -59,8 +65,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/txt_medium" />
+            android:textColor="@color/colorPrimary2"
+            android:textSize="@dimen/txt_small"
+            tools:text="@string/app_name" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/description"
@@ -68,8 +75,9 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="5"
-            android:textColor="@color/red"
-            android:textSize="@dimen/txt_medium"
+            android:textColor="@color/colorPrimary2"
+            android:textSize="@dimen/txt_small"
+            android:textStyle="bold"
             tools:text="@string/app_name" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -77,10 +85,12 @@
         android:id="@+id/progress"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/w_10"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_padding_small"
         android:indeterminate="false"
-        android:indeterminateTint="@color/deepPink"
-        android:progressDrawable="@drawable/progress_horizontal" />
+        android:indeterminateTint="@color/colorPrimary2"
+        android:progressDrawable="@drawable/progress_horizontal"
+        tools:progress="69" />
 
     <include layout="@layout/view_feed_item_actions" />
 </androidx.appcompat.widget.LinearLayoutCompat>
