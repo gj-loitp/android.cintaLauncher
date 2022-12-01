@@ -55,8 +55,7 @@ class SearchAdapter(
             )
             RESULT_CONTACT -> ContactSearchVH(
                 itemView = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.view_search_result_contact, parent, false),
-                isOnCard = isOnCard
+                    .inflate(R.layout.view_search_result_contact, parent, false)
             )
             RESULT_ANSWER -> AnswerSearchVH(
                 itemView = LayoutInflater.from(parent.context)

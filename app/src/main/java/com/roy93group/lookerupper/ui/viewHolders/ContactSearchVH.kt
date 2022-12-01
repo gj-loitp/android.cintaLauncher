@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.lookerupper.data.results.ContactResult
 import com.roy93group.lookerupper.data.results.SearchResult
@@ -18,8 +19,7 @@ import com.roy93group.lookerupper.data.results.SearchResult
  * freuss47@gmail.com
  */
 class ContactSearchVH(
-    itemView: View,
-    private val isOnCard: Boolean
+    itemView: View
 ) : SearchVH(itemView) {
 
     val icon: ImageView = itemView.findViewById(R.id.icon)
@@ -35,12 +35,11 @@ class ContactSearchVH(
                     itemView.context,
                     R.drawable.placeholder_contact
                 )?.apply {
-//                    setTint(if (isOnCard) Color.GREEN else Color.GREEN)
+                    setTint(C.COLOR_PRIMARY_2)
                 })
             .apply(RequestOptions.circleCropTransform())
             .into(icon)
         text.text = result.title
-//        text.setTextColor(if (isOnCard) Color.GREEN else Color.BLUE)
         itemView.setOnClickListener(result::open)
     }
 }
