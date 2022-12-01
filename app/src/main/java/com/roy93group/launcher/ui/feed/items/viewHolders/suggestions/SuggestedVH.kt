@@ -35,7 +35,7 @@ class SuggestedVH(
         adapter = this@SuggestedVH.adapter
     }
 
-    override fun onBind(item: FeedItem, color: Int) {
+    override fun onBind(item: FeedItem) {
         item as FeedItemSuggestedApps
         separator.setBackgroundColor(Color.RED)
         adapter.updateItems(item.apps)

@@ -70,7 +70,6 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
 
     override fun onBind(
         item: FeedItem,
-        color: Int
     ) {
         swipeLayout.reset()
         title.text = item.title

@@ -1,15 +1,13 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.home
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.launcher.LauncherContext
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.notification.NotificationService
 import com.roy93group.launcher.ui.LauncherActivity
@@ -17,7 +15,6 @@ import io.posidon.android.conveniencelib.getStatusBarHeight
 
 class HomeViewHolder(
     val launcherActivity: LauncherActivity,
-    val launcherContext: LauncherContext,
     itemView: View,
 ) : RecyclerView.ViewHolder(itemView) {
 
@@ -41,7 +38,6 @@ class HomeViewHolder(
             adapter = notificationIconsAdapter
         }
     val tvNotificationIconText: TextView = itemView.findViewById(R.id.tvNotificationIconText)
-    val llVertical: LinearLayoutCompat = itemView.findViewById(R.id.llVertical)
 
     init {
         NotificationService.setOnUpdate(javaClass.name) {
@@ -85,10 +81,11 @@ fun bindHomeViewHolder(
     holder: HomeViewHolder
 ) {
     holder.updateNotificationIcons()
-    holder.tvTime.setTextColor(Color.RED)
-    holder.tvDate.setTextColor(Color.RED)
-    holder.tvWeekDay.setTextColor(Color.RED)
-    holder.tvNotificationIconText.setTextColor(Color.RED)
+    holder.tvTime.setTextColor(C.COLOR_PRIMARY_2)
+    holder.tvDate.setTextColor(C.COLOR_PRIMARY_2)
+    holder.tvWeekDay.setTextColor(C.COLOR_PRIMARY_2)
+    holder.tvNotificationIconText.setTextColor(C.COLOR_PRIMARY_2)
+
     holder.itemView.setOnTouchListener { _, e ->
         when (e.action and MotionEvent.ACTION_MASK) {
             MotionEvent.ACTION_DOWN -> {
@@ -98,15 +95,5 @@ fun bindHomeViewHolder(
         }
         false
     }
-//    holder.itemView.setOnLongClickListener {
-//        HomeLongPressPopup.show(
-//            parent = it,
-//            touchX = popupX,
-//            touchY = popupY,
-//            navbarHeight = holder.launcherActivity.getNavigationBarHeight(),
-//            settings = holder.launcherContext.settings,
-////            reloadColorTheme = holder.launcherActivity::reloadColorThemeSync
-//        )
-//        true
-//    }
+    //TODO click to launch clock app
 }

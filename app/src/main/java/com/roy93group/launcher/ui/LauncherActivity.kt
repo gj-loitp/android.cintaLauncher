@@ -56,10 +56,10 @@ class LauncherActivity : BaseFontActivity() {
     private val suggestedAppsProvider = SuggestedAppsProvider()
 
     @Suppress("unused")
-    private val homeContainer: View by lazy {
+    private val flHomeContainer: View by lazy {
         findViewById(R.id.flHomeContainer)
     }
-    val feedRecycler: RecyclerView by lazy {
+    val rvFeed: RecyclerView by lazy {
         findViewById(R.id.rvFeed)
     }
     val appDrawer by lazy {
@@ -83,15 +83,15 @@ class LauncherActivity : BaseFontActivity() {
         configureWindow()
         settings.init(applicationContext)
 
-        feedRecycler.layoutManager = LinearLayoutManager(
+        rvFeed.layoutManager = LinearLayoutManager(
             /* context = */ this,
             /* orientation = */RecyclerView.VERTICAL,
             /* reverseLayout = */false
         )
         feedAdapter = FeedAdapter(this)
         feedAdapter.setHasStableIds(true)
-        feedRecycler.setItemViewCacheSize(20)
-        feedRecycler.adapter = feedAdapter
+        rvFeed.setItemViewCacheSize(20)
+        rvFeed.adapter = feedAdapter
 
         launcherContext.feed.init(
             settings = settings,
@@ -147,7 +147,7 @@ class LauncherActivity : BaseFontActivity() {
         if (appDrawer.isOpen) {
             appDrawer.close()
         } else {
-            feedRecycler.scrollToPosition(0)
+            rvFeed.scrollToPosition(0)
         }
     }
 

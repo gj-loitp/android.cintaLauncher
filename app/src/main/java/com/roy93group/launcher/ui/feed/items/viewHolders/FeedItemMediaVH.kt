@@ -25,8 +25,8 @@ class FeedItemMediaVH(
     private val buttonPlay: ImageView = itemView.findViewById(R.id.buttonPlay)
     private val btNext: ImageView = itemView.findViewById(R.id.btNext)
 
-    override fun onBind(item: FeedItem, color: Int) {
-        super.onBind(item, color)
+    override fun onBind(item: FeedItem) {
+        super.onBind(item)
 
         item as FeedItemWithMedia
 

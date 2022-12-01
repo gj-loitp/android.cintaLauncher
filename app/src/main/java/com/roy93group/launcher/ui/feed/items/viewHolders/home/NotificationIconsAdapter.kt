@@ -24,7 +24,10 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
         val image: ImageView = itemView.findViewById(R.id.image)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): IconViewHolder {
         return IconViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(
@@ -35,9 +38,11 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
         )
     }
 
-    override fun onBindViewHolder(holder: IconViewHolder, i: Int) {
+    override fun onBindViewHolder(
+        holder: IconViewHolder,
+        i: Int
+    ) {
         holder.image.setImageDrawable(items[i])
-//        holder.image.imageTintList = ColorStateList.valueOf(Color.RED)
     }
 
     override fun getItemCount() = items.size

@@ -67,8 +67,8 @@ open class FeedItemImageVH(itemView: View) : FeedItemVH(itemView) {
         }
     }
 
-    override fun onBind(item: FeedItem, color: Int) {
-        super.onBind(item, color)
+    override fun onBind(item: FeedItem) {
+        super.onBind(item)
         item as FeedItemWithBigImage
         Glide.with(itemView.context)
             .load(item.image)

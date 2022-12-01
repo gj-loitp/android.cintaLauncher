@@ -18,8 +18,8 @@ import com.roy93group.launcher.data.feed.items.FeedItemWithProgress
 class FeedItemProgressVH(itemView: View) : FeedItemVH(itemView) {
     private val progress: ProgressBar = itemView.findViewById(R.id.progress)
 
-    override fun onBind(item: FeedItem, color: Int) {
-        super.onBind(item, color)
+    override fun onBind(item: FeedItem) {
+        super.onBind(item)
         item as FeedItemWithProgress
 
         progress.apply {

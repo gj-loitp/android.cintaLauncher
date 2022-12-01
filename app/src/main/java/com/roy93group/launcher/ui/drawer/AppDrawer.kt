@@ -94,15 +94,15 @@ class AppDrawer(
             activity.bottomBar.cvSearchBarContainer.measuredHeight + activity.bottomBar.cvSearchBarContainer.marginBottom + activity.bottomBar.cvSearchBarContainer.marginTop
         )
         flAppDrawerContainer.isVisible = true
-        activity.feedRecycler.stopScroll()
+        activity.rvFeed.stopScroll()
         activity.feedProfiles.rvFeedFilters.animate()
             .alpha(0f)
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
             .onEnd {
-                activity.feedRecycler.isVisible = false
+                activity.rvFeed.isVisible = false
             }
-        activity.feedRecycler.animate()
+        activity.rvFeed.animate()
             .alpha(0f)
             .scaleX(1.1f)
             .scaleY(1.1f)
@@ -110,7 +110,7 @@ class AppDrawer(
             .setDuration(100)
             .setInterpolator(AccelerateInterpolator())
             .onEnd {
-                activity.feedRecycler.isInvisible = true
+                activity.rvFeed.isInvisible = true
             }
         flAppDrawerContainer.animate()
             .alpha(1f)
@@ -145,10 +145,10 @@ class AppDrawer(
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
             .onEnd {
-                activity.feedRecycler.isVisible = true
+                activity.rvFeed.isVisible = true
             }
-        activity.feedRecycler.isInvisible = false
-        activity.feedRecycler.animate()
+        activity.rvFeed.isInvisible = false
+        activity.rvFeed.animate()
             .alpha(1f)
             .scaleX(1f)
             .scaleY(1f)
@@ -156,7 +156,7 @@ class AppDrawer(
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
             .onEnd {
-                activity.feedRecycler.isInvisible = false
+                activity.rvFeed.isInvisible = false
             }
         flAppDrawerContainer.animate()
             .alpha(0f)

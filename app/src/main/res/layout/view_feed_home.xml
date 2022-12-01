@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llVertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -26,8 +27,10 @@
                 android:format12Hour="h:mm"
                 android:format24Hour="H:mm"
                 android:includeFontPadding="false"
-                android:textColor="@color/white"
-                android:textSize="64sp" />
+                android:textColor="@color/colorPrimary2"
+                android:textSize="64sp"
+                android:textStyle="bold"
+                tools:text="12:12" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="0dp"
@@ -46,8 +49,10 @@
                     android:format12Hour="cccc"
                     android:format24Hour="cccc"
                     android:includeFontPadding="false"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/txt_larger" />
+                    android:textColor="@color/colorPrimary2"
+                    android:textSize="@dimen/txt_larger"
+                    android:textStyle="bold"
+                    tools:text="Thu Nam" />
 
                 <TextClock
                     android:id="@+id/tvDate"
@@ -56,8 +61,10 @@
                     android:format12Hour="d MMMM"
                     android:format24Hour="d MMMM"
                     android:includeFontPadding="false"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/txt_large" />
+                    android:textColor="@color/colorPrimary2"
+                    android:textSize="@dimen/txt_large"
+                    android:textStyle="bold"
+                    tools:text="1 thang 12" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -66,7 +73,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="@dimen/margin_padding_small"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="@dimen/margin_padding_medium">
@@ -75,13 +81,15 @@
                 android:id="@+id/tvNotificationIconText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_padding_small"
-                android:textSize="@dimen/txt_medium" />
+                android:textColor="@color/colorPrimary2"
+                android:textSize="@dimen/txt_medium"
+                tools:text="77 notifications" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNotificationIconList"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding_small" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,7 +1,6 @@
 package com.roy93group.launcher.ui.feed
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -62,45 +61,52 @@ class FeedAdapter(
 
     private var homeViewHolder: HomeViewHolder? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): RecyclerView.ViewHolder {
         return when (viewType) {
             TYPE_HOME -> HomeViewHolder(
-                activity, activity.launcherContext, LayoutInflater.from(parent.context)
+                launcherActivity = activity,
+                itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_home, parent, false)
             ).also { homeViewHolder = it }
             TYPE_PLAIN -> FeedItemVH(
-                LayoutInflater.from(parent.context)
+                itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_plain, parent, false)
             )
             TYPE_SMALL -> FeedItemSmallVH(
-                LayoutInflater.from(parent.context)
+                itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_small, parent, false)
             )
             TYPE_BIG_IMAGE -> FeedItemImageVH(
-                LayoutInflater.from(parent.context)
+                itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_image, parent, false)
             )
             TYPE_PROGRESS -> FeedItemProgressVH(
-                LayoutInflater.from(parent.context)
+                itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_progress, parent, false)
             )
             TYPE_MEDIA -> FeedItemMediaVH(
-                LayoutInflater.from(parent.context)
+                itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_media, parent, false)
             )
             TYPE_SUGGESTED -> SuggestedVH(
-                activity, LayoutInflater.from(parent.context)
+                launcherActivity = activity, LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_suggested_apps, parent, false)
             )
             TYPE_EMPTY -> EmptyFeedItemViewHolder(
-                LayoutInflater.from(parent.context)
+                itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_empty, parent, false)
             )
             else -> throw RuntimeException("Invalid view holder type")
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, i: Int) {
+    override fun onBindViewHolder(
+        holder: RecyclerView.ViewHolder,
+        i: Int
+    ) {
         if (i == 0) {
             return bindHomeViewHolder(holder as HomeViewHolder)
         }
@@ -109,9 +115,8 @@ class FeedAdapter(
             return
         }
         val item = getFeedItem(i)
-        val color = Color.RED
         holder as FeedViewHolder
-        holder.onBind(item, color)
+        holder.onBind(item)
         if (holder !is FeedItemVH) return
         val verticalPadding =
             holder.itemView.resources.getDimension(R.dimen.margin_padding_medium).toInt()

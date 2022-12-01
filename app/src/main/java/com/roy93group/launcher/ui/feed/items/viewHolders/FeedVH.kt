@@ -15,7 +15,6 @@ import com.roy93group.launcher.data.feed.items.FeedItem
 abstract class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     abstract fun onBind(
         item: FeedItem,
-        color: Int
     )
 }
 
