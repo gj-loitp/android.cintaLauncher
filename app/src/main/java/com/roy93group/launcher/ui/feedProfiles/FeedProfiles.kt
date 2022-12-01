@@ -66,8 +66,4 @@ class FeedProfiles(val activity: LauncherActivity) {
             ),
         )
     }
-
-//    fun updateColorTheme() {
-//        feedFilterAdapter.updateColorTheme()
-//    }
 }

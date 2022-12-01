@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.loitpcore.core.utilities.LUIUtil
 import com.roy93group.launcher.LauncherContext
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.profiles.FeedProfile
@@ -48,11 +49,24 @@ class FeedProfileAdapter(
         val item = items[i]
         applyIfNotNull(view = holder.text, value = item.name, block = TextView::setText)
         applyIfNotNull(view = holder.icon, value = item.icon, block = ImageView::setImageDrawable)
-//        val bgColor = if (selection == i) Color.RED else Color.GREEN
-//        val fgColor = ColorTheme.textColorForBG(bgColor)
-//        holder.card.setCardBackgroundColor(bgColor)
-//        holder.text.setTextColor(fgColor)
-//        holder.icon.imageTintList = ColorStateList.valueOf(fgColor)
+
+        if (i == (items.size - 1)) {
+            LUIUtil.setMarginsDp(
+                view = holder.card,
+                leftDp = 16,
+                topDp = 0,
+                rightDp = 16,
+                bottomDp = 0,
+            )
+        } else {
+            LUIUtil.setMarginsDp(
+                view = holder.card,
+                leftDp = 16,
+                topDp = 0,
+                rightDp = 0,
+                bottomDp = 0
+            )
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -64,11 +78,6 @@ class FeedProfileAdapter(
     @SuppressLint("NotifyDataSetChanged")
     fun updateItems(vararg items: FeedProfile) {
         this.items = items.toList()
-        notifyDataSetChanged()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateColorTheme() {
         notifyDataSetChanged()
     }
 }

@@ -11,6 +11,7 @@ import com.loitpcore.core.utilities.LUIUtil
  * +840766040293
  * freuss47@gmail.com
  */
+//TODO thay card view bang material cardview
 //TODO lam man hinh choose fav color first intro
 //TODO thay cac late in
 //TODO sort app drawer theo tan suat, cai nao cang nhieu text cang to
@@ -24,6 +25,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO add gallery
 //TODO uninstall app
 //TODO app badge
+//TODO chon man hinh chu o screen setting
 
 //done
 //ripple activity intro
