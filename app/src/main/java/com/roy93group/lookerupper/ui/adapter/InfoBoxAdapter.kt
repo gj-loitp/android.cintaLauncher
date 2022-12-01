@@ -20,7 +20,7 @@ class InfoBoxAdapter : RecyclerView.Adapter<InfoboxEntryVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         InfoboxEntryVH(
-            LayoutInflater.from(parent.context)
+            itemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.view_search_result_answer_info_box_entry, parent, false)
         )
 
@@ -28,10 +28,6 @@ class InfoBoxAdapter : RecyclerView.Adapter<InfoboxEntryVH>() {
         val e = listEntry[i]
         holder.label.text = e.first
         holder.value.text = e.second
-
-//        holder.label.setTextColor(Color.GREEN)
-//        holder.value.setTextColor(Color.GREEN)
-//        holder.separator.setBackgroundColor(ColorTheme.hintColorForBG(Color.GREEN))
     }
 
     override fun getItemCount() = listEntry.size

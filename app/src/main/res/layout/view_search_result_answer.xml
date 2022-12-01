@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/red"
+    app:cardBackgroundColor="@color/colorPrimary"
     app:cardCornerRadius="@dimen/round_medium"
     app:cardElevation="@dimen/w_3"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    app:strokeColor="@color/colorPrimary2"
+    app:strokeWidth="@dimen/w_1">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -20,8 +22,9 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="@dimen/txt_medium"
+            android:textColor="@color/colorPrimary2"
+            android:textSize="@dimen/txt_large"
+            android:textStyle="bold"
             tools:text="@string/app_name" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -30,8 +33,8 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="5"
-            android:textColor="@color/white"
-            android:textSize="@dimen/txt_small"
+            android:textColor="@color/colorPrimary2"
+            android:textSize="@dimen/txt_medium"
             tools:text="@string/app_name" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -43,43 +46,53 @@
             android:id="@+id/cvActionsContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/green"
+            android:layout_marginTop="@dimen/margin_padding_medium"
+            app:cardBackgroundColor="@color/colorPrimary2"
             app:cardCornerRadius="@dimen/round_medium"
             app:cardElevation="@dimen/w_3"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="false">
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/margin_padding_medium"
+                    android:paddingTop="@dimen/margin_padding_small"
+                    android:paddingEnd="@dimen/margin_padding_medium"
+                    android:paddingBottom="@dimen/margin_padding_small">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/source"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/txt_medium" />
+                        android:layout_marginEnd="@dimen/margin_padding_small"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/txt_small"
+                        tools:text="@string/app_name" />
 
                     <View
                         android:id="@+id/separator"
                         android:layout_width="@dimen/w_1"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimary" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/search"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/margin_padding_small"
                         android:text="@string/search_in_duckduckgo"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/txt_medium" />
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/txt_small" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </HorizontalScrollView>
         </androidx.cardview.widget.CardView>
     </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

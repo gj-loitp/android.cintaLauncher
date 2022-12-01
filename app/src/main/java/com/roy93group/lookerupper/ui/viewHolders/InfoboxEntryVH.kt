@@ -15,5 +15,4 @@ import com.roy93group.launcher.R
 class InfoboxEntryVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val label: TextView = itemView.findViewById(R.id.label)
     val value: TextView = itemView.findViewById(R.id.value)
-    val separator: View = itemView.findViewById(R.id.separator)
 }

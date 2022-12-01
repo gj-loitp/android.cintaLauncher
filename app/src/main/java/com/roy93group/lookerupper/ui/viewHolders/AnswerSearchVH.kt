@@ -34,27 +34,14 @@ class AnswerSearchVH(
     private val cvActionsContainer: CardView = itemView.findViewById(R.id.cvActionsContainer)
     private val sourceAction: TextView = cvActionsContainer.findViewById(R.id.source)
     private val searchAction: TextView = cvActionsContainer.findViewById(R.id.search)
-    private val actionSeparator: View = cvActionsContainer.findViewById(R.id.separator)
 
     override fun onBind(result: SearchResult) {
         result as InstantAnswerResult
-
-//        card.setCardBackgroundColor(Color.RED)
-//        title.setTextColor(Color.RED)
-//        description.setTextColor(Color.RED)
 
         title.text = result.title
         description.text = result.description
         sourceAction.text =
             itemView.context.getString(R.string.read_more_at_source, result.sourceName)
-
-//        val bg = Color.RED
-//        val fg = ColorTheme.titleColorForBG(bg)
-//        val hint = ColorTheme.hintColorForBG(bg)
-//        cvActionsContainer.setCardBackgroundColor(bg)
-//        sourceAction.setTextColor(fg)
-//        searchAction.setTextColor(fg)
-//        actionSeparator.setBackgroundColor(hint)
 
         sourceAction.setOnClickListener(result::open)
         searchAction.setOnClickListener(result::search)

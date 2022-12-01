@@ -8,13 +8,14 @@
     app:cardBackgroundColor="@color/transparent"
     app:cardCornerRadius="0dp"
     app:cardElevation="@dimen/w_3"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="false">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_padding_medium">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivIcon"
@@ -31,7 +32,8 @@
             android:maxLines="1"
             android:singleLine="true"
             android:textColor="@color/colorPrimary2"
-            android:textSize="@dimen/txt_medium"
+            android:textSize="@dimen/txt_small"
+            android:textStyle="bold"
             tools:text="@string/app_name" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.cardview.widget.CardView>
