@@ -19,6 +19,7 @@ import com.roy93group.launcher.storage.Settings
 import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
 import com.roy93group.lookerupper.data.Searcher
 import com.roy93group.lookerupper.data.providers.AppProvider
+import com.roy93group.lookerupper.data.providers.ContactProvider
 import com.roy93group.lookerupper.data.providers.DuckDuckGoProvider
 import com.roy93group.lookerupper.data.results.SearchResult
 import com.roy93group.lookerupper.ui.adapter.SearchAdapter
@@ -39,8 +40,9 @@ class SearchActivity : BaseFontActivity() {
     lateinit var adapter: SearchAdapter
     val settings = Settings()
     private val searcher = Searcher(
-        settings,
+        settings = settings,
         ::AppProvider,
+        ::ContactProvider,
         ::DuckDuckGoProvider,
         update = ::updateResults
     )
