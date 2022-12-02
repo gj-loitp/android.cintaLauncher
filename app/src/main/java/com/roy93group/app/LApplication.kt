@@ -11,12 +11,11 @@ import com.loitpcore.core.utilities.LUIUtil
  * +840766040293
  * freuss47@gmail.com
  */
-//TODO thay card view bang material cardview
+
 //TODO lam man hinh choose fav color first intro
 //TODO thay cac late in
-//TODO sort app drawer theo tan suat, cai nao cang nhieu text cang to
+//TODO sort app drawer theo tan suat
 //TODO set background to black
-//TODO config gg drive
 //TODO rate more share app
 //TODO firebase
 //TODO tich hop he sinh thai app roy93group
@@ -32,6 +31,8 @@ import com.loitpcore.core.utilities.LUIUtil
 //ic launcher
 //man hinh intro cho accept het cac permission moi cho next
 //keep vi tri cua app drawer
+//thay card view bang material cardview
+
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
 
