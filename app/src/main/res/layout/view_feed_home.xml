@@ -32,6 +32,7 @@
                 tools:text="12:12" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llCalendar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin_padding_medium"

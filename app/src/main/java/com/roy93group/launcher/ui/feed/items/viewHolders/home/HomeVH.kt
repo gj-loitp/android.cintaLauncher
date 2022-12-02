@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,7 @@ class HomeViewHolder(
     private val llClockContainer = itemView.findViewById<View>(R.id.llClockContainer)
     val tvWeekDay: TextView = llClockContainer.findViewById(R.id.tvWeekDay)
     val tvTime: TextView = llClockContainer.findViewById(R.id.tvTime)
+    val llCalendar: LinearLayoutCompat = llClockContainer.findViewById(R.id.llCalendar)
     val tvDate: TextView = llClockContainer.findViewById(R.id.tvDate)
     private val notificationIconsAdapter = NotificationIconsAdapter()
     private val llNotificationIconContainer =
@@ -80,7 +82,8 @@ private var popupY = 0f
 @SuppressLint("ClickableViewAccessibility")
 fun bindHomeViewHolder(
     holder: HomeViewHolder,
-    onClickClock: ((Unit) -> Unit)
+    onClickClock: ((Unit) -> Unit),
+    onClickCalendar: ((Unit) -> Unit)
 ) {
     holder.updateNotificationIcons()
     holder.tvTime.setTextColor(C.COLOR_PRIMARY_2)
@@ -90,6 +93,9 @@ fun bindHomeViewHolder(
 
     holder.tvTime.setSafeOnClickListener {
         onClickClock.invoke(Unit)
+    }
+    holder.llCalendar.setSafeOnClickListener {
+        onClickCalendar.invoke(Unit)
     }
 
     holder.itemView.setOnTouchListener { _, e ->

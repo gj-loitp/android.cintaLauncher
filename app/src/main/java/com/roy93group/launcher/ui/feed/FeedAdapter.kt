@@ -115,6 +115,8 @@ class FeedAdapter(
                 holder = holder as HomeViewHolder,
                 onClickClock = {
                     C.launchClockApp(launcherActivity)
+                }, onClickCalendar = {
+                    C.launchCalendar(launcherActivity)
                 })
         }
         if (holder.itemViewType == TYPE_EMPTY) {

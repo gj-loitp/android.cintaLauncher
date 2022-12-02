@@ -11,9 +11,11 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 import android.provider.AlarmClock
+import android.provider.CalendarContract
 import com.loitpcore.core.utilities.LAppResource
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.launcher.R
+
 
 /**
  * Created by Loitp on 23,November,2022
@@ -70,5 +72,13 @@ object C {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    fun launchCalendar(activity: Activity) {
+        val calendarUri = CalendarContract.CONTENT_URI
+            .buildUpon()
+            .appendPath("time")
+            .build()
+        activity.startActivity(Intent(Intent.ACTION_VIEW, calendarUri))
     }
 }
