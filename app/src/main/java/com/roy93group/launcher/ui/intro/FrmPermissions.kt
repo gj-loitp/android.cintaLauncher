@@ -12,11 +12,11 @@ import android.widget.ImageView
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.roy93group.app.C
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.LauncherActivity
-import com.roy93group.launcher.util.FakeLauncherActivity
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -132,31 +132,13 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                         /* cls = */ LauncherActivity::class.java
                     )
                 )
-                chooseLauncher()
+                C.chooseLauncher(requireActivity())
             } else {
                 activity.showShortError(getString(R.string.pls_read_policy_first))
             }
         } else {
             activity.showShortError(getString(R.string.pls_grant_permission_first))
         }
-    }
-
-    private fun chooseLauncher() {
-        val componentName = ComponentName(requireContext(), FakeLauncherActivity::class.java)
-        requireContext().packageManager.setComponentEnabledSetting(
-            /* p0 = */ componentName,
-            /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-            /* p2 = */ PackageManager.DONT_KILL_APP
-        )
-        val selector = Intent(Intent.ACTION_MAIN)
-        selector.addCategory(Intent.CATEGORY_HOME)
-        selector.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(selector)
-        requireContext().packageManager.setComponentEnabledSetting(
-            /* p0 = */ componentName,
-            /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_DEFAULT,
-            /* p2 = */ PackageManager.DONT_KILL_APP
-        )
     }
 
     private fun requestStoragePermission() {

@@ -49,4 +49,6 @@
     <string name="app_sorting">App sorting</string>
     <string name="get_more_themes">Get more themes</string>
     <string name="read_policy">By clicking here, I state that I have read and understood the terms and conditions.</string>
+    <string name="choose_launcher">Choose launcher</string>
+    <string name="default_home_app">Default home app</string>
 </resources>

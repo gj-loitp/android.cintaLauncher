@@ -1,9 +1,11 @@
 package com.roy93group.app
 
 import android.app.Activity
+import android.content.ComponentName
 import android.content.Context
 import android.content.Context.VIBRATOR_SERVICE
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
@@ -20,6 +22,7 @@ import android.util.StateSet
 import com.loitpcore.core.utilities.LAppResource
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.launcher.R
+import com.roy93group.launcher.util.FakeLauncherActivity
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 
@@ -144,5 +147,23 @@ object C {
             setColor(color)
             setStroke(1, 0x88000000.toInt())
         }
+    }
+
+    fun chooseLauncher(activity: Activity) {
+        val componentName = ComponentName(activity, FakeLauncherActivity::class.java)
+        activity.packageManager.setComponentEnabledSetting(
+            /* p0 = */ componentName,
+            /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+            /* p2 = */ PackageManager.DONT_KILL_APP
+        )
+        val selector = Intent(Intent.ACTION_MAIN)
+        selector.addCategory(Intent.CATEGORY_HOME)
+        selector.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        activity.startActivity(selector)
+        activity.packageManager.setComponentEnabledSetting(
+            /* p0 = */ componentName,
+            /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_DEFAULT,
+            /* p2 = */ PackageManager.DONT_KILL_APP
+        )
     }
 }

@@ -24,11 +24,11 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO add gallery
 //TODO uninstall app
 //TODO app badge
-//TODO chon man hinh chu o screen setting
 //TODO what new dialog
 //TODO fav app
 
 //done
+//chon man hinh chu o screen setting
 //ripple activity intro
 //ic launcher
 //man hinh intro cho accept het cac permission moi cho next

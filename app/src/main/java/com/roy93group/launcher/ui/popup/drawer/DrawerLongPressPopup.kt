@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.loitpcore.core.utilities.LAppResource
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.DoReshapeAdaptiveIconsSetting.doReshapeAdaptiveIcons
 import com.roy93group.launcher.storage.ScrollbarControllerSetting.scrollbarController
@@ -92,6 +93,14 @@ object DrawerLongPressPopup {
         reloadApps: () -> Unit,
     ): List<ListPopupItem> {
         return listOf(
+            ListPopupItem(text = context.getString(R.string.setting), isTitle = true),
+            ListPopupItem(
+                text = context.getString(R.string.choose_launcher),
+                description = context.getString(R.string.default_home_app),
+                icon = ContextCompat.getDrawable(context, R.drawable.ic_home),
+            ) {
+                C.chooseLauncher(launcherActivity)
+            },
             ListPopupItem(
                 text = context.getString(R.string.scrollbar_controller),
                 description = context.resources.getStringArray(R.array.scrollbar_controllers)[settings.scrollbarController],
