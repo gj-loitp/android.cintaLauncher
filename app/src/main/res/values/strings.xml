@@ -42,9 +42,11 @@
     <string name="no_feed_items">Nothing here</string>
     <string name="next">Next</string>
     <string name="pls_grant_permission_first">Please grant these permission first</string>
+    <string name="pls_read_policy_first">Please read the terms and conditions first</string>
     <string name="setting">Setting</string>
     <string name="alphabetic">Alphabetic</string>
     <string name="by_hue">By hue</string>
     <string name="app_sorting">App sorting</string>
     <string name="get_more_themes">Get more themes</string>
+    <string name="read_policy">By clicking here, I state that I have read and understood the terms and conditions.</string>
 </resources>

@@ -14,7 +14,10 @@ import com.roy93group.launcher.ui.LauncherActivity
  * freuss47@gmail.com
  */
 class FrmQuickSettings : FrmWithNext(R.layout.frm_intro_settings) {
-    override fun next(activity: IntroActivity) {
+    override fun next(
+        activity: IntroActivity,
+        isCheckedPolicy: Boolean
+    ) {
         val home = ComponentName(requireContext(), LauncherActivity::class.java)
         requireContext().packageManager.setComponentEnabledSetting(
             /* p0 = */ home,

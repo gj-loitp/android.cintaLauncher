@@ -106,23 +106,36 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
         }
     }
 
-    override fun next(activity: IntroActivity) {
+    override fun next(
+        activity: IntroActivity,
+        isCheckedPolicy: Boolean
+    ) {
         if (isFullPermission()) {
-//            activity.setFragment(FrmQuickSettings())
-            val home = ComponentName(requireContext(), LauncherActivity::class.java)
-            requireContext().packageManager.setComponentEnabledSetting(
-                /* p0 = */ home,
-                /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                /* p2 = */ PackageManager.DONT_KILL_APP
-            )
-            val intro = ComponentName(requireContext(), IntroActivity::class.java.name + "Alias")
-            requireContext().packageManager.setComponentEnabledSetting(
-                /* p0 = */ intro,
-                /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                /* p2 = */ PackageManager.DONT_KILL_APP
-            )
-            startActivity(Intent(requireContext(), LauncherActivity::class.java))
-            chooseLauncher()
+            if (isCheckedPolicy) {
+//                activity.setFragment(FrmQuickSettings())
+                val home = ComponentName(requireContext(), LauncherActivity::class.java)
+                requireContext().packageManager.setComponentEnabledSetting(
+                    /* p0 = */ home,
+                    /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                    /* p2 = */ PackageManager.DONT_KILL_APP
+                )
+                val intro =
+                    ComponentName(requireContext(), IntroActivity::class.java.name + "Alias")
+                requireContext().packageManager.setComponentEnabledSetting(
+                    /* p0 = */ intro,
+                    /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                    /* p2 = */ PackageManager.DONT_KILL_APP
+                )
+                startActivity(
+                    Intent(
+                        /* packageContext = */ requireContext(),
+                        /* cls = */ LauncherActivity::class.java
+                    )
+                )
+                chooseLauncher()
+            } else {
+                activity.showShortError(getString(R.string.pls_read_policy_first))
+            }
         } else {
             activity.showShortError(getString(R.string.pls_grant_permission_first))
         }

@@ -10,7 +10,10 @@ import com.roy93group.launcher.R
  * freuss47@gmail.com
  */
 class FrmSplash : FrmWithNext(R.layout.frm_intro_splash) {
-    override fun next(activity: IntroActivity) {
+    override fun next(
+        activity: IntroActivity,
+        isCheckedPolicy: Boolean
+    ) {
         activity.setFragment(FrmPermissions())
     }
 }

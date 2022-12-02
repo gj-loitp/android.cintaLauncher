@@ -34,6 +34,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //man hinh intro cho accept het cac permission moi cho next
 //keep vi tri cua app drawer
 //thay card view bang material cardview
+//policy in intro screen
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

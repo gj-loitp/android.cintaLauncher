@@ -10,5 +10,8 @@ import androidx.fragment.app.Fragment
  * freuss47@gmail.com
  */
 abstract class FrmWithNext(layout: Int) : Fragment(layout) {
-    abstract fun next(activity: IntroActivity)
+    abstract fun next(
+        activity: IntroActivity,
+        isCheckedPolicy: Boolean
+    )
 }

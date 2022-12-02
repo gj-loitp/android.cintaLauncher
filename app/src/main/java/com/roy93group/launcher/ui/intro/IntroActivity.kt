@@ -3,12 +3,15 @@ package com.roy93group.launcher.ui.intro
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.isVisible
 import com.loitpcore.annotation.IsAutoAnimation
 import com.loitpcore.annotation.IsFullScreen
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
+import com.loitpcore.core.ext.setSafeOnClickListener
+import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import java.util.*
@@ -61,6 +64,8 @@ class IntroActivity : BaseFontActivity() {
     private fun setupViews() {
         val toggle = findViewById<SwitchCompat>(R.id.toggle)
         val btNext = findViewById<AppCompatButton>(R.id.btNext)
+        val tvPolicy = findViewById<AppCompatTextView>(R.id.tvPolicy)
+        tvPolicy.paint?.isUnderlineText = true
 
         toggle.trackDrawable = C.generateTrackDrawable(C.COLOR_PRIMARY_2)
         toggle.thumbDrawable = C.generateThumbDrawable(context = this, color = C.COLOR_PRIMARY)
@@ -68,8 +73,15 @@ class IntroActivity : BaseFontActivity() {
             btNext.isVisible = b
         }
 
-        btNext.setOnClickListener {
-            stack.peek()?.next(this)
+        btNext.setSafeOnClickListener {
+            stack.peek()?.next(
+                activity = this,
+                isCheckedPolicy = toggle.isChecked
+            )
+        }
+
+        tvPolicy.setSafeOnClickListener {
+            LSocialUtil.openBrowserPolicy(this)
         }
     }
 
