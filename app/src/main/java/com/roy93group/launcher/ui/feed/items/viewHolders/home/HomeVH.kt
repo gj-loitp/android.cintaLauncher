@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.loitpcore.core.ext.setSafeOnClickListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.notification.NotificationService
@@ -78,13 +79,18 @@ private var popupY = 0f
 
 @SuppressLint("ClickableViewAccessibility")
 fun bindHomeViewHolder(
-    holder: HomeViewHolder
+    holder: HomeViewHolder,
+    onClickClock: ((Unit) -> Unit)
 ) {
     holder.updateNotificationIcons()
     holder.tvTime.setTextColor(C.COLOR_PRIMARY_2)
     holder.tvDate.setTextColor(C.COLOR_PRIMARY_2)
     holder.tvWeekDay.setTextColor(C.COLOR_PRIMARY_2)
     holder.tvNotificationIconText.setTextColor(C.COLOR_PRIMARY_2)
+
+    holder.tvTime.setSafeOnClickListener {
+        onClickClock.invoke(Unit)
+    }
 
     holder.itemView.setOnTouchListener { _, e ->
         when (e.action and MotionEvent.ACTION_MASK) {
@@ -95,5 +101,5 @@ fun bindHomeViewHolder(
         }
         false
     }
-    //TODO click to launch clock app
+
 }

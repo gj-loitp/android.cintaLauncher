@@ -201,6 +201,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
         return (tickStorage?.isVisible == true
                 && tickContacts?.isVisible == true
                 && tickNotifications?.isVisible == true
-                && tickUsageAccess?.isVisible == true)
+                && tickUsageAccess?.isVisible == true
+                )
     }
 }

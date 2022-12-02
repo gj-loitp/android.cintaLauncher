@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
+import android.provider.AlarmClock
 import com.loitpcore.core.utilities.LAppResource
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.launcher.R
@@ -60,5 +61,14 @@ object C {
                 /* amplitude = */ VibrationEffect.DEFAULT_AMPLITUDE
             )
         )
+    }
+
+    fun launchClockApp(activity: Activity) {
+        try {
+            val i = Intent(AlarmClock.ACTION_SET_ALARM)
+            activity.startActivity(i)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }

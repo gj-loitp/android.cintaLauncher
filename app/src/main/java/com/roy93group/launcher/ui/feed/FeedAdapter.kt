@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.*
 import com.roy93group.launcher.ui.LauncherActivity
@@ -21,7 +22,7 @@ import com.roy93group.launcher.ui.feed.items.viewHolders.suggestions.SuggestedVH
  * freuss47@gmail.com
  */
 class FeedAdapter(
-    val activity: LauncherActivity
+    val launcherActivity: LauncherActivity
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -35,7 +36,7 @@ class FeedAdapter(
         private const val TYPE_EMPTY = 7
     }
 
-    inline val context: Context get() = activity
+    inline val context: Context get() = launcherActivity
 
     private var items: List<FeedItem> = emptyList()
 
@@ -67,7 +68,7 @@ class FeedAdapter(
     ): RecyclerView.ViewHolder {
         return when (viewType) {
             TYPE_HOME -> HomeViewHolder(
-                launcherActivity = activity,
+                launcherActivity = launcherActivity,
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_home, parent, false)
             ).also {
@@ -94,7 +95,7 @@ class FeedAdapter(
                     .inflate(R.layout.view_feed_item_media, parent, false)
             )
             TYPE_SUGGESTED -> SuggestedVH(
-                launcherActivity = activity, LayoutInflater.from(parent.context)
+                launcherActivity = launcherActivity, LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_suggested_apps, parent, false)
             )
             TYPE_EMPTY -> EmptyFeedItemViewHolder(
@@ -110,7 +111,11 @@ class FeedAdapter(
         i: Int
     ) {
         if (i == 0) {
-            return bindHomeViewHolder(holder as HomeViewHolder)
+            return bindHomeViewHolder(
+                holder = holder as HomeViewHolder,
+                onClickClock = {
+                    C.launchClockApp(launcherActivity)
+                })
         }
         if (holder.itemViewType == TYPE_EMPTY) {
             bindEmptyFeedItemViewHolder(holder as EmptyFeedItemViewHolder)
@@ -130,7 +135,7 @@ class FeedAdapter(
             /* right = */
             holder.container.paddingRight,
             /* bottom = */
-            if (i == itemCount - 1) verticalPadding + activity.getFeedBottomMargin() else verticalPadding,
+            if (i == itemCount - 1) verticalPadding + launcherActivity.getFeedBottomMargin() else verticalPadding,
         )
     }
 
