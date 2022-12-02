@@ -57,7 +57,7 @@ object C {
         }
     }
 
-    fun vibrate() {
+    fun vibrate(milliseconds: Long) {
         val vib = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             val vibratorManager =
                 LAppResource.application.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
@@ -69,7 +69,7 @@ object C {
 
         vib.vibrate(
             VibrationEffect.createOneShot(
-                /* milliseconds = */ 10,
+                /* milliseconds = */ milliseconds,
                 /* amplitude = */ VibrationEffect.DEFAULT_AMPLITUDE
             )
         )

@@ -63,7 +63,7 @@ class ScrollbarIconView @JvmOverloads constructor(
                 if (counter > countDetectMoving) {
 
                     if (counter % 10 == 0) {
-                        C.vibrate()
+                        C.vibrate(milliseconds = 10)
                     }
 
                     val d = abs(e.x / e.y)

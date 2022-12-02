@@ -64,7 +64,7 @@ class SwipeLayout(
 
     private val backView = FrameLayout(context).apply {
         addView(closeIcon)
-        clipBounds = Rect(0, 0, 0, 0)
+        clipBounds = Rect(/* left = */ 0, /* top = */ 0, /* right = */ 0, /* bottom = */ 0)
         visibility = GONE
     }
 
@@ -75,7 +75,7 @@ class SwipeLayout(
     }
 
     var isSwipeAble = true
-    var cornerRadiusCompensation = 0f
+    private var cornerRadiusCompensation = 0f
 
     override fun setOnClickListener(l: OnClickListener?) = frontView.setOnClickListener(l)
 
