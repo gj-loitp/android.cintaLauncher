@@ -25,6 +25,8 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO uninstall app
 //TODO app badge
 //TODO chon man hinh chu o screen setting
+//TODO what new dialog
+//TODO fav app
 
 //done
 //ripple activity intro
