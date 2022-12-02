@@ -20,7 +20,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO firebase
 //TODO tich hop he sinh thai app roy93group
 //TODO animation intro
-//TODO policy
+//TODO policy in setting
 //TODO add gallery
 //TODO uninstall app
 //TODO app badge
