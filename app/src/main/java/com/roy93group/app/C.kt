@@ -89,33 +89,39 @@ object C {
         activity.startActivity(Intent(Intent.ACTION_VIEW, calendarUri))
     }
 
-    fun generateTrackDrawable(): Drawable {
+    fun generateTrackDrawable(color: Int): Drawable {
         val out = StateListDrawable()
         out.addState(
             intArrayOf(android.R.attr.state_checked),
-            generateBG(C.COLOR_PRIMARY)
+            generateBG(color)
         )
         out.addState(
             StateSet.WILD_CARD,
-            generateBG(C.COLOR_PRIMARY)
+            generateBG(color)
         )
         return out
     }
 
-    fun generateThumbDrawable(context: Context): Drawable {
+    fun generateThumbDrawable(
+        context: Context,
+        color: Int
+    ): Drawable {
         val out = StateListDrawable()
         out.addState(
             intArrayOf(android.R.attr.state_checked),
-            generateCircle(context, C.COLOR_PRIMARY_2)
+            generateCircle(context = context, color = color)
         )
         out.addState(
             StateSet.WILD_CARD,
-            generateCircle(context, C.COLOR_PRIMARY_2)
+            generateCircle(context = context, color = color)
         )
         return out
     }
 
-    private fun generateCircle(context: Context, color: Int): Drawable {
+    private fun generateCircle(
+        context: Context,
+        color: Int
+    ): Drawable {
         val r = 18.dp.toPixels(context)
         val inset = 4.dp.toPixels(context)
         return LayerDrawable(
