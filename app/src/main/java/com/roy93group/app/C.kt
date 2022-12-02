@@ -65,7 +65,7 @@ object C {
 
     fun launchClockApp(activity: Activity) {
         try {
-            val i = Intent(AlarmClock.ACTION_SET_ALARM)
+            val i = Intent(AlarmClock.ACTION_SHOW_ALARMS)
             activity.startActivity(i)
         } catch (e: Exception) {
             e.printStackTrace()
