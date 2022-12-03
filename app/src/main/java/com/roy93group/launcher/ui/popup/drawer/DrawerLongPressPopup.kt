@@ -12,6 +12,8 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.loitpcore.core.ext.setSafeOnClickListener
 import com.loitpcore.core.utilities.LAppResource
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.app.C
@@ -54,6 +56,7 @@ object DrawerLongPressPopup {
         )
         PopupUtils.setCurrent(window)
 
+        val fabDismiss = content.findViewById<FloatingActionButton>(R.id.fabDismiss)
         val cardView = content.findViewById<CardView>(R.id.card)
         content.findViewById<RecyclerView>(R.id.recyclerView).apply {
             layoutManager = LinearLayoutManager(
@@ -80,6 +83,10 @@ object DrawerLongPressPopup {
                 }
                 update()
             }
+        }
+
+        fabDismiss.setSafeOnClickListener {
+            window.dismiss()
         }
 
         val gravity = Gravity.CENTER

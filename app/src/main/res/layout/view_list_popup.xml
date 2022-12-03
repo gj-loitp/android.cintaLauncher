@@ -23,4 +23,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabDismiss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:backgroundTint="@color/colorPrimary"
+        android:contentDescription="@string/app_name"
+        app:borderWidth="0dp"
+        app:fabCustomSize="@dimen/w_30"
+        app:maxImageSize="@dimen/w_20"
+        app:rippleColor="@color/transparent"
+        app:srcCompat="@drawable/ic_cross"
+        app:tint="@color/colorPrimary2" />
 </com.google.android.material.card.MaterialCardView>
