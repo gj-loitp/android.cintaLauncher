@@ -5,9 +5,9 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/round_medium"
+    app:cardCornerRadius="0dp"
     app:cardElevation="@dimen/w_3"
-    app:cardUseCompatPadding="true"
+    app:cardUseCompatPadding="false"
     app:strokeColor="@color/transparent"
     app:strokeWidth="0dp">
 
@@ -15,7 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/margin_padding_medium"
+        android:paddingTop="@dimen/margin_padding_small"
+        android:paddingEnd="@dimen/margin_padding_medium"
+        android:paddingBottom="@dimen/margin_padding_small">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivIcon"
