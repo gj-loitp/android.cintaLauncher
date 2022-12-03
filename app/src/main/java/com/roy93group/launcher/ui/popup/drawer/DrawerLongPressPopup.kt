@@ -140,7 +140,13 @@ object DrawerLongPressPopup {
                     }
                 )
             },
-            ListPopupItem(text = context.getString(R.string.icons), isTitle = true),
+            ListPopupItem(text = context.getString(R.string.theme), isTitle = true),
+            ListPopupItem(
+                text = context.getString(R.string.wallpaper),
+                icon = ContextCompat.getDrawable(context, R.drawable.baseline_wallpaper_black_48),
+            ) {
+                C.launchWallpaper(launcherActivity)
+            },
             ListPopupItem(
                 text = context.getString(R.string.icon_packs),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_shapes),

@@ -52,4 +52,6 @@
     <string name="choose_launcher">Choose launcher</string>
     <string name="default_home_app">Default home app</string>
     <string name="other">Other</string>
+    <string name="theme">Theme</string>
+    <string name="wallpaper">Wallpaper</string>
 </resources>

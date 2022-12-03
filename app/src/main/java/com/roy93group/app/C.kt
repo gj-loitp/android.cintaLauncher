@@ -19,6 +19,9 @@ import android.os.VibratorManager
 import android.provider.AlarmClock
 import android.provider.CalendarContract
 import android.util.StateSet
+import com.loitpcore.core.common.Constants
+import com.loitpcore.core.helper.gallery.GalleryCoreSplashActivity
+import com.loitpcore.core.utilities.LActivityUtil
 import com.loitpcore.core.utilities.LAppResource
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.launcher.R
@@ -165,5 +168,18 @@ object C {
             /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_DEFAULT,
             /* p2 = */ PackageManager.DONT_KILL_APP
         )
+    }
+
+    fun launchWallpaper(activity: Activity) {
+        val intent = Intent(activity, GalleryCoreSplashActivity::class.java)
+        intent.putExtra(Constants.BKG_SPLASH_SCREEN, Constants.URL_IMG_11)
+        // neu muon remove albumn nao thi cu pass id cua albumn do
+        val removeAlbumFlickrList = ArrayList<String>()
+        removeAlbumFlickrList.add(Constants.FLICKR_ID_STICKER)
+        intent.putStringArrayListExtra(
+            Constants.KEY_REMOVE_ALBUM_FLICKR_LIST,
+            removeAlbumFlickrList
+        )
+        activity.startActivity(intent)
     }
 }
