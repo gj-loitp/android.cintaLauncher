@@ -27,16 +27,4 @@ fun bindPinnedViewHolder(
         SuggestionsManager.onItemOpened(context = it.context, item = item)
         item.open(context = it.context.applicationContext, view = it)
     }
-//    holder.itemView.setOnLongClickListener {
-//        val backgroundColor = ColorTheme.tintWithColor(Color.RED, item.getColor())
-//        ItemLongPress.onItemLongPress(
-//            view = it,
-//            backgroundColor = backgroundColor,
-//            textColor = ColorTheme.titleColorForBG(backgroundColor),
-//            item = item,
-//            navbarHeight = navbarHeight,
-//        )
-//        onDragStart(it)
-//        true
-//    }
 }

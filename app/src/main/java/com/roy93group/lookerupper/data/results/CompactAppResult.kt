@@ -24,14 +24,6 @@ class CompactAppResult(
     override var relevance = Relevance(0f)
 
     override val onLongPress = { _: View, _: Activity ->
-//        val backgroundColor = ColorTheme.tintWithColor(Color.RED, getColor())
-//        ItemLongPress.onItemLongPress(
-//            view = v,
-//            backgroundColor = backgroundColor,
-//            textColor = ColorTheme.titleColorForBG(background = backgroundColor),
-//            item = app,
-//            navbarHeight = activity.getNavigationBarHeight(),
-//        )
         true
     }
 
