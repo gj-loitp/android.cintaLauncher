@@ -12,6 +12,7 @@ import com.loitpcore.core.utilities.LUIUtil
  * freuss47@gmail.com
  */
 
+//TODO google drive
 //TODO lam man hinh choose fav color first intro
 //TODO thay cac late in
 //TODO sort app drawer theo tan suat
