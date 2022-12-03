@@ -88,10 +88,10 @@ class AppDrawer(
         ItemLongPress.currentPopup?.dismiss()
         val sbh = v.context.getStatusBarHeight()
         rvApp.setPadding(
-            rvApp.paddingLeft,
-            sbh,
-            rvApp.paddingRight,
-            activity.bottomBar.cvSearchBarContainer.measuredHeight + activity.bottomBar.cvSearchBarContainer.marginBottom + activity.bottomBar.cvSearchBarContainer.marginTop
+            /* left = */ rvApp.paddingLeft,
+            /* top = */ sbh,
+            /* right = */ rvApp.paddingRight,
+            /* bottom = */ activity.bottomBar.cvSearchBarContainer.measuredHeight + activity.bottomBar.cvSearchBarContainer.marginBottom + activity.bottomBar.cvSearchBarContainer.marginTop
         )
         flAppDrawerContainer.isVisible = true
         activity.rvFeed.stopScroll()
