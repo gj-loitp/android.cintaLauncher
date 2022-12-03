@@ -5,9 +5,9 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingStart="@dimen/margin_padding_medium"
-    android:paddingTop="@dimen/margin_padding_small"
+    android:paddingTop="@dimen/margin_padding_tiny"
     android:paddingEnd="@dimen/margin_padding_medium"
-    android:paddingBottom="@dimen/margin_padding_small"
+    android:paddingBottom="@dimen/margin_padding_tiny"
     tools:background="@color/colorPrimary2">
 
     <androidx.appcompat.widget.AppCompatTextView
