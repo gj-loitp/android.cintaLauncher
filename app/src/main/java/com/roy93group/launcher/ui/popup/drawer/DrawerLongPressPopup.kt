@@ -46,17 +46,15 @@ object DrawerLongPressPopup {
         reloadApps: () -> Unit,
     ) {
         val content = LayoutInflater.from(parent.context).inflate(R.layout.view_list_popup, null)
-        val window =
-            PopupWindow(content, ListPopupWindow.WRAP_CONTENT, ListPopupWindow.WRAP_CONTENT, true)
+        val window = PopupWindow(
+            /* contentView = */ content,
+            /* width = */ListPopupWindow.MATCH_PARENT,
+            /* height = */ListPopupWindow.WRAP_CONTENT,
+            /* focusable = */true
+        )
         PopupUtils.setCurrent(window)
 
-//        content.findViewById<SeeThoughView>(R.id.blurBg).run {
-////            drawable = acrylicBlur?.fullBlur?.let { BitmapDrawable(parent.resources, it) }
-//            alpha = 0.1f
-//        }
-
         val cardView = content.findViewById<CardView>(R.id.card)
-//        cardView.setCardBackgroundColor(Color.RED)
         content.findViewById<RecyclerView>(R.id.recyclerView).apply {
             layoutManager = LinearLayoutManager(
                 /* context = */ context,
