@@ -20,7 +20,6 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO firebase
 //TODO tich hop he sinh thai app roy93group
 //TODO animation intro
-//TODO policy in setting
 //TODO add gallery
 //TODO uninstall app
 //TODO app badge
@@ -35,6 +34,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //keep vi tri cua app drawer
 //thay card view bang material cardview
 //policy in intro screen
+//policy in setting
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

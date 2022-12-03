@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.loitpcore.core.utilities.LAppResource
+import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.DoReshapeAdaptiveIconsSetting.doReshapeAdaptiveIcons
@@ -57,7 +58,11 @@ object DrawerLongPressPopup {
         val cardView = content.findViewById<CardView>(R.id.card)
 //        cardView.setCardBackgroundColor(Color.RED)
         content.findViewById<RecyclerView>(R.id.recyclerView).apply {
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            layoutManager = LinearLayoutManager(
+                /* context = */ context,
+                /* orientation = */RecyclerView.VERTICAL,
+                /* reverseLayout = */false
+            )
             adapter = ListPopupAdapter().apply {
                 fun update() {
                     updateItems(
@@ -149,6 +154,14 @@ object DrawerLongPressPopup {
                     }
                 }
             ),
+            ListPopupItem(text = context.getString(R.string.other), isTitle = true),
+            ListPopupItem(
+                text = context.getString(R.string.policy_en),
+                description = context.getString(R.string.read_policy),
+                icon = ContextCompat.getDrawable(context, R.drawable.baseline_policy_black_48),
+            ) {
+                LSocialUtil.openBrowserPolicy(context)
+            },
         )
     }
 }

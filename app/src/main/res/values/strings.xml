@@ -51,4 +51,5 @@
     <string name="read_policy">By clicking here, I state that I have read and understood the terms and conditions.</string>
     <string name="choose_launcher">Choose launcher</string>
     <string name="default_home_app">Default home app</string>
+    <string name="other">Other</string>
 </resources>

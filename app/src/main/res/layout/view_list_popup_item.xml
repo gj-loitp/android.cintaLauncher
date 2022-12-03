@@ -13,8 +13,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icon"
-        android:layout_width="@dimen/w_50"
-        android:layout_height="@dimen/w_50"
+        android:layout_width="@dimen/w_45"
+        android:layout_height="@dimen/w_45"
+        android:scaleType="fitCenter"
         app:tint="@color/colorPrimary"
         tools:src="@drawable/ic_launcher" />
 
