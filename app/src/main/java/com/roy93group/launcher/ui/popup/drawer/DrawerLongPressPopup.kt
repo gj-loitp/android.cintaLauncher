@@ -173,6 +173,25 @@ object DrawerLongPressPopup {
             ) {
                 LSocialUtil.openBrowserPolicy(context)
             },
+            ListPopupItem(
+                text = context.getString(R.string.rate_app_en),
+                description = context.getString(R.string.rate_5_stars),
+                icon = ContextCompat.getDrawable(context, R.drawable.ic_thumb_up_alt_black_48dp),
+            ) {
+                LSocialUtil.rateApp(launcherActivity)
+            },
+            ListPopupItem(
+                text = context.getString(R.string.more_app_en),
+                icon = ContextCompat.getDrawable(context, R.drawable.ic_card_giftcard_black_48dp),
+            ) {
+                LSocialUtil.moreApp(launcherActivity)
+            },
+            ListPopupItem(
+                text = context.getString(R.string.share_app_en),
+                icon = ContextCompat.getDrawable(context, R.drawable.ic_share_black_48dp),
+            ) {
+                LSocialUtil.shareApp(launcherActivity)
+            },
         )
     }
 }

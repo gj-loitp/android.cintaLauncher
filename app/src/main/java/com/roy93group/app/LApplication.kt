@@ -17,7 +17,6 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO thay cac late in
 //TODO sort app drawer theo tan suat
 //TODO set background to black
-//TODO rate more share app
 //TODO firebase
 //TODO tich hop he sinh thai app roy93group
 //TODO animation intro
@@ -26,6 +25,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO what new dialog
 //TODO fav app
 //TODO lock app
+//TODO gg pay
 
 //done
 //chon man hinh chu o screen setting
@@ -37,6 +37,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //policy in intro screen
 //policy in setting
 //add gallery
+//rate more share app
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
