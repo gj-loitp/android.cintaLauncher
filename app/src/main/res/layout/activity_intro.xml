@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@color/colorPrimary"
-    android:gravity="bottom"
-    android:orientation="vertical">
+    android:background="@color/colorPrimary">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivWallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bkg" />
 
     <FrameLayout
         android:id="@+id/flContainer"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llPolicy" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llPolicy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/btNext"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="@dimen/margin_padding_medium"
@@ -45,6 +51,7 @@
         android:id="@+id/btNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/margin_padding_medium"
         android:layout_marginTop="@dimen/margin_padding_small"
         android:layout_marginEnd="@dimen/margin_padding_medium"
@@ -54,4 +61,4 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_medium"
         android:textStyle="bold" />
-</androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>

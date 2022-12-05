@@ -16,7 +16,6 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO lam man hinh choose fav color first intro
 //TODO thay cac late in
 //TODO sort app drawer theo tan suat
-//TODO set background to black
 //TODO firebase
 //TODO tich hop he sinh thai app roy93group
 //TODO animation intro
@@ -38,6 +37,7 @@ import com.loitpcore.core.utilities.LUIUtil
 //policy in setting
 //add gallery
 //rate more share app
+//set background to black
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

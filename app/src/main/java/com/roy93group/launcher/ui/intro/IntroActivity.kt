@@ -3,6 +3,7 @@ package com.roy93group.launcher.ui.intro
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.isVisible
@@ -12,6 +13,7 @@ import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
 import com.loitpcore.core.ext.setSafeOnClickListener
 import com.loitpcore.core.utilities.LSocialUtil
+import com.loitpcore.core.utilities.LUIUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import java.util.*
@@ -59,6 +61,18 @@ class IntroActivity : BaseFontActivity() {
         }
 
         setupViews()
+        setWallpaper()
+    }
+
+    private fun setWallpaper() {
+        val ivWallpaper = findViewById<AppCompatImageView>(R.id.ivWallpaper)
+        LUIUtil.setWallpaperAndLockScreen(
+            activity = this@IntroActivity,
+            imageView = ivWallpaper,
+            message = "",
+            isSetWallpaper = true,
+            isSetLockScreen = true,
+        )
     }
 
     private fun setupViews() {
