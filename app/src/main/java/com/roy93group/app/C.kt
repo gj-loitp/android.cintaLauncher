@@ -19,6 +19,7 @@ import android.os.VibratorManager
 import android.provider.AlarmClock
 import android.provider.CalendarContract
 import android.util.StateSet
+import android.view.View
 import com.loitpcore.core.common.Constants
 import com.loitpcore.core.helper.gallery.GalleryCoreSplashActivity
 import com.loitpcore.core.utilities.LActivityUtil
@@ -39,7 +40,9 @@ import io.posidon.android.conveniencelib.units.toPixels
  */
 object C {
     val COLOR_PRIMARY = LAppResource.getColor(R.color.colorPrimary)
-    val COLOR_PRIMARY_2 = LAppResource.getColor(R.color.colorPrimary2)
+
+    //    val COLOR_PRIMARY_2 = LAppResource.getColor(R.color.colorPrimary2)
+    val COLOR_PRIMARY_2 = Color.RED
 
     val COLOR_FAST_SCROLL_TEXT = COLOR_PRIMARY
     const val COLOR_FAST_SCROLL_TEXT_HIGHLIGHT = Color.WHITE
@@ -186,5 +189,11 @@ object C {
         )
         activity.startActivity(intent)
         LActivityUtil.tranIn(activity)
-3    }
+    }
+
+    fun setBackground(v: View?) {
+        //TODO swich case fav color
+//        v?.setBackgroundResource(R.drawable.ripple_color_primary_2)
+        v?.setBackgroundResource(R.drawable.ripple_color_red)
+    }
 }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="60dp"
     android:layout_height="@dimen/search_bar_height"
-    android:background="@drawable/ripple"
+    android:background="@drawable/ripple_color_primary_2"
     android:padding="@dimen/margin_padding_small"
     android:tint="@color/white"
     tools:src="@drawable/ic_launcher" />

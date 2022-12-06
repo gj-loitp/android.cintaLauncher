@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
@@ -21,44 +22,52 @@
         android:id="@+id/llPolicy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btNext"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingStart="@dimen/margin_padding_medium"
-        android:paddingTop="@dimen/margin_padding_small"
-        android:paddingEnd="@dimen/margin_padding_medium">
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/toggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvPolicy"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_padding_small"
-            android:layout_weight="1"
-            android:text="@string/read_policy"
-            android:textColor="@color/colorPrimary2"
-            android:textSize="@dimen/txt_medium"
-            android:textStyle="bold" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btNext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="@dimen/margin_padding_medium"
-        android:layout_marginTop="@dimen/margin_padding_small"
-        android:layout_marginEnd="@dimen/margin_padding_medium"
-        android:layout_marginBottom="@dimen/margin_padding_small"
-        android:background="@drawable/ripple"
-        android:text="@string/next"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/txt_medium"
-        android:textStyle="bold" />
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btNext"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/margin_padding_medium"
+            android:paddingTop="@dimen/margin_padding_small"
+            android:paddingEnd="@dimen/margin_padding_medium">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPolicy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding_small"
+                android:layout_weight="1"
+                android:text="@string/read_policy"
+                android:textSize="@dimen/txt_medium"
+                android:textStyle="bold"
+                tools:textColor="@color/colorPrimary2" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_padding_medium"
+            android:layout_marginTop="@dimen/margin_padding_small"
+            android:layout_marginEnd="@dimen/margin_padding_medium"
+            android:layout_marginBottom="@dimen/margin_padding_small"
+            android:text="@string/next"
+            android:textSize="@dimen/txt_medium"
+            android:textStyle="bold"
+            tools:background="@drawable/ripple_color_primary_2"
+            tools:textColor="@color/colorPrimary" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </RelativeLayout>

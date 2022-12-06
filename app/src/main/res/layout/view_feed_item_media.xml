@@ -93,7 +93,7 @@
                 android:id="@+id/buttonPrevious"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@drawable/ripple"
+                android:background="@drawable/ripple_color_primary_2"
                 android:padding="@dimen/margin_padding_small"
                 android:src="@drawable/ic_track_previous"
                 app:tint="@color/colorPrimary" />
@@ -103,7 +103,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="@dimen/margin_padding_small"
-                android:background="@drawable/ripple"
+                android:background="@drawable/ripple_color_primary_2"
                 android:padding="@dimen/margin_padding_small"
                 android:src="@drawable/ic_play"
                 app:tint="@color/colorPrimary" />
@@ -113,7 +113,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="@dimen/margin_padding_small"
-                android:background="@drawable/ripple"
+                android:background="@drawable/ripple_color_primary_2"
                 android:padding="@dimen/margin_padding_small"
                 android:src="@drawable/ic_track_next"
                 app:tint="@color/colorPrimary" />

@@ -30,6 +30,8 @@ import java.util.*
 @IsAutoAnimation(false)
 class IntroActivity : BaseFontActivity() {
 
+    private var ivWallpaper: AppCompatImageView? = null
+
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_intro
     }
@@ -65,35 +67,42 @@ class IntroActivity : BaseFontActivity() {
     }
 
     private fun setWallpaper() {
-        val ivWallpaper = findViewById<AppCompatImageView>(R.id.ivWallpaper)
-        LUIUtil.setWallpaperAndLockScreen(
-            activity = this@IntroActivity,
-            imageView = ivWallpaper,
-            message = "",
-            isSetWallpaper = true,
-            isSetLockScreen = true,
-        )
+
+        ivWallpaper?.let { iv ->
+            LUIUtil.setWallpaperAndLockScreen(
+                activity = this@IntroActivity,
+                imageView = iv,
+                message = "",
+                isSetWallpaper = true,
+                isSetLockScreen = true,
+            )
+        }
     }
 
     private fun setupViews() {
-        val toggle = findViewById<SwitchCompat>(R.id.toggle)
-        val btNext = findViewById<AppCompatButton>(R.id.btNext)
-        val tvPolicy = findViewById<AppCompatTextView>(R.id.tvPolicy)
-        tvPolicy.paint?.isUnderlineText = true
+        val toggle = findViewById<SwitchCompat>(R.id.toggle).apply {
+            trackDrawable = C.generateTrackDrawable(C.COLOR_PRIMARY_2)
+            thumbDrawable = C.generateThumbDrawable(context = context, color = C.COLOR_PRIMARY)
+        }
+        val btNext = findViewById<AppCompatButton>(R.id.btNext).apply {
+            setTextColor(C.COLOR_PRIMARY)
+            C.setBackground(this)
+        }
+        val tvPolicy = findViewById<AppCompatTextView>(R.id.tvPolicy).apply {
+            setTextColor(C.COLOR_PRIMARY_2)
+            paint?.isUnderlineText = true
+        }
+        ivWallpaper = findViewById(R.id.ivWallpaper)
 
-        toggle.trackDrawable = C.generateTrackDrawable(C.COLOR_PRIMARY_2)
-        toggle.thumbDrawable = C.generateThumbDrawable(context = this, color = C.COLOR_PRIMARY)
         toggle.setOnCheckedChangeListener { _, b ->
             btNext.isVisible = b
         }
-
         btNext.setSafeOnClickListener {
             stack.peek()?.next(
                 activity = this,
                 isCheckedPolicy = toggle.isChecked
             )
         }
-
         tvPolicy.setSafeOnClickListener {
             LSocialUtil.openBrowserPolicy(this)
         }
