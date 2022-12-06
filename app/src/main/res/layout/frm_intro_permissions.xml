@@ -13,12 +13,13 @@
         android:padding="@dimen/margin_padding_medium">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPermissions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/permissions"
-            android:textColor="@color/colorPrimary2"
             android:textSize="@dimen/txt_50"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:textColor="@color/colorPrimary2" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

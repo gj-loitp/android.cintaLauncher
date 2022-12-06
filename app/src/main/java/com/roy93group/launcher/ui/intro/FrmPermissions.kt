@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -54,9 +55,12 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
             tickContacts = v.findViewById(R.id.tickContacts)
             tickNotifications = v.findViewById(R.id.tickNotifications)
             tickUsageAccess = v.findViewById(R.id.tickUsageAccess)
+
+            v.findViewById<AppCompatTextView>(R.id.tvPermissions).apply {
+                setTextColor(C.COLOR_PRIMARY_2)
+            }
         }
     }
-
 
     fun updatePermissionStatus() = updatePermissionStatus(requireView())
 
