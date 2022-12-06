@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
@@ -58,6 +59,16 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
 
             v.findViewById<AppCompatTextView>(R.id.tvPermissions).apply {
                 setTextColor(C.COLOR_PRIMARY_2)
+            }
+            v.findViewById<AppCompatTextView>(R.id.tvStorage).apply {
+                setTextColor(C.COLOR_PRIMARY_2)
+            }
+            v.findViewById<AppCompatTextView>(R.id.tvStorageDes).apply {
+                setTextColor(C.COLOR_PRIMARY_2)
+            }
+            v.findViewById<AppCompatButton>(R.id.buttonStorage).apply {
+                setTextColor(C.COLOR_PRIMARY)
+                C.setBackground(this)
             }
         }
     }

@@ -29,31 +29,33 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStorage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/permission_storage"
-                android:textColor="@color/colorPrimary2"
                 android:textSize="@dimen/txt_large"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:textColor="@color/colorPrimary2" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStorageDes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/permission_storage_explanation"
-                android:textColor="@color/colorPrimary2"
-                android:textSize="@dimen/txt_small" />
+                android:textSize="@dimen/txt_small"
+                tools:textColor="@color/colorPrimary2" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonStorage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_padding_small"
-                android:background="@drawable/ripple_color_primary_2"
                 android:paddingHorizontal="@dimen/margin_padding_medium"
                 android:text="@string/grant_permissions"
-                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_medium"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:background="@drawable/ripple_color_primary_2"
+                tools:textColor="@color/colorPrimary" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tickStorage"
