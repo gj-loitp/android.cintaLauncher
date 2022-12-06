@@ -8,10 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
 import androidx.appcompat.widget.ListPopupWindow
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.loitpcore.core.ext.setSafeOnClickListener
 import com.loitpcore.core.utilities.LActivityUtil
@@ -57,8 +57,12 @@ object DrawerLongPressPopup {
         )
         PopupUtils.setCurrent(window)
 
-        val fabDismiss = content.findViewById<FloatingActionButton>(R.id.fabDismiss)
-        val cardView = content.findViewById<CardView>(R.id.card)
+        val fabDismiss = content.findViewById<FloatingActionButton>(R.id.fabDismiss).apply {
+            setColorFilter(C.COLOR_PRIMARY_2)
+        }
+        val cardView = content.findViewById<MaterialCardView>(R.id.card).apply {
+            setCardBackgroundColor(C.COLOR_PRIMARY_2)
+        }
         content.findViewById<RecyclerView>(R.id.recyclerView).apply {
             layoutManager = LinearLayoutManager(
                 /* context = */ context,
