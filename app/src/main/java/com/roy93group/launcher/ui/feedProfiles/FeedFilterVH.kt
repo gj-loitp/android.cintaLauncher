@@ -3,8 +3,9 @@ package com.roy93group.launcher.ui.feedProfiles
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 
 /**
@@ -19,5 +20,7 @@ class FeedFilterVH(
 ) : RecyclerView.ViewHolder(itemView) {
     val text: TextView = itemView.findViewById(R.id.text)
     val icon: ImageView = itemView.findViewById(R.id.icon)
-    val card: CardView = itemView.findViewById(R.id.card)
+    val card: MaterialCardView = itemView.findViewById<MaterialCardView>(R.id.card).apply {
+        setCardBackgroundColor(C.COLOR_PRIMARY_2)
+    }
 }

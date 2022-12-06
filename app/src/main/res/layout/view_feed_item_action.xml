@@ -2,15 +2,16 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llRoot"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/ripple_color_primary_2"
     android:gravity="center"
     android:orientation="horizontal"
     android:paddingStart="@dimen/margin_padding_medium"
     android:paddingTop="@dimen/margin_padding_small"
     android:paddingEnd="@dimen/margin_padding_medium"
-    android:paddingBottom="@dimen/margin_padding_small">
+    android:paddingBottom="@dimen/margin_padding_small"
+    tools:background="@drawable/ripple_color_test">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivActionIcon"
