@@ -8,9 +8,11 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.loitpcore.core.utilities.LActivityUtil
 import com.loitpcore.core.utilities.LScreenUtil
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.pinned.PinnedItemsAdapter
@@ -32,7 +34,9 @@ class BottomBar(val launcherActivity: LauncherActivity) {
     val scrollBar: Scrollbar get() = appDrawerIcon.scrollBar
 
     val cvSearchBarContainer: CardView =
-        launcherActivity.findViewById<CardView>(R.id.cvSearchBarContainer).apply {
+        launcherActivity.findViewById<MaterialCardView>(R.id.cvSearchBarContainer).apply {
+            setCardBackgroundColor(C.COLOR_PRIMARY_2)
+            strokeColor = C.COLOR_PRIMARY
             setOnClickListener {
                 val context = it.context
                 context.startActivity(
