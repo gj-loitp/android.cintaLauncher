@@ -53,20 +53,20 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColor="@color/colorPrimary2"
                 android:textSize="@dimen/txt_large"
                 android:textStyle="bold"
-                tools:text="@string/app_name" />
+                tools:text="@string/app_name"
+                tools:textColor="@color/colorTest" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvLineTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:textColor="@color/colorPrimary2"
                 android:textSize="@dimen/txt_small"
                 android:visibility="gone"
                 tools:text="@string/app_name"
+                tools:textColor="@color/colorTest"
                 tools:visibility="visible" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -74,10 +74,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:textColor="@color/colorPrimary2"
                 android:textSize="@dimen/txt_small"
                 android:visibility="gone"
                 tools:text="@string/app_name"
+                tools:textColor="@color/colorTest"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>

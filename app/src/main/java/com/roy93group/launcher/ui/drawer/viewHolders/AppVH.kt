@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.data.items.LauncherItem
@@ -25,10 +26,17 @@ class AppViewHolder(
     val cardView: CardView
 ) : RecyclerView.ViewHolder(cardView) {
     val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon)
-    val tvIconText: TextView = itemView.findViewById(R.id.tvIconText)
+    val tvIconText: TextView = itemView.findViewById<TextView>(R.id.tvIconText).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
     val ivIconSmall: ImageView = itemView.findViewById(R.id.ivIconSmall)
-    val tvLineTitle: TextView = itemView.findViewById(R.id.tvLineTitle)
-    val tvLineDescription: TextView = itemView.findViewById(R.id.tvLineDescription)
+    val tvLineTitle: TextView = itemView.findViewById<TextView>(R.id.tvLineTitle).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
+    val tvLineDescription: TextView =
+        itemView.findViewById<TextView>(R.id.tvLineDescription).apply {
+            setTextColor(C.COLOR_PRIMARY_2)
+        }
 }
 
 class AppItem(val item: App) : AppDrawerAdapter.DrawerItem {

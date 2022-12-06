@@ -56,15 +56,4 @@ fun bindSectionHeaderViewHolder(
         }
         false
     }
-//    holder.itemView.setOnLongClickListener {
-//        DrawerLongPressPopup.show(
-//            parent = holder.itemView,
-//            touchX = x,
-//            touchY = y,
-//            navbarHeight = launcherActivity.getNavigationBarHeight(),
-//            settings = launcherActivity.settings,
-//            reloadApps = launcherActivity::loadApps
-//        )
-//        true
-//    }
 }
