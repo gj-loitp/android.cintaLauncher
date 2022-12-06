@@ -55,6 +55,7 @@ object C {
                     Uri.parse(url)
                 )
             )
+            LActivityUtil.tranIn(activity)
         } catch (ex: Exception) {
             LSocialUtil.moreApp(activity)
         }
@@ -181,5 +182,5 @@ object C {
             removeAlbumFlickrList
         )
         activity.startActivity(intent)
-    }
+3    }
 }
