@@ -27,7 +27,6 @@ import com.loitpcore.data.ActivityData
 //TODO fav app
 //TODO lock app
 //TODO gg pay
-//TODO remove some permission manifest
 //TODO feat request feat in setting
 
 //done
@@ -42,6 +41,7 @@ import com.loitpcore.data.ActivityData
 //add gallery
 //rate more share app
 //set background to black
+//remove some permission manifest
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
