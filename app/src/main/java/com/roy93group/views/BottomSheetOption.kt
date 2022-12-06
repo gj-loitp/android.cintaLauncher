@@ -14,7 +14,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.TextView
+import androidx.appcompat.widget.LinearLayoutCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 
 class BottomSheetOption(
@@ -27,6 +29,7 @@ class BottomSheetOption(
     private val onConfirm: ((Int) -> Unit)? = null,
     private val onDismiss: ((Unit) -> Unit)? = null
 ) : BottomSheetDialogFragment() {
+    private var llRoot: LinearLayoutCompat? = null
     private var tvTitle: TextView? = null
     private var tvDes: TextView? = null
     private var rb0: RadioButton? = null
@@ -61,10 +64,13 @@ class BottomSheetOption(
     }
 
     private fun setupViews(view: View) {
-        tvTitle = view.findViewById<TextView?>(R.id.tvTitle).apply {
+        llRoot = view.findViewById<LinearLayoutCompat>(R.id.llRoot).apply {
+            setBackgroundColor(C.COLOR_PRIMARY_2)
+        }
+        tvTitle = view.findViewById<TextView>(R.id.tvTitle).apply {
             text = title
         }
-        tvDes = view.findViewById<TextView?>(R.id.tvDes).apply {
+        tvDes = view.findViewById<TextView>(R.id.tvDes).apply {
             text = des
         }
 
