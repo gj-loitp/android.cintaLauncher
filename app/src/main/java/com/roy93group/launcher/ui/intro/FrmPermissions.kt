@@ -82,6 +82,13 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
             v.findViewById<TextView>(R.id.tvContacts).apply {
                 setTextColor(C.COLOR_PRIMARY_2)
             }
+            v.findViewById<TextView>(R.id.tvContactsDes).apply {
+                setTextColor(C.COLOR_PRIMARY_2)
+            }
+            v.findViewById<Button>(R.id.buttonContacts).apply {
+                setTextColor(C.COLOR_PRIMARY)
+                C.setBackground(this)
+            }
         }
     }
 
