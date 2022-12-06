@@ -121,22 +121,17 @@ object DrawerLongPressPopup {
                 description = context.resources.getStringArray(R.array.scrollbar_controllers)[settings.scrollbarController],
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_sorting),
             ) {
-                launcherActivity.showBottomSheetOptionFragment(
+                C.launchSelector(
+                    activity = launcherActivity,
                     isCancelableFragment = true,
-                    isShowIvClose = true,
                     title = LAppResource.getString(R.string.setting),
-                    message = LAppResource.getString(R.string.app_sorting),
-                    textButton1 = LAppResource.getString(R.string.alphabetic),
-                    textButton2 = LAppResource.getString(R.string.by_hue),
-                    onClickButton1 = {
+                    des = LAppResource.getString(R.string.app_sorting),
+                    value0 = LAppResource.getString(R.string.alphabetic),
+                    value1 = LAppResource.getString(R.string.by_hue),
+                    firstIndexCheck = settings.scrollbarController,
+                    onConfirm = { index ->
                         settings.edit(context) {
-                            scrollbarController = 0
-                            reloadScrollbarController()
-                        }
-                    },
-                    onClickButton2 = {
-                        settings.edit(context) {
-                            scrollbarController = 1
+                            scrollbarController = index
                             reloadScrollbarController()
                         }
                     },

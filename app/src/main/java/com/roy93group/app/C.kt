@@ -21,6 +21,7 @@ import android.provider.AlarmClock
 import android.provider.CalendarContract
 import android.util.StateSet
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.loitpcore.core.common.Constants
 import com.loitpcore.core.helper.gallery.GalleryCoreSplashActivity
 import com.loitpcore.core.utilities.LActivityUtil
@@ -28,6 +29,7 @@ import com.loitpcore.core.utilities.LAppResource
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.launcher.R
 import com.roy93group.launcher.util.FakeLauncherActivity
+import com.roy93group.views.BottomSheetOption
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 
@@ -198,7 +200,31 @@ object C {
         v?.setBackgroundResource(R.drawable.ripple_color_red)
     }
 
-    fun setBackgroundTintList(v:View?) {
+    fun setBackgroundTintList(v: View?) {
         v?.backgroundTintList = ColorStateList.valueOf(COLOR_PRIMARY_2)
+    }
+
+    fun launchSelector(
+        activity: AppCompatActivity,
+        isCancelableFragment: Boolean = true,
+        title: String,
+        des: String,
+        value0: String,
+        value1: String,
+        firstIndexCheck: Int,
+        onConfirm: ((Int) -> Unit)? = null,
+        onDismiss: ((Unit) -> Unit)? = null,
+    ) {
+        val fragment = BottomSheetOption(
+            isCancelableFragment = isCancelableFragment,
+            title = title,
+            des = des,
+            value0 = value0,
+            value1 = value1,
+            firstIndexCheck = firstIndexCheck,
+            onConfirm = onConfirm,
+            onDismiss = onDismiss,
+        )
+        fragment.show(activity.supportFragmentManager, fragment.tag)
     }
 }
