@@ -2,7 +2,9 @@ package com.roy93group.app
 
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseApplication
+import com.loitpcore.core.common.Constants
 import com.loitpcore.core.utilities.LUIUtil
+import com.loitpcore.data.ActivityData
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -47,7 +49,7 @@ class LApplication : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
 
-//        ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_SLIDE_LEFT
+        ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_ZOOM
 //        LUIUtil.fontForAll = Constants.FONT_PATH
         LUIUtil.setDarkTheme(true)
     }

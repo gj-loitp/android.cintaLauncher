@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.loitpcore.core.utilities.LActivityUtil
 import com.loitpcore.core.utilities.LScreenUtil
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.LauncherActivity
@@ -40,6 +41,7 @@ class BottomBar(val launcherActivity: LauncherActivity) {
                         SearchActivity::class.java
                     ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 )
+                LActivityUtil.tranIn(context)
             }
             setOnDragListener(::onDrag)
         }
