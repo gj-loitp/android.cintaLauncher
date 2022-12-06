@@ -89,6 +89,28 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                 setTextColor(C.COLOR_PRIMARY)
                 C.setBackground(this)
             }
+
+            v.findViewById<TextView>(R.id.tvNotifications).apply {
+                setTextColor(C.COLOR_PRIMARY_2)
+            }
+            v.findViewById<TextView>(R.id.tvNotificationsDes).apply {
+                setTextColor(C.COLOR_PRIMARY_2)
+            }
+            v.findViewById<Button>(R.id.buttonNotifications).apply {
+                setTextColor(C.COLOR_PRIMARY)
+                C.setBackground(this)
+            }
+
+            v.findViewById<TextView>(R.id.tvUsageAccess).apply {
+                setTextColor(C.COLOR_PRIMARY_2)
+            }
+            v.findViewById<TextView>(R.id.tvUsageAccessDes).apply {
+                setTextColor(C.COLOR_PRIMARY_2)
+            }
+            v.findViewById<Button>(R.id.buttonUsageAccess).apply {
+                setTextColor(C.COLOR_PRIMARY)
+                C.setBackground(this)
+            }
         }
     }
 
