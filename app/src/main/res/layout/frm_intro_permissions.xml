@@ -62,8 +62,8 @@
                 android:layout_width="@dimen/w_50"
                 android:layout_height="@dimen/w_50"
                 android:src="@drawable/ic_tick"
-                android:tint="@color/colorPrimary2"
                 android:visibility="gone"
+                tools:tint="@color/colorPrimary2"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -75,12 +75,13 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvContacts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/permission_contacts"
-                android:textColor="@color/colorPrimary2"
                 android:textSize="@dimen/txt_large"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:textColor="@color/colorPrimary2" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"

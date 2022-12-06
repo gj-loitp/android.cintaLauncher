@@ -8,9 +8,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatTextView
+import android.widget.TextView
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -52,23 +52,35 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
 
     private fun setupViews() {
         view?.let { v ->
-            tickStorage = v.findViewById(R.id.tickStorage)
-            tickContacts = v.findViewById(R.id.tickContacts)
-            tickNotifications = v.findViewById(R.id.tickNotifications)
-            tickUsageAccess = v.findViewById(R.id.tickUsageAccess)
+            tickStorage = v.findViewById<ImageView>(R.id.tickStorage).apply {
+                setColorFilter(C.COLOR_PRIMARY_2)
+            }
+            tickContacts = v.findViewById<ImageView>(R.id.tickContacts).apply {
+                setColorFilter(C.COLOR_PRIMARY_2)
+            }
+            tickNotifications = v.findViewById<ImageView>(R.id.tickNotifications).apply {
+                setColorFilter(C.COLOR_PRIMARY_2)
+            }
+            tickUsageAccess = v.findViewById<ImageView>(R.id.tickUsageAccess).apply {
+                setColorFilter(C.COLOR_PRIMARY_2)
+            }
 
-            v.findViewById<AppCompatTextView>(R.id.tvPermissions).apply {
+            v.findViewById<TextView>(R.id.tvPermissions).apply {
                 setTextColor(C.COLOR_PRIMARY_2)
             }
-            v.findViewById<AppCompatTextView>(R.id.tvStorage).apply {
+            v.findViewById<TextView>(R.id.tvStorage).apply {
                 setTextColor(C.COLOR_PRIMARY_2)
             }
-            v.findViewById<AppCompatTextView>(R.id.tvStorageDes).apply {
+            v.findViewById<TextView>(R.id.tvStorageDes).apply {
                 setTextColor(C.COLOR_PRIMARY_2)
             }
-            v.findViewById<AppCompatButton>(R.id.buttonStorage).apply {
+            v.findViewById<Button>(R.id.buttonStorage).apply {
                 setTextColor(C.COLOR_PRIMARY)
                 C.setBackground(this)
+            }
+
+            v.findViewById<TextView>(R.id.tvContacts).apply {
+                setTextColor(C.COLOR_PRIMARY_2)
             }
         }
     }
