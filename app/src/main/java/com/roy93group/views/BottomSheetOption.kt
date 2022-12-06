@@ -89,12 +89,14 @@ class BottomSheetOption(
 
         rb0?.setOnCheckedChangeListener { _, b ->
             if (b) {
+                C.vibrate(milliseconds = 500)
                 onConfirm?.invoke(0)
                 dismiss()
             }
         }
         rb1?.setOnCheckedChangeListener { _, b ->
             if (b) {
+                C.vibrate(milliseconds = 500)
                 onConfirm?.invoke(1)
                 dismiss()
             }

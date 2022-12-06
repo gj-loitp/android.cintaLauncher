@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.annotation.Keep
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
@@ -19,7 +20,6 @@ import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.conveniencelib.getStatusBarHeight
 import io.posidon.android.launcherutils.IconTheming
 import java.util.*
-
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -37,8 +37,13 @@ class IconPackPickerActivity : SettingsActivity() {
     }
 
     private fun setupViews() {
+        findViewById<AppCompatTextView>(R.id.tvIconPacks).apply {
+            setTextColor(C.COLOR_PRIMARY_2)
+        }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val btGetMoreThemes = findViewById<AppCompatButton>(R.id.btGetMoreThemes)
+        val btGetMoreThemes = findViewById<AppCompatButton>(R.id.btGetMoreThemes).apply {
+            C.setBackground(this)
+        }
 
         val iconPacks = IconTheming.getAvailableIconPacks(packageManager).mapTo(LinkedList()) {
             IconPack(
