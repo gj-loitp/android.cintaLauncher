@@ -56,12 +56,14 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         }
     val cvBackButtonContainer: FloatingActionButton =
         launcherActivity.findViewById<FloatingActionButton>(R.id.fabBack).apply {
+            C.setBackgroundTintList(this)
             this.setOnClickListener {
                 launcherActivity.appDrawer.close()
             }
         }
     val cvSetting: FloatingActionButton =
         launcherActivity.findViewById<FloatingActionButton>(R.id.fabSetting).apply {
+            C.setBackgroundTintList(this)
             this.setOnClickListener {
                 DrawerLongPressPopup.show(
                     launcherActivity = launcherActivity,

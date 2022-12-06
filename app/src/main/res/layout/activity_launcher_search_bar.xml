@@ -13,7 +13,7 @@
     app:cardElevation="@dimen/w_3"
     app:cardUseCompatPadding="false"
     app:strokeWidth="@dimen/w_1"
-    tools:cardBackgroundColor="@color/colorPrimary2"
+    tools:cardBackgroundColor="@color/colorTest"
     tools:strokeColor="@color/colorPrimary">
 
     <androidx.appcompat.widget.AppCompatImageView

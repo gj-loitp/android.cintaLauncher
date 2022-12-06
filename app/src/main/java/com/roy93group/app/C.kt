@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Context.VIBRATOR_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
@@ -195,5 +196,9 @@ object C {
         //TODO swich case fav color
 //        v?.setBackgroundResource(R.drawable.ripple_color_primary_2)
         v?.setBackgroundResource(R.drawable.ripple_color_red)
+    }
+
+    fun setBackgroundTintList(v:View?) {
+        v?.backgroundTintList = ColorStateList.valueOf(COLOR_PRIMARY_2)
     }
 }

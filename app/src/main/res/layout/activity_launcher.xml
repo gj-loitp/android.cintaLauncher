@@ -36,12 +36,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_padding_medium"
             android:layout_marginBottom="@dimen/margin_padding_medium"
-            android:backgroundTint="@color/colorPrimary2"
             android:contentDescription="@string/app_name"
             android:tint="@color/colorPrimary"
             android:visibility="gone"
             app:borderWidth="0dp"
             app:srcCompat="@drawable/ic_settings_black_48dp"
+            tools:backgroundTint="@color/colorTest"
             tools:visibility="visible" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -50,12 +50,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_padding_medium"
             android:layout_marginBottom="@dimen/margin_padding_medium"
-            android:backgroundTint="@color/colorPrimary2"
             android:contentDescription="@string/app_name"
             android:tint="@color/colorPrimary"
             android:visibility="gone"
             app:borderWidth="0dp"
             app:srcCompat="@drawable/ic_cross"
+            tools:backgroundTint="@color/colorTest"
             tools:visibility="visible" />
 
         <include layout="@layout/activity_launcher_search_bar" />
