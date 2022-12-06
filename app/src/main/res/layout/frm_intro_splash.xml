@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
@@ -8,16 +9,18 @@
     android:padding="@dimen/margin_padding_medium">
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivLogo"
         android:layout_width="@dimen/w_100"
         android:layout_height="@dimen/w_100"
         android:src="@drawable/ic_launcher"
-        android:tint="@color/colorPrimary2" />
+        tools:tint="@color/colorPrimary2" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/splash_message"
-        android:textColor="@color/colorPrimary2"
         android:textSize="@dimen/txt_50"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:textColor="@color/colorPrimary2" />
 </androidx.appcompat.widget.LinearLayoutCompat>
