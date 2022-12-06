@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.ContactsContract
 import android.view.View
+import com.loitpcore.core.utilities.LActivityUtil
 
 /**
  * Updated by Loitp on 2022.12.18
@@ -30,6 +31,7 @@ class ContactResult private constructor(
         viewContact.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         viewContact.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
         view.context.startActivity(viewContact)
+        LActivityUtil.tranIn(view.context)
     }
 
     override var relevance = Relevance(0f)

@@ -12,6 +12,7 @@ import com.loitpcore.annotation.IsAutoAnimation
 import com.loitpcore.annotation.IsFullScreen
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
+import com.loitpcore.core.utilities.LActivityUtil
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
 import kotlin.system.exitProcess
@@ -37,6 +38,7 @@ class StackTraceActivity : BaseFontActivity() {
                             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             .putExtra("throwable", throwable)
                     )
+                    LActivityUtil.tranIn(context)
                     Process.killProcess(Process.myPid())
                     exitProcess(0)
                 } catch (e: Throwable) {

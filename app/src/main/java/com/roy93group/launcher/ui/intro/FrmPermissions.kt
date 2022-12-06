@@ -12,6 +12,7 @@ import android.widget.ImageView
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.loitpcore.core.utilities.LActivityUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
@@ -132,6 +133,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                         /* cls = */ LauncherActivity::class.java
                     )
                 )
+                LActivityUtil.tranIn(activity)
                 C.chooseLauncher(requireActivity())
             } else {
                 activity.showShortError(getString(R.string.pls_read_policy_first))
@@ -178,6 +180,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                     Intent.FLAG_ACTIVITY_NEW_TASK
                 )
             )
+            LActivityUtil.tranIn(activity)
         }
     }
 
@@ -187,6 +190,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                 Intent.FLAG_ACTIVITY_NEW_TASK
             )
         )
+        LActivityUtil.tranIn(activity)
     }
 
     private fun isFullPermission(): Boolean {

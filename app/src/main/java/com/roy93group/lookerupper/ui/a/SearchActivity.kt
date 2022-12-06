@@ -14,6 +14,7 @@ import com.loitpcore.annotation.IsAutoAnimation
 import com.loitpcore.annotation.IsFullScreen
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
+import com.loitpcore.core.utilities.LActivityUtil
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.Settings
 import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
@@ -98,6 +99,7 @@ class SearchActivity : BaseFontActivity() {
                     val viewSearch = Intent(Intent.ACTION_WEB_SEARCH)
                     viewSearch.putExtra(SearchManager.QUERY, v.text)
                     v.context.startActivity(viewSearch)
+                    LActivityUtil.tranIn(v.context)
                     true
                 } else false
             }

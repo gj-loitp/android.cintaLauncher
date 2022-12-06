@@ -3,6 +3,7 @@ package com.roy93group.lookerupper.data.results
 import android.content.Intent
 import android.net.Uri
 import android.view.View
+import com.loitpcore.core.utilities.LActivityUtil
 import com.roy93group.lookerupper.data.SearchQuery
 import com.willowtreeapps.fuzzywuzzy.diffutils.FuzzySearch
 import kotlin.math.max
@@ -32,9 +33,11 @@ class InstantAnswerResult(
 
     override fun open(view: View) {
         view.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(sourceUrl)))
+        LActivityUtil.tranIn(view.context)
     }
 
     fun search(view: View) {
         view.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(searchUrl)))
+        LActivityUtil.tranIn(view.context)
     }
 }

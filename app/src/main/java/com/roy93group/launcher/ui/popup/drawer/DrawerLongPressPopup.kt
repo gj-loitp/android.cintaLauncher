@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.loitpcore.core.ext.setSafeOnClickListener
+import com.loitpcore.core.utilities.LActivityUtil
 import com.loitpcore.core.utilities.LAppResource
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.app.C
@@ -152,6 +153,7 @@ object DrawerLongPressPopup {
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_shapes),
             ) {
                 context.startActivity(Intent(context, IconPackPickerActivity::class.java))
+                LActivityUtil.tranIn(context)
             },
             ListPopupItem(
                 text = context.getString(R.string.reshape_adaptive_icons),

@@ -83,6 +83,7 @@ object C {
         try {
             val i = Intent(AlarmClock.ACTION_SHOW_ALARMS)
             activity.startActivity(i)
+            LActivityUtil.tranIn(activity)
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -94,6 +95,7 @@ object C {
             .appendPath("time")
             .build()
         activity.startActivity(Intent(Intent.ACTION_VIEW, calendarUri))
+        LActivityUtil.tranIn(activity)
     }
 
     fun generateTrackDrawable(color: Int): Drawable {
@@ -164,6 +166,7 @@ object C {
         selector.addCategory(Intent.CATEGORY_HOME)
         selector.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         activity.startActivity(selector)
+        LActivityUtil.tranIn(activity)
         activity.packageManager.setComponentEnabledSetting(
             /* p0 = */ componentName,
             /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_DEFAULT,
@@ -182,5 +185,6 @@ object C {
             removeAlbumFlickrList
         )
         activity.startActivity(intent)
+        LActivityUtil.tranIn(activity)
 3    }
 }
