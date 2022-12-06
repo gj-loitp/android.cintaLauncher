@@ -25,6 +25,8 @@ import com.loitpcore.core.utilities.LUIUtil
 //TODO fav app
 //TODO lock app
 //TODO gg pay
+//TODO remove some permission manifest
+//TODO feat request feat in setting
 
 //done
 //chon man hinh chu o screen setting
