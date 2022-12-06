@@ -8,4 +8,5 @@
     <color name="colorAccent">#000000</color>
 
     <color name="colorPrimary2">#8BC34A</color>
+    <color name="colorTest">#FFE600</color>
 </resources>

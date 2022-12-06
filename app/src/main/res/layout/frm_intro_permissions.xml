@@ -19,7 +19,7 @@
             android:text="@string/permissions"
             android:textSize="@dimen/txt_50"
             android:textStyle="bold"
-            tools:textColor="@color/colorPrimary2" />
+            tools:textColor="@color/colorTest" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 android:text="@string/permission_storage"
                 android:textSize="@dimen/txt_large"
                 android:textStyle="bold"
-                tools:textColor="@color/colorPrimary2" />
+                tools:textColor="@color/colorTest" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvStorageDes"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/permission_storage_explanation"
                 android:textSize="@dimen/txt_small"
-                tools:textColor="@color/colorPrimary2" />
+                tools:textColor="@color/colorTest" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonStorage"
@@ -54,7 +54,7 @@
                 android:text="@string/grant_permissions"
                 android:textSize="@dimen/txt_medium"
                 android:textStyle="bold"
-                tools:background="@drawable/ripple_color_primary_2"
+                tools:background="@drawable/ripple_color_test"
                 tools:textColor="@color/colorPrimary" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -63,7 +63,7 @@
                 android:layout_height="@dimen/w_50"
                 android:src="@drawable/ic_tick"
                 android:visibility="gone"
-                tools:tint="@color/colorPrimary2"
+                tools:tint="@color/colorTest"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -81,7 +81,7 @@
                 android:text="@string/permission_contacts"
                 android:textSize="@dimen/txt_large"
                 android:textStyle="bold"
-                tools:textColor="@color/colorPrimary2" />
+                tools:textColor="@color/colorTest" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvContactsDes"
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/permission_contacts_explanation"
                 android:textSize="@dimen/txt_small"
-                tools:textColor="@color/colorPrimary2" />
+                tools:textColor="@color/colorTest" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonContacts"
@@ -100,7 +100,7 @@
                 android:text="@string/grant_permissions"
                 android:textSize="@dimen/txt_medium"
                 android:textStyle="bold"
-                tools:background="@drawable/ripple_color_primary_2"
+                tools:background="@drawable/ripple_color_test"
                 tools:textColor="@color/colorPrimary" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -109,7 +109,7 @@
                 android:layout_height="@dimen/w_50"
                 android:src="@drawable/ic_tick"
                 android:visibility="gone"
-                tools:tint="@color/colorPrimary2"
+                tools:tint="@color/colorTest"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -127,7 +127,7 @@
                 android:text="@string/permission_notifications"
                 android:textSize="@dimen/txt_large"
                 android:textStyle="bold"
-                tools:textColor="@color/colorPrimary2" />
+                tools:textColor="@color/colorTest" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvNotificationsDes"
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/permission_notifications_explanation"
                 android:textSize="@dimen/txt_small"
-                tools:textColor="@color/colorPrimary2" />
+                tools:textColor="@color/colorTest" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonNotifications"
@@ -146,7 +146,7 @@
                 android:text="@string/grant_permissions"
                 android:textSize="@dimen/txt_medium"
                 android:textStyle="bold"
-                tools:background="@drawable/ripple_color_primary_2"
+                tools:background="@drawable/ripple_color_test"
                 tools:textColor="@color/colorPrimary" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -155,7 +155,7 @@
                 android:layout_height="@dimen/w_50"
                 android:src="@drawable/ic_tick"
                 android:visibility="gone"
-                tools:tint="@color/colorPrimary2"
+                tools:tint="@color/colorTest"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -173,7 +173,7 @@
                 android:text="@string/permission_usage_access"
                 android:textSize="@dimen/txt_large"
                 android:textStyle="bold"
-                tools:textColor="@color/colorPrimary2" />
+                tools:textColor="@color/colorTest" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvUsageAccessDes"
@@ -181,7 +181,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/permission_usage_access_explanation"
                 android:textSize="@dimen/txt_small"
-                tools:textColor="@color/colorPrimary2" />
+                tools:textColor="@color/colorTest" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonUsageAccess"
@@ -192,7 +192,7 @@
                 android:text="@string/grant_permissions"
                 android:textSize="@dimen/txt_medium"
                 android:textStyle="bold"
-                tools:background="@drawable/ripple_color_primary_2"
+                tools:background="@drawable/ripple_color_test"
                 tools:textColor="@color/colorPrimary" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -201,7 +201,7 @@
                 android:layout_height="@dimen/w_50"
                 android:src="@drawable/ic_tick"
                 android:visibility="gone"
-                tools:tint="@color/colorPrimary2"
+                tools:tint="@color/colorTest"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -13,7 +13,7 @@
         android:layout_width="@dimen/w_100"
         android:layout_height="@dimen/w_100"
         android:src="@drawable/ic_launcher"
-        tools:tint="@color/colorPrimary2" />
+        tools:tint="@color/colorTest" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv"
@@ -22,5 +22,5 @@
         android:text="@string/splash_message"
         android:textSize="@dimen/txt_50"
         android:textStyle="bold"
-        tools:textColor="@color/colorPrimary2" />
+        tools:textColor="@color/colorTest" />
 </androidx.appcompat.widget.LinearLayoutCompat>
