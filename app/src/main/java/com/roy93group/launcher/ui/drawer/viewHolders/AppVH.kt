@@ -50,8 +50,6 @@ fun bindAppViewHolder(
     item: LauncherItem,
     isFromSuggest: Boolean
 ) {
-//    val backgroundColor = ColorUtils.setAlphaComponent(item.getColor(), 90)
-//    holder.cardView.setCardBackgroundColor(backgroundColor)
     holder.cardView.setCardBackgroundColor(Color.TRANSPARENT)
 
     val banner = (item as? App)?.getBanner()

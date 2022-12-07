@@ -30,7 +30,7 @@ class SuggestedVH(
     val rvRecents: RecyclerView = itemView.findViewById<RecyclerView>(R.id.rvRecents).apply {
         layoutManager = GridLayoutManager(
             /* context = */ itemView.context,
-            /* spanCount = */2,
+            /* spanCount = */1,
             /* orientation = */RecyclerView.VERTICAL,
             /* reverseLayout = */false
         )
