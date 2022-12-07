@@ -7,10 +7,11 @@
     android:orientation="vertical">
 
     <View
+        android:id="@+id/vLine"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_1"
         android:alpha="0.5"
-        android:background="@color/colorPrimary2" />
+        tools:background="@color/colorTest" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecents"

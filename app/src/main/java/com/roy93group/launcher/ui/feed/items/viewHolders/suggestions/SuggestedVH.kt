@@ -3,6 +3,7 @@ package com.roy93group.launcher.ui.feed.items.viewHolders.suggestions
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemSuggestedApps
@@ -23,7 +24,9 @@ class SuggestedVH(
 
     val adapter = SuggestionsAdapter(launcherActivity)
 
-    @Suppress("unused")
+    val vLine: View = itemView.findViewById<View>(R.id.vLine).apply {
+        setBackgroundColor(C.COLOR_PRIMARY_2)
+    }
     val rvRecents: RecyclerView = itemView.findViewById<RecyclerView>(R.id.rvRecents).apply {
         layoutManager = GridLayoutManager(
             /* context = */ itemView.context,
