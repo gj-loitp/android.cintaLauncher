@@ -65,7 +65,7 @@ class BottomSheetOption(
 
     private fun setupViews(view: View) {
         llRoot = view.findViewById<LinearLayoutCompat>(R.id.llRoot).apply {
-            setBackgroundColor(C.COLOR_PRIMARY_2)
+            setBackgroundColor(C.COLOR_0)
         }
         tvTitle = view.findViewById<TextView>(R.id.tvTitle).apply {
             text = title

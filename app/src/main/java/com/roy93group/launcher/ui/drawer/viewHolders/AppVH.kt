@@ -27,15 +27,15 @@ class AppViewHolder(
 ) : RecyclerView.ViewHolder(cardView) {
     val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon)
     val tvIconText: TextView = itemView.findViewById<TextView>(R.id.tvIconText).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
     val ivIconSmall: ImageView = itemView.findViewById(R.id.ivIconSmall)
     val tvLineTitle: TextView = itemView.findViewById<TextView>(R.id.tvLineTitle).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
     val tvLineDescription: TextView =
         itemView.findViewById<TextView>(R.id.tvLineDescription).apply {
-            setTextColor(C.COLOR_PRIMARY_2)
+            setTextColor(C.COLOR_0)
         }
 }
 

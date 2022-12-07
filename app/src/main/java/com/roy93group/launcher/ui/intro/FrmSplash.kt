@@ -1,6 +1,5 @@
 package com.roy93group.launcher.ui.intro
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
@@ -33,18 +32,10 @@ class FrmSplash : FrmWithNext(R.layout.frm_intro_splash) {
         updateUI(view)
 
         view.findViewById<LineColorPicker>(R.id.colorPicker).apply {
-            colors = intArrayOf(
-                Color.RED,
-                Color.GREEN,
-                Color.BLUE,
-                Color.YELLOW,
-                Color.CYAN,
-                Color.MAGENTA,
-            )
-            setSelectedColor(Color.RED)
+            colors = C.colors
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
-                    C.COLOR_PRIMARY_2 = c
+                    C.COLOR_0 = c
                     updateUI(view)
                     if (activity is IntroActivity) {
                         (activity as IntroActivity).updateUI()
@@ -56,13 +47,13 @@ class FrmSplash : FrmWithNext(R.layout.frm_intro_splash) {
 
     private fun updateUI(view: View) {
         view.findViewById<AppCompatImageView>(R.id.ivLogo).apply {
-            setColorFilter(C.COLOR_PRIMARY_2)
+            setColorFilter(C.COLOR_0)
         }
         view.findViewById<AppCompatTextView>(R.id.tv).apply {
-            setTextColor(C.COLOR_PRIMARY_2)
+            setTextColor(C.COLOR_0)
         }
         view.findViewById<AppCompatTextView>(R.id.tvDes).apply {
-            setTextColor(C.COLOR_PRIMARY_2)
+            setTextColor(C.COLOR_0)
         }
     }
 }

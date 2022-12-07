@@ -43,11 +43,45 @@ import io.posidon.android.conveniencelib.units.toPixels
  */
 object C {
     val COLOR_PRIMARY = LAppResource.getColor(R.color.colorPrimary)
-    var COLOR_PRIMARY_2 = Color.RED
+    var COLOR_0 = Color.parseColor("#FF0000")
+    private val COLOR_1 = Color.parseColor("#F0E9D2")
+    private val COLOR_2 = Color.parseColor("#FF9E9E")
+    private val COLOR_3 = Color.parseColor("#F2F7A1")
+    private val COLOR_4 = Color.parseColor("#FFBF00")
+    private val COLOR_5 = Color.parseColor("#E5B8F4")
+    private val COLOR_6 = Color.parseColor("#0002A1")
+    private val COLOR_7 = Color.parseColor("#22A39F")
+    private val COLOR_8 = Color.parseColor("#D23369")
+    private val COLOR_9 = Color.parseColor("#FFE15D")
+    private val COLOR_10 = Color.parseColor("#B3FFAE")
+    private val COLOR_11 = Color.parseColor("#E0144C")
+    private val COLOR_12 = Color.parseColor("#38E54D")
+    private val COLOR_13 = Color.parseColor("#FF74B1")
+    private val COLOR_14 = Color.parseColor("#3D8361")
+    private val COLOR_15 = Color.parseColor("#FFFFFF")
 
     val COLOR_FAST_SCROLL_TEXT = COLOR_PRIMARY
     const val COLOR_FAST_SCROLL_TEXT_HIGHLIGHT = Color.WHITE
-    val COLOR_FAST_SCROLL_BACKGROUND = COLOR_PRIMARY_2
+    val COLOR_FAST_SCROLL_BACKGROUND = COLOR_0
+
+    val colors = intArrayOf(
+        COLOR_0,
+        COLOR_1,
+        COLOR_2,
+        COLOR_3,
+        COLOR_4,
+        COLOR_5,
+        COLOR_6,
+        COLOR_7,
+        COLOR_8,
+        COLOR_9,
+        COLOR_10,
+        COLOR_11,
+        COLOR_12,
+        COLOR_13,
+        COLOR_14,
+        COLOR_15,
+    )
 
     fun searchIconPack(activity: Activity) {
         val url = "market://search?q=icon%20pack&c=apps"
@@ -198,7 +232,7 @@ object C {
     }
 
     fun setBackgroundTintList(v: View?) {
-        v?.backgroundTintList = ColorStateList.valueOf(COLOR_PRIMARY_2)
+        v?.backgroundTintList = ColorStateList.valueOf(COLOR_0)
     }
 
     fun launchSelector(

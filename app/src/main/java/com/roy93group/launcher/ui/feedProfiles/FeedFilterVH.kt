@@ -21,6 +21,6 @@ class FeedFilterVH(
     val text: TextView = itemView.findViewById(R.id.text)
     val icon: ImageView = itemView.findViewById(R.id.icon)
     val card: MaterialCardView = itemView.findViewById<MaterialCardView>(R.id.card).apply {
-        setCardBackgroundColor(C.COLOR_PRIMARY_2)
+        setCardBackgroundColor(C.COLOR_0)
     }
 }

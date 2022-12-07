@@ -15,7 +15,7 @@ import com.roy93group.launcher.R
  */
 class SectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val text: TextView = itemView.findViewById<TextView>(R.id.text).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
 
     fun bind(string: String) {

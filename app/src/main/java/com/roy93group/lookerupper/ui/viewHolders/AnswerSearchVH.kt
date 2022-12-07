@@ -17,13 +17,13 @@ class AnswerSearchVH(
 ) : SearchVH(itemView) {
 
     val card: MaterialCardView = itemView.findViewById<MaterialCardView>(R.id.card).apply {
-        strokeColor = C.COLOR_PRIMARY_2
+        strokeColor = C.COLOR_0
     }
     val title: TextView = card.findViewById<TextView>(R.id.title).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
     val description: TextView = card.findViewById<TextView>(R.id.description).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
 
     private val infoBoxAdapter = InfoBoxAdapter()
@@ -40,7 +40,7 @@ class AnswerSearchVH(
 
     private val cvActionsContainer: MaterialCardView =
         itemView.findViewById<MaterialCardView>(R.id.cvActionsContainer).apply {
-            setCardBackgroundColor(C.COLOR_PRIMARY_2)
+            setCardBackgroundColor(C.COLOR_0)
         }
     private val sourceAction: TextView = cvActionsContainer.findViewById(R.id.source)
     private val searchAction: TextView = cvActionsContainer.findViewById(R.id.search)

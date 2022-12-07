@@ -22,14 +22,14 @@ class HomeViewHolder(
 
     private val llClockContainer = itemView.findViewById<View>(R.id.llClockContainer)
     val tvWeekDay: TextView = llClockContainer.findViewById<TextView>(R.id.tvWeekDay).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
     val tvTime: TextView = llClockContainer.findViewById<TextView>(R.id.tvTime).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
     val llCalendar: LinearLayoutCompat = llClockContainer.findViewById(R.id.llCalendar)
     val tvDate: TextView = llClockContainer.findViewById<TextView>(R.id.tvDate).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
     private val notificationIconsAdapter = NotificationIconsAdapter()
     private val llNotificationIconContainer =
@@ -48,7 +48,7 @@ class HomeViewHolder(
         }
     private val tvNotificationIconText: TextView =
         itemView.findViewById<TextView>(R.id.tvNotificationIconText).apply {
-            setTextColor(C.COLOR_PRIMARY_2)
+            setTextColor(C.COLOR_0)
         }
 
     init {

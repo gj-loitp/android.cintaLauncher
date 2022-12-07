@@ -26,10 +26,10 @@ class CompactSearchVH(
 
     val icon: ImageView = itemView.findViewById(R.id.icon)
     val text: TextView = itemView.findViewById<TextView>(R.id.text).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
     private val subtitle: TextView = itemView.findViewById<TextView>(R.id.subtitle).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
 
     override fun onBind(result: SearchResult) {

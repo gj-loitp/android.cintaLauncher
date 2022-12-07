@@ -25,7 +25,7 @@ class AppSearchVH(
 
     private val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon)
     private val tvIconText: TextView = itemView.findViewById<TextView>(R.id.tvIconText).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
     val card = itemView as CardView
 

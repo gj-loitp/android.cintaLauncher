@@ -31,7 +31,7 @@ import io.posidon.android.conveniencelib.units.toFloatPixels
 open class FeedItemImageVH(itemView: View) : FeedItemVH(itemView) {
     val image: ImageView = itemView.findViewById(R.id.image)
     val card: MaterialCardView = itemView.findViewById<MaterialCardView>(R.id.card).apply {
-        strokeColor = C.COLOR_PRIMARY_2
+        strokeColor = C.COLOR_0
     }
 
     private val requestOptions = RequestOptions()

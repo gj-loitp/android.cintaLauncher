@@ -72,7 +72,7 @@ class SearchActivity : BaseFontActivity() {
 
     private fun setupViews() {
         val cardView = findViewById<MaterialCardView>(R.id.cardView).apply {
-            setCardBackgroundColor(C.COLOR_PRIMARY_2)
+            setCardBackgroundColor(C.COLOR_0)
         }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         adapter = SearchAdapter(activity = this, recyclerView = recyclerView, isOnCard = false)

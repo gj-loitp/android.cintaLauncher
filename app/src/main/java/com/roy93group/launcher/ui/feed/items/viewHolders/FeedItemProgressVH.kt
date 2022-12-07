@@ -26,8 +26,8 @@ class FeedItemProgressVH(itemView: View) : FeedItemVH(itemView) {
             max = item.max
             progress = item.progress
             isIndeterminate = false
-            progressTintList = ColorStateList.valueOf(C.COLOR_PRIMARY_2)
-            progressBackgroundTintList = ColorStateList.valueOf(C.COLOR_PRIMARY_2)
+            progressTintList = ColorStateList.valueOf(C.COLOR_0)
+            progressBackgroundTintList = ColorStateList.valueOf(C.COLOR_0)
         }
     }
 }

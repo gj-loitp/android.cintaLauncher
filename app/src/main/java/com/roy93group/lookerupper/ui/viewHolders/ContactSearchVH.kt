@@ -24,7 +24,7 @@ class ContactSearchVH(
 
     val icon: ImageView = itemView.findViewById(R.id.icon)
     val text: TextView = itemView.findViewById<TextView>(R.id.text).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
 
     override fun onBind(result: SearchResult) {
@@ -37,7 +37,7 @@ class ContactSearchVH(
                     itemView.context,
                     R.drawable.placeholder_contact
                 )?.apply {
-                    setTint(C.COLOR_PRIMARY_2)
+                    setTint(C.COLOR_0)
                 })
             .apply(RequestOptions.circleCropTransform())
             .into(icon)

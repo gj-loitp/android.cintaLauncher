@@ -131,7 +131,7 @@ class IntroActivity : BaseFontActivity() {
 
     fun updateUI() {
         toggle?.apply {
-            trackDrawable = C.generateTrackDrawable(C.COLOR_PRIMARY_2)
+            trackDrawable = C.generateTrackDrawable(C.COLOR_0)
             thumbDrawable = C.generateThumbDrawable(context = context, color = C.COLOR_PRIMARY)
         }
         btNext?.apply {
@@ -139,7 +139,7 @@ class IntroActivity : BaseFontActivity() {
             C.setBackground(this)
         }
         tvPolicy?.apply {
-            setTextColor(C.COLOR_PRIMARY_2)
+            setTextColor(C.COLOR_0)
             paint?.isUnderlineText = true
         }
     }

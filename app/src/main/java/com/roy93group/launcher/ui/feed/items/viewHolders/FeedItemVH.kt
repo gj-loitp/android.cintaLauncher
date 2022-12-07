@@ -32,24 +32,24 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
     private val swipeLayout = this.itemView as SwipeLayout
     val container: View = itemView.findViewById(R.id.container)
     val vLine: View = itemView.findViewById<View>(R.id.vLine).apply {
-        setBackgroundColor(C.COLOR_PRIMARY_2)
+        setBackgroundColor(C.COLOR_0)
     }
     val source: TextView = itemView.findViewById<TextView>(R.id.source).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
     private val tvTime: TextView = itemView.findViewById<TextView>(R.id.tvTime).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
     val title: TextView = itemView.findViewById<TextView>(R.id.title).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
     val description: TextView = itemView.findViewById<TextView>(R.id.description).apply {
-        setTextColor(C.COLOR_PRIMARY_2)
+        setTextColor(C.COLOR_0)
     }
     val icon: ImageView = itemView.findViewById(R.id.icon)
     private val cvActionsContainer: MaterialCardView =
         itemView.findViewById<MaterialCardView>(R.id.cvActionsContainer).apply {
-            setCardBackgroundColor(C.COLOR_PRIMARY_2)
+            setCardBackgroundColor(C.COLOR_0)
         }
 
     private val separatorDrawable = GradientDrawable().apply {
@@ -109,7 +109,7 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
         }
         swipeLayout.onSwipeAway = item::onDismiss
         swipeLayout.isSwipeAble = item.isDismissible
-        swipeLayout.setSwipeColor(C.COLOR_PRIMARY_2)
+        swipeLayout.setSwipeColor(C.COLOR_0)
         swipeLayout.setIconColor(C.COLOR_PRIMARY)
     }
 }

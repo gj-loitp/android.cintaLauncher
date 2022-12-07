@@ -38,11 +38,11 @@ fun bindSectionHeaderViewHolder(
     if (isHighlighted) {
 //        val color = ColorUtils.setAlphaComponent(Color.WHITE, 80)
 //        holder.itemView.setBackgroundColor(color)
-        holder.itemView.setBackgroundColor(C.COLOR_PRIMARY_2)
+        holder.itemView.setBackgroundColor(C.COLOR_0)
         holder.text.setTextColor(C.COLOR_PRIMARY)
     } else {
         holder.itemView.setBackgroundColor(LAppResource.getColor(R.color.transparent))
-        holder.text.setTextColor(C.COLOR_PRIMARY_2)
+        holder.text.setTextColor(C.COLOR_0)
     }
 
     var x = 0f
