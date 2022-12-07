@@ -14,7 +14,6 @@ import com.loitpcore.data.ActivityData
  * freuss47@gmail.com
  */
 
-//TODO lam man hinh choose fav color first intro
 //TODO google drive
 //TODO thay cac late in
 //TODO sort app drawer theo tan suat
@@ -43,6 +42,7 @@ import com.loitpcore.data.ActivityData
 //rate more share app
 //set background to black
 //remove some permission manifest
+//lam man hinh choose fav color first intro
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

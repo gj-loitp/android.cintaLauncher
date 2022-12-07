@@ -226,9 +226,27 @@ object C {
     }
 
     fun setBackground(v: View?) {
-        //TODO swich case fav color
-//        v?.setBackgroundResource(R.drawable.ripple_color_primary_2)
-        v?.setBackgroundResource(R.drawable.ripple_color_red)
+        if (v == null) {
+            return
+        }
+        when (COLOR_0) {
+            COLOR_1 -> v.setBackgroundResource(R.drawable.ripple_color_1)
+            COLOR_2 -> v.setBackgroundResource(R.drawable.ripple_color_2)
+            COLOR_3 -> v.setBackgroundResource(R.drawable.ripple_color_3)
+            COLOR_4 -> v.setBackgroundResource(R.drawable.ripple_color_4)
+            COLOR_5 -> v.setBackgroundResource(R.drawable.ripple_color_5)
+            COLOR_6 -> v.setBackgroundResource(R.drawable.ripple_color_6)
+            COLOR_7 -> v.setBackgroundResource(R.drawable.ripple_color_7)
+            COLOR_8 -> v.setBackgroundResource(R.drawable.ripple_color_8)
+            COLOR_9 -> v.setBackgroundResource(R.drawable.ripple_color_9)
+            COLOR_10 -> v.setBackgroundResource(R.drawable.ripple_color_10)
+            COLOR_11 -> v.setBackgroundResource(R.drawable.ripple_color_11)
+            COLOR_12 -> v.setBackgroundResource(R.drawable.ripple_color_12)
+            COLOR_13 -> v.setBackgroundResource(R.drawable.ripple_color_13)
+            COLOR_14 -> v.setBackgroundResource(R.drawable.ripple_color_14)
+            COLOR_15 -> v.setBackgroundResource(R.drawable.ripple_color_15)
+            else -> v.setBackgroundResource(R.drawable.ripple_color_0)
+        }
     }
 
     fun setBackgroundTintList(v: View?) {
