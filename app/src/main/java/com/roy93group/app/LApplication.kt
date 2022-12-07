@@ -28,6 +28,7 @@ import com.loitpcore.data.ActivityData
 //TODO gg pay
 //TODO feat request feat in setting
 //TODO screen search them cai keyword recents
+//TODO o man hinh chinh neu nhan backpress se show applauncher va nguoc lai
 
 //done
 //chon man hinh chu o screen setting
