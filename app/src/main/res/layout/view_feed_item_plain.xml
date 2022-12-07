@@ -9,10 +9,11 @@
     android:paddingEnd="@dimen/margin_padding_medium">
 
     <View
+        android:id="@+id/vLine"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_1"
         android:alpha="0.5"
-        android:background="@color/colorPrimary2" />
+        tools:background="@color/colorTest" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -26,7 +27,7 @@
             android:layout_width="32dp"
             android:layout_height="16dp"
             tools:src="@drawable/ic_launcher"
-            tools:tint="@color/colorPrimary2" />
+            tools:tint="@color/colorTest" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/source"
@@ -36,10 +37,10 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:singleLine="true"
-            android:textColor="@color/colorPrimary2"
             android:textSize="@dimen/txt_large"
             android:textStyle="bold"
-            tools:text="@string/app_name" />
+            tools:text="@string/app_name"
+            tools:textColor="@color/colorTest" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTime"
@@ -47,18 +48,18 @@
             android:layout_height="wrap_content"
             android:alpha="0.8"
             android:maxLines="1"
-            android:textColor="@color/colorPrimary2"
             android:textSize="@dimen/txt_small"
-            tools:text="4m" />
+            tools:text="4m"
+            tools:textColor="@color/colorTest" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary2"
         android:textSize="@dimen/txt_medium"
-        tools:text="@string/app_name" />
+        tools:text="@string/app_name"
+        tools:textColor="@color/colorTest" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/description"
@@ -67,9 +68,9 @@
         android:alpha="0.7"
         android:ellipsize="end"
         android:maxLines="10"
-        android:textColor="@color/colorPrimary2"
         android:textSize="@dimen/txt_small"
-        tools:text="@string/large_dummy_text" />
+        tools:text="@string/large_dummy_text"
+        tools:textColor="@color/colorTest" />
 
     <include layout="@layout/view_feed_item_actions" />
 </androidx.appcompat.widget.LinearLayoutCompat>

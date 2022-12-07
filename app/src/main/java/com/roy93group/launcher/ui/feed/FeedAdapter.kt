@@ -78,6 +78,10 @@ class FeedAdapter(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_plain, parent, false)
             )
+
+
+
+
             TYPE_SMALL -> FeedItemSmallVH(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_small, parent, false)

@@ -5,11 +5,11 @@ import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
@@ -31,12 +31,26 @@ import java.time.Instant
 open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
     private val swipeLayout = this.itemView as SwipeLayout
     val container: View = itemView.findViewById(R.id.container)
-    val source: TextView = itemView.findViewById(R.id.source)
-    private val tvTime: TextView = itemView.findViewById(R.id.tvTime)
-    val title: TextView = itemView.findViewById(R.id.title)
-    val description: TextView = itemView.findViewById(R.id.description)
+    val vLine: View = itemView.findViewById<View>(R.id.vLine).apply {
+        setBackgroundColor(C.COLOR_PRIMARY_2)
+    }
+    val source: TextView = itemView.findViewById<TextView>(R.id.source).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
+    private val tvTime: TextView = itemView.findViewById<TextView>(R.id.tvTime).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
+    val title: TextView = itemView.findViewById<TextView>(R.id.title).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
+    val description: TextView = itemView.findViewById<TextView>(R.id.description).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
     val icon: ImageView = itemView.findViewById(R.id.icon)
-    private val cvActionsContainer: CardView = itemView.findViewById(R.id.cvActionsContainer)
+    private val cvActionsContainer: MaterialCardView =
+        itemView.findViewById<MaterialCardView>(R.id.cvActionsContainer).apply {
+            setCardBackgroundColor(C.COLOR_PRIMARY_2)
+        }
 
     private val separatorDrawable = GradientDrawable().apply {
         shape = GradientDrawable.RECTANGLE

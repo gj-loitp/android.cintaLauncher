@@ -18,7 +18,11 @@ abstract class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
     )
 }
 
-inline fun <T : View, R> applyIfNotNull(view: T, value: R, block: (T, R) -> Unit) {
+inline fun <T : View, R> applyIfNotNull(
+    view: T,
+    value: R,
+    block: (T, R) -> Unit
+) {
     if (value == null) {
         view.isVisible = false
     } else {
