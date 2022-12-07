@@ -69,6 +69,7 @@ class BottomSheetColor(
 
         view.findViewById<LineColorPicker>(R.id.colorPicker).apply {
             colors = C.colors
+            setSelectedColor(C.COLOR_0)
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
                     C.vibrate(milliseconds = 10)
