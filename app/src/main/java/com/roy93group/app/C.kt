@@ -43,16 +43,13 @@ import io.posidon.android.conveniencelib.units.toPixels
  */
 object C {
     val COLOR_PRIMARY = LAppResource.getColor(R.color.colorPrimary)
-
-    //    val COLOR_PRIMARY_2 = LAppResource.getColor(R.color.colorPrimary2)
-    val COLOR_PRIMARY_2 = Color.RED
+    var COLOR_PRIMARY_2 = Color.RED
 
     val COLOR_FAST_SCROLL_TEXT = COLOR_PRIMARY
     const val COLOR_FAST_SCROLL_TEXT_HIGHLIGHT = Color.WHITE
     val COLOR_FAST_SCROLL_BACKGROUND = COLOR_PRIMARY_2
 
     fun searchIconPack(activity: Activity) {
-//        val url = "https://play.google.com/store/search?q=icon%20pack&c=apps"
         val url = "market://search?q=icon%20pack&c=apps"
         try {
             activity.startActivity(

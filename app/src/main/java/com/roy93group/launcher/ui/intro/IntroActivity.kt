@@ -2,9 +2,9 @@ package com.roy93group.launcher.ui.intro
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.isVisible
 import com.loitpcore.annotation.IsAutoAnimation
@@ -31,6 +31,9 @@ import java.util.*
 class IntroActivity : BaseFontActivity() {
 
     private var ivWallpaper: AppCompatImageView? = null
+    private var toggle: SwitchCompat? = null
+    private var btNext: AppCompatButton? = null
+    private var tvPolicy: TextView? = null
 
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_intro
@@ -67,7 +70,6 @@ class IntroActivity : BaseFontActivity() {
     }
 
     private fun setWallpaper() {
-
         ivWallpaper?.let { iv ->
             LUIUtil.setWallpaperAndLockScreen(
                 activity = this@IntroActivity,
@@ -80,30 +82,23 @@ class IntroActivity : BaseFontActivity() {
     }
 
     private fun setupViews() {
-        val toggle = findViewById<SwitchCompat>(R.id.toggle).apply {
-            trackDrawable = C.generateTrackDrawable(C.COLOR_PRIMARY_2)
-            thumbDrawable = C.generateThumbDrawable(context = context, color = C.COLOR_PRIMARY)
-        }
-        val btNext = findViewById<AppCompatButton>(R.id.btNext).apply {
-            setTextColor(C.COLOR_PRIMARY)
-            C.setBackground(this)
-        }
-        val tvPolicy = findViewById<AppCompatTextView>(R.id.tvPolicy).apply {
-            setTextColor(C.COLOR_PRIMARY_2)
-            paint?.isUnderlineText = true
-        }
         ivWallpaper = findViewById(R.id.ivWallpaper)
+        toggle = findViewById(R.id.toggle)
+        btNext = findViewById(R.id.btNext)
+        tvPolicy = findViewById(R.id.tvPolicy)
 
-        toggle.setOnCheckedChangeListener { _, b ->
-            btNext.isVisible = b
+        updateUI()
+
+        toggle?.setOnCheckedChangeListener { _, b ->
+            btNext?.isVisible = b
         }
-        btNext.setSafeOnClickListener {
+        btNext?.setSafeOnClickListener {
             stack.peek()?.next(
                 activity = this,
-                isCheckedPolicy = toggle.isChecked
+                isCheckedPolicy = toggle?.isChecked ?: true
             )
         }
-        tvPolicy.setSafeOnClickListener {
+        tvPolicy?.setSafeOnClickListener {
             LSocialUtil.openBrowserPolicy(this)
         }
     }
@@ -131,6 +126,21 @@ class IntroActivity : BaseFontActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 0) {
             (stack.peek() as? FrmPermissions)?.updatePermissionStatus()
+        }
+    }
+
+    fun updateUI() {
+        toggle?.apply {
+            trackDrawable = C.generateTrackDrawable(C.COLOR_PRIMARY_2)
+            thumbDrawable = C.generateThumbDrawable(context = context, color = C.COLOR_PRIMARY)
+        }
+        btNext?.apply {
+            setTextColor(C.COLOR_PRIMARY)
+            C.setBackground(this)
+        }
+        tvPolicy?.apply {
+            setTextColor(C.COLOR_PRIMARY_2)
+            paint?.isUnderlineText = true
         }
     }
 }

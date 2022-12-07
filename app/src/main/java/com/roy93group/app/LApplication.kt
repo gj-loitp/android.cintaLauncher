@@ -14,8 +14,8 @@ import com.loitpcore.data.ActivityData
  * freuss47@gmail.com
  */
 
-//TODO google drive
 //TODO lam man hinh choose fav color first intro
+//TODO google drive
 //TODO thay cac late in
 //TODO sort app drawer theo tan suat
 //TODO firebase
