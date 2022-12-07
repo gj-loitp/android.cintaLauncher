@@ -13,7 +13,7 @@ import com.loitpcore.data.ActivityData
  * +840766040293
  * freuss47@gmail.com
  */
-
+//TODO pick color in setting screen
 //TODO google drive
 //TODO thay cac late in
 //TODO sort app drawer theo tan suat
