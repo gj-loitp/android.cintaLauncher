@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/margin_padding_tiny"
     android:paddingEnd="@dimen/margin_padding_medium"
     android:paddingBottom="@dimen/margin_padding_tiny"
-    tools:background="@color/colorPrimary2">
+    tools:background="@color/colorTest">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text"

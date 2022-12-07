@@ -6,4 +6,4 @@
     android:layout_height="@dimen/w_20"
     android:layout_marginHorizontal="@dimen/margin_padding_small"
     tools:src="@drawable/ic_launcher"
-    tools:tint="@color/colorPrimary2" />
+    tools:tint="@color/colorTest" />

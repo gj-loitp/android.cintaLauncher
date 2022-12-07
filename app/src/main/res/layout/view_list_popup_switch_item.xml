@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/margin_padding_tiny"
     android:paddingEnd="@dimen/margin_padding_medium"
     android:paddingBottom="@dimen/margin_padding_tiny"
-    tools:background="@color/colorPrimary2">
+    tools:background="@color/colorTest">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icon"
@@ -49,5 +49,6 @@
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/toggle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:ignore="TouchTargetSizeCheck" />
 </androidx.appcompat.widget.LinearLayoutCompat>

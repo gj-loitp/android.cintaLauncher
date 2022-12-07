@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_1"
         android:alpha="0.5"
-        tools:background="@color/colorPrimary2" />
+        tools:background="@color/colorTest" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
