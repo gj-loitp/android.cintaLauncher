@@ -142,6 +142,13 @@ object DrawerLongPressPopup {
             },
             ListPopupItem(text = context.getString(R.string.theme), isTitle = true),
             ListPopupItem(
+                text = context.getString(R.string.color),
+                description = context.getString(R.string.pick_your_favorite_color),
+                icon = ContextCompat.getDrawable(context, R.drawable.baseline_palette_black_48),
+            ) {
+
+            },
+            ListPopupItem(
                 text = context.getString(R.string.wallpaper),
                 icon = ContextCompat.getDrawable(context, R.drawable.baseline_wallpaper_black_48),
             ) {

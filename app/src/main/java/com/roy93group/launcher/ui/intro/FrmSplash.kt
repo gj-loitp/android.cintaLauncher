@@ -17,6 +17,7 @@ import com.roy93group.launcher.R
  * freuss47@gmail.com
  */
 class FrmSplash : FrmWithNext(R.layout.frm_intro_splash) {
+
     override fun next(
         activity: IntroActivity,
         isCheckedPolicy: Boolean
@@ -35,6 +36,8 @@ class FrmSplash : FrmWithNext(R.layout.frm_intro_splash) {
             colors = C.colors
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
+                    C.vibrate(milliseconds = 10)
+
                     C.COLOR_0 = c
                     updateUI(view)
                     if (activity is IntroActivity) {
