@@ -282,12 +282,14 @@ object C {
         isCancelableFragment: Boolean = true,
         title: String,
         des: String,
+        warning: String,
         onDismiss: ((Int) -> Unit)? = null,
     ) {
         val fragment = BottomSheetColor(
             isCancelableFragment = isCancelableFragment,
             title = title,
             des = des,
+            warning = warning,
             onDismiss = onDismiss,
         )
         fragment.show(activity.supportFragmentManager, fragment.tag)

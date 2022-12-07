@@ -24,11 +24,13 @@ class BottomSheetColor(
     private val isCancelableFragment: Boolean = true,
     private val title: String,
     private val des: String,
+    private val warning: String,
     private val onDismiss: ((Int) -> Unit)? = null
 ) : BottomSheetDialogFragment() {
     private var llRoot: LinearLayoutCompat? = null
     private var tvTitle: TextView? = null
     private var tvDes: TextView? = null
+    private var tvWarning: TextView? = null
     private var newColor = C.COLOR_0
 
     override fun onCreateView(
@@ -65,7 +67,12 @@ class BottomSheetColor(
         llRoot = view.findViewById(R.id.llRoot)
         tvTitle = view.findViewById(R.id.tvTitle)
         tvDes = view.findViewById(R.id.tvDes)
+        tvWarning = view.findViewById(R.id.tvWarning)
         updateUI()
+
+        tvTitle?.text = title
+        tvDes?.text = des
+        tvWarning?.text = warning
 
         view.findViewById<LineColorPicker>(R.id.colorPicker).apply {
             colors = C.colors
@@ -82,14 +89,6 @@ class BottomSheetColor(
     }
 
     private fun updateUI() {
-        llRoot?.apply {
-            setBackgroundColor(C.COLOR_0)
-        }
-        tvTitle?.apply {
-            text = title
-        }
-        tvDes?.apply {
-            text = des
-        }
+        llRoot?.setBackgroundColor(C.COLOR_0)
     }
 }

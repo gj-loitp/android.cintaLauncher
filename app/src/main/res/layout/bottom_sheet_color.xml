@@ -37,6 +37,15 @@
         android:textStyle="bold"
         tools:text="@string/pick_your_favorite_color" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvWarning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/txt_medium"
+        android:textStyle="bold"
+        tools:text="@string/pick_your_favorite_color" />
+
     <com.loitpcore.picker.shiftColorPicker.LineColorPicker
         android:id="@+id/colorPicker"
         android:layout_width="match_parent"
