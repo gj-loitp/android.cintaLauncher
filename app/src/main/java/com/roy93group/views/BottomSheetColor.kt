@@ -56,7 +56,9 @@ class BottomSheetColor(
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        onDismiss?.invoke(newColor)
+        if (newColor != C.COLOR_0) {
+            onDismiss?.invoke(newColor)
+        }
     }
 
     private fun setupViews(view: View) {
