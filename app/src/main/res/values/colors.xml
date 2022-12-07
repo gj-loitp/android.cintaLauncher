@@ -7,4 +7,21 @@
     <color name="colorPrimaryTrans">#ff000000</color>
     <color name="colorAccent">#000000</color>
     <color name="colorTest">#001499</color>
+
+    <color name="color0">#FF0000</color>
+    <color name="color1">#F0E9D2</color>
+    <color name="color2">#FF9E9E</color>
+    <color name="color3">#F2F7A1</color>
+    <color name="color4">#FFBF00</color>
+    <color name="color5">#E5B8F4</color>
+    <color name="color6">#0002A1</color>
+    <color name="color7">#22A39F</color>
+    <color name="color8">#D23369</color>
+    <color name="color9">#FFE15D</color>
+    <color name="color10">#B3FFAE</color>
+    <color name="color11">#E0144C</color>
+    <color name="color12">#38E54D</color>
+    <color name="color13">#FF74B1</color>
+    <color name="color14">#3D8361</color>
+    <color name="color15">#FFFFFF</color>
 </resources>
