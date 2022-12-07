@@ -21,7 +21,6 @@
     <string name="notifications">Notifications</string>
     <string name="today">Today</string>
     <string name="scrollbar_controller">App sorting</string>
-    <string name="icons">Icons</string>
     <string name="reshape_adaptive_icons">Reshape adaptive icons</string>
     <string name="reshape_adaptive_icons_explanation">Attempts to remove icon backgrounds without messing them up</string>
     <string name="icon_packs">Icon packs</string>
