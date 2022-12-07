@@ -21,10 +21,16 @@ class HomeViewHolder(
 ) : RecyclerView.ViewHolder(itemView) {
 
     private val llClockContainer = itemView.findViewById<View>(R.id.llClockContainer)
-    val tvWeekDay: TextView = llClockContainer.findViewById(R.id.tvWeekDay)
-    val tvTime: TextView = llClockContainer.findViewById(R.id.tvTime)
+    val tvWeekDay: TextView = llClockContainer.findViewById<TextView>(R.id.tvWeekDay).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
+    val tvTime: TextView = llClockContainer.findViewById<TextView>(R.id.tvTime).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
     val llCalendar: LinearLayoutCompat = llClockContainer.findViewById(R.id.llCalendar)
-    val tvDate: TextView = llClockContainer.findViewById(R.id.tvDate)
+    val tvDate: TextView = llClockContainer.findViewById<TextView>(R.id.tvDate).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
     private val notificationIconsAdapter = NotificationIconsAdapter()
     private val llNotificationIconContainer =
         itemView.findViewById<View>(R.id.llNotificationIconContainer)
@@ -40,7 +46,10 @@ class HomeViewHolder(
                 )
             adapter = notificationIconsAdapter
         }
-    val tvNotificationIconText: TextView = itemView.findViewById(R.id.tvNotificationIconText)
+    private val tvNotificationIconText: TextView =
+        itemView.findViewById<TextView>(R.id.tvNotificationIconText).apply {
+            setTextColor(C.COLOR_PRIMARY_2)
+        }
 
     init {
         NotificationService.setOnUpdate(javaClass.name) {
@@ -86,10 +95,6 @@ fun bindHomeViewHolder(
     onClickCalendar: ((Unit) -> Unit)
 ) {
     holder.updateNotificationIcons()
-    holder.tvTime.setTextColor(C.COLOR_PRIMARY_2)
-    holder.tvDate.setTextColor(C.COLOR_PRIMARY_2)
-    holder.tvWeekDay.setTextColor(C.COLOR_PRIMARY_2)
-    holder.tvNotificationIconText.setTextColor(C.COLOR_PRIMARY_2)
 
     holder.tvTime.setSafeOnClickListener {
         onClickClock.invoke(Unit)

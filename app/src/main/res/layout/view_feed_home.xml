@@ -26,10 +26,10 @@
                 android:format12Hour="h:mm"
                 android:format24Hour="H:mm"
                 android:includeFontPadding="false"
-                android:textColor="@color/colorPrimary2"
                 android:textSize="64sp"
                 android:textStyle="bold"
-                tools:text="12:12" />
+                tools:text="12:12"
+                tools:textColor="@color/colorTest" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/llCalendar"
@@ -49,10 +49,10 @@
                     android:format12Hour="cccc"
                     android:format24Hour="cccc"
                     android:includeFontPadding="false"
-                    android:textColor="@color/colorPrimary2"
                     android:textSize="@dimen/txt_larger"
                     android:textStyle="bold"
-                    tools:text="Thu Nam" />
+                    tools:text="Thu Nam"
+                    tools:textColor="@color/colorTest" />
 
                 <TextClock
                     android:id="@+id/tvDate"
@@ -61,10 +61,10 @@
                     android:format12Hour="d MMMM"
                     android:format24Hour="d MMMM"
                     android:includeFontPadding="false"
-                    android:textColor="@color/colorPrimary2"
                     android:textSize="@dimen/txt_large"
                     android:textStyle="bold"
-                    tools:text="1 thang 12" />
+                    tools:text="1 thang 12"
+                    tools:textColor="@color/colorTest" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -81,9 +81,9 @@
                 android:id="@+id/tvNotificationIconText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary2"
                 android:textSize="@dimen/txt_medium"
-                tools:text="77 notifications" />
+                tools:text="77 notifications"
+                tools:textColor="@color/colorTest" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNotificationIconList"
