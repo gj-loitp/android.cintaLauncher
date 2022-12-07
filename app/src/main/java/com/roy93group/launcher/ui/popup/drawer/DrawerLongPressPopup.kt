@@ -150,8 +150,10 @@ object DrawerLongPressPopup {
                     isCancelableFragment = true,
                     title = LAppResource.getString(R.string.color),
                     des = LAppResource.getString(R.string.pick_your_favorite_color),
-                    onDismiss = {
-                        //do nothing
+                    onDismiss = { newColor ->
+                        //TODO popup yes no
+                        C.COLOR_0 = newColor
+                        launcherActivity.recreate()
                     })
             },
             ListPopupItem(

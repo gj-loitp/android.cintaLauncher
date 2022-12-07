@@ -283,7 +283,7 @@ object C {
         isCancelableFragment: Boolean = true,
         title: String,
         des: String,
-        onDismiss: ((Unit) -> Unit)? = null,
+        onDismiss: ((Int) -> Unit)? = null,
     ) {
         val fragment = BottomSheetColor(
             isCancelableFragment = isCancelableFragment,

@@ -24,11 +24,12 @@ class BottomSheetColor(
     private val isCancelableFragment: Boolean = true,
     private val title: String,
     private val des: String,
-    private val onDismiss: ((Unit) -> Unit)? = null
+    private val onDismiss: ((Int) -> Unit)? = null
 ) : BottomSheetDialogFragment() {
     private var llRoot: LinearLayoutCompat? = null
     private var tvTitle: TextView? = null
     private var tvDes: TextView? = null
+    private var newColor = C.COLOR_0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,7 +56,7 @@ class BottomSheetColor(
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        onDismiss?.invoke(Unit)
+        onDismiss?.invoke(newColor)
     }
 
     private fun setupViews(view: View) {
@@ -70,7 +71,7 @@ class BottomSheetColor(
                 override fun onColorChanged(c: Int) {
                     C.vibrate(milliseconds = 10)
 
-                    C.COLOR_0 = c
+                    newColor = c
                     updateUI()
                 }
             })
