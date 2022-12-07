@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.lookerupper.data.results.AppResult
@@ -23,7 +24,9 @@ class AppSearchVH(
 ) : SearchVH(itemView) {
 
     private val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon)
-    private val tvIconText: TextView = itemView.findViewById(R.id.tvIconText)
+    private val tvIconText: TextView = itemView.findViewById<TextView>(R.id.tvIconText).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
     val card = itemView as CardView
 
     override fun onBind(result: SearchResult) {
@@ -35,15 +38,5 @@ class AppSearchVH(
             SuggestionsManager.onItemOpened(context = it.context, item = result.app)
             result.open(it)
         }
-//        itemView.setOnLongClickListener {
-//            ItemLongPress.onItemLongPress(
-//                it,
-//                backgroundColor,
-//                ColorTheme.titleColorForBG(backgroundColor),
-//                result.app,
-//                activity.getNavigationBarHeight(),
-//            )
-//            true
-//        }
     }
 }

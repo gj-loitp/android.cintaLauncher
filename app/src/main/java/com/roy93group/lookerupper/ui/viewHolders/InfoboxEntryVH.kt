@@ -3,6 +3,7 @@ package com.roy93group.lookerupper.ui.viewHolders
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 
 /**
@@ -13,6 +14,10 @@ import com.roy93group.launcher.R
  * freuss47@gmail.com
  */
 class InfoboxEntryVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val label: TextView = itemView.findViewById(R.id.label)
-    val value: TextView = itemView.findViewById(R.id.value)
+    val label: TextView = itemView.findViewById<TextView>(R.id.label).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
+    val value: TextView = itemView.findViewById<TextView>(R.id.value).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
 }

@@ -23,7 +23,9 @@ class ContactSearchVH(
 ) : SearchVH(itemView) {
 
     val icon: ImageView = itemView.findViewById(R.id.icon)
-    val text: TextView = itemView.findViewById(R.id.text)
+    val text: TextView = itemView.findViewById<TextView>(R.id.text).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
 
     override fun onBind(result: SearchResult) {
         result as ContactResult

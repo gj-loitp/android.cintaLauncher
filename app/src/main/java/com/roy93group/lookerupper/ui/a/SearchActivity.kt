@@ -10,11 +10,13 @@ import android.widget.EditText
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.loitpcore.annotation.IsAutoAnimation
 import com.loitpcore.annotation.IsFullScreen
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
 import com.loitpcore.core.utilities.LActivityUtil
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.Settings
 import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
@@ -69,6 +71,9 @@ class SearchActivity : BaseFontActivity() {
     }
 
     private fun setupViews() {
+        val cardView = findViewById<MaterialCardView>(R.id.cardView).apply {
+            setCardBackgroundColor(C.COLOR_PRIMARY_2)
+        }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         adapter = SearchAdapter(activity = this, recyclerView = recyclerView, isOnCard = false)
         recyclerView.run {

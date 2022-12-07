@@ -2,10 +2,11 @@ package com.roy93group.lookerupper.ui.viewHolders
 
 import android.view.View
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.lookerupper.data.results.InstantAnswerResult
 import com.roy93group.lookerupper.data.results.SearchResult
@@ -15,9 +16,15 @@ class AnswerSearchVH(
     itemView: View
 ) : SearchVH(itemView) {
 
-    val card: CardView = itemView.findViewById(R.id.card)
-    val title: TextView = card.findViewById(R.id.title)
-    val description: TextView = card.findViewById(R.id.description)
+    val card: MaterialCardView = itemView.findViewById<MaterialCardView>(R.id.card).apply {
+        strokeColor = C.COLOR_PRIMARY_2
+    }
+    val title: TextView = card.findViewById<TextView>(R.id.title).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
+    val description: TextView = card.findViewById<TextView>(R.id.description).apply {
+        setTextColor(C.COLOR_PRIMARY_2)
+    }
 
     private val infoBoxAdapter = InfoBoxAdapter()
 
@@ -31,7 +38,10 @@ class AnswerSearchVH(
             adapter = infoBoxAdapter
         }
 
-    private val cvActionsContainer: CardView = itemView.findViewById(R.id.cvActionsContainer)
+    private val cvActionsContainer: MaterialCardView =
+        itemView.findViewById<MaterialCardView>(R.id.cvActionsContainer).apply {
+            setCardBackgroundColor(C.COLOR_PRIMARY_2)
+        }
     private val sourceAction: TextView = cvActionsContainer.findViewById(R.id.source)
     private val searchAction: TextView = cvActionsContainer.findViewById(R.id.search)
 
