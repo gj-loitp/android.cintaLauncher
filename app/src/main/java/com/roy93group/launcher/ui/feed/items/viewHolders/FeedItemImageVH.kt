@@ -3,7 +3,6 @@ package com.roy93group.launcher.ui.feed.items.viewHolders
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
-import androidx.cardview.widget.CardView
 import androidx.core.view.updateLayoutParams
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -14,6 +13,8 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.target.ViewTarget
+import com.google.android.material.card.MaterialCardView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemWithBigImage
@@ -29,7 +30,9 @@ import io.posidon.android.conveniencelib.units.toFloatPixels
  */
 open class FeedItemImageVH(itemView: View) : FeedItemVH(itemView) {
     val image: ImageView = itemView.findViewById(R.id.image)
-    val card: CardView = itemView.findViewById(R.id.card)
+    val card: MaterialCardView = itemView.findViewById<MaterialCardView>(R.id.card).apply {
+        strokeColor = C.COLOR_PRIMARY_2
+    }
 
     private val requestOptions = RequestOptions()
         .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -62,7 +65,7 @@ open class FeedItemImageVH(itemView: View) : FeedItemVH(itemView) {
                     height = (height * m).toInt()
                 }
             }
-            target.onResourceReady(resource, null)
+            target.onResourceReady(/* resource = */ resource, /* transition = */ null)
             return true
         }
     }
