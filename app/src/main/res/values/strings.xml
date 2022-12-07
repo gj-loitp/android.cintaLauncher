@@ -7,8 +7,6 @@
     <string name="read_more_at_source">More at %s</string>
     <string name="search_in_duckduckgo">Search on DuckDuckGo</string>
     <string name="done">Done</string>
-    <string name="remove">Remove</string>
-    <string name="example_feed_url">www.example.com/rss</string>
     <string name="now">now</string>
     <plurals name="x_notifications">
         <item quantity="few">%1$d notifications</item>
