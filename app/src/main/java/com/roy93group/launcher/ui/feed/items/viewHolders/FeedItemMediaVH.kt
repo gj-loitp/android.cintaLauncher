@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.core.graphics.applyCanvas
 import androidx.core.graphics.toXfermode
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemWithMedia
@@ -22,9 +23,16 @@ class FeedItemMediaVH(
 ) : FeedItemVH(itemView) {
 
     private val image: ImageView = itemView.findViewById(R.id.image)
-    private val buttonPrevious: ImageView = itemView.findViewById(R.id.buttonPrevious)
-    private val buttonPlay: ImageView = itemView.findViewById(R.id.buttonPlay)
-    private val btNext: ImageView = itemView.findViewById(R.id.btNext)
+    private val buttonPrevious: ImageView =
+        itemView.findViewById<ImageView>(R.id.buttonPrevious).apply {
+            C.setBackground(this)
+        }
+    private val buttonPlay: ImageView = itemView.findViewById<ImageView>(R.id.buttonPlay).apply {
+        C.setBackground(this)
+    }
+    private val btNext: ImageView = itemView.findViewById<ImageView>(R.id.btNext).apply {
+        C.setBackground(this)
+    }
 
     override fun onBind(item: FeedItem) {
         super.onBind(item)
@@ -78,11 +86,15 @@ class FeedItemMediaVH(
             image.setImageBitmap(bitmap)
         }
 
-
         image.setOnClickListener(item::onTap)
         title.setOnClickListener(item::onTap)
         description.setOnClickListener(item::onTap)
-        buttonPlay.setImageResource(if (item.isPlaying()) R.drawable.ic_pause else R.drawable.ic_play)
+        buttonPlay.setImageResource(
+            if (item.isPlaying())
+                R.drawable.ic_pause
+            else
+                R.drawable.ic_play
+        )
 
         buttonPrevious.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)

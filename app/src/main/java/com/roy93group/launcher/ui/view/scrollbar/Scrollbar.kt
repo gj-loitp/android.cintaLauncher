@@ -79,9 +79,13 @@ class Scrollbar : View {
 
     var recycler: RecyclerView? = null
         set(value) {
-            field?.removeOnScrollListener(onScrollListener)
-            field = value
-            value?.addOnScrollListener(onScrollListener)
+            try {
+                field?.removeOnScrollListener(onScrollListener)
+                field = value
+                value?.addOnScrollListener(onScrollListener)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
 
     @Suppress("unused")
