@@ -3,8 +3,8 @@ package com.roy93group.launcher.ui.settings.feedChooser
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.Settings
@@ -22,7 +22,7 @@ class FeedChooserAdapter(
 ) : RecyclerView.Adapter<FeedChooserAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var card: LinearLayout = itemView.findViewById(R.id.card)
+        var card: LinearLayoutCompat = itemView.findViewById(R.id.card)
         var txt: TextView = itemView.findViewById(R.id.txt)
     }
 

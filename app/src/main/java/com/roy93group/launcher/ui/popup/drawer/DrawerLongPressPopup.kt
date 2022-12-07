@@ -26,6 +26,7 @@ import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.popup.PopupUtils
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupAdapter
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
+import com.roy93group.launcher.ui.settings.feedChooser.FeedSourcesChooserActivity
 import com.roy93group.launcher.ui.settings.iconPackPicker.IconPackPickerActivity
 import io.posidon.android.conveniencelib.Device
 
