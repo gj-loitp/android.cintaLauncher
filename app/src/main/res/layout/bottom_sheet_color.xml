@@ -26,7 +26,7 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_50"
         android:textStyle="bold"
-        tools:text="Setting" />
+        tools:text="@string/color" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvDes"
@@ -35,34 +35,6 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_large"
         android:textStyle="bold"
-        tools:text="App sorting" />
+        tools:text="@string/pick_your_favorite_color" />
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_marginTop="@dimen/margin_padding_medium">
-
-        <RadioButton
-            android:id="@+id/rb0"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/colorPrimary"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/txt_medium"
-            android:textStyle="bold"
-            tools:checked="false"
-            tools:text="Alphabetic" />
-
-        <RadioButton
-            android:id="@+id/rb1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/colorPrimary"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/txt_medium"
-            android:textStyle="bold"
-            tools:checked="false"
-            tools:text="By hue" />
-    </RadioGroup>
 </androidx.appcompat.widget.LinearLayoutCompat>

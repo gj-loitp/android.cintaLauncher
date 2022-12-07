@@ -146,7 +146,13 @@ object DrawerLongPressPopup {
                 description = context.getString(R.string.pick_your_favorite_color),
                 icon = ContextCompat.getDrawable(context, R.drawable.baseline_palette_black_48),
             ) {
-
+                C.launchColor(activity = launcherActivity,
+                    isCancelableFragment = true,
+                    title = LAppResource.getString(R.string.color),
+                    des = LAppResource.getString(R.string.pick_your_favorite_color),
+                    onDismiss = {
+                        //do nothing
+                    })
             },
             ListPopupItem(
                 text = context.getString(R.string.wallpaper),

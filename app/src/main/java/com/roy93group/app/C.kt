@@ -29,6 +29,7 @@ import com.loitpcore.core.utilities.LAppResource
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.launcher.R
 import com.roy93group.launcher.util.FakeLauncherActivity
+import com.roy93group.views.BottomSheetColor
 import com.roy93group.views.BottomSheetOption
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
@@ -272,6 +273,22 @@ object C {
             value1 = value1,
             firstIndexCheck = firstIndexCheck,
             onConfirm = onConfirm,
+            onDismiss = onDismiss,
+        )
+        fragment.show(activity.supportFragmentManager, fragment.tag)
+    }
+
+    fun launchColor(
+        activity: AppCompatActivity,
+        isCancelableFragment: Boolean = true,
+        title: String,
+        des: String,
+        onDismiss: ((Unit) -> Unit)? = null,
+    ) {
+        val fragment = BottomSheetColor(
+            isCancelableFragment = isCancelableFragment,
+            title = title,
+            des = des,
             onDismiss = onDismiss,
         )
         fragment.show(activity.supportFragmentManager, fragment.tag)
