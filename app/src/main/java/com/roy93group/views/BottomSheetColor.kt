@@ -15,6 +15,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.loitpcore.picker.shiftColorPicker.LineColorPicker
+import com.loitpcore.picker.shiftColorPicker.OnColorChangedListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 
@@ -57,13 +59,32 @@ class BottomSheetColor(
     }
 
     private fun setupViews(view: View) {
-        llRoot = view.findViewById<LinearLayoutCompat>(R.id.llRoot).apply {
+        llRoot = view.findViewById(R.id.llRoot)
+        tvTitle = view.findViewById(R.id.tvTitle)
+        tvDes = view.findViewById(R.id.tvDes)
+        updateUI()
+
+        view.findViewById<LineColorPicker>(R.id.colorPicker).apply {
+            colors = C.colors
+            setOnColorChangedListener(object : OnColorChangedListener {
+                override fun onColorChanged(c: Int) {
+                    C.vibrate(milliseconds = 10)
+
+                    C.COLOR_0 = c
+                    updateUI()
+                }
+            })
+        }
+    }
+
+    private fun updateUI() {
+        llRoot?.apply {
             setBackgroundColor(C.COLOR_0)
         }
-        tvTitle = view.findViewById<TextView>(R.id.tvTitle).apply {
+        tvTitle?.apply {
             text = title
         }
-        tvDes = view.findViewById<TextView>(R.id.tvDes).apply {
+        tvDes?.apply {
             text = des
         }
     }

@@ -37,4 +37,13 @@
         android:textStyle="bold"
         tools:text="@string/pick_your_favorite_color" />
 
+    <com.loitpcore.picker.shiftColorPicker.LineColorPicker
+        android:id="@+id/colorPicker"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w_55"
+        android:layout_marginTop="@dimen/margin_padding_medium"
+        android:layout_marginBottom="@dimen/margin_padding_medium"
+        android:background="@color/colorPrimary"
+        app:lcpOrientation="horizontal"
+        app:lcpSelectedColorIndex="0" />
 </androidx.appcompat.widget.LinearLayoutCompat>
