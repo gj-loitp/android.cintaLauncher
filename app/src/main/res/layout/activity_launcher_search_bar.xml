@@ -24,12 +24,6 @@
         android:src="@drawable/ic_search"
         app:tint="@color/colorPrimary" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPinned"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/search_bar_height"
-        android:layout_gravity="center_horizontal" />
-
     <com.roy93group.launcher.ui.view.scrollbar.ScrollbarIconView
         android:id="@+id/appDrawerIcon"
         android:layout_width="@dimen/search_bar_height"

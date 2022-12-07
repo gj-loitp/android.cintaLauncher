@@ -214,9 +214,6 @@ class LauncherActivity : BaseFontActivity() {
             bottomBar.appDrawerIcon.reloadController(settings)
             bottomBar.scrollBar.controller.loadSections(apps)
             appDrawer.update(scrollBar = bottomBar.scrollBar, appSections = apps.sections)
-            runOnUiThread {
-                bottomBar.onAppsLoaded()
-            }
         }
     }
 
