@@ -1,7 +1,9 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders
 
+import android.content.res.ColorStateList
 import android.view.View
 import android.widget.ProgressBar
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemWithProgress
@@ -24,8 +26,8 @@ class FeedItemProgressVH(itemView: View) : FeedItemVH(itemView) {
             max = item.max
             progress = item.progress
             isIndeterminate = false
-//            progressTintList = ColorStateList.valueOf(C.COLOR_PRIMARY_2)
-//            progressBackgroundTintList = ColorStateList.valueOf(C.COLOR_PRIMARY_2)
+            progressTintList = ColorStateList.valueOf(C.COLOR_PRIMARY_2)
+            progressBackgroundTintList = ColorStateList.valueOf(C.COLOR_PRIMARY_2)
         }
     }
 }
