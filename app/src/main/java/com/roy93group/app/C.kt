@@ -63,7 +63,6 @@ object C {
 
     val COLOR_FAST_SCROLL_TEXT = COLOR_PRIMARY
     const val COLOR_FAST_SCROLL_TEXT_HIGHLIGHT = Color.WHITE
-    val COLOR_FAST_SCROLL_BACKGROUND = COLOR_0
 
     val colors = intArrayOf(
         COLOR_0,
