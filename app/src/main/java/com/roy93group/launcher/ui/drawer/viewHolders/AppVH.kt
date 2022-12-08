@@ -64,22 +64,32 @@ fun bindAppViewHolder(
     }
 
     holder.tvIconText.text = item.label
-    if (isFromSuggest) {
-        holder.tvIconText.isVisible = true
-        holder.tvLineTitle.isVisible = false
-        holder.tvLineDescription.isVisible = false
-    } else {
-        applyIfNotNull(
-            view = holder.tvLineTitle,
-            value = banner?.title,
-            block = TextView::setText
-        )
-        applyIfNotNull(
-            view = holder.tvLineDescription,
-            value = banner?.text,
-            block = TextView::setText
-        )
-    }
+    applyIfNotNull(
+        view = holder.tvLineTitle,
+        value = banner?.title,
+        block = TextView::setText
+    )
+    applyIfNotNull(
+        view = holder.tvLineDescription,
+        value = banner?.text,
+        block = TextView::setText
+    )
+//    if (isFromSuggest) {
+//        holder.tvIconText.isVisible = true
+//        holder.tvLineTitle.isVisible = false
+//        holder.tvLineDescription.isVisible = false
+//    } else {
+//        applyIfNotNull(
+//            view = holder.tvLineTitle,
+//            value = banner?.title,
+//            block = TextView::setText
+//        )
+//        applyIfNotNull(
+//            view = holder.tvLineDescription,
+//            value = banner?.text,
+//            block = TextView::setText
+//        )
+//    }
 
     holder.itemView.setOnClickListener {
         SuggestionsManager.onItemOpened(context = it.context, item = item)
