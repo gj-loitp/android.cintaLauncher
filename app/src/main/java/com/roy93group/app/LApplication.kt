@@ -16,17 +16,17 @@ import com.loitpcore.data.ActivityData
 
 //TODO google drive
 //TODO thay cac late in
-//TODO sort app drawer theo tan suat
 //TODO firebase
-//TODO tich hop he sinh thai app roy93group
-//TODO animation intro
 //TODO uninstall app
-//TODO app badge
-//TODO what new dialog
 //TODO fav app
 //TODO lock app
-//TODO gg pay
+//TODO app badge
+//TODO sort app drawer theo tan suat
 //TODO screen search them cai keyword recents
+//TODO what new dialog
+//TODO animation intro
+//TODO tich hop he sinh thai app roy93group
+//TODO gg pay
 
 //done
 //chon man hinh chu o screen setting
