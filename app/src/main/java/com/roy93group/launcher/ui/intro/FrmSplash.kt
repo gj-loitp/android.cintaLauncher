@@ -38,7 +38,7 @@ class FrmSplash : FrmWithNext(R.layout.frm_intro_splash) {
                 override fun onColorChanged(c: Int) {
                     C.vibrate(milliseconds = 10)
 
-                    C.COLOR_0 = c
+                    C.updateMainColor(c)
                     updateUI(view)
                     if (activity is IntroActivity) {
                         (activity as IntroActivity).updateUI()

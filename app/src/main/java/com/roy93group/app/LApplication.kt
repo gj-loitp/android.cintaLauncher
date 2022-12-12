@@ -56,16 +56,17 @@ class LApplication : BaseApplication() {
         ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_ZOOM
 //        LUIUtil.fontForAll = Constants.FONT_PATH
         LUIUtil.setDarkTheme(true)
+        C.getMainColor()
     }
 
     override fun onAppInBackground() {
         super.onAppInBackground()
-        logE("onAppInBackground")
+        logD("onAppInBackground")
     }
 
     override fun onAppInForeground() {
         super.onAppInForeground()
-        logE("onAppInForeground")
+        logD("onAppInForeground")
     }
 
 }

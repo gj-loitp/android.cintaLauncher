@@ -26,6 +26,7 @@ import com.loitpcore.core.common.Constants
 import com.loitpcore.core.helper.gallery.GalleryCoreSplashActivity
 import com.loitpcore.core.utilities.LActivityUtil
 import com.loitpcore.core.utilities.LAppResource
+import com.loitpcore.core.utilities.LSharedPrefsUtil
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.launcher.R
 import com.roy93group.launcher.util.FakeLauncherActivity
@@ -43,6 +44,8 @@ import io.posidon.android.conveniencelib.units.toPixels
  * freuss47@gmail.com
  */
 object C {
+    private val KEY_MAIN_COLOR = "KEY_MAIN_COLOR"
+
     val COLOR_PRIMARY = LAppResource.getColor(R.color.colorPrimary)
     var COLOR_0 = LAppResource.getColor(R.color.color0)
     private val COLOR_1 = LAppResource.getColor(R.color.color1)
@@ -293,5 +296,15 @@ object C {
             onDismiss = onDismiss,
         )
         fragment.show(activity.supportFragmentManager, fragment.tag)
+    }
+
+    fun updateMainColor(newColor: Int) {
+        COLOR_0 = newColor
+        LSharedPrefsUtil.instance.putInt(KEY_MAIN_COLOR, COLOR_0)
+    }
+
+    fun getMainColor() {
+        COLOR_0 =
+            LSharedPrefsUtil.instance.getInt(KEY_MAIN_COLOR, LAppResource.getColor(R.color.color0))
     }
 }
