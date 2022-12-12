@@ -19,6 +19,7 @@ import android.os.Vibrator
 import android.os.VibratorManager
 import android.provider.AlarmClock
 import android.provider.CalendarContract
+import android.provider.Settings
 import android.util.StateSet
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,7 @@ import com.loitpcore.core.utilities.LAppResource
 import com.loitpcore.core.utilities.LSharedPrefsUtil
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.launcher.R
+import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.util.FakeLauncherActivity
 import com.roy93group.views.BottomSheetAppOption
 import com.roy93group.views.BottomSheetColor
@@ -311,13 +313,25 @@ object C {
 
     fun launchAppOption(
         activity: AppCompatActivity,
+        item: LauncherItem,
         isCancelableFragment: Boolean = true,
         onDismiss: ((Unit) -> Unit)? = null,
     ) {
         val fragment = BottomSheetAppOption(
+            item = item,
             isCancelableFragment = isCancelableFragment,
             onDismiss = onDismiss,
         )
         fragment.show(activity.supportFragmentManager, fragment.tag)
+    }
+
+    fun launchSystemSetting(
+        context: Context,
+        packageName: String
+    ) {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        intent.data = Uri.parse("package:$packageName")
+        context.startActivity(intent)
+        LActivityUtil.tranIn(context)
     }
 }

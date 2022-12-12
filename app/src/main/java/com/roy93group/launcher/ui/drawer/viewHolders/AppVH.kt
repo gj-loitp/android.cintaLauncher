@@ -102,6 +102,7 @@ fun bindAppViewHolder(
         C.vibrate(500L)
         C.launchAppOption(
             activity = launcherActivity,
+            item = item,
             isCancelableFragment = true,
             onDismiss = {
             }

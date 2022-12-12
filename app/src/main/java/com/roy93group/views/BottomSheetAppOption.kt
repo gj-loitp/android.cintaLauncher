@@ -13,12 +13,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.LinearLayoutCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.loitpcore.core.ext.setSafeOnClickListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
+import com.roy93group.launcher.data.items.App
+import com.roy93group.launcher.data.items.LauncherItem
 
 class BottomSheetAppOption(
+    private val item: LauncherItem,
     private val isCancelableFragment: Boolean = true,
     private val onDismiss: ((Unit) -> Unit)? = null
 ) : BottomSheetDialogFragment() {
@@ -56,6 +61,15 @@ class BottomSheetAppOption(
         view.findViewById<LinearLayoutCompat>(R.id.llRoot).setBackgroundColor(C.COLOR_0)
         tvTitle = view.findViewById(R.id.tvTitle)
 
+        val btAppSetting = view.findViewById<AppCompatButton>(R.id.btAppSetting)
+        val btPlayStore = view.findViewById<AppCompatButton>(R.id.btPlayStore)
+        val btUninstall = view.findViewById<AppCompatButton>(R.id.btUninstall)
+
+        btAppSetting.setSafeOnClickListener {
+            (item as? App)?.packageName?.let { packageName ->
+                C.launchSystemSetting(context = requireContext(), packageName = packageName)
+            }
+        }
     }
 
 }
