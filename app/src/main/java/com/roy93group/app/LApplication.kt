@@ -16,7 +16,6 @@ import com.loitpcore.data.ActivityData
 
 //TODO google drive
 //TODO thay cac late in
-//TODO firebase
 //TODO uninstall app
 //TODO fav app
 //TODO lock app
@@ -46,6 +45,7 @@ import com.loitpcore.data.ActivityData
 //o man hinh chinh neu nhan back press se show app launcher va nguoc lai
 //luu main color o pref
 //feat request feat in setting
+//da thu firebase crashlytics ko su dung chung duoc voi StackTraceActivity#Thread.setDefaultUncaughtExceptionHandler -> ko co log len firebase console
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
