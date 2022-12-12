@@ -27,7 +27,6 @@ import com.loitpcore.data.ActivityData
 //TODO animation intro
 //TODO tich hop he sinh thai app roy93group
 //TODO gg pay
-//TODO test thu install app moi tu chplay xem co show ra ko
 
 //done
 //chon man hinh chu o screen setting
@@ -49,6 +48,7 @@ import com.loitpcore.data.ActivityData
 //feat request feat in setting
 //da thu firebase crashlytics ko su dung chung duoc voi StackTraceActivity#Thread.setDefaultUncaughtExceptionHandler -> ko co log len firebase console
 //test thu uninstall app thi app drawer co refresh hay ko
+//test thu install app moi tu chplay xem co show ra ko
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
