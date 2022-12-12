@@ -28,4 +28,54 @@
         android:textSize="@dimen/txt_50"
         android:textStyle="bold" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btAppSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/margin_padding_small"
+        android:background="@null"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/margin_padding_medium"
+        android:paddingEnd="@dimen/margin_padding_medium"
+        android:text="@string/setting"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/txt_medium"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btPlayStore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/margin_padding_small"
+        android:background="@null"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/margin_padding_medium"
+        android:paddingEnd="@dimen/margin_padding_medium"
+        android:text="@string/play_store"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/txt_medium"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btUninstall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/margin_padding_small"
+        android:background="@null"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/margin_padding_medium"
+        android:paddingEnd="@dimen/margin_padding_medium"
+        android:text="@string/uninstall"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/txt_medium"
+        android:textStyle="bold" />
 </androidx.appcompat.widget.LinearLayoutCompat>
