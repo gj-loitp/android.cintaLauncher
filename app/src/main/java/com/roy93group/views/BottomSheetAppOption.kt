@@ -17,6 +17,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.LinearLayoutCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.loitpcore.core.ext.setSafeOnClickListener
+import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
@@ -68,6 +69,11 @@ class BottomSheetAppOption(
         btAppSetting.setSafeOnClickListener {
             (item as? App)?.packageName?.let { packageName ->
                 C.launchSystemSetting(context = requireContext(), packageName = packageName)
+            }
+        }
+        btPlayStore.setSafeOnClickListener {
+            (item as? App)?.packageName?.let { packageName ->
+                LSocialUtil.rateApp(activity = requireActivity(), packageName = packageName)
             }
         }
     }
