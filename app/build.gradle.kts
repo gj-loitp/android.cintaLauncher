@@ -4,6 +4,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        create("release") {
+            storeFile = file("keystore.jks")
+            storePassword = "04021993"
+            keyAlias = "loi"
+            keyPassword = "04021993"
+        }
+    }
     compileSdk = 33
 
     defaultConfig {
@@ -13,6 +21,8 @@ android {
         versionCode = 20221114
         versionName = "2022.11.14"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig = signingConfigs.getByName("debug")
+        multiDexEnabled = true
     }
 
     buildTypes {
