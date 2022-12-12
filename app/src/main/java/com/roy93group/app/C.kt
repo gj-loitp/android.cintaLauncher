@@ -30,6 +30,7 @@ import com.loitpcore.core.utilities.LSharedPrefsUtil
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.launcher.R
 import com.roy93group.launcher.util.FakeLauncherActivity
+import com.roy93group.views.BottomSheetAppOption
 import com.roy93group.views.BottomSheetColor
 import com.roy93group.views.BottomSheetOption
 import io.posidon.android.conveniencelib.units.dp
@@ -306,5 +307,17 @@ object C {
     fun getMainColor() {
         COLOR_0 =
             LSharedPrefsUtil.instance.getInt(KEY_MAIN_COLOR, LAppResource.getColor(R.color.color0))
+    }
+
+    fun launchAppOption(
+        activity: AppCompatActivity,
+        isCancelableFragment: Boolean = true,
+        onDismiss: ((Unit) -> Unit)? = null,
+    ) {
+        val fragment = BottomSheetAppOption(
+            isCancelableFragment = isCancelableFragment,
+            onDismiss = onDismiss,
+        )
+        fragment.show(activity.supportFragmentManager, fragment.tag)
     }
 }

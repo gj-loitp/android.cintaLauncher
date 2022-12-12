@@ -1,13 +1,13 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.suggestions
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
+import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.drawer.viewHolders.AppViewHolder
 import com.roy93group.launcher.ui.drawer.viewHolders.bindAppViewHolder
 
@@ -19,7 +19,7 @@ import com.roy93group.launcher.ui.drawer.viewHolders.bindAppViewHolder
  * freuss47@gmail.com
  */
 class SuggestionsAdapter(
-    val activity: Activity,
+    val launcherActivity: LauncherActivity,
 ) : RecyclerView.Adapter<AppViewHolder>() {
 
     private var items: List<LauncherItem> = emptyList()
@@ -42,6 +42,7 @@ class SuggestionsAdapter(
     ) {
         val item = items[i]
         bindAppViewHolder(
+            launcherActivity = launcherActivity,
             holder = holder,
             item = item,
             isFromSuggest = true

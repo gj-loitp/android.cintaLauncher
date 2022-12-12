@@ -57,4 +57,5 @@
     <string name="color">Color</string>
     <string name="missing_a_feature">Missing a feature?</string>
     <string name="missing_a_feature_msg">Anything you\'re missing in our product? Drop a message here to let us know!</string>
+    <string name="app_info">App info</string>
 </resources>

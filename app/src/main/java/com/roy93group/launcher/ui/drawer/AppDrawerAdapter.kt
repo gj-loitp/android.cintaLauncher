@@ -66,6 +66,7 @@ class AppDrawerAdapter(
                 launcherActivity = launcherActivity
             )
             APP_ITEM -> bindAppViewHolder(
+                launcherActivity = launcherActivity,
                 holder = holder as AppViewHolder,
                 item = (item as AppItem).item,
                 isFromSuggest = false

@@ -11,6 +11,7 @@ import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
+import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter.Companion.APP_ITEM
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
@@ -46,6 +47,7 @@ class AppItem(val item: App) : AppDrawerAdapter.DrawerItem {
 }
 
 fun bindAppViewHolder(
+    launcherActivity: LauncherActivity,
     holder: AppViewHolder,
     item: LauncherItem,
     isFromSuggest: Boolean
@@ -94,5 +96,16 @@ fun bindAppViewHolder(
     holder.itemView.setOnClickListener {
         SuggestionsManager.onItemOpened(context = it.context, item = item)
         item.open(context = it.context.applicationContext, view = it)
+    }
+
+    holder.itemView.setOnLongClickListener {
+        C.vibrate(500L)
+        C.launchAppOption(
+            activity = launcherActivity,
+            isCancelableFragment = true,
+            onDismiss = {
+            }
+        )
+        return@setOnLongClickListener false
     }
 }
