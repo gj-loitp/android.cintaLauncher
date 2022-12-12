@@ -27,6 +27,7 @@ import com.loitpcore.data.ActivityData
 //TODO animation intro
 //TODO tich hop he sinh thai app roy93group
 //TODO gg pay
+//TODO hide app
 
 //done
 //chon man hinh chu o screen setting
