@@ -13,6 +13,7 @@ import com.loitpcore.annotation.IsFullScreen
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
 import com.loitpcore.core.utilities.LActivityUtil
+import com.roy93group.app.C
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
 import kotlin.system.exitProcess
@@ -60,9 +61,16 @@ class StackTraceActivity : BaseFontActivity() {
 
     private fun setupViews() {
         try {
-            findViewById<TextView>(R.id.title)
-            val tvStackTrace = findViewById<TextView>(R.id.tvStackTrace)
-            val send = findViewById<TextView>(R.id.send)
+            findViewById<TextView>(R.id.title).apply {
+                setTextColor(C.COLOR_0)
+            }
+            val tvStackTrace = findViewById<TextView>(R.id.tvStackTrace).apply {
+                setTextColor(C.COLOR_0)
+            }
+            val send = findViewById<TextView>(R.id.send).apply {
+                setTextColor(C.COLOR_PRIMARY)
+                C.setBackground(this)
+            }
 
             val t = intent.extras!!["throwable"] as Throwable
 
@@ -101,16 +109,6 @@ class StackTraceActivity : BaseFontActivity() {
                     .addEmailTo(getString(R.string.dev_email))
                     .startChooser()
             }
-
-//            try {
-//                window.decorView.setBackgroundColor(Color.YELLOW)
-//                send.backgroundTintList = ColorStateList.valueOf(Color.GREEN)
-//                send.setTextColor(ColorTheme.titleColorForBG(Color.GREEN))
-//                title.setTextColor(Color.GREEN)
-//                tvStackTrace.setTextColor(Color.GREEN)
-//            } catch (e: Throwable) {
-//                e.printStackTrace()
-//            }
         } catch (e: Throwable) {
             e.printStackTrace()
         }
