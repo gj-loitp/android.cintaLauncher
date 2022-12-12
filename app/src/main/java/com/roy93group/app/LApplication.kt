@@ -14,9 +14,10 @@ import com.loitpcore.data.ActivityData
  * freuss47@gmail.com
  */
 
-//TODO google drive
-//TODO thay cac late in
 //TODO uninstall app
+
+//TODO su dung remote config de bat tat cac chuc nang nhay cam nhu gallery
+//TODO thay cac late in
 //TODO fav app
 //TODO lock app
 //TODO app badge
