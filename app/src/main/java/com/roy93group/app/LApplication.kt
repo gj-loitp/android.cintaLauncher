@@ -28,7 +28,6 @@ import com.loitpcore.data.ActivityData
 //TODO gg pay
 //TODO feat request feat in setting
 //TODO screen search them cai keyword recents
-//TODO o man hinh chinh neu nhan backpress se show applauncher va nguoc lai
 //TODO luu main color o pref
 
 //done
@@ -46,6 +45,7 @@ import com.loitpcore.data.ActivityData
 //remove some permission manifest
 //lam man hinh choose fav color first intro
 //pick color in setting screen
+//o man hinh chinh neu nhan backpress se show applauncher va nguoc lai
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

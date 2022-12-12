@@ -147,7 +147,8 @@ class LauncherActivity : BaseFontActivity() {
         if (appDrawer.isOpen) {
             appDrawer.close()
         } else {
-            rvFeed.scrollToPosition(0)
+            appDrawer.open()
+//            rvFeed.scrollToPosition(0)
         }
     }
 

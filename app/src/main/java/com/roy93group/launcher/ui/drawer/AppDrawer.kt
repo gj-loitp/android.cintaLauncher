@@ -81,12 +81,12 @@ class AppDrawer(
 
     private var currentValueAnimator: ValueAnimator? = null
 
-    fun open(v: View) {
+    fun open() {
         activity.bottomBar.cvBackButtonContainer.isVisible = true
         activity.bottomBar.cvSetting.isVisible = true
         if (isOpen) return
         ItemLongPress.currentPopup?.dismiss()
-        val sbh = v.context.getStatusBarHeight()
+        val sbh = activity.getStatusBarHeight()
         rvApp.setPadding(
             /* left = */ rvApp.paddingLeft,
             /* top = */ sbh,

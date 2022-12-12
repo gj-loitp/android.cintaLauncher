@@ -56,7 +56,7 @@ class ScrollbarIconView @JvmOverloads constructor(
 
         when (e.action) {
             MotionEvent.ACTION_DOWN -> {
-                appDrawer?.open(this)
+                appDrawer?.open()
             }
             MotionEvent.ACTION_MOVE -> {
                 counter++
