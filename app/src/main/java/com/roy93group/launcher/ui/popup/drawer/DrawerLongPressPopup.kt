@@ -208,6 +208,20 @@ object DrawerLongPressPopup {
             ) {
                 LSocialUtil.shareApp(launcherActivity)
             },
+            ListPopupItem(
+                text = context.getString(R.string.missing_a_feature),
+                description = context.getString(R.string.missing_a_feature_msg),
+                icon = ContextCompat.getDrawable(context, R.drawable.baseline_pan_tool_black_48),
+            ) {
+                LSocialUtil.sendEmail(
+                    activity = launcherActivity,
+                    to = "roy93group@gmail.com",
+                    subject = "Feature Request",
+                    body = "Please describe the feature you need.\n" +
+                            "The more detail you can share, the better.\n" +
+                            "\nThanks for taking the time - we'll get back to you as soon as possible to ask a few clarifying question or to give you an update \uD83D\uDE4F\n\n"
+                )
+            },
         )
     }
 }
