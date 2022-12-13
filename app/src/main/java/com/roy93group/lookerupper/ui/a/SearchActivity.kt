@@ -54,7 +54,7 @@ class SearchActivity : BaseFontActivity() {
         adapter.update(list)
     }
 
-    val container: View by lazy {
+    private val cvSearchBarContainer: View by lazy {
         findViewById(R.id.cvSearchBarContainer)
     }
 
@@ -91,8 +91,8 @@ class SearchActivity : BaseFontActivity() {
                     }
                 }
             this.adapter = this@SearchActivity.adapter
-            container.post {
-                setPadding(paddingLeft, container.measuredHeight, paddingRight, paddingBottom)
+            cvSearchBarContainer.post {
+                setPadding(paddingLeft, cvSearchBarContainer.measuredHeight, paddingRight, paddingBottom)
             }
         }
         findViewById<EditText>(R.id.etSearchBarText).run {

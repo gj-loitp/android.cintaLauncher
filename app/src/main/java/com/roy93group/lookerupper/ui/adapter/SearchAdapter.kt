@@ -1,9 +1,9 @@
 package com.roy93group.lookerupper.ui.adapter
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
 import com.roy93group.lookerupper.data.results.*
@@ -17,7 +17,7 @@ import com.roy93group.lookerupper.ui.viewHolders.*
  * freuss47@gmail.com
  */
 class SearchAdapter(
-    val activity: Activity,
+    val activity: AppCompatActivity,
     val recyclerView: RecyclerView,
     private val isOnCard: Boolean
 ) : RecyclerView.Adapter<SearchVH>() {

@@ -1,9 +1,9 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
-import android.app.Activity
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.roy93group.app.C
 import com.roy93group.launcher.R
@@ -20,7 +20,7 @@ import com.roy93group.lookerupper.data.results.SearchResult
  */
 class AppSearchVH(
     itemView: View,
-    val activity: Activity
+    val activity: AppCompatActivity
 ) : SearchVH(itemView) {
 
     private val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon)
@@ -37,6 +37,18 @@ class AppSearchVH(
         itemView.setOnClickListener {
             SuggestionsManager.onItemOpened(context = it.context, item = result.app)
             result.open(it)
+        }
+
+        itemView.setOnLongClickListener {
+            C.vibrate(500L)
+            C.launchAppOption(
+                activity = activity,
+                item = result.app,
+                isCancelableFragment = true,
+                onDismiss = {
+                }
+            )
+            return@setOnLongClickListener false
         }
     }
 }
