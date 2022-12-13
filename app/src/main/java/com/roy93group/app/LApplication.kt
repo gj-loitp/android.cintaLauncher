@@ -13,9 +13,6 @@ import com.loitpcore.data.ActivityData
  * +840766040293
  * freuss47@gmail.com
  */
-
-//TODO uninstall app
-
 //TODO su dung remote config de bat tat cac chuc nang nhay cam nhu gallery
 //TODO thay cac late in
 //TODO fav app
@@ -50,6 +47,7 @@ import com.loitpcore.data.ActivityData
 //da thu firebase crashlytics ko su dung chung duoc voi StackTraceActivity#Thread.setDefaultUncaughtExceptionHandler -> ko co log len firebase console
 //test thu uninstall app thi app drawer co refresh hay ko
 //test thu install app moi tu chplay xem co show ra ko
+//uninstall app
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
