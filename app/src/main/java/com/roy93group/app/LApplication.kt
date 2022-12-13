@@ -73,5 +73,4 @@ class LApplication : BaseApplication() {
         super.onAppInForeground()
         logD("onAppInForeground")
     }
-
 }

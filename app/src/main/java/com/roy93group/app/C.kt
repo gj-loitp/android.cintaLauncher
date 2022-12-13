@@ -47,7 +47,7 @@ import io.posidon.android.conveniencelib.units.toPixels
  * freuss47@gmail.com
  */
 object C {
-    private val KEY_MAIN_COLOR = "KEY_MAIN_COLOR"
+    private const val KEY_MAIN_COLOR = "KEY_MAIN_COLOR"
 
     val COLOR_PRIMARY = LAppResource.getColor(R.color.colorPrimary)
     var COLOR_0 = LAppResource.getColor(R.color.color0)

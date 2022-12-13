@@ -11,6 +11,10 @@ import android.view.*
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.ktx.get
+import com.google.firebase.remoteconfig.ktx.remoteConfig
+import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import com.loitpcore.annotation.IsAutoAnimation
 import com.loitpcore.annotation.IsFullScreen
 import com.loitpcore.annotation.LogTag
@@ -79,6 +83,8 @@ class LauncherActivity : BaseFontActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        fetchRemoteConfig()
         StackTraceActivity.init(applicationContext)
         configureWindow()
         settings.init(applicationContext)
@@ -252,5 +258,24 @@ class LauncherActivity : BaseFontActivity() {
             getNavigationBarHeight() + resources.getDimension(R.dimen.margin_padding_medium).toInt()
         val feedFilterY = searchBarY + resources.getDimension(R.dimen.search_bar_height).toInt()
         return feedFilterY + resources.getDimension(R.dimen.w_40).toInt()
+    }
+
+    private fun fetchRemoteConfig() {
+        val remoteConfig = Firebase.remoteConfig
+        val configSettings = remoteConfigSettings {
+            minimumFetchIntervalInSeconds = 3600
+        }
+        remoteConfig.setConfigSettingsAsync(configSettings)
+        remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
+
+        remoteConfig.fetchAndActivate()
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val isShowFlickrGallery = remoteConfig["is_show_flickr_gallery"].asBoolean()
+                    logE("is_show_flickr_gallery: $isShowFlickrGallery")
+                } else {
+                    logE("Fetch failed")
+                }
+            }
     }
 }

@@ -56,6 +56,7 @@ dependencies {
     implementation("com.google.firebase:firebase-bom:31.1.1")
     implementation("com.google.firebase:firebase-analytics-ktx:21.2.0")
     implementation("com.google.firebase:firebase-crashlytics-ktx:18.3.2")
+    implementation("com.google.firebase:firebase-config-ktx:21.2.0")
 }
 
 configurations.all {

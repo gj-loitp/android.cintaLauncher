@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><!-- START xml_defaults -->
+<defaultsMap>
+    <entry>
+        <key>is_show_flickr_gallery</key>
+        <value>false</value>
+    </entry>
+</defaultsMap>
