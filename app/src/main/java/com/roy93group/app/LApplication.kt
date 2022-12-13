@@ -14,9 +14,6 @@ import com.loitpcore.data.ActivityData
  * freuss47@gmail.com
  */
 //https://console.firebase.google.com/u/0/project/cinta-launcher-71015/overview
-
-//TODO su dung remote config de bat tat cac chuc nang nhay cam nhu gallery
-
 //TODO thay cac late in
 //TODO fav app
 //TODO lock app
@@ -51,6 +48,7 @@ import com.loitpcore.data.ActivityData
 //test thu uninstall app thi app drawer co refresh hay ko
 //test thu install app moi tu chplay xem co show ra ko
 //uninstall app
+//su dung remote config de bat tat cac chuc nang nhay cam nhu gallery
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

@@ -13,6 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.ktx.get
+import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.loitpcore.core.ext.setSafeOnClickListener
 import com.loitpcore.core.utilities.LActivityUtil
 import com.loitpcore.core.utilities.LAppResource
@@ -160,7 +163,13 @@ object DrawerLongPressPopup {
                 text = context.getString(R.string.wallpaper),
                 icon = ContextCompat.getDrawable(context, R.drawable.baseline_wallpaper_black_48),
             ) {
-                C.launchWallpaper(launcherActivity)
+                val isShowFlickrGallery =
+                    Firebase.remoteConfig["is_show_flickr_gallery"].asBoolean()
+                if (isShowFlickrGallery) {
+                    C.launchWallpaper(launcherActivity)
+                } else {
+                    launcherActivity.showShortError(context.getString(R.string.err_unknown_en))
+                }
             },
             ListPopupItem(
                 text = context.getString(R.string.icon_packs),
