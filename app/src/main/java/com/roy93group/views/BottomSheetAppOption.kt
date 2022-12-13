@@ -68,12 +68,20 @@ class BottomSheetAppOption(
 
         btAppSetting.setSafeOnClickListener {
             (item as? App)?.packageName?.let { packageName ->
+                dismiss()
                 C.launchSystemSetting(context = requireContext(), packageName = packageName)
             }
         }
         btPlayStore.setSafeOnClickListener {
             (item as? App)?.packageName?.let { packageName ->
+                dismiss()
                 LSocialUtil.rateApp(activity = requireActivity(), packageName = packageName)
+            }
+        }
+        btUninstall.setSafeOnClickListener {
+            (item as? App)?.packageName?.let { packageName ->
+                C.uninstallApp(activity = requireActivity(), packageName = packageName)
+                dismiss()
             }
         }
     }

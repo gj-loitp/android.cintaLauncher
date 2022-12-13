@@ -334,4 +334,14 @@ object C {
         context.startActivity(intent)
         LActivityUtil.tranIn(context)
     }
+
+    fun uninstallApp(
+        activity: Activity,
+        packageName: String
+    ) {
+        val intent = Intent(Intent.ACTION_DELETE)
+        intent.data = Uri.parse("package:$packageName")
+        activity.startActivity(intent)
+        LActivityUtil.tranIn(activity)
+    }
 }
