@@ -13,6 +13,8 @@ import com.loitpcore.data.ActivityData
  * +840766040293
  * freuss47@gmail.com
  */
+//https://console.firebase.google.com/u/0/project/cinta-launcher-71015/overview
+
 //TODO su dung remote config de bat tat cac chuc nang nhay cam nhu gallery
 
 //TODO thay cac late in

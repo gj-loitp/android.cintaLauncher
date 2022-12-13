@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "527681224208",
+    "project_id": "cinta-launcher-71015",
+    "storage_bucket": "cinta-launcher-71015.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527681224208:android:cfadc5775a5d55b66d1495",
+        "android_client_info": {
+          "package_name": "com.roy93group.cintalauncher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527681224208-2rb1u6k1br77els75q4jjg5gult60hmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJEOclcqN308L8MoGFf7irhRtuPGOWZug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527681224208-2rb1u6k1br77els75q4jjg5gult60hmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

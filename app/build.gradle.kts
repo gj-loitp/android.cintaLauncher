@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -51,6 +53,9 @@ dependencies {
     implementation("androidx.palette:palette-ktx:1.0.0")
 //    implementation("com.google.android.material:material:1.7.0")
 //    testImplementation("junit:junit:4.13.2")
+    implementation("com.google.firebase:firebase-bom:31.1.1")
+    implementation("com.google.firebase:firebase-analytics-ktx:21.2.0")
+    implementation("com.google.firebase:firebase-crashlytics-ktx:18.3.2")
 }
 
 configurations.all {
