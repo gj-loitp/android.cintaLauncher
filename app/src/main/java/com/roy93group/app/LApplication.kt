@@ -14,9 +14,11 @@ import com.loitpcore.data.ActivityData
  * freuss47@gmail.com
  */
 //TODO su dung remote config de bat tat cac chuc nang nhay cam nhu gallery
+
 //TODO thay cac late in
 //TODO fav app
 //TODO lock app
+//TODO hide app
 //TODO app badge
 //TODO sort app drawer theo tan suat
 //TODO screen search them cai keyword recents
@@ -24,7 +26,6 @@ import com.loitpcore.data.ActivityData
 //TODO animation intro
 //TODO tich hop he sinh thai app roy93group
 //TODO gg pay
-//TODO hide app
 
 //done
 //chon man hinh chu o screen setting
