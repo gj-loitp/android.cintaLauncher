@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical">
+    android:background="@color/colorPrimary">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvIconPacks"
@@ -14,19 +14,20 @@
         android:text="@string/icon_packs"
         android:textSize="@dimen/txt_50"
         android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
         tools:textColor="@color/colorTest" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        app:layout_constraintBottom_toTopOf="@+id/btGetMoreThemes"
+        app:layout_constraintTop_toBottomOf="@+id/tvIconPacks" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btGetMoreThemes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
         android:layout_margin="@dimen/margin_padding_medium"
         android:background="@drawable/ripple_color_test"
         android:paddingStart="@dimen/margin_padding_medium"
@@ -34,5 +35,7 @@
         android:text="@string/get_more_themes"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_medium"
-        android:textStyle="bold" />
-</androidx.appcompat.widget.LinearLayoutCompat>
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
