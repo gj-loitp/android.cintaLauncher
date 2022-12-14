@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:paddingStart="@dimen/margin_padding_medium"
     android:paddingEnd="@dimen/margin_padding_medium"
     android:paddingBottom="@dimen/margin_padding_medium"
     tools:background="@color/colorTest">
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivSlider"
         android:layout_width="@dimen/w_50"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_padding_small"
         android:src="@drawable/ic_slider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/colorPrimary" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -26,6 +29,7 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_50"
         android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/ivSlider"
         tools:text="@string/color" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -35,6 +39,7 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_large"
         android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         tools:text="@string/pick_your_favorite_color" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -44,6 +49,7 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_medium"
         android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tvDes"
         tools:text="@string/pick_your_favorite_color" />
 
     <com.loitpcore.picker.shiftColorPicker.LineColorPicker
@@ -53,6 +59,7 @@
         android:layout_marginTop="@dimen/margin_padding_medium"
         android:layout_marginBottom="@dimen/margin_padding_medium"
         android:background="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/tvWarning"
         app:lcpOrientation="horizontal"
         app:lcpSelectedColorIndex="0" />
-</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>
