@@ -11,11 +11,9 @@
     app:strokeColor="@color/transparent"
     app:strokeWidth="0dp">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
         android:paddingStart="@dimen/margin_padding_medium"
         android:paddingTop="@dimen/margin_padding_small"
         android:paddingEnd="@dimen/margin_padding_medium"
@@ -27,6 +25,9 @@
             android:layout_height="@dimen/w_55"
             android:scaleType="fitCenter"
             android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher"
             tools:visibility="visible" />
 
@@ -36,16 +37,23 @@
             android:layout_height="@dimen/w_55"
             android:scaleType="fitCenter"
             android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivIcon"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher"
             tools:visibility="visible" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_padding_small"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="@dimen/margin_padding_small">
+            android:padding="@dimen/margin_padding_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivIconSmall"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvIconText"
@@ -83,5 +91,5 @@
                 tools:textColor="@color/colorTest"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
