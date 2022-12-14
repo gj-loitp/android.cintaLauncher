@@ -9,6 +9,7 @@ import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.isVisible
 import com.loitpcore.annotation.IsAutoAnimation
 import com.loitpcore.annotation.IsFullScreen
+import com.loitpcore.annotation.IsKeepScreenOn
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
 import com.loitpcore.core.ext.setSafeOnClickListener
@@ -28,6 +29,7 @@ import java.util.*
 @LogTag("IntroActivity")
 @IsFullScreen(false)
 @IsAutoAnimation(false)
+@IsKeepScreenOn(false)
 class IntroActivity : BaseFontActivity() {
 
     private var ivWallpaper: AppCompatImageView? = null

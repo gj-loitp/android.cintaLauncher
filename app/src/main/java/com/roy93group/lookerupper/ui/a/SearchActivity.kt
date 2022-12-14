@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.loitpcore.annotation.IsAutoAnimation
 import com.loitpcore.annotation.IsFullScreen
+import com.loitpcore.annotation.IsKeepScreenOn
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
 import com.loitpcore.core.utilities.LActivityUtil
@@ -38,6 +39,7 @@ import kotlin.math.abs
 @LogTag("SearchActivity")
 @IsFullScreen(false)
 @IsAutoAnimation(false)
+@IsKeepScreenOn(false)
 class SearchActivity : BaseFontActivity() {
 
     lateinit var adapter: SearchAdapter

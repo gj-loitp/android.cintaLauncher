@@ -17,6 +17,7 @@ import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import com.loitpcore.annotation.IsAutoAnimation
 import com.loitpcore.annotation.IsFullScreen
+import com.loitpcore.annotation.IsKeepScreenOn
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
 import com.roy93group.launcher.LauncherContext
@@ -51,6 +52,7 @@ import kotlin.math.abs
 @LogTag("LauncherActivity")
 @IsFullScreen(false)
 @IsAutoAnimation(false)
+@IsKeepScreenOn(false)
 class LauncherActivity : BaseFontActivity() {
 
     val launcherContext = LauncherContext()

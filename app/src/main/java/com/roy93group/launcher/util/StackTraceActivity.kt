@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.core.app.ShareCompat
 import com.loitpcore.annotation.IsAutoAnimation
 import com.loitpcore.annotation.IsFullScreen
+import com.loitpcore.annotation.IsKeepScreenOn
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
 import com.loitpcore.core.utilities.LActivityUtil
@@ -28,6 +29,7 @@ import kotlin.system.exitProcess
 @LogTag("LauncherActivity")
 @IsFullScreen(false)
 @IsAutoAnimation(false)
+@IsKeepScreenOn(false)
 class StackTraceActivity : BaseFontActivity() {
 
     companion object {
