@@ -30,7 +30,7 @@ import java.time.Instant
  */
 open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
     private val swipeLayout = this.itemView as SwipeLayout
-    val container: View = itemView.findViewById(R.id.container)
+    val container: View? = itemView.findViewById(R.id.container)
     val vLine: View = itemView.findViewById<View>(R.id.vLine).apply {
         setBackgroundColor(C.COLOR_0)
     }

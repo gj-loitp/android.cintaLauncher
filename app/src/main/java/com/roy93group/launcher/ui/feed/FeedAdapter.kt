@@ -129,16 +129,18 @@ class FeedAdapter(
         if (holder !is FeedItemVH) return
         val verticalPadding =
             holder.itemView.resources.getDimension(R.dimen.margin_padding_medium).toInt()
-        holder.container.setPadding(
-            /* left = */
-            holder.container.paddingLeft,
-            /* top = */
-            holder.container.paddingTop,
-            /* right = */
-            holder.container.paddingRight,
-            /* bottom = */
-            if (i == itemCount - 1) verticalPadding + launcherActivity.getFeedBottomMargin() else verticalPadding,
-        )
+        holder.container?.apply {
+            setPadding(
+                /* left = */
+                this.paddingLeft,
+                /* top = */
+                this.paddingTop,
+                /* right = */
+                this.paddingRight,
+                /* bottom = */
+                if (i == itemCount - 1) verticalPadding + launcherActivity.getFeedBottomMargin() else verticalPadding,
+            )
+        }
     }
 
     fun updateItems(items: List<FeedItem>) {
