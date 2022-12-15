@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llRoot"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="horizontal"
     android:paddingStart="@dimen/margin_padding_medium"
     android:paddingTop="@dimen/margin_padding_small"
     android:paddingEnd="@dimen/margin_padding_medium"
@@ -17,6 +15,8 @@
         android:id="@+id/ivActionIcon"
         android:layout_width="@dimen/w_25"
         android:layout_height="@dimen/w_25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/colorPrimary"
         tools:src="@drawable/ic_launcher" />
 
@@ -24,9 +24,11 @@
         android:id="@+id/tvActionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_padding_small"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_small"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivActionIcon"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/app_name" />
-</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

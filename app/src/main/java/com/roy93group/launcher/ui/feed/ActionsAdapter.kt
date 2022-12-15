@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.app.C
 import com.roy93group.launcher.R
@@ -28,10 +27,9 @@ class ActionsAdapter(
     class ActionViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
 
-        val llRoot: LinearLayoutCompat =
-            itemView.findViewById<LinearLayoutCompat>(R.id.llRoot).apply {
-                C.setBackground(this)
-            }
+        val llRoot: ViewGroup = itemView.findViewById<ViewGroup>(R.id.llRoot).apply {
+            C.setBackground(this)
+        }
         val ivActionIcon: ImageView = itemView.findViewById(R.id.ivActionIcon)
         val tvActionText: TextView = itemView.findViewById(R.id.tvActionText)
     }
