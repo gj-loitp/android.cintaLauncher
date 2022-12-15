@@ -195,6 +195,7 @@ class AppDrawer(
         if (layoutManager == null) {
             return
         }
+        //TODO default value
         val fragment = BottomSheetCustomizeAppDrawer(
             seekRadiusValue = seekRadiusValue,
             seekPeekValue = seekPeekValue,
