@@ -100,7 +100,12 @@ object DrawerLongPressPopup {
         val gravity = Gravity.CENTER
         val x = touchX.toInt() - Device.screenWidth(parent.context) / 2
         val y = touchY.toInt() - Device.screenHeight(parent.context) / 2 + navbarHeight
-        window.showAtLocation(parent, gravity, x, y)
+        window.showAtLocation(
+            /* parent = */ parent,
+            /* gravity = */gravity,
+            /* x = */x,
+            /* y = */y
+        )
     }
 
     private fun createMainAdapter(
@@ -190,6 +195,16 @@ object DrawerLongPressPopup {
                     }
                 }
             ),
+            ListPopupItem(
+                text = context.getString(R.string.custom_app_drawer),
+                description = context.getString(R.string.dynamic_drawer_for_your_apps),
+                icon = ContextCompat.getDrawable(
+                    context,
+                    R.drawable.baseline_dashboard_customize_black_48
+                ),
+            ) {
+                //TODO
+            },
             ListPopupItem(text = context.getString(R.string.other), isTitle = true),
             ListPopupItem(
                 text = context.getString(R.string.policy_en),

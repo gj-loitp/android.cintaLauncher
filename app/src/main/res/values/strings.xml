@@ -59,4 +59,6 @@
     <string name="app_info">App info</string>
     <string name="uninstall">Uninstall</string>
     <string name="play_store">Play store</string>
+    <string name="custom_app_drawer">Custom app drawer</string>
+    <string name="dynamic_drawer_for_your_apps">Dynamic drawer for your apps.</string>
 </resources>
