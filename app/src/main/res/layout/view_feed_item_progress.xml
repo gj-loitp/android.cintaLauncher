@@ -33,7 +33,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_padding_small"
         android:layout_marginTop="@dimen/margin_padding_medium"
-        android:layout_weight="1"
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
@@ -58,38 +57,32 @@
         tools:text="1d"
         tools:textColor="@color/colorTest" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llcDes"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_padding_small"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:textSize="@dimen/txt_small"
         app:layout_constraintEnd_toEndOf="@+id/vLine"
         app:layout_constraintStart_toStartOf="@+id/vLine"
-        app:layout_constraintTop_toBottomOf="@+id/source">
+        app:layout_constraintTop_toBottomOf="@+id/source"
+        tools:text="@string/app_name"
+        tools:textColor="@color/colorTest" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="@dimen/txt_small"
-            tools:text="@string/app_name"
-            tools:textColor="@color/colorTest" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.7"
-            android:ellipsize="end"
-            android:maxLines="5"
-            android:textSize="@dimen/txt_small"
-            android:textStyle="bold"
-            tools:text="@string/app_name"
-            tools:textColor="@color/colorTest" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:ellipsize="end"
+        android:maxLines="5"
+        android:textSize="@dimen/txt_small"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/title"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:text="@string/app_name"
+        tools:textColor="@color/colorTest" />
 
     <ProgressBar
         android:id="@+id/progress"
@@ -98,9 +91,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_padding_small"
         android:indeterminate="false"
-        app:layout_constraintEnd_toEndOf="@+id/llcDes"
-        app:layout_constraintStart_toStartOf="@+id/llcDes"
-        app:layout_constraintTop_toBottomOf="@+id/llcDes"
+        app:layout_constraintEnd_toEndOf="@+id/description"
+        app:layout_constraintStart_toStartOf="@+id/description"
+        app:layout_constraintTop_toBottomOf="@+id/description"
         tools:progress="69" />
 
     <include
