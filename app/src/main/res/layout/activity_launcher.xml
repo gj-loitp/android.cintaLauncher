@@ -22,43 +22,67 @@
 
     <include layout="@layout/view_app_drawer" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_padding_medium"
+        android:contentDescription="@string/app_name"
+        android:tint="@color/colorPrimary"
+        android:visibility="gone"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fabBack"
+        app:layout_constraintEnd_toEndOf="@+id/fabBack"
+        app:srcCompat="@drawable/ic_settings_black_48dp"
+        tools:backgroundTint="@color/colorTest"
+        tools:visibility="visible" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_padding_medium"
+        android:contentDescription="@string/app_name"
+        android:tint="@color/colorPrimary"
+        android:visibility="gone"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/cvSearchBarContainer"
+        app:layout_constraintEnd_toEndOf="@+id/cvSearchBarContainer"
+        app:srcCompat="@drawable/ic_cross"
+        tools:backgroundTint="@color/colorTest"
+        tools:visibility="visible" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvSearchBarContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
-        android:gravity="end"
-        android:orientation="vertical"
+        android:layout_marginStart="@dimen/margin_padding_small"
+        android:layout_marginTop="@dimen/w_1"
+        android:layout_marginEnd="@dimen/margin_padding_small"
+        app:cardCornerRadius="@dimen/round_large"
+        app:cardElevation="@dimen/w_3"
+        app:cardUseCompatPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeWidth="@dimen/w_1"
+        tools:cardBackgroundColor="@color/colorTest"
+        tools:strokeColor="@color/colorPrimary">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabSetting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_padding_medium"
-            android:layout_marginBottom="@dimen/margin_padding_medium"
-            android:contentDescription="@string/app_name"
-            android:tint="@color/colorPrimary"
-            android:visibility="gone"
-            app:borderWidth="0dp"
-            app:srcCompat="@drawable/ic_settings_black_48dp"
-            tools:backgroundTint="@color/colorTest"
-            tools:visibility="visible" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/search_bar_height"
+            android:layout_height="@dimen/search_bar_height"
+            android:padding="@dimen/margin_padding_small"
+            android:src="@drawable/ic_search"
+            app:tint="@color/colorPrimary" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_padding_medium"
-            android:layout_marginBottom="@dimen/margin_padding_medium"
-            android:contentDescription="@string/app_name"
-            android:tint="@color/colorPrimary"
-            android:visibility="gone"
-            app:borderWidth="0dp"
-            app:srcCompat="@drawable/ic_cross"
-            tools:backgroundTint="@color/colorTest"
-            tools:visibility="visible" />
+        <com.roy93group.launcher.ui.view.scrollbar.ScrollbarIconView
+            android:id="@+id/appDrawerIcon"
+            android:layout_width="@dimen/search_bar_height"
+            android:layout_height="@dimen/search_bar_height"
+            android:layout_gravity="end"
+            android:padding="@dimen/margin_padding_small"
+            android:src="@drawable/ic_drawer_scroll" />
+    </com.google.android.material.card.MaterialCardView>
 
-        <include layout="@layout/activity_launcher_search_bar" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>
