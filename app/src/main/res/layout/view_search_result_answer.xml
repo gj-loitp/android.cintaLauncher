@@ -6,16 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/colorPrimary"
-    app:cardCornerRadius="@dimen/round_medium"
+    app:cardCornerRadius="@dimen/round_large"
     app:cardElevation="@dimen/w_3"
     app:cardUseCompatPadding="true"
     app:strokeWidth="@dimen/w_1"
     tools:strokeColor="@color/colorTest">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="@dimen/margin_padding_medium">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -24,6 +23,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/txt_large"
             android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/app_name"
             tools:textColor="@color/colorTest" />
 
@@ -34,13 +34,15 @@
             android:ellipsize="end"
             android:maxLines="5"
             android:textSize="@dimen/txt_medium"
+            app:layout_constraintTop_toBottomOf="@+id/title"
             tools:text="@string/app_name"
             tools:textColor="@color/colorTest" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvInfoBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/description" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvActionsContainer"
@@ -50,6 +52,8 @@
             app:cardCornerRadius="@dimen/round_medium"
             app:cardElevation="@dimen/w_3"
             app:cardUseCompatPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvInfoBox"
             app:strokeColor="@color/colorPrimary"
             app:strokeWidth="@dimen/w_1"
             tools:cardBackgroundColor="@color/colorTest">
@@ -95,5 +99,5 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </HorizontalScrollView>
         </com.google.android.material.card.MaterialCardView>
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
