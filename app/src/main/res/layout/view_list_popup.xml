@@ -12,10 +12,9 @@
     app:strokeWidth="@dimen/w_1"
     tools:cardBackgroundColor="@color/colorTest">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:paddingTop="@dimen/margin_padding_small"
         android:paddingBottom="@dimen/margin_padding_small">
 
@@ -23,7 +22,7 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </FrameLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabDismiss"
