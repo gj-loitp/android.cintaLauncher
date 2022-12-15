@@ -61,4 +61,9 @@
     <string name="play_store">Play store</string>
     <string name="custom_app_drawer">Custom app drawer</string>
     <string name="dynamic_drawer_for_your_apps">Dynamic drawer for your apps.</string>
+    <string name="orientation">Orientation</string>
+    <string name="rotate">Rotate</string>
+    <string name="radius_format">Radius: %1$d</string>
+    <string name="peek_format">Peek: %1$d</string>
+    <string name="gravity">Gravity</string>
 </resources>
