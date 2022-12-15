@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,7 +26,6 @@ class HomeViewHolder(
     val tvTime: TextView = llClockContainer.findViewById<TextView>(R.id.tvTime).apply {
         setTextColor(C.COLOR_0)
     }
-    val llCalendar: LinearLayoutCompat = llClockContainer.findViewById(R.id.llCalendar)
     val tvDate: TextView = llClockContainer.findViewById<TextView>(R.id.tvDate).apply {
         setTextColor(C.COLOR_0)
     }
@@ -99,7 +97,10 @@ fun bindHomeViewHolder(
     holder.tvTime.setSafeOnClickListener {
         onClickClock.invoke(Unit)
     }
-    holder.llCalendar.setSafeOnClickListener {
+    holder.tvWeekDay.setSafeOnClickListener {
+        onClickCalendar.invoke(Unit)
+    }
+    holder.tvDate.setSafeOnClickListener {
         onClickCalendar.invoke(Unit)
     }
 
