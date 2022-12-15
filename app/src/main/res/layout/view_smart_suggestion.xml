@@ -12,18 +12,22 @@
     app:strokeColor="@color/colorPrimary"
     app:strokeWidth="@dimen/w_1">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical"
+        android:paddingStart="@dimen/margin_padding_tiny"
         android:paddingTop="@dimen/margin_padding_medium"
-        android:paddingBottom="@dimen/margin_padding_tiny">
+        android:paddingEnd="@dimen/margin_padding_tiny"
+        android:paddingBottom="@dimen/margin_padding_medium">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivIcon"
             android:layout_width="@dimen/w_45"
             android:layout_height="@dimen/w_45"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher"
             tools:tint="@color/colorTest" />
 
@@ -31,12 +35,14 @@
             android:id="@+id/tvIconText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_tiny"
             android:gravity="center"
             android:maxLines="1"
             android:singleLine="true"
             android:textSize="@dimen/txt_small"
             android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/ivIcon"
             tools:text="@string/app_name"
             tools:textColor="@color/colorTest" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
