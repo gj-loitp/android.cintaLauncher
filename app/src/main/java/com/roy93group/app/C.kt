@@ -32,6 +32,7 @@ import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.util.FakeLauncherActivity
+import com.roy93group.lookerupper.ui.a.SearchActivity
 import com.roy93group.views.BottomSheetAppOption
 import com.roy93group.views.BottomSheetColor
 import com.roy93group.views.BottomSheetOption
@@ -343,5 +344,15 @@ object C {
         intent.data = Uri.parse("package:$packageName")
         activity.startActivity(intent)
         LActivityUtil.tranIn(activity)
+    }
+
+    fun goToSearchScreen(context: Context) {
+        context.startActivity(
+            Intent(
+                context,
+                SearchActivity::class.java
+            ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        )
+        LActivityUtil.tranIn(context)
     }
 }

@@ -20,6 +20,8 @@ import com.loitpcore.annotation.IsFullScreen
 import com.loitpcore.annotation.IsKeepScreenOn
 import com.loitpcore.annotation.LogTag
 import com.loitpcore.core.base.BaseFontActivity
+import com.loitpcore.core.utilities.LUIUtil
+import com.roy93group.app.C
 import com.roy93group.launcher.LauncherContext
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
@@ -91,15 +93,30 @@ class LauncherActivity : BaseFontActivity() {
         configureWindow()
         settings.init(applicationContext)
 
-        rvFeed.layoutManager = LinearLayoutManager(
-            /* context = */ this,
-            /* orientation = */RecyclerView.VERTICAL,
-            /* reverseLayout = */false
-        )
-        feedAdapter = FeedAdapter(this)
-        feedAdapter.setHasStableIds(true)
-        rvFeed.setItemViewCacheSize(20)
-        rvFeed.adapter = feedAdapter
+        feedAdapter = FeedAdapter(this).apply {
+            setHasStableIds(true)
+        }
+        rvFeed.apply {
+            LUIUtil.setScrollChange(
+                recyclerView = this,
+                onTop = {
+                    C.goToSearchScreen(context)
+                },
+                onBottom = {
+                    logE("onBottom")
+                },
+                onScrolled = { isScrollDown ->
+                    logE("onScrolled isScrollDown $isScrollDown")
+                },
+            )
+            layoutManager = LinearLayoutManager(
+                /* context = */ this@LauncherActivity,
+                /* orientation = */RecyclerView.VERTICAL,
+                /* reverseLayout = */false
+            )
+            setItemViewCacheSize(20)
+            adapter = feedAdapter
+        }
 
         launcherContext.feed.init(
             settings = settings,

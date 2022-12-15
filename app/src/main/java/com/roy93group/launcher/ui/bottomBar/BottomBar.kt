@@ -31,14 +31,7 @@ class BottomBar(val launcherActivity: LauncherActivity) {
             setCardBackgroundColor(C.COLOR_0)
             strokeColor = C.COLOR_PRIMARY
             setOnClickListener {
-                val context = it.context
-                context.startActivity(
-                    Intent(
-                        context,
-                        SearchActivity::class.java
-                    ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                )
-                LActivityUtil.tranIn(context)
+                C.goToSearchScreen(it.context)
             }
         }
 
