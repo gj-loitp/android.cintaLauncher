@@ -103,7 +103,6 @@ class LauncherActivity : BaseFontActivity() {
                     C.goToSearchScreen(context)
                 },
                 onBottom = {
-                    logE("onBottom")
                 },
                 onScrolled = { isScrollDown ->
                     logE("onScrolled isScrollDown $isScrollDown")
