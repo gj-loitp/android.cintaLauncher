@@ -9,7 +9,6 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.marginBottom
 import androidx.core.view.marginTop
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cdflynn.android.library.turn.TurnLayoutManager
 import com.loitpcore.core.utilities.LUIUtil
@@ -33,10 +32,6 @@ class AppDrawer(
     val launcherActivity: LauncherActivity
 ) {
 
-    companion object {
-        const val COLUMNS = 1
-    }
-
     private val flAppDrawerContainer: View =
         launcherActivity.findViewById(R.id.flAppDrawerContainer)
     private val adapter = AppDrawerAdapter(launcherActivity)
@@ -52,22 +47,6 @@ class AppDrawer(
             onBottom = {},
             onScrolled = {}
         )
-//        rvApp.layoutManager = GridLayoutManager(
-//            /* context = */ flAppDrawerContainer.context,
-//            /* spanCount = */COLUMNS,
-//            /* orientation = */RecyclerView.VERTICAL,
-//            /* reverseLayout = */false
-//        ).apply {
-//            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-//                override fun getSpanSize(i: Int): Int {
-//                    return when (adapter.getItemViewType(i)) {
-//                        AppDrawerAdapter.APP_ITEM -> 1
-//                        AppDrawerAdapter.SECTION_HEADER -> COLUMNS
-//                        else -> -1
-//                    }
-//                }
-//            }
-//        }
 
         rvApp.layoutManager = TurnLayoutManager(
             /* context = */ flAppDrawerContainer.context,
