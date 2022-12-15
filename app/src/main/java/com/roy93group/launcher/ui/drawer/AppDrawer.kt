@@ -11,6 +11,8 @@ import androidx.core.view.marginBottom
 import androidx.core.view.marginTop
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.loitpcore.core.utilities.LUIUtil
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.ui.LauncherActivity
@@ -27,19 +29,28 @@ import io.posidon.android.conveniencelib.onEnd
  * freuss47@gmail.com
  */
 class AppDrawer(
-    val activity: LauncherActivity
+    val launcherActivity: LauncherActivity
 ) {
 
     companion object {
         const val COLUMNS = 1
     }
 
-    private val flAppDrawerContainer: View = activity.findViewById(R.id.flAppDrawerContainer)
-    private val adapter = AppDrawerAdapter(activity)
+    private val flAppDrawerContainer: View =
+        launcherActivity.findViewById(R.id.flAppDrawerContainer)
+    private val adapter = AppDrawerAdapter(launcherActivity)
     private val rvApp: RecyclerView = flAppDrawerContainer.findViewById(R.id.rvApp)
 
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
+        LUIUtil.setScrollChange(
+            recyclerView = rvApp,
+            onTop = {
+                C.goToSearchScreen(launcherActivity)
+            },
+            onBottom = {},
+            onScrolled = {}
+        )
         rvApp.layoutManager = GridLayoutManager(
             /* context = */ flAppDrawerContainer.context,
             /* spanCount = */COLUMNS,
@@ -57,7 +68,6 @@ class AppDrawer(
             }
         }
         rvApp.adapter = adapter
-
     }
 
     private var appSections: List<List<App>>? = null
@@ -69,7 +79,7 @@ class AppDrawer(
         this.appSections = appSections
         adapter.updateAppSections(
             appSections = appSections,
-            activity = activity,
+            activity = launcherActivity,
             controller = scrollBar.controller
         )
         scrollBar.postInvalidate()
@@ -82,27 +92,30 @@ class AppDrawer(
     private var currentValueAnimator: ValueAnimator? = null
 
     fun open() {
-        activity.bottomBar.cvBackButtonContainer.isVisible = true
-        activity.bottomBar.cvSetting.isVisible = true
+        launcherActivity.bottomBar.cvBackButtonContainer.isVisible = true
+        launcherActivity.bottomBar.cvSetting.isVisible = true
         if (isOpen) return
         ItemLongPress.currentPopup?.dismiss()
-        val sbh = activity.getStatusBarHeight()
+        val sbh = launcherActivity.getStatusBarHeight()
         rvApp.setPadding(
             /* left = */ rvApp.paddingLeft,
-            /* top = */ sbh,
-            /* right = */ rvApp.paddingRight,
-            /* bottom = */ activity.bottomBar.cvSearchBarContainer.measuredHeight + activity.bottomBar.cvSearchBarContainer.marginBottom + activity.bottomBar.cvSearchBarContainer.marginTop
+            /* top = */
+            sbh,
+            /* right = */
+            rvApp.paddingRight,
+            /* bottom = */
+            launcherActivity.bottomBar.cvSearchBarContainer.measuredHeight + launcherActivity.bottomBar.cvSearchBarContainer.marginBottom + launcherActivity.bottomBar.cvSearchBarContainer.marginTop
         )
         flAppDrawerContainer.isVisible = true
-        activity.rvFeed.stopScroll()
-        activity.feedProfiles.rvFeedFilters.animate()
+        launcherActivity.rvFeed.stopScroll()
+        launcherActivity.feedProfiles.rvFeedFilters.animate()
             .alpha(0f)
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
             .onEnd {
-                activity.rvFeed.isVisible = false
+                launcherActivity.rvFeed.isVisible = false
             }
-        activity.rvFeed.animate()
+        launcherActivity.rvFeed.animate()
             .alpha(0f)
             .scaleX(1.1f)
             .scaleY(1.1f)
@@ -110,7 +123,7 @@ class AppDrawer(
             .setDuration(100)
             .setInterpolator(AccelerateInterpolator())
             .onEnd {
-                activity.rvFeed.isInvisible = true
+                launcherActivity.rvFeed.isInvisible = true
             }
         flAppDrawerContainer.animate()
             .alpha(1f)
@@ -135,20 +148,20 @@ class AppDrawer(
     }
 
     fun close() {
-        activity.bottomBar.cvBackButtonContainer.isVisible = false
-        activity.bottomBar.cvSetting.isVisible = false
+        launcherActivity.bottomBar.cvBackButtonContainer.isVisible = false
+        launcherActivity.bottomBar.cvSetting.isVisible = false
         if (!isOpen) return
         ItemLongPress.currentPopup?.dismiss()
-        activity.feedProfiles.rvFeedFilters.isVisible = true
-        activity.feedProfiles.rvFeedFilters.animate()
+        launcherActivity.feedProfiles.rvFeedFilters.isVisible = true
+        launcherActivity.feedProfiles.rvFeedFilters.animate()
             .alpha(1f)
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
             .onEnd {
-                activity.rvFeed.isVisible = true
+                launcherActivity.rvFeed.isVisible = true
             }
-        activity.rvFeed.isInvisible = false
-        activity.rvFeed.animate()
+        launcherActivity.rvFeed.isInvisible = false
+        launcherActivity.rvFeed.animate()
             .alpha(1f)
             .scaleX(1f)
             .scaleY(1f)
@@ -156,7 +169,7 @@ class AppDrawer(
             .setDuration(100)
             .setInterpolator(DecelerateInterpolator())
             .onEnd {
-                activity.rvFeed.isInvisible = false
+                launcherActivity.rvFeed.isInvisible = false
             }
         flAppDrawerContainer.animate()
             .alpha(0f)

@@ -178,7 +178,7 @@ class ScrollbarIconView @JvmOverloads constructor(
                 /* y = */
                 when (orientation) {
                     Scrollbar.HORIZONTAL -> location[1]
-                    else -> Device.screenHeight(context) - location[1] - this@ScrollbarIconView.height + (appDrawer?.activity?.getNavigationBarHeight()
+                    else -> Device.screenHeight(context) - location[1] - this@ScrollbarIconView.height + (appDrawer?.launcherActivity?.getNavigationBarHeight()
                         ?: 0)
                 },
             )
