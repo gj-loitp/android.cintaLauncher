@@ -5,5 +5,6 @@
     android:layout_width="@dimen/w_20"
     android:layout_height="@dimen/w_20"
     android:layout_marginHorizontal="@dimen/margin_padding_small"
+    android:layout_marginVertical="@dimen/margin_padding_medium"
     tools:src="@drawable/ic_launcher"
     tools:tint="@color/colorTest" />

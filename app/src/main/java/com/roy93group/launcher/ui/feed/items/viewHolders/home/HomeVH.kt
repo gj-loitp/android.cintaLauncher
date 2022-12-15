@@ -74,9 +74,9 @@ class HomeViewHolder(
             if (notificationIconsAdapter.updateItems(icons)) {
                 tvNotificationIconText.text =
                     itemView.resources.getQuantityString(
-                        R.plurals.x_notifications,
-                        icons.size,
-                        icons.size
+                        /* id = */ R.plurals.x_notifications,
+                        /* quantity = */ icons.size,
+                        /* ...formatArgs = */ icons.size
                     )
             }
         }
