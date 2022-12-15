@@ -33,13 +33,14 @@ class AppDrawer(
     val launcherActivity: LauncherActivity
 ) {
 
-    private var seekRadiusValue = 0
-    private var seekPeekValue = 0
     private val flAppDrawerContainer: View =
         launcherActivity.findViewById(R.id.flAppDrawerContainer)
     private val adapter = AppDrawerAdapter(launcherActivity)
     private val rvApp: RecyclerView = flAppDrawerContainer.findViewById(R.id.rvApp)
     private var layoutManager: TurnLayoutManager? = null
+
+    private var seekRadiusValue = 0
+    private var seekPeekValue = 0
 
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
@@ -188,6 +189,9 @@ class AppDrawer(
     }
 
     fun customizeAppDrawer() {
+        if (layoutManager == null) {
+            return
+        }
         val fragment = BottomSheetCustomizeAppDrawer(
             seekRadiusValue = seekRadiusValue,
             seekPeekValue = seekPeekValue,
@@ -196,10 +200,12 @@ class AppDrawer(
                 //do nothing
             },
             onSeekRadiusValue = { progress ->
-                layoutManager?.setRadius(progress)
+                seekRadiusValue = progress
+                layoutManager?.setRadius(seekRadiusValue)
             },
             onSeekPeekValue = { progress ->
-                layoutManager?.setPeekDistance(progress)
+                seekPeekValue = progress
+                layoutManager?.setPeekDistance(seekPeekValue)
             },
             onOrientation = { orientation ->
                 layoutManager?.orientation = orientation
