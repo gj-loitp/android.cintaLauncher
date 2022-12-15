@@ -26,6 +26,7 @@ import com.loitpcore.data.ActivityData
 //TODO animation intro
 //TODO tich hop he sinh thai app roy93group
 //TODO gg pay
+//TODO setting enable/disable swipe out rv de open search screen
 
 //done
 //chon man hinh chu o screen setting
@@ -50,6 +51,7 @@ import com.loitpcore.data.ActivityData
 //test thu install app moi tu chplay xem co show ra ko
 //uninstall app
 //su dung remote config de bat tat cac chuc nang nhay cam nhu gallery
+//da test thu LParallaxRecyclerView nhung ko dep
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

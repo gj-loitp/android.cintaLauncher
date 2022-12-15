@@ -9,8 +9,8 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.marginBottom
 import androidx.core.view.marginTop
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cdflynn.android.library.turn.TurnLayoutManager
 import com.loitpcore.core.utilities.LUIUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.R
@@ -51,22 +51,32 @@ class AppDrawer(
             onBottom = {},
             onScrolled = {}
         )
-        rvApp.layoutManager = GridLayoutManager(
+//        rvApp.layoutManager = GridLayoutManager(
+//            /* context = */ flAppDrawerContainer.context,
+//            /* spanCount = */COLUMNS,
+//            /* orientation = */RecyclerView.VERTICAL,
+//            /* reverseLayout = */false
+//        ).apply {
+//            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+//                override fun getSpanSize(i: Int): Int {
+//                    return when (adapter.getItemViewType(i)) {
+//                        AppDrawerAdapter.APP_ITEM -> 1
+//                        AppDrawerAdapter.SECTION_HEADER -> COLUMNS
+//                        else -> -1
+//                    }
+//                }
+//            }
+//        }
+
+        rvApp.layoutManager = TurnLayoutManager(
             /* context = */ flAppDrawerContainer.context,
-            /* spanCount = */COLUMNS,
-            /* orientation = */RecyclerView.VERTICAL,
-            /* reverseLayout = */false
-        ).apply {
-            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(i: Int): Int {
-                    return when (adapter.getItemViewType(i)) {
-                        AppDrawerAdapter.APP_ITEM -> 1
-                        AppDrawerAdapter.SECTION_HEADER -> COLUMNS
-                        else -> -1
-                    }
-                }
-            }
-        }
+            /* gravity = */ TurnLayoutManager.Gravity.START,
+            /* orientation = */ TurnLayoutManager.Orientation.VERTICAL,
+            /* radius = */ 3000,
+            /* peekDistance = */ 100,
+            /* rotate = */ false
+        )
+
         rvApp.adapter = adapter
     }
 

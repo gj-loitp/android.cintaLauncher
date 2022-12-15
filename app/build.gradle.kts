@@ -57,6 +57,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx:21.2.0")
     implementation("com.google.firebase:firebase-crashlytics-ktx:18.3.2")
     implementation("com.google.firebase:firebase-config-ktx:21.2.0")
+    implementation("com.github.cdflynn:turn-layout-manager:v1.3.1")
 }
 
 configurations.all {
