@@ -62,7 +62,7 @@ class ScrollbarIconView @JvmOverloads constructor(
                 counter++
                 if (counter > countDetectMoving) {
 
-                    if (counter % 10 == 0) {
+                    if (counter % 5 == 0) {
                         C.vibrate(milliseconds = 10)
                     }
 
