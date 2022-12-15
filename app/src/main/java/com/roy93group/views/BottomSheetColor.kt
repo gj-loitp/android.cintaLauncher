@@ -13,7 +13,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.widget.LinearLayoutCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.loitpcore.picker.shiftColorPicker.LineColorPicker
 import com.loitpcore.picker.shiftColorPicker.OnColorChangedListener
@@ -27,7 +26,7 @@ class BottomSheetColor(
     private val warning: String,
     private val onDismiss: ((Int) -> Unit)? = null
 ) : BottomSheetDialogFragment() {
-    private var llRoot: LinearLayoutCompat? = null
+    private var llRoot: ViewGroup? = null
     private var tvTitle: TextView? = null
     private var tvDes: TextView? = null
     private var tvWarning: TextView? = null
