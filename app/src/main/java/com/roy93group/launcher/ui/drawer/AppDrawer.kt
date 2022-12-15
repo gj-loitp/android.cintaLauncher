@@ -18,6 +18,7 @@ import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
 import com.roy93group.launcher.ui.view.scrollbar.Scrollbar
+import com.roy93group.views.BottomSheetCustomizeAppDrawer
 import io.posidon.android.conveniencelib.getStatusBarHeight
 import io.posidon.android.conveniencelib.onEnd
 
@@ -181,5 +182,15 @@ class AppDrawer(
             }
             start()
         }
+    }
+
+    fun customizeAppDrawer() {
+        val fragment = BottomSheetCustomizeAppDrawer(
+            isCancelableFragment = true,
+            onDismiss = {
+
+            },
+        )
+        fragment.show(launcherActivity.supportFragmentManager, fragment.tag)
     }
 }

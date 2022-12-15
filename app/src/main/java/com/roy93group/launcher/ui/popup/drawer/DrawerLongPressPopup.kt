@@ -21,6 +21,7 @@ import com.loitpcore.core.utilities.LActivityUtil
 import com.loitpcore.core.utilities.LAppResource
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.app.C
+import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.DoReshapeAdaptiveIconsSetting.doReshapeAdaptiveIcons
 import com.roy93group.launcher.storage.ScrollbarControllerSetting.scrollbarController
@@ -80,12 +81,15 @@ object DrawerLongPressPopup {
                             context = parent.context,
                             settings = settings,
                             reloadScrollbarController = {
-                                cardView.post {
+                                launcherActivity.runOnUiThread {
                                     reloadApps()
                                     update()
                                 }
                             },
                             reloadApps = reloadApps,
+                            onDismiss = {
+                                window.dismiss()
+                            }
                         )
                     )
                 }
@@ -114,6 +118,7 @@ object DrawerLongPressPopup {
         settings: Settings,
         reloadScrollbarController: () -> Unit,
         reloadApps: () -> Unit,
+        onDismiss: () -> Unit,
     ): List<ListPopupItem> {
         return listOf(
             ListPopupItem(text = context.getString(R.string.setting), isTitle = true),
@@ -129,6 +134,7 @@ object DrawerLongPressPopup {
                 description = context.resources.getStringArray(R.array.scrollbar_controllers)[settings.scrollbarController],
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_sorting),
             ) {
+                onDismiss.invoke()
                 C.launchSelector(
                     activity = launcherActivity,
                     isCancelableFragment = true,
@@ -154,6 +160,7 @@ object DrawerLongPressPopup {
                 description = context.getString(R.string.pick_your_favorite_color),
                 icon = ContextCompat.getDrawable(context, R.drawable.baseline_palette_black_48),
             ) {
+                onDismiss.invoke()
                 C.launchColor(activity = launcherActivity,
                     isCancelableFragment = true,
                     title = LAppResource.getString(R.string.color),
@@ -170,7 +177,7 @@ object DrawerLongPressPopup {
             ) {
                 val isShowFlickrGallery =
                     Firebase.remoteConfig["is_show_flickr_gallery"].asBoolean()
-                if (isShowFlickrGallery) {
+                if (isShowFlickrGallery || BuildConfig.DEBUG) {
                     C.launchWallpaper(launcherActivity)
                 } else {
                     launcherActivity.showShortError(context.getString(R.string.err_unknown_en))
@@ -203,7 +210,8 @@ object DrawerLongPressPopup {
                     R.drawable.baseline_dashboard_customize_black_48
                 ),
             ) {
-                //TODO
+                onDismiss.invoke()
+                launcherActivity.appDrawer.customizeAppDrawer()
             },
             ListPopupItem(text = context.getString(R.string.other), isTitle = true),
             ListPopupItem(
