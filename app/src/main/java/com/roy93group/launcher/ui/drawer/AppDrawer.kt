@@ -33,10 +33,13 @@ class AppDrawer(
     val launcherActivity: LauncherActivity
 ) {
 
+    private var seekRadiusValue = 0
+    private var seekPeekValue = 0
     private val flAppDrawerContainer: View =
         launcherActivity.findViewById(R.id.flAppDrawerContainer)
     private val adapter = AppDrawerAdapter(launcherActivity)
     private val rvApp: RecyclerView = flAppDrawerContainer.findViewById(R.id.rvApp)
+    private var layoutManager: TurnLayoutManager? = null
 
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
@@ -49,15 +52,15 @@ class AppDrawer(
             onScrolled = {}
         )
 
-        rvApp.layoutManager = TurnLayoutManager(
+        layoutManager = TurnLayoutManager(
             /* context = */ flAppDrawerContainer.context,
             /* gravity = */ TurnLayoutManager.Gravity.START,
             /* orientation = */ TurnLayoutManager.Orientation.VERTICAL,
-            /* radius = */ 0,
-            /* peekDistance = */ 0,
+            /* radius = */ seekRadiusValue,
+            /* peekDistance = */ seekPeekValue,
             /* rotate = */ false
         )
-
+        rvApp.layoutManager = layoutManager
         rvApp.adapter = adapter
     }
 
@@ -186,10 +189,27 @@ class AppDrawer(
 
     fun customizeAppDrawer() {
         val fragment = BottomSheetCustomizeAppDrawer(
+            seekRadiusValue = seekRadiusValue,
+            seekPeekValue = seekPeekValue,
             isCancelableFragment = true,
             onDismiss = {
                 //do nothing
             },
+            onSeekRadiusValue = { progress ->
+                layoutManager?.setRadius(progress)
+            },
+            onSeekPeekValue = { progress ->
+                layoutManager?.setPeekDistance(progress)
+            },
+            onOrientation = { orientation ->
+                layoutManager?.orientation = orientation
+            },
+            onGravity = { gravity ->
+                layoutManager?.setGravity(gravity)
+            },
+            onRotate = { isChecked ->
+                layoutManager?.setRotate(isChecked)
+            }
         )
         fragment.show(launcherActivity.supportFragmentManager, fragment.tag)
     }

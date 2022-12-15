@@ -17,14 +17,25 @@ import android.widget.*
 import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.appcompat.widget.AppCompatSpinner
+import cdflynn.android.library.turn.TurnLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 
 class BottomSheetCustomizeAppDrawer(
+    private val seekRadiusValue: Int,
+    private val seekPeekValue: Int,
     private val isCancelableFragment: Boolean = true,
-    private val onDismiss: ((Unit) -> Unit)? = null
+    private val onDismiss: ((Unit) -> Unit)? = null,
+    private val onSeekRadiusValue: ((Int) -> Unit)?,
+    private val onSeekPeekValue: ((Int) -> Unit)?,
+    private val onOrientation: ((Int) -> Unit)?,
+    private val onGravity: ((Int) -> Unit)?,
+    private val onRotate: ((Boolean) -> Unit)?,
 ) : BottomSheetDialogFragment() {
+
+    private var tvRadius: TextView? = null
+    private var tvPeekText: TextView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,6 +68,8 @@ class BottomSheetCustomizeAppDrawer(
     private fun setupViews(view: View) {
         view.findViewById<ViewGroup>(R.id.llRoot).setBackgroundColor(C.COLOR_0)
 
+        tvRadius = view.findViewById(R.id.tvRadius)
+        tvPeekText = view.findViewById(R.id.tvPeekText)
         val seekRadius = view.findViewById<SeekBar>(R.id.seekRadius)
         val seekPeek = view.findViewById<SeekBar>(R.id.seekPeek)
         val gravity = view.findViewById<AppCompatSpinner>(R.id.gravity)
@@ -65,8 +78,8 @@ class BottomSheetCustomizeAppDrawer(
 
         seekRadius.setOnSeekBarChangeListener(radiusListener)
         seekPeek.setOnSeekBarChangeListener(peekListener)
-        seekRadius.progress = 0
-        seekPeek.progress = 0
+        seekRadius.progress = seekRadiusValue
+        seekPeek.progress = seekPeekValue
         gravity.onItemSelectedListener = gravityOptionsClickListener
         orientation.onItemSelectedListener = orientationOptionsClickListener
         gravity.adapter = GravityAdapter(requireContext(), R.layout.view_spinner_item_tlm)
@@ -77,10 +90,10 @@ class BottomSheetCustomizeAppDrawer(
     private val radiusListener: SeekBar.OnSeekBarChangeListener = object :
         SeekBar.OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-//            tvRadius.text = resources.getString(R.string.radius_format, progress)
-//            if (fromUser) {
-//                layoutManager?.setRadius(progress)
-//            }
+            tvRadius?.text = resources.getString(R.string.radius_format, progress)
+            if (fromUser) {
+                onSeekRadiusValue?.invoke(progress)
+            }
         }
 
         override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -95,10 +108,10 @@ class BottomSheetCustomizeAppDrawer(
     private val peekListener: SeekBar.OnSeekBarChangeListener = object :
         SeekBar.OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-//            tvPeekText.text = resources.getString(R.string.peek_format, progress)
-//            if (fromUser) {
-//                layoutManager?.setPeekDistance(progress)
-//            }
+            tvPeekText?.text = resources.getString(R.string.peek_format, progress)
+            if (fromUser) {
+                onSeekPeekValue?.invoke(progress)
+            }
         }
 
         override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -115,14 +128,15 @@ class BottomSheetCustomizeAppDrawer(
             override fun onItemSelected(
                 parent: AdapterView<*>?, view: View, position: Int, id: Long
             ) {
-//                when (position) {
-//                    0 -> {
-//                        layoutManager?.orientation = TurnLayoutManager.VERTICAL
-//                        return
-//                    }
-//                    1 -> layoutManager?.orientation = TurnLayoutManager.HORIZONTAL
-//                    else -> {}
-//                }
+                when (position) {
+                    0 -> {
+                        onOrientation?.invoke(TurnLayoutManager.VERTICAL)
+                    }
+                    1 -> {
+                        onOrientation?.invoke(TurnLayoutManager.HORIZONTAL)
+                    }
+                    else -> {}
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -133,23 +147,22 @@ class BottomSheetCustomizeAppDrawer(
             override fun onItemSelected(
                 parent: AdapterView<*>?, view: View, position: Int, id: Long
             ) {
-//                when (position) {
-//                    0 -> {
-//                        layoutManager?.setGravity(TurnLayoutManager.Gravity.START)
-//                        return
-//                    }
-//                    1 -> layoutManager?.setGravity(TurnLayoutManager.Gravity.END)
-//                    else -> {}
-//                }
+                when (position) {
+                    0 -> {
+                        onGravity?.invoke(TurnLayoutManager.Gravity.START)
+                    }
+                    1 -> {
+                        onGravity?.invoke(TurnLayoutManager.Gravity.END)
+                    }
+                    else -> {}
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
     private val rotateListener = CompoundButton.OnCheckedChangeListener { _, isChecked ->
-//        layoutManager?.setRotate(
-//            isChecked
-//        )
+        onRotate?.invoke(isChecked)
     }
 
     private class OrientationAdapter(
