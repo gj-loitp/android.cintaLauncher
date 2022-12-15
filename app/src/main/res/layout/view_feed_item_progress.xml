@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingStart="@dimen/margin_padding_medium"
-    android:paddingEnd="@dimen/margin_padding_medium">
+    android:orientation="vertical">
 
     <View
         android:id="@+id/vLine"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_1"
+        android:layout_marginStart="@dimen/margin_padding_medium"
+        android:layout_marginEnd="@dimen/margin_padding_medium"
         android:alpha="0.7"
+        app:layout_constraintTop_toTopOf="parent"
         tools:background="@color/colorTest" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+        android:id="@+id/llcInfo"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_padding_medium"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/vLine"
+        app:layout_constraintStart_toStartOf="@+id/vLine"
+        app:layout_constraintTop_toBottomOf="@+id/vLine">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/icon"
@@ -33,6 +39,7 @@
             android:id="@+id/source"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_small"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
@@ -54,11 +61,15 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+        android:id="@+id/llcDes"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_padding_small"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/llcInfo"
+        app:layout_constraintStart_toStartOf="@+id/llcInfo"
+        app:layout_constraintTop_toBottomOf="@+id/llcInfo">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/title"
@@ -85,11 +96,20 @@
     <ProgressBar
         android:id="@+id/progress"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_padding_small"
         android:indeterminate="false"
+        app:layout_constraintEnd_toEndOf="@+id/llcDes"
+        app:layout_constraintStart_toStartOf="@+id/llcDes"
+        app:layout_constraintTop_toBottomOf="@+id/llcDes"
         tools:progress="69" />
 
-    <include layout="@layout/view_feed_item_actions" />
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <include
+        layout="@layout/view_feed_item_actions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_padding_small"
+        app:layout_constraintEnd_toEndOf="@+id/progress"
+        app:layout_constraintTop_toBottomOf="@+id/progress" />
+</androidx.constraintlayout.widget.ConstraintLayout>
