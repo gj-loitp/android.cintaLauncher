@@ -56,6 +56,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/source"
         app:layout_constraintEnd_toEndOf="@+id/vLine"
         app:layout_constraintTop_toTopOf="@+id/source"
+        tools:ignore="TextContrastCheck"
         tools:text="1d"
         tools:textColor="@color/colorTest" />
 
@@ -79,35 +80,37 @@
             tools:src="@drawable/ic_launcher" />
     </com.google.android.material.card.MaterialCardView>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_padding_small"
-        android:layout_weight="1"
-        android:orientation="vertical"
+        android:textSize="@dimen/txt_medium"
         app:layout_constraintEnd_toEndOf="@id/vLine"
         app:layout_constraintStart_toEndOf="@+id/card"
-        app:layout_constraintTop_toTopOf="@+id/card">
+        app:layout_constraintTop_toTopOf="@+id/card"
+        tools:ignore="TextContrastCheck"
+        tools:text="@string/app_name"
+        tools:textColor="@color/colorTest" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/txt_medium"
-            tools:text="@string/app_name"
-            tools:textColor="@color/colorTest" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:ellipsize="end"
+        android:maxLines="5"
+        android:textSize="@dimen/txt_small"
+        app:layout_constraintEnd_toEndOf="@+id/title"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:ignore="TextContrastCheck"
+        tools:text="@string/large_dummy_text"
+        tools:textColor="@color/colorTest" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:alpha="0.7"
-            android:ellipsize="end"
-            android:maxLines="5"
-            android:textSize="@dimen/txt_small"
-            tools:text="@string/large_dummy_text"
-            tools:textColor="@color/colorTest" />
-
-        <include layout="@layout/view_feed_item_actions" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    <include
+        layout="@layout/view_feed_item_actions"
+        app:layout_constraintEnd_toEndOf="@+id/title"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 </androidx.constraintlayout.widget.ConstraintLayout>
