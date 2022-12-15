@@ -188,7 +188,7 @@ class AppDrawer(
         val fragment = BottomSheetCustomizeAppDrawer(
             isCancelableFragment = true,
             onDismiss = {
-
+                //do nothing
             },
         )
         fragment.show(launcherActivity.supportFragmentManager, fragment.tag)
