@@ -30,8 +30,6 @@ class HomeViewHolder(
         setTextColor(C.COLOR_0)
     }
     private val notificationIconsAdapter = NotificationIconsAdapter()
-    private val llNotificationIconContainer =
-        itemView.findViewById<View>(R.id.llNotificationIconContainer)
 
     @Suppress("unused")
     val rvNotificationIconList: RecyclerView =
@@ -68,9 +66,11 @@ class HomeViewHolder(
             it.key?.newDrawable()
         }
         if (icons.isEmpty()) {
-            llNotificationIconContainer.isVisible = false
+            tvNotificationIconText.isVisible = false
+            rvNotificationIconList.isVisible = false
         } else {
-            llNotificationIconContainer.isVisible = true
+            tvNotificationIconText.isVisible = true
+            rvNotificationIconList.isVisible = true
             if (notificationIconsAdapter.updateItems(icons)) {
                 tvNotificationIconText.text =
                     itemView.resources.getQuantityString(
