@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:paddingBottom="@dimen/margin_padding_medium" />
+        android:paddingBottom="@dimen/margin_padding_small" />
 
     <include layout="@layout/view_app_drawer" />
 

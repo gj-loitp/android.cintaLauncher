@@ -53,15 +53,15 @@ class FeedProfileAdapter(
         if (i == (items.size - 1)) {
             LUIUtil.setMarginsDp(
                 view = holder.card,
-                leftDp = 16,
+                leftDp = 8,
                 topDp = 0,
-                rightDp = 16,
+                rightDp = 8,
                 bottomDp = 0,
             )
         } else {
             LUIUtil.setMarginsDp(
                 view = holder.card,
-                leftDp = 16,
+                leftDp = 8,
                 topDp = 0,
                 rightDp = 0,
                 bottomDp = 0
