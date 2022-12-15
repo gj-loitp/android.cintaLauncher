@@ -41,6 +41,9 @@ class AppDrawer(
 
     private var seekRadiusValue = 0
     private var seekPeekValue = 0
+    private var orientation = 0
+    private var gravity = TurnLayoutManager.Gravity.START
+    private var isChecked = false
 
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
@@ -55,11 +58,11 @@ class AppDrawer(
 
         layoutManager = TurnLayoutManager(
             /* context = */ flAppDrawerContainer.context,
-            /* gravity = */ TurnLayoutManager.Gravity.START,
-            /* orientation = */ TurnLayoutManager.Orientation.VERTICAL,
+            /* gravity = */ gravity,
+            /* orientation = */ orientation,
             /* radius = */ seekRadiusValue,
             /* peekDistance = */ seekPeekValue,
-            /* rotate = */ false
+            /* rotate = */ isChecked
         )
         rvApp.layoutManager = layoutManager
         rvApp.adapter = adapter
@@ -199,21 +202,24 @@ class AppDrawer(
             onDismiss = {
                 //do nothing
             },
-            onSeekRadiusValue = { progress ->
-                seekRadiusValue = progress
+            onSeekRadiusValue = { value ->
+                seekRadiusValue = value
                 layoutManager?.setRadius(seekRadiusValue)
             },
-            onSeekPeekValue = { progress ->
-                seekPeekValue = progress
+            onSeekPeekValue = { value ->
+                seekPeekValue = value
                 layoutManager?.setPeekDistance(seekPeekValue)
             },
-            onOrientation = { orientation ->
+            onOrientation = { value ->
+                orientation = value
                 layoutManager?.orientation = orientation
             },
-            onGravity = { gravity ->
+            onGravity = { value ->
+                gravity = value
                 layoutManager?.setGravity(gravity)
             },
-            onRotate = { isChecked ->
+            onRotate = { value ->
+                isChecked = value
                 layoutManager?.setRotate(isChecked)
             }
         )
