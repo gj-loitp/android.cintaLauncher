@@ -12,9 +12,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.LinearLayoutCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.loitpcore.core.ext.setSafeOnClickListener
 import com.loitpcore.core.utilities.LSocialUtil
@@ -59,12 +58,12 @@ class BottomSheetAppOption(
     }
 
     private fun setupViews(view: View) {
-        view.findViewById<LinearLayoutCompat>(R.id.llRoot).setBackgroundColor(C.COLOR_0)
+        view.findViewById<ViewGroup>(R.id.llRoot).setBackgroundColor(C.COLOR_0)
         tvTitle = view.findViewById(R.id.tvTitle)
 
-        val btAppSetting = view.findViewById<AppCompatButton>(R.id.btAppSetting)
-        val btPlayStore = view.findViewById<AppCompatButton>(R.id.btPlayStore)
-        val btUninstall = view.findViewById<AppCompatButton>(R.id.btUninstall)
+        val btAppSetting = view.findViewById<Button>(R.id.btAppSetting)
+        val btPlayStore = view.findViewById<Button>(R.id.btPlayStore)
+        val btUninstall = view.findViewById<Button>(R.id.btUninstall)
 
         btAppSetting.setSafeOnClickListener {
             (item as? App)?.packageName?.let { packageName ->
