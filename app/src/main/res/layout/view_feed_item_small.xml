@@ -1,79 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
     <View
         android:id="@+id/vLine"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_1"
+        android:layout_marginStart="@dimen/margin_padding_medium"
+        android:layout_marginEnd="@dimen/margin_padding_medium"
         android:alpha="0.7"
+        app:layout_constraintTop_toTopOf="parent"
         tools:background="@color/colorTest" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/w_35"
+        android:layout_height="@dimen/w_35"
+        app:layout_constraintBottom_toBottomOf="@+id/source"
+        app:layout_constraintStart_toStartOf="@+id/vLine"
+        app:layout_constraintTop_toTopOf="@+id/source"
+        tools:src="@drawable/ic_launcher"
+        tools:tint="@color/colorTest" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/source"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_small"
         android:layout_marginTop="@dimen/margin_padding_medium"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="@dimen/txt_large"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tvTime"
+        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintTop_toBottomOf="@+id/vLine"
+        tools:text="@string/app_name"
+        tools:textColor="@color/colorTest" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/icon"
-            android:layout_width="@dimen/w_35"
-            android:layout_height="@dimen/w_35"
-            tools:src="@drawable/ic_launcher"
-            tools:tint="@color/colorTest" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_tiny"
+        android:alpha="0.7"
+        android:maxLines="1"
+        android:textSize="@dimen/txt_small"
+        app:layout_constraintBottom_toBottomOf="@+id/source"
+        app:layout_constraintEnd_toEndOf="@+id/vLine"
+        app:layout_constraintTop_toTopOf="@+id/source"
+        tools:text="@string/app_name"
+        tools:textColor="1d" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/source"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textSize="@dimen/txt_large"
-            android:textStyle="bold"
-            tools:text="@string/app_name"
-            tools:textColor="@color/colorTest" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_tiny"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="@dimen/txt_small"
+        app:layout_constraintEnd_toEndOf="@+id/vLine"
+        app:layout_constraintStart_toStartOf="@+id/vLine"
+        app:layout_constraintTop_toBottomOf="@+id/source"
+        tools:ignore="TextContrastCheck"
+        tools:text="@string/app_name"
+        tools:textColor="@color/colorTest" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_padding_tiny"
-            android:alpha="0.7"
-            android:maxLines="1"
-            android:textSize="@dimen/txt_small"
-            tools:text="@string/app_name"
-            tools:textColor="@color/colorTest" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="@dimen/txt_tiny"
+        app:layout_constraintEnd_toEndOf="@+id/title"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:ignore="TextContrastCheck"
+        tools:text="@string/app_name"
+        tools:textColor="@color/colorTest" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_padding_tiny"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textSize="@dimen/txt_small"
-            tools:text="@string/app_name"
-            tools:textColor="@color/colorTest" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_padding_tiny"
-            android:alpha="0.7"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textSize="@dimen/txt_tiny"
-            tools:text="@string/app_name"
-            tools:textColor="@color/colorTest" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <include layout="@layout/view_feed_item_actions" />
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <include
+        layout="@layout/view_feed_item_actions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/description"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+</androidx.constraintlayout.widget.ConstraintLayout>
