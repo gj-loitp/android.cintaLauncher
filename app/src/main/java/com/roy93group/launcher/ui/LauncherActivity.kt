@@ -106,11 +106,7 @@ class LauncherActivity : BaseFontActivity() {
                 onBottom = {
                 },
                 onScrolled = { isScrollDown ->
-                    if (isScrollDown) {
-                        feedProfiles.rvFeedFilters.isVisible = false
-                    } else {
-                        feedProfiles.rvFeedFilters.isVisible = true
-                    }
+                    feedProfiles.rvFeedFilters.isVisible = !isScrollDown
                 },
             )
             layoutManager = LinearLayoutManager(
