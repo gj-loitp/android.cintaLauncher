@@ -59,57 +59,55 @@
         tools:text="1d"
         tools:textColor="@color/colorTest" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_padding_small"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/source">
+        app:cardCornerRadius="@dimen/round_medium"
+        app:cardElevation="@dimen/w_3"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintStart_toStartOf="@+id/vLine"
+        app:layout_constraintTop_toBottomOf="@+id/source"
+        app:strokeWidth="@dimen/w_1"
+        tools:strokeColor="@color/colorTest">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            android:layout_width="156dp"
+            android:layout_height="156dp"
+            tools:src="@drawable/ic_launcher" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_small"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@id/vLine"
+        app:layout_constraintStart_toEndOf="@+id/card"
+        app:layout_constraintTop_toTopOf="@+id/card">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/round_medium"
-            app:cardElevation="@dimen/w_3"
-            app:cardUseCompatPadding="false"
-            app:strokeWidth="@dimen/w_1"
-            tools:strokeColor="@color/colorTest">
+            android:textSize="@dimen/txt_medium"
+            tools:text="@string/app_name"
+            tools:textColor="@color/colorTest" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/image"
-                android:layout_width="156dp"
-                android:layout_height="156dp"
-                tools:src="@drawable/ic_launcher" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="0dp"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_padding_small"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:alpha="0.7"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:textSize="@dimen/txt_small"
+            tools:text="@string/large_dummy_text"
+            tools:textColor="@color/colorTest" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/txt_medium"
-                tools:text="@string/app_name"
-                tools:textColor="@color/colorTest" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:ellipsize="end"
-                android:maxLines="5"
-                android:textSize="@dimen/txt_small"
-                tools:text="@string/large_dummy_text"
-                tools:textColor="@color/colorTest" />
-
-            <include layout="@layout/view_feed_item_actions" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        <include layout="@layout/view_feed_item_actions" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>
