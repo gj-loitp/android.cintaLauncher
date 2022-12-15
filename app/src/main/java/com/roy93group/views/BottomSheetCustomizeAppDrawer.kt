@@ -72,9 +72,9 @@ class BottomSheetCustomizeAppDrawer(
         tvPeekText = view.findViewById(R.id.tvPeekText)
         val seekRadius = view.findViewById<SeekBar>(R.id.seekRadius)
         val seekPeek = view.findViewById<SeekBar>(R.id.seekPeek)
-        val gravity = view.findViewById<AppCompatSpinner>(R.id.sGravity)
-        val orientation = view.findViewById<AppCompatSpinner>(R.id.sOrientation)
-        val rotate = view.findViewById<AppCompatCheckBox>(R.id.cbRotate)
+        val sGravity = view.findViewById<AppCompatSpinner>(R.id.sGravity)
+        val sOrientation = view.findViewById<AppCompatSpinner>(R.id.sOrientation)
+        val cbRotate = view.findViewById<AppCompatCheckBox>(R.id.cbRotate)
 
         seekRadius.setOnSeekBarChangeListener(radiusListener)
         seekPeek.setOnSeekBarChangeListener(peekListener)
@@ -82,12 +82,12 @@ class BottomSheetCustomizeAppDrawer(
         seekRadius.progress = seekRadiusValue
         seekPeek.progress = seekPeekValue
 
-        gravity.onItemSelectedListener = gravityOptionsClickListener
-        orientation.onItemSelectedListener = orientationOptionsClickListener
+        sGravity.onItemSelectedListener = gravityOptionsClickListener
+        sOrientation.onItemSelectedListener = orientationOptionsClickListener
 
-        gravity.adapter = GravityAdapter(requireContext(), R.layout.view_spinner_item_tlm)
-        orientation.adapter = OrientationAdapter(requireContext(), R.layout.view_spinner_item_tlm)
-        rotate.setOnCheckedChangeListener(rotateListener)
+        sGravity.adapter = GravityAdapter(requireContext(), R.layout.view_spinner_item_tlm)
+        sOrientation.adapter = OrientationAdapter(requireContext(), R.layout.view_spinner_item_tlm)
+        cbRotate.setOnCheckedChangeListener(rotateListener)
     }
 
     private val radiusListener: SeekBar.OnSeekBarChangeListener = object :
