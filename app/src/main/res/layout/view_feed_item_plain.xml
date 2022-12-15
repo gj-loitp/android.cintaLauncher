@@ -16,57 +16,55 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:background="@color/colorTest" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llcInfo"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/w_35"
+        android:layout_height="@dimen/w_35"
+        app:layout_constraintBottom_toBottomOf="@+id/source"
+        app:layout_constraintStart_toStartOf="@+id/vLine"
+        app:layout_constraintTop_toTopOf="@+id/source"
+        tools:src="@drawable/ic_launcher"
+        tools:tint="@color/colorTest" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/source"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_medium"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/margin_padding_small"
+        android:layout_marginTop="@dimen/margin_padding_small"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="@dimen/txt_large"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tvTime"
+        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintTop_toBottomOf="@+id/vLine"
+        tools:text="@string/app_name"
+        tools:textColor="@color/colorTest" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:maxLines="1"
+        android:textSize="@dimen/txt_small"
+        app:layout_constraintBottom_toBottomOf="@+id/source"
         app:layout_constraintEnd_toEndOf="@+id/vLine"
-        app:layout_constraintStart_toStartOf="@+id/vLine"
-        app:layout_constraintTop_toBottomOf="@+id/vLine">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/icon"
-            android:layout_width="@dimen/w_35"
-            android:layout_height="@dimen/w_35"
-            tools:src="@drawable/ic_launcher"
-            tools:tint="@color/colorTest" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/source"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textSize="@dimen/txt_large"
-            android:textStyle="bold"
-            tools:text="@string/app_name"
-            tools:textColor="@color/colorTest" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.7"
-            android:maxLines="1"
-            android:textSize="@dimen/txt_small"
-            tools:ignore="TextContrastCheck"
-            tools:text="4m"
-            tools:textColor="@color/colorTest" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        app:layout_constraintTop_toTopOf="@+id/source"
+        tools:ignore="TextContrastCheck"
+        tools:text="4m"
+        tools:textColor="@color/colorTest" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="@dimen/txt_medium"
-        app:layout_constraintEnd_toEndOf="@id/llcInfo"
-        app:layout_constraintStart_toStartOf="@+id/llcInfo"
-        app:layout_constraintTop_toBottomOf="@+id/llcInfo"
+        app:layout_constraintEnd_toEndOf="@id/vLine"
+        app:layout_constraintStart_toStartOf="@+id/vLine"
+        app:layout_constraintTop_toBottomOf="@+id/source"
         tools:ignore="TextContrastCheck"
         tools:text="@string/app_name"
         tools:textColor="@color/colorTest" />
