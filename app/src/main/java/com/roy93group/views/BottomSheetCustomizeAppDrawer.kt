@@ -8,16 +8,13 @@ package com.roy93group.views
  * freuss47@gmail.com
  */
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.AppCompatCheckBox
-import cdflynn.android.library.turn.TurnLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.loitpcore.core.ext.setSafeOnClickListener
 import com.loitpcore.core.utilities.LAppResource
@@ -32,6 +29,7 @@ class BottomSheetCustomizeAppDrawer(
     private val seekPeekValue: Int,
     private var gravityValue: Int,
     private var orientationValue: Int,
+    private var isCheckedValue: Boolean,
     private val isCancelableFragment: Boolean = true,
     private val onDismiss: ((Unit) -> Unit)? = null,
     private val onSeekRadiusValue: ((Int) -> Unit)?,
@@ -141,6 +139,7 @@ class BottomSheetCustomizeAppDrawer(
             )
         }
 
+        cbRotate.isChecked = isCheckedValue
         cbRotate.setOnCheckedChangeListener(rotateListener)
     }
 

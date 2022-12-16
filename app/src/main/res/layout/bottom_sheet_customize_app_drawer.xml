@@ -105,6 +105,7 @@
         tools:textColor="@color/colorTest" />
 
     <RelativeLayout
+        android:id="@+id/rlRotate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_padding_medium"
@@ -129,4 +130,22 @@
             android:gravity="end"
             tools:checked="true" />
     </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btReset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_padding_small"
+        android:backgroundTint="@color/colorPrimary"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:paddingStart="@dimen/margin_padding_medium"
+        android:paddingTop="@dimen/margin_padding_medium"
+        android:paddingEnd="@dimen/margin_padding_medium"
+        android:paddingBottom="@dimen/margin_padding_medium"
+        android:text="Default value"
+        android:textAllCaps="false"
+        android:textSize="@dimen/txt_medium"
+        app:layout_constraintTop_toBottomOf="@+id/rlRotate"
+        tools:textColor="@color/colorTest" />
 </androidx.constraintlayout.widget.ConstraintLayout>
