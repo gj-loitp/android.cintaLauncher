@@ -54,6 +54,7 @@ object C {
     private const val KEY_SEEK_PEEK_VALUE = "KEY_SEEK_PEEK_VALUE"
     private const val KEY_ORIENTATION_VALUE = "KEY_ORIENTATION_VALUE"
     private const val KEY_GRAVITY_VALUE = "KEY_GRAVITY_VALUE"
+    private const val KEY_IS_CHECKED_VALUE = "KEY_IS_CHECKED_VALUE"
 
     val COLOR_PRIMARY = LAppResource.getColor(R.color.colorPrimary)
     var COLOR_0 = LAppResource.getColor(R.color.color0)
@@ -394,5 +395,13 @@ object C {
 
     fun getGravityValue(): Int {
         return LSharedPrefsUtil.instance.getInt(KEY_GRAVITY_VALUE, 0)
+    }
+
+    fun setChecked(isCheckedValue: Boolean) {
+        LSharedPrefsUtil.instance.putBoolean(KEY_IS_CHECKED_VALUE, isCheckedValue)
+    }
+
+    fun getChecked(): Boolean {
+        return LSharedPrefsUtil.instance.getBoolean(KEY_IS_CHECKED_VALUE, false)
     }
 }
