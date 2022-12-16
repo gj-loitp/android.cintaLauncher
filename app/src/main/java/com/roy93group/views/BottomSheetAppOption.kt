@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.card.MaterialCardView
 import com.loitpcore.core.ext.setSafeOnClickListener
 import com.loitpcore.core.utilities.LSocialUtil
 import com.roy93group.app.C
@@ -58,7 +59,9 @@ class BottomSheetAppOption(
     }
 
     private fun setupViews(view: View) {
-        view.findViewById<ViewGroup>(R.id.llRoot).setBackgroundColor(C.COLOR_0)
+        view.findViewById<MaterialCardView>(R.id.llRoot).apply {
+            setCardBackgroundColor(C.COLOR_0)
+        }
         tvTitle = view.findViewById(R.id.tvTitle)
 
         val btAppSetting = view.findViewById<Button>(R.id.btAppSetting)

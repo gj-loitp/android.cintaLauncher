@@ -14,7 +14,6 @@ import com.loitpcore.data.ActivityData
  * freuss47@gmail.com
  */
 //https://console.firebase.google.com/u/0/project/cinta-launcher-71015/overview
-//TODO round corner bottom sheet
 //TODO firebase set is_show_flickr_gallery true when app available
 //TODO thay cac late in
 //TODO fav app
@@ -53,6 +52,7 @@ import com.loitpcore.data.ActivityData
 //uninstall app
 //su dung remote config de bat tat cac chuc nang nhay cam nhu gallery
 //da test thu LParallaxRecyclerView nhung ko dep
+//round corner bottom sheet
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

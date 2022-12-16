@@ -1,84 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llRoot"
+    style="@style/CustomCardViewStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="@dimen/margin_padding_medium"
-    android:paddingEnd="@dimen/margin_padding_medium"
-    android:paddingBottom="@dimen/margin_padding_medium"
-    tools:background="@color/colorTest">
+    tools:cardBackgroundColor="@color/colorTest">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivSlider"
-        android:layout_width="@dimen/w_50"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_small"
-        android:src="@drawable/ic_slider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/colorPrimary" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvTitle"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_info"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/txt_50"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/ivSlider" />
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/margin_padding_small"
+        android:paddingEnd="@dimen/margin_padding_small"
+        android:paddingBottom="@dimen/margin_padding_medium">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btAppSetting"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_small"
-        android:background="@null"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="start|center_vertical"
-        android:paddingStart="@dimen/margin_padding_medium"
-        android:paddingEnd="@dimen/margin_padding_medium"
-        android:text="@string/setting"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/txt_medium"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSlider"
+            android:layout_width="@dimen/w_50"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_slider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/colorPrimary" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btPlayStore"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_small"
-        android:background="@null"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="start|center_vertical"
-        android:paddingStart="@dimen/margin_padding_medium"
-        android:paddingEnd="@dimen/margin_padding_medium"
-        android:text="@string/play_store"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/txt_medium"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/btAppSetting" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_info"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_50"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/ivSlider" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btUninstall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_small"
-        android:background="@null"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="start|center_vertical"
-        android:paddingStart="@dimen/margin_padding_medium"
-        android:paddingEnd="@dimen/margin_padding_medium"
-        android:text="@string/uninstall"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/txt_medium"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/btPlayStore" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btAppSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_small"
+            android:background="@null"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="start|center_vertical"
+            android:paddingStart="@dimen/margin_padding_medium"
+            android:paddingEnd="@dimen/margin_padding_medium"
+            android:text="@string/setting"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_medium"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btPlayStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_small"
+            android:background="@null"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="start|center_vertical"
+            android:paddingStart="@dimen/margin_padding_medium"
+            android:paddingEnd="@dimen/margin_padding_medium"
+            android:text="@string/play_store"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_medium"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/btAppSetting" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btUninstall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_small"
+            android:background="@null"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="start|center_vertical"
+            android:paddingStart="@dimen/margin_padding_medium"
+            android:paddingEnd="@dimen/margin_padding_medium"
+            android:text="@string/uninstall"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_medium"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/btPlayStore" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
