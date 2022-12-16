@@ -39,9 +39,9 @@ class AppDrawer(
     private val rvApp: RecyclerView = flAppDrawerContainer.findViewById(R.id.rvApp)
     private var layoutManager: TurnLayoutManager? = null
 
-    private var seekRadiusValue = 0
-    private var seekPeekValue = 0
-    private var orientationValue = 1
+    private var seekRadiusValue = C.getSeekRadiusValue()
+    private var seekPeekValue = C.getSeekPeekValue()
+    private var orientationValue = C.getOrientationValue()
     private var gravityValue = 0
     private var isCheckedValue = false
 
@@ -66,9 +66,6 @@ class AppDrawer(
         } else {
             TurnLayoutManager.VERTICAL
         }
-        seekRadiusValue = C.getSeekRadiusValue()
-        seekPeekValue = C.getSeekPeekValue()
-
         layoutManager = TurnLayoutManager(
             /* context = */ flAppDrawerContainer.context,
             /* gravity = */ tmpGravity,
@@ -235,6 +232,7 @@ class AppDrawer(
                 } else {
                     layoutManager?.orientation = TurnLayoutManager.VERTICAL
                 }
+                C.setOrientationValue(orientationValue)
             },
             onGravity = { value ->
                 gravityValue = value
@@ -273,6 +271,7 @@ class AppDrawer(
 
                 C.setSeekRadiusValue(seekRadiusValue)
                 C.setSeekPeekValue(seekPeekValue)
+                C.setOrientationValue(orientationValue)
             }
         )
         fragment.show(launcherActivity.supportFragmentManager, fragment.tag)
