@@ -22,8 +22,6 @@ import com.roy93group.app.C
 import com.roy93group.launcher.R
 
 //TODO customize seekbar
-//TODO customize checkbox
-//TODO keep value o db
 class BottomSheetCustomizeAppDrawer(
     private val seekRadiusValue: Int,
     private val seekPeekValue: Int,

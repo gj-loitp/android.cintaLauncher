@@ -104,32 +104,19 @@
         app:layout_constraintTop_toBottomOf="@+id/btGravity"
         tools:textColor="@color/colorTest" />
 
-    <RelativeLayout
-        android:id="@+id/rlRotate"
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/cbRotate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_padding_medium"
-        app:layout_constraintTop_toBottomOf="@+id/btOrientation">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toStartOf="@+id/cbRotate"
-            android:text="@string/rotate"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/txt_large" />
-
-        <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/cbRotate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="@dimen/margin_padding_medium"
-            android:buttonTint="@color/colorPrimary"
-            android:checked="false"
-            android:gravity="end"
-            tools:checked="true" />
-    </RelativeLayout>
+        android:buttonTint="@color/colorPrimary"
+        android:checked="false"
+        android:gravity="start"
+        android:text="@string/rotate"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/txt_large"
+        app:layout_constraintTop_toBottomOf="@+id/btOrientation"
+        tools:checked="true" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btReset"
@@ -146,6 +133,6 @@
         android:text="Default value"
         android:textAllCaps="false"
         android:textSize="@dimen/txt_medium"
-        app:layout_constraintTop_toBottomOf="@+id/rlRotate"
+        app:layout_constraintTop_toBottomOf="@+id/cbRotate"
         tools:textColor="@color/colorTest" />
 </androidx.constraintlayout.widget.ConstraintLayout>

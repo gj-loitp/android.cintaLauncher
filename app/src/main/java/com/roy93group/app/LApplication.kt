@@ -14,6 +14,7 @@ import com.loitpcore.data.ActivityData
  * freuss47@gmail.com
  */
 //https://console.firebase.google.com/u/0/project/cinta-launcher-71015/overview
+//TODO round corner bottom sheet
 //TODO firebase set is_show_flickr_gallery true when app available
 //TODO thay cac late in
 //TODO fav app
