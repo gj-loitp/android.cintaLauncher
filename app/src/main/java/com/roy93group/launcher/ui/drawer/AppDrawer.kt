@@ -66,6 +66,7 @@ class AppDrawer(
         } else {
             TurnLayoutManager.VERTICAL
         }
+        seekRadiusValue = C.getSeekRadiusValue()
         layoutManager = TurnLayoutManager(
             /* context = */ flAppDrawerContainer.context,
             /* gravity = */ tmpGravity,
@@ -205,7 +206,6 @@ class AppDrawer(
         if (layoutManager == null) {
             return
         }
-        //TODO keep value local db
         val fragment = BottomSheetCustomizeAppDrawer(
             seekRadiusValue = seekRadiusValue,
             seekPeekValue = seekPeekValue,
@@ -219,6 +219,7 @@ class AppDrawer(
             onSeekRadiusValue = { value ->
                 seekRadiusValue = value
                 layoutManager?.setRadius(seekRadiusValue)
+                C.setSeekRadiusValue(seekRadiusValue)
             },
             onSeekPeekValue = { value ->
                 seekPeekValue = value
@@ -266,6 +267,8 @@ class AppDrawer(
                     }
                     setRotate(isCheckedValue)
                 }
+
+                C.setSeekRadiusValue(seekRadiusValue)
             }
         )
         fragment.show(launcherActivity.supportFragmentManager, fragment.tag)
