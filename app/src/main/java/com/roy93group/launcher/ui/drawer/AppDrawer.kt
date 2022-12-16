@@ -67,6 +67,8 @@ class AppDrawer(
             TurnLayoutManager.VERTICAL
         }
         seekRadiusValue = C.getSeekRadiusValue()
+        seekPeekValue = C.getSeekPeekValue()
+
         layoutManager = TurnLayoutManager(
             /* context = */ flAppDrawerContainer.context,
             /* gravity = */ tmpGravity,
@@ -224,6 +226,7 @@ class AppDrawer(
             onSeekPeekValue = { value ->
                 seekPeekValue = value
                 layoutManager?.setPeekDistance(seekPeekValue)
+                C.setSeekPeekValue(seekPeekValue)
             },
             onOrientation = { value ->
                 orientationValue = value
@@ -269,6 +272,7 @@ class AppDrawer(
                 }
 
                 C.setSeekRadiusValue(seekRadiusValue)
+                C.setSeekPeekValue(seekPeekValue)
             }
         )
         fragment.show(launcherActivity.supportFragmentManager, fragment.tag)

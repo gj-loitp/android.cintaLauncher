@@ -51,6 +51,7 @@ import io.posidon.android.conveniencelib.units.toPixels
 object C {
     private const val KEY_MAIN_COLOR = "KEY_MAIN_COLOR"
     private const val KEY_SEEK_RADIUS_VALUE = "KEY_SEEK_RADIUS_VALUE"
+    private const val KEY_SEEK_PEEK_VALUE = "KEY_SEEK_PEEK_VALUE"
 
     val COLOR_PRIMARY = LAppResource.getColor(R.color.colorPrimary)
     var COLOR_0 = LAppResource.getColor(R.color.color0)
@@ -367,5 +368,13 @@ object C {
 
     fun getSeekRadiusValue(): Int {
         return LSharedPrefsUtil.instance.getInt(KEY_SEEK_RADIUS_VALUE, 0)
+    }
+
+    fun setSeekPeekValue(seekPeekValue: Int) {
+        LSharedPrefsUtil.instance.putInt(KEY_SEEK_PEEK_VALUE, seekPeekValue)
+    }
+
+    fun getSeekPeekValue(): Int {
+        return LSharedPrefsUtil.instance.getInt(KEY_SEEK_PEEK_VALUE, 0)
     }
 }
