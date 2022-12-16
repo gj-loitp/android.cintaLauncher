@@ -42,7 +42,7 @@ class AppDrawer(
     private var seekRadiusValue = 0
     private var seekPeekValue = 0
     private var orientation = 0
-    private var gravity = TurnLayoutManager.Gravity.START
+    private var gravityValue = 0
     private var isChecked = false
 
     @SuppressLint("ClickableViewAccessibility")
@@ -56,9 +56,14 @@ class AppDrawer(
             onScrolled = {}
         )
 
+        val tmpGravity = if (gravityValue == 0) {
+            TurnLayoutManager.Gravity.START
+        } else {
+            TurnLayoutManager.Gravity.END
+        }
         layoutManager = TurnLayoutManager(
             /* context = */ flAppDrawerContainer.context,
-            /* gravity = */ gravity,
+            /* gravity = */ tmpGravity,
             /* orientation = */ orientation,
             /* radius = */ seekRadiusValue,
             /* peekDistance = */ seekPeekValue,
@@ -195,11 +200,11 @@ class AppDrawer(
         if (layoutManager == null) {
             return
         }
-        //TODO default value
         //TODO keep value local db
         val fragment = BottomSheetCustomizeAppDrawer(
             seekRadiusValue = seekRadiusValue,
             seekPeekValue = seekPeekValue,
+            gravityValue = gravityValue,
             isCancelableFragment = true,
             onDismiss = {
                 //do nothing
@@ -217,8 +222,12 @@ class AppDrawer(
                 layoutManager?.orientation = orientation
             },
             onGravity = { value ->
-                gravity = value
-                layoutManager?.setGravity(gravity)
+                gravityValue = value
+                if (gravityValue == 0) {
+                    layoutManager?.setGravity(TurnLayoutManager.Gravity.START)
+                } else {
+                    layoutManager?.setGravity(TurnLayoutManager.Gravity.END)
+                }
             },
             onRotate = { value ->
                 isChecked = value

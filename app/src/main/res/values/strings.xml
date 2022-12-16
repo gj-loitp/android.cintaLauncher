@@ -68,4 +68,5 @@
     <string name="gravity">Gravity</string>
     <string name="start">Start</string>
     <string name="end">End</string>
+    <string name="pick_your_choice">Pick your choice</string>
 </resources>

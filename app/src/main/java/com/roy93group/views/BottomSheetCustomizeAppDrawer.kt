@@ -7,6 +7,7 @@ package com.roy93group.views
  * +840766040293
  * freuss47@gmail.com
  */
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
@@ -30,6 +31,7 @@ import com.roy93group.launcher.R
 class BottomSheetCustomizeAppDrawer(
     private val seekRadiusValue: Int,
     private val seekPeekValue: Int,
+    private var gravityValue: Int,
     private val isCancelableFragment: Boolean = true,
     private val onDismiss: ((Unit) -> Unit)? = null,
     private val onSeekRadiusValue: ((Int) -> Unit)?,
@@ -41,6 +43,7 @@ class BottomSheetCustomizeAppDrawer(
 
     private var tvRadius: TextView? = null
     private var tvPeekText: TextView? = null
+    private var btGravity: Button? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -77,7 +80,7 @@ class BottomSheetCustomizeAppDrawer(
         tvPeekText = view.findViewById(R.id.tvPeekText)
         val seekRadius = view.findViewById<SeekBar>(R.id.seekRadius)
         val seekPeek = view.findViewById<SeekBar>(R.id.seekPeek)
-        val btGravity = view.findViewById<Button>(R.id.btGravity)
+        btGravity = view.findViewById(R.id.btGravity)
         val sOrientation = view.findViewById<AppCompatSpinner>(R.id.sOrientation)
         val cbRotate = view.findViewById<AppCompatCheckBox>(R.id.cbRotate)
 
@@ -89,25 +92,25 @@ class BottomSheetCustomizeAppDrawer(
         seekRadius.progress = seekRadiusValue
         seekPeek.progress = seekPeekValue
 
-        btGravity.setSafeOnClickListener {
+        updateUIGravity()
+        btGravity?.setSafeOnClickListener {
+            val title = LAppResource.getString(R.string.gravity)
+            val value0 = LAppResource.getString(R.string.start)
+            val value1 = LAppResource.getString(R.string.end)
             C.launchSelector(
                 activity = activity,
                 isCancelableFragment = true,
-                title = LAppResource.getString(R.string.gravity),
-                des = LAppResource.getString(R.string.app_sorting),
-                value0 = LAppResource.getString(R.string.start),
-                value1 = LAppResource.getString(R.string.end),
-                firstIndexCheck = 0,
+                title = title,
+                des = LAppResource.getString(R.string.pick_your_choice),
+                value0 = value0,
+                value1 = value1,
+                firstIndexCheck = gravityValue,
                 onConfirm = { index ->
-                    if (index == 0) {
-                        onGravity?.invoke(TurnLayoutManager.Gravity.START)
-                    } else {
-                        onGravity?.invoke(TurnLayoutManager.Gravity.END)
-                    }
+                    gravityValue = index
+                    updateUIGravity()
+                    onGravity?.invoke(gravityValue)
                 },
-                onDismiss = {
-                    //do nothing
-                }
+                onDismiss = {}
             )
         }
 
@@ -115,6 +118,18 @@ class BottomSheetCustomizeAppDrawer(
 
         sOrientation.adapter = OrientationAdapter(requireContext(), R.layout.view_spinner_item_tlm)
         cbRotate.setOnCheckedChangeListener(rotateListener)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun updateUIGravity() {
+        val title = LAppResource.getString(R.string.gravity)
+        val value0 = LAppResource.getString(R.string.start)
+        val value1 = LAppResource.getString(R.string.end)
+        if (gravityValue == 0) {
+            btGravity?.text = "$title: $value0"
+        } else {
+            btGravity?.text = "$title: $value1"
+        }
     }
 
     private val radiusListener: SeekBar.OnSeekBarChangeListener = object :
