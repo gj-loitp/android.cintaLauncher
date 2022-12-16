@@ -42,7 +42,7 @@ class AppDrawer(
     private var seekRadiusValue = C.getSeekRadiusValue()
     private var seekPeekValue = C.getSeekPeekValue()
     private var orientationValue = C.getOrientationValue()
-    private var gravityValue = 0
+    private var gravityValue = C.getGravityValue()
     private var isCheckedValue = false
 
     @SuppressLint("ClickableViewAccessibility")
@@ -241,6 +241,7 @@ class AppDrawer(
                 } else {
                     layoutManager?.setGravity(TurnLayoutManager.Gravity.END)
                 }
+                C.setGravityValue(gravityValue)
             },
             onRotate = { value ->
                 isCheckedValue = value
@@ -272,6 +273,7 @@ class AppDrawer(
                 C.setSeekRadiusValue(seekRadiusValue)
                 C.setSeekPeekValue(seekPeekValue)
                 C.setOrientationValue(orientationValue)
+                C.setGravityValue(gravityValue)
             }
         )
         fragment.show(launcherActivity.supportFragmentManager, fragment.tag)

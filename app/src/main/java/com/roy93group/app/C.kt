@@ -53,6 +53,7 @@ object C {
     private const val KEY_SEEK_RADIUS_VALUE = "KEY_SEEK_RADIUS_VALUE"
     private const val KEY_SEEK_PEEK_VALUE = "KEY_SEEK_PEEK_VALUE"
     private const val KEY_ORIENTATION_VALUE = "KEY_ORIENTATION_VALUE"
+    private const val KEY_GRAVITY_VALUE = "KEY_GRAVITY_VALUE"
 
     val COLOR_PRIMARY = LAppResource.getColor(R.color.colorPrimary)
     var COLOR_0 = LAppResource.getColor(R.color.color0)
@@ -385,5 +386,13 @@ object C {
 
     fun getOrientationValue(): Int {
         return LSharedPrefsUtil.instance.getInt(KEY_ORIENTATION_VALUE, 1)
+    }
+
+    fun setGravityValue(gravityValue: Int) {
+        LSharedPrefsUtil.instance.putInt(KEY_GRAVITY_VALUE, gravityValue)
+    }
+
+    fun getGravityValue(): Int {
+        return LSharedPrefsUtil.instance.getInt(KEY_GRAVITY_VALUE, 0)
     }
 }
