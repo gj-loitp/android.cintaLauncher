@@ -17,7 +17,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.AppCompatCheckBox
-import androidx.appcompat.widget.AppCompatSpinner
 import cdflynn.android.library.turn.TurnLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.loitpcore.core.ext.setSafeOnClickListener
@@ -32,6 +31,7 @@ class BottomSheetCustomizeAppDrawer(
     private val seekRadiusValue: Int,
     private val seekPeekValue: Int,
     private var gravityValue: Int,
+    private var orientationValue: Int,
     private val isCancelableFragment: Boolean = true,
     private val onDismiss: ((Unit) -> Unit)? = null,
     private val onSeekRadiusValue: ((Int) -> Unit)?,
@@ -44,6 +44,7 @@ class BottomSheetCustomizeAppDrawer(
     private var tvRadius: TextView? = null
     private var tvPeekText: TextView? = null
     private var btGravity: Button? = null
+    private var btOrientation: Button? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -83,7 +84,9 @@ class BottomSheetCustomizeAppDrawer(
         btGravity = view.findViewById<Button>(R.id.btGravity).apply {
             setTextColor(C.COLOR_0)
         }
-        val sOrientation = view.findViewById<AppCompatSpinner>(R.id.sOrientation)
+        btOrientation = view.findViewById<Button>(R.id.btOrientation).apply {
+            setTextColor(C.COLOR_0)
+        }
         val cbRotate = view.findViewById<AppCompatCheckBox>(R.id.cbRotate)
 
         seekRadius.setOnSeekBarChangeListener(radiusListener)
@@ -116,9 +119,28 @@ class BottomSheetCustomizeAppDrawer(
             )
         }
 
-        sOrientation.onItemSelectedListener = orientationOptionsClickListener
+        updateUIOrientation()
+        btOrientation?.setSafeOnClickListener {
+            val title = LAppResource.getString(R.string.orientation)
+            val value0 = LAppResource.getString(R.string.vertical)
+            val value1 = LAppResource.getString(R.string.horizontal)
+            C.launchSelector(
+                activity = activity,
+                isCancelableFragment = true,
+                title = title,
+                des = LAppResource.getString(R.string.pick_your_choice),
+                value0 = value0,
+                value1 = value1,
+                firstIndexCheck = orientationValue,
+                onConfirm = { index ->
+                    orientationValue = index
+                    updateUIOrientation()
+                    onOrientation?.invoke(orientationValue)
+                },
+                onDismiss = {}
+            )
+        }
 
-        sOrientation.adapter = OrientationAdapter(requireContext(), R.layout.view_spinner_item_tlm)
         cbRotate.setOnCheckedChangeListener(rotateListener)
     }
 
@@ -131,6 +153,18 @@ class BottomSheetCustomizeAppDrawer(
             btGravity?.text = "$title: $value0"
         } else {
             btGravity?.text = "$title: $value1"
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun updateUIOrientation() {
+        val title = LAppResource.getString(R.string.orientation)
+        val value0 = LAppResource.getString(R.string.vertical)
+        val value1 = LAppResource.getString(R.string.horizontal)
+        if (orientationValue == 0) {
+            btOrientation?.text = "$title: $value0"
+        } else {
+            btOrientation?.text = "$title: $value1"
         }
     }
 
@@ -170,32 +204,8 @@ class BottomSheetCustomizeAppDrawer(
         }
     }
 
-    private val orientationOptionsClickListener: AdapterView.OnItemSelectedListener =
-        object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?, view: View, position: Int, id: Long
-            ) {
-                when (position) {
-                    0 -> {
-                        onOrientation?.invoke(TurnLayoutManager.VERTICAL)
-                    }
-                    1 -> {
-                        onOrientation?.invoke(TurnLayoutManager.HORIZONTAL)
-                    }
-                    else -> {}
-                }
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
-
     private val rotateListener = CompoundButton.OnCheckedChangeListener { _, isChecked ->
         onRotate?.invoke(isChecked)
     }
-
-    private class OrientationAdapter(
-        context: Context, @LayoutRes resource: Int
-    ) : ArrayAdapter<String?>(context, resource, arrayOf("Vertical", "Horizontal"))
 
 }

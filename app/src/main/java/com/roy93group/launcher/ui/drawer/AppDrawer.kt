@@ -41,7 +41,7 @@ class AppDrawer(
 
     private var seekRadiusValue = 0
     private var seekPeekValue = 0
-    private var orientation = 0
+    private var orientationValue = 1
     private var gravityValue = 0
     private var isChecked = false
 
@@ -61,10 +61,15 @@ class AppDrawer(
         } else {
             TurnLayoutManager.Gravity.END
         }
+        val tmpOrientationValue = if (orientationValue == 0) {
+            TurnLayoutManager.HORIZONTAL
+        } else {
+            TurnLayoutManager.VERTICAL
+        }
         layoutManager = TurnLayoutManager(
             /* context = */ flAppDrawerContainer.context,
             /* gravity = */ tmpGravity,
-            /* orientation = */ orientation,
+            /* orientation = */ tmpOrientationValue,
             /* radius = */ seekRadiusValue,
             /* peekDistance = */ seekPeekValue,
             /* rotate = */ isChecked
@@ -205,6 +210,7 @@ class AppDrawer(
             seekRadiusValue = seekRadiusValue,
             seekPeekValue = seekPeekValue,
             gravityValue = gravityValue,
+            orientationValue = orientationValue,
             isCancelableFragment = true,
             onDismiss = {
                 //do nothing
@@ -218,8 +224,12 @@ class AppDrawer(
                 layoutManager?.setPeekDistance(seekPeekValue)
             },
             onOrientation = { value ->
-                orientation = value
-                layoutManager?.orientation = orientation
+                orientationValue = value
+                if (orientationValue == 0) {
+                    layoutManager?.orientation = TurnLayoutManager.HORIZONTAL
+                } else {
+                    layoutManager?.orientation = TurnLayoutManager.VERTICAL
+                }
             },
             onGravity = { value ->
                 gravityValue = value

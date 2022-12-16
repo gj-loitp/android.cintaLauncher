@@ -86,35 +86,29 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPeekText"
         tools:textColor="@color/colorTest" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llcOrientation"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btOrientation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_medium"
+        android:layout_marginTop="@dimen/margin_padding_small"
+        android:backgroundTint="@color/colorPrimary"
+        android:foreground="?attr/selectableItemBackground"
         android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/btGravity">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/orientation"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/txt_large" />
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/sOrientation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_padding_medium"
-            android:backgroundTint="@color/colorPrimary" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        android:paddingStart="@dimen/margin_padding_medium"
+        android:paddingTop="@dimen/margin_padding_medium"
+        android:paddingEnd="@dimen/margin_padding_medium"
+        android:paddingBottom="@dimen/margin_padding_medium"
+        android:text="@string/orientation"
+        android:textAllCaps="false"
+        android:textSize="@dimen/txt_medium"
+        app:layout_constraintTop_toBottomOf="@+id/btGravity"
+        tools:textColor="@color/colorTest" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_padding_medium"
-        app:layout_constraintTop_toBottomOf="@+id/llcOrientation">
+        app:layout_constraintTop_toBottomOf="@+id/btOrientation">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
