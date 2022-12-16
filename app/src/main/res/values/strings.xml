@@ -66,4 +66,6 @@
     <string name="radius_format">Radius: %1$d</string>
     <string name="peek_format">Peek: %1$d</string>
     <string name="gravity">Gravity</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
 </resources>

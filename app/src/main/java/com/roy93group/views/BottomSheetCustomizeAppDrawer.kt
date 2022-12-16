@@ -19,6 +19,8 @@ import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.appcompat.widget.AppCompatSpinner
 import cdflynn.android.library.turn.TurnLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.loitpcore.core.ext.setSafeOnClickListener
+import com.loitpcore.core.utilities.LAppResource
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 
@@ -75,20 +77,42 @@ class BottomSheetCustomizeAppDrawer(
         tvPeekText = view.findViewById(R.id.tvPeekText)
         val seekRadius = view.findViewById<SeekBar>(R.id.seekRadius)
         val seekPeek = view.findViewById<SeekBar>(R.id.seekPeek)
-        val sGravity = view.findViewById<AppCompatSpinner>(R.id.sGravity)
+        val btGravity = view.findViewById<Button>(R.id.btGravity)
         val sOrientation = view.findViewById<AppCompatSpinner>(R.id.sOrientation)
         val cbRotate = view.findViewById<AppCompatCheckBox>(R.id.cbRotate)
 
         seekRadius.setOnSeekBarChangeListener(radiusListener)
         seekPeek.setOnSeekBarChangeListener(peekListener)
 
+        tvRadius?.text = resources.getString(R.string.radius_format, seekRadiusValue)
+        tvPeekText?.text = resources.getString(R.string.peek_format, seekPeekValue)
         seekRadius.progress = seekRadiusValue
         seekPeek.progress = seekPeekValue
 
-        sGravity.onItemSelectedListener = gravityOptionsClickListener
+        btGravity.setSafeOnClickListener {
+            C.launchSelector(
+                activity = activity,
+                isCancelableFragment = true,
+                title = LAppResource.getString(R.string.gravity),
+                des = LAppResource.getString(R.string.app_sorting),
+                value0 = LAppResource.getString(R.string.start),
+                value1 = LAppResource.getString(R.string.end),
+                firstIndexCheck = 0,
+                onConfirm = { index ->
+                    if (index == 0) {
+                        onGravity?.invoke(TurnLayoutManager.Gravity.START)
+                    } else {
+                        onGravity?.invoke(TurnLayoutManager.Gravity.END)
+                    }
+                },
+                onDismiss = {
+                    //do nothing
+                }
+            )
+        }
+
         sOrientation.onItemSelectedListener = orientationOptionsClickListener
 
-        sGravity.adapter = GravityAdapter(requireContext(), R.layout.view_spinner_item_tlm)
         sOrientation.adapter = OrientationAdapter(requireContext(), R.layout.view_spinner_item_tlm)
         cbRotate.setOnCheckedChangeListener(rotateListener)
     }
@@ -148,24 +172,6 @@ class BottomSheetCustomizeAppDrawer(
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-    private val gravityOptionsClickListener: AdapterView.OnItemSelectedListener =
-        object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?, view: View, position: Int, id: Long
-            ) {
-                when (position) {
-                    0 -> {
-                        onGravity?.invoke(TurnLayoutManager.Gravity.START)
-                    }
-                    1 -> {
-                        onGravity?.invoke(TurnLayoutManager.Gravity.END)
-                    }
-                    else -> {}
-                }
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
 
     private val rotateListener = CompoundButton.OnCheckedChangeListener { _, isChecked ->
         onRotate?.invoke(isChecked)
@@ -175,7 +181,4 @@ class BottomSheetCustomizeAppDrawer(
         context: Context, @LayoutRes resource: Int
     ) : ArrayAdapter<String?>(context, resource, arrayOf("Vertical", "Horizontal"))
 
-    private class GravityAdapter(
-        context: Context, @LayoutRes resource: Int
-    ) : ArrayAdapter<String?>(context, resource, arrayOf("Start", "End"))
 }

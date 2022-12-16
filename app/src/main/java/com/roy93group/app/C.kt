@@ -23,6 +23,7 @@ import android.provider.Settings
 import android.util.StateSet
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import com.loitpcore.core.common.Constants
 import com.loitpcore.core.helper.gallery.GalleryCoreSplashActivity
 import com.loitpcore.core.utilities.LActivityUtil
@@ -261,7 +262,7 @@ object C {
     }
 
     fun launchSelector(
-        activity: AppCompatActivity,
+        activity: FragmentActivity?,
         isCancelableFragment: Boolean = true,
         title: String,
         des: String,
@@ -271,6 +272,9 @@ object C {
         onConfirm: ((Int) -> Unit)? = null,
         onDismiss: ((Unit) -> Unit)? = null,
     ) {
+        if (activity == null) {
+            return
+        }
         val fragment = BottomSheetOption(
             isCancelableFragment = isCancelableFragment,
             title = title,
