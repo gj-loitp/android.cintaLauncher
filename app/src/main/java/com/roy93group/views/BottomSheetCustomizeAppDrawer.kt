@@ -30,6 +30,7 @@ class BottomSheetCustomizeAppDrawer(
     private var isCheckedValue: Boolean,
     private val isCancelableFragment: Boolean = true,
     private val onDismiss: ((Unit) -> Unit)? = null,
+    private val onResetAllValue: ((Unit) -> Unit)? = null,
     private val onSeekRadiusValue: ((Int) -> Unit)?,
     private val onSeekPeekValue: ((Int) -> Unit)?,
     private val onOrientation: ((Int) -> Unit)?,
@@ -82,6 +83,13 @@ class BottomSheetCustomizeAppDrawer(
         }
         btOrientation = view.findViewById<Button>(R.id.btOrientation).apply {
             setTextColor(C.COLOR_0)
+        }
+        val btReset = view.findViewById<Button>(R.id.btReset).apply {
+            setTextColor(C.COLOR_0)
+            setSafeOnClickListener {
+                dismiss()
+                onResetAllValue?.invoke(Unit)
+            }
         }
         val cbRotate = view.findViewById<AppCompatCheckBox>(R.id.cbRotate)
 

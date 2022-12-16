@@ -71,4 +71,5 @@
     <string name="pick_your_choice">Pick your choice</string>
     <string name="vertical">Vertical</string>
     <string name="horizontal">Horizontal</string>
+    <string name="default_value">Default value</string>
 </resources>

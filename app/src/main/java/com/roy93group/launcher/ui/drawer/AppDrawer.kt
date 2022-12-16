@@ -243,6 +243,29 @@ class AppDrawer(
             onRotate = { value ->
                 isCheckedValue = value
                 layoutManager?.setRotate(isCheckedValue)
+            },
+            onResetAllValue = {
+                seekRadiusValue = 0
+                seekPeekValue = 0
+                orientationValue = 1
+                gravityValue = 0
+                isCheckedValue = false
+
+                layoutManager?.apply {
+                    setRadius(seekRadiusValue)
+                    setPeekDistance(seekPeekValue)
+                    orientation = if (orientationValue == 0) {
+                        TurnLayoutManager.HORIZONTAL
+                    } else {
+                        TurnLayoutManager.VERTICAL
+                    }
+                    if (gravityValue == 0) {
+                        setGravity(TurnLayoutManager.Gravity.START)
+                    } else {
+                        setGravity(TurnLayoutManager.Gravity.END)
+                    }
+                    setRotate(isCheckedValue)
+                }
             }
         )
         fragment.show(launcherActivity.supportFragmentManager, fragment.tag)

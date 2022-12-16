@@ -130,7 +130,7 @@
         android:paddingTop="@dimen/margin_padding_medium"
         android:paddingEnd="@dimen/margin_padding_medium"
         android:paddingBottom="@dimen/margin_padding_medium"
-        android:text="Default value"
+        android:text="@string/default_value"
         android:textAllCaps="false"
         android:textSize="@dimen/txt_medium"
         app:layout_constraintTop_toBottomOf="@+id/cbRotate"
