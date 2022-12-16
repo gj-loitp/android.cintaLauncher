@@ -80,7 +80,9 @@ class BottomSheetCustomizeAppDrawer(
         tvPeekText = view.findViewById(R.id.tvPeekText)
         val seekRadius = view.findViewById<SeekBar>(R.id.seekRadius)
         val seekPeek = view.findViewById<SeekBar>(R.id.seekPeek)
-        btGravity = view.findViewById(R.id.btGravity)
+        btGravity = view.findViewById<Button>(R.id.btGravity).apply {
+            setTextColor(C.COLOR_0)
+        }
         val sOrientation = view.findViewById<AppCompatSpinner>(R.id.sOrientation)
         val cbRotate = view.findViewById<AppCompatCheckBox>(R.id.cbRotate)
 
