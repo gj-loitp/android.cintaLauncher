@@ -195,7 +195,8 @@ class AppDrawer(
         if (layoutManager == null) {
             return
         }
-        //TODO default value, nho keep o db
+        //TODO default value
+        //TODO keep value local db
         val fragment = BottomSheetCustomizeAppDrawer(
             seekRadiusValue = seekRadiusValue,
             seekPeekValue = seekPeekValue,
