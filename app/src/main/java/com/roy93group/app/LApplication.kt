@@ -27,6 +27,7 @@ import com.loitpcore.data.ActivityData
 //TODO tich hop he sinh thai app roy93group
 //TODO gg pay
 //TODO setting enable/disable swipe out rv de open search screen
+//TODO font
 
 //done
 //chon man hinh chu o screen setting
