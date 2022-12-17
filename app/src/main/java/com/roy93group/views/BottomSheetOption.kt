@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.card.MaterialCardView
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 
@@ -63,8 +64,9 @@ class BottomSheetOption(
     }
 
     private fun setupViews(view: View) {
-        llRoot = view.findViewById<ViewGroup>(R.id.llRoot).apply {
-            setBackgroundColor(C.COLOR_0)
+        llRoot = view.findViewById<MaterialCardView>(R.id.llRoot).apply {
+            setCardBackgroundColor(C.COLOR_0)
+            C.setCornerCardView(activity = requireActivity(), cardView = this)
         }
         tvTitle = view.findViewById<TextView>(R.id.tvTitle).apply {
             text = title

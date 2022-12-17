@@ -1,73 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="@dimen/margin_padding_medium"
-    android:paddingEnd="@dimen/margin_padding_medium"
-    android:paddingBottom="@dimen/margin_padding_medium"
-    tools:background="@color/colorTest">
+    tools:cardBackgroundColor="@color/colorTest">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivSlider"
-        android:layout_width="@dimen/w_50"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin_padding_small"
-        android:src="@drawable/ic_slider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/colorPrimary" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvTitle"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/txt_50"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/ivSlider"
-        tools:text="Setting" />
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/margin_padding_medium"
+        android:paddingTop="@dimen/margin_padding_small"
+        android:paddingEnd="@dimen/margin_padding_medium"
+        android:paddingBottom="@dimen/margin_padding_medium">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvDes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/txt_large"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        tools:text="App sorting" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSlider"
+            android:layout_width="@dimen/w_50"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_slider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/colorPrimary" />
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_medium"
-        app:layout_constraintTop_toBottomOf="@+id/tvDes">
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/rb0"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/colorPrimary"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/txt_medium"
+            android:textSize="@dimen/txt_50"
             android:textStyle="bold"
-            tools:checked="false"
-            tools:text="Alphabetic" />
+            app:layout_constraintTop_toBottomOf="@+id/ivSlider"
+            tools:text="Setting" />
 
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/rb1"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/colorPrimary"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/txt_medium"
+            android:textSize="@dimen/txt_large"
             android:textStyle="bold"
-            tools:checked="false"
-            tools:text="By hue" />
-    </RadioGroup>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:text="App sorting" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_medium"
+            app:layout_constraintTop_toBottomOf="@+id/tvDes">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rb0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/txt_medium"
+                android:textStyle="bold"
+                tools:checked="false"
+                tools:text="Alphabetic" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rb1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/txt_medium"
+                android:textStyle="bold"
+                tools:checked="false"
+                tools:text="By hue" />
+        </RadioGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
