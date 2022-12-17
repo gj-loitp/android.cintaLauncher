@@ -1,138 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="@dimen/margin_padding_medium"
-    android:paddingEnd="@dimen/margin_padding_medium"
-    android:paddingBottom="@dimen/margin_padding_medium"
-    tools:background="@color/colorTest">
+    tools:cardBackgroundColor="@color/colorTest">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivSlider"
-        android:layout_width="@dimen/w_50"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_small"
-        android:src="@drawable/ic_slider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/colorPrimary" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvTitle"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_info"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/txt_50"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/ivSlider" />
-
-    <androidx.appcompat.widget.AppCompatSeekBar
-        android:id="@+id/seekRadius"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_medium"
-        android:max="4000"
-        android:thumbTint="@color/colorPrimary"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvRadius"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/txt_large"
-        app:layout_constraintTop_toBottomOf="@+id/seekRadius"
-        tools:text="Radius: 125" />
-
-    <androidx.appcompat.widget.AppCompatSeekBar
-        android:id="@+id/seekPeek"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_medium"
-        android:max="1000"
-        android:thumbTint="@color/colorPrimary"
-        app:layout_constraintTop_toBottomOf="@+id/tvRadius"
-        app:layout_goneMarginTop="@dimen/margin_padding_medium" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvPeekText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/txt_large"
-        app:layout_constraintTop_toBottomOf="@+id/seekPeek"
-        tools:text="Peek: 75" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btGravity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_medium"
-        android:backgroundTint="@color/colorPrimary"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="center"
+        android:layout_height="match_parent"
         android:paddingStart="@dimen/margin_padding_medium"
-        android:paddingTop="@dimen/margin_padding_medium"
+        android:paddingTop="@dimen/margin_padding_small"
         android:paddingEnd="@dimen/margin_padding_medium"
-        android:paddingBottom="@dimen/margin_padding_medium"
-        android:text="@string/gravity"
-        android:textAllCaps="false"
-        android:textSize="@dimen/txt_medium"
-        app:layout_constraintTop_toBottomOf="@+id/tvPeekText"
-        tools:textColor="@color/colorTest" />
+        android:paddingBottom="@dimen/margin_padding_medium">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btOrientation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_small"
-        android:backgroundTint="@color/colorPrimary"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="center"
-        android:paddingStart="@dimen/margin_padding_medium"
-        android:paddingTop="@dimen/margin_padding_medium"
-        android:paddingEnd="@dimen/margin_padding_medium"
-        android:paddingBottom="@dimen/margin_padding_medium"
-        android:text="@string/orientation"
-        android:textAllCaps="false"
-        android:textSize="@dimen/txt_medium"
-        app:layout_constraintTop_toBottomOf="@+id/btGravity"
-        tools:textColor="@color/colorTest" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSlider"
+            android:layout_width="@dimen/w_50"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_slider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/colorPrimary" />
 
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/cbRotate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_medium"
-        android:buttonTint="@color/colorPrimary"
-        android:checked="false"
-        android:gravity="start"
-        android:text="@string/rotate"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/txt_large"
-        app:layout_constraintTop_toBottomOf="@+id/btOrientation"
-        tools:checked="true" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_info"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_50"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/ivSlider" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btReset"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_small"
-        android:backgroundTint="@color/colorPrimary"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="center"
-        android:paddingStart="@dimen/margin_padding_medium"
-        android:paddingTop="@dimen/margin_padding_medium"
-        android:paddingEnd="@dimen/margin_padding_medium"
-        android:paddingBottom="@dimen/margin_padding_medium"
-        android:text="@string/default_value"
-        android:textAllCaps="false"
-        android:textSize="@dimen/txt_medium"
-        app:layout_constraintTop_toBottomOf="@+id/cbRotate"
-        tools:textColor="@color/colorTest" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/seekRadius"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_medium"
+            android:max="4000"
+            android:thumbTint="@color/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRadius"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_large"
+            app:layout_constraintTop_toBottomOf="@+id/seekRadius"
+            tools:text="Radius: 125" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/seekPeek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_medium"
+            android:max="1000"
+            android:thumbTint="@color/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@+id/tvRadius"
+            app:layout_goneMarginTop="@dimen/margin_padding_medium" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPeekText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_large"
+            app:layout_constraintTop_toBottomOf="@+id/seekPeek"
+            tools:text="Peek: 75" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btGravity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_medium"
+            android:backgroundTint="@color/colorPrimary"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:paddingStart="@dimen/margin_padding_medium"
+            android:paddingTop="@dimen/margin_padding_medium"
+            android:paddingEnd="@dimen/margin_padding_medium"
+            android:paddingBottom="@dimen/margin_padding_medium"
+            android:text="@string/gravity"
+            android:textAllCaps="false"
+            android:textSize="@dimen/txt_medium"
+            app:layout_constraintTop_toBottomOf="@+id/tvPeekText"
+            tools:textColor="@color/colorTest" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btOrientation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_small"
+            android:backgroundTint="@color/colorPrimary"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:paddingStart="@dimen/margin_padding_medium"
+            android:paddingTop="@dimen/margin_padding_medium"
+            android:paddingEnd="@dimen/margin_padding_medium"
+            android:paddingBottom="@dimen/margin_padding_medium"
+            android:text="@string/orientation"
+            android:textAllCaps="false"
+            android:textSize="@dimen/txt_medium"
+            app:layout_constraintTop_toBottomOf="@+id/btGravity"
+            tools:textColor="@color/colorTest" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cbRotate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_medium"
+            android:buttonTint="@color/colorPrimary"
+            android:checked="false"
+            android:gravity="start"
+            android:text="@string/rotate"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_large"
+            app:layout_constraintTop_toBottomOf="@+id/btOrientation"
+            tools:checked="true" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btReset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_padding_small"
+            android:backgroundTint="@color/colorPrimary"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:paddingStart="@dimen/margin_padding_medium"
+            android:paddingTop="@dimen/margin_padding_medium"
+            android:paddingEnd="@dimen/margin_padding_medium"
+            android:paddingBottom="@dimen/margin_padding_medium"
+            android:text="@string/default_value"
+            android:textAllCaps="false"
+            android:textSize="@dimen/txt_medium"
+            app:layout_constraintTop_toBottomOf="@+id/cbRotate"
+            tools:textColor="@color/colorTest" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -16,8 +16,10 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.AppCompatCheckBox
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.card.MaterialCardView
 import com.loitpcore.core.ext.setSafeOnClickListener
 import com.loitpcore.core.utilities.LAppResource
+import com.loitpcore.utils.util.FragmentUtils.setBackgroundColor
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 
@@ -72,7 +74,10 @@ class BottomSheetCustomizeAppDrawer(
     }
 
     private fun setupViews(view: View) {
-        view.findViewById<ViewGroup>(R.id.llRoot).setBackgroundColor(C.COLOR_0)
+        view.findViewById<MaterialCardView>(R.id.llRoot).apply {
+            setCardBackgroundColor(C.COLOR_0)
+            C.setCornerCardView(activity = requireActivity(), cardView = this)
+        }
 
         tvRadius = view.findViewById(R.id.tvRadius)
         tvPeekText = view.findViewById(R.id.tvPeekText)
