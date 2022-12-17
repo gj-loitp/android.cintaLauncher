@@ -28,6 +28,7 @@ import com.loitpcore.data.ActivityData
 //TODO gg pay
 //TODO setting enable/disable swipe out rv de open search screen
 //TODO font
+//TODO background color black -> custom color
 
 //done
 //chon man hinh chu o screen setting
