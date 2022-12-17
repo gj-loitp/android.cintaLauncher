@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llRoot"
-    style="@style/CustomCardViewStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:cardBackgroundColor="@color/colorTest">
@@ -11,8 +10,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="@dimen/margin_padding_small"
-        android:paddingEnd="@dimen/margin_padding_small"
+        android:paddingStart="@dimen/margin_padding_medium"
+        android:paddingTop="@dimen/margin_padding_small"
+        android:paddingEnd="@dimen/margin_padding_medium"
         android:paddingBottom="@dimen/margin_padding_medium">
 
         <androidx.appcompat.widget.AppCompatImageView

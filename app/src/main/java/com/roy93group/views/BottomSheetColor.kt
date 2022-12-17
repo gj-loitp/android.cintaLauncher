@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.card.MaterialCardView
 import com.loitpcore.picker.shiftColorPicker.LineColorPicker
 import com.loitpcore.picker.shiftColorPicker.OnColorChangedListener
 import com.roy93group.app.C
@@ -26,7 +27,7 @@ class BottomSheetColor(
     private val warning: String,
     private val onDismiss: ((Int) -> Unit)? = null
 ) : BottomSheetDialogFragment() {
-    private var llRoot: ViewGroup? = null
+    private var llRoot: MaterialCardView? = null
     private var tvTitle: TextView? = null
     private var tvDes: TextView? = null
     private var tvWarning: TextView? = null
@@ -63,11 +64,13 @@ class BottomSheetColor(
     }
 
     private fun setupViews(view: View) {
-        llRoot = view.findViewById(R.id.llRoot)
+        llRoot = view.findViewById<MaterialCardView>(R.id.llRoot).apply {
+            setCardBackgroundColor(C.COLOR_0)
+            C.setCornerCardView(activity = requireActivity(), cardView = this)
+        }
         tvTitle = view.findViewById(R.id.tvTitle)
         tvDes = view.findViewById(R.id.tvDes)
         tvWarning = view.findViewById(R.id.tvWarning)
-        updateUI()
 
         tvTitle?.text = title
         tvDes?.text = des
@@ -81,13 +84,11 @@ class BottomSheetColor(
                     C.vibrate(milliseconds = 10)
 
                     newColor = c
-                    updateUI()
+                    llRoot?.apply {
+                        setCardBackgroundColor(newColor)
+                    }
                 }
             })
         }
-    }
-
-    private fun updateUI() {
-        llRoot?.setBackgroundColor(C.COLOR_0)
     }
 }

@@ -24,12 +24,10 @@ import android.util.StateSet
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
+import com.google.android.material.card.MaterialCardView
 import com.loitpcore.core.common.Constants
 import com.loitpcore.core.helper.gallery.GalleryCoreSplashActivity
-import com.loitpcore.core.utilities.LActivityUtil
-import com.loitpcore.core.utilities.LAppResource
-import com.loitpcore.core.utilities.LSharedPrefsUtil
-import com.loitpcore.core.utilities.LSocialUtil
+import com.loitpcore.core.utilities.*
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.util.FakeLauncherActivity
@@ -356,6 +354,7 @@ object C {
     }
 
     fun goToSearchScreen(context: Context) {
+        vibrate(milliseconds = 100)
         context.startActivity(
             Intent(
                 context,
@@ -403,5 +402,19 @@ object C {
 
     fun getChecked(): Boolean {
         return LSharedPrefsUtil.instance.getBoolean(KEY_IS_CHECKED_VALUE, false)
+    }
+
+    fun setCornerCardView(activity: Activity, cardView: MaterialCardView) {
+        val radiusTL = activity.resources.getDimension(R.dimen.round_large)
+        val radiusTR = activity.resources.getDimension(R.dimen.round_large)
+        val radiusBL = 0f
+        val radiusBR = 0f
+        LUIUtil.setCornerCardView(
+            cardView = cardView,
+            radiusTL = radiusTL,
+            radiusTR = radiusTR,
+            radiusBL = radiusBL,
+            radiusBR = radiusBR
+        )
     }
 }
