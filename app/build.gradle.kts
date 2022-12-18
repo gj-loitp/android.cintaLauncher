@@ -20,8 +20,8 @@ android {
         applicationId = "com.roy93group.cintalauncher"
         minSdk = 26
         targetSdk = 33
-        versionCode = 20221114
-        versionName = "2022.11.14"
+        versionCode = 20221218
+        versionName = "2022.12.18"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         signingConfig = signingConfigs.getByName("debug")
         multiDexEnabled = true
