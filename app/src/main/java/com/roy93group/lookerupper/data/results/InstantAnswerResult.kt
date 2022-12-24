@@ -3,7 +3,7 @@ package com.roy93group.lookerupper.data.results
 import android.content.Intent
 import android.net.Uri
 import android.view.View
-import com.loitpcore.core.utilities.LActivityUtil
+import com.loitp.core.utilities.LActivityUtil
 import com.roy93group.lookerupper.data.SearchQuery
 import com.willowtreeapps.fuzzywuzzy.diffutils.FuzzySearch
 import kotlin.math.max

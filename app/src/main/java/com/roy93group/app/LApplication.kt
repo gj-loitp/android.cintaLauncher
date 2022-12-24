@@ -1,10 +1,10 @@
 package com.roy93group.app
 
-import com.loitpcore.annotation.LogTag
-import com.loitpcore.core.base.BaseApplication
-import com.loitpcore.core.common.Constants
-import com.loitpcore.core.utilities.LUIUtil
-import com.loitpcore.data.ActivityData
+import com.loitp.annotation.LogTag
+import com.loitp.core.base.BaseApplication
+import com.loitp.core.common.Constants
+import com.loitp.core.utilities.LUIUtil
+import com.loitp.data.ActivityData
 
 /**
  * Updated by Loitp on 2022.12.16

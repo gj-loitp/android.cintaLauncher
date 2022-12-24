@@ -16,8 +16,8 @@ import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
-import com.loitpcore.core.ext.setSafeOnClickListener
-import com.loitpcore.core.utilities.LSocialUtil
+import com.loitp.core.ext.setSafeOnClickListener
+import com.loitp.core.utilities.LSocialUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App

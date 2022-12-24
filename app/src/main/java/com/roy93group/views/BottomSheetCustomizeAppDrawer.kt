@@ -17,9 +17,8 @@ import android.widget.*
 import androidx.appcompat.widget.AppCompatCheckBox
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
-import com.loitpcore.core.ext.setSafeOnClickListener
-import com.loitpcore.core.utilities.LAppResource
-import com.loitpcore.utils.util.FragmentUtils.setBackgroundColor
+import com.loitp.core.ext.setSafeOnClickListener
+import com.loitp.core.utilities.LAppResource
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 

@@ -1,18 +1,15 @@
 package com.roy93group.launcher.ui.bottomBar
 
-import android.content.Intent
 import androidx.cardview.widget.CardView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.loitpcore.core.utilities.LActivityUtil
-import com.loitpcore.core.utilities.LScreenUtil
+import com.loitp.core.utilities.LScreenUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.popup.drawer.DrawerLongPressPopup
 import com.roy93group.launcher.ui.view.scrollbar.Scrollbar
 import com.roy93group.launcher.ui.view.scrollbar.ScrollbarIconView
-import com.roy93group.lookerupper.ui.a.SearchActivity
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 
 /**

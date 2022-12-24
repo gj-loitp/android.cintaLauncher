@@ -25,9 +25,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
-import com.loitpcore.core.common.Constants
-import com.loitpcore.core.helper.gallery.GalleryCoreSplashActivity
-import com.loitpcore.core.utilities.*
+import com.loitp.core.common.Constants
+import com.loitp.core.helper.gallery.GalleryCoreSplashActivity
+import com.loitp.core.utilities.*
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.util.FakeLauncherActivity

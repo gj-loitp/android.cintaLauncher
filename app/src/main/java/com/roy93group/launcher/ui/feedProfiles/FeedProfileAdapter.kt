@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.loitpcore.core.utilities.LUIUtil
+import com.loitp.core.utilities.LUIUtil
 import com.roy93group.launcher.LauncherContext
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.profiles.FeedProfile

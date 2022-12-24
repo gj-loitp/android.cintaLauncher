@@ -5,7 +5,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.loitpcore.core.utilities.LAppResource
+import com.loitp.core.utilities.LAppResource
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.LauncherActivity

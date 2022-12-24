@@ -16,10 +16,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.get
 import com.google.firebase.remoteconfig.ktx.remoteConfig
-import com.loitpcore.core.ext.setSafeOnClickListener
-import com.loitpcore.core.utilities.LActivityUtil
-import com.loitpcore.core.utilities.LAppResource
-import com.loitpcore.core.utilities.LSocialUtil
+import com.loitp.core.ext.setSafeOnClickListener
+import com.loitp.core.utilities.LActivityUtil
+import com.loitp.core.utilities.LAppResource
+import com.loitp.core.utilities.LSocialUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R

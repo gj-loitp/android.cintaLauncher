@@ -11,7 +11,7 @@ import androidx.core.view.marginBottom
 import androidx.core.view.marginTop
 import androidx.recyclerview.widget.RecyclerView
 import cdflynn.android.library.turn.TurnLayoutManager
-import com.loitpcore.core.utilities.LUIUtil
+import com.loitp.core.utilities.LUIUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App

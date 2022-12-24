@@ -3,7 +3,7 @@ package com.roy93group.launcher.ui.intro
 import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
-import com.loitpcore.core.utilities.LActivityUtil
+import com.loitp.core.utilities.LActivityUtil
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.LauncherActivity
 

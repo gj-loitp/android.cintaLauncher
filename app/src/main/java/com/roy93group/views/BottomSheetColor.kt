@@ -15,8 +15,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
-import com.loitpcore.picker.shiftColorPicker.LineColorPicker
-import com.loitpcore.picker.shiftColorPicker.OnColorChangedListener
+import com.loitp.picker.shiftColor.LineColorPicker
+import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 

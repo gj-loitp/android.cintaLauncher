@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
-import com.loitpcore.picker.shiftColorPicker.LineColorPicker
-import com.loitpcore.picker.shiftColorPicker.OnColorChangedListener
+import com.loitp.picker.shiftColor.LineColorPicker
+import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 

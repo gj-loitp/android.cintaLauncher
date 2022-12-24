@@ -6,7 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.ContactsContract
 import android.view.View
-import com.loitpcore.core.utilities.LActivityUtil
+import com.loitp.core.utilities.LActivityUtil
 
 /**
  * Updated by Loitp on 2022.12.18

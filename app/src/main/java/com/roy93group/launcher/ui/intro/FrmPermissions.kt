@@ -14,7 +14,7 @@ import android.widget.TextView
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import com.loitpcore.core.utilities.LActivityUtil
+import com.loitp.core.utilities.LActivityUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
