@@ -35,7 +35,10 @@ class FeedItemMediaVH(
         C.setBackground(this)
     }
 
-    override fun onBind(item: FeedItem, isDisplayAppIcon: Boolean) {
+    override fun onBind(
+        item: FeedItem,
+        isDisplayAppIcon: Boolean
+    ) {
         super.onBind(item, isDisplayAppIcon)
 
         item as FeedItemWithMedia

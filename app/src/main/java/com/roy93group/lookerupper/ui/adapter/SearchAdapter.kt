@@ -1,6 +1,5 @@
 package com.roy93group.lookerupper.ui.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -73,6 +72,6 @@ class SearchAdapter(
 
     fun update(results: List<SearchResult>) {
         this.results = results
-        notifyItemRangeChanged(0, itemCount)
+        notifyDataSetChanged()
     }
 }
