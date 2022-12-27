@@ -29,8 +29,6 @@ class LauncherContext {
 
     inner class AppManager {
 
-        val pinnedItems: List<LauncherItem> get() = _pinnedItems
-
         fun <T : Context> loadApps(context: T, onEnd: T.(apps: AppCollection) -> Unit) {
             val iconConfig = IconConfig(
                 size = (context.resources.displayMetrics.density * 128f).toInt(),
@@ -52,41 +50,6 @@ class LauncherContext {
 
         fun parseLauncherItem(string: String): LauncherItem? {
             return App.parse(string, appsByName)
-        }
-
-        @Suppress("unused")
-        fun getAppByPackage(packageName: String): LauncherItem? = appsByName[packageName]?.first()
-
-        @Suppress("unused")
-        fun pinItem(context: Context, launcherItem: LauncherItem, i: Int) {
-            _pinnedItems.add(i, launcherItem)
-            settings.edit(context) {
-                val s = launcherItem.toString()
-                PINNED_KEY set (settings.getStrings(PINNED_KEY)
-                    ?.toMutableList()
-                    ?.apply { add(i, s) }
-                    ?.toTypedArray()
-                    ?: arrayOf(s))
-            }
-        }
-
-        @Suppress("unused")
-        fun unpinItem(context: Context, i: Int) {
-            _pinnedItems.removeAt(i)
-            settings.edit(context) {
-                PINNED_KEY set (settings.getStrings(PINNED_KEY)
-                    ?.toMutableList()
-                    ?.apply { removeAt(i) }
-                    ?.toTypedArray()
-                    ?: throw IllegalStateException("Can't unpin an item when no items are pinned"))
-            }
-        }
-
-        fun setPinned(context: Context, pinned: List<LauncherItem>) {
-            _pinnedItems = pinned.toMutableList()
-            settings.edit(context) {
-                PINNED_KEY set pinned.map(LauncherItem::toString).toTypedArray()
-            }
         }
 
         private val appLoader = AppLoader { AppCollection(it, settings) }

@@ -35,7 +35,7 @@
         app:layout_constraintBottom_toTopOf="@+id/colorPicker"
         tools:textColor="@color/colorTest" />
 
-    <com.loitpcore.picker.shiftColorPicker.LineColorPicker
+    <com.loitp.picker.shiftColor.LineColorPicker
         android:id="@+id/colorPicker"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_55"
