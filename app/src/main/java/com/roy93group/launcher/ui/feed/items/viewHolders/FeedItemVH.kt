@@ -31,8 +31,7 @@ import java.time.Instant
 open class FeedItemVH(
     itemView: View,
     isDisplayAppIcon: Boolean
-) :
-    FeedViewHolder(SwipeLayout(itemView), isDisplayAppIcon) {
+) : FeedViewHolder(SwipeLayout(itemView), isDisplayAppIcon) {
     private val swipeLayout = this.itemView as SwipeLayout
     val container: View? = itemView.findViewById(R.id.container)
     val vLine: View = itemView.findViewById<View>(R.id.vLine).apply {
