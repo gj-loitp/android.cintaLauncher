@@ -32,12 +32,11 @@ fun bindSectionHeaderViewHolder(
     holder: SectionHeaderViewHolder,
     item: SectionHeaderItem,
     isHighlighted: Boolean,
-    launcherActivity: LauncherActivity
+    launcherActivity: LauncherActivity,
+    isDisplayAppIcon: Boolean,
 ) {
     holder.text.text = item.label
     if (isHighlighted) {
-//        val color = ColorUtils.setAlphaComponent(Color.WHITE, 80)
-//        holder.itemView.setBackgroundColor(color)
         holder.itemView.setBackgroundColor(C.COLOR_0)
         holder.text.setTextColor(C.COLOR_PRIMARY)
     } else {

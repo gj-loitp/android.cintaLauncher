@@ -45,7 +45,8 @@ class SuggestionsAdapter(
             launcherActivity = launcherActivity,
             holder = holder,
             item = item,
-            isFromSuggest = true
+            isFromSuggest = true,
+            isDisplayAppIcon = true//TODO
         )
     }
 

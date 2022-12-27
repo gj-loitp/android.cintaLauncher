@@ -129,14 +129,27 @@
             android:layout_marginTop="@dimen/margin_padding_medium"
             android:buttonTint="@color/colorPrimary"
             android:checked="false"
-            android:gravity="start"
+            android:gravity="start|center"
             android:text="@string/rotate"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_large"
             app:layout_constraintTop_toBottomOf="@+id/btOrientation"
             tools:checked="true"
-            tools:ignore="TouchTargetSizeCheck"
-            tools:layout_editor_absoluteX="16dp" />
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cbDisplayAppIcon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorPrimary"
+            android:checked="false"
+            android:gravity="start|center"
+            android:text="@string/display_app_icon"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_large"
+            app:layout_constraintTop_toBottomOf="@+id/cbRotate"
+            tools:checked="true"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btReset"
@@ -153,7 +166,7 @@
             android:text="@string/default_value"
             android:textAllCaps="false"
             android:textSize="@dimen/txt_medium"
-            app:layout_constraintTop_toBottomOf="@+id/cbRotate"
+            app:layout_constraintTop_toBottomOf="@+id/cbDisplayAppIcon"
             tools:textColor="@color/colorTest" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

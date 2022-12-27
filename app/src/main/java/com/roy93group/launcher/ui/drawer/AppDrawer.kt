@@ -44,6 +44,7 @@ class AppDrawer(
     private var orientationValue = C.getOrientationValue()
     private var gravityValue = C.getGravityValue()
     private var isCheckedValue = C.getChecked()
+    private var isDisplayAppIcon = C.getDisplayAppIcon()
 
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
@@ -213,6 +214,7 @@ class AppDrawer(
             gravityValue = gravityValue,
             orientationValue = orientationValue,
             isCheckedValue = isCheckedValue,
+            isDisplayAppIcon = isDisplayAppIcon,
             isCancelableFragment = true,
             onDismiss = {
                 //do nothing
@@ -250,12 +252,19 @@ class AppDrawer(
                 layoutManager?.setRotate(isCheckedValue)
                 C.setChecked(isCheckedValue)
             },
+            onDisplayAppIcon = { value ->
+                isDisplayAppIcon = value
+                adapter.setIsDisplayAppIcon(isDisplayAppIcon)
+                C.setDisplayAppIcon(isDisplayAppIcon)
+            },
             onResetAllValue = {
                 seekRadiusValue = 0
                 seekPeekValue = 0
                 orientationValue = 1
                 gravityValue = 0
                 isCheckedValue = false
+                isDisplayAppIcon = true
+                adapter.resetIsDisplayAppIcon()
 
                 layoutManager?.apply {
                     setRadius(seekRadiusValue)
@@ -278,6 +287,7 @@ class AppDrawer(
                 C.setOrientationValue(orientationValue)
                 C.setGravityValue(gravityValue)
                 C.setChecked(isCheckedValue)
+                C.setDisplayAppIcon(isCheckedValue)
             }
         )
         fragment.show(launcherActivity.supportFragmentManager, fragment.tag)

@@ -50,19 +50,25 @@ fun bindAppViewHolder(
     launcherActivity: LauncherActivity,
     holder: AppViewHolder,
     item: LauncherItem,
-    isFromSuggest: Boolean
+    isFromSuggest: Boolean,
+    isDisplayAppIcon: Boolean,
 ) {
     holder.cardView.setCardBackgroundColor(Color.TRANSPARENT)
 
     val banner = (item as? App)?.getBanner()
-    if (banner?.text == null && banner?.title == null) {
-        holder.ivIconSmall.isVisible = false
-        holder.ivIcon.isVisible = true
-        holder.ivIcon.setImageDrawable(item.icon)
+    if (isDisplayAppIcon) {
+        if (banner?.text == null && banner?.title == null) {
+            holder.ivIconSmall.isVisible = false
+            holder.ivIcon.isVisible = true
+            holder.ivIcon.setImageDrawable(item.icon)
+        } else {
+            holder.ivIconSmall.isVisible = true
+            holder.ivIcon.isVisible = false
+            holder.ivIconSmall.setImageDrawable(item.icon)
+        }
     } else {
-        holder.ivIconSmall.isVisible = true
         holder.ivIcon.isVisible = false
-        holder.ivIconSmall.setImageDrawable(item.icon)
+        holder.ivIconSmall.isVisible = false
     }
 
     holder.tvIconText.text = item.label

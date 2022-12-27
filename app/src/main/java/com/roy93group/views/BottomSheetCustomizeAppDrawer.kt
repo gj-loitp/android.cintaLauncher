@@ -29,6 +29,7 @@ class BottomSheetCustomizeAppDrawer(
     private var gravityValue: Int,
     private var orientationValue: Int,
     private var isCheckedValue: Boolean,
+    private var isDisplayAppIcon: Boolean,
     private val isCancelableFragment: Boolean = true,
     private val onDismiss: ((Unit) -> Unit)? = null,
     private val onResetAllValue: ((Unit) -> Unit)? = null,
@@ -37,6 +38,7 @@ class BottomSheetCustomizeAppDrawer(
     private val onOrientation: ((Int) -> Unit)?,
     private val onGravity: ((Int) -> Unit)?,
     private val onRotate: ((Boolean) -> Unit)?,
+    private val onDisplayAppIcon: ((Boolean) -> Unit)?,
 ) : BottomSheetDialogFragment() {
 
     private var tvRadius: TextView? = null
@@ -106,6 +108,7 @@ class BottomSheetCustomizeAppDrawer(
             }
         }
         val cbRotate = view.findViewById<AppCompatCheckBox>(R.id.cbRotate)
+        val cbDisplayAppIcon = view.findViewById<AppCompatCheckBox>(R.id.cbDisplayAppIcon)
 
         seekRadius.setOnRubberSeekBarChangeListener(object :
             RubberSeekBar.OnRubberSeekBarChangeListener {
@@ -192,6 +195,11 @@ class BottomSheetCustomizeAppDrawer(
         cbRotate.isChecked = isCheckedValue
         cbRotate.setOnCheckedChangeListener { _, isChecked ->
             onRotate?.invoke(isChecked)
+        }
+
+        cbDisplayAppIcon.isChecked = isDisplayAppIcon
+        cbDisplayAppIcon.setOnCheckedChangeListener { _, isChecked ->
+            onDisplayAppIcon?.invoke(isChecked)
         }
     }
 

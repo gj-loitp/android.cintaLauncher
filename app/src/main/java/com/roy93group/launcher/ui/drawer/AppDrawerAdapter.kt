@@ -30,6 +30,16 @@ class AppDrawerAdapter(
     }
 
     var indexer: HighlightSectionIndexer? = null
+    private var isDisplayAppIcon = true
+
+    fun setIsDisplayAppIcon(isDisplayAppIcon: Boolean) {
+        this.isDisplayAppIcon = isDisplayAppIcon
+        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ items.size)
+    }
+
+    fun resetIsDisplayAppIcon() {
+        this.isDisplayAppIcon = true
+    }
 
     interface DrawerItem {
         val label: String
@@ -63,13 +73,15 @@ class AppDrawerAdapter(
                 holder = holder as SectionHeaderViewHolder,
                 item = item as SectionHeaderItem,
                 isHighlighted = indexer?.getHighlightI() == i,
-                launcherActivity = launcherActivity
+                launcherActivity = launcherActivity,
+                isDisplayAppIcon = isDisplayAppIcon,
             )
             APP_ITEM -> bindAppViewHolder(
                 launcherActivity = launcherActivity,
                 holder = holder as AppViewHolder,
                 item = (item as AppItem).item,
-                isFromSuggest = false
+                isFromSuggest = false,
+                isDisplayAppIcon = isDisplayAppIcon,
             )
         }
     }
