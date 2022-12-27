@@ -86,7 +86,12 @@ class BottomSheetCustomizeAppDrawer(
             setHighlightThumbOnTouchColor(C.COLOR_0)
             setDefaultThumbInsideColor(C.COLOR_0)
         }
-        val seekPeek = view.findViewById<SeekBar>(R.id.seekPeek)
+        val seekPeek = view.findViewById<RubberSeekBar>(R.id.seekPeek).apply {
+            setNormalTrackColor(C.COLOR_PRIMARY)
+            setHighlightTrackColor(C.COLOR_PRIMARY)
+            setHighlightThumbOnTouchColor(C.COLOR_0)
+            setDefaultThumbInsideColor(C.COLOR_0)
+        }
         btGravity = view.findViewById<Button>(R.id.btGravity).apply {
             setTextColor(C.COLOR_0)
         }
@@ -118,12 +123,27 @@ class BottomSheetCustomizeAppDrawer(
             override fun onStartTrackingTouch(seekBar: RubberSeekBar) {}
             override fun onStopTrackingTouch(seekBar: RubberSeekBar) {}
         })
-        seekPeek.setOnSeekBarChangeListener(peekListener)
+        seekPeek.setOnRubberSeekBarChangeListener(object :
+            RubberSeekBar.OnRubberSeekBarChangeListener {
+            override fun onProgressChanged(
+                seekBar: RubberSeekBar,
+                value: Int,
+                fromUser: Boolean
+            ) {
+                tvPeekText?.text = resources.getString(R.string.peek_format, value)
+                if (fromUser) {
+                    onSeekPeekValue?.invoke(value)
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: RubberSeekBar) {}
+            override fun onStopTrackingTouch(seekBar: RubberSeekBar) {}
+        })
 
         tvRadius?.text = resources.getString(R.string.radius_format, seekRadiusValue)
         tvPeekText?.text = resources.getString(R.string.peek_format, seekPeekValue)
         seekRadius.setCurrentValue(seekRadiusValue)
-        seekPeek.progress = seekPeekValue
+        seekPeek.setCurrentValue(seekPeekValue)
 
         updateUIGravity()
         btGravity?.setSafeOnClickListener {
@@ -170,7 +190,9 @@ class BottomSheetCustomizeAppDrawer(
         }
 
         cbRotate.isChecked = isCheckedValue
-        cbRotate.setOnCheckedChangeListener(rotateListener)
+        cbRotate.setOnCheckedChangeListener { _, isChecked ->
+            onRotate?.invoke(isChecked)
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -195,28 +217,6 @@ class BottomSheetCustomizeAppDrawer(
         } else {
             btOrientation?.text = "$title: $value1"
         }
-    }
-
-    private val peekListener: SeekBar.OnSeekBarChangeListener = object :
-        SeekBar.OnSeekBarChangeListener {
-        override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-            tvPeekText?.text = resources.getString(R.string.peek_format, progress)
-            if (fromUser) {
-                onSeekPeekValue?.invoke(progress)
-            }
-        }
-
-        override fun onStartTrackingTouch(seekBar: SeekBar) {
-            // do nothing
-        }
-
-        override fun onStopTrackingTouch(seekBar: SeekBar) {
-            // do nothing
-        }
-    }
-
-    private val rotateListener = CompoundButton.OnCheckedChangeListener { _, isChecked ->
-        onRotate?.invoke(isChecked)
     }
 
 }
