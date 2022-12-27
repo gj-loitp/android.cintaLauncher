@@ -93,7 +93,16 @@ open class FeedItemVH(
         title.text = item.title
 
         applyIfNotNull(view = description, value = item.description, block = TextView::setText)
-        applyIfNotNull(view = icon, value = item.sourceIcon, block = ImageView::setImageDrawable)
+        if (isDisplayAppIcon) {
+            applyIfNotNull(
+                view = icon,
+                value = item.sourceIcon,
+                block = ImageView::setImageDrawable
+            )
+        } else {
+            icon.isVisible = false
+        }
+
         applyIfNotNull(view = source, value = item.source, block = TextView::setText)
 
         title.isVisible = item.title.isNotEmpty()

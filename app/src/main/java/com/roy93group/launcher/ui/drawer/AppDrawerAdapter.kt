@@ -39,7 +39,7 @@ class AppDrawerAdapter(
     }
 
     fun resetIsDisplayAppIcon() {
-        this.isDisplayAppIcon = true
+        setIsDisplayAppIcon(true)
     }
 
     interface DrawerItem {

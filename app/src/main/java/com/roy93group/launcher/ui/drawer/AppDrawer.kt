@@ -266,6 +266,7 @@ class AppDrawer(
                 isCheckedValue = false
                 isDisplayAppIcon = true
                 adapter.resetIsDisplayAppIcon()
+                launcherActivity.feedAdapter.resetIsDisplayAppIcon()
 
                 layoutManager?.apply {
                     setRadius(seekRadiusValue)

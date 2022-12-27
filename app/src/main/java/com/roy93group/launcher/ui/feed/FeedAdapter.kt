@@ -45,6 +45,10 @@ class FeedAdapter(
         notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
     }
 
+    fun resetIsDisplayAppIcon() {
+        setDisplayAppIcon(true)
+    }
+
     private fun getFeedItem(i: Int) = items[i - 1]
 
     override fun getItemCount() = if (items.isEmpty()) 2 else items.size + 1
