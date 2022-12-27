@@ -9,4 +9,8 @@ import android.view.View
  * +840766040293
  * freuss47@gmail.com
  */
-class FeedItemSmallVH(itemView: View) : FeedItemVH(itemView)
+class FeedItemSmallVH(
+    itemView: View,
+    isDisplayAppIcon: Boolean
+) :
+    FeedItemVH(itemView, isDisplayAppIcon)

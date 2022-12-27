@@ -256,6 +256,7 @@ class AppDrawer(
                 isDisplayAppIcon = value
                 adapter.setIsDisplayAppIcon(isDisplayAppIcon)
                 C.setDisplayAppIcon(isDisplayAppIcon)
+                launcherActivity.feedAdapter.setDisplayAppIcon(isDisplayAppIcon)
             },
             onResetAllValue = {
                 seekRadiusValue = 0

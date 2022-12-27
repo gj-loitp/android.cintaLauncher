@@ -1,10 +1,10 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.suggestions
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.ui.LauncherActivity
@@ -23,6 +23,7 @@ class SuggestionsAdapter(
 ) : RecyclerView.Adapter<AppViewHolder>() {
 
     private var items: List<LauncherItem> = emptyList()
+    private var isDisplayAppIcon = C.getDisplayAppIcon()
 
     override fun getItemCount(): Int = items.size
 
@@ -46,13 +47,17 @@ class SuggestionsAdapter(
             holder = holder,
             item = item,
             isFromSuggest = true,
-            isDisplayAppIcon = true//TODO
+            isDisplayAppIcon = isDisplayAppIcon
         )
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateItems(items: List<LauncherItem>) {
+    fun updateItems(
+        items: List<LauncherItem>,
+        isDisplayAppIcon: Boolean
+    ) {
         this.items = items
+        this.isDisplayAppIcon = isDisplayAppIcon
+        //TODO
         notifyDataSetChanged()
     }
 }

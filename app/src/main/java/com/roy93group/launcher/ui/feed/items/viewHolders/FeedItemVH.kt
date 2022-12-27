@@ -28,7 +28,11 @@ import java.time.Instant
  * +840766040293
  * freuss47@gmail.com
  */
-open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
+open class FeedItemVH(
+    itemView: View,
+    isDisplayAppIcon: Boolean
+) :
+    FeedViewHolder(SwipeLayout(itemView), isDisplayAppIcon) {
     private val swipeLayout = this.itemView as SwipeLayout
     val container: View? = itemView.findViewById(R.id.container)
     val vLine: View = itemView.findViewById<View>(R.id.vLine).apply {
@@ -83,6 +87,7 @@ open class FeedItemVH(itemView: View) : FeedViewHolder(SwipeLayout(itemView)) {
 
     override fun onBind(
         item: FeedItem,
+        isDisplayAppIcon: Boolean,
     ) {
         swipeLayout.reset()
         title.text = item.title

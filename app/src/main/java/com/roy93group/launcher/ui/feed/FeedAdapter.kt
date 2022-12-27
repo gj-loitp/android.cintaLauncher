@@ -1,6 +1,7 @@
 package com.roy93group.launcher.ui.feed
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -37,8 +38,16 @@ class FeedAdapter(
     }
 
     inline val context: Context get() = launcherActivity
-
+    private var isDisplayAppIcon = C.getDisplayAppIcon()
     private var items: List<FeedItem> = emptyList()
+
+    fun setDisplayAppIcon(isDisplayAppIcon: Boolean) {
+        this.isDisplayAppIcon = isDisplayAppIcon
+
+
+        Log.e("loitpp", "setDisplayAppIcon isDisplayAppIcon $isDisplayAppIcon")
+        notifyDataSetChanged()
+    }
 
     private fun getFeedItem(i: Int) = items[i - 1]
 
@@ -76,27 +85,34 @@ class FeedAdapter(
             }
             TYPE_PLAIN -> FeedItemVH(
                 itemView = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.view_feed_item_plain, parent, false)
+                    .inflate(R.layout.view_feed_item_plain, parent, false),
+                isDisplayAppIcon = isDisplayAppIcon
             )
             TYPE_SMALL -> FeedItemSmallVH(
                 itemView = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.view_feed_item_small, parent, false)
+                    .inflate(R.layout.view_feed_item_small, parent, false),
+                isDisplayAppIcon = isDisplayAppIcon,
             )
             TYPE_BIG_IMAGE -> FeedItemImageVH(
                 itemView = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.view_feed_item_image, parent, false)
+                    .inflate(R.layout.view_feed_item_image, parent, false),
+                isDisplayAppIcon = isDisplayAppIcon,
             )
             TYPE_PROGRESS -> FeedItemProgressVH(
                 itemView = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.view_feed_item_progress, parent, false)
+                    .inflate(R.layout.view_feed_item_progress, parent, false),
+                isDisplayAppIcon = isDisplayAppIcon,
             )
             TYPE_MEDIA -> FeedItemMediaVH(
                 itemView = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.view_feed_item_media, parent, false)
+                    .inflate(R.layout.view_feed_item_media, parent, false),
+                isDisplayAppIcon = isDisplayAppIcon
             )
             TYPE_SUGGESTED -> SuggestedVH(
-                launcherActivity = launcherActivity, LayoutInflater.from(parent.context)
-                    .inflate(R.layout.view_feed_item_suggested_apps, parent, false)
+                launcherActivity = launcherActivity,
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.view_feed_item_suggested_apps, parent, false),
+                isDisplayAppIcon = isDisplayAppIcon,
             )
             TYPE_EMPTY -> EmptyFeedItemViewHolder(
                 itemView = LayoutInflater.from(parent.context)
@@ -110,7 +126,7 @@ class FeedAdapter(
         holder: RecyclerView.ViewHolder,
         i: Int
     ) {
-        if (i == 0) {
+        if (i == TYPE_HOME) {
             return bindHomeViewHolder(
                 holder = holder as HomeViewHolder,
                 onClickClock = {
@@ -125,7 +141,7 @@ class FeedAdapter(
         }
         val item = getFeedItem(i)
         holder as FeedViewHolder
-        holder.onBind(item)
+        holder.onBind(item = item, isDisplayAppIcon = isDisplayAppIcon)
         if (holder !is FeedItemVH) return
         val verticalPadding =
             holder.itemView.resources.getDimension(R.dimen.margin_padding_medium).toInt()

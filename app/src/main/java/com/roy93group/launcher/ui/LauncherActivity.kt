@@ -80,7 +80,7 @@ class LauncherActivity : BaseFontActivity() {
     val feedProfiles by lazy {
         FeedProfiles(this)
     }
-    private lateinit var feedAdapter: FeedAdapter
+    lateinit var feedAdapter: FeedAdapter
 
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_launcher

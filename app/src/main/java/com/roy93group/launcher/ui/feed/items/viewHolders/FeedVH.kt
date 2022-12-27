@@ -12,9 +12,14 @@ import com.roy93group.launcher.data.feed.items.FeedItem
  * +840766040293
  * freuss47@gmail.com
  */
-abstract class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+abstract class FeedViewHolder(
+    itemView: View,
+    isDisplayAppIcon: Boolean
+) :
+    RecyclerView.ViewHolder(itemView) {
     abstract fun onBind(
         item: FeedItem,
+        isDisplayAppIcon: Boolean,
     )
 }
 

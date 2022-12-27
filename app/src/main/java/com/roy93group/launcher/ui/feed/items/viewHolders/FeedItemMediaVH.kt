@@ -19,8 +19,9 @@ import com.roy93group.launcher.data.feed.items.FeedItemWithMedia
  * freuss47@gmail.com
  */
 class FeedItemMediaVH(
-    itemView: View
-) : FeedItemVH(itemView) {
+    itemView: View,
+    isDisplayAppIcon: Boolean,
+) : FeedItemVH(itemView, isDisplayAppIcon) {
 
     private val image: ImageView = itemView.findViewById(R.id.image)
     private val buttonPrevious: ImageView =
@@ -34,8 +35,8 @@ class FeedItemMediaVH(
         C.setBackground(this)
     }
 
-    override fun onBind(item: FeedItem) {
-        super.onBind(item)
+    override fun onBind(item: FeedItem, isDisplayAppIcon: Boolean) {
+        super.onBind(item, isDisplayAppIcon)
 
         item as FeedItemWithMedia
 

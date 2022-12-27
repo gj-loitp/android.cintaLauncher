@@ -20,9 +20,10 @@ import com.roy93group.launcher.ui.feed.items.viewHolders.FeedViewHolder
 class SuggestedVH(
     val launcherActivity: LauncherActivity,
     itemView: View,
-) : FeedViewHolder(itemView) {
+    isDisplayAppIcon: Boolean
+) : FeedViewHolder(itemView, isDisplayAppIcon) {
 
-    val adapter = SuggestionsAdapter(launcherActivity)
+    val adapter = SuggestionsAdapter(launcherActivity = launcherActivity)
 
     val vLine: View = itemView.findViewById<View>(R.id.vLine).apply {
         setBackgroundColor(C.COLOR_0)
@@ -37,8 +38,11 @@ class SuggestedVH(
         adapter = this@SuggestedVH.adapter
     }
 
-    override fun onBind(item: FeedItem) {
+    override fun onBind(
+        item: FeedItem,
+        isDisplayAppIcon: Boolean
+    ) {
         item as FeedItemSuggestedApps
-        adapter.updateItems(item.apps)
+        adapter.updateItems(items = item.apps, isDisplayAppIcon = isDisplayAppIcon)
     }
 }

@@ -28,7 +28,11 @@ import io.posidon.android.conveniencelib.units.toFloatPixels
  * +840766040293
  * freuss47@gmail.com
  */
-open class FeedItemImageVH(itemView: View) : FeedItemVH(itemView) {
+open class FeedItemImageVH(
+    itemView: View,
+    isDisplayAppIcon: Boolean
+) :
+    FeedItemVH(itemView, isDisplayAppIcon) {
     val image: ImageView = itemView.findViewById(R.id.image)
     val card: MaterialCardView = itemView.findViewById<MaterialCardView>(R.id.card).apply {
         strokeColor = C.COLOR_0
@@ -70,8 +74,11 @@ open class FeedItemImageVH(itemView: View) : FeedItemVH(itemView) {
         }
     }
 
-    override fun onBind(item: FeedItem) {
-        super.onBind(item)
+    override fun onBind(
+        item: FeedItem,
+        isDisplayAppIcon: Boolean
+    ) {
+        super.onBind(item, isDisplayAppIcon)
         item as FeedItemWithBigImage
         Glide.with(itemView.context)
             .load(item.image)

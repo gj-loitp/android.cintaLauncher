@@ -15,11 +15,14 @@ import com.roy93group.launcher.data.feed.items.FeedItemWithProgress
  * +840766040293
  * freuss47@gmail.com
  */
-class FeedItemProgressVH(itemView: View) : FeedItemVH(itemView) {
+class FeedItemProgressVH(
+    itemView: View,
+    isDisplayAppIcon: Boolean
+) : FeedItemVH(itemView, isDisplayAppIcon) {
     private val progress: ProgressBar = itemView.findViewById(R.id.progress)
 
-    override fun onBind(item: FeedItem) {
-        super.onBind(item)
+    override fun onBind(item: FeedItem, isDisplayAppIcon: Boolean) {
+        super.onBind(item, isDisplayAppIcon)
         item as FeedItemWithProgress
 
         progress.apply {
