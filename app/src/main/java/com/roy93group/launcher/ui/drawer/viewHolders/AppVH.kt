@@ -30,7 +30,7 @@ class AppViewHolder(
     val tvIconText: TextView = itemView.findViewById<TextView>(R.id.tvIconText).apply {
         setTextColor(C.COLOR_0)
     }
-    val ivIconSmall: ImageView = itemView.findViewById(R.id.ivIconSmall)
+
     val tvLineTitle: TextView = itemView.findViewById<TextView>(R.id.tvLineTitle).apply {
         setTextColor(C.COLOR_0)
     }
@@ -57,18 +57,10 @@ fun bindAppViewHolder(
 
     val banner = (item as? App)?.getBanner()
     if (isDisplayAppIcon) {
-        if (banner?.text == null && banner?.title == null) {
-            holder.ivIconSmall.isVisible = false
-            holder.ivIcon.isVisible = true
-            holder.ivIcon.setImageDrawable(item.icon)
-        } else {
-            holder.ivIconSmall.isVisible = true
-            holder.ivIcon.isVisible = false
-            holder.ivIconSmall.setImageDrawable(item.icon)
-        }
+        holder.ivIcon.setImageDrawable(item.icon)
+        holder.ivIcon.isVisible = true
     } else {
         holder.ivIcon.isVisible = false
-        holder.ivIconSmall.isVisible = false
     }
 
     holder.tvIconText.text = item.label

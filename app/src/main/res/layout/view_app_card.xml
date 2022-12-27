@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/margin_padding_medium"
+        android:paddingStart="0dp"
         android:paddingTop="@dimen/margin_padding_small"
         android:paddingEnd="@dimen/margin_padding_medium"
         android:paddingBottom="@dimen/margin_padding_small">
@@ -23,22 +23,11 @@
             android:id="@+id/ivIcon"
             android:layout_width="@dimen/w_55"
             android:layout_height="@dimen/w_55"
+            android:layout_marginStart="@dimen/margin_padding_medium"
             android:scaleType="fitCenter"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_launcher"
-            tools:visibility="visible" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivIconSmall"
-            android:layout_width="@dimen/w_55"
-            android:layout_height="@dimen/w_55"
-            android:scaleType="fitCenter"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivIcon"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher"
             tools:visibility="visible" />
@@ -52,7 +41,7 @@
             android:padding="@dimen/margin_padding_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivIconSmall"
+            app:layout_constraintStart_toEndOf="@+id/ivIcon"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
