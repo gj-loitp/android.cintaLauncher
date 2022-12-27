@@ -52,9 +52,8 @@ class ListPopupAdapter : RecyclerView.Adapter<ListPopupVH>() {
 
     private var items: List<ListPopupItem> = emptyList()
 
-    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(items: List<ListPopupItem>) {
         this.items = items
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, itemCount)
     }
 }

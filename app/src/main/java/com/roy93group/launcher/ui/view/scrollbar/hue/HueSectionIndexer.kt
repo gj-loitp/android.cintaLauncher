@@ -47,19 +47,17 @@ class HueSectionIndexer(
     private var highlightI = -1
     override fun getHighlightI() = highlightI
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun highlight(i: Int) {
         val oldI = highlightI
         highlightI = i
         if (oldI != i) {
-            adapter?.notifyDataSetChanged()
+            adapter?.notifyItemRangeChanged()
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun unhighlight() {
         highlightI = -1
-        adapter?.notifyDataSetChanged()
+        adapter?.notifyItemRangeChanged()
     }
 
     override fun isDimmed(app: App): Boolean =

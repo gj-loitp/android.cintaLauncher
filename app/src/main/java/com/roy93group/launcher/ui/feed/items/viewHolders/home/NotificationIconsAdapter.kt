@@ -1,6 +1,5 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.home
 
-import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
@@ -47,11 +46,10 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
 
     override fun getItemCount() = items.size
 
-    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(items: List<Drawable>): Boolean {
         val numberChanged = this.items.size != items.size
         this.items = items
-        notifyDataSetChanged()
+        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
         return numberChanged
     }
 }

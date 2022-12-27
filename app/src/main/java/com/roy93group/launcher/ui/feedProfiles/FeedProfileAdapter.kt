@@ -69,15 +69,13 @@ class FeedProfileAdapter(
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(items: List<FeedProfile>) {
         this.items = items
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, itemCount)
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(vararg items: FeedProfile) {
         this.items = items.toList()
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, itemCount)
     }
 }

@@ -32,9 +32,8 @@ class InfoBoxAdapter : RecyclerView.Adapter<InfoboxEntryVH>() {
 
     override fun getItemCount() = listEntry.size
 
-    @SuppressLint("NotifyDataSetChanged")
     fun updateEntries(entries: List<Pair<String, String>>) {
         this.listEntry = entries
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, itemCount)
     }
 }

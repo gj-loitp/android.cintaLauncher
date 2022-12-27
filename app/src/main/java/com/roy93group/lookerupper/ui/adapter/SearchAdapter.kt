@@ -71,9 +71,8 @@ class SearchAdapter(
 
     override fun getItemCount(): Int = results.size
 
-    @SuppressLint("NotifyDataSetChanged")
     fun update(results: List<SearchResult>) {
         this.results = results
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, itemCount)
     }
 }

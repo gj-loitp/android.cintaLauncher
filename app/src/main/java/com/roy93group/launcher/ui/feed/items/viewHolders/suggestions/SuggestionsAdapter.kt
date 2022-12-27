@@ -57,7 +57,6 @@ class SuggestionsAdapter(
     ) {
         this.items = items
         this.isDisplayAppIcon = isDisplayAppIcon
-        //TODO
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, itemCount)
     }
 }
