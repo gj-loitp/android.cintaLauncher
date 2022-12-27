@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.ui.LauncherActivity
@@ -30,7 +31,7 @@ class AppDrawerAdapter(
     }
 
     var indexer: HighlightSectionIndexer? = null
-    private var isDisplayAppIcon = true
+    private var isDisplayAppIcon = C.getDisplayAppIcon()
 
     fun setIsDisplayAppIcon(isDisplayAppIcon: Boolean) {
         this.isDisplayAppIcon = isDisplayAppIcon
