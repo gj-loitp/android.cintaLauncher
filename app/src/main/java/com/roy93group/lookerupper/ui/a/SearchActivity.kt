@@ -16,7 +16,9 @@ import com.loitp.annotation.IsFullScreen
 import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseFontActivity
+import com.loitp.core.common.Constants
 import com.loitp.core.utilities.LActivityUtil
+import com.loitp.data.ActivityData
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.Settings
@@ -94,7 +96,12 @@ class SearchActivity : BaseFontActivity() {
                 }
             this.adapter = this@SearchActivity.adapter
             cvSearchBarContainer.post {
-                setPadding(paddingLeft, cvSearchBarContainer.measuredHeight, paddingRight, paddingBottom)
+                setPadding(
+                    paddingLeft,
+                    cvSearchBarContainer.measuredHeight,
+                    paddingRight,
+                    paddingBottom
+                )
             }
         }
         findViewById<EditText>(R.id.etSearchBarText).run {
@@ -141,5 +148,10 @@ class SearchActivity : BaseFontActivity() {
                 true
             }
         }
+    }
+
+    override fun onDestroy() {
+        ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_ZOOM
+        super.onDestroy()
     }
 }

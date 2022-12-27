@@ -28,6 +28,7 @@ import com.google.android.material.card.MaterialCardView
 import com.loitp.core.common.Constants
 import com.loitp.core.helper.gallery.GalleryCoreSplashActivity
 import com.loitp.core.utilities.*
+import com.loitp.data.ActivityData
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.util.FakeLauncherActivity
@@ -354,6 +355,7 @@ object C {
     }
 
     fun goToSearchScreen(context: Context) {
+        ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_SLIDE_UP
         vibrate(milliseconds = 100)
         context.startActivity(
             Intent(
