@@ -1,7 +1,6 @@
 package com.roy93group.launcher.ui.feed
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -43,10 +42,7 @@ class FeedAdapter(
 
     fun setDisplayAppIcon(isDisplayAppIcon: Boolean) {
         this.isDisplayAppIcon = isDisplayAppIcon
-
-
-        Log.e("loitpp", "setDisplayAppIcon isDisplayAppIcon $isDisplayAppIcon")
-        notifyDataSetChanged()
+        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
     }
 
     private fun getFeedItem(i: Int) = items[i - 1]
