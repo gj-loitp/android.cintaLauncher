@@ -17,12 +17,12 @@ import android.widget.*
 import androidx.appcompat.widget.AppCompatCheckBox
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
+import com.jem.rubberpicker.RubberSeekBar
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LAppResource
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 
-//TODO customize seekbar
 class BottomSheetCustomizeAppDrawer(
     private val seekRadiusValue: Int,
     private val seekPeekValue: Int,
@@ -80,7 +80,12 @@ class BottomSheetCustomizeAppDrawer(
 
         tvRadius = view.findViewById(R.id.tvRadius)
         tvPeekText = view.findViewById(R.id.tvPeekText)
-        val seekRadius = view.findViewById<SeekBar>(R.id.seekRadius)
+        val seekRadius = view.findViewById<RubberSeekBar>(R.id.seekRadius).apply {
+            setNormalTrackColor(C.COLOR_PRIMARY)
+            setHighlightTrackColor(C.COLOR_PRIMARY)
+            setHighlightThumbOnTouchColor(C.COLOR_0)
+            setDefaultThumbInsideColor(C.COLOR_0)
+        }
         val seekPeek = view.findViewById<SeekBar>(R.id.seekPeek)
         btGravity = view.findViewById<Button>(R.id.btGravity).apply {
             setTextColor(C.COLOR_0)
@@ -97,12 +102,27 @@ class BottomSheetCustomizeAppDrawer(
         }
         val cbRotate = view.findViewById<AppCompatCheckBox>(R.id.cbRotate)
 
-        seekRadius.setOnSeekBarChangeListener(radiusListener)
+        seekRadius.setOnRubberSeekBarChangeListener(object :
+            RubberSeekBar.OnRubberSeekBarChangeListener {
+            override fun onProgressChanged(
+                seekBar: RubberSeekBar,
+                value: Int,
+                fromUser: Boolean
+            ) {
+                tvRadius?.text = resources.getString(R.string.radius_format, value)
+                if (fromUser) {
+                    onSeekRadiusValue?.invoke(value)
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: RubberSeekBar) {}
+            override fun onStopTrackingTouch(seekBar: RubberSeekBar) {}
+        })
         seekPeek.setOnSeekBarChangeListener(peekListener)
 
         tvRadius?.text = resources.getString(R.string.radius_format, seekRadiusValue)
         tvPeekText?.text = resources.getString(R.string.peek_format, seekPeekValue)
-        seekRadius.progress = seekRadiusValue
+        seekRadius.setCurrentValue(seekRadiusValue)
         seekPeek.progress = seekPeekValue
 
         updateUIGravity()
@@ -174,24 +194,6 @@ class BottomSheetCustomizeAppDrawer(
             btOrientation?.text = "$title: $value0"
         } else {
             btOrientation?.text = "$title: $value1"
-        }
-    }
-
-    private val radiusListener: SeekBar.OnSeekBarChangeListener = object :
-        SeekBar.OnSeekBarChangeListener {
-        override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-            tvRadius?.text = resources.getString(R.string.radius_format, progress)
-            if (fromUser) {
-                onSeekRadiusValue?.invoke(progress)
-            }
-        }
-
-        override fun onStartTrackingTouch(seekBar: SeekBar) {
-            // do nothing
-        }
-
-        override fun onStopTrackingTouch(seekBar: SeekBar) {
-            // do nothing
         }
     }
 

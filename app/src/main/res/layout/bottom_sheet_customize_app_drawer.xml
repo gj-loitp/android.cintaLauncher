@@ -35,14 +35,21 @@
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/ivSlider" />
 
-        <androidx.appcompat.widget.AppCompatSeekBar
+        <com.jem.rubberpicker.RubberSeekBar
             android:id="@+id/seekRadius"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_padding_medium"
-            android:max="4000"
-            android:thumbTint="@color/colorPrimary"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+            app:dampingRatio="0.3"
+            app:defaultThumbRadius="@dimen/round_medium"
+            app:elasticBehavior="cubic"
+            app:highlightTrackWidth="@dimen/w_8"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:maxValue="4000"
+            app:minValue="20"
+            app:normalTrackWidth="@dimen/w_8"
+            app:stiffness="300"
+            app:stretchRange="24dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvRadius"
@@ -120,7 +127,9 @@
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_large"
             app:layout_constraintTop_toBottomOf="@+id/btOrientation"
-            tools:checked="true" />
+            tools:checked="true"
+            tools:ignore="TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="16dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btReset"

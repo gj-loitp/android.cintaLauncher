@@ -41,23 +41,19 @@ android {
 }
 
 dependencies {
-    implementation("com.github.tplloi:base:4.6.05")
-//    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.22")
+    implementation("com.github.tplloi:base:4.6.06")
     implementation("com.willowtreeapps:fuzzywuzzy-kotlin-jvm:0.9.0")
-//    implementation("com.github.bumptech.glide:glide:4.14.2")
     implementation("io.posidon:android.launcherUtils:30aa020c1a")
     implementation("io.posidon:android.libduckduckgo:22.0")
     implementation("io.posidon:android.rsslib:22.0")
     implementation("io.posidon:android.conveniencelib:22.0")
-//    implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.palette:palette-ktx:1.0.0")
-//    implementation("com.google.android.material:material:1.7.0")
-//    testImplementation("junit:junit:4.13.2")
     implementation("com.google.firebase:firebase-bom:31.1.1")
     implementation("com.google.firebase:firebase-analytics-ktx:21.2.0")
     implementation("com.google.firebase:firebase-crashlytics-ktx:18.3.2")
     implementation("com.google.firebase:firebase-config-ktx:21.2.0")
     implementation("com.github.cdflynn:turn-layout-manager:v1.3.1")
+    implementation("com.github.Chrisvin:RubberPicker:v1.5")
 }
 
 configurations.all {
