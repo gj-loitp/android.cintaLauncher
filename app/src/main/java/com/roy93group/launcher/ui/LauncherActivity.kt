@@ -101,7 +101,9 @@ class LauncherActivity : BaseFontActivity() {
             LUIUtil.setScrollChange(
                 recyclerView = this,
                 onTop = {
-                    C.goToSearchScreen(context)
+                    if (C.getOpenSearchWhenScrollTop()) {
+                        C.goToSearchScreen(context)
+                    }
                 },
                 onBottom = {
                 },

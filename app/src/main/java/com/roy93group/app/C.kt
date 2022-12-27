@@ -52,6 +52,7 @@ object C {
     private const val KEY_ORIENTATION_VALUE = "KEY_ORIENTATION_VALUE"
     private const val KEY_GRAVITY_VALUE = "KEY_GRAVITY_VALUE"
     private const val KEY_IS_CHECKED_VALUE = "KEY_IS_CHECKED_VALUE"
+    private const val KEY_OPEN_SEARCH_WHEN_SCROLL_TOP = "KEY_OPEN_SEARCH_WHEN_SCROLL_TOP"
 
     val COLOR_PRIMARY = LAppResource.getColor(R.color.colorPrimary)
     var COLOR_0 = LAppResource.getColor(R.color.color0)
@@ -415,5 +416,13 @@ object C {
             radiusBL = radiusBL,
             radiusBR = radiusBR
         )
+    }
+
+    fun setOpenSearchWhenScrollTop(isEnable: Boolean) {
+        LSharedPrefsUtil.instance.putBoolean(KEY_OPEN_SEARCH_WHEN_SCROLL_TOP, isEnable)
+    }
+
+    fun getOpenSearchWhenScrollTop(): Boolean {
+        return LSharedPrefsUtil.instance.getBoolean(KEY_OPEN_SEARCH_WHEN_SCROLL_TOP, true)
     }
 }

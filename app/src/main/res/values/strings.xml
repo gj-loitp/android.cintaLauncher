@@ -72,4 +72,7 @@
     <string name="vertical">Vertical</string>
     <string name="horizontal">Horizontal</string>
     <string name="default_value">Default value</string>
+    <string name="home_page">Home page</string>
+    <string name="smart_search">Smart search</string>
+    <string name="enable_search_when_scroll_to_top">Open the search page when you scroll to the top</string>
 </resources>

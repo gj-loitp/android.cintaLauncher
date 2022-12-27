@@ -50,7 +50,9 @@ class AppDrawer(
         LUIUtil.setScrollChange(
             recyclerView = rvApp,
             onTop = {
-                C.goToSearchScreen(launcherActivity)
+                if (C.getOpenSearchWhenScrollTop()) {
+                    C.goToSearchScreen(launcherActivity)
+                }
             },
             onBottom = {},
             onScrolled = {}

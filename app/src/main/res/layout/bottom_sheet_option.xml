@@ -61,6 +61,7 @@
                 android:textSize="@dimen/txt_medium"
                 android:textStyle="bold"
                 tools:checked="false"
+                tools:ignore="TouchTargetSizeCheck"
                 tools:text="Alphabetic" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
@@ -72,6 +73,7 @@
                 android:textSize="@dimen/txt_medium"
                 android:textStyle="bold"
                 tools:checked="false"
+                tools:ignore="TouchTargetSizeCheck"
                 tools:text="By hue" />
         </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>

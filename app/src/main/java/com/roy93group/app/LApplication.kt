@@ -25,9 +25,10 @@ import com.loitp.data.ActivityData
 //TODO animation intro
 //TODO tich hop he sinh thai app roy93group
 //TODO gg pay
-//TODO setting enable/disable swipe out rv de open search screen
-//TODO font
 //TODO background color black -> custom color
+//TODO spotlight
+
+//feat custom font?
 
 //done
 //chon man hinh chu o screen setting
@@ -54,6 +55,7 @@ import com.loitp.data.ActivityData
 //su dung remote config de bat tat cac chuc nang nhay cam nhu gallery
 //da test thu LParallaxRecyclerView nhung ko dep
 //round corner bottom sheet
+//setting enable/disable swipe out rv de open search screen
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

@@ -64,6 +64,8 @@ object DrawerLongPressPopup {
         val fabDismiss = content.findViewById<FloatingActionButton>(R.id.fabDismiss).apply {
             setColorFilter(C.COLOR_0)
         }
+
+        @Suppress("unused")
         val cardView = content.findViewById<MaterialCardView>(R.id.card).apply {
             setCardBackgroundColor(C.COLOR_0)
         }
@@ -154,6 +156,16 @@ object DrawerLongPressPopup {
                     }
                 )
             },
+            ListPopupItem(text = context.getString(R.string.home_page), isTitle = true),
+            ListPopupItem(
+                text = context.getString(R.string.smart_search),
+                description = context.getString(R.string.enable_search_when_scroll_to_top),
+                icon = ContextCompat.getDrawable(context, R.drawable.ic_shapes),
+                value = C.getOpenSearchWhenScrollTop(),
+                onToggle = { _, value ->
+                    C.setOpenSearchWhenScrollTop(value)
+                }
+            ),
             ListPopupItem(text = context.getString(R.string.theme), isTitle = true),
             ListPopupItem(
                 text = context.getString(R.string.color),
