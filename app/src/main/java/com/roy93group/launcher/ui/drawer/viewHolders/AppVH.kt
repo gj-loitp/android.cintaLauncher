@@ -64,7 +64,7 @@ fun bindAppViewHolder(
         if (isForceColorIcon) {
             holder.ivIcon.setColorFilter(C.COLOR_0)
         } else {
-            holder.ivIcon.clearColorFilter()
+            holder.ivIcon.setColorFilter(Color.TRANSPARENT)
         }
     } else {
         holder.ivIcon.isVisible = false

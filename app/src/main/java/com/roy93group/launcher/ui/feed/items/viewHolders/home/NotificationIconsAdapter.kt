@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.home
 
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
@@ -47,7 +48,7 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
         if (isForceColorIcon) {
             holder.image.setColorFilter(C.COLOR_0)
         } else {
-            holder.image.clearColorFilter()
+            holder.image.setColorFilter(Color.TRANSPARENT)
         }
     }
 
