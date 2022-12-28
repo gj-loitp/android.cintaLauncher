@@ -8,7 +8,6 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import androidx.core.view.isVisible
-import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
@@ -20,6 +19,7 @@ import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseFontActivity
 import com.loitp.core.common.Constants
 import com.loitp.core.utilities.LActivityUtil
+import com.loitp.core.utilities.LUIUtil
 import com.loitp.data.ActivityData
 import com.roy93group.app.C
 import com.roy93group.ext.changeLayersColor
@@ -111,11 +111,15 @@ class SearchActivity : BaseFontActivity() {
             }
         }
         findViewById<EditText>(R.id.etSearchBarText).run {
-            doOnTextChanged { text, _, _, _ ->
-                lav.isVisible = text.isNullOrEmpty()
-                //TODO
-//                searcher.query(text)
-            }
+            LUIUtil.addTextChangedListener(
+                editText = this,
+                delayInMls = 700,
+                afterTextChanged = { s ->
+//                    logE("doOnTextChanged $s")
+                    lav.isVisible = s.isEmpty()
+                    searcher.query(s)
+                }
+            )
             setOnEditorActionListener { v, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     val viewSearch = Intent(Intent.ACTION_WEB_SEARCH)
