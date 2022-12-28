@@ -16,6 +16,7 @@ import com.loitp.data.ActivityData
 //https://console.firebase.google.com/u/0/project/cinta-launcher-71015/overview
 //TODO firebase set is_show_flickr_gallery true when app available
 
+//TODO background color black -> custom color
 //TODO fav app
 //TODO lock app
 //TODO hide app
@@ -25,7 +26,6 @@ import com.loitp.data.ActivityData
 //TODO animation intro
 //TODO tich hop he sinh thai app roy93group
 //TODO gg pay
-//TODO background color black -> custom color
 //TODO spotlight
 
 //feat custom font?
