@@ -7,6 +7,8 @@ import android.view.DragEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -79,6 +81,7 @@ class SearchActivity : BaseFontActivity() {
             setCardBackgroundColor(C.COLOR_0)
         }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val tvNoData = findViewById<AppCompatTextView>(R.id.tvNoData)
         adapter = SearchAdapter(activity = this, recyclerView = recyclerView, isOnCard = false)
         recyclerView.run {
             layoutManager =
@@ -106,7 +109,9 @@ class SearchActivity : BaseFontActivity() {
         }
         findViewById<EditText>(R.id.etSearchBarText).run {
             doOnTextChanged { text, _, _, _ ->
-                searcher.query(text)
+                tvNoData.isVisible = text.isNullOrEmpty()
+                //TODO
+//                searcher.query(text)
             }
             setOnEditorActionListener { v, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
