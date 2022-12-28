@@ -100,11 +100,8 @@ class AppDrawerAdapter(
         items = newItems.toTypedArray()
         controller.updateAdapterIndexer(this, appSections)
         activity.runOnUiThread {
-            notifyItemRangeChanged()
+            notifyItemRangeChanged(0, itemCount)
         }
     }
 
-    fun notifyItemRangeChanged() {
-        notifyItemRangeChanged(0, itemCount)
-    }
 }

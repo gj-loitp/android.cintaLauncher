@@ -37,17 +37,21 @@ class AlphabetSectionIndexer : HighlightSectionIndexer {
     private var highlightI = -1
     override fun getHighlightI() = highlightI
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun highlight(i: Int) {
         val oldI = highlightI
         highlightI = i
         if (oldI != i) {
-            adapter?.notifyItemRangeChanged()
+            //do not use notifyItemRangeChanged here
+            adapter?.notifyDataSetChanged()
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun unhighlight() {
         highlightI = -1
-        adapter?.notifyItemRangeChanged()
+        //do not use notifyItemRangeChanged here
+        adapter?.notifyDataSetChanged()
     }
 
     override fun isDimmed(app: App): Boolean =
