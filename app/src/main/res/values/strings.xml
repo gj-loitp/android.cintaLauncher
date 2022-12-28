@@ -25,7 +25,7 @@
     <string name="chosen">Chosen</string>
     <string name="available">Available</string>
     <string name="system">System</string>
-    <string name="permissions">Permissions</string>
+    <string name="permissions">⭅ Permissions</string>
     <string name="grant_permissions">Grant permissions</string>
     <string name="permission_storage">Storage</string>
     <string name="permission_storage_explanation">To adjust theme colors to the wallpaper &amp; for background blur</string>
