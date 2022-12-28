@@ -12,5 +12,8 @@ import com.roy93group.lookerupper.data.results.SearchResult
  * freuss47@gmail.com
  */
 abstract class SearchVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    abstract fun onBind(result: SearchResult)
+    abstract fun onBind(
+        result: SearchResult,
+        isForceColorIcon: Boolean
+    )
 }

@@ -1,5 +1,6 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
+import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -29,10 +30,18 @@ class AppSearchVH(
     }
     val card = itemView as CardView
 
-    override fun onBind(result: SearchResult) {
+    override fun onBind(
+        result: SearchResult,
+        isForceColorIcon: Boolean
+    ) {
         result as AppResult
         tvIconText.text = result.title
         ivIcon.setImageDrawable(result.icon)
+        if (isForceColorIcon) {
+            ivIcon.setColorFilter(C.COLOR_0)
+        } else {
+            ivIcon.setColorFilter(Color.TRANSPARENT)
+        }
 
         itemView.setOnClickListener {
             SuggestionsManager.onItemOpened(context = it.context, item = result.app)

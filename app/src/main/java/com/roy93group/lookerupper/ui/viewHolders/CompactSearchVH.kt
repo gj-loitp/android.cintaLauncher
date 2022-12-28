@@ -1,6 +1,7 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
 import android.app.Activity
+import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -32,9 +33,19 @@ class CompactSearchVH(
         setTextColor(C.COLOR_0)
     }
 
-    override fun onBind(result: SearchResult) {
+    override fun onBind(
+        result: SearchResult,
+        isForceColorIcon: Boolean
+    ) {
         result as CompactResult
+
         icon.setImageDrawable(result.icon)
+        if (isForceColorIcon) {
+            icon.setColorFilter(C.COLOR_0)
+        } else {
+            icon.setColorFilter(Color.TRANSPARENT)
+        }
+
         text.text = result.title
         applyIfNotNull(view = subtitle, value = result.subtitle, block = TextView::setText)
 

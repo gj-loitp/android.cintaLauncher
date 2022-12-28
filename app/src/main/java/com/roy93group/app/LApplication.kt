@@ -21,7 +21,6 @@ import com.loitp.data.ActivityData
 //TODO hide app
 //TODO app badge
 //TODO sort app drawer theo tan suat
-//TODO screen search them cai keyword recents
 //TODO what new dialog
 //TODO animation intro
 //TODO tich hop he sinh thai app roy93group

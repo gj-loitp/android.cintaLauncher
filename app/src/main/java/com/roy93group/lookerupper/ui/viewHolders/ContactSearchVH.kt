@@ -27,7 +27,10 @@ class ContactSearchVH(
         setTextColor(C.COLOR_0)
     }
 
-    override fun onBind(result: SearchResult) {
+    override fun onBind(
+        result: SearchResult,
+        isForceColorIcon: Boolean
+    ) {
         result as ContactResult
 
         Glide.with(itemView)

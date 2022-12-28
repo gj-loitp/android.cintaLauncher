@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.lookerupper.data.results.*
 import com.roy93group.lookerupper.ui.viewHolders.*
@@ -30,6 +31,7 @@ class SearchAdapter(
     }
 
     private var results = emptyList<SearchResult>()
+    private val isForceColorIcon = C.getForceColorIcon()
 
     override fun getItemViewType(i: Int): Int {
         return when (results[i]) {
@@ -66,7 +68,7 @@ class SearchAdapter(
     }
 
     override fun onBindViewHolder(holder: SearchVH, i: Int) {
-        holder.onBind(results[i])
+        holder.onBind(result = results[i], isForceColorIcon = isForceColorIcon)
     }
 
     override fun getItemCount(): Int = results.size
