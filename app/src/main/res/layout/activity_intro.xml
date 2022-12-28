@@ -7,12 +7,6 @@
     android:animateLayoutChanges="true"
     android:background="@color/colorPrimary">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivWallpaper"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/bkg" />
-
     <FrameLayout
         android:id="@+id/flContainer"
         android:layout_width="0dp"

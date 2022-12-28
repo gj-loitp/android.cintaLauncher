@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.isVisible
 import com.loitp.annotation.IsAutoAnimation
@@ -31,8 +30,6 @@ import java.util.*
 @IsAutoAnimation(false)
 @IsKeepScreenOn(false)
 class IntroActivity : BaseFontActivity() {
-
-    private var ivWallpaper: AppCompatImageView? = null
     private var toggle: SwitchCompat? = null
     private var btNext: AppCompatButton? = null
     private var tvPolicy: TextView? = null
@@ -72,19 +69,15 @@ class IntroActivity : BaseFontActivity() {
     }
 
     private fun setWallpaper() {
-        ivWallpaper?.let { iv ->
-            LUIUtil.setWallpaperAndLockScreen(
-                activity = this@IntroActivity,
-                imageView = iv,
-                message = "",
-                isSetWallpaper = true,
-                isSetLockScreen = true,
-            )
-        }
+        LUIUtil.setWallpaperAndLockScreen(
+            activity = this@IntroActivity,
+            color = C.COLOR_PRIMARY,
+            isSetWallpaper = true,
+            isSetLockScreen = true,
+        )
     }
 
     private fun setupViews() {
-        ivWallpaper = findViewById(R.id.ivWallpaper)
         toggle = findViewById(R.id.toggle)
         btNext = findViewById(R.id.btNext)
         tvPolicy = findViewById(R.id.tvPolicy)
