@@ -7,11 +7,11 @@ import android.view.DragEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.card.MaterialCardView
 import com.loitp.annotation.IsAutoAnimation
 import com.loitp.annotation.IsFullScreen
@@ -22,6 +22,7 @@ import com.loitp.core.common.Constants
 import com.loitp.core.utilities.LActivityUtil
 import com.loitp.data.ActivityData
 import com.roy93group.app.C
+import com.roy93group.ext.changeLayersColor
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.Settings
 import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
@@ -81,7 +82,9 @@ class SearchActivity : BaseFontActivity() {
             setCardBackgroundColor(C.COLOR_0)
         }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val lav = findViewById<AppCompatImageView>(R.id.lav)
+        val lav = findViewById<LottieAnimationView>(R.id.lav).apply {
+            changeLayersColor(C.COLOR_0)
+        }
         adapter = SearchAdapter(activity = this, recyclerView = recyclerView, isOnCard = false)
         recyclerView.run {
             layoutManager =
