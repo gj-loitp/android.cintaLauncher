@@ -13,13 +13,13 @@ import com.roy93group.launcher.data.feed.items.FeedItem
  * freuss47@gmail.com
  */
 abstract class FeedViewHolder(
-    itemView: View,
-    isDisplayAppIcon: Boolean
+    itemView: View
 ) :
     RecyclerView.ViewHolder(itemView) {
     abstract fun onBind(
         item: FeedItem,
         isDisplayAppIcon: Boolean,
+        isForceColorIcon: Boolean,
     )
 }
 

@@ -20,8 +20,7 @@ import com.roy93group.launcher.ui.feed.items.viewHolders.FeedViewHolder
 class SuggestedVH(
     val launcherActivity: LauncherActivity,
     itemView: View,
-    isDisplayAppIcon: Boolean
-) : FeedViewHolder(itemView, isDisplayAppIcon) {
+) : FeedViewHolder(itemView) {
 
     val adapter = SuggestionsAdapter(launcherActivity = launcherActivity)
 
@@ -40,9 +39,14 @@ class SuggestedVH(
 
     override fun onBind(
         item: FeedItem,
-        isDisplayAppIcon: Boolean
+        isDisplayAppIcon: Boolean,
+        isForceColorIcon: Boolean,
     ) {
         item as FeedItemSuggestedApps
-        adapter.updateItems(items = item.apps, isDisplayAppIcon = isDisplayAppIcon)
+        adapter.updateItems(
+            items = item.apps,
+            isDisplayAppIcon = isDisplayAppIcon,
+            isForceColorIcon = isForceColorIcon
+        )
     }
 }

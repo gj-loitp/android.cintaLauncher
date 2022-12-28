@@ -264,6 +264,7 @@ class AppDrawer(
                 isForceColorIcon = value
                 adapter.setForceColorIcon(isForceColorIcon)
                 C.setForceColorIcon(isForceColorIcon)
+                launcherActivity.feedAdapter.setForceColorIcon(isForceColorIcon)
             },
             onResetAllValue = {
                 seekRadiusValue = 0
@@ -277,7 +278,10 @@ class AppDrawer(
                     isDisplayAppIcon = true,
                     isForceColorIcon = false
                 )
-                launcherActivity.feedAdapter.resetIsDisplayAppIcon()
+                launcherActivity.feedAdapter.resetConfig(
+                    isDisplayAppIcon = true,
+                    isForceColorIcon = false
+                )
 
                 layoutManager?.apply {
                     setRadius(seekRadiusValue)

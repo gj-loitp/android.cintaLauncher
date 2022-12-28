@@ -24,6 +24,7 @@ class SuggestionsAdapter(
 
     private var items: List<LauncherItem> = emptyList()
     private var isDisplayAppIcon = C.getDisplayAppIcon()
+    private var isForceColorIcon = C.getForceColorIcon()
 
     override fun getItemCount(): Int = items.size
 
@@ -48,16 +49,18 @@ class SuggestionsAdapter(
             item = item,
             isFromSuggest = true,
             isDisplayAppIcon = isDisplayAppIcon,
-            isForceColorIcon = true
+            isForceColorIcon = isForceColorIcon
         )
     }
 
     fun updateItems(
         items: List<LauncherItem>,
-        isDisplayAppIcon: Boolean
+        isDisplayAppIcon: Boolean,
+        isForceColorIcon: Boolean,
     ) {
         this.items = items
         this.isDisplayAppIcon = isDisplayAppIcon
+        this.isForceColorIcon = isForceColorIcon
         notifyItemRangeChanged(0, itemCount)
     }
 }

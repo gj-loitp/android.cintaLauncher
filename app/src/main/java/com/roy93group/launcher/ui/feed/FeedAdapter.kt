@@ -38,6 +38,7 @@ class FeedAdapter(
 
     inline val context: Context get() = launcherActivity
     private var isDisplayAppIcon = C.getDisplayAppIcon()
+    private var isForceColorIcon = C.getForceColorIcon()
     private var items: List<FeedItem> = emptyList()
 
     fun setDisplayAppIcon(isDisplayAppIcon: Boolean) {
@@ -45,8 +46,15 @@ class FeedAdapter(
         notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
     }
 
-    fun resetIsDisplayAppIcon() {
-        setDisplayAppIcon(true)
+    fun setForceColorIcon(isForceColorIcon: Boolean) {
+        this.isForceColorIcon = isForceColorIcon
+        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
+    }
+
+    fun resetConfig(isDisplayAppIcon: Boolean, isForceColorIcon: Boolean) {
+        this.isDisplayAppIcon = isDisplayAppIcon
+        this.isForceColorIcon = isForceColorIcon
+        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
     }
 
     private fun getFeedItem(i: Int) = items[i - 1]
@@ -86,33 +94,27 @@ class FeedAdapter(
             TYPE_PLAIN -> FeedItemVH(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_plain, parent, false),
-                isDisplayAppIcon = isDisplayAppIcon
             )
             TYPE_SMALL -> FeedItemSmallVH(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_small, parent, false),
-                isDisplayAppIcon = isDisplayAppIcon,
             )
             TYPE_BIG_IMAGE -> FeedItemImageVH(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_image, parent, false),
-                isDisplayAppIcon = isDisplayAppIcon,
             )
             TYPE_PROGRESS -> FeedItemProgressVH(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_progress, parent, false),
-                isDisplayAppIcon = isDisplayAppIcon,
             )
             TYPE_MEDIA -> FeedItemMediaVH(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_media, parent, false),
-                isDisplayAppIcon = isDisplayAppIcon
             )
             TYPE_SUGGESTED -> SuggestedVH(
                 launcherActivity = launcherActivity,
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_suggested_apps, parent, false),
-                isDisplayAppIcon = isDisplayAppIcon,
             )
             TYPE_EMPTY -> EmptyFeedItemViewHolder(
                 itemView = LayoutInflater.from(parent.context)
@@ -129,6 +131,7 @@ class FeedAdapter(
         if (i == TYPE_HOME) {
             return bindHomeViewHolder(
                 holder = holder as HomeViewHolder,
+                isForceColorIcon = isForceColorIcon,
                 onClickClock = {
                     C.launchClockApp(launcherActivity)
                 }, onClickCalendar = {
@@ -141,7 +144,11 @@ class FeedAdapter(
         }
         val item = getFeedItem(i)
         holder as FeedViewHolder
-        holder.onBind(item = item, isDisplayAppIcon = isDisplayAppIcon)
+        holder.onBind(
+            item = item,
+            isDisplayAppIcon = isDisplayAppIcon,
+            isForceColorIcon = isForceColorIcon
+        )
         if (holder !is FeedItemVH) return
         val verticalPadding =
             holder.itemView.resources.getDimension(R.dimen.margin_padding_medium).toInt()

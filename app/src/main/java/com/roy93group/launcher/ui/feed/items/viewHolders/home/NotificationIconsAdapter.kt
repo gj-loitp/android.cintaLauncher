@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 
 /**
@@ -17,6 +18,7 @@ import com.roy93group.launcher.R
  */
 class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.IconViewHolder>() {
 
+    private var isForceColorIcon = C.getForceColorIcon()
     private var items = emptyList<Drawable>()
 
     class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -42,13 +44,19 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
         i: Int
     ) {
         holder.image.setImageDrawable(items[i])
+        if (isForceColorIcon) {
+            holder.image.setColorFilter(C.COLOR_0)
+        } else {
+            holder.image.clearColorFilter()
+        }
     }
 
     override fun getItemCount() = items.size
 
-    fun updateItems(items: List<Drawable>): Boolean {
+    fun updateItems(items: List<Drawable>, isForceColorIcon: Boolean): Boolean {
         val numberChanged = this.items.size != items.size
         this.items = items
+        this.isForceColorIcon = isForceColorIcon
         notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
         return numberChanged
     }

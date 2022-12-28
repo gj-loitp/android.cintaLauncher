@@ -18,7 +18,7 @@ class HomeViewHolder(
     val launcherActivity: LauncherActivity,
     itemView: View,
 ) : RecyclerView.ViewHolder(itemView) {
-
+    private var isForceColorIcon = C.getForceColorIcon()
     private val llClockContainer = itemView.findViewById<View>(R.id.llClockContainer)
     val tvWeekDay: TextView = llClockContainer.findViewById<TextView>(R.id.tvWeekDay).apply {
         setTextColor(C.COLOR_0)
@@ -49,7 +49,9 @@ class HomeViewHolder(
 
     init {
         NotificationService.setOnUpdate(javaClass.name) {
-            itemView.post(::updateNotificationIcons)
+            itemView.post {
+                updateNotificationIcons(isForceColorIcon)
+            }
         }
         llClockContainer.setPadding(
             /* left = */ 0,
@@ -59,7 +61,7 @@ class HomeViewHolder(
         )
     }
 
-    fun updateNotificationIcons() {
+    fun updateNotificationIcons(isForceColorIcon: Boolean) {
         val icons = NotificationService.notifications.groupBy {
             it.sourceIcon?.constantState
         }.mapNotNull {
@@ -71,7 +73,13 @@ class HomeViewHolder(
         } else {
             tvNotificationIconText.isVisible = true
             rvNotificationIconList.isVisible = true
-            if (notificationIconsAdapter.updateItems(icons)) {
+
+            this.isForceColorIcon = isForceColorIcon
+            if (notificationIconsAdapter.updateItems(
+                    items = icons,
+                    isForceColorIcon = isForceColorIcon
+                )
+            ) {
                 tvNotificationIconText.text =
                     itemView.resources.getQuantityString(
                         /* id = */ R.plurals.x_notifications,
@@ -89,10 +97,11 @@ private var popupY = 0f
 @SuppressLint("ClickableViewAccessibility")
 fun bindHomeViewHolder(
     holder: HomeViewHolder,
+    isForceColorIcon: Boolean,
     onClickClock: ((Unit) -> Unit),
     onClickCalendar: ((Unit) -> Unit)
 ) {
-    holder.updateNotificationIcons()
+    holder.updateNotificationIcons(isForceColorIcon)
 
     holder.tvTime.setSafeOnClickListener {
         onClickClock.invoke(Unit)

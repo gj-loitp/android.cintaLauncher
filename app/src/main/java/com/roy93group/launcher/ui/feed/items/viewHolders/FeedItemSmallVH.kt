@@ -11,5 +11,4 @@ import android.view.View
  */
 class FeedItemSmallVH(
     itemView: View,
-    isDisplayAppIcon: Boolean
-) : FeedItemVH(itemView, isDisplayAppIcon)
+) : FeedItemVH(itemView)
