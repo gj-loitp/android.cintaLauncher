@@ -52,6 +52,7 @@ fun bindAppViewHolder(
     item: LauncherItem,
     isFromSuggest: Boolean,
     isDisplayAppIcon: Boolean,
+    isForceColorIcon: Boolean,
 ) {
     holder.cardView.setCardBackgroundColor(Color.TRANSPARENT)
 
@@ -59,6 +60,12 @@ fun bindAppViewHolder(
     if (isDisplayAppIcon) {
         holder.ivIcon.setImageDrawable(item.icon)
         holder.ivIcon.isVisible = true
+
+        if (isForceColorIcon) {
+            holder.ivIcon.setColorFilter(C.COLOR_0)
+        } else {
+            holder.ivIcon.clearColorFilter()
+        }
     } else {
         holder.ivIcon.isVisible = false
     }

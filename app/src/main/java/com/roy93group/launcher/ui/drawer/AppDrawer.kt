@@ -262,6 +262,7 @@ class AppDrawer(
             },
             onForceColorIcon = { value ->
                 isForceColorIcon = value
+                adapter.setForceColorIcon(isForceColorIcon)
                 C.setForceColorIcon(isForceColorIcon)
             },
             onResetAllValue = {
@@ -272,7 +273,10 @@ class AppDrawer(
                 isCheckedValue = false
                 isDisplayAppIcon = true
                 isForceColorIcon = false
-                adapter.resetIsDisplayAppIcon()
+                adapter.resetIsDisplayAppIcon(
+                    isDisplayAppIcon = true,
+                    isForceColorIcon = false
+                )
                 launcherActivity.feedAdapter.resetIsDisplayAppIcon()
 
                 layoutManager?.apply {

@@ -32,14 +32,25 @@ class AppDrawerAdapter(
 
     var indexer: HighlightSectionIndexer? = null
     private var isDisplayAppIcon = C.getDisplayAppIcon()
+    private var isForceColorIcon = C.getForceColorIcon()
 
     fun setIsDisplayAppIcon(isDisplayAppIcon: Boolean) {
         this.isDisplayAppIcon = isDisplayAppIcon
         notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ items.size)
     }
 
-    fun resetIsDisplayAppIcon() {
-        setIsDisplayAppIcon(true)
+    fun resetIsDisplayAppIcon(
+        isDisplayAppIcon: Boolean,
+        isForceColorIcon: Boolean
+    ) {
+        this.isDisplayAppIcon = isDisplayAppIcon
+        this.isForceColorIcon = isForceColorIcon
+        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ items.size)
+    }
+
+    fun setForceColorIcon(isForceColorIcon: Boolean) {
+        this.isForceColorIcon = isForceColorIcon
+        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ items.size)
     }
 
     interface DrawerItem {
@@ -83,6 +94,7 @@ class AppDrawerAdapter(
                 item = (item as AppItem).item,
                 isFromSuggest = false,
                 isDisplayAppIcon = isDisplayAppIcon,
+                isForceColorIcon = isForceColorIcon,
             )
         }
     }
