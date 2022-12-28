@@ -27,6 +27,7 @@ import com.loitp.data.ActivityData
 //TODO tich hop he sinh thai app roy93group
 //TODO gg pay
 //TODO spotlight
+//TODO apple recolor
 
 //feat custom font?
 
