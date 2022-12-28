@@ -49,6 +49,9 @@ class SearchActivity : BaseFontActivity() {
 
     lateinit var adapter: SearchAdapter
     val settings = Settings()
+    private var lavNoData: LottieAnimationView? = null
+    private var etSearchBarText: EditText? = null
+
     private val searcher = Searcher(
         settings = settings,
         ::AppProvider,
@@ -59,6 +62,12 @@ class SearchActivity : BaseFontActivity() {
 
     private fun updateResults(list: List<SearchResult>) = runOnUiThread {
         adapter.update(list)
+//        logE("updateResults ${list.size}")
+        if (list.isEmpty()) {
+            lavNoData?.isVisible = !etSearchBarText?.text.isNullOrEmpty()
+        } else {
+            lavNoData?.isVisible = false
+        }
     }
 
     private val cvSearchBarContainer: View by lazy {
@@ -85,6 +94,7 @@ class SearchActivity : BaseFontActivity() {
         val lav = findViewById<LottieAnimationView>(R.id.lav).apply {
             changeLayersColor(C.COLOR_0)
         }
+        lavNoData = findViewById(R.id.lavNoData)
         adapter = SearchAdapter(activity = this, recyclerView = recyclerView, isOnCard = false)
         recyclerView.run {
             layoutManager =
@@ -110,17 +120,18 @@ class SearchActivity : BaseFontActivity() {
                 )
             }
         }
-        findViewById<EditText>(R.id.etSearchBarText).run {
+        etSearchBarText = findViewById(R.id.etSearchBarText)
+        etSearchBarText?.run {
             LUIUtil.addTextChangedListener(
                 editText = this,
                 delayInMls = 700,
                 afterTextChanged = { s ->
-//                    logE("doOnTextChanged $s")
+//                    logD("doOnTextChanged $s")
                     lav.isVisible = s.isEmpty()
                     searcher.query(s)
                 }
             )
-            setOnEditorActionListener { v, actionId, _ ->
+            this.setOnEditorActionListener { v, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     val viewSearch = Intent(Intent.ACTION_WEB_SEARCH)
                     viewSearch.putExtra(SearchManager.QUERY, v.text)

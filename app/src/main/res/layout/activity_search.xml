@@ -18,6 +18,19 @@
         app:lottie_speed="1"
         tools:lottie_colorFilter="@color/colorTest" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lavNoData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lottie_valentines_day"
+        app:lottie_speed="1"
+        tools:lottie_colorFilter="@color/colorTest"
+        tools:visibility="visible" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
