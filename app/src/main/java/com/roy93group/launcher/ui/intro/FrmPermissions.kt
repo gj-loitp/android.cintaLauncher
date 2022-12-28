@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LActivityUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.BuildConfig
@@ -67,6 +68,9 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
 
             v.findViewById<TextView>(R.id.tvPermissions).apply {
                 setTextColor(C.COLOR_0)
+                setSafeOnClickListener {
+                    (activity as? IntroActivity)?.onBaseBackPressed()
+                }
             }
             v.findViewById<TextView>(R.id.tvStorage).apply {
                 setTextColor(C.COLOR_0)

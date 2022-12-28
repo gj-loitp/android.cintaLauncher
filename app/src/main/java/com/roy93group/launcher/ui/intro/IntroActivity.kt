@@ -105,16 +105,18 @@ class IntroActivity : BaseFontActivity() {
 
     override fun onBaseBackPressed() {
         stack.pop()
-        if (stack.isEmpty())
+        if (stack.isEmpty()) {
             super.onBaseBackPressed()
-        else supportFragmentManager
-            .beginTransaction()
-            .setCustomAnimations(
-                R.anim.slide_in_left,
-                R.anim.slide_out_right
-            )
-            .replace(R.id.flContainer, stack.peek()!!)
-            .commit()
+        } else {
+            supportFragmentManager
+                .beginTransaction()
+                .setCustomAnimations(
+                    R.anim.slide_in_left,
+                    R.anim.slide_out_right
+                )
+                .replace(R.id.flContainer, stack.peek()!!)
+                .commit()
+        }
     }
 
     override fun onActivityResult(
