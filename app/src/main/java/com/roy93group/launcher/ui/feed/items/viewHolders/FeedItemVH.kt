@@ -1,6 +1,7 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.ImageView
@@ -98,6 +99,11 @@ open class FeedItemVH(
                 value = item.sourceIcon,
                 block = ImageView::setImageDrawable
             )
+            if (isForceColorIcon) {
+                icon.setColorFilter(C.COLOR_0)
+            } else {
+                icon.setColorFilter(Color.TRANSPARENT)
+            }
         } else {
             icon.isVisible = false
         }
