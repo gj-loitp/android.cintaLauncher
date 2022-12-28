@@ -26,7 +26,7 @@
         android:visibility="gone"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/lottie_valentines_day"
+        app:lottie_rawRes="@raw/err_404"
         app:lottie_speed="1"
         tools:lottie_colorFilter="@color/colorTest"
         tools:visibility="visible" />

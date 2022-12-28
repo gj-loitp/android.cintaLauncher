@@ -94,7 +94,9 @@ class SearchActivity : BaseFontActivity() {
         val lav = findViewById<LottieAnimationView>(R.id.lav).apply {
             changeLayersColor(C.COLOR_0)
         }
-        lavNoData = findViewById(R.id.lavNoData)
+        lavNoData = findViewById<LottieAnimationView>(R.id.lavNoData).apply {
+            changeLayersColor(C.COLOR_0)
+        }
         adapter = SearchAdapter(activity = this, recyclerView = recyclerView, isOnCard = false)
         recyclerView.run {
             layoutManager =
