@@ -28,7 +28,6 @@ import com.loitp.data.ActivityData
 //TODO gg pay
 //TODO background color black -> custom color
 //TODO spotlight
-//TODO force all color to C.COLOR_0
 
 //feat custom font?
 

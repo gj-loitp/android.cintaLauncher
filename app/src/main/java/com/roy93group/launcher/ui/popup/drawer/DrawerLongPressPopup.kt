@@ -65,7 +65,6 @@ object DrawerLongPressPopup {
             setColorFilter(C.COLOR_0)
         }
 
-        @Suppress("unused")
         val cardView = content.findViewById<MaterialCardView>(R.id.card).apply {
             setCardBackgroundColor(C.COLOR_0)
         }

@@ -55,6 +55,7 @@ object C {
     private const val KEY_IS_CHECKED_VALUE = "KEY_IS_CHECKED_VALUE"
     private const val KEY_OPEN_SEARCH_WHEN_SCROLL_TOP = "KEY_OPEN_SEARCH_WHEN_SCROLL_TOP"
     private const val KEY_DISPLAY_APP_ICON = "KEY_DISPLAY_APP_ICON"
+    private const val KEY_FORCE_COLOR_ICON = "KEY_FORCE_COLOR_ICON"
 
     val COLOR_PRIMARY = LAppResource.getColor(R.color.colorPrimary)
     var COLOR_0 = LAppResource.getColor(R.color.color0)
@@ -435,5 +436,13 @@ object C {
 
     fun getDisplayAppIcon(): Boolean {
         return LSharedPrefsUtil.instance.getBoolean(KEY_DISPLAY_APP_ICON, true)
+    }
+
+    fun setForceColorIcon(isForceColorIcon: Boolean) {
+        LSharedPrefsUtil.instance.putBoolean(KEY_FORCE_COLOR_ICON, isForceColorIcon)
+    }
+
+    fun getForceColorIcon(): Boolean {
+        return LSharedPrefsUtil.instance.getBoolean(KEY_FORCE_COLOR_ICON, false)
     }
 }

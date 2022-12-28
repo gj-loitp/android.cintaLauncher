@@ -45,6 +45,7 @@ class AppDrawer(
     private var gravityValue = C.getGravityValue()
     private var isCheckedValue = C.getChecked()
     private var isDisplayAppIcon = C.getDisplayAppIcon()
+    private var isForceColorIcon = C.getForceColorIcon()
 
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
@@ -215,6 +216,7 @@ class AppDrawer(
             orientationValue = orientationValue,
             isCheckedValue = isCheckedValue,
             isDisplayAppIcon = isDisplayAppIcon,
+            isForceColorIcon = isForceColorIcon,
             isCancelableFragment = true,
             onDismiss = {
                 //do nothing
@@ -258,6 +260,10 @@ class AppDrawer(
                 C.setDisplayAppIcon(isDisplayAppIcon)
                 launcherActivity.feedAdapter.setDisplayAppIcon(isDisplayAppIcon)
             },
+            onForceColorIcon = { value ->
+                isForceColorIcon = value
+                C.setForceColorIcon(isForceColorIcon)
+            },
             onResetAllValue = {
                 seekRadiusValue = 0
                 seekPeekValue = 0
@@ -265,6 +271,7 @@ class AppDrawer(
                 gravityValue = 0
                 isCheckedValue = false
                 isDisplayAppIcon = true
+                isForceColorIcon = false
                 adapter.resetIsDisplayAppIcon()
                 launcherActivity.feedAdapter.resetIsDisplayAppIcon()
 
