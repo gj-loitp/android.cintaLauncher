@@ -199,9 +199,9 @@ class LauncherActivity : BaseFontActivity() {
 
     override fun onPause() {
         super.onPause()
-//        if (appDrawer.isOpen) {
-//            appDrawer.close()
-//        }
+        if (appDrawer.isOpen) {
+            appDrawer.close()
+        }
         PopupUtils.dismissCurrent()
         SuggestionsManager.onPause(settings = settings, context = this)
     }
