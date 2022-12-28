@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
@@ -35,15 +36,21 @@ class CompactSearchVH(
 
     override fun onBind(
         result: SearchResult,
-        isForceColorIcon: Boolean
+        isDisplayAppIcon: Boolean,
+        isForceColorIcon: Boolean,
     ) {
         result as CompactResult
 
         icon.setImageDrawable(result.icon)
-        if (isForceColorIcon) {
-            icon.setColorFilter(C.COLOR_0)
+        if (isDisplayAppIcon) {
+            icon.isVisible = true
+            if (isForceColorIcon) {
+                icon.setColorFilter(C.COLOR_0)
+            } else {
+                icon.setColorFilter(Color.TRANSPARENT)
+            }
         } else {
-            icon.setColorFilter(Color.TRANSPARENT)
+            icon.isVisible = false
         }
 
         text.text = result.title

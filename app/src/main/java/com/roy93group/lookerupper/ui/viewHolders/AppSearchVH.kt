@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
@@ -32,15 +33,21 @@ class AppSearchVH(
 
     override fun onBind(
         result: SearchResult,
-        isForceColorIcon: Boolean
+        isDisplayAppIcon: Boolean,
+        isForceColorIcon: Boolean,
     ) {
         result as AppResult
         tvIconText.text = result.title
-        ivIcon.setImageDrawable(result.icon)
-        if (isForceColorIcon) {
-            ivIcon.setColorFilter(C.COLOR_0)
+        if (isDisplayAppIcon) {
+            ivIcon.isVisible = true
+            ivIcon.setImageDrawable(result.icon)
+            if (isForceColorIcon) {
+                ivIcon.setColorFilter(C.COLOR_0)
+            } else {
+                ivIcon.setColorFilter(Color.TRANSPARENT)
+            }
         } else {
-            ivIcon.setColorFilter(Color.TRANSPARENT)
+            ivIcon.isVisible = false
         }
 
         itemView.setOnClickListener {

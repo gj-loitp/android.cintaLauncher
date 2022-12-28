@@ -45,7 +45,11 @@ class AnswerSearchVH(
     private val sourceAction: TextView = cvActionsContainer.findViewById(R.id.source)
     private val searchAction: TextView = cvActionsContainer.findViewById(R.id.search)
 
-    override fun onBind(result: SearchResult, isForceColorIcon: Boolean) {
+    override fun onBind(
+        result: SearchResult,
+        isDisplayAppIcon: Boolean,
+        isForceColorIcon: Boolean,
+    ) {
         result as InstantAnswerResult
 
         title.text = result.title

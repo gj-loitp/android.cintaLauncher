@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.roy93group.app.C
@@ -29,21 +30,28 @@ class ContactSearchVH(
 
     override fun onBind(
         result: SearchResult,
-        isForceColorIcon: Boolean
+        isDisplayAppIcon: Boolean,
+        isForceColorIcon: Boolean,
     ) {
         result as ContactResult
 
-        Glide.with(itemView)
-            .load(result.iconUri)
-            .placeholder(
-                ContextCompat.getDrawable(
-                    itemView.context,
-                    R.drawable.placeholder_contact
-                )?.apply {
-                    setTint(C.COLOR_0)
-                })
-            .apply(RequestOptions.circleCropTransform())
-            .into(icon)
+        if (isDisplayAppIcon) {
+            icon.isVisible = true
+            Glide.with(itemView)
+                .load(result.iconUri)
+                .placeholder(
+                    ContextCompat.getDrawable(
+                        itemView.context,
+                        R.drawable.placeholder_contact
+                    )?.apply {
+                        setTint(C.COLOR_0)
+                    })
+                .apply(RequestOptions.circleCropTransform())
+                .into(icon)
+        } else {
+            icon.isVisible = false
+        }
+
         text.text = result.title
         itemView.setOnClickListener(result::open)
     }

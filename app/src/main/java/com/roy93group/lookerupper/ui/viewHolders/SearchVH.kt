@@ -14,6 +14,7 @@ import com.roy93group.lookerupper.data.results.SearchResult
 abstract class SearchVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
     abstract fun onBind(
         result: SearchResult,
+        isDisplayAppIcon: Boolean,
         isForceColorIcon: Boolean
     )
 }

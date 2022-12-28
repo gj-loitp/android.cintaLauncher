@@ -31,6 +31,7 @@ class SearchAdapter(
     }
 
     private var results = emptyList<SearchResult>()
+    private val isDisplayAppIcon = C.getDisplayAppIcon()
     private val isForceColorIcon = C.getForceColorIcon()
 
     override fun getItemViewType(i: Int): Int {
@@ -43,7 +44,10 @@ class SearchAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchVH {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): SearchVH {
         return when (viewType) {
             RESULT_APP -> AppSearchVH(
                 itemView = LayoutInflater.from(parent.context)
@@ -67,8 +71,15 @@ class SearchAdapter(
         }
     }
 
-    override fun onBindViewHolder(holder: SearchVH, i: Int) {
-        holder.onBind(result = results[i], isForceColorIcon = isForceColorIcon)
+    override fun onBindViewHolder(
+        holder: SearchVH,
+        i: Int
+    ) {
+        holder.onBind(
+            result = results[i],
+            isDisplayAppIcon = isDisplayAppIcon,
+            isForceColorIcon = isForceColorIcon
+        )
     }
 
     override fun getItemCount(): Int = results.size
