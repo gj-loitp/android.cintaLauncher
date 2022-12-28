@@ -13,7 +13,7 @@
         android:paddingStart="@dimen/margin_padding_medium"
         android:paddingTop="@dimen/margin_padding_small"
         android:paddingEnd="@dimen/margin_padding_medium"
-        android:paddingBottom="@dimen/margin_padding_medium">
+        android:paddingBottom="@dimen/margin_padding_large">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivSlider"

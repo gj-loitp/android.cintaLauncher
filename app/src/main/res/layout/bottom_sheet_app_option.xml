@@ -10,9 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="@dimen/margin_padding_medium"
         android:paddingTop="@dimen/margin_padding_small"
-        android:paddingEnd="@dimen/margin_padding_medium"
         android:paddingBottom="@dimen/margin_padding_medium">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -29,6 +27,8 @@
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_medium"
+            android:layout_marginEnd="@dimen/margin_padding_medium"
             android:text="@string/app_info"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_50"
@@ -43,7 +43,10 @@
             android:drawableStart="@drawable/ic_baseline_file_copy_24"
             android:drawablePadding="@dimen/margin_padding_small"
             android:gravity="center|start"
-            android:padding="@dimen/margin_padding_small"
+            android:paddingStart="@dimen/margin_padding_medium"
+            android:paddingTop="@dimen/margin_padding_small"
+            android:paddingEnd="@dimen/margin_padding_medium"
+            android:paddingBottom="@dimen/margin_padding_small"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_small"
             app:drawableTint="@color/colorPrimary"
