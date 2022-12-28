@@ -19,6 +19,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
 import com.loitp.core.ext.setSafeOnClickListener
+import com.loitp.core.utilities.LDeviceUtil
 import com.loitp.core.utilities.LSocialUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.R
@@ -70,6 +71,9 @@ class BottomSheetAppOption(
         view.findViewById<AppCompatTextView>(R.id.tvInfo).apply {
             (item as? App)?.let { app ->
                 this.text = "Label: ${app.label}\nPackage name: ${app.packageName}"
+                setSafeOnClickListener {
+                    LDeviceUtil.setClipboard(app.packageName)
+                }
             }
         }
 

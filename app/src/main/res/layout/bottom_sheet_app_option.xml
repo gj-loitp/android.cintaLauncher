@@ -39,8 +39,14 @@
             android:id="@+id/tvInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:drawableStart="@drawable/ic_baseline_file_copy_24"
+            android:drawablePadding="@dimen/margin_padding_small"
+            android:gravity="center|start"
+            android:padding="@dimen/margin_padding_small"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/txt_medium"
+            android:textSize="@dimen/txt_small"
+            app:drawableTint="@color/colorPrimary"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle"
             tools:text="@string/app_name" />
 
