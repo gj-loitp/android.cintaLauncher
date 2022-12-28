@@ -7,6 +7,7 @@ package com.roy93group.views
  * +840766040293
  * freuss47@gmail.com
  */
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
 import com.loitp.core.ext.setSafeOnClickListener
@@ -58,12 +60,18 @@ class BottomSheetAppOption(
         onDismiss?.invoke(Unit)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupViews(view: View) {
         view.findViewById<MaterialCardView>(R.id.llRoot).apply {
             setCardBackgroundColor(C.COLOR_0)
             C.setCornerCardView(activity = requireActivity(), cardView = this)
         }
         tvTitle = view.findViewById(R.id.tvTitle)
+        view.findViewById<AppCompatTextView>(R.id.tvInfo).apply {
+            (item as? App)?.let { app ->
+                this.text = "Label: ${app.label}\nPackage name: ${app.packageName}"
+            }
+        }
 
         val btAppSetting = view.findViewById<Button>(R.id.btAppSetting)
         val btPlayStore = view.findViewById<Button>(R.id.btPlayStore)

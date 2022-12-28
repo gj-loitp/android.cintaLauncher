@@ -76,5 +76,5 @@
     <string name="smart_search">Smart search</string>
     <string name="enable_search_when_scroll_to_top">Open the search page when you scroll to the top</string>
     <string name="display_app_icon">Display app\'s icon</string>
-    <string name="force_color_app_icon">Force tint color for whole icons</string>
+    <string name="force_color_app_icon">Force tint color for all icons</string>
 </resources>
