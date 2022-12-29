@@ -20,8 +20,8 @@ android {
         applicationId = "com.roy93group.cintalauncher"
         minSdk = 26
         targetSdk = 33
-        versionCode = 20221229
-        versionName = "2022.12.29"
+        versionCode = 20221230
+        versionName = "2022.12.30"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         signingConfig = signingConfigs.getByName("debug")
         multiDexEnabled = true
@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-    implementation("com.github.tplloi:base:4.6.08")
+    implementation("com.github.tplloi:base:4.6.09")
     implementation("com.willowtreeapps:fuzzywuzzy-kotlin-jvm:0.9.0")
     implementation("io.posidon:android.launcherUtils:30aa020c1a")
     implementation("io.posidon:android.libduckduckgo:22.0")
