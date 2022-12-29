@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-    implementation("com.github.tplloi:base:4.6.07")
+    implementation("com.github.tplloi:base:4.6.08")
     implementation("com.willowtreeapps:fuzzywuzzy-kotlin-jvm:0.9.0")
     implementation("io.posidon:android.launcherUtils:30aa020c1a")
     implementation("io.posidon:android.libduckduckgo:22.0")
