@@ -91,33 +91,31 @@ object ExternalStorage {
 
     private const val FILE_REQUEST_CODE = 0xf113
 
-    @Suppress("unused")
-    fun pickFile(activity: Activity, mime: String) {
-        val intent = Intent()
-        intent.action = Intent.ACTION_OPEN_DOCUMENT
-        intent.addCategory(Intent.CATEGORY_OPENABLE)
-        intent.type = mime
-        activity.startActivityForResult(intent, FILE_REQUEST_CODE)
-    }
+//    fun pickFile(activity: Activity, mime: String) {
+//        val intent = Intent()
+//        intent.action = Intent.ACTION_OPEN_DOCUMENT
+//        intent.addCategory(Intent.CATEGORY_OPENABLE)
+//        intent.type = mime
+//        activity.startActivityForResult(intent, FILE_REQUEST_CODE)
+//    }
 
-    @Suppress("unused")
-    fun onActivityResultPickFile(
-        activity: Activity,
-        requestCode: Int,
-        data: Intent?,
-        fn: (InputStream?) -> Unit
-    ) {
-        if (requestCode == FILE_REQUEST_CODE) {
-            fn(
-                try {
-                    data?.data?.let { uri ->
-                        activity.contentResolver.openInputStream(uri)
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    null
-                }
-            )
-        }
-    }
+//    fun onActivityResultPickFile(
+//        activity: Activity,
+//        requestCode: Int,
+//        data: Intent?,
+//        fn: (InputStream?) -> Unit
+//    ) {
+//        if (requestCode == FILE_REQUEST_CODE) {
+//            fn(
+//                try {
+//                    data?.data?.let { uri ->
+//                        activity.contentResolver.openInputStream(uri)
+//                    }
+//                } catch (e: Exception) {
+//                    e.printStackTrace()
+//                    null
+//                }
+//            )
+//        }
+//    }
 }
