@@ -43,10 +43,16 @@ class FrmSplashPrimary : FrmWithNext(R.layout.frm_intro_splash_primary) {
                 override fun onColorChanged(c: Int) {
                     C.vibrate(milliseconds = 10)
 
-                    C.updatePrimaryColor(c)
-                    updateUI()
-                    if (activity is IntroActivity) {
-                        (activity as IntroActivity).updateUI()
+                    val result = C.updatePrimaryColor(c)
+                    if (result) {
+                        updateUI()
+                        if (activity is IntroActivity) {
+                            (activity as IntroActivity).updateUI()
+                        }
+                    } else {
+                        if (activity is IntroActivity) {
+                            (activity as IntroActivity).showSnackBarError(getString(R.string.err_same_color))
+                        }
                     }
                 }
             })

@@ -35,9 +35,15 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
                     C.vibrate(milliseconds = 10)
-                    C.updateBackgroundColor(c)
-                    if (activity is IntroActivity) {
-                        (activity as IntroActivity).updateUI()
+                    val result = C.updateBackgroundColor(c)
+                    if (result) {
+                        if (activity is IntroActivity) {
+                            (activity as IntroActivity).updateUI()
+                        }
+                    } else {
+                        if (activity is IntroActivity) {
+                            (activity as IntroActivity).showSnackBarError(getString(R.string.err_same_color))
+                        }
                     }
                 }
             })
