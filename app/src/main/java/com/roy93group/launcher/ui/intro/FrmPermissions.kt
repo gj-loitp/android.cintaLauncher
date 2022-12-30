@@ -84,7 +84,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                 setTextColor(C.getColorPrimary())
             }
             v.findViewById<Button>(R.id.buttonStorage).apply {
-                setTextColor(C.COLOR_BACKGROUND)
+                setTextColor(C.getColorBackground())
                 C.setBackground(this)
             }
 
@@ -95,7 +95,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                 setTextColor(C.getColorPrimary())
             }
             v.findViewById<Button>(R.id.buttonContacts).apply {
-                setTextColor(C.COLOR_BACKGROUND)
+                setTextColor(C.getColorBackground())
                 C.setBackground(this)
             }
 
@@ -106,7 +106,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                 setTextColor(C.getColorPrimary())
             }
             v.findViewById<Button>(R.id.buttonNotifications).apply {
-                setTextColor(C.COLOR_BACKGROUND)
+                setTextColor(C.getColorBackground())
                 C.setBackground(this)
             }
 
@@ -117,7 +117,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                 setTextColor(C.getColorPrimary())
             }
             v.findViewById<Button>(R.id.buttonUsageAccess).apply {
-                setTextColor(C.COLOR_BACKGROUND)
+                setTextColor(C.getColorBackground())
                 C.setBackground(this)
             }
         }

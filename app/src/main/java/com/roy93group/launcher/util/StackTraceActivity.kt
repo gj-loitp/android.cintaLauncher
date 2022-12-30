@@ -70,7 +70,7 @@ class StackTraceActivity : BaseFontActivity() {
                 setTextColor(C.getColorPrimary())
             }
             val send = findViewById<TextView>(R.id.send).apply {
-                setTextColor(C.COLOR_BACKGROUND)
+                setTextColor(C.getColorBackground())
                 C.setBackground(this)
             }
 

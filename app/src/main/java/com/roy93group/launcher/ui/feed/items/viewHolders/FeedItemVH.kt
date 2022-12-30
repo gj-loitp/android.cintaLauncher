@@ -129,6 +129,6 @@ open class FeedItemVH(
         swipeLayout.onSwipeAway = item::onDismiss
         swipeLayout.isSwipeAble = item.isDismissible
         swipeLayout.setSwipeColor(C.getColorPrimary())
-        swipeLayout.setIconColor(C.COLOR_BACKGROUND)
+        swipeLayout.setIconColor(C.getColorBackground())
     }
 }

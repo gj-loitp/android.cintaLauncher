@@ -85,14 +85,14 @@ class BottomSheetCustomizeAppDrawer(
         tvRadius = view.findViewById(R.id.tvRadius)
         tvPeekText = view.findViewById(R.id.tvPeekText)
         val seekRadius = view.findViewById<RubberSeekBar>(R.id.seekRadius).apply {
-            setNormalTrackColor(C.COLOR_BACKGROUND)
-            setHighlightTrackColor(C.COLOR_BACKGROUND)
+            setNormalTrackColor(C.getColorBackground())
+            setHighlightTrackColor(C.getColorBackground())
             setHighlightThumbOnTouchColor(C.getColorPrimary())
             setDefaultThumbInsideColor(C.getColorPrimary())
         }
         val seekPeek = view.findViewById<RubberSeekBar>(R.id.seekPeek).apply {
-            setNormalTrackColor(C.COLOR_BACKGROUND)
-            setHighlightTrackColor(C.COLOR_BACKGROUND)
+            setNormalTrackColor(C.getColorBackground())
+            setHighlightTrackColor(C.getColorBackground())
             setHighlightThumbOnTouchColor(C.getColorPrimary())
             setDefaultThumbInsideColor(C.getColorPrimary())
         }

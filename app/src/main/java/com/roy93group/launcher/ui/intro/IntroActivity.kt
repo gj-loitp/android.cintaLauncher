@@ -70,7 +70,7 @@ class IntroActivity : BaseFontActivity() {
     private fun setWallpaper() {
         LUIUtil.setWallpaperAndLockScreen(
             activity = this@IntroActivity,
-            color = C.COLOR_BACKGROUND,
+            color = C.getColorBackground(),
             isSetWallpaper = true,
             isSetLockScreen = true,
         )
@@ -132,10 +132,10 @@ class IntroActivity : BaseFontActivity() {
     fun updateUI() {
         toggle?.apply {
             trackDrawable = C.generateTrackDrawable(C.getColorPrimary())
-            thumbDrawable = C.generateThumbDrawable(context = context, color = C.COLOR_BACKGROUND)
+            thumbDrawable = C.generateThumbDrawable(context = context, color = C.getColorBackground())
         }
         btNext?.apply {
-            setTextColor(C.COLOR_BACKGROUND)
+            setTextColor(C.getColorBackground())
             C.setBackground(this)
         }
         tvPolicy?.apply {

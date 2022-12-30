@@ -38,7 +38,7 @@ fun bindSectionHeaderViewHolder(
     holder.text.text = item.label
     if (isHighlighted) {
         holder.itemView.setBackgroundColor(C.getColorPrimary())
-        holder.text.setTextColor(C.COLOR_BACKGROUND)
+        holder.text.setTextColor(C.getColorBackground())
     } else {
         holder.itemView.setBackgroundColor(LAppResource.getColor(R.color.transparent))
         holder.text.setTextColor(C.getColorPrimary())

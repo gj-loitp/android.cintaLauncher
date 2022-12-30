@@ -58,7 +58,8 @@ object C {
     private const val KEY_FORCE_COLOR_ICON = "KEY_FORCE_COLOR_ICON"
 
     private var colorPrimary = LAppResource.getColor(R.color.color0)
-    fun setColorPrimary(c: Int) {
+    private var colorBackground = LAppResource.getColor(R.color.colorPrimary)
+    private fun setColorPrimary(c: Int) {
         this.colorPrimary = c
     }
 
@@ -66,7 +67,13 @@ object C {
         return this.colorPrimary
     }
 
-    val COLOR_BACKGROUND = LAppResource.getColor(R.color.colorPrimary)
+    private fun setColorBackground(c: Int) {
+        this.colorBackground = c
+    }
+
+    fun getColorBackground(): Int {
+        return this.colorBackground
+    }
 
     private var COLOR_0 = LAppResource.getColor(R.color.color0)
     private val COLOR_1 = LAppResource.getColor(R.color.color1)
@@ -85,7 +92,7 @@ object C {
     private val COLOR_14 = LAppResource.getColor(R.color.color14)
     private val COLOR_15 = LAppResource.getColor(R.color.color15)
 
-    val COLOR_FAST_SCROLL_TEXT = COLOR_BACKGROUND
+    val COLOR_FAST_SCROLL_TEXT = getColorBackground()
     const val COLOR_FAST_SCROLL_TEXT_HIGHLIGHT = Color.WHITE
 
     val colors = intArrayOf(

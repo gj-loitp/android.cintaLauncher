@@ -31,7 +31,7 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
             toggle.toggle()
         }
 
-        toggle.trackDrawable = C.generateTrackDrawable(C.COLOR_BACKGROUND)
+        toggle.trackDrawable = C.generateTrackDrawable(C.getColorBackground())
         toggle.thumbDrawable = C.generateThumbDrawable(
             context = itemView.context,
             color = C.getColorPrimary()
