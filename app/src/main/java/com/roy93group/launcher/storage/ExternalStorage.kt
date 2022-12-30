@@ -1,9 +1,7 @@
 package com.roy93group.launcher.storage
 
-import android.app.Activity
 import android.content.ContentValues
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -89,7 +87,7 @@ object ExternalStorage {
         }
     }
 
-    private const val FILE_REQUEST_CODE = 0xf113
+//    private const val FILE_REQUEST_CODE = 0xf113
 
 //    fun pickFile(activity: Activity, mime: String) {
 //        val intent = Intent()
