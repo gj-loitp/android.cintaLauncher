@@ -65,9 +65,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:strokeWidth="@dimen/w_1"
         tools:cardBackgroundColor="@color/color_test_primary"
-        tools:strokeColor="@color/colorPrimary">
+        tools:strokeColor="@color/colorPrimary"
+        tools:strokeWidth="@dimen/w_1">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/search_bar_height"

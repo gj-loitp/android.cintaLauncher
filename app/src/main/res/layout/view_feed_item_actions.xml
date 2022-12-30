@@ -10,9 +10,9 @@
     app:cardCornerRadius="@dimen/round_largest"
     app:cardElevation="@dimen/w_3"
     app:cardUseCompatPadding="false"
-    app:strokeColor="@color/colorPrimary"
-    app:strokeWidth="@dimen/w_1"
-    tools:cardBackgroundColor="@color/color_test_primary">
+    tools:cardBackgroundColor="@color/color_test_primary"
+    tools:strokeColor="@color/colorPrimary"
+    tools:strokeWidth="@dimen/w_1">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvActions"

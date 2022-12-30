@@ -9,8 +9,8 @@
     app:cardCornerRadius="0dp"
     app:cardElevation="@dimen/w_3"
     app:cardUseCompatPadding="false"
-    app:strokeColor="@color/colorPrimary"
-    app:strokeWidth="@dimen/w_1">
+    tools:strokeColor="@color/colorPrimary"
+    tools:strokeWidth="@dimen/w_1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
