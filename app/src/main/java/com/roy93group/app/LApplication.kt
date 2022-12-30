@@ -18,6 +18,7 @@ import com.loitp.data.ActivityData
 
 //TODO background color black -> custom color
 //TODO reset o trang setting -> cho lam lai tu dau intro screen
+//TODO apple recolor
 //TODO fav app
 //TODO lock app
 //TODO hide app
@@ -28,7 +29,6 @@ import com.loitp.data.ActivityData
 //TODO tich hop he sinh thai app roy93group
 //TODO gg pay
 //TODO spotlight
-//TODO apple recolor
 
 //feat custom font?
 

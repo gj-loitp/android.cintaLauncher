@@ -77,10 +77,7 @@ class IntroActivity : BaseFontActivity() {
             btNext.isVisible = b
         }
         btNext.setSafeOnClickListener {
-            stack.peek()?.next(
-                activity = this,
-                isCheckedPolicy = toggle?.isChecked ?: true
-            )
+            nextScreen()
         }
         tvPolicy.setSafeOnClickListener {
             LSocialUtil.openBrowserPolicy(this)
@@ -146,5 +143,16 @@ class IntroActivity : BaseFontActivity() {
             setTextColor(colorPrimary)
             paint?.isUnderlineText = true
         }
+    }
+
+    private fun nextScreen() {
+        if (C.getColorPrimary() == C.getColorBackground()) {
+            showSnackBarError(getString(R.string.err_same_color))
+            return
+        }
+        stack.peek()?.next(
+            activity = this,
+            isCheckedPolicy = toggle?.isChecked ?: true
+        )
     }
 }
