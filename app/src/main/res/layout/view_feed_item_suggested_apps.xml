@@ -14,7 +14,7 @@
         android:layout_marginEnd="@dimen/margin_padding_medium"
         android:alpha="0.7"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/colorTest" />
+        tools:background="@color/color_test_primary" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecents"

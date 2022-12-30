@@ -14,7 +14,7 @@
         android:layout_marginEnd="@dimen/margin_padding_medium"
         android:alpha="0.7"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/colorTest" />
+        tools:background="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icon"
@@ -26,7 +26,7 @@
         app:layout_constraintStart_toStartOf="@+id/vLine"
         app:layout_constraintTop_toTopOf="@+id/source"
         tools:src="@drawable/ic_launcher"
-        tools:tint="@color/colorTest"
+        tools:tint="@color/color_test_primary"
         tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -43,7 +43,7 @@
         app:layout_constraintStart_toEndOf="@+id/icon"
         app:layout_constraintTop_toBottomOf="@+id/vLine"
         tools:text="@string/app_name"
-        tools:textColor="@color/colorTest" />
+        tools:textColor="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTime"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toTopOf="@+id/source"
         tools:ignore="TextContrastCheck"
         tools:text="4m"
-        tools:textColor="@color/colorTest" />
+        tools:textColor="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/source"
         tools:ignore="TextContrastCheck"
         tools:text="@string/app_name"
-        tools:textColor="@color/colorTest" />
+        tools:textColor="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/description"
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title"
         tools:ignore="TextContrastCheck"
         tools:text="@string/large_dummy_text"
-        tools:textColor="@color/colorTest" />
+        tools:textColor="@color/color_test_primary" />
 
     <include
         layout="@layout/view_feed_item_actions"

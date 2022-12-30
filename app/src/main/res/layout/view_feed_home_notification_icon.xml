@@ -7,4 +7,4 @@
     android:layout_marginHorizontal="@dimen/margin_padding_small"
     android:layout_marginVertical="@dimen/margin_padding_medium"
     tools:src="@drawable/ic_launcher"
-    tools:tint="@color/colorTest" />
+    tools:tint="@color/color_test_primary" />

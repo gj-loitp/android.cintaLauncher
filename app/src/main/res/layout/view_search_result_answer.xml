@@ -10,7 +10,7 @@
     app:cardElevation="@dimen/w_3"
     app:cardUseCompatPadding="true"
     app:strokeWidth="@dimen/w_1"
-    tools:strokeColor="@color/colorTest">
+    tools:strokeColor="@color/color_test_primary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/app_name"
-            tools:textColor="@color/colorTest" />
+            tools:textColor="@color/color_test_primary" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/description"
@@ -36,7 +36,7 @@
             android:textSize="@dimen/txt_medium"
             app:layout_constraintTop_toBottomOf="@+id/title"
             tools:text="@string/app_name"
-            tools:textColor="@color/colorTest" />
+            tools:textColor="@color/color_test_primary" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvInfoBox"

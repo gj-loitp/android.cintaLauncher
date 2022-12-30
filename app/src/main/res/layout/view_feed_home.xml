@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:background="@color/red"
         tools:text="12:12"
-        tools:textColor="@color/colorTest" />
+        tools:textColor="@color/color_test_primary" />
 
     <TextClock
         android:id="@+id/tvWeekDay"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="@+id/tvTime"
         tools:background="@color/greenYellow"
         tools:text="Thu Nam"
-        tools:textColor="@color/colorTest" />
+        tools:textColor="@color/color_test_primary" />
 
     <TextClock
         android:id="@+id/tvDate"
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvWeekDay"
         tools:background="@color/deepPink"
         tools:text="1 thang 12"
-        tools:textColor="@color/colorTest" />
+        tools:textColor="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvNotificationIconText"
@@ -67,7 +67,7 @@
         app:layout_constraintStart_toStartOf="@+id/tvTime"
         app:layout_constraintTop_toTopOf="@+id/rvNotificationIconList"
         tools:text="77 notifications"
-        tools:textColor="@color/colorTest" />
+        tools:textColor="@color/color_test_primary" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNotificationIconList"

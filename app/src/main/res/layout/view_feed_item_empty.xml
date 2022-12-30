@@ -12,5 +12,5 @@
         android:textSize="@dimen/txt_largest"
         android:textStyle="bold"
         tools:text="@string/no_feed_items"
-        tools:textColor="@color/colorTest" />
+        tools:textColor="@color/color_test_primary" />
 </FrameLayout>

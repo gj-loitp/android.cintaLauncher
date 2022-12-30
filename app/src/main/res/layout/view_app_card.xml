@@ -54,7 +54,7 @@
                 android:textStyle="bold"
                 tools:ignore="TextContrastCheck"
                 tools:text="@string/app_name"
-                tools:textColor="@color/colorTest" />
+                tools:textColor="@color/color_test_primary" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvLineTitle"
@@ -65,7 +65,7 @@
                 android:visibility="gone"
                 tools:ignore="TextContrastCheck"
                 tools:text="@string/app_name"
-                tools:textColor="@color/colorTest"
+                tools:textColor="@color/color_test_primary"
                 tools:visibility="visible" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -77,7 +77,7 @@
                 android:visibility="gone"
                 tools:ignore="TextContrastCheck"
                 tools:text="@string/app_name"
-                tools:textColor="@color/colorTest"
+                tools:textColor="@color/color_test_primary"
                 tools:visibility="visible" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.constraintlayout.widget.ConstraintLayout>

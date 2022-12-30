@@ -36,5 +36,5 @@
         app:maxImageSize="@dimen/w_20"
         app:rippleColor="@color/transparent"
         app:srcCompat="@drawable/ic_cross"
-        tools:tint="@color/colorTest" />
+        tools:tint="@color/color_test_primary" />
 </com.google.android.material.card.MaterialCardView>

@@ -34,7 +34,7 @@
         app:layout_constraintBottom_toTopOf="@+id/fabBack"
         app:layout_constraintEnd_toEndOf="@+id/fabBack"
         app:srcCompat="@drawable/ic_settings_black_48dp"
-        tools:backgroundTint="@color/colorTest"
+        tools:backgroundTint="@color/color_test_primary"
         tools:visibility="visible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -49,7 +49,7 @@
         app:layout_constraintBottom_toTopOf="@+id/cvSearchBarContainer"
         app:layout_constraintEnd_toEndOf="@+id/cvSearchBarContainer"
         app:srcCompat="@drawable/ic_cross"
-        tools:backgroundTint="@color/colorTest"
+        tools:backgroundTint="@color/color_test_primary"
         tools:visibility="visible" />
 
     <com.google.android.material.card.MaterialCardView

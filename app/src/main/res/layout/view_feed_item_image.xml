@@ -16,7 +16,7 @@
         android:alpha="0.7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/colorTest" />
+        tools:background="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icon"
@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="@+id/vLine"
         app:layout_constraintTop_toTopOf="@+id/source"
         tools:src="@drawable/ic_launcher"
-        tools:tint="@color/colorTest" />
+        tools:tint="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/source"
@@ -39,7 +39,7 @@
         android:gravity="center_vertical"
         android:maxLines="1"
         android:singleLine="true"
-        android:textColor="@color/colorTest"
+        android:textColor="@color/color_test_primary"
         android:textSize="@dimen/txt_large"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/tvTime"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toTopOf="@+id/source"
         tools:ignore="TextContrastCheck"
         tools:text="1d"
-        tools:textColor="@color/colorTest" />
+        tools:textColor="@color/color_test_primary" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
@@ -74,7 +74,7 @@
         app:layout_constraintStart_toStartOf="@+id/vLine"
         app:layout_constraintTop_toBottomOf="@+id/source"
         app:strokeWidth="@dimen/w_1"
-        tools:strokeColor="@color/colorTest">
+        tools:strokeColor="@color/color_test_primary">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image"
@@ -93,7 +93,7 @@
         app:layout_constraintTop_toTopOf="@+id/card"
         tools:ignore="TextContrastCheck"
         tools:text="@string/app_name"
-        tools:textColor="@color/colorTest" />
+        tools:textColor="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/description"
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title"
         tools:ignore="TextContrastCheck"
         tools:text="@string/large_dummy_text"
-        tools:textColor="@color/colorTest" />
+        tools:textColor="@color/color_test_primary" />
 
     <include
         layout="@layout/view_feed_item_actions"
