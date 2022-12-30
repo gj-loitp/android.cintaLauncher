@@ -2,8 +2,10 @@ package com.roy93group.launcher.ui.intro
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
+import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.picker.shiftColor.LineColorPicker
 import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
@@ -32,6 +34,12 @@ class FrmSplashPrimary : FrmWithNext(R.layout.frm_intro_splash_primary) {
         super.onViewCreated(view, savedInstanceState)
         updateUI(view)
 
+        view.findViewById<TextView>(R.id.tvBack).apply {
+            setTextColor(C.getColorPrimary())
+            setSafeOnClickListener {
+                (activity as? IntroActivity)?.onBaseBackPressed()
+            }
+        }
         view.findViewById<LineColorPicker>(R.id.colorPicker).apply {
             colors = C.colors
             setOnColorChangedListener(object : OnColorChangedListener {

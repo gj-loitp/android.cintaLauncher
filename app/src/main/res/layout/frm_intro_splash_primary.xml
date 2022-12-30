@@ -7,6 +7,16 @@
     android:background="@color/colorPrimary"
     android:padding="@dimen/margin_padding_medium">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/back_symbol"
+        android:textSize="@dimen/txt_50"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:textColor="@color/colorTest" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivLogo"
         android:layout_width="@dimen/w_100"
