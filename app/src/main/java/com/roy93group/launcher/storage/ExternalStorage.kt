@@ -11,7 +11,11 @@ import java.io.*
 
 object ExternalStorage {
 
-    inline fun write(context: Context, name: String, fn: (OutputStream, String) -> Unit) {
+    inline fun write(
+        context: Context,
+        name: String,
+        fn: (OutputStream, String) -> Unit
+    ) {
         val dir: File? = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
         val file = File(dir, name)
         FileOutputStream(file).use {

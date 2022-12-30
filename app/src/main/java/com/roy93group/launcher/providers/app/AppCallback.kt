@@ -12,11 +12,20 @@ import android.os.UserHandle
  */
 class AppCallback(val callback: () -> Unit) : LauncherApps.Callback() {
 
-    override fun onPackageRemoved(packageName: String?, user: UserHandle?) = callback()
+    override fun onPackageRemoved(
+        packageName: String?,
+        user: UserHandle?
+    ) = callback()
 
-    override fun onPackageAdded(packageName: String?, user: UserHandle?) = callback()
+    override fun onPackageAdded(
+        packageName: String?,
+        user: UserHandle?
+    ) = callback()
 
-    override fun onPackageChanged(packageName: String?, user: UserHandle?) = callback()
+    override fun onPackageChanged(
+        packageName: String?,
+        user: UserHandle?
+    ) = callback()
 
     override fun onPackagesAvailable(
         packageNames: Array<out String>?,

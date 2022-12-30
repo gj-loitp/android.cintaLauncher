@@ -31,74 +31,10 @@ class AppCollection(
     appCount: Int,
     val settings: Settings,
 ) : AppLoader.AppCollection<AppCollection.ExtraIconData> {
-    val list = ArrayList<App>(appCount)
-    val byName = HashMap<String, MutableList<App>>()
-    val sections = LinkedList<List<App>>()
-
-    operator fun get(i: Int) = list[i]
-    inline val size get() = list.size
-
-    override fun addApp(
-        context: Context,
-        packageName: String,
-        name: String,
-        profile: UserHandle,
-        label: String,
-        icon: Drawable,
-        extra: AppLoader.ExtraAppInfo<ExtraIconData>,
-    ) {
-        if (packageName == BuildConfig.APPLICATION_ID &&
-            name == LauncherActivity::class.java.name
-        ) return
-
-        val app = createApp(
-            packageName = packageName,
-            name = name,
-            profile = profile,
-            label = label,
-            icon = icon,
-            extra = extra
-        )
-
-        list.add(app)
-        putInMap(app)
-    }
-
-    override fun modifyIcon(
-        icon: Drawable,
-        expandableBackground: Drawable?
-    ): Pair<Drawable, ExtraIconData> {
-        return modifyIcon(
-            icon = icon,
-            expandableBackground = expandableBackground,
-            settings = settings
-        )
-    }
-
-    private fun putInMap(app: App) {
-        val list = byName[app.packageName]
-        if (list == null) {
-            byName[app.packageName] = arrayListOf(app)
-            return
-        }
-        val thisAppI = list.indexOfFirst {
-            it.name == app.name && it.userHandle.hashCode() == app.userHandle.hashCode()
-        }
-        if (thisAppI == -1) {
-            list.add(app)
-            return
-        }
-        list[thisAppI] = app
-    }
-
-    override fun finalize(context: Context) {
-        list.sortWith { o1, o2 ->
-            o1.label.compareTo(other = o2.label, ignoreCase = true)
-        }
-    }
 
     companion object {
 
+        @Suppress("NAME_SHADOWING")
         fun modifyIcon(
             icon: Drawable,
             expandableBackground: Drawable?,
@@ -265,6 +201,72 @@ class AppCollection(
             }
 
             return Triple(first = foreground, second = background, third = color)
+        }
+    }
+
+    val list = ArrayList<App>(appCount)
+    val byName = HashMap<String, MutableList<App>>()
+    val sections = LinkedList<List<App>>()
+
+    operator fun get(i: Int) = list[i]
+    inline val size get() = list.size
+
+    override fun addApp(
+        context: Context,
+        packageName: String,
+        name: String,
+        profile: UserHandle,
+        label: String,
+        icon: Drawable,
+        extra: AppLoader.ExtraAppInfo<ExtraIconData>,
+    ) {
+        if (packageName == BuildConfig.APPLICATION_ID &&
+            name == LauncherActivity::class.java.name
+        ) return
+
+        val app = createApp(
+            packageName = packageName,
+            name = name,
+            profile = profile,
+            label = label,
+            icon = icon,
+            extra = extra
+        )
+
+        list.add(app)
+        putInMap(app)
+    }
+
+    override fun modifyIcon(
+        icon: Drawable,
+        expandableBackground: Drawable?
+    ): Pair<Drawable, ExtraIconData> {
+        return modifyIcon(
+            icon = icon,
+            expandableBackground = expandableBackground,
+            settings = settings
+        )
+    }
+
+    private fun putInMap(app: App) {
+        val list = byName[app.packageName]
+        if (list == null) {
+            byName[app.packageName] = arrayListOf(app)
+            return
+        }
+        val thisAppI = list.indexOfFirst {
+            it.name == app.name && it.userHandle.hashCode() == app.userHandle.hashCode()
+        }
+        if (thisAppI == -1) {
+            list.add(app)
+            return
+        }
+        list[thisAppI] = app
+    }
+
+    override fun finalize(context: Context) {
+        list.sortWith { o1, o2 ->
+            o1.label.compareTo(other = o2.label, ignoreCase = true)
         }
     }
 

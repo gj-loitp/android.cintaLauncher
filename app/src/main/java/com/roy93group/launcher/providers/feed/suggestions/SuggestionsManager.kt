@@ -51,7 +51,10 @@ object SuggestionsManager {
     fun getNonPinnedSuggestions(pinnedItems: List<LauncherItem>): List<LauncherItem> =
         suggestions - pinnedItems.toSet()
 
-    fun onItemOpened(context: Context, item: LauncherItem) {
+    fun onItemOpened(
+        context: Context,
+        item: LauncherItem
+    ) {
         thread(isDaemon = true, name = "SuggestionManager: saving opening context") {
             contextLock.withLock {
                 saveItemOpenContext(context, item)
@@ -71,25 +74,38 @@ object SuggestionsManager {
         updateSuggestions(context)
     }
 
-    fun onResume(context: Context, onEnd: () -> Unit) {
+    fun onResume(
+        context: Context,
+        onEnd: () -> Unit
+    ) {
         thread(isDaemon = true, name = "SuggestionManager: onResume") {
             updateSuggestions(context)
             onEnd()
         }
     }
 
-    fun onPause(settings: Settings, context: Context) {
+    fun onPause(
+        settings: Settings,
+        context: Context
+    ) {
         saveToStorage(settings = settings, context = context)
     }
 
-    private fun differentiator(i: Int, a: Float, b: Float): Float {
+    private fun differentiator(
+        i: Int,
+        a: Float,
+        b: Float
+    ): Float {
         val base = abs(a - b)
         return if (i == CONTEXT_DATA_HOUR_OF_DAY)
             min(base, 24 - base)
         else base
     }
 
-    private fun saveItemOpenContext(context: Context, item: LauncherItem) {
+    private fun saveItemOpenContext(
+        context: Context,
+        item: LauncherItem
+    ) {
         val data = FloatArray(CONTEXT_DATA_SIZE)
         getCurrentContext(context, data)
         contextMap.push(item = item, data = data, maxContexts = MAX_CONTEXT_COUNT)
@@ -136,7 +152,10 @@ object SuggestionsManager {
         }
     }
 
-    private fun getCurrentContext(context: Context, out: FloatArray) {
+    private fun getCurrentContext(
+        context: Context,
+        out: FloatArray
+    ) {
         val batteryManager = context.getSystemService(BatteryManager::class.java)
         val audioManager = context.getSystemService(AudioManager::class.java)
         val rightNow = Calendar.getInstance()
@@ -183,7 +202,10 @@ object SuggestionsManager {
         }
     }
 
-    private fun saveToStorage(settings: Settings, context: Context) {
+    private fun saveToStorage(
+        settings: Settings,
+        context: Context
+    ) {
         settings.edit(context) {
             "stats:app_opening_contexts" set contextMap
                 .map { it.key.toString() }

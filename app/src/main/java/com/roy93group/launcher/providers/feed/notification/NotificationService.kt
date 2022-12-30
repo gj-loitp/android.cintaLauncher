@@ -31,6 +31,41 @@ import kotlin.concurrent.thread
  * freuss47@gmail.com
  */
 class NotificationService : NotificationListenerService() {
+    companion object {
+        fun init(context: Context) {
+            if (NotificationManagerCompat.getEnabledListenerPackages(context)
+                    .contains(context.packageName)
+            ) {
+                context.startService(Intent(context, NotificationService::class.java))
+            }
+        }
+
+        var notifications: MutableList<FeedItem> = ArrayList()
+            private set
+
+        var mediaItem: FeedItemWithMedia? = null
+            private set
+
+        private var onSummaryUpdate: () -> Unit = {}
+
+        private val lock = ReentrantLock()
+
+        private fun pickController(controllers: List<MediaController>): MediaController {
+            for (i in controllers.indices) {
+                val mc = controllers[i]
+                if (mc.playbackState?.state == PlaybackState.STATE_PLAYING) {
+                    return mc
+                }
+            }
+            return controllers[0]
+        }
+
+        private val listeners = HashMap<String, () -> Unit>()
+
+        fun setOnUpdate(key: String, onUpdate: () -> Unit) {
+            listeners[key] = onUpdate
+        }
+    }
 
     private val componentName = ComponentName(BuildConfig.APPLICATION_ID, this::class.java.name)
 
@@ -168,41 +203,5 @@ class NotificationService : NotificationListenerService() {
                 onSummaryUpdate()
             }
         })
-    }
-
-    companion object {
-        fun init(context: Context) {
-            if (NotificationManagerCompat.getEnabledListenerPackages(context)
-                    .contains(context.packageName)
-            ) {
-                context.startService(Intent(context, NotificationService::class.java))
-            }
-        }
-
-        var notifications: MutableList<FeedItem> = ArrayList()
-            private set
-
-        var mediaItem: FeedItemWithMedia? = null
-            private set
-
-        private var onSummaryUpdate: () -> Unit = {}
-
-        private val lock = ReentrantLock()
-
-        private fun pickController(controllers: List<MediaController>): MediaController {
-            for (i in controllers.indices) {
-                val mc = controllers[i]
-                if (mc.playbackState?.state == PlaybackState.STATE_PLAYING) {
-                    return mc
-                }
-            }
-            return controllers[0]
-        }
-
-        private val listeners = HashMap<String, () -> Unit>()
-
-        fun setOnUpdate(key: String, onUpdate: () -> Unit) {
-            listeners[key] = onUpdate
-        }
     }
 }

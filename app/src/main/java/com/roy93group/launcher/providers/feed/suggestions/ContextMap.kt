@@ -37,13 +37,19 @@ class ContextMap<T>(
 
     private val lengthBuffer = FloatArray(contextDataSize)
 
-    fun calculateDistance(currentContext: FloatArray, multipleContexts: List<FloatArray>): Float {
+    fun calculateDistance(
+        currentContext: FloatArray,
+        multipleContexts: List<FloatArray>
+    ): Float {
         return multipleContexts.map { d ->
             calculateDistance(currentContext, d)
         }.reduce(Float::times)
     }
 
-    private fun calculateDistance(a: FloatArray, b: FloatArray): Float {
+    private fun calculateDistance(
+        a: FloatArray,
+        b: FloatArray
+    ): Float {
         a.forEachIndexed { i, fl ->
             lengthBuffer[i] = differentiator(i, fl, b[i])
             lengthBuffer[i] *= lengthBuffer[i]
@@ -91,7 +97,11 @@ class ContextMap<T>(
         } else list
     }
 
-    fun push(item: T, data: FloatArray, maxContexts: Int) {
+    fun push(
+        item: T,
+        data: FloatArray,
+        maxContexts: Int
+    ) {
         contexts[item] =
             contexts[item]?.plus(data)?.let { trimContextListIfTooBig(it, maxContexts) } ?: listOf(
                 data
