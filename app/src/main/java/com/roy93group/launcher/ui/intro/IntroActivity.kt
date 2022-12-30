@@ -127,11 +127,7 @@ class IntroActivity : BaseFontActivity() {
         val colorBackground = C.getColorBackground()
         val colorPrimary = C.getColorPrimary()
 
-        C.changeStatusBarContrastStyle(window)
-        setCustomStatusBar(
-            colorStatusBar = colorBackground,
-            colorNavigationBar = colorBackground
-        )
+        C.changeStatusBarContrastStyle(activity = this)
 
         cl.setBackgroundColor(colorBackground)
         toggle.apply {

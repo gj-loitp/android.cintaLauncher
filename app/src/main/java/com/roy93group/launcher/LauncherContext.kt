@@ -29,7 +29,10 @@ class LauncherContext {
 
     inner class AppManager {
 
-        fun <T : Context> loadApps(context: T, onEnd: T.(apps: AppCollection) -> Unit) {
+        fun <T : Context> loadApps(
+            context: T,
+            onEnd: T.(apps: AppCollection) -> Unit
+        ) {
             val iconConfig = IconConfig(
                 size = (context.resources.displayMetrics.density * 128f).toInt(),
                 density = context.resources.configuration.densityDpi,

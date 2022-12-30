@@ -6,17 +6,18 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Process
-import android.widget.TextView
 import androidx.core.app.ShareCompat
 import com.loitp.annotation.IsAutoAnimation
 import com.loitp.annotation.IsFullScreen
 import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseFontActivity
+import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LActivityUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
+import kotlinx.android.synthetic.main.activity_stack_trace.*
 import kotlin.system.exitProcess
 
 /**
@@ -57,20 +58,20 @@ class StackTraceActivity : BaseFontActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        C.changeStatusBarContrastStyle(activity = this)
         setupViews()
     }
 
     private fun setupViews() {
         try {
-            findViewById<TextView>(R.id.title).apply {
-                setTextColor(C.getColorPrimary())
-            }
-            val tvStackTrace = findViewById<TextView>(R.id.tvStackTrace).apply {
-                setTextColor(C.getColorPrimary())
-            }
-            val send = findViewById<TextView>(R.id.send).apply {
-                setTextColor(C.getColorBackground())
+            val colorPrimary = C.getColorPrimary()
+            val colorBackground = C.getColorBackground()
+
+            cl.setBackgroundColor(colorBackground)
+            tvTitle.setTextColor(colorPrimary)
+            tvStackTrace.setTextColor(colorPrimary)
+            btSend.apply {
+                setTextColor(colorBackground)
                 C.setBackground(this)
             }
 
@@ -103,7 +104,7 @@ class StackTraceActivity : BaseFontActivity() {
 
             tvStackTrace.text = str
 
-            send.setOnClickListener {
+            btSend.setSafeOnClickListener {
                 ShareCompat.IntentBuilder(this)
                     .setType("text/plain")
                     .setText(str)

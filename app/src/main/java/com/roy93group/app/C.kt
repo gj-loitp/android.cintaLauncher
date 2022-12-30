@@ -22,10 +22,10 @@ import android.provider.CalendarContract
 import android.provider.Settings
 import android.util.StateSet
 import android.view.View
-import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
+import com.loitp.core.base.BaseActivity
 import com.loitp.core.common.Constants
 import com.loitp.core.helper.gallery.GalleryCoreSplashActivity
 import com.loitp.core.utilities.*
@@ -505,11 +505,11 @@ object C {
     }
 
     fun changeStatusBarContrastStyle(
-        window: Window
+        activity: BaseActivity
     ) {
         val lightIcons = getColorBackground() != COLOR_15
 
-        val decorView: View = window.decorView
+        val decorView: View = activity.window.decorView
         if (lightIcons) {
             decorView.systemUiVisibility =
                 decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
@@ -517,5 +517,10 @@ object C {
             decorView.systemUiVisibility =
                 decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
+
+        activity.setCustomStatusBar(
+            colorStatusBar = colorBackground,
+            colorNavigationBar = colorBackground
+        )
     }
 }
