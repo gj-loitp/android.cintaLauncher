@@ -150,10 +150,11 @@ class IntroActivity : BaseFontActivity() {
     }
 
     private fun nextScreen() {
-        if (C.getColorPrimary() == C.getColorBackground()) {
+        if (!C.isValidColor()) {
             showSnackBarError(getString(R.string.err_same_color))
             return
         }
+
         stack.peek()?.next(
             activity = this,
             isCheckedPolicy = toggle?.isChecked ?: true

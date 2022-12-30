@@ -336,9 +336,22 @@ object C {
         fragment.show(activity.supportFragmentManager, fragment.tag)
     }
 
-    fun updatePrimaryColor(newColor: Int) {
-        setColorPrimary(newColor)
-        LSharedPrefsUtil.instance.putInt(KEY_PRIMARY_COLOR, newColor)
+
+    fun isValidColor(): Boolean {
+        if (getColorPrimary() == getColorBackground()) {
+            return false
+        }
+        return true
+    }
+
+    fun updatePrimaryColor(newColor: Int): Boolean {
+        return if (newColor == getColorBackground()) {
+            false
+        } else {
+            setColorPrimary(newColor)
+            LSharedPrefsUtil.instance.putInt(KEY_PRIMARY_COLOR, newColor)
+            true
+        }
     }
 
     fun getPrimaryColor() {
@@ -349,9 +362,14 @@ object C {
         setColorPrimary(c)
     }
 
-    fun updateBackgroundColor(newColor: Int) {
-        setColorBackground(newColor)
-        LSharedPrefsUtil.instance.putInt(KEY_BACKGROUND_COLOR, newColor)
+    fun updateBackgroundColor(newColor: Int): Boolean {
+        return if (newColor == getColorPrimary()) {
+            false
+        } else {
+            setColorBackground(newColor)
+            LSharedPrefsUtil.instance.putInt(KEY_BACKGROUND_COLOR, newColor)
+            true
+        }
     }
 
     fun getBackgroundColor() {
