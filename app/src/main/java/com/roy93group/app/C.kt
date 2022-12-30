@@ -22,6 +22,7 @@ import android.provider.CalendarContract
 import android.provider.Settings
 import android.util.StateSet
 import android.view.View
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
@@ -482,5 +483,20 @@ object C {
 
     fun getForceColorIcon(): Boolean {
         return LSharedPrefsUtil.instance.getBoolean(KEY_FORCE_COLOR_ICON, false)
+    }
+
+    fun changeStatusBarContrastStyle(
+        window: Window
+    ) {
+        val lightIcons = getColorBackground() != COLOR_15
+
+        val decorView: View = window.decorView
+        if (lightIcons) {
+            decorView.systemUiVisibility =
+                decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
+        } else {
+            decorView.systemUiVisibility =
+                decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
     }
 }
