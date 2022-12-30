@@ -178,7 +178,7 @@ object DrawerLongPressPopup {
                     des = LAppResource.getString(R.string.pick_your_favorite_color),
                     warning = LAppResource.getString(R.string.the_color_launcher_will_be_restarted),
                     onDismiss = { newColor ->
-                        C.updateMainColor(newColor)
+                        C.updatePrimaryColor(newColor)
                         launcherActivity.recreate()
                     })
             },

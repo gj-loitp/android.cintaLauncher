@@ -47,7 +47,8 @@ import io.posidon.android.conveniencelib.units.toPixels
  * freuss47@gmail.com
  */
 object C {
-    private const val KEY_MAIN_COLOR = "KEY_MAIN_COLOR"
+    private const val KEY_BACKGROUND_COLOR = "KEY_BACKGROUND_COLOR"
+    private const val KEY_PRIMARY_COLOR = "KEY_PRIMARY_COLOR"
     private const val KEY_SEEK_RADIUS_VALUE = "KEY_SEEK_RADIUS_VALUE"
     private const val KEY_SEEK_PEEK_VALUE = "KEY_SEEK_PEEK_VALUE"
     private const val KEY_ORIENTATION_VALUE = "KEY_ORIENTATION_VALUE"
@@ -330,17 +331,30 @@ object C {
         fragment.show(activity.supportFragmentManager, fragment.tag)
     }
 
-    fun updateMainColor(newColor: Int) {
+    fun updatePrimaryColor(newColor: Int) {
         setColorPrimary(newColor)
-        LSharedPrefsUtil.instance.putInt(KEY_MAIN_COLOR, COLOR_0)
+        LSharedPrefsUtil.instance.putInt(KEY_PRIMARY_COLOR, newColor)
     }
 
-    fun getMainColor() {
+    fun getPrimaryColor() {
         val c = LSharedPrefsUtil.instance.getInt(
-            key = KEY_MAIN_COLOR,
+            key = KEY_PRIMARY_COLOR,
             defaultValue = LAppResource.getColor(R.color.color0)
         )
         setColorPrimary(c)
+    }
+
+    fun updateBackgroundColor(newColor: Int) {
+        setColorBackground(newColor)
+        LSharedPrefsUtil.instance.putInt(KEY_BACKGROUND_COLOR, newColor)
+    }
+
+    fun getBackgroundColor() {
+        val c = LSharedPrefsUtil.instance.getInt(
+            key = KEY_BACKGROUND_COLOR,
+            defaultValue = LAppResource.getColor(R.color.colorPrimary)
+        )
+        setColorBackground(c)
     }
 
     fun launchAppOption(

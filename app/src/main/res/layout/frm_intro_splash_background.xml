@@ -30,7 +30,7 @@
         android:id="@+id/tvDes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/pick_your_favorite_color"
+        android:text="@string/pick_your_favorite_color_background"
         android:textSize="@dimen/txt_medium"
         app:layout_constraintBottom_toTopOf="@+id/colorPicker"
         tools:textColor="@color/colorTest" />
