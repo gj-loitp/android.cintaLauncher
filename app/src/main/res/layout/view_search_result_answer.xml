@@ -54,9 +54,9 @@
             app:cardUseCompatPadding="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rvInfoBox"
-            app:strokeColor="@color/colorPrimary"
             app:strokeWidth="@dimen/w_1"
-            tools:cardBackgroundColor="@color/colorTest">
+            tools:cardBackgroundColor="@color/color_test_primary"
+            tools:strokeColor="@color/color_test_primary">
 
             <HorizontalScrollView
                 android:layout_width="match_parent"

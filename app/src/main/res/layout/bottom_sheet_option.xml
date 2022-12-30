@@ -5,7 +5,7 @@
     android:id="@+id/llRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:cardBackgroundColor="@color/colorTest">
+    tools:cardBackgroundColor="@color/color_test_primary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

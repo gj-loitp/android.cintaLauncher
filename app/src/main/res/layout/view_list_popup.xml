@@ -10,7 +10,7 @@
     app:cardUseCompatPadding="true"
     app:strokeColor="@color/colorPrimary"
     app:strokeWidth="@dimen/w_1"
-    tools:cardBackgroundColor="@color/colorTest">
+    tools:cardBackgroundColor="@color/color_test_primary">
 
     <FrameLayout
         android:layout_width="match_parent"

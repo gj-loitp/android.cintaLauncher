@@ -14,7 +14,7 @@
     app:cardUseCompatPadding="false"
     app:strokeColor="@color/colorPrimary"
     app:strokeWidth="@dimen/w_1"
-    tools:cardBackgroundColor="@color/colorTest">
+    tools:cardBackgroundColor="@color/color_test_primary">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"

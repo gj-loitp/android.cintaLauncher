@@ -16,7 +16,7 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/happy_new_year_2023"
         app:lottie_speed="1"
-        tools:lottie_colorFilter="@color/colorTest" />
+        tools:lottie_colorFilter="@color/color_test_primary" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lavNoData"
@@ -28,7 +28,7 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/err_404"
         app:lottie_speed="1"
-        tools:lottie_colorFilter="@color/colorTest"
+        tools:lottie_colorFilter="@color/color_test_primary"
         tools:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
