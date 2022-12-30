@@ -1,6 +1,5 @@
 package com.roy93group.launcher.ui.intro
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
@@ -71,7 +70,7 @@ class IntroActivity : BaseFontActivity() {
     private fun setWallpaper() {
         LUIUtil.setWallpaperAndLockScreen(
             activity = this@IntroActivity,
-            color = C.COLOR_PRIMARY,
+            color = C.COLOR_BACKGROUND,
             isSetWallpaper = true,
             isSetLockScreen = true,
         )
@@ -132,15 +131,15 @@ class IntroActivity : BaseFontActivity() {
 
     fun updateUI() {
         toggle?.apply {
-            trackDrawable = C.generateTrackDrawable(C.COLOR_0)
-            thumbDrawable = C.generateThumbDrawable(context = context, color = C.COLOR_PRIMARY)
+            trackDrawable = C.generateTrackDrawable(C.getColorPrimary())
+            thumbDrawable = C.generateThumbDrawable(context = context, color = C.COLOR_BACKGROUND)
         }
         btNext?.apply {
-            setTextColor(C.COLOR_PRIMARY)
+            setTextColor(C.COLOR_BACKGROUND)
             C.setBackground(this)
         }
         tvPolicy?.apply {
-            setTextColor(C.COLOR_0)
+            setTextColor(C.getColorPrimary())
             paint?.isUnderlineText = true
         }
     }

@@ -65,7 +65,7 @@ class BottomSheetOption(
 
     private fun setupViews(view: View) {
         llRoot = view.findViewById<MaterialCardView>(R.id.llRoot).apply {
-            setCardBackgroundColor(C.COLOR_0)
+            setCardBackgroundColor(C.getColorPrimary())
             C.setCornerCardView(activity = requireActivity(), cardView = this)
         }
         tvTitle = view.findViewById<TextView>(R.id.tvTitle).apply {

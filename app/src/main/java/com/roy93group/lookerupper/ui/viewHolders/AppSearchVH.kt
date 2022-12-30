@@ -27,7 +27,7 @@ class AppSearchVH(
 
     private val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon)
     private val tvIconText: TextView = itemView.findViewById<TextView>(R.id.tvIconText).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
     val card = itemView as CardView
 
@@ -42,7 +42,7 @@ class AppSearchVH(
             ivIcon.isVisible = true
             ivIcon.setImageDrawable(result.icon)
             if (isForceColorIcon) {
-                ivIcon.setColorFilter(C.COLOR_0)
+                ivIcon.setColorFilter(C.getColorPrimary())
             } else {
                 ivIcon.setColorFilter(Color.TRANSPARENT)
             }

@@ -25,7 +25,7 @@ class SuggestedVH(
     val adapter = SuggestionsAdapter(launcherActivity = launcherActivity)
 
     val vLine: View = itemView.findViewById<View>(R.id.vLine).apply {
-        setBackgroundColor(C.COLOR_0)
+        setBackgroundColor(C.getColorPrimary())
     }
     val rvRecents: RecyclerView = itemView.findViewById<RecyclerView>(R.id.rvRecents).apply {
         layoutManager = GridLayoutManager(

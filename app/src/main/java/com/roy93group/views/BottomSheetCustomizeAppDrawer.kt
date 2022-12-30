@@ -78,32 +78,32 @@ class BottomSheetCustomizeAppDrawer(
 
     private fun setupViews(view: View) {
         view.findViewById<MaterialCardView>(R.id.llRoot).apply {
-            setCardBackgroundColor(C.COLOR_0)
+            setCardBackgroundColor(C.getColorPrimary())
             C.setCornerCardView(activity = requireActivity(), cardView = this)
         }
 
         tvRadius = view.findViewById(R.id.tvRadius)
         tvPeekText = view.findViewById(R.id.tvPeekText)
         val seekRadius = view.findViewById<RubberSeekBar>(R.id.seekRadius).apply {
-            setNormalTrackColor(C.COLOR_PRIMARY)
-            setHighlightTrackColor(C.COLOR_PRIMARY)
-            setHighlightThumbOnTouchColor(C.COLOR_0)
-            setDefaultThumbInsideColor(C.COLOR_0)
+            setNormalTrackColor(C.COLOR_BACKGROUND)
+            setHighlightTrackColor(C.COLOR_BACKGROUND)
+            setHighlightThumbOnTouchColor(C.getColorPrimary())
+            setDefaultThumbInsideColor(C.getColorPrimary())
         }
         val seekPeek = view.findViewById<RubberSeekBar>(R.id.seekPeek).apply {
-            setNormalTrackColor(C.COLOR_PRIMARY)
-            setHighlightTrackColor(C.COLOR_PRIMARY)
-            setHighlightThumbOnTouchColor(C.COLOR_0)
-            setDefaultThumbInsideColor(C.COLOR_0)
+            setNormalTrackColor(C.COLOR_BACKGROUND)
+            setHighlightTrackColor(C.COLOR_BACKGROUND)
+            setHighlightThumbOnTouchColor(C.getColorPrimary())
+            setDefaultThumbInsideColor(C.getColorPrimary())
         }
         btGravity = view.findViewById<Button>(R.id.btGravity).apply {
-            setTextColor(C.COLOR_0)
+            setTextColor(C.getColorPrimary())
         }
         btOrientation = view.findViewById<Button>(R.id.btOrientation).apply {
-            setTextColor(C.COLOR_0)
+            setTextColor(C.getColorPrimary())
         }
-        val btReset = view.findViewById<Button>(R.id.btReset).apply {
-            setTextColor(C.COLOR_0)
+        view.findViewById<Button>(R.id.btReset).apply {
+            setTextColor(C.getColorPrimary())
             setSafeOnClickListener {
                 dismiss()
                 onResetAllValue?.invoke(Unit)

@@ -50,13 +50,13 @@ class FrmSplashPrimary : FrmWithNext(R.layout.frm_intro_splash_primary) {
 
     private fun updateUI(view: View) {
         view.findViewById<AppCompatImageView>(R.id.ivLogo).apply {
-            setColorFilter(C.COLOR_0)
+            setColorFilter(C.getColorPrimary())
         }
         view.findViewById<AppCompatTextView>(R.id.tv).apply {
-            setTextColor(C.COLOR_0)
+            setTextColor(C.getColorPrimary())
         }
         view.findViewById<AppCompatTextView>(R.id.tvDes).apply {
-            setTextColor(C.COLOR_0)
+            setTextColor(C.getColorPrimary())
         }
     }
 }

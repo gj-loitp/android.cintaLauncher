@@ -87,15 +87,15 @@ class SearchActivity : BaseFontActivity() {
     }
 
     private fun setupViews() {
-        val cardView = findViewById<MaterialCardView>(R.id.cardView).apply {
-            setCardBackgroundColor(C.COLOR_0)
+        findViewById<MaterialCardView>(R.id.cardView).apply {
+            setCardBackgroundColor(C.getColorPrimary())
         }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val lav = findViewById<LottieAnimationView>(R.id.lav).apply {
-            changeLayersColor(C.COLOR_0)
+            changeLayersColor(C.getColorPrimary())
         }
         lavNoData = findViewById<LottieAnimationView>(R.id.lavNoData).apply {
-            changeLayersColor(C.COLOR_0)
+            changeLayersColor(C.getColorPrimary())
         }
         adapter = SearchAdapter(activity = this, recyclerView = recyclerView, isOnCard = false)
         recyclerView.run {

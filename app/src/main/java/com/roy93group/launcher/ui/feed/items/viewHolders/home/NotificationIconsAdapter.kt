@@ -46,7 +46,7 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
     ) {
         holder.image.setImageDrawable(items[i])
         if (isForceColorIcon) {
-            holder.image.setColorFilter(C.COLOR_0)
+            holder.image.setColorFilter(C.getColorPrimary())
         } else {
             holder.image.setColorFilter(Color.TRANSPARENT)
         }

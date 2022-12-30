@@ -64,13 +64,13 @@ class StackTraceActivity : BaseFontActivity() {
     private fun setupViews() {
         try {
             findViewById<TextView>(R.id.title).apply {
-                setTextColor(C.COLOR_0)
+                setTextColor(C.getColorPrimary())
             }
             val tvStackTrace = findViewById<TextView>(R.id.tvStackTrace).apply {
-                setTextColor(C.COLOR_0)
+                setTextColor(C.getColorPrimary())
             }
             val send = findViewById<TextView>(R.id.send).apply {
-                setTextColor(C.COLOR_PRIMARY)
+                setTextColor(C.COLOR_BACKGROUND)
                 C.setBackground(this)
             }
 

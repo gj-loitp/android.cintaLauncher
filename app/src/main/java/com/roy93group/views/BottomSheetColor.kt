@@ -31,7 +31,7 @@ class BottomSheetColor(
     private var tvTitle: TextView? = null
     private var tvDes: TextView? = null
     private var tvWarning: TextView? = null
-    private var newColor = C.COLOR_0
+    private var newColor = C.getColorPrimary()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,14 +58,14 @@ class BottomSheetColor(
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        if (newColor != C.COLOR_0) {
+        if (newColor != C.getColorPrimary()) {
             onDismiss?.invoke(newColor)
         }
     }
 
     private fun setupViews(view: View) {
         llRoot = view.findViewById<MaterialCardView>(R.id.llRoot).apply {
-            setCardBackgroundColor(C.COLOR_0)
+            setCardBackgroundColor(C.getColorPrimary())
             C.setCornerCardView(activity = requireActivity(), cardView = this)
         }
         tvTitle = view.findViewById(R.id.tvTitle)
@@ -78,7 +78,7 @@ class BottomSheetColor(
 
         view.findViewById<LineColorPicker>(R.id.colorPicker).apply {
             colors = C.colors
-            setSelectedColor(C.COLOR_0)
+            setSelectedColor(C.getColorPrimary())
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
                     C.vibrate(milliseconds = 10)

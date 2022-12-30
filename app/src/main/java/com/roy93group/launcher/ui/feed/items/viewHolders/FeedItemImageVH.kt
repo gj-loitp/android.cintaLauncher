@@ -34,7 +34,7 @@ open class FeedItemImageVH(
 ) : FeedItemVH(itemView) {
     val image: ImageView = itemView.findViewById(R.id.image)
     val card: MaterialCardView = itemView.findViewById<MaterialCardView>(R.id.card).apply {
-        strokeColor = C.COLOR_0
+        strokeColor = C.getColorPrimary()
     }
 
     private val requestOptions = RequestOptions()

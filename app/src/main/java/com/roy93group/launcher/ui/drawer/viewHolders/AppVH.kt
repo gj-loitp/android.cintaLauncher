@@ -28,15 +28,15 @@ class AppViewHolder(
 ) : RecyclerView.ViewHolder(cardView) {
     val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon)
     val tvIconText: TextView = itemView.findViewById<TextView>(R.id.tvIconText).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
 
     val tvLineTitle: TextView = itemView.findViewById<TextView>(R.id.tvLineTitle).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
     val tvLineDescription: TextView =
         itemView.findViewById<TextView>(R.id.tvLineDescription).apply {
-            setTextColor(C.COLOR_0)
+            setTextColor(C.getColorPrimary())
         }
 }
 
@@ -62,7 +62,7 @@ fun bindAppViewHolder(
         holder.ivIcon.isVisible = true
 
         if (isForceColorIcon) {
-            holder.ivIcon.setColorFilter(C.COLOR_0)
+            holder.ivIcon.setColorFilter(C.getColorPrimary())
         } else {
             holder.ivIcon.setColorFilter(Color.TRANSPARENT)
         }

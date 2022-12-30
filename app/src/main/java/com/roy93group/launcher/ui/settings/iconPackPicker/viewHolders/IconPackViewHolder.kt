@@ -21,7 +21,7 @@ class IconPackViewHolder(
 ) : RecyclerView.ViewHolder(itemView) {
     val icon: ImageView = itemView.findViewById(R.id.icon)
     val text: TextView = itemView.findViewById<TextView>(R.id.text).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
 
     fun bind(iconPack: IconPackPickerActivity.IconPack) {

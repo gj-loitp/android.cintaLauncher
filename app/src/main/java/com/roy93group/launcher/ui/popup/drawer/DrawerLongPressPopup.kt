@@ -62,11 +62,11 @@ object DrawerLongPressPopup {
         PopupUtils.setCurrent(window)
 
         val fabDismiss = content.findViewById<FloatingActionButton>(R.id.fabDismiss).apply {
-            setColorFilter(C.COLOR_0)
+            setColorFilter(C.getColorPrimary())
         }
 
-        val cardView = content.findViewById<MaterialCardView>(R.id.card).apply {
-            setCardBackgroundColor(C.COLOR_0)
+        content.findViewById<MaterialCardView>(R.id.card).apply {
+            setCardBackgroundColor(C.getColorPrimary())
         }
         content.findViewById<RecyclerView>(R.id.recyclerView).apply {
             layoutManager = LinearLayoutManager(

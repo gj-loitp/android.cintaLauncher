@@ -28,10 +28,10 @@ class CompactSearchVH(
 
     val icon: ImageView = itemView.findViewById(R.id.icon)
     val text: TextView = itemView.findViewById<TextView>(R.id.text).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
     private val subtitle: TextView = itemView.findViewById<TextView>(R.id.subtitle).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
 
     override fun onBind(
@@ -45,7 +45,7 @@ class CompactSearchVH(
         if (isDisplayAppIcon) {
             icon.isVisible = true
             if (isForceColorIcon) {
-                icon.setColorFilter(C.COLOR_0)
+                icon.setColorFilter(C.getColorPrimary())
             } else {
                 icon.setColorFilter(Color.TRANSPARENT)
             }

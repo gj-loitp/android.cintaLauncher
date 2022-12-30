@@ -35,24 +35,24 @@ open class FeedItemVH(
     private val swipeLayout = this.itemView as SwipeLayout
     val container: View? = itemView.findViewById(R.id.container)
     val vLine: View = itemView.findViewById<View>(R.id.vLine).apply {
-        setBackgroundColor(C.COLOR_0)
+        setBackgroundColor(C.getColorPrimary())
     }
     val source: TextView = itemView.findViewById<TextView>(R.id.source).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
     private val tvTime: TextView = itemView.findViewById<TextView>(R.id.tvTime).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
     val title: TextView = itemView.findViewById<TextView>(R.id.title).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
     val description: TextView = itemView.findViewById<TextView>(R.id.description).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
     val icon: ImageView = itemView.findViewById(R.id.icon)
     private val cvActionsContainer: MaterialCardView =
         itemView.findViewById<MaterialCardView>(R.id.cvActionsContainer).apply {
-            setCardBackgroundColor(C.COLOR_0)
+            setCardBackgroundColor(C.getColorPrimary())
         }
 
     private val separatorDrawable = GradientDrawable().apply {
@@ -100,7 +100,7 @@ open class FeedItemVH(
                 block = ImageView::setImageDrawable
             )
             if (isForceColorIcon) {
-                icon.setColorFilter(C.COLOR_0)
+                icon.setColorFilter(C.getColorPrimary())
             } else {
                 icon.setColorFilter(Color.TRANSPARENT)
             }
@@ -128,7 +128,7 @@ open class FeedItemVH(
         }
         swipeLayout.onSwipeAway = item::onDismiss
         swipeLayout.isSwipeAble = item.isDismissible
-        swipeLayout.setSwipeColor(C.COLOR_0)
-        swipeLayout.setIconColor(C.COLOR_PRIMARY)
+        swipeLayout.setSwipeColor(C.getColorPrimary())
+        swipeLayout.setIconColor(C.COLOR_BACKGROUND)
     }
 }

@@ -21,13 +21,13 @@ class HomeViewHolder(
     private var isForceColorIcon = C.getForceColorIcon()
     private val llClockContainer = itemView.findViewById<View>(R.id.llClockContainer)
     val tvWeekDay: TextView = llClockContainer.findViewById<TextView>(R.id.tvWeekDay).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
     val tvTime: TextView = llClockContainer.findViewById<TextView>(R.id.tvTime).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
     val tvDate: TextView = llClockContainer.findViewById<TextView>(R.id.tvDate).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
     private val notificationIconsAdapter = NotificationIconsAdapter()
 
@@ -44,7 +44,7 @@ class HomeViewHolder(
         }
     private val tvNotificationIconText: TextView =
         itemView.findViewById<TextView>(R.id.tvNotificationIconText).apply {
-            setTextColor(C.COLOR_0)
+            setTextColor(C.getColorPrimary())
         }
 
     init {

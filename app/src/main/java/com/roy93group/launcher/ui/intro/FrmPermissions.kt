@@ -59,65 +59,65 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
     private fun setupViews() {
         view?.let { v ->
             tickStorage = v.findViewById<ImageView>(R.id.tickStorage).apply {
-                setColorFilter(C.COLOR_0)
+                setColorFilter(C.getColorPrimary())
             }
             tickContacts = v.findViewById<ImageView>(R.id.tickContacts).apply {
-                setColorFilter(C.COLOR_0)
+                setColorFilter(C.getColorPrimary())
             }
             tickNotifications = v.findViewById<ImageView>(R.id.tickNotifications).apply {
-                setColorFilter(C.COLOR_0)
+                setColorFilter(C.getColorPrimary())
             }
             tickUsageAccess = v.findViewById<ImageView>(R.id.tickUsageAccess).apply {
-                setColorFilter(C.COLOR_0)
+                setColorFilter(C.getColorPrimary())
             }
 
             v.findViewById<TextView>(R.id.tvPermissions).apply {
-                setTextColor(C.COLOR_0)
+                setTextColor(C.getColorPrimary())
                 setSafeOnClickListener {
                     (activity as? IntroActivity)?.onBaseBackPressed()
                 }
             }
             v.findViewById<TextView>(R.id.tvStorage).apply {
-                setTextColor(C.COLOR_0)
+                setTextColor(C.getColorPrimary())
             }
             v.findViewById<TextView>(R.id.tvStorageDes).apply {
-                setTextColor(C.COLOR_0)
+                setTextColor(C.getColorPrimary())
             }
             v.findViewById<Button>(R.id.buttonStorage).apply {
-                setTextColor(C.COLOR_PRIMARY)
+                setTextColor(C.COLOR_BACKGROUND)
                 C.setBackground(this)
             }
 
             v.findViewById<TextView>(R.id.tvContacts).apply {
-                setTextColor(C.COLOR_0)
+                setTextColor(C.getColorPrimary())
             }
             v.findViewById<TextView>(R.id.tvContactsDes).apply {
-                setTextColor(C.COLOR_0)
+                setTextColor(C.getColorPrimary())
             }
             v.findViewById<Button>(R.id.buttonContacts).apply {
-                setTextColor(C.COLOR_PRIMARY)
+                setTextColor(C.COLOR_BACKGROUND)
                 C.setBackground(this)
             }
 
             v.findViewById<TextView>(R.id.tvNotifications).apply {
-                setTextColor(C.COLOR_0)
+                setTextColor(C.getColorPrimary())
             }
             v.findViewById<TextView>(R.id.tvNotificationsDes).apply {
-                setTextColor(C.COLOR_0)
+                setTextColor(C.getColorPrimary())
             }
             v.findViewById<Button>(R.id.buttonNotifications).apply {
-                setTextColor(C.COLOR_PRIMARY)
+                setTextColor(C.COLOR_BACKGROUND)
                 C.setBackground(this)
             }
 
             v.findViewById<TextView>(R.id.tvUsageAccess).apply {
-                setTextColor(C.COLOR_0)
+                setTextColor(C.getColorPrimary())
             }
             v.findViewById<TextView>(R.id.tvUsageAccessDes).apply {
-                setTextColor(C.COLOR_0)
+                setTextColor(C.getColorPrimary())
             }
             v.findViewById<Button>(R.id.buttonUsageAccess).apply {
-                setTextColor(C.COLOR_PRIMARY)
+                setTextColor(C.COLOR_BACKGROUND)
                 C.setBackground(this)
             }
         }

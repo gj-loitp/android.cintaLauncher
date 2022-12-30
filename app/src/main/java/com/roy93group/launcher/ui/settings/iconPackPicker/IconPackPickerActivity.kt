@@ -38,7 +38,7 @@ class IconPackPickerActivity : SettingsActivity() {
 
     private fun setupViews() {
         findViewById<AppCompatTextView>(R.id.tvIconPacks).apply {
-            setTextColor(C.COLOR_0)
+            setTextColor(C.getColorPrimary())
         }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val btGetMoreThemes = findViewById<AppCompatButton>(R.id.btGetMoreThemes).apply {

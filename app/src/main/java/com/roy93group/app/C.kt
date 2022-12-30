@@ -57,8 +57,18 @@ object C {
     private const val KEY_DISPLAY_APP_ICON = "KEY_DISPLAY_APP_ICON"
     private const val KEY_FORCE_COLOR_ICON = "KEY_FORCE_COLOR_ICON"
 
-    val COLOR_PRIMARY = LAppResource.getColor(R.color.colorPrimary)
-    var COLOR_0 = LAppResource.getColor(R.color.color0)
+    private var colorPrimary = LAppResource.getColor(R.color.color0)
+    fun setColorPrimary(c: Int) {
+        this.colorPrimary = c
+    }
+
+    fun getColorPrimary(): Int {
+        return this.colorPrimary
+    }
+
+    val COLOR_BACKGROUND = LAppResource.getColor(R.color.colorPrimary)
+
+    private var COLOR_0 = LAppResource.getColor(R.color.color0)
     private val COLOR_1 = LAppResource.getColor(R.color.color1)
     private val COLOR_2 = LAppResource.getColor(R.color.color2)
     private val COLOR_3 = LAppResource.getColor(R.color.color3)
@@ -75,7 +85,7 @@ object C {
     private val COLOR_14 = LAppResource.getColor(R.color.color14)
     private val COLOR_15 = LAppResource.getColor(R.color.color15)
 
-    val COLOR_FAST_SCROLL_TEXT = COLOR_PRIMARY
+    val COLOR_FAST_SCROLL_TEXT = COLOR_BACKGROUND
     const val COLOR_FAST_SCROLL_TEXT_HIGHLIGHT = Color.WHITE
 
     val colors = intArrayOf(
@@ -243,7 +253,8 @@ object C {
         if (v == null) {
             return
         }
-        when (COLOR_0) {
+        when (getColorPrimary()) {
+            COLOR_0 -> v.setBackgroundResource(R.drawable.ripple_color_0)
             COLOR_1 -> v.setBackgroundResource(R.drawable.ripple_color_1)
             COLOR_2 -> v.setBackgroundResource(R.drawable.ripple_color_2)
             COLOR_3 -> v.setBackgroundResource(R.drawable.ripple_color_3)
@@ -313,13 +324,16 @@ object C {
     }
 
     fun updateMainColor(newColor: Int) {
-        COLOR_0 = newColor
+        setColorPrimary(newColor)
         LSharedPrefsUtil.instance.putInt(KEY_MAIN_COLOR, COLOR_0)
     }
 
     fun getMainColor() {
-        COLOR_0 =
-            LSharedPrefsUtil.instance.getInt(KEY_MAIN_COLOR, LAppResource.getColor(R.color.color0))
+        val c = LSharedPrefsUtil.instance.getInt(
+            key = KEY_MAIN_COLOR,
+            defaultValue = LAppResource.getColor(R.color.color0)
+        )
+        setColorPrimary(c)
     }
 
     fun launchAppOption(

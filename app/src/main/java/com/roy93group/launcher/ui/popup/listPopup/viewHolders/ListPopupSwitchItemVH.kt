@@ -31,10 +31,10 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
             toggle.toggle()
         }
 
-        toggle.trackDrawable = C.generateTrackDrawable(C.COLOR_PRIMARY)
+        toggle.trackDrawable = C.generateTrackDrawable(C.COLOR_BACKGROUND)
         toggle.thumbDrawable = C.generateThumbDrawable(
             context = itemView.context,
-            color = C.COLOR_0
+            color = C.getColorPrimary()
         )
 
         applyIfNotNull(view = description, value = item.description) { view, value ->

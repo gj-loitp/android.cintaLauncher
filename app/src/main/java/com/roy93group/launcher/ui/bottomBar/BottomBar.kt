@@ -25,8 +25,8 @@ class BottomBar(val launcherActivity: LauncherActivity) {
 
     val cvSearchBarContainer: CardView =
         launcherActivity.findViewById<MaterialCardView>(R.id.cvSearchBarContainer).apply {
-            setCardBackgroundColor(C.COLOR_0)
-            strokeColor = C.COLOR_PRIMARY
+            setCardBackgroundColor(C.getColorPrimary())
+            strokeColor = C.COLOR_BACKGROUND
             setOnClickListener {
                 C.goToSearchScreen(it.context)
             }

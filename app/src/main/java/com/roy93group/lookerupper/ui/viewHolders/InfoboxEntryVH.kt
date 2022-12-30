@@ -15,9 +15,9 @@ import com.roy93group.launcher.R
  */
 class InfoboxEntryVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val label: TextView = itemView.findViewById<TextView>(R.id.label).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
     val value: TextView = itemView.findViewById<TextView>(R.id.value).apply {
-        setTextColor(C.COLOR_0)
+        setTextColor(C.getColorPrimary())
     }
 }
