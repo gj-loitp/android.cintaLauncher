@@ -5,7 +5,7 @@
     android:id="@+id/flHomeContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    tools:background="@color/color_test_primary"
     tools:context=".ui.LauncherActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -34,6 +34,7 @@
         app:layout_constraintBottom_toTopOf="@+id/fabBack"
         app:layout_constraintEnd_toEndOf="@+id/fabBack"
         app:srcCompat="@drawable/ic_settings_black_48dp"
+        app:useCompatPadding="true"
         tools:backgroundTint="@color/color_test_primary"
         tools:visibility="visible" />
 
@@ -49,6 +50,7 @@
         app:layout_constraintBottom_toTopOf="@+id/cvSearchBarContainer"
         app:layout_constraintEnd_toEndOf="@+id/cvSearchBarContainer"
         app:srcCompat="@drawable/ic_cross"
+        app:useCompatPadding="true"
         tools:backgroundTint="@color/color_test_primary"
         tools:visibility="visible" />
 

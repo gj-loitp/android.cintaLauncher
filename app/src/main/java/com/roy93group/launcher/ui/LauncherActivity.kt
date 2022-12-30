@@ -64,7 +64,6 @@ class LauncherActivity : BaseFontActivity() {
     private val mediaProvider = MediaProvider(this)
     private val suggestedAppsProvider = SuggestedAppsProvider()
 
-    @Suppress("unused")
     private val flHomeContainer: View by lazy {
         findViewById(R.id.flHomeContainer)
     }
