@@ -16,13 +16,13 @@ import com.roy93group.launcher.R
  * +840766040293
  * freuss47@gmail.com
  */
-class FrmSplash : FrmWithNext(R.layout.frm_intro_splash) {
+class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
 
     override fun next(
         activity: IntroActivity,
         isCheckedPolicy: Boolean
     ) {
-        activity.setFragment(FrmPermissions())
+        activity.setFragment(FrmSplashPrimary())
     }
 
     override fun onViewCreated(

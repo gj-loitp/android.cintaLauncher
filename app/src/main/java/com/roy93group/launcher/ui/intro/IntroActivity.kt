@@ -39,7 +39,7 @@ class IntroActivity : BaseFontActivity() {
     }
 
     private val stack = LinkedList<FrmWithNext>().apply {
-        push(FrmSplash())
+        push(FrmSplashBackground())
     }
 
     fun setFragment(fragment: FrmWithNext) {
@@ -119,6 +119,7 @@ class IntroActivity : BaseFontActivity() {
         }
     }
 
+    //TODO
     override fun onActivityResult(
         requestCode: Int,
         resultCode: Int,
