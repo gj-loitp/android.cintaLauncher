@@ -69,6 +69,7 @@ class LApplication : BaseApplication() {
 //        LUIUtil.fontForAll = Constants.FONT_PATH
         LUIUtil.setDarkTheme(true)
         C.getPrimaryColor()
+        C.getBackgroundColor()
     }
 
     override fun onAppInBackground() {

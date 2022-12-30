@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.SwitchCompat
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import com.loitp.annotation.IsAutoAnimation
 import com.loitp.annotation.IsFullScreen
@@ -29,6 +30,7 @@ import java.util.*
 @IsAutoAnimation(false)
 @IsKeepScreenOn(false)
 class IntroActivity : BaseFontActivity() {
+    private var cl: ConstraintLayout? = null
     private var toggle: SwitchCompat? = null
     private var btNext: AppCompatButton? = null
     private var tvPolicy: TextView? = null
@@ -77,6 +79,7 @@ class IntroActivity : BaseFontActivity() {
     }
 
     private fun setupViews() {
+        cl = findViewById(R.id.cl)
         toggle = findViewById(R.id.toggle)
         btNext = findViewById(R.id.btNext)
         tvPolicy = findViewById(R.id.tvPolicy)
@@ -130,9 +133,11 @@ class IntroActivity : BaseFontActivity() {
 //    }
 
     fun updateUI() {
+        cl?.setBackgroundColor(C.getColorBackground())
         toggle?.apply {
             trackDrawable = C.generateTrackDrawable(C.getColorPrimary())
-            thumbDrawable = C.generateThumbDrawable(context = context, color = C.getColorBackground())
+            thumbDrawable =
+                C.generateThumbDrawable(context = context, color = C.getColorBackground())
         }
         btNext?.apply {
             setTextColor(C.getColorBackground())
