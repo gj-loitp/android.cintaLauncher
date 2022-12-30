@@ -5,12 +5,7 @@ import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -21,6 +16,7 @@ import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.LauncherActivity
+import kotlinx.android.synthetic.main.frm_intro_permissions.*
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -30,145 +26,104 @@ import com.roy93group.launcher.ui.LauncherActivity
  * freuss47@gmail.com
  */
 class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
-
-    private var tickStorage: ImageView? = null
-    private var tickContacts: ImageView? = null
-    private var tickNotifications: ImageView? = null
-    private var tickUsageAccess: ImageView? = null
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+    override fun onViewCreated(
+        view: View,
         savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-            ?.apply(::updatePermissionStatus)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    ) {
         super.onViewCreated(view, savedInstanceState)
-
         setupViews()
         //disabled permission storage
-        view.findViewById<View>(R.id.tvStorage).isVisible = false
-        view.findViewById<View>(R.id.tvStorageDes).isVisible = false
-        view.findViewById<View>(R.id.buttonStorage).isVisible = false
-        view.findViewById<View>(R.id.tickStorage).isVisible = false
+        tvStorage.isVisible = false
+        tvStorageDes.isVisible = false
+        buttonStorage.isVisible = false
+        tickStorage.isVisible = false
+
+        updatePermissionStatus()
     }
 
     private fun setupViews() {
-        view?.let { v ->
-            tickStorage = v.findViewById<ImageView>(R.id.tickStorage).apply {
-                setColorFilter(C.getColorPrimary())
-            }
-            tickContacts = v.findViewById<ImageView>(R.id.tickContacts).apply {
-                setColorFilter(C.getColorPrimary())
-            }
-            tickNotifications = v.findViewById<ImageView>(R.id.tickNotifications).apply {
-                setColorFilter(C.getColorPrimary())
-            }
-            tickUsageAccess = v.findViewById<ImageView>(R.id.tickUsageAccess).apply {
-                setColorFilter(C.getColorPrimary())
-            }
+        val colorPrimary = C.getColorPrimary()
+        val colorBackground = C.getColorBackground()
 
-            v.findViewById<TextView>(R.id.tvPermissions).apply {
-                setTextColor(C.getColorPrimary())
-                setSafeOnClickListener {
-                    (activity as? IntroActivity)?.onBaseBackPressed()
-                }
+        tickStorage.setColorFilter(colorPrimary)
+        tickContacts.setColorFilter(colorPrimary)
+        tickNotifications.setColorFilter(colorPrimary)
+        tickUsageAccess.setColorFilter(colorPrimary)
+        tvPermissions.apply {
+            setTextColor(colorPrimary)
+            setSafeOnClickListener {
+                (activity as? IntroActivity)?.onBaseBackPressed()
             }
-            v.findViewById<TextView>(R.id.tvStorage).apply {
-                setTextColor(C.getColorPrimary())
-            }
-            v.findViewById<TextView>(R.id.tvStorageDes).apply {
-                setTextColor(C.getColorPrimary())
-            }
-            v.findViewById<Button>(R.id.buttonStorage).apply {
-                setTextColor(C.getColorBackground())
-                C.setBackground(this)
-            }
-
-            v.findViewById<TextView>(R.id.tvContacts).apply {
-                setTextColor(C.getColorPrimary())
-            }
-            v.findViewById<TextView>(R.id.tvContactsDes).apply {
-                setTextColor(C.getColorPrimary())
-            }
-            v.findViewById<Button>(R.id.buttonContacts).apply {
-                setTextColor(C.getColorBackground())
-                C.setBackground(this)
-            }
-
-            v.findViewById<TextView>(R.id.tvNotifications).apply {
-                setTextColor(C.getColorPrimary())
-            }
-            v.findViewById<TextView>(R.id.tvNotificationsDes).apply {
-                setTextColor(C.getColorPrimary())
-            }
-            v.findViewById<Button>(R.id.buttonNotifications).apply {
-                setTextColor(C.getColorBackground())
-                C.setBackground(this)
-            }
-
-            v.findViewById<TextView>(R.id.tvUsageAccess).apply {
-                setTextColor(C.getColorPrimary())
-            }
-            v.findViewById<TextView>(R.id.tvUsageAccessDes).apply {
-                setTextColor(C.getColorPrimary())
-            }
-            v.findViewById<Button>(R.id.buttonUsageAccess).apply {
-                setTextColor(C.getColorBackground())
-                C.setBackground(this)
-            }
+        }
+        tvStorage.setTextColor(colorPrimary)
+        tvStorageDes.setTextColor(colorPrimary)
+        buttonStorage.apply {
+            setTextColor(colorBackground)
+            C.setBackground(this)
+        }
+        tvContacts.setTextColor(colorPrimary)
+        tvContactsDes.setTextColor(colorPrimary)
+        buttonContacts.apply {
+            setTextColor(colorBackground)
+            C.setBackground(this)
+        }
+        tvNotifications.setTextColor(colorPrimary)
+        tvNotificationsDes.setTextColor(colorPrimary)
+        buttonNotifications.apply {
+            setTextColor(colorBackground)
+            C.setBackground(this)
+        }
+        tvUsageAccess.setTextColor(colorPrimary)
+        tvUsageAccessDes.setTextColor(colorPrimary)
+        buttonUsageAccess.apply {
+            setTextColor(colorBackground)
+            C.setBackground(this)
         }
     }
 
-    fun updatePermissionStatus() = updatePermissionStatus(requireView())
-
-    private fun updatePermissionStatus(v: View) = v.apply {
+    fun updatePermissionStatus() {
         if (
             ContextCompat.checkSelfPermission(
-                context,
+                requireContext(),
                 Manifest.permission.READ_EXTERNAL_STORAGE
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            findViewById<View>(R.id.buttonStorage).isVisible = false
-            tickStorage?.isVisible = true
+            buttonStorage.isVisible = false
+            tickStorage.isVisible = true
         } else {
-            findViewById<View>(R.id.buttonStorage).setOnClickListener {
+            buttonStorage.setSafeOnClickListener {
                 requestStoragePermission()
             }
         }
 
         if (
             ContextCompat.checkSelfPermission(
-                context,
+                requireContext(),
                 Manifest.permission.READ_CONTACTS
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            findViewById<View>(R.id.buttonContacts).isVisible = false
-            tickContacts?.isVisible = true
+            buttonContacts.isVisible = false
+            tickContacts.isVisible = true
         } else {
-            findViewById<View>(R.id.buttonContacts).setOnClickListener {
+            buttonContacts.setSafeOnClickListener {
                 requestContactsPermission()
             }
         }
 
-        if (
-            NotificationManagerCompat.getEnabledListenerPackages(context)
-                .contains(context.packageName)
+        if (NotificationManagerCompat.getEnabledListenerPackages(requireContext())
+                .contains(requireContext().packageName)
         ) {
-            findViewById<View>(R.id.buttonNotifications).isVisible = false
-            tickNotifications?.isVisible = true
+            buttonNotifications.isVisible = false
+            tickNotifications.isVisible = true
         } else {
-            findViewById<View>(R.id.buttonNotifications).setOnClickListener(::requestNotificationsPermission)
+            buttonNotifications.setSafeOnClickListener(::requestNotificationsPermission)
         }
 
-        if (SuggestionsManager.checkUsageAccessPermission(context)) {
-            findViewById<View>(R.id.buttonUsageAccess).isVisible = false
-            tickUsageAccess?.isVisible = true
+        if (SuggestionsManager.checkUsageAccessPermission(requireContext())) {
+            buttonUsageAccess.isVisible = false
+            tickUsageAccess.isVisible = true
         } else {
-            findViewById<View>(R.id.buttonUsageAccess).setOnClickListener(::requestUsageAccessPermission)
+            buttonUsageAccess.setSafeOnClickListener(::requestUsageAccessPermission)
         }
     }
 
@@ -178,7 +133,6 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
     ) {
         if (isFullPermission()) {
             if (isCheckedPolicy) {
-//                activity.setFragment(FrmQuickSettings())
                 val home = ComponentName(requireContext(), LauncherActivity::class.java)
                 requireContext().packageManager.setComponentEnabledSetting(
                     /* p0 = */ home,
@@ -201,10 +155,10 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                 LActivityUtil.tranIn(activity)
                 C.chooseLauncher(requireActivity())
             } else {
-                activity.showShortError(getString(R.string.pls_read_policy_first))
+                activity.showSnackBarError(getString(R.string.pls_read_policy_first))
             }
         } else {
-            activity.showShortError(getString(R.string.pls_grant_permission_first))
+            activity.showSnackBarError(getString(R.string.pls_grant_permission_first))
         }
     }
 
@@ -262,9 +216,8 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
         if (BuildConfig.DEBUG) {
             return true
         }
-        return (tickContacts?.isVisible == true
-                && tickNotifications?.isVisible == true
-                && tickUsageAccess?.isVisible == true
-                )
+        return (tickContacts.isVisible
+                && tickNotifications.isVisible
+                && tickUsageAccess.isVisible)
     }
 }
