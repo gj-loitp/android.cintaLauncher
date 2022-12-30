@@ -1,10 +1,6 @@
 package com.roy93group.launcher.ui.intro
 
 import android.os.Bundle
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.SwitchCompat
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import com.loitp.annotation.IsAutoAnimation
 import com.loitp.annotation.IsFullScreen
@@ -16,6 +12,7 @@ import com.loitp.core.utilities.LSocialUtil
 import com.loitp.core.utilities.LUIUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.R
+import kotlinx.android.synthetic.main.activity_intro.*
 import java.util.*
 
 /**
@@ -30,10 +27,6 @@ import java.util.*
 @IsAutoAnimation(false)
 @IsKeepScreenOn(false)
 class IntroActivity : BaseFontActivity() {
-    private var cl: ConstraintLayout? = null
-    private var toggle: SwitchCompat? = null
-    private var btNext: AppCompatButton? = null
-    private var tvPolicy: TextView? = null
 
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_intro
@@ -66,7 +59,6 @@ class IntroActivity : BaseFontActivity() {
         }
 
         setupViews()
-        setWallpaper()
     }
 
     private fun setWallpaper() {
@@ -79,23 +71,18 @@ class IntroActivity : BaseFontActivity() {
     }
 
     private fun setupViews() {
-        cl = findViewById(R.id.cl)
-        toggle = findViewById(R.id.toggle)
-        btNext = findViewById(R.id.btNext)
-        tvPolicy = findViewById(R.id.tvPolicy)
-
         updateUI()
 
-        toggle?.setOnCheckedChangeListener { _, b ->
-            btNext?.isVisible = b
+        toggle.setOnCheckedChangeListener { _, b ->
+            btNext.isVisible = b
         }
-        btNext?.setSafeOnClickListener {
+        btNext.setSafeOnClickListener {
             stack.peek()?.next(
                 activity = this,
                 isCheckedPolicy = toggle?.isChecked ?: true
             )
         }
-        tvPolicy?.setSafeOnClickListener {
+        tvPolicy.setSafeOnClickListener {
             LSocialUtil.openBrowserPolicy(this)
         }
     }
@@ -105,19 +92,26 @@ class IntroActivity : BaseFontActivity() {
         (stack.peek() as? FrmPermissions)?.updatePermissionStatus()
     }
 
+    override fun onPause() {
+        super.onPause()
+        setWallpaper()
+    }
+
     override fun onBaseBackPressed() {
         stack.pop()
         if (stack.isEmpty()) {
             super.onBaseBackPressed()
         } else {
-            supportFragmentManager
-                .beginTransaction()
-                .setCustomAnimations(
-                    R.anim.slide_in_left,
-                    R.anim.slide_out_right
-                )
-                .replace(R.id.flContainer, stack.peek()!!)
-                .commit()
+            stack.peek()?.let { frm ->
+                supportFragmentManager
+                    .beginTransaction()
+                    .setCustomAnimations(
+                        R.anim.slide_in_left,
+                        R.anim.slide_out_right
+                    )
+                    .replace(R.id.flContainer, frm)
+                    .commit()
+            }
         }
     }
 
@@ -133,18 +127,21 @@ class IntroActivity : BaseFontActivity() {
 //    }
 
     fun updateUI() {
-        cl?.setBackgroundColor(C.getColorBackground())
-        toggle?.apply {
-            trackDrawable = C.generateTrackDrawable(C.getColorPrimary())
+        val colorBackground = C.getColorBackground()
+        val colorPrimary = C.getColorPrimary()
+
+        cl.setBackgroundColor(colorBackground)
+        toggle.apply {
+            trackDrawable = C.generateTrackDrawable(colorPrimary)
             thumbDrawable =
-                C.generateThumbDrawable(context = context, color = C.getColorBackground())
+                C.generateThumbDrawable(context = context, color = colorBackground)
         }
-        btNext?.apply {
-            setTextColor(C.getColorBackground())
+        btNext.apply {
+            setTextColor(colorBackground)
             C.setBackground(this)
         }
-        tvPolicy?.apply {
-            setTextColor(C.getColorPrimary())
+        tvPolicy.apply {
+            setTextColor(colorPrimary)
             paint?.isUnderlineText = true
         }
     }
