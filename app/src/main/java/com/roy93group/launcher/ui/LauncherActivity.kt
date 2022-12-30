@@ -43,6 +43,7 @@ import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
 import com.roy93group.launcher.util.StackTraceActivity
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.launcherutils.LiveWallpaper
+import kotlinx.android.synthetic.main.activity_launcher.*
 import kotlin.math.abs
 
 /**
@@ -63,13 +64,6 @@ class LauncherActivity : BaseFontActivity() {
     private val notificationProvider = NotificationProvider(this)
     private val mediaProvider = MediaProvider(this)
     private val suggestedAppsProvider = SuggestedAppsProvider()
-
-    private val flHomeContainer: View by lazy {
-        findViewById(R.id.flHomeContainer)
-    }
-    val rvFeed: RecyclerView by lazy {
-        findViewById(R.id.rvFeed)
-    }
     val appDrawer by lazy {
         AppDrawer(this)
     }

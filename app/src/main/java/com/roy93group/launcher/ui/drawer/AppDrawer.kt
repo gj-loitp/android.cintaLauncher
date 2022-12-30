@@ -21,6 +21,7 @@ import com.roy93group.launcher.ui.view.scrollbar.Scrollbar
 import com.roy93group.views.BottomSheetCustomizeAppDrawer
 import io.posidon.android.conveniencelib.getStatusBarHeight
 import io.posidon.android.conveniencelib.onEnd
+import kotlinx.android.synthetic.main.activity_launcher.*
 
 /**
  * Updated by Loitp on 2022.12.16
