@@ -17,6 +17,7 @@ import com.loitp.data.ActivityData
 //TODO firebase set is_show_flickr_gallery true when app available
 
 //TODO background color black -> custom color
+//TODO reset o trang setting -> cho lam lai tu dau intro screen
 //TODO fav app
 //TODO lock app
 //TODO hide app
