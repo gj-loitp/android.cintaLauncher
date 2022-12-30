@@ -92,6 +92,7 @@ object C {
     private val COLOR_13 = LAppResource.getColor(R.color.color13)
     private val COLOR_14 = LAppResource.getColor(R.color.color14)
     private val COLOR_15 = LAppResource.getColor(R.color.color15)
+    private val COLOR_16 = LAppResource.getColor(R.color.color16)
 
     val COLOR_FAST_SCROLL_TEXT = getColorBackground()
     const val COLOR_FAST_SCROLL_TEXT_HIGHLIGHT = Color.WHITE
@@ -113,6 +114,7 @@ object C {
         COLOR_13,
         COLOR_14,
         COLOR_15,
+        COLOR_16,
     )
 
     fun searchIconPack(activity: Activity) {
@@ -278,6 +280,7 @@ object C {
             COLOR_13 -> v.setBackgroundResource(R.drawable.ripple_color_13)
             COLOR_14 -> v.setBackgroundResource(R.drawable.ripple_color_14)
             COLOR_15 -> v.setBackgroundResource(R.drawable.ripple_color_15)
+            COLOR_16 -> v.setBackgroundResource(R.drawable.ripple_color_16)
             else -> v.setBackgroundResource(R.drawable.ripple_color_0)
         }
     }
