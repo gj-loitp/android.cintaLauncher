@@ -49,6 +49,11 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
         super.onViewCreated(view, savedInstanceState)
 
         setupViews()
+        //disabled permission storage
+        view.findViewById<View>(R.id.tvStorage).isVisible = false
+        view.findViewById<View>(R.id.tvStorageDes).isVisible = false
+        view.findViewById<View>(R.id.buttonStorage).isVisible = false
+        view.findViewById<View>(R.id.tickStorage).isVisible = false
     }
 
     private fun setupViews() {
