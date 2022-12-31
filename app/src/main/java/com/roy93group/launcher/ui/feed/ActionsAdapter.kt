@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItemAction
-import com.roy93group.launcher.ui.drawer.viewHolders.colorBackground
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
 import kotlinx.android.synthetic.main.view_feed_item_action.view.*
 
@@ -41,6 +40,7 @@ class ActionsAdapter(
         holder: ActionViewHolder,
         i: Int
     ) {
+        val colorBackground = C.getColorBackground()
         val action = actions[i]
 
         holder.itemView.tvActionText.apply {

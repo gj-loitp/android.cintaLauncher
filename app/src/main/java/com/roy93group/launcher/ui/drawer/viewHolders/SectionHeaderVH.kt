@@ -23,8 +23,8 @@ class SectionHeaderItem(override val label: String) : AppDrawerAdapter.DrawerIte
     override fun getItemViewType() = SECTION_HEADER
 }
 
-val colorPrimary = C.getColorPrimary()
-val colorBackground = C.getColorBackground()
+private val colorPrimary = C.getColorPrimary()
+private val colorBackground = C.getColorBackground()
 
 @SuppressLint("ClickableViewAccessibility")
 fun bindSectionHeaderViewHolder(

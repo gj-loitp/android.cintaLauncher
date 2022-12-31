@@ -40,6 +40,7 @@ fun bindAppViewHolder(
     isDisplayAppIcon: Boolean,
     isForceColorIcon: Boolean,
 ) {
+    val colorPrimary = C.getColorPrimary()
     holder.cardView.setCardBackgroundColor(Color.TRANSPARENT)
 
     val banner = (item as? App)?.getBanner()

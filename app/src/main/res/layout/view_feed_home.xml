@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llClockContainer"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    tools:background="@color/color_test_background">
 
     <TextClock
         android:id="@+id/tvTime"
@@ -17,7 +18,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/red"
         tools:text="12:12"
         tools:textColor="@color/color_test_primary" />
 
@@ -35,7 +35,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvTime"
         app:layout_constraintTop_toTopOf="@+id/tvTime"
-        tools:background="@color/greenYellow"
         tools:text="Thu Nam"
         tools:textColor="@color/color_test_primary" />
 
@@ -53,7 +52,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvTime"
         app:layout_constraintTop_toBottomOf="@+id/tvWeekDay"
-        tools:background="@color/deepPink"
         tools:text="1 thang 12"
         tools:textColor="@color/color_test_primary" />
 

@@ -3,7 +3,6 @@ package com.roy93group.launcher.ui.feed.items.viewHolders.home
 import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
-import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,39 +12,24 @@ import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.notification.NotificationService
 import com.roy93group.launcher.ui.LauncherActivity
 import io.posidon.android.conveniencelib.getStatusBarHeight
+import kotlinx.android.synthetic.main.view_feed_home.view.*
 
 class HomeViewHolder(
     val launcherActivity: LauncherActivity,
     itemView: View,
 ) : RecyclerView.ViewHolder(itemView) {
     private var isForceColorIcon = C.getForceColorIcon()
-    private val llClockContainer = itemView.findViewById<View>(R.id.llClockContainer)
-    val tvWeekDay: TextView = llClockContainer.findViewById<TextView>(R.id.tvWeekDay).apply {
-        setTextColor(C.getColorPrimary())
-    }
-    val tvTime: TextView = llClockContainer.findViewById<TextView>(R.id.tvTime).apply {
-        setTextColor(C.getColorPrimary())
-    }
-    val tvDate: TextView = llClockContainer.findViewById<TextView>(R.id.tvDate).apply {
-        setTextColor(C.getColorPrimary())
-    }
     private val notificationIconsAdapter = NotificationIconsAdapter()
 
-    @Suppress("unused")
-    val rvNotificationIconList: RecyclerView =
-        itemView.findViewById<RecyclerView>(R.id.rvNotificationIconList).apply {
-            layoutManager =
-                LinearLayoutManager(
-                    /* context = */ itemView.context,
-                    /* orientation = */RecyclerView.HORIZONTAL,
-                    /* reverseLayout = */false
-                )
-            adapter = notificationIconsAdapter
-        }
-    private val tvNotificationIconText: TextView =
-        itemView.findViewById<TextView>(R.id.tvNotificationIconText).apply {
-            setTextColor(C.getColorPrimary())
-        }
+    private val rvNotificationIconList: RecyclerView = itemView.rvNotificationIconList.apply {
+        layoutManager =
+            LinearLayoutManager(
+                /* context = */ itemView.context,
+                /* orientation = */RecyclerView.HORIZONTAL,
+                /* reverseLayout = */false
+            )
+        adapter = notificationIconsAdapter
+    }
 
     init {
         NotificationService.setOnUpdate(javaClass.name) {
@@ -53,7 +37,7 @@ class HomeViewHolder(
                 updateNotificationIcons(isForceColorIcon)
             }
         }
-        llClockContainer.setPadding(
+        itemView.llClockContainer.setPadding(
             /* left = */ 0,
             /* top = */itemView.context.getStatusBarHeight(),
             /* right = */0,
@@ -68,10 +52,10 @@ class HomeViewHolder(
             it.key?.newDrawable()
         }
         if (icons.isEmpty()) {
-            tvNotificationIconText.isVisible = false
+            itemView.tvNotificationIconText.isVisible = false
             rvNotificationIconList.isVisible = false
         } else {
-            tvNotificationIconText.isVisible = true
+            itemView.tvNotificationIconText.isVisible = true
             rvNotificationIconList.isVisible = true
 
             this.isForceColorIcon = isForceColorIcon
@@ -80,12 +64,11 @@ class HomeViewHolder(
                     isForceColorIcon = isForceColorIcon
                 )
             ) {
-                tvNotificationIconText.text =
-                    itemView.resources.getQuantityString(
-                        /* id = */ R.plurals.x_notifications,
-                        /* quantity = */ icons.size,
-                        /* ...formatArgs = */ icons.size
-                    )
+                itemView.tvNotificationIconText.text = itemView.resources.getQuantityString(
+                    /* id = */ R.plurals.x_notifications,
+                    /* quantity = */ icons.size,
+                    /* ...formatArgs = */ icons.size
+                )
             }
         }
     }
@@ -101,16 +84,28 @@ fun bindHomeViewHolder(
     onClickClock: ((Unit) -> Unit),
     onClickCalendar: ((Unit) -> Unit)
 ) {
+    val colorPrimary = C.getColorPrimary()
+//    val colorBackground = C.getColorBackground()
+
     holder.updateNotificationIcons(isForceColorIcon)
 
-    holder.tvTime.setSafeOnClickListener {
-        onClickClock.invoke(Unit)
+    holder.itemView.tvTime.apply {
+        setTextColor(colorPrimary)
+        setSafeOnClickListener {
+            onClickClock.invoke(Unit)
+        }
     }
-    holder.tvWeekDay.setSafeOnClickListener {
-        onClickCalendar.invoke(Unit)
+    holder.itemView.tvWeekDay.apply {
+        setTextColor(colorPrimary)
+        setSafeOnClickListener {
+            onClickCalendar.invoke(Unit)
+        }
     }
-    holder.tvDate.setSafeOnClickListener {
-        onClickCalendar.invoke(Unit)
+    holder.itemView.tvDate.apply {
+        setTextColor(colorPrimary)
+        setSafeOnClickListener {
+            onClickCalendar.invoke(Unit)
+        }
     }
 
     holder.itemView.setOnTouchListener { _, e ->
