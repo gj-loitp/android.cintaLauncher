@@ -114,7 +114,8 @@ class AppDrawerAdapter(
                 isFromSuggest = false,
                 isDisplayAppIcon = isDisplayAppIcon,
                 isForceColorIcon = isForceColorIcon,
-                isLastItem = i == (itemCount - 1)
+                isLastItem = i == (itemCount - 1),
+                index = i,
             )
         }
     }
