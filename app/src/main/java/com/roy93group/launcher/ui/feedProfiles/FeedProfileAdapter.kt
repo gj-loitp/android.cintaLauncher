@@ -69,13 +69,23 @@ class FeedProfileAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(items: List<FeedProfile>) {
         this.items = items
-        notifyItemRangeChanged(0, itemCount)
+        try {
+            notifyItemRangeChanged(0, itemCount)
+        } catch (e: Exception) {
+            notifyDataSetChanged()
+        }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(vararg items: FeedProfile) {
         this.items = items.toList()
-        notifyItemRangeChanged(0, itemCount)
+        try {
+            notifyItemRangeChanged(0, itemCount)
+        } catch (e: Exception) {
+            notifyDataSetChanged()
+        }
     }
 }

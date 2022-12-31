@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui.feed
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -41,20 +42,35 @@ class FeedAdapter(
     private var isForceColorIcon = C.getForceColorIcon()
     private var items: List<FeedItem> = emptyList()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setDisplayAppIcon(isDisplayAppIcon: Boolean) {
         this.isDisplayAppIcon = isDisplayAppIcon
-        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
+        try {
+            notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
+        } catch (e: Exception) {
+            notifyDataSetChanged()
+        }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setForceColorIcon(isForceColorIcon: Boolean) {
         this.isForceColorIcon = isForceColorIcon
-        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
+        try {
+            notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
+        } catch (e: Exception) {
+            notifyDataSetChanged()
+        }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun resetConfig(isDisplayAppIcon: Boolean, isForceColorIcon: Boolean) {
         this.isDisplayAppIcon = isDisplayAppIcon
         this.isForceColorIcon = isForceColorIcon
-        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
+        try {
+            notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
+        } catch (e: Exception) {
+            notifyDataSetChanged()
+        }
     }
 
     private fun getFeedItem(i: Int) = items[i - 1]

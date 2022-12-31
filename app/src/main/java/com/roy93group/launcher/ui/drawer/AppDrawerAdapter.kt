@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui.drawer
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -34,23 +35,38 @@ class AppDrawerAdapter(
     private var isDisplayAppIcon = C.getDisplayAppIcon()
     private var isForceColorIcon = C.getForceColorIcon()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setIsDisplayAppIcon(isDisplayAppIcon: Boolean) {
         this.isDisplayAppIcon = isDisplayAppIcon
-        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ items.size)
+        try {
+            notifyItemRangeChanged(0, itemCount)
+        } catch (e: Exception) {
+            notifyDataSetChanged()
+        }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun resetIsDisplayAppIcon(
         isDisplayAppIcon: Boolean,
         isForceColorIcon: Boolean
     ) {
         this.isDisplayAppIcon = isDisplayAppIcon
         this.isForceColorIcon = isForceColorIcon
-        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ items.size)
+        try {
+            notifyItemRangeChanged(0, itemCount)
+        } catch (e: Exception) {
+            notifyDataSetChanged()
+        }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setForceColorIcon(isForceColorIcon: Boolean) {
         this.isForceColorIcon = isForceColorIcon
-        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ items.size)
+        try {
+            notifyItemRangeChanged(0, itemCount)
+        } catch (e: Exception) {
+            notifyDataSetChanged()
+        }
     }
 
     interface DrawerItem {
@@ -99,6 +115,7 @@ class AppDrawerAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateAppSections(
         appSections: List<List<App>>,
         activity: Activity,
@@ -112,7 +129,11 @@ class AppDrawerAdapter(
         items = newItems.toTypedArray()
         controller.updateAdapterIndexer(this, appSections)
         activity.runOnUiThread {
-            notifyItemRangeChanged(0, itemCount)
+            try {
+                notifyItemRangeChanged(0, itemCount)
+            } catch (e: Exception) {
+                notifyDataSetChanged()
+            }
         }
     }
 

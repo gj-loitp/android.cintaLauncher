@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.suggestions
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
@@ -53,6 +54,7 @@ class SuggestionsAdapter(
         )
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(
         items: List<LauncherItem>,
         isDisplayAppIcon: Boolean,
@@ -61,6 +63,10 @@ class SuggestionsAdapter(
         this.items = items
         this.isDisplayAppIcon = isDisplayAppIcon
         this.isForceColorIcon = isForceColorIcon
-        notifyItemRangeChanged(0, itemCount)
+        try {
+            notifyItemRangeChanged(0, itemCount)
+        } catch (e: Exception) {
+            notifyDataSetChanged()
+        }
     }
 }

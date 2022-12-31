@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.home
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -54,11 +55,16 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
 
     override fun getItemCount() = items.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(items: List<Drawable>, isForceColorIcon: Boolean): Boolean {
         val numberChanged = this.items.size != items.size
         this.items = items
         this.isForceColorIcon = isForceColorIcon
-        notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
+        try {
+            notifyItemRangeChanged(/* positionStart = */ 0, /* itemCount = */ itemCount)
+        } catch (e: Exception) {
+            notifyDataSetChanged()
+        }
         return numberChanged
     }
 }
