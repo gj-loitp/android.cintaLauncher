@@ -19,6 +19,7 @@ class HomeViewHolder(
     itemView: View,
 ) : RecyclerView.ViewHolder(itemView) {
     private var isForceColorIcon = C.getForceColorIcon()
+    private var colorPrimary = C.getColorPrimary()
     private val notificationIconsAdapter = NotificationIconsAdapter()
 
     private val rvNotificationIconList: RecyclerView = itemView.rvNotificationIconList.apply {
@@ -34,7 +35,10 @@ class HomeViewHolder(
     init {
         NotificationService.setOnUpdate(javaClass.name) {
             itemView.post {
-                updateNotificationIcons(isForceColorIcon)
+                updateNotificationIcons(
+                    isForceColorIcon = isForceColorIcon,
+                    colorPrimary = colorPrimary
+                )
             }
         }
         itemView.llClockContainer.setPadding(
@@ -45,12 +49,16 @@ class HomeViewHolder(
         )
     }
 
-    fun updateNotificationIcons(isForceColorIcon: Boolean) {
+    fun updateNotificationIcons(
+        isForceColorIcon: Boolean,
+        colorPrimary: Int
+    ) {
         val icons = NotificationService.notifications.groupBy {
             it.sourceIcon?.constantState
         }.mapNotNull {
             it.key?.newDrawable()
         }
+        itemView.tvNotificationIconText.setTextColor(colorPrimary)
         if (icons.isEmpty()) {
             itemView.tvNotificationIconText.isVisible = false
             rvNotificationIconList.isVisible = false
@@ -87,7 +95,7 @@ fun bindHomeViewHolder(
     val colorPrimary = C.getColorPrimary()
 //    val colorBackground = C.getColorBackground()
 
-    holder.updateNotificationIcons(isForceColorIcon)
+    holder.updateNotificationIcons(isForceColorIcon = isForceColorIcon, colorPrimary = colorPrimary)
 
     holder.itemView.tvTime.apply {
         setTextColor(colorPrimary)

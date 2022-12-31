@@ -128,12 +128,13 @@ class FeedAdapter(
                     .inflate(R.layout.view_feed_item_progress, parent, false),
             )
 
-
-
             TYPE_MEDIA -> FeedItemMediaVH(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_media, parent, false),
             )
+
+
+
             TYPE_SUGGESTED -> SuggestedVH(
                 launcherActivity = launcherActivity,
                 LayoutInflater.from(parent.context)
