@@ -81,12 +81,13 @@ class LauncherActivity : BaseFontActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        C.changeStatusBarContrastStyle(this)
         fetchRemoteConfig()
         StackTraceActivity.init(applicationContext)
         configureWindow()
         settings.init(applicationContext)
 
+        flHomeContainer.setBackgroundColor(C.getColorBackground())
         feedAdapter = FeedAdapter(this).apply {
             setHasStableIds(true)
         }
