@@ -2,10 +2,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@color/colorPrimary">
+    tools:background="@color/color_test_background">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lav"
@@ -39,7 +40,8 @@
     <FrameLayout
         android:id="@+id/cvSearchBarContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_padding_medium">
 
         <include layout="@layout/activity_search_search_bar" />
     </FrameLayout>

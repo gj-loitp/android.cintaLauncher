@@ -73,6 +73,7 @@ class SearchActivity : BaseFontActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        C.changeStatusBarContrastStyle(this)
 
         settings.init(this)
         searcher.onCreate(this)
@@ -80,15 +81,13 @@ class SearchActivity : BaseFontActivity() {
     }
 
     private fun setupViews() {
-        cardView.apply {
-            setCardBackgroundColor(C.getColorPrimary())
-        }
-        lav.apply {
-            changeLayersColor(C.getColorPrimary())
-        }
-        lavNoData.apply {
-            changeLayersColor(C.getColorPrimary())
-        }
+        val colorPrimary = C.getColorPrimary()
+        val colorBackground = C.getColorBackground()
+
+        fl.setBackgroundColor(colorBackground)
+        cardView.setCardBackgroundColor(colorPrimary)
+        lav.changeLayersColor(colorPrimary)
+        lavNoData.changeLayersColor(colorPrimary)
         adapter = SearchAdapter(activity = this, recyclerView = recyclerView, isOnCard = false)
         recyclerView.run {
             layoutManager =
