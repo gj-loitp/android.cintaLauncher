@@ -37,13 +37,9 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
                     C.vibrate(milliseconds = 10)
                     val result = C.updateBackgroundColor(c)
                     if (result) {
-                        if (activity is IntroActivity) {
-                            (activity as IntroActivity).updateUI()
-                        }
+                        (activity as? IntroActivity)?.updateUI()
                     } else {
-                        if (activity is IntroActivity) {
-                            (activity as IntroActivity).showSnackBarError(getString(R.string.err_same_color))
-                        }
+                        (activity as? IntroActivity)?.showSnackBarError(getString(R.string.err_same_color))
                     }
                 }
             })
@@ -56,8 +52,10 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
     }
 
     private fun updateUI() {
-        ivLogo.setColorFilter(C.getColorPrimary())
-        tv.setTextColor(C.getColorPrimary())
-        tvDes.setTextColor(C.getColorPrimary())
+        val colorPrimary = C.getColorPrimary()
+
+        ivLogo.setColorFilter(colorPrimary)
+        tv.setTextColor(colorPrimary)
+        tvDes.setTextColor(colorPrimary)
     }
 }

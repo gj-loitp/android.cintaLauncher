@@ -42,5 +42,6 @@
         android:layout_marginTop="@dimen/margin_padding_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:lcpOrientation="horizontal"
-        app:lcpSelectedColorIndex="0" />
+        app:lcpSelectedColorIndex="0"
+        tools:background="@color/color_test_primary" />
 </androidx.constraintlayout.widget.ConstraintLayout>
