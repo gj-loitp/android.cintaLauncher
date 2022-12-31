@@ -2,11 +2,9 @@ package com.roy93group.launcher.ui.feed.items.viewHolders
 
 import android.content.res.ColorStateList
 import android.view.View
-import android.widget.ProgressBar
-import com.roy93group.app.C
-import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemWithProgress
+import kotlinx.android.synthetic.main.view_feed_item_progress.view.*
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -18,7 +16,6 @@ import com.roy93group.launcher.data.feed.items.FeedItemWithProgress
 class FeedItemProgressVH(
     itemView: View,
 ) : FeedItemVH(itemView) {
-    private val progress: ProgressBar = itemView.findViewById(R.id.progress)
 
     override fun onBind(
         feedItem: FeedItem,
@@ -28,12 +25,12 @@ class FeedItemProgressVH(
         super.onBind(feedItem, isDisplayAppIcon, isForceColorIcon)
         feedItem as FeedItemWithProgress
 
-        progress.apply {
+        itemView.progress.apply {
             max = feedItem.max
             progress = feedItem.progress
             isIndeterminate = false
-            progressTintList = ColorStateList.valueOf(C.getColorPrimary())
-            progressBackgroundTintList = ColorStateList.valueOf(C.getColorPrimary())
+            progressTintList = ColorStateList.valueOf(colorPrimary)
+            progressBackgroundTintList = ColorStateList.valueOf(colorPrimary)
         }
     }
 }

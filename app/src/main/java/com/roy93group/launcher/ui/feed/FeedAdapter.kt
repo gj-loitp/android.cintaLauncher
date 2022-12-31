@@ -119,8 +119,6 @@ class FeedAdapter(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_small, parent, false),
             )
-
-
             TYPE_BIG_IMAGE -> FeedItemImageVH(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_image, parent, false),
@@ -129,6 +127,9 @@ class FeedAdapter(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_progress, parent, false),
             )
+
+
+
             TYPE_MEDIA -> FeedItemMediaVH(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_media, parent, false),
