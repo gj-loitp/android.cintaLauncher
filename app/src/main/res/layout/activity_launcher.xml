@@ -26,9 +26,7 @@
         android:id="@+id/fabSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_padding_medium"
         android:contentDescription="@string/app_name"
-        android:tint="@color/colorPrimary"
         android:visibility="gone"
         app:borderWidth="0dp"
         app:layout_constraintBottom_toTopOf="@+id/fabBack"
@@ -37,15 +35,14 @@
         app:useCompatPadding="true"
         tools:backgroundTint="@color/color_test_primary"
         tools:ignore="DuplicateSpeakableTextCheck"
+        tools:tint="@color/color_test_background"
         tools:visibility="visible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_padding_medium"
         android:contentDescription="@string/app_name"
-        android:tint="@color/colorPrimary"
         android:visibility="gone"
         app:borderWidth="0dp"
         app:layout_constraintBottom_toTopOf="@+id/cvSearchBarContainer"
@@ -53,6 +50,7 @@
         app:srcCompat="@drawable/ic_cross"
         app:useCompatPadding="true"
         tools:backgroundTint="@color/color_test_primary"
+        tools:tint="@color/color_test_background"
         tools:visibility="visible" />
 
     <com.google.android.material.card.MaterialCardView
@@ -76,7 +74,7 @@
             android:layout_height="@dimen/search_bar_height"
             android:padding="@dimen/margin_padding_small"
             android:src="@drawable/ic_search"
-            app:tint="@color/colorPrimary" />
+            app:tint="@color/color_test_background" />
 
         <com.roy93group.launcher.ui.view.scrollbar.ScrollbarIconView
             android:id="@+id/appDrawerIcon"

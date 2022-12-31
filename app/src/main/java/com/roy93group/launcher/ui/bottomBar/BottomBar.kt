@@ -32,6 +32,8 @@ class BottomBar(val launcherActivity: LauncherActivity) {
             C.goToSearchScreen(it.context)
         }
     }
+
+    @Suppress("unused")
     val ivSearch: AppCompatImageView = launcherActivity.ivSearch.apply {
         setColorFilter(colorBackground)
     }
@@ -40,12 +42,14 @@ class BottomBar(val launcherActivity: LauncherActivity) {
     }
     val fabBack: FloatingActionButton = launcherActivity.fabBack.apply {
         C.setBackgroundTintList(this)
+        setColorFilter(colorBackground)
         this.setOnClickListener {
             launcherActivity.appDrawer.close()
         }
     }
     val fabSetting: FloatingActionButton = launcherActivity.fabSetting.apply {
         C.setBackgroundTintList(this)
+        setColorFilter(colorBackground)
         this.setOnClickListener {
             DrawerLongPressPopup.show(
                 launcherActivity = launcherActivity,

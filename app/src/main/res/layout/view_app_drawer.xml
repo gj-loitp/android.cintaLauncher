@@ -7,7 +7,7 @@
     android:clickable="true"
     android:focusable="true"
     android:visibility="gone"
-    tools:background="@color/color_test_primary"
+    tools:background="@color/color_test_background"
     tools:visibility="visible">
 
     <androidx.recyclerview.widget.RecyclerView
