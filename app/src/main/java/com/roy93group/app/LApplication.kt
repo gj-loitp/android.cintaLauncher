@@ -18,6 +18,7 @@ import com.loitp.data.ActivityData
 
 //TODO background color black -> custom color
 //TODO reset o trang setting -> cho lam lai tu dau intro screen
+//TODO check crash do notify data change
 //TODO setting auto change color
 //TODO apple recolor
 //TODO fav app

@@ -5,7 +5,7 @@
     android:id="@+id/llRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:cardBackgroundColor="@color/color_test_primary">
+    tools:cardBackgroundColor="@color/color_test_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -24,27 +24,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/colorPrimary" />
+            tools:tint="@color/color_test_primary" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_50"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/ivSlider"
-            tools:text="Setting" />
+            tools:text="Setting"
+            tools:textColor="@color/color_test_primary" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_large"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-            tools:text="App sorting" />
+            tools:text="App sorting"
+            tools:textColor="@color/color_test_primary" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -56,25 +56,25 @@
                 android:id="@+id/rb0"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/colorPrimary"
-                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_medium"
                 android:textStyle="bold"
+                tools:buttonTint="@color/color_test_primary"
                 tools:checked="false"
                 tools:ignore="TouchTargetSizeCheck"
-                tools:text="Alphabetic" />
+                tools:text="Alphabetic"
+                tools:textColor="@color/color_test_primary" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/rb1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/colorPrimary"
-                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/txt_medium"
                 android:textStyle="bold"
+                tools:buttonTint="@color/color_test_primary"
                 tools:checked="false"
                 tools:ignore="TouchTargetSizeCheck"
-                tools:text="By hue" />
+                tools:text="By hue"
+                tools:textColor="@color/color_test_primary" />
         </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

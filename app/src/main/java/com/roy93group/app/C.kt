@@ -22,6 +22,7 @@ import android.provider.CalendarContract
 import android.provider.Settings
 import android.util.StateSet
 import android.view.View
+import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
@@ -522,5 +523,18 @@ object C {
             colorStatusBar = colorBackground,
             colorNavigationBar = colorBackground
         )
+    }
+
+    fun setTintRadioButton(v: RadioButton, color: Int) {
+        val colorStateList = ColorStateList(
+            arrayOf(
+                intArrayOf(-android.R.attr.state_enabled),
+                intArrayOf(android.R.attr.state_enabled)
+            ), intArrayOf(
+                color,  // disabled
+                color // enabled
+            )
+        )
+        v.buttonTintList = colorStateList
     }
 }

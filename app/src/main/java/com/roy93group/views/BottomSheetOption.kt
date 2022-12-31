@@ -7,17 +7,17 @@ package com.roy93group.views
  * +840766040293
  * freuss47@gmail.com
  */
+
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
-import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.card.MaterialCardView
 import com.roy93group.app.C
 import com.roy93group.launcher.R
+import kotlinx.android.synthetic.main.bottom_sheet_option.*
+
 
 class BottomSheetOption(
     private val isCancelableFragment: Boolean = true,
@@ -29,11 +29,6 @@ class BottomSheetOption(
     private val onConfirm: ((Int) -> Unit)? = null,
     private val onDismiss: ((Unit) -> Unit)? = null
 ) : BottomSheetDialogFragment() {
-    private var llRoot: ViewGroup? = null
-    private var tvTitle: TextView? = null
-    private var tvDes: TextView? = null
-    private var rb0: RadioButton? = null
-    private var rb1: RadioButton? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,7 +39,10 @@ class BottomSheetOption(
         return inflater.inflate(R.layout.bottom_sheet_option, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         // https://stackoverflow.com/questions/37104960/bottomsheetdialog-with-transparent-background
@@ -55,7 +53,7 @@ class BottomSheetOption(
             }
         }
 
-        setupViews(view)
+        setupViews()
     }
 
     override fun onDismiss(dialog: DialogInterface) {
@@ -63,39 +61,49 @@ class BottomSheetOption(
         onDismiss?.invoke(Unit)
     }
 
-    private fun setupViews(view: View) {
-        llRoot = view.findViewById<MaterialCardView>(R.id.llRoot).apply {
-            setCardBackgroundColor(C.getColorPrimary())
+    private fun setupViews() {
+        val colorPrimary = C.getColorPrimary()
+        val colorBackground = C.getColorBackground()
+
+        llRoot.apply {
+            setCardBackgroundColor(colorBackground)
             C.setCornerCardView(activity = requireActivity(), cardView = this)
         }
-        tvTitle = view.findViewById<TextView>(R.id.tvTitle).apply {
+        ivSlider.setColorFilter(colorPrimary)
+        tvTitle.apply {
             text = title
+            setTextColor(colorPrimary)
         }
-        tvDes = view.findViewById<TextView>(R.id.tvDes).apply {
+        tvDes.apply {
             text = des
+            setTextColor(colorPrimary)
         }
 
-        rb0 = view.findViewById<RadioButton>(R.id.rb0).apply {
+        rb0.apply {
             text = value0
+            setTextColor(colorPrimary)
+            C.setTintRadioButton(this, colorPrimary)
         }
-        rb1 = view.findViewById<RadioButton>(R.id.rb1).apply {
+        rb1.apply {
             text = value1
+            setTextColor(colorPrimary)
+            C.setTintRadioButton(this, colorPrimary)
         }
 
         when (firstIndexCheck) {
-            0 -> rb0?.isChecked = true
-            1 -> rb1?.isChecked = true
+            0 -> rb0.isChecked = true
+            1 -> rb1.isChecked = true
             else -> {}
         }
 
-        rb0?.setOnCheckedChangeListener { _, b ->
+        rb0.setOnCheckedChangeListener { _, b ->
             if (b) {
                 C.vibrate(milliseconds = 500)
                 onConfirm?.invoke(0)
                 dismiss()
             }
         }
-        rb1?.setOnCheckedChangeListener { _, b ->
+        rb1.setOnCheckedChangeListener { _, b ->
             if (b) {
                 C.vibrate(milliseconds = 500)
                 onConfirm?.invoke(1)
