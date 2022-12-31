@@ -6,12 +6,9 @@ import android.os.Bundle
 import android.view.DragEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.airbnb.lottie.LottieAnimationView
-import com.google.android.material.card.MaterialCardView
 import com.loitp.annotation.IsAutoAnimation
 import com.loitp.annotation.IsFullScreen
 import com.loitp.annotation.IsKeepScreenOn
@@ -32,6 +29,8 @@ import com.roy93group.lookerupper.data.providers.ContactProvider
 import com.roy93group.lookerupper.data.providers.DuckDuckGoProvider
 import com.roy93group.lookerupper.data.results.SearchResult
 import com.roy93group.lookerupper.ui.adapter.SearchAdapter
+import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.activity_search_search_bar.*
 import kotlin.math.abs
 
 /**
@@ -49,8 +48,6 @@ class SearchActivity : BaseFontActivity() {
 
     lateinit var adapter: SearchAdapter
     val settings = Settings()
-    private var lavNoData: LottieAnimationView? = null
-    private var etSearchBarText: EditText? = null
 
     private val searcher = Searcher(
         settings = settings,
@@ -70,10 +67,6 @@ class SearchActivity : BaseFontActivity() {
         }
     }
 
-    private val cvSearchBarContainer: View by lazy {
-        findViewById(R.id.cvSearchBarContainer)
-    }
-
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_search
     }
@@ -87,14 +80,13 @@ class SearchActivity : BaseFontActivity() {
     }
 
     private fun setupViews() {
-        findViewById<MaterialCardView>(R.id.cardView).apply {
+        cardView.apply {
             setCardBackgroundColor(C.getColorPrimary())
         }
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val lav = findViewById<LottieAnimationView>(R.id.lav).apply {
+        lav.apply {
             changeLayersColor(C.getColorPrimary())
         }
-        lavNoData = findViewById<LottieAnimationView>(R.id.lavNoData).apply {
+        lavNoData.apply {
             changeLayersColor(C.getColorPrimary())
         }
         adapter = SearchAdapter(activity = this, recyclerView = recyclerView, isOnCard = false)
@@ -122,7 +114,6 @@ class SearchActivity : BaseFontActivity() {
                 )
             }
         }
-        etSearchBarText = findViewById(R.id.etSearchBarText)
         etSearchBarText?.run {
             LUIUtil.addTextChangedListener(
                 editText = this,
