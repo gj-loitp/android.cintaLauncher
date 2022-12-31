@@ -68,13 +68,12 @@
         android:layout_marginTop="@dimen/margin_padding_small"
         android:layout_marginEnd="@dimen/margin_padding_small"
         app:cardCornerRadius="@dimen/round_medium"
-        app:cardElevation="@dimen/w_3"
+        app:cardElevation="@dimen/margin_padding_small"
         app:cardUseCompatPadding="false"
         app:layout_constraintEnd_toStartOf="@+id/title"
         app:layout_constraintStart_toStartOf="@+id/vLine"
         app:layout_constraintTop_toBottomOf="@+id/source"
-        tools:strokeColor="@color/color_test_primary"
-        tools:strokeWidth="@dimen/w_1">
+        >
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image"

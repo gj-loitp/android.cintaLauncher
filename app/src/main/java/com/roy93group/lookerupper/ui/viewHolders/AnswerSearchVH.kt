@@ -17,7 +17,6 @@ class AnswerSearchVH(
 ) : SearchVH(itemView) {
 
     val card: MaterialCardView = itemView.findViewById<MaterialCardView>(R.id.card).apply {
-        strokeColor = C.getColorPrimary()
     }
     val title: TextView = card.findViewById<TextView>(R.id.title).apply {
         setTextColor(C.getColorPrimary())

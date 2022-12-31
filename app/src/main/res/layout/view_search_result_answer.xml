@@ -5,12 +5,10 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/colorPrimary"
     app:cardCornerRadius="@dimen/round_medium"
-    app:cardElevation="@dimen/w_3"
+    app:cardElevation="@dimen/margin_padding_small"
     app:cardUseCompatPadding="true"
-    tools:strokeColor="@color/color_test_primary"
-    tools:strokeWidth="@dimen/w_1">
+    tools:cardBackgroundColor="@color/color_test_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -50,13 +48,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_padding_medium"
             app:cardCornerRadius="@dimen/round_medium"
-            app:cardElevation="@dimen/w_3"
+            app:cardElevation="@dimen/margin_padding_small"
             app:cardUseCompatPadding="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rvInfoBox"
-            tools:cardBackgroundColor="@color/color_test_primary"
-            tools:strokeColor="@color/color_test_primary"
-            tools:strokeWidth="@dimen/w_1">
+            tools:cardBackgroundColor="@color/color_test_primary">
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
