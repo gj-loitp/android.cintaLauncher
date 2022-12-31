@@ -1,8 +1,6 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
@@ -11,6 +9,7 @@ import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.lookerupper.data.results.ContactResult
 import com.roy93group.lookerupper.data.results.SearchResult
+import kotlinx.android.synthetic.main.view_search_result_contact.view.*
 
 /**
  * Updated by Loitp on 2022.12.18
@@ -22,11 +21,8 @@ import com.roy93group.lookerupper.data.results.SearchResult
 class ContactSearchVH(
     itemView: View
 ) : SearchVH(itemView) {
-
-    val icon: ImageView = itemView.findViewById(R.id.icon)
-    val text: TextView = itemView.findViewById<TextView>(R.id.text).apply {
-        setTextColor(C.getColorPrimary())
-    }
+    private val colorPrimary = C.getColorPrimary()
+//    private val colorBackground = C.getColorBackground()
 
     override fun onBind(
         result: SearchResult,
@@ -35,24 +31,29 @@ class ContactSearchVH(
     ) {
         result as ContactResult
 
-        if (isDisplayAppIcon) {
-            icon.isVisible = true
-            Glide.with(itemView)
-                .load(result.iconUri)
-                .placeholder(
-                    ContextCompat.getDrawable(
-                        itemView.context,
-                        R.drawable.placeholder_contact
-                    )?.apply {
-                        setTint(C.getColorPrimary())
-                    })
-                .apply(RequestOptions.circleCropTransform())
-                .into(icon)
-        } else {
-            icon.isVisible = false
+        itemView.icon.apply {
+            if (isDisplayAppIcon) {
+                isVisible = true
+                Glide.with(itemView)
+                    .load(result.iconUri)
+                    .placeholder(
+                        ContextCompat.getDrawable(
+                            itemView.context,
+                            R.drawable.placeholder_contact
+                        )?.apply {
+                            setTint(colorPrimary)
+                        })
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(this)
+            } else {
+                isVisible = false
+            }
+        }
+        itemView.text.apply {
+            text = result.title
+            setTextColor(colorPrimary)
         }
 
-        text.text = result.title
         itemView.setOnClickListener(result::open)
     }
 }

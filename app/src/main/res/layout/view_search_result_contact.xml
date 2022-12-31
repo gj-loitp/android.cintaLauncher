@@ -2,12 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
     android:paddingStart="@dimen/margin_padding_medium"
     android:paddingTop="@dimen/margin_padding_small"
     android:paddingEnd="@dimen/margin_padding_medium"
-    android:paddingBottom="@dimen/margin_padding_small">
+    android:paddingBottom="@dimen/margin_padding_small"
+    tools:background="@color/color_test_background">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icon"
