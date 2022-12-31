@@ -5,7 +5,7 @@
     android:id="@+id/llRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:cardBackgroundColor="@color/color_test_primary">
+    tools:cardBackgroundColor="@color/color_test_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -24,37 +24,37 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/colorPrimary" />
+            tools:tint="@color/color_test_primary" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_50"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/ivSlider"
-            tools:text="@string/color" />
+            tools:text="@string/color"
+            tools:textColor="@color/color_test_primary" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_large"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-            tools:text="@string/pick_your_favorite_color" />
+            tools:text="@string/pick_your_favorite_color"
+            tools:textColor="@color/color_test_primary" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvWarning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_medium"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tvDes"
-            tools:text="@string/pick_your_favorite_color" />
+            tools:text="@string/pick_your_favorite_color"
+            tools:textColor="@color/color_test_primary" />
 
         <com.loitp.picker.shiftColor.LineColorPicker
             android:id="@+id/colorPicker"
@@ -62,10 +62,10 @@
             android:layout_height="@dimen/w_55"
             android:layout_marginTop="@dimen/margin_padding_medium"
             android:layout_marginBottom="@dimen/margin_padding_medium"
-            android:background="@color/colorPrimary"
             app:layout_constraintTop_toBottomOf="@+id/tvWarning"
             app:lcpOrientation="horizontal"
-            app:lcpSelectedColorIndex="0" />
+            app:lcpSelectedColorIndex="0"
+            tools:background="@color/color_test_primary" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

@@ -36,7 +36,7 @@ import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.util.FakeLauncherActivity
 import com.roy93group.lookerupper.ui.a.SearchActivity
 import com.roy93group.views.BottomSheetAppOption
-import com.roy93group.views.BottomSheetColor
+import com.roy93group.views.BottomSheetColorPrimary
 import com.roy93group.views.BottomSheetOption
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
@@ -323,7 +323,7 @@ object C {
         warning: String,
         onDismiss: ((Int) -> Unit)? = null,
     ) {
-        val fragment = BottomSheetColor(
+        val fragment = BottomSheetColorPrimary(
             isCancelableFragment = isCancelableFragment,
             title = title,
             des = des,

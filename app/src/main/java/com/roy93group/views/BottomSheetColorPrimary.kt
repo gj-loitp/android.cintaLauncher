@@ -12,26 +12,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.card.MaterialCardView
-import com.loitp.picker.shiftColor.LineColorPicker
 import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
+import com.roy93group.launcher.ui.LauncherActivity
+import kotlinx.android.synthetic.main.bottom_sheet_color_primary.*
 
-class BottomSheetColor(
+class BottomSheetColorPrimary(
     private val isCancelableFragment: Boolean = true,
     private val title: String,
     private val des: String,
     private val warning: String,
     private val onDismiss: ((Int) -> Unit)? = null
 ) : BottomSheetDialogFragment() {
-    private var llRoot: MaterialCardView? = null
-    private var tvTitle: TextView? = null
-    private var tvDes: TextView? = null
-    private var tvWarning: TextView? = null
-    private var newColor = C.getColorPrimary()
+    private var newColorPrimary = C.getColorPrimary()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +34,7 @@ class BottomSheetColor(
         savedInstanceState: Bundle?
     ): View? {
         isCancelable = isCancelableFragment
-        return inflater.inflate(R.layout.bottom_sheet_color, container, false)
+        return inflater.inflate(R.layout.bottom_sheet_color_primary, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,39 +48,56 @@ class BottomSheetColor(
             }
         }
 
-        setupViews(view)
+        setupViews()
     }
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        if (newColor != C.getColorPrimary()) {
-            onDismiss?.invoke(newColor)
+        if (newColorPrimary != C.getColorPrimary()) {
+            onDismiss?.invoke(newColorPrimary)
         }
     }
 
-    private fun setupViews(view: View) {
-        llRoot = view.findViewById<MaterialCardView>(R.id.llRoot).apply {
-            setCardBackgroundColor(C.getColorPrimary())
+    private fun setupViews() {
+        val colorPrimary = C.getColorPrimary()
+        val colorBackground = C.getColorBackground()
+
+        llRoot.apply {
+            setCardBackgroundColor(colorBackground)
             C.setCornerCardView(activity = requireActivity(), cardView = this)
         }
-        tvTitle = view.findViewById(R.id.tvTitle)
-        tvDes = view.findViewById(R.id.tvDes)
-        tvWarning = view.findViewById(R.id.tvWarning)
+        ivSlider.setColorFilter(colorPrimary)
 
-        tvTitle?.text = title
-        tvDes?.text = des
-        tvWarning?.text = warning
+        tvTitle.apply {
+            text = title
+            setTextColor(colorPrimary)
+        }
 
-        view.findViewById<LineColorPicker>(R.id.colorPicker).apply {
+        tvDes.apply {
+            text = des
+            setTextColor(colorPrimary)
+        }
+        tvWarning.apply {
+            text = warning
+            setTextColor(colorPrimary)
+        }
+
+        colorPicker.apply {
             colors = C.colors
-            setSelectedColor(C.getColorPrimary())
+            setBackgroundColor(colorPrimary)
+            setSelectedColor(colorPrimary)
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
                     C.vibrate(milliseconds = 10)
-
-                    newColor = c
-                    llRoot?.apply {
-                        setCardBackgroundColor(newColor)
+                    if (c == colorBackground) {
+                        (activity as? LauncherActivity)?.showShortError(getString(R.string.err_same_color))
+                    } else {
+                        newColorPrimary = c
+                        colorPicker.setBackgroundColor(newColorPrimary)
+                        ivSlider.setColorFilter(newColorPrimary)
+                        tvTitle.setTextColor(newColorPrimary)
+                        tvDes.setTextColor(newColorPrimary)
+                        tvWarning.setTextColor(newColorPrimary)
                     }
                 }
             })
