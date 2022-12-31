@@ -27,7 +27,7 @@ class CompactAppResult(
         true
     }
 
-    fun getColor(): Int = app.getColor()
+//    fun getColor(): Int = app.getColor()
 
     override fun open(view: View) {
         app.open(context = view.context, view = view)
