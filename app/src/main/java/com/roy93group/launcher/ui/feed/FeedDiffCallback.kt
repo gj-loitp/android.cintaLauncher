@@ -25,7 +25,10 @@ class FeedDiffCallback(
 
     override fun getNewListSize() = if (new.isEmpty()) 2 else new.size + 1
 
-    override fun areItemsTheSame(oldI: Int, newI: Int): Boolean {
+    override fun areItemsTheSame(
+        oldI: Int,
+        newI: Int
+    ): Boolean {
         if (oldI == 0) return newI == 0
         if (newI == 0) return oldI == 0
         if (old.isEmpty()) return new.isEmpty()
@@ -33,7 +36,10 @@ class FeedDiffCallback(
         return getOld(oldI).uid == getNew(newI).uid
     }
 
-    override fun areContentsTheSame(oldI: Int, newI: Int): Boolean {
+    override fun areContentsTheSame(
+        oldI: Int,
+        newI: Int
+    ): Boolean {
         if (oldI == 0 && newI == 0) return true
         if (old.isEmpty()) return new.isEmpty()
         if (new.isEmpty()) return old.isEmpty()

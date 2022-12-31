@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItemAction
+import com.roy93group.launcher.ui.drawer.viewHolders.colorBackground
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
+import kotlinx.android.synthetic.main.view_feed_item_action.view.*
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -24,15 +25,7 @@ class ActionsAdapter(
 
     override fun getItemCount(): Int = actions.size
 
-    class ActionViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-
-        val llRoot: ViewGroup = itemView.findViewById<ViewGroup>(R.id.llRoot).apply {
-            C.setBackground(this)
-        }
-        val ivActionIcon: ImageView = itemView.findViewById(R.id.ivActionIcon)
-        val tvActionText: TextView = itemView.findViewById(R.id.tvActionText)
-    }
+    class ActionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -44,14 +37,27 @@ class ActionsAdapter(
         )
     }
 
-    override fun onBindViewHolder(holder: ActionViewHolder, i: Int) {
+    override fun onBindViewHolder(
+        holder: ActionViewHolder,
+        i: Int
+    ) {
         val action = actions[i]
-        holder.tvActionText.text = action.text
-        applyIfNotNull(
-            view = holder.ivActionIcon,
-            value = action.icon,
-            block = ImageView::setImageDrawable
-        )
+
+        holder.itemView.tvActionText.apply {
+            text = action.text
+            setTextColor(colorBackground)
+        }
+        holder.itemView.ivActionIcon.apply {
+            setColorFilter(colorBackground)
+            applyIfNotNull(
+                view = this,
+                value = action.icon,
+                block = ImageView::setImageDrawable
+            )
+        }
+        holder.itemView.llRoot.apply {
+            C.setBackground(this)
+        }
         holder.itemView.setOnClickListener(action.onTap)
     }
 }

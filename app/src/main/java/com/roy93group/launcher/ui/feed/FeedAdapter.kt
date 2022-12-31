@@ -63,7 +63,10 @@ class FeedAdapter(
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun resetConfig(isDisplayAppIcon: Boolean, isForceColorIcon: Boolean) {
+    fun resetConfig(
+        isDisplayAppIcon: Boolean,
+        isForceColorIcon: Boolean
+    ) {
         this.isDisplayAppIcon = isDisplayAppIcon
         this.isForceColorIcon = isForceColorIcon
         try {
