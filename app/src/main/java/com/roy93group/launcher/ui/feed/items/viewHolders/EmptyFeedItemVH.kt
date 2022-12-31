@@ -1,10 +1,10 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders
 
 import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.app.C
 import com.roy93group.launcher.R
+import kotlinx.android.synthetic.main.view_feed_item_empty.view.*
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -14,13 +14,14 @@ import com.roy93group.launcher.R
  * freuss47@gmail.com
  */
 class EmptyFeedItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val text: TextView = itemView.findViewById<TextView>(R.id.text).apply {
-        setTextColor(C.getColorPrimary())
-    }
 }
 
 fun bindEmptyFeedItemViewHolder(
     holder: EmptyFeedItemViewHolder
 ) {
-    holder.text.text = holder.itemView.context.getString(R.string.no_feed_items)
+    holder.itemView.text.apply {
+        setTextColor(C.getColorPrimary())
+        text = holder.itemView.context.getString(R.string.no_feed_items)
+    }
+
 }

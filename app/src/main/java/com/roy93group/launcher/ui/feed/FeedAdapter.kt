@@ -137,8 +137,6 @@ class FeedAdapter(
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_suggested_apps, parent, false),
             )
-
-
             TYPE_EMPTY -> EmptyFeedItemViewHolder(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_empty, parent, false)
