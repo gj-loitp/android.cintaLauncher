@@ -9,15 +9,13 @@ package com.roy93group.views
  */
 import android.annotation.SuppressLint
 import android.content.DialogInterface
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.widget.TextViewCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.card.MaterialCardView
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LDeviceUtil
 import com.loitp.core.utilities.LSocialUtil
@@ -25,13 +23,13 @@ import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.data.items.LauncherItem
+import kotlinx.android.synthetic.main.bottom_sheet_app_option.*
 
 class BottomSheetAppOption(
     private val item: LauncherItem,
     private val isCancelableFragment: Boolean = true,
     private val onDismiss: ((Unit) -> Unit)? = null
 ) : BottomSheetDialogFragment() {
-    private var tvTitle: TextView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,7 +51,7 @@ class BottomSheetAppOption(
             }
         }
 
-        setupViews(view)
+        setupViews()
     }
 
     override fun onDismiss(dialog: DialogInterface) {
@@ -62,13 +60,19 @@ class BottomSheetAppOption(
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setupViews(view: View) {
-        view.findViewById<MaterialCardView>(R.id.llRoot).apply {
-            setCardBackgroundColor(C.getColorPrimary())
+    private fun setupViews() {
+        val colorPrimary = C.getColorPrimary()
+        val colorBackground = C.getColorBackground()
+
+        llRoot.apply {
+            setCardBackgroundColor(colorBackground)
             C.setCornerCardView(activity = requireActivity(), cardView = this)
         }
-        tvTitle = view.findViewById(R.id.tvTitle)
-        view.findViewById<AppCompatTextView>(R.id.tvInfo).apply {
+        ivSlider.setColorFilter(colorPrimary)
+        tvTitle.setTextColor(colorPrimary)
+        tvInfo.apply {
+            setTextColor(colorPrimary)
+            TextViewCompat.setCompoundDrawableTintList(this, ColorStateList.valueOf(colorPrimary))
             (item as? App)?.let { app ->
                 this.text = "Label: ${app.label}\nPackage name: ${app.packageName}"
                 setSafeOnClickListener {
@@ -76,10 +80,9 @@ class BottomSheetAppOption(
                 }
             }
         }
-
-        val btAppSetting = view.findViewById<Button>(R.id.btAppSetting)
-        val btPlayStore = view.findViewById<Button>(R.id.btPlayStore)
-        val btUninstall = view.findViewById<Button>(R.id.btUninstall)
+        btAppSetting.setTextColor(colorPrimary)
+        btPlayStore.setTextColor(colorPrimary)
+        btUninstall.setTextColor(colorPrimary)
 
         btAppSetting.setSafeOnClickListener {
             (item as? App)?.packageName?.let { packageName ->
