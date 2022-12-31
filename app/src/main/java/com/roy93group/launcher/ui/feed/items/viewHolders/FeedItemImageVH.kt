@@ -14,12 +14,11 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.target.ViewTarget
-import com.google.android.material.card.MaterialCardView
-import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemWithBigImage
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toFloatPixels
+import kotlinx.android.synthetic.main.view_feed_item_image.view.*
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -31,10 +30,6 @@ import io.posidon.android.conveniencelib.units.toFloatPixels
 open class FeedItemImageVH(
     itemView: View,
 ) : FeedItemVH(itemView) {
-    val image: ImageView = itemView.findViewById(R.id.image)
-    val card: MaterialCardView = itemView.findViewById<MaterialCardView>(R.id.card).apply {
-    }
-
     private val requestOptions = RequestOptions()
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .downsample(DownsampleStrategy.AT_MOST)
@@ -79,14 +74,14 @@ open class FeedItemImageVH(
         super.onBind(feedItem, isDisplayAppIcon, isForceColorIcon)
         feedItem as FeedItemWithBigImage
         if (isDisplayAppIcon) {
-            card.isVisible = true
+            itemView.card.isVisible = true
             Glide.with(itemView.context)
                 .load(feedItem.image)
                 .apply(requestOptions)
                 .listener(imageRequestListener)
-                .into(image)
+                .into(itemView.image)
         } else {
-            card.isVisible = false
+            itemView.card.isVisible = false
         }
     }
 }
