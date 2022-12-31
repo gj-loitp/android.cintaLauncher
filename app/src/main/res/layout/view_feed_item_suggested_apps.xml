@@ -20,7 +20,6 @@
         android:id="@+id/rvRecents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/margin_padding_small"
         app:layout_constraintTop_toBottomOf="@+id/vLine"
         tools:listitem="@layout/view_app_card" />
 </androidx.constraintlayout.widget.ConstraintLayout>

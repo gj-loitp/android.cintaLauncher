@@ -41,7 +41,9 @@ fun bindAppViewHolder(
     isForceColorIcon: Boolean,
 ) {
     val colorPrimary = C.getColorPrimary()
-    holder.cardView.setCardBackgroundColor(Color.TRANSPARENT)
+    val colorBackground = C.getColorBackground()
+
+    holder.cardView.setCardBackgroundColor(colorBackground)
 
     val banner = (item as? App)?.getBanner()
 
@@ -71,12 +73,19 @@ fun bindAppViewHolder(
             block = TextView::setText
         )
     }
+
     holder.itemView.tvLineDescription.apply {
-        applyIfNotNull(
-            view = this,
-            value = banner?.text,
-            block = TextView::setText
-        )
+        setTextColor(colorPrimary)
+        if (banner?.text?.trim().isNullOrEmpty()) {
+            isVisible = false
+        } else {
+            isVisible = true
+            applyIfNotNull(
+                view = this,
+                value = banner?.text,
+                block = TextView::setText
+            )
+        }
     }
 
     holder.itemView.setOnClickListener {
