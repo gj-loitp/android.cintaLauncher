@@ -5,6 +5,7 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
     app:cardCornerRadius="@dimen/round_medium"
     app:cardElevation="@dimen/margin_padding_small"
     app:cardUseCompatPadding="true"
