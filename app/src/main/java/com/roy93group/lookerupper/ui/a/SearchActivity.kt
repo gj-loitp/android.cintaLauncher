@@ -86,6 +86,9 @@ class SearchActivity : BaseFontActivity() {
 
         fl.setBackgroundColor(colorBackground)
         cardView.setCardBackgroundColor(colorPrimary)
+        ivSearch.setColorFilter(colorBackground)
+        etSearchBarText.setTextColor(colorBackground)
+        etSearchBarText.setHintTextColor(colorBackground)
         lav.changeLayersColor(colorPrimary)
         lavNoData.changeLayersColor(colorPrimary)
         adapter = SearchAdapter(activity = this, recyclerView = recyclerView, isOnCard = false)

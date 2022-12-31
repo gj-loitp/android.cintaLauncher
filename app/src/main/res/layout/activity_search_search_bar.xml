@@ -5,13 +5,11 @@
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/margin_padding_medium"
     android:layout_marginTop="@dimen/w_1"
-    android:layout_marginEnd="@dimen/margin_padding_medium"
     android:layout_marginBottom="@dimen/w_1"
     app:cardCornerRadius="@dimen/round_large"
     app:cardElevation="@dimen/w_3"
-    app:cardUseCompatPadding="false"
+    app:cardUseCompatPadding="true"
     tools:cardBackgroundColor="@color/color_test_primary"
     tools:strokeColor="@color/color_test_primary"
     tools:strokeWidth="@dimen/w_1">
@@ -22,11 +20,12 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSearch"
             android:layout_width="@dimen/search_bar_height"
             android:layout_height="@dimen/search_bar_height"
             android:padding="@dimen/margin_padding_small"
             android:src="@drawable/ic_search"
-            app:tint="@color/colorPrimary" />
+            tools:tint="@color/color_test_background" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etSearchBarText"
@@ -35,18 +34,19 @@
             android:layout_marginEnd="@dimen/margin_padding_medium"
             android:layout_weight="1"
             android:background="@null"
+            android:cursorVisible="false"
             android:gravity="center_vertical"
             android:hint="@string/smart_search"
             android:imeOptions="actionSearch"
             android:inputType="number|text|phone|datetime"
             android:lines="1"
             android:scrollHorizontally="true"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/gray"
-            android:textCursorDrawable="@color/colorPrimary"
             android:textSize="@dimen/txt_medium"
             android:textStyle="bold"
-            tools:text="@string/app_name">
+            tools:text="@string/app_name"
+            tools:textColor="@color/color_test_background"
+            tools:textColorHint="@color/color_test_background"
+            tools:textCursorDrawable="@color/color_test_background">
 
             <requestFocus />
         </androidx.appcompat.widget.AppCompatEditText>
