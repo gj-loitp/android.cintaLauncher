@@ -9,9 +9,8 @@
     android:layout_marginTop="@dimen/margin_padding_small"
     app:cardCornerRadius="@dimen/round_largest"
     app:cardElevation="@dimen/margin_padding_small"
-    app:cardUseCompatPadding="false"
-    tools:cardBackgroundColor="@color/color_test_primary"
-    >
+    app:cardUseCompatPadding="true"
+    tools:cardBackgroundColor="@color/color_test_primary">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvActions"

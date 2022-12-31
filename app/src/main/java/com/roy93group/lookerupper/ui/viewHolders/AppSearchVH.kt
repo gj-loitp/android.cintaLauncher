@@ -2,16 +2,13 @@ package com.roy93group.lookerupper.ui.viewHolders
 
 import android.graphics.Color
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import com.roy93group.app.C
-import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.lookerupper.data.results.AppResult
 import com.roy93group.lookerupper.data.results.SearchResult
+import kotlinx.android.synthetic.main.view_smart_suggestion.view.*
 
 /**
  * Updated by Loitp on 2022.12.18
@@ -25,11 +22,8 @@ class AppSearchVH(
     val activity: AppCompatActivity
 ) : SearchVH(itemView) {
 
-    private val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon)
-    private val tvIconText: TextView = itemView.findViewById<TextView>(R.id.tvIconText).apply {
-        setTextColor(C.getColorPrimary())
-    }
-    val card = itemView as CardView
+    private val colorPrimary = C.getColorPrimary()
+    private val colorBackground = C.getColorBackground()
 
     override fun onBind(
         result: SearchResult,
@@ -37,17 +31,24 @@ class AppSearchVH(
         isForceColorIcon: Boolean,
     ) {
         result as AppResult
-        tvIconText.text = result.title
-        if (isDisplayAppIcon) {
-            ivIcon.isVisible = true
-            ivIcon.setImageDrawable(result.icon)
-            if (isForceColorIcon) {
-                ivIcon.setColorFilter(C.getColorPrimary())
+
+        itemView.card.setBackgroundColor(colorBackground)
+        itemView.tvIconText.apply {
+            setTextColor(colorPrimary)
+            text = result.title
+        }
+        itemView.ivIcon.apply {
+            if (isDisplayAppIcon) {
+                isVisible = true
+                setImageDrawable(result.icon)
+                if (isForceColorIcon) {
+                    setColorFilter(colorPrimary)
+                } else {
+                    setColorFilter(Color.TRANSPARENT)
+                }
             } else {
-                ivIcon.setColorFilter(Color.TRANSPARENT)
+                isVisible = false
             }
-        } else {
-            ivIcon.isVisible = false
         }
 
         itemView.setOnClickListener {

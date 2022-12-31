@@ -63,12 +63,11 @@
         android:layout_marginEnd="@dimen/margin_padding_small"
         app:cardCornerRadius="@dimen/round_large"
         app:cardElevation="@dimen/margin_padding_small"
-        app:cardUseCompatPadding="false"
+        app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:cardBackgroundColor="@color/color_test_primary"
-        >
+        tools:cardBackgroundColor="@color/color_test_primary">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/search_bar_height"
