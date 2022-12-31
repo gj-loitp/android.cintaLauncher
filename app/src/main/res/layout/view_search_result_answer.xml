@@ -46,13 +46,12 @@
             android:id="@+id/cvActionsContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_padding_medium"
             app:cardCornerRadius="@dimen/round_medium"
             app:cardElevation="@dimen/margin_padding_small"
-            app:cardUseCompatPadding="false"
+            app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rvInfoBox"
-            tools:cardBackgroundColor="@color/color_test_primary">
+            tools:cardBackgroundColor="@color/color_test_background">
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -74,14 +73,15 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="@dimen/margin_padding_small"
-                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/txt_small"
-                        tools:text="@string/app_name" />
+                        tools:text="@string/app_name"
+                        tools:textColor="@color/color_test_primary" />
 
                     <View
+                        android:id="@+id/vLine"
                         android:layout_width="@dimen/w_1"
                         android:layout_height="match_parent"
-                        android:background="@color/colorPrimary" />
+                        tools:background="@color/color_test_primary" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/search"
@@ -90,8 +90,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="@dimen/margin_padding_small"
                         android:text="@string/search_in_duckduckgo"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/txt_small" />
+                        android:textSize="@dimen/txt_small"
+                        tools:textColor="@color/color_test_primary" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </HorizontalScrollView>
         </com.google.android.material.card.MaterialCardView>

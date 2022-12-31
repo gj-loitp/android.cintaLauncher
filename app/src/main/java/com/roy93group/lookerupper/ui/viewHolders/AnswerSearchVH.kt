@@ -1,48 +1,23 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
 import android.view.View
-import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.card.MaterialCardView
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.lookerupper.data.results.InstantAnswerResult
 import com.roy93group.lookerupper.data.results.SearchResult
 import com.roy93group.lookerupper.ui.adapter.InfoBoxAdapter
+import kotlinx.android.synthetic.main.view_search_result_answer.view.*
 
 class AnswerSearchVH(
     itemView: View
 ) : SearchVH(itemView) {
 
-    val card: MaterialCardView = itemView.findViewById<MaterialCardView>(R.id.card).apply {
-    }
-    val title: TextView = card.findViewById<TextView>(R.id.title).apply {
-        setTextColor(C.getColorPrimary())
-    }
-    val description: TextView = card.findViewById<TextView>(R.id.description).apply {
-        setTextColor(C.getColorPrimary())
-    }
-
     private val infoBoxAdapter = InfoBoxAdapter()
-
-    private val rvInfoBox: RecyclerView =
-        itemView.findViewById<RecyclerView>(R.id.rvInfoBox).apply {
-            layoutManager = LinearLayoutManager(
-                /* context = */ context,
-                /* orientation = */RecyclerView.VERTICAL,
-                /* reverseLayout = */false
-            )
-            adapter = infoBoxAdapter
-        }
-
-    private val cvActionsContainer: MaterialCardView =
-        itemView.findViewById<MaterialCardView>(R.id.cvActionsContainer).apply {
-            setCardBackgroundColor(C.getColorPrimary())
-        }
-    private val sourceAction: TextView = cvActionsContainer.findViewById(R.id.source)
-    private val searchAction: TextView = cvActionsContainer.findViewById(R.id.search)
+    val colorPrimary = C.getColorPrimary()
+    val colorBackground = C.getColorBackground()
 
     override fun onBind(
         result: SearchResult,
@@ -51,18 +26,38 @@ class AnswerSearchVH(
     ) {
         result as InstantAnswerResult
 
-        title.text = result.title
-        description.text = result.description
-        sourceAction.text =
-            itemView.context.getString(R.string.read_more_at_source, result.sourceName)
-
-        sourceAction.setOnClickListener(result::open)
-        searchAction.setOnClickListener(result::search)
-
+        itemView.title.apply {
+            text = result.title
+            setTextColor(colorPrimary)
+        }
+        itemView.description.apply {
+            text = result.description
+            setTextColor(colorPrimary)
+        }
+        itemView.card.setCardBackgroundColor(colorBackground)
+        itemView.cvActionsContainer.setCardBackgroundColor(colorBackground)
+        itemView.source.apply {
+            text = itemView.context.getString(R.string.read_more_at_source, result.sourceName)
+            setTextColor(colorPrimary)
+            setOnClickListener(result::open)
+        }
+        itemView.vLine.setBackgroundColor(colorPrimary)
+        itemView.search.apply {
+            setOnClickListener(result::search)
+            setTextColor(colorPrimary)
+        }
+        itemView.rvInfoBox.apply {
+            layoutManager = LinearLayoutManager(
+                /* context = */ context,
+                /* orientation = */RecyclerView.VERTICAL,
+                /* reverseLayout = */false
+            )
+            adapter = infoBoxAdapter
+        }
         if (result.infoTable == null) {
-            rvInfoBox.isVisible = false
+            itemView.rvInfoBox.isVisible = false
         } else {
-            rvInfoBox.isVisible = true
+            itemView.rvInfoBox.isVisible = true
             infoBoxAdapter.updateEntries(result.infoTable)
         }
     }
