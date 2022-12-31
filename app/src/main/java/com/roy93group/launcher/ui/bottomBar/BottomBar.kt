@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui.bottomBar
 
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.loitp.core.utilities.LScreenUtil
@@ -23,6 +24,7 @@ class BottomBar(val launcherActivity: LauncherActivity) {
 
     val scrollBar: Scrollbar get() = appDrawerIcon.scrollBar
     val colorPrimary = C.getColorPrimary()
+    val colorBackground = C.getColorBackground()
 
     val cvSearchBarContainer: CardView = launcherActivity.cvSearchBarContainer.apply {
         setCardBackgroundColor(colorPrimary)
@@ -30,7 +32,9 @@ class BottomBar(val launcherActivity: LauncherActivity) {
             C.goToSearchScreen(it.context)
         }
     }
-
+    val ivSearch: AppCompatImageView = launcherActivity.ivSearch.apply {
+        setColorFilter(colorBackground)
+    }
     val appDrawerIcon: ScrollbarIconView = cvSearchBarContainer.appDrawerIcon.apply {
         appDrawer = launcherActivity.appDrawer
     }

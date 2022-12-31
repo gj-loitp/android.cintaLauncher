@@ -5,7 +5,7 @@
     android:id="@+id/flHomeContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="@color/color_test_primary"
+    tools:background="@color/color_test_background"
     tools:context=".ui.LauncherActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -36,6 +36,7 @@
         app:srcCompat="@drawable/ic_settings_black_48dp"
         app:useCompatPadding="true"
         tools:backgroundTint="@color/color_test_primary"
+        tools:ignore="DuplicateSpeakableTextCheck"
         tools:visibility="visible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -70,6 +71,7 @@
         tools:cardBackgroundColor="@color/color_test_primary">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSearch"
             android:layout_width="@dimen/search_bar_height"
             android:layout_height="@dimen/search_bar_height"
             android:padding="@dimen/margin_padding_small"
@@ -82,7 +84,8 @@
             android:layout_height="@dimen/search_bar_height"
             android:layout_gravity="end"
             android:padding="@dimen/margin_padding_small"
-            android:src="@drawable/ic_drawer_scroll" />
+            android:src="@drawable/ic_drawer_scroll"
+            tools:ignore="ImageContrastCheck" />
     </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
