@@ -94,7 +94,7 @@ object C {
     private val COLOR_12 = LAppResource.getColor(R.color.color12)
     private val COLOR_13 = LAppResource.getColor(R.color.color13)
     private val COLOR_14 = LAppResource.getColor(R.color.color14)
-    private val COLOR_15 = LAppResource.getColor(R.color.color15)
+    val COLOR_15 = LAppResource.getColor(R.color.color15)
     private val COLOR_16 = LAppResource.getColor(R.color.color16)
 
     val COLOR_FAST_SCROLL_TEXT = getColorBackground()
