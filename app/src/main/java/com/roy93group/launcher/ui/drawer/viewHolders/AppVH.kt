@@ -48,11 +48,11 @@ fun bindAppViewHolder(
     holder.cardView.apply {
         setCardBackgroundColor(colorBackground)
 
-        if (index % 2 == 0) {
-            setCardBackgroundColor(Color.RED)
-        } else {
-            setCardBackgroundColor(Color.YELLOW)
-        }
+//        if (index % 2 == 0) {
+//            setCardBackgroundColor(Color.RED)
+//        } else {
+//            setCardBackgroundColor(Color.YELLOW)
+//        }
     }
 
     val banner = (item as? App)?.getBanner()

@@ -82,7 +82,7 @@
         <View
             android:id="@+id/vSpace"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/w_100"
+            android:layout_height="@dimen/w_150"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
