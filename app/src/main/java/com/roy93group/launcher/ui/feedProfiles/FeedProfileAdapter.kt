@@ -62,7 +62,7 @@ class FeedProfileAdapter(
 
         val item = items[i]
         holder.itemView.text.apply {
-            setTextColor(colorPrimary)
+            setTextColor(colorBackground)
             applyIfNotNull(
                 view = holder.itemView.text,
                 value = item.name,
@@ -70,7 +70,7 @@ class FeedProfileAdapter(
             )
         }
         holder.itemView.icon.apply {
-            setColorFilter(colorPrimary)
+            setColorFilter(colorBackground)
             applyIfNotNull(
                 view = holder.itemView.icon,
                 value = item.icon,
@@ -79,7 +79,7 @@ class FeedProfileAdapter(
         }
 
         holder.itemView.card.apply {
-            setCardBackgroundColor(colorBackground)
+            setCardBackgroundColor(colorPrimary)
             if (i == (items.size - 1)) {
                 LUIUtil.setMarginsDp(
                     view = this,
