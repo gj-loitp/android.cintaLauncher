@@ -88,14 +88,14 @@ class BottomSheetCustomizeAppDrawer(
         tvPeekText.setTextColor(colorPrimary)
 
         seekRadius.apply {
-            setNormalTrackColor(colorBackground)
-            setHighlightTrackColor(colorBackground)
+            setNormalTrackColor(colorPrimary)
+            setHighlightTrackColor(colorPrimary)
             setHighlightThumbOnTouchColor(colorPrimary)
             setDefaultThumbInsideColor(colorPrimary)
         }
         seekPeek.apply {
-            setNormalTrackColor(colorBackground)
-            setHighlightTrackColor(colorBackground)
+            setNormalTrackColor(colorPrimary)
+            setHighlightTrackColor(colorPrimary)
             setHighlightThumbOnTouchColor(colorPrimary)
             setDefaultThumbInsideColor(colorPrimary)
         }
