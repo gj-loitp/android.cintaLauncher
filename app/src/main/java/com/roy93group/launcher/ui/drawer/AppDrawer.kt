@@ -105,8 +105,8 @@ class AppDrawer(
     private var currentValueAnimator: ValueAnimator? = null
 
     fun open() {
-        launcherActivity.bottomBar.cvBackButtonContainer.isVisible = true
-        launcherActivity.bottomBar.cvSetting.isVisible = true
+        launcherActivity.bottomBar.fabBack.isVisible = true
+        launcherActivity.bottomBar.fabSetting.isVisible = true
         if (isOpen) return
         ItemLongPress.currentPopup?.dismiss()
         val sbh = launcherActivity.getStatusBarHeight()
@@ -161,8 +161,8 @@ class AppDrawer(
     }
 
     fun close() {
-        launcherActivity.bottomBar.cvBackButtonContainer.isVisible = false
-        launcherActivity.bottomBar.cvSetting.isVisible = false
+        launcherActivity.bottomBar.fabBack.isVisible = false
+        launcherActivity.bottomBar.fabSetting.isVisible = false
         if (!isOpen) return
         ItemLongPress.currentPopup?.dismiss()
         launcherActivity.feedProfiles.rvFeedFilters.isVisible = true
