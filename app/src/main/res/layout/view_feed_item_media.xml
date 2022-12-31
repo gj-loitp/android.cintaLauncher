@@ -102,7 +102,7 @@
         android:src="@drawable/ic_track_previous"
         app:layout_constraintEnd_toStartOf="@+id/buttonPlay"
         app:layout_constraintTop_toTopOf="@+id/buttonPlay"
-        app:tint="@color/colorPrimary" />
+        tools:tint="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/buttonPlay"
@@ -114,7 +114,7 @@
         android:src="@drawable/ic_play"
         app:layout_constraintEnd_toStartOf="@+id/btNext"
         app:layout_constraintTop_toTopOf="@+id/btNext"
-        app:tint="@color/colorPrimary" />
+        tools:tint="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btNext"
@@ -126,13 +126,12 @@
         android:src="@drawable/ic_track_next"
         app:layout_constraintEnd_toEndOf="@id/vLine"
         app:layout_constraintTop_toBottomOf="@+id/description"
-        app:tint="@color/colorPrimary" />
+        tools:tint="@color/color_test_primary" />
 
     <include
         layout="@layout/view_feed_item_actions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_padding_small"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/btNext"
         app:layout_constraintTop_toBottomOf="@+id/btNext"

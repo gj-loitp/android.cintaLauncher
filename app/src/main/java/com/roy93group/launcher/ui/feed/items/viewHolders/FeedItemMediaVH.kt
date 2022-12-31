@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.ImageView
 import androidx.core.graphics.applyCanvas
 import androidx.core.graphics.toXfermode
-import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemWithMedia
@@ -23,18 +22,6 @@ class FeedItemMediaVH(
     itemView: View,
 ) : FeedItemVH(itemView) {
 
-    private val image: ImageView = itemView.findViewById(R.id.image)
-    private val buttonPrevious: ImageView =
-        itemView.findViewById<ImageView>(R.id.buttonPrevious).apply {
-            C.setBackground(this)
-        }
-    private val buttonPlay: ImageView = itemView.findViewById<ImageView>(R.id.buttonPlay).apply {
-        C.setBackground(this)
-    }
-    private val btNext: ImageView = itemView.findViewById<ImageView>(R.id.btNext).apply {
-        C.setBackground(this)
-    }
-
     override fun onBind(
         feedItem: FeedItem,
         isDisplayAppIcon: Boolean,
@@ -46,7 +33,7 @@ class FeedItemMediaVH(
 
         val c = feedItem.image as? Bitmap
         if (c == null) {
-            image.setImageDrawable(null)
+            itemView.image.setImageDrawable(null)
         } else {
             val paint = Paint().apply {
                 shader = LinearGradient(
@@ -88,31 +75,43 @@ class FeedItemMediaVH(
                 drawRect(x, 0f, c.width.toFloat(), height.toFloat(), paint)
                 drawRect(0f, 0f, width.toFloat(), height.toFloat(), paint2)
             }
-            image.setImageBitmap(bitmap)
+            itemView.image.setImageBitmap(bitmap)
         }
 
-        image.setOnClickListener(feedItem::onTap)
+        itemView.image.setOnClickListener(feedItem::onTap)
         itemView.title.setOnClickListener(feedItem::onTap)
         itemView.description.setOnClickListener(feedItem::onTap)
-        buttonPlay.setImageResource(
-            if (feedItem.isPlaying())
-                R.drawable.ic_pause
-            else
-                R.drawable.ic_play
-        )
 
-        buttonPrevious.setOnClickListener {
-            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            feedItem.previous(it)
+        itemView.buttonPrevious.apply {
+            setColorFilter(colorPrimary)
+            setOnClickListener {
+                it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                feedItem.previous(it)
+            }
         }
-        btNext.setOnClickListener {
-            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            feedItem.next(it)
+
+        itemView.btNext.apply {
+            setColorFilter(colorPrimary)
+            setOnClickListener {
+                it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                feedItem.next(it)
+            }
         }
-        buttonPlay.setOnClickListener {
-            it as ImageView
-            it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            feedItem.togglePause(it)
+
+        itemView.buttonPlay.apply {
+            setImageResource(
+                if (feedItem.isPlaying())
+                    R.drawable.ic_pause
+                else
+                    R.drawable.ic_play
+            )
+            setColorFilter(colorPrimary)
+            setOnClickListener {
+                it as ImageView
+                it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                feedItem.togglePause(it)
+            }
         }
+
     }
 }
