@@ -50,7 +50,8 @@ class SuggestionsAdapter(
             item = item,
             isFromSuggest = true,
             isDisplayAppIcon = isDisplayAppIcon,
-            isForceColorIcon = isForceColorIcon
+            isForceColorIcon = isForceColorIcon,
+            isLastItem = false,
         )
     }
 

@@ -13,9 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="0dp"
         android:paddingTop="@dimen/margin_padding_small"
-        android:paddingEnd="@dimen/margin_padding_medium"
         android:paddingBottom="@dimen/margin_padding_small">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -25,59 +23,70 @@
             android:layout_marginStart="@dimen/margin_padding_medium"
             android:scaleType="fitCenter"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tvLineDescription"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher"
             tools:visibility="visible" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvIconText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_padding_small"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="@dimen/margin_padding_small"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/margin_padding_medium"
+            android:layout_marginEnd="@dimen/margin_padding_medium"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="@dimen/txt_large"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivIcon"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/app_name"
+            tools:textColor="@color/color_test_primary" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvIconText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textSize="@dimen/txt_large"
-                android:textStyle="bold"
-                tools:ignore="TextContrastCheck"
-                tools:text="@string/app_name"
-                tools:textColor="@color/color_test_primary" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLineTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:textSize="@dimen/txt_small"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/tvIconText"
+            app:layout_constraintStart_toStartOf="@+id/tvIconText"
+            app:layout_constraintTop_toBottomOf="@+id/tvIconText"
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/app_name"
+            tools:textColor="@color/color_test_primary"
+            tools:visibility="visible" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvLineTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:textSize="@dimen/txt_small"
-                android:visibility="gone"
-                tools:ignore="TextContrastCheck"
-                tools:text="@string/app_name"
-                tools:textColor="@color/color_test_primary"
-                tools:visibility="visible" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLineDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:textSize="@dimen/txt_small"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/tvIconText"
+            app:layout_constraintStart_toStartOf="@+id/tvIconText"
+            app:layout_constraintTop_toBottomOf="@+id/tvLineTitle"
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/app_name"
+            tools:textColor="@color/color_test_primary"
+            tools:visibility="visible" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvLineDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:textSize="@dimen/txt_small"
-                android:visibility="gone"
-                tools:ignore="TextContrastCheck"
-                tools:text="@string/app_name"
-                tools:textColor="@color/color_test_primary"
-                tools:visibility="visible" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        <View
+            android:id="@+id/vSpace"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/w_250"
+            android:background="@color/color_test_primary"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLineDescription"
+            tools:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </com.google.android.material.card.MaterialCardView>

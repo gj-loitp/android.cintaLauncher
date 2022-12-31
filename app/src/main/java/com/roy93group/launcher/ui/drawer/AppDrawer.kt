@@ -7,8 +7,6 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
-import androidx.core.view.marginBottom
-import androidx.core.view.marginTop
 import cdflynn.android.library.turn.TurnLayoutManager
 import com.loitp.core.utilities.LUIUtil
 import com.roy93group.app.C
@@ -106,15 +104,12 @@ class AppDrawer(
         if (isOpen) return
         ItemLongPress.currentPopup?.dismiss()
         val sbh = launcherActivity.getStatusBarHeight()
-        launcherActivity.rvApp.setPadding(
-            /* left = */ launcherActivity.rvApp.paddingLeft,
-            /* top = */
-            sbh,
-            /* right = */
-            launcherActivity.rvApp.paddingRight,
-            /* bottom = */
-            launcherActivity.bottomBar.cvSearchBarContainer.measuredHeight + launcherActivity.bottomBar.cvSearchBarContainer.marginBottom + launcherActivity.bottomBar.cvSearchBarContainer.marginTop
-        )
+//        launcherActivity.rvApp.setPadding(
+//            launcherActivity.rvApp.paddingLeft,
+//            sbh,
+//            launcherActivity.rvApp.paddingRight,
+//            launcherActivity.bottomBar.cvSearchBarContainer.measuredHeight + launcherActivity.bottomBar.cvSearchBarContainer.marginBottom + launcherActivity.bottomBar.cvSearchBarContainer.marginTop
+//        )
         launcherActivity.flAppDrawerContainer.isVisible = true
         launcherActivity.rvFeed.stopScroll()
         launcherActivity.feedProfiles.rvFeedFilters.animate()

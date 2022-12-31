@@ -39,6 +39,7 @@ fun bindAppViewHolder(
     isFromSuggest: Boolean,
     isDisplayAppIcon: Boolean,
     isForceColorIcon: Boolean,
+    isLastItem: Boolean,
 ) {
     val colorPrimary = C.getColorPrimary()
     val colorBackground = C.getColorBackground()
@@ -104,4 +105,6 @@ fun bindAppViewHolder(
         )
         return@setOnLongClickListener false
     }
+
+    holder.itemView.vSpace.isVisible = isLastItem
 }
