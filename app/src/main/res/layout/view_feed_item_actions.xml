@@ -6,11 +6,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="end"
-    android:layout_marginTop="@dimen/margin_padding_small"
-    app:cardCornerRadius="@dimen/round_largest"
+    app:cardCornerRadius="@dimen/round_medium"
     app:cardElevation="@dimen/margin_padding_small"
     app:cardUseCompatPadding="true"
-    tools:cardBackgroundColor="@color/color_test_primary">
+    tools:cardBackgroundColor="@color/color_test_background">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvActions"
