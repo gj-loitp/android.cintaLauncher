@@ -39,20 +39,17 @@ class FrmSplashPrimary : FrmWithNext(R.layout.frm_intro_splash_primary) {
         }
         colorPicker.apply {
             colors = C.colors
+            setBackgroundColor(C.getColorPrimary())
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
                     C.vibrate(milliseconds = 10)
-
+                    setBackgroundColor(c)
                     val result = C.updatePrimaryColor(c)
                     if (result) {
                         updateUI()
-                        if (activity is IntroActivity) {
-                            (activity as IntroActivity).updateUI()
-                        }
+                        (activity as? IntroActivity)?.updateUI()
                     } else {
-                        if (activity is IntroActivity) {
-                            (activity as IntroActivity).showSnackBarError(getString(R.string.err_same_color))
-                        }
+                        (activity as? IntroActivity)?.showSnackBarError(getString(R.string.err_same_color))
                     }
                 }
             })
