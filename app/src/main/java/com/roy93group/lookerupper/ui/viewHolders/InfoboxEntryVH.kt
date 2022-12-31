@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.app.C
-import com.roy93group.launcher.R
+import kotlinx.android.synthetic.main.view_search_result_answer_info_box_entry.view.*
 
 /**
  * Updated by Loitp on 2022.12.18
@@ -14,10 +14,13 @@ import com.roy93group.launcher.R
  * freuss47@gmail.com
  */
 class InfoboxEntryVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val label: TextView = itemView.findViewById<TextView>(R.id.label).apply {
-        setTextColor(C.getColorPrimary())
+    val colorPrimary = C.getColorPrimary()
+
+    val label: TextView = itemView.label.apply {
+        setTextColor(colorPrimary)
     }
-    val value: TextView = itemView.findViewById<TextView>(R.id.value).apply {
-        setTextColor(C.getColorPrimary())
+    val value: TextView = itemView.value.apply {
+        setTextColor(colorPrimary)
     }
+
 }
