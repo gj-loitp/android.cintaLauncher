@@ -10,9 +10,6 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.card.MaterialCardView
-import com.roy93group.app.C
-import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.formatTimeAgo
 import com.roy93group.launcher.ui.feed.ActionsAdapter
@@ -20,6 +17,8 @@ import com.roy93group.launcher.ui.view.SwipeLayout
 import com.roy93group.launcher.ui.view.recycler.DividerItemDecorator
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
+import kotlinx.android.synthetic.main.view_feed_item_actions.view.*
+import kotlinx.android.synthetic.main.view_feed_item_plain.view.*
 import java.time.Instant
 
 /**
@@ -33,27 +32,6 @@ open class FeedItemVH(
     itemView: View,
 ) : FeedViewHolder(SwipeLayout(itemView)) {
     private val swipeLayout = this.itemView as SwipeLayout
-    val container: View? = itemView.findViewById(R.id.container)
-    val vLine: View = itemView.findViewById<View>(R.id.vLine).apply {
-        setBackgroundColor(C.getColorPrimary())
-    }
-    val source: TextView = itemView.findViewById<TextView>(R.id.source).apply {
-        setTextColor(C.getColorPrimary())
-    }
-    private val tvTime: TextView = itemView.findViewById<TextView>(R.id.tvTime).apply {
-        setTextColor(C.getColorPrimary())
-    }
-    val title: TextView = itemView.findViewById<TextView>(R.id.title).apply {
-        setTextColor(C.getColorPrimary())
-    }
-    val description: TextView = itemView.findViewById<TextView>(R.id.description).apply {
-        setTextColor(C.getColorPrimary())
-    }
-    val icon: ImageView = itemView.findViewById(R.id.icon)
-    private val cvActionsContainer: MaterialCardView =
-        itemView.findViewById<MaterialCardView>(R.id.cvActionsContainer).apply {
-            setCardBackgroundColor(C.getColorPrimary())
-        }
 
     private val separatorDrawable = GradientDrawable().apply {
         shape = GradientDrawable.RECTANGLE
@@ -64,71 +42,97 @@ open class FeedItemVH(
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private val rvActions: RecyclerView =
-        cvActionsContainer.findViewById<RecyclerView>(R.id.rvActions).apply {
-            layoutManager = LinearLayoutManager(
-                /* context = */ context,
-                /* orientation = */RecyclerView.HORIZONTAL,
-                /* reverseLayout = */false
+    @Suppress("unused")
+    private val rvActions: RecyclerView = itemView.rvActions.apply {
+        layoutManager = LinearLayoutManager(
+            /* context = */ context,
+            /* orientation = */RecyclerView.HORIZONTAL,
+            /* reverseLayout = */false
+        )
+        addItemDecoration(
+            DividerItemDecorator(
+                context = itemView.context,
+                orientation = DividerItemDecoration.HORIZONTAL,
+                divider = separatorDrawable
             )
-            addItemDecoration(
-                DividerItemDecorator(
-                    context = itemView.context,
-                    orientation = DividerItemDecoration.HORIZONTAL,
-                    divider = separatorDrawable
-                )
-            )
-            setOnTouchListener { v, _ ->
-                v.parent.requestDisallowInterceptTouchEvent(true)
-                false
-            }
+        )
+        setOnTouchListener { v, _ ->
+            v.parent.requestDisallowInterceptTouchEvent(true)
+            false
         }
+    }
 
     override fun onBind(
-        item: FeedItem,
+        feedItem: FeedItem,
         isDisplayAppIcon: Boolean,
         isForceColorIcon: Boolean,
     ) {
         swipeLayout.reset()
-        title.text = item.title
 
-        applyIfNotNull(view = description, value = item.description, block = TextView::setText)
-        if (isDisplayAppIcon) {
-            applyIfNotNull(
-                view = icon,
-                value = item.sourceIcon,
-                block = ImageView::setImageDrawable
-            )
-            if (isForceColorIcon) {
-                icon.setColorFilter(C.getColorPrimary())
+        itemView.vLine.apply {
+            setBackgroundColor(colorPrimary)
+        }
+
+        itemView.title.apply {
+            text = feedItem.title
+            isVisible = feedItem.title.isNotEmpty()
+            setTextColor(colorPrimary)
+        }
+
+        itemView.description.apply {
+            setTextColor(colorPrimary)
+            applyIfNotNull(view = this, value = feedItem.description, block = TextView::setText)
+            isVisible = !feedItem.description.isNullOrEmpty()
+        }
+
+        itemView.icon.apply {
+            if (isDisplayAppIcon) {
+                applyIfNotNull(
+                    view = this,
+                    value = feedItem.sourceIcon,
+                    block = ImageView::setImageDrawable
+                )
+                if (isForceColorIcon) {
+                    setColorFilter(colorPrimary)
+                } else {
+                    setColorFilter(Color.TRANSPARENT)
+                }
             } else {
-                icon.setColorFilter(Color.TRANSPARENT)
+                isVisible = false
             }
-        } else {
-            icon.isVisible = false
         }
 
-        applyIfNotNull(view = source, value = item.source, block = TextView::setText)
-
-        title.isVisible = item.title.isNotEmpty()
-        description.isVisible = !item.description.isNullOrEmpty()
-
-        itemView.setOnClickListener(item::onTap)
-        if (item.actions.isEmpty()) {
-            cvActionsContainer.isVisible = false
-        } else {
-            cvActionsContainer.isVisible = true
-            rvActions.adapter = ActionsAdapter(item.actions)
+        itemView.source.apply {
+            setTextColor(colorPrimary)
+            applyIfNotNull(view = this, value = feedItem.source, block = TextView::setText)
         }
-        if (item.instant == Instant.MAX) {
-            tvTime.isVisible = false
-        } else {
-            tvTime.isVisible = true
-            tvTime.text = item.formatTimeAgo(itemView.resources)
+
+        itemView.setOnClickListener(feedItem::onTap)
+
+        itemView.cvActionsContainer.apply {
+            setCardBackgroundColor(colorPrimary)
+            if (feedItem.actions.isEmpty()) {
+                isVisible = false
+            } else {
+                isVisible = true
+                rvActions.adapter = ActionsAdapter(feedItem.actions)
+            }
         }
-        swipeLayout.onSwipeAway = item::onDismiss
-        swipeLayout.isSwipeAble = item.isDismissible
-        swipeLayout.setSwipeColor(C.getColorPrimary())
-        swipeLayout.setIconColor(C.getColorBackground())
+
+        itemView.tvTime.apply {
+            setTextColor(colorPrimary)
+            if (feedItem.instant == Instant.MAX) {
+                isVisible = false
+            } else {
+                isVisible = true
+                text = feedItem.formatTimeAgo(itemView.resources)
+            }
+        }
+
+        swipeLayout.onSwipeAway = feedItem::onDismiss
+        swipeLayout.isSwipeAble = feedItem.isDismissible
+
+        swipeLayout.setSwipeColor(colorPrimary)
+        swipeLayout.setIconColor(colorBackground)
     }
 }

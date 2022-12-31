@@ -3,6 +3,7 @@ package com.roy93group.launcher.ui.feed.items.viewHolders
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.roy93group.app.C
 import com.roy93group.launcher.data.feed.items.FeedItem
 
 /**
@@ -14,10 +15,13 @@ import com.roy93group.launcher.data.feed.items.FeedItem
  */
 abstract class FeedViewHolder(
     itemView: View
-) :
-    RecyclerView.ViewHolder(itemView) {
+) : RecyclerView.ViewHolder(itemView) {
+
+    val colorPrimary = C.getColorPrimary()
+    val colorBackground = C.getColorBackground()
+
     abstract fun onBind(
-        item: FeedItem,
+        feedItem: FeedItem,
         isDisplayAppIcon: Boolean,
         isForceColorIcon: Boolean,
     )

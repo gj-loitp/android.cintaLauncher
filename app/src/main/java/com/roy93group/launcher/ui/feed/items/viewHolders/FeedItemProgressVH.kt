@@ -21,16 +21,16 @@ class FeedItemProgressVH(
     private val progress: ProgressBar = itemView.findViewById(R.id.progress)
 
     override fun onBind(
-        item: FeedItem,
+        feedItem: FeedItem,
         isDisplayAppIcon: Boolean,
         isForceColorIcon: Boolean
     ) {
-        super.onBind(item, isDisplayAppIcon, isForceColorIcon)
-        item as FeedItemWithProgress
+        super.onBind(feedItem, isDisplayAppIcon, isForceColorIcon)
+        feedItem as FeedItemWithProgress
 
         progress.apply {
-            max = item.max
-            progress = item.progress
+            max = feedItem.max
+            progress = feedItem.progress
             isIndeterminate = false
             progressTintList = ColorStateList.valueOf(C.getColorPrimary())
             progressBackgroundTintList = ColorStateList.valueOf(C.getColorPrimary())

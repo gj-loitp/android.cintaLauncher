@@ -15,7 +15,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.target.ViewTarget
 import com.google.android.material.card.MaterialCardView
-import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemWithBigImage
@@ -73,16 +72,16 @@ open class FeedItemImageVH(
     }
 
     override fun onBind(
-        item: FeedItem,
+        feedItem: FeedItem,
         isDisplayAppIcon: Boolean,
         isForceColorIcon: Boolean,
     ) {
-        super.onBind(item, isDisplayAppIcon, isForceColorIcon)
-        item as FeedItemWithBigImage
+        super.onBind(feedItem, isDisplayAppIcon, isForceColorIcon)
+        feedItem as FeedItemWithBigImage
         if (isDisplayAppIcon) {
             card.isVisible = true
             Glide.with(itemView.context)
-                .load(item.image)
+                .load(feedItem.image)
                 .apply(requestOptions)
                 .listener(imageRequestListener)
                 .into(image)

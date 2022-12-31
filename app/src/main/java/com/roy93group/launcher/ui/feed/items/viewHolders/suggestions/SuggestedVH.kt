@@ -38,13 +38,13 @@ class SuggestedVH(
     }
 
     override fun onBind(
-        item: FeedItem,
+        feedItem: FeedItem,
         isDisplayAppIcon: Boolean,
         isForceColorIcon: Boolean,
     ) {
-        item as FeedItemSuggestedApps
+        feedItem as FeedItemSuggestedApps
         adapter.updateItems(
-            items = item.apps,
+            items = feedItem.apps,
             isDisplayAppIcon = isDisplayAppIcon,
             isForceColorIcon = isForceColorIcon
         )

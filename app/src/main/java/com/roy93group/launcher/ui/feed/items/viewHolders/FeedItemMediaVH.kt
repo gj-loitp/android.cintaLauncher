@@ -10,6 +10,7 @@ import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemWithMedia
+import kotlinx.android.synthetic.main.view_feed_item_media.view.*
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -35,15 +36,15 @@ class FeedItemMediaVH(
     }
 
     override fun onBind(
-        item: FeedItem,
+        feedItem: FeedItem,
         isDisplayAppIcon: Boolean,
         isForceColorIcon: Boolean,
     ) {
-        super.onBind(item, isDisplayAppIcon, isForceColorIcon)
+        super.onBind(feedItem, isDisplayAppIcon, isForceColorIcon)
 
-        item as FeedItemWithMedia
+        feedItem as FeedItemWithMedia
 
-        val c = item.image as? Bitmap
+        val c = feedItem.image as? Bitmap
         if (c == null) {
             image.setImageDrawable(null)
         } else {
@@ -74,7 +75,7 @@ class FeedItemMediaVH(
                     /* x1 = */ c.width.toFloat() * 1.5f,
                     /* y1 = */ 0f,
                     /* color0 = */ 0,
-                    /* color1 = */ item.color,
+                    /* color1 = */ feedItem.color,
                     /* tile = */ Shader.TileMode.CLAMP
                 )
                 alpha = 100
@@ -90,11 +91,11 @@ class FeedItemMediaVH(
             image.setImageBitmap(bitmap)
         }
 
-        image.setOnClickListener(item::onTap)
-        title.setOnClickListener(item::onTap)
-        description.setOnClickListener(item::onTap)
+        image.setOnClickListener(feedItem::onTap)
+        itemView.title.setOnClickListener(feedItem::onTap)
+        itemView.description.setOnClickListener(feedItem::onTap)
         buttonPlay.setImageResource(
-            if (item.isPlaying())
+            if (feedItem.isPlaying())
                 R.drawable.ic_pause
             else
                 R.drawable.ic_play
@@ -102,16 +103,16 @@ class FeedItemMediaVH(
 
         buttonPrevious.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            item.previous(it)
+            feedItem.previous(it)
         }
         btNext.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            item.next(it)
+            feedItem.next(it)
         }
         buttonPlay.setOnClickListener {
             it as ImageView
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-            item.togglePause(it)
+            feedItem.togglePause(it)
         }
     }
 }

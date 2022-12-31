@@ -14,6 +14,7 @@ import com.roy93group.launcher.ui.feed.items.viewHolders.*
 import com.roy93group.launcher.ui.feed.items.viewHolders.home.HomeViewHolder
 import com.roy93group.launcher.ui.feed.items.viewHolders.home.bindHomeViewHolder
 import com.roy93group.launcher.ui.feed.items.viewHolders.suggestions.SuggestedVH
+import kotlinx.android.synthetic.main.view_feed_item_plain.view.*
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -114,6 +115,9 @@ class FeedAdapter(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_plain, parent, false),
             )
+
+
+
             TYPE_SMALL -> FeedItemSmallVH(
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_small, parent, false),
@@ -164,14 +168,14 @@ class FeedAdapter(
         val item = getFeedItem(i)
         holder as FeedViewHolder
         holder.onBind(
-            item = item,
+            feedItem = item,
             isDisplayAppIcon = isDisplayAppIcon,
             isForceColorIcon = isForceColorIcon
         )
         if (holder !is FeedItemVH) return
         val verticalPadding =
             holder.itemView.resources.getDimension(R.dimen.margin_padding_medium).toInt()
-        holder.container?.apply {
+        holder.itemView.container?.apply {
             setPadding(
                 /* left = */
                 this.paddingLeft,
