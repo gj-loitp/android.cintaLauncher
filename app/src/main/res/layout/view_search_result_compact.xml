@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/transparent"
     android:paddingStart="@dimen/margin_padding_medium"
     android:paddingTop="@dimen/margin_padding_small"
     android:paddingEnd="@dimen/margin_padding_medium"
-    android:paddingBottom="@dimen/margin_padding_small">
+    android:paddingBottom="@dimen/margin_padding_small"
+    tools:background="@color/color_test_background">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icon"
@@ -29,7 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/icon"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/yellow"
         tools:text="@string/app_name"
         tools:textColor="@color/color_test_primary" />
 
@@ -44,7 +43,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/text"
         app:layout_constraintTop_toBottomOf="@+id/text"
-        tools:background="@color/green"
         tools:text="@string/app_name"
         tools:textColor="@color/color_test_primary" />
 </androidx.constraintlayout.widget.ConstraintLayout>
