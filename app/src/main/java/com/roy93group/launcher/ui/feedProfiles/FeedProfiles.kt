@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.profiles.FeedProfile
 import com.roy93group.launcher.ui.LauncherActivity
+import kotlinx.android.synthetic.main.activity_launcher.*
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -14,13 +15,13 @@ import com.roy93group.launcher.ui.LauncherActivity
  * +840766040293
  * freuss47@gmail.com
  */
-class FeedProfiles(val activity: LauncherActivity) {
+class FeedProfiles(val launcherActivity: LauncherActivity) {
 
-    private val feedFilterAdapter = FeedProfileAdapter(activity.launcherContext)
+    private val feedFilterAdapter = FeedProfileAdapter(launcherActivity.launcherContext)
     val rvFeedFilters: RecyclerView =
-        activity.findViewById<RecyclerView>(R.id.rvFeedFilters).apply {
+        launcherActivity.rvFeedFilters.apply {
             layoutManager = LinearLayoutManager(
-                /* context = */ activity,
+                /* context = */ launcherActivity,
                 /* orientation = */RecyclerView.HORIZONTAL,
                 /* reverseLayout = */false
             )
@@ -30,7 +31,7 @@ class FeedProfiles(val activity: LauncherActivity) {
     init {
         feedFilterAdapter.updateItems(
             FeedProfile(
-                icon = AppCompatResources.getDrawable(activity, R.drawable.ic_home),
+                icon = AppCompatResources.getDrawable(launcherActivity, R.drawable.ic_home),
                 showAppSuggestions = true,
                 showMedia = true,
                 showNews = true,
@@ -38,8 +39,8 @@ class FeedProfiles(val activity: LauncherActivity) {
                 onlyToday = false,
             ),
             FeedProfile(
-                name = activity.getString(R.string.today),
-                icon = AppCompatResources.getDrawable(activity, R.drawable.ic_lightness),
+                name = launcherActivity.getString(R.string.today),
+                icon = AppCompatResources.getDrawable(launcherActivity, R.drawable.ic_lightness),
                 showAppSuggestions = true,
                 showMedia = true,
                 showNews = true,
@@ -47,8 +48,8 @@ class FeedProfiles(val activity: LauncherActivity) {
                 onlyToday = true,
             ),
             FeedProfile(
-                name = activity.getString(R.string.news),
-                icon = AppCompatResources.getDrawable(activity, R.drawable.ic_news),
+                name = launcherActivity.getString(R.string.news),
+                icon = AppCompatResources.getDrawable(launcherActivity, R.drawable.ic_news),
                 showAppSuggestions = false,
                 showMedia = false,
                 showNews = true,
@@ -56,8 +57,8 @@ class FeedProfiles(val activity: LauncherActivity) {
                 onlyToday = false,
             ),
             FeedProfile(
-                name = activity.getString(R.string.notifications),
-                icon = AppCompatResources.getDrawable(activity, R.drawable.ic_notification),
+                name = launcherActivity.getString(R.string.notifications),
+                icon = AppCompatResources.getDrawable(launcherActivity, R.drawable.ic_notification),
                 showAppSuggestions = false,
                 showMedia = false,
                 showNews = false,
