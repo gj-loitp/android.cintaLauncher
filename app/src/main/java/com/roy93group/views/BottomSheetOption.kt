@@ -82,12 +82,12 @@ class BottomSheetOption(
         rb0.apply {
             text = value0
             setTextColor(colorPrimary)
-            C.setTintRadioButton(this, colorPrimary)
+            C.setButtonTintList(this, colorPrimary)
         }
         rb1.apply {
             text = value1
             setTextColor(colorPrimary)
-            C.setTintRadioButton(this, colorPrimary)
+            C.setButtonTintList(this, colorPrimary)
         }
 
         when (firstIndexCheck) {

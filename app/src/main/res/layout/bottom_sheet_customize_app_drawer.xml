@@ -5,7 +5,7 @@
     android:id="@+id/llRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:cardBackgroundColor="@color/color_test_primary">
+    tools:cardBackgroundColor="@color/color_test_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,17 +23,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/colorPrimary" />
+            tools:tint="@color/color_test_primary" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/app_info"
-            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_50"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/ivSlider" />
+            app:layout_constraintTop_toBottomOf="@+id/ivSlider"
+            tools:textColor="@color/color_test_primary" />
 
         <com.jem.rubberpicker.RubberSeekBar
             android:id="@+id/seekRadius"
@@ -55,10 +55,10 @@
             android:id="@+id/tvRadius"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_large"
             app:layout_constraintTop_toBottomOf="@+id/seekRadius"
-            tools:text="Radius: 125" />
+            tools:text="Radius: 125"
+            tools:textColor="@color/color_test_primary" />
 
         <com.jem.rubberpicker.RubberSeekBar
             android:id="@+id/seekPeek"
@@ -81,17 +81,16 @@
             android:id="@+id/tvPeekText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_large"
             app:layout_constraintTop_toBottomOf="@+id/seekPeek"
-            tools:text="Peek: 75" />
+            tools:text="Peek: 75"
+            tools:textColor="@color/color_test_primary" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btGravity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_padding_medium"
-            android:backgroundTint="@color/colorPrimary"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
             android:paddingStart="@dimen/margin_padding_medium"
@@ -102,14 +101,14 @@
             android:textAllCaps="false"
             android:textSize="@dimen/txt_medium"
             app:layout_constraintTop_toBottomOf="@+id/tvPeekText"
-            tools:textColor="@color/color_test_primary" />
+            tools:backgroundTint="@color/color_test_primary"
+            tools:textColor="@color/color_test_background" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btOrientation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_padding_small"
-            android:backgroundTint="@color/colorPrimary"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
             android:paddingStart="@dimen/margin_padding_medium"
@@ -120,57 +119,57 @@
             android:textAllCaps="false"
             android:textSize="@dimen/txt_medium"
             app:layout_constraintTop_toBottomOf="@+id/btGravity"
-            tools:textColor="@color/color_test_primary" />
+            tools:backgroundTint="@color/color_test_primary"
+            tools:textColor="@color/color_test_background" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/cbRotate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_padding_medium"
-            android:buttonTint="@color/colorPrimary"
             android:checked="false"
             android:gravity="start|center"
             android:text="@string/rotate"
-            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_large"
             app:layout_constraintTop_toBottomOf="@+id/btOrientation"
+            tools:buttonTint="@color/color_test_primary"
             tools:checked="true"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            tools:textColor="@color/color_test_primary" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/cbDisplayAppIcon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/colorPrimary"
             android:checked="false"
             android:gravity="start|center"
             android:text="@string/display_app_icon"
-            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_large"
             app:layout_constraintTop_toBottomOf="@+id/cbRotate"
+            tools:buttonTint="@color/color_test_primary"
             tools:checked="true"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            tools:textColor="@color/color_test_primary" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/cbForceColorIcon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/colorPrimary"
             android:checked="false"
             android:gravity="start|center"
             android:text="@string/force_color_app_icon"
-            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_large"
             app:layout_constraintTop_toBottomOf="@+id/cbDisplayAppIcon"
+            tools:buttonTint="@color/color_test_primary"
             tools:checked="true"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            tools:textColor="@color/color_test_primary" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btReset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_padding_small"
-            android:backgroundTint="@color/colorPrimary"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
             android:paddingStart="@dimen/margin_padding_medium"
@@ -181,7 +180,8 @@
             android:textAllCaps="false"
             android:textSize="@dimen/txt_medium"
             app:layout_constraintTop_toBottomOf="@+id/cbForceColorIcon"
-            tools:textColor="@color/color_test_primary" />
+            tools:backgroundTint="@color/color_test_primary"
+            tools:textColor="@color/color_test_background" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

@@ -14,14 +14,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.widget.AppCompatCheckBox
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.card.MaterialCardView
 import com.jem.rubberpicker.RubberSeekBar
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LAppResource
 import com.roy93group.app.C
 import com.roy93group.launcher.R
+import kotlinx.android.synthetic.main.bottom_sheet_customize_app_drawer.*
 
 class BottomSheetCustomizeAppDrawer(
     private val seekRadiusValue: Int,
@@ -43,11 +42,6 @@ class BottomSheetCustomizeAppDrawer(
     private val onForceColorIcon: ((Boolean) -> Unit)?,
 ) : BottomSheetDialogFragment() {
 
-    private var tvRadius: TextView? = null
-    private var tvPeekText: TextView? = null
-    private var btGravity: Button? = null
-    private var btOrientation: Button? = null
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,7 +51,10 @@ class BottomSheetCustomizeAppDrawer(
         return inflater.inflate(R.layout.bottom_sheet_customize_app_drawer, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         // https://stackoverflow.com/questions/37104960/bottomsheetdialog-with-transparent-background
@@ -68,7 +65,7 @@ class BottomSheetCustomizeAppDrawer(
             }
         }
 
-        setupViews(view)
+        setupViews()
     }
 
     override fun onDismiss(dialog: DialogInterface) {
@@ -76,42 +73,48 @@ class BottomSheetCustomizeAppDrawer(
         onDismiss?.invoke(Unit)
     }
 
-    private fun setupViews(view: View) {
-        view.findViewById<MaterialCardView>(R.id.llRoot).apply {
-            setCardBackgroundColor(C.getColorPrimary())
+    private fun setupViews() {
+        val colorPrimary = C.getColorPrimary()
+        val colorBackground = C.getColorBackground()
+
+        llRoot.apply {
+            setCardBackgroundColor(colorBackground)
             C.setCornerCardView(activity = requireActivity(), cardView = this)
         }
 
-        tvRadius = view.findViewById(R.id.tvRadius)
-        tvPeekText = view.findViewById(R.id.tvPeekText)
-        val seekRadius = view.findViewById<RubberSeekBar>(R.id.seekRadius).apply {
-            setNormalTrackColor(C.getColorBackground())
-            setHighlightTrackColor(C.getColorBackground())
-            setHighlightThumbOnTouchColor(C.getColorPrimary())
-            setDefaultThumbInsideColor(C.getColorPrimary())
+        ivSlider.setColorFilter(colorPrimary)
+        tvTitle.setTextColor(colorPrimary)
+        tvRadius.setTextColor(colorPrimary)
+        tvPeekText.setTextColor(colorPrimary)
+
+        seekRadius.apply {
+            setNormalTrackColor(colorBackground)
+            setHighlightTrackColor(colorBackground)
+            setHighlightThumbOnTouchColor(colorPrimary)
+            setDefaultThumbInsideColor(colorPrimary)
         }
-        val seekPeek = view.findViewById<RubberSeekBar>(R.id.seekPeek).apply {
-            setNormalTrackColor(C.getColorBackground())
-            setHighlightTrackColor(C.getColorBackground())
-            setHighlightThumbOnTouchColor(C.getColorPrimary())
-            setDefaultThumbInsideColor(C.getColorPrimary())
+        seekPeek.apply {
+            setNormalTrackColor(colorBackground)
+            setHighlightTrackColor(colorBackground)
+            setHighlightThumbOnTouchColor(colorPrimary)
+            setDefaultThumbInsideColor(colorPrimary)
         }
-        btGravity = view.findViewById<Button>(R.id.btGravity).apply {
-            setTextColor(C.getColorPrimary())
+        btGravity.apply {
+            setTextColor(colorBackground)
+            setBackgroundColor(colorPrimary)
         }
-        btOrientation = view.findViewById<Button>(R.id.btOrientation).apply {
-            setTextColor(C.getColorPrimary())
+        btOrientation.apply {
+            setTextColor(colorBackground)
+            setBackgroundColor(colorPrimary)
         }
-        view.findViewById<Button>(R.id.btReset).apply {
-            setTextColor(C.getColorPrimary())
+        btReset.apply {
+            setTextColor(colorBackground)
+            setBackgroundColor(colorPrimary)
             setSafeOnClickListener {
                 dismiss()
                 onResetAllValue?.invoke(Unit)
             }
         }
-        val cbRotate = view.findViewById<AppCompatCheckBox>(R.id.cbRotate)
-        val cbDisplayAppIcon = view.findViewById<AppCompatCheckBox>(R.id.cbDisplayAppIcon)
-        val cbForceColorIcon = view.findViewById<AppCompatCheckBox>(R.id.cbForceColorIcon)
 
         seekRadius.setOnRubberSeekBarChangeListener(object :
             RubberSeekBar.OnRubberSeekBarChangeListener {
@@ -120,7 +123,7 @@ class BottomSheetCustomizeAppDrawer(
                 value: Int,
                 fromUser: Boolean
             ) {
-                tvRadius?.text = resources.getString(R.string.radius_format, value)
+                tvRadius.text = resources.getString(R.string.radius_format, value)
                 if (fromUser) {
                     onSeekRadiusValue?.invoke(value)
                 }
@@ -136,7 +139,7 @@ class BottomSheetCustomizeAppDrawer(
                 value: Int,
                 fromUser: Boolean
             ) {
-                tvPeekText?.text = resources.getString(R.string.peek_format, value)
+                tvPeekText.text = resources.getString(R.string.peek_format, value)
                 if (fromUser) {
                     onSeekPeekValue?.invoke(value)
                 }
@@ -146,13 +149,13 @@ class BottomSheetCustomizeAppDrawer(
             override fun onStopTrackingTouch(seekBar: RubberSeekBar) {}
         })
 
-        tvRadius?.text = resources.getString(R.string.radius_format, seekRadiusValue)
-        tvPeekText?.text = resources.getString(R.string.peek_format, seekPeekValue)
+        tvRadius.text = resources.getString(R.string.radius_format, seekRadiusValue)
+        tvPeekText.text = resources.getString(R.string.peek_format, seekPeekValue)
         seekRadius.setCurrentValue(seekRadiusValue)
         seekPeek.setCurrentValue(seekPeekValue)
 
         updateUIGravity()
-        btGravity?.setSafeOnClickListener {
+        btGravity.setSafeOnClickListener {
             val title = LAppResource.getString(R.string.gravity)
             val value0 = LAppResource.getString(R.string.start)
             val value1 = LAppResource.getString(R.string.end)
@@ -174,7 +177,7 @@ class BottomSheetCustomizeAppDrawer(
         }
 
         updateUIOrientation()
-        btOrientation?.setSafeOnClickListener {
+        btOrientation.setSafeOnClickListener {
             val title = LAppResource.getString(R.string.orientation)
             val value0 = LAppResource.getString(R.string.vertical)
             val value1 = LAppResource.getString(R.string.horizontal)
@@ -195,19 +198,31 @@ class BottomSheetCustomizeAppDrawer(
             )
         }
 
-        cbRotate.isChecked = isCheckedValue
-        cbRotate.setOnCheckedChangeListener { _, isChecked ->
-            onRotate?.invoke(isChecked)
+        cbRotate.apply {
+            setTextColor(colorPrimary)
+            C.setButtonTintList(this, colorPrimary)
+            isChecked = isCheckedValue
+            setOnCheckedChangeListener { _, isChecked ->
+                onRotate?.invoke(isChecked)
+            }
         }
 
-        cbDisplayAppIcon.isChecked = isDisplayAppIcon
-        cbDisplayAppIcon.setOnCheckedChangeListener { _, isChecked ->
-            onDisplayAppIcon?.invoke(isChecked)
+        cbDisplayAppIcon.apply {
+            setTextColor(colorPrimary)
+            C.setButtonTintList(this, colorPrimary)
+            isChecked = isDisplayAppIcon
+            setOnCheckedChangeListener { _, isChecked ->
+                onDisplayAppIcon?.invoke(isChecked)
+            }
         }
 
-        cbForceColorIcon.isChecked = isForceColorIcon
-        cbForceColorIcon.setOnCheckedChangeListener { _, isChecked ->
-            onForceColorIcon?.invoke(isChecked)
+        cbForceColorIcon.apply {
+            setTextColor(colorPrimary)
+            C.setButtonTintList(this, colorPrimary)
+            isChecked = isForceColorIcon
+            setOnCheckedChangeListener { _, isChecked ->
+                onForceColorIcon?.invoke(isChecked)
+            }
         }
     }
 
@@ -217,9 +232,9 @@ class BottomSheetCustomizeAppDrawer(
         val value0 = LAppResource.getString(R.string.start)
         val value1 = LAppResource.getString(R.string.end)
         if (gravityValue == 0) {
-            btGravity?.text = "$title: $value0"
+            btGravity.text = "$title: $value0"
         } else {
-            btGravity?.text = "$title: $value1"
+            btGravity.text = "$title: $value1"
         }
     }
 
@@ -229,9 +244,9 @@ class BottomSheetCustomizeAppDrawer(
         val value0 = LAppResource.getString(R.string.vertical)
         val value1 = LAppResource.getString(R.string.horizontal)
         if (orientationValue == 0) {
-            btOrientation?.text = "$title: $value0"
+            btOrientation.text = "$title: $value0"
         } else {
-            btOrientation?.text = "$title: $value1"
+            btOrientation.text = "$title: $value1"
         }
     }
 
