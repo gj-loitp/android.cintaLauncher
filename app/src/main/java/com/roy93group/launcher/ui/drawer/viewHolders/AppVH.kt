@@ -1,13 +1,11 @@
 package com.roy93group.launcher.ui.drawer.viewHolders
 
 import android.graphics.Color
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.app.C
-import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
@@ -15,6 +13,7 @@ import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter.Companion.APP_ITEM
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
+import kotlinx.android.synthetic.main.view_app_card.view.*
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -25,20 +24,7 @@ import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
  */
 class AppViewHolder(
     val cardView: CardView
-) : RecyclerView.ViewHolder(cardView) {
-    val ivIcon: ImageView = itemView.findViewById(R.id.ivIcon)
-    val tvIconText: TextView = itemView.findViewById<TextView>(R.id.tvIconText).apply {
-        setTextColor(C.getColorPrimary())
-    }
-
-    val tvLineTitle: TextView = itemView.findViewById<TextView>(R.id.tvLineTitle).apply {
-        setTextColor(C.getColorPrimary())
-    }
-    val tvLineDescription: TextView =
-        itemView.findViewById<TextView>(R.id.tvLineDescription).apply {
-            setTextColor(C.getColorPrimary())
-        }
-}
+) : RecyclerView.ViewHolder(cardView)
 
 class AppItem(val item: App) : AppDrawerAdapter.DrawerItem {
     override fun getItemViewType() = APP_ITEM
@@ -57,46 +43,40 @@ fun bindAppViewHolder(
     holder.cardView.setCardBackgroundColor(Color.TRANSPARENT)
 
     val banner = (item as? App)?.getBanner()
-    if (isDisplayAppIcon) {
-        holder.ivIcon.setImageDrawable(item.icon)
-        holder.ivIcon.isVisible = true
 
-        if (isForceColorIcon) {
-            holder.ivIcon.setColorFilter(C.getColorPrimary())
+    holder.itemView.ivIcon.apply {
+        if (isDisplayAppIcon) {
+            setImageDrawable(item.icon)
+            isVisible = true
+            if (isForceColorIcon) {
+                setColorFilter(colorPrimary)
+            } else {
+                setColorFilter(Color.TRANSPARENT)
+            }
         } else {
-            holder.ivIcon.setColorFilter(Color.TRANSPARENT)
+            isVisible = false
         }
-    } else {
-        holder.ivIcon.isVisible = false
     }
 
-    holder.tvIconText.text = item.label
-    applyIfNotNull(
-        view = holder.tvLineTitle,
-        value = banner?.title,
-        block = TextView::setText
-    )
-    applyIfNotNull(
-        view = holder.tvLineDescription,
-        value = banner?.text,
-        block = TextView::setText
-    )
-//    if (isFromSuggest) {
-//        holder.tvIconText.isVisible = true
-//        holder.tvLineTitle.isVisible = false
-//        holder.tvLineDescription.isVisible = false
-//    } else {
-//        applyIfNotNull(
-//            view = holder.tvLineTitle,
-//            value = banner?.title,
-//            block = TextView::setText
-//        )
-//        applyIfNotNull(
-//            view = holder.tvLineDescription,
-//            value = banner?.text,
-//            block = TextView::setText
-//        )
-//    }
+    holder.itemView.tvIconText.apply {
+        text = item.label
+        setTextColor(colorPrimary)
+    }
+    holder.itemView.tvLineTitle.apply {
+        setTextColor(colorPrimary)
+        applyIfNotNull(
+            view = this,
+            value = banner?.title,
+            block = TextView::setText
+        )
+    }
+    holder.itemView.tvLineDescription.apply {
+        applyIfNotNull(
+            view = this,
+            value = banner?.text,
+            block = TextView::setText
+        )
+    }
 
     holder.itemView.setOnClickListener {
         SuggestionsManager.onItemOpened(context = it.context, item = item)
