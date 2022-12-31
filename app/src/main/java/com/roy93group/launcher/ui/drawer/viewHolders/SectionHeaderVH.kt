@@ -1,16 +1,14 @@
 package com.roy93group.launcher.ui.drawer.viewHolders
 
 import android.annotation.SuppressLint
-import android.view.MotionEvent
+import android.graphics.Color
 import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.loitp.core.utilities.LAppResource
 import com.roy93group.app.C
-import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter.Companion.SECTION_HEADER
+import kotlinx.android.synthetic.main.view_app_drawer_section_header.view.*
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -19,13 +17,14 @@ import com.roy93group.launcher.ui.drawer.AppDrawerAdapter.Companion.SECTION_HEAD
  * +840766040293
  * freuss47@gmail.com
  */
-class SectionHeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val text: TextView = itemView.findViewById(R.id.text)
-}
+class SectionHeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 class SectionHeaderItem(override val label: String) : AppDrawerAdapter.DrawerItem {
     override fun getItemViewType() = SECTION_HEADER
 }
+
+val colorPrimary = C.getColorPrimary()
+val colorBackground = C.getColorBackground()
 
 @SuppressLint("ClickableViewAccessibility")
 fun bindSectionHeaderViewHolder(
@@ -35,24 +34,24 @@ fun bindSectionHeaderViewHolder(
     launcherActivity: LauncherActivity,
     isDisplayAppIcon: Boolean,
 ) {
-    holder.text.text = item.label
+    holder.itemView.text.text = item.label
     if (isHighlighted) {
-        holder.itemView.setBackgroundColor(C.getColorPrimary())
-        holder.text.setTextColor(C.getColorBackground())
+        holder.itemView.setBackgroundColor(colorPrimary)
+        holder.itemView.text.setTextColor(colorBackground)
     } else {
-        holder.itemView.setBackgroundColor(LAppResource.getColor(R.color.transparent))
-        holder.text.setTextColor(C.getColorPrimary())
+        holder.itemView.setBackgroundColor(Color.TRANSPARENT)
+        holder.itemView.text.setTextColor(colorPrimary)
     }
 
-    var x = 0f
-    var y = 0f
-    holder.itemView.setOnTouchListener { _, e ->
-        when (e.action and MotionEvent.ACTION_MASK) {
-            MotionEvent.ACTION_DOWN -> {
-                x = e.rawX
-                y = e.rawY
-            }
-        }
-        false
-    }
+//    var x = 0f
+//    var y = 0f
+//    holder.itemView.setOnTouchListener { _, e ->
+//        when (e.action and MotionEvent.ACTION_MASK) {
+//            MotionEvent.ACTION_DOWN -> {
+//                x = e.rawX
+//                y = e.rawY
+//            }
+//        }
+//        false
+//    }
 }

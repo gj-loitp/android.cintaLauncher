@@ -80,7 +80,10 @@ class AppDrawerAdapter(
 
     override fun getItemViewType(i: Int) = items[i].getItemViewType()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): RecyclerView.ViewHolder {
         return when (viewType) {
             SECTION_HEADER -> SectionHeaderViewHolder(
                 LayoutInflater.from(parent.context)
