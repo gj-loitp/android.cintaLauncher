@@ -7,14 +7,19 @@ package com.roy93group.views
  * +840766040293
  * freuss47@gmail.com
  */
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.loitp.core.ext.setSafeOnClickListener
+import com.loitp.core.utilities.LSocialUtil
 import com.roy93group.app.C
+import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.bottom_sheet_about_launcher.*
+import kotlinx.android.synthetic.main.view_item.view.*
 
 class BottomSheetAboutLauncher(
     private val isCancelableFragment: Boolean = true,
@@ -46,6 +51,7 @@ class BottomSheetAboutLauncher(
         setupViews()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupViews() {
         val colorPrimary = C.getColorPrimary()
         val colorBackground = C.getColorBackground()
@@ -56,5 +62,32 @@ class BottomSheetAboutLauncher(
         }
         ivSlider.setColorFilter(colorPrimary)
         tvTitle.setTextColor(colorPrimary)
+
+        layoutVersion.apply {
+            tv1.apply {
+                setTextColor(colorPrimary)
+                text = "Version: ${BuildConfig.VERSION_NAME}"
+            }
+            tv2.apply {
+                setTextColor(colorPrimary)
+                text = BuildConfig.BUILD_TYPE
+            }
+            setSafeOnClickListener {
+                LSocialUtil.rateApp(requireActivity())
+            }
+        }
+        layoutChangelog.apply {
+            tv1.apply {
+                setTextColor(colorPrimary)
+                text = getString(R.string.changelog)
+            }
+            tv2.apply {
+                setTextColor(colorPrimary)
+                text = getString(R.string.changelog_des)
+            }
+            setSafeOnClickListener {
+                //TODO
+            }
+        }
     }
 }

@@ -86,4 +86,6 @@
     <string name="about">About</string>
     <string name="about_color_launcher">About Color Launcher</string>
     <string name="about_color_launcher_des">Version, purchase status, contacts</string>
+    <string name="changelog">Changelog</string>
+    <string name="changelog_des">List of changes in the lasted version of the application</string>
 </resources>

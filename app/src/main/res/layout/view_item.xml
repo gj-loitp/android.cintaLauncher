@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w_1"
+        tools:background="@color/color_test_primary" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_medium"
+        android:layout_marginTop="@dimen/margin_padding_medium"
+        android:layout_marginEnd="@dimen/margin_padding_medium"
+        android:textSize="@dimen/txt_medium"
+        android:textStyle="bold"
+        tools:text="@string/app_name"
+        tools:textColor="@color/color_test_primary" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_medium"
+        android:layout_marginEnd="@dimen/margin_padding_medium"
+        android:layout_marginBottom="@dimen/margin_padding_medium"
+        android:textSize="@dimen/txt_small"
+        tools:text="@string/app_name"
+        tools:textColor="@color/color_test_primary" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
