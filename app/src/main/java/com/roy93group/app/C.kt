@@ -59,6 +59,7 @@ object C {
     private const val KEY_OPEN_SEARCH_WHEN_SCROLL_TOP = "KEY_OPEN_SEARCH_WHEN_SCROLL_TOP"
     private const val KEY_DISPLAY_APP_ICON = "KEY_DISPLAY_APP_ICON"
     private const val KEY_FORCE_COLOR_ICON = "KEY_FORCE_COLOR_ICON"
+    private const val KEY_AUTO_COLOR_CHANGER = "KEY_AUTO_COLOR_CHANGER"
 
     private var colorPrimary = LAppResource.getColor(R.color.color0)
     private var colorBackground = LAppResource.getColor(R.color.colorPrimary)
@@ -496,6 +497,14 @@ object C {
 
     fun getOpenSearchWhenScrollTop(): Boolean {
         return LSharedPrefsUtil.instance.getBoolean(KEY_OPEN_SEARCH_WHEN_SCROLL_TOP, true)
+    }
+
+    fun setAutoColorChanger(isEnable: Boolean) {
+        LSharedPrefsUtil.instance.putBoolean(KEY_AUTO_COLOR_CHANGER, isEnable)
+    }
+
+    fun getAutoColorChanger(): Boolean {
+        return LSharedPrefsUtil.instance.getBoolean(KEY_AUTO_COLOR_CHANGER, false)
     }
 
     fun setDisplayAppIcon(isDisplay: Boolean) {

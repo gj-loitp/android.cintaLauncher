@@ -214,6 +214,14 @@ object DrawerLongPressPopup {
                     })
             },
             ListPopupItem(
+                text = context.getString(R.string.auto_color),
+                icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_hdr_auto_24),
+                value = C.getAutoColorChanger(),
+                onToggle = { _, value ->
+                    C.setAutoColorChanger(value)
+                }
+            ),
+            ListPopupItem(
                 text = context.getString(R.string.wallpaper),
                 icon = ContextCompat.getDrawable(context, R.drawable.baseline_wallpaper_black_48),
             ) {
