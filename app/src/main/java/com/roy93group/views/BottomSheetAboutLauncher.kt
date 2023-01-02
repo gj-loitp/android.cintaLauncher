@@ -107,7 +107,12 @@ class BottomSheetAboutLauncher(
                 text = getString(R.string.hall_of_fame_des)
             }
             setSafeOnClickListener {
-                //TODO
+                C.launchSheetText(
+                    activity = requireActivity(),
+                    isCancelableFragment = true,
+                    title = getString(R.string.hall_of_fame),
+                    content = getString(R.string.hall_of_fame_detail)
+                )
             }
         }
         layoutContactTheDeveloper.apply {

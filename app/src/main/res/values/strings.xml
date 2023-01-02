@@ -103,6 +103,15 @@
     </string>
     <string name="hall_of_fame">Hall of Fame</string>
     <string name="hall_of_fame_des">Thank to everyone who helped make the application better</string>
+    <string name="hall_of_fame_detail">\n
+        \n✪ Tran Phu Loi
+        \n- The main developer
+        \n- Support on Patreon
+        \n-----
+        \n✪ Doan Thi Kim Quyen
+        \n- Beta testing, ideas
+        \n- Thai translation
+    </string>
     <string name="contact_the_dev">Contact the developer</string>
     <string name="contact_the_dev_des">Email: www.muathu@gmail.com\nFacebook: https://www.facebook.com/loitp93/</string>
 </resources>
