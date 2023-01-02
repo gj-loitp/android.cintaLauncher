@@ -92,7 +92,7 @@ class BottomSheetAboutLauncher(
                     activity = requireActivity(),
                     isCancelableFragment = true,
                     title = getString(R.string.changelog),
-                    content = getString(R.string.large_text)
+                    content = getString(R.string.changelog_detail)
                 )
             }
         }

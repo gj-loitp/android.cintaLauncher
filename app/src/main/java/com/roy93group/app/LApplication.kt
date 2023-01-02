@@ -15,6 +15,7 @@ import com.loitp.data.ActivityData
  */
 //https://console.firebase.google.com/u/0/project/cinta-launcher-71015/overview
 //TODO firebase set is_show_flickr_gallery true when app available
+//TODO update string changelog_detail every build
 
 //TODO setting auto change color
 //TODO fav app
