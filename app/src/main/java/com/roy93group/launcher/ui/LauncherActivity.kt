@@ -22,6 +22,7 @@ import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseFontActivity
 import com.loitp.core.utilities.LUIUtil
+import com.roy93group.app.AppLife
 import com.roy93group.app.C
 import com.roy93group.launcher.LauncherContext
 import com.roy93group.launcher.R
@@ -44,7 +45,10 @@ import com.roy93group.launcher.util.StackTraceActivity
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.launcherutils.LiveWallpaper
 import kotlinx.android.synthetic.main.activity_launcher.*
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import kotlin.math.abs
+
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -292,5 +296,13 @@ class LauncherActivity : BaseFontActivity() {
                     logE("Fetch failed")
                 }
             }
+    }
+
+    @Suppress("unused")
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onAppLife(appLife: AppLife?) {
+        if (appLife?.isOnBackground == true) {
+            C.configAutoColorChanger(this)
+        }
     }
 }

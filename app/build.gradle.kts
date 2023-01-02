@@ -42,7 +42,7 @@ android {
 }
 
 dependencies {
-    implementation("com.github.tplloi:base:4.6.12")
+    implementation("com.github.tplloi:base:4.6.13")
     implementation("com.willowtreeapps:fuzzywuzzy-kotlin-jvm:0.9.0")
     implementation("io.posidon:android.launcherUtils:30aa020c1a")
     implementation("io.posidon:android.libduckduckgo:22.0")
@@ -55,6 +55,7 @@ dependencies {
     implementation("com.google.firebase:firebase-config-ktx:21.2.0")
     implementation("com.github.cdflynn:turn-layout-manager:v1.3.1")
     implementation("com.github.Chrisvin:RubberPicker:v1.5")
+//    implementation("com.jakewharton:process-phoenix:2.1.2")
 }
 
 configurations.all {

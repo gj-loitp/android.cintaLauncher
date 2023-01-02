@@ -5,6 +5,8 @@ import com.loitp.core.base.BaseApplication
 import com.loitp.core.common.Constants
 import com.loitp.core.utilities.LUIUtil
 import com.loitp.data.ActivityData
+import org.greenrobot.eventbus.EventBus
+
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -17,7 +19,6 @@ import com.loitp.data.ActivityData
 //TODO firebase set is_show_flickr_gallery true when app available
 //TODO update string changelog_detail every build
 
-//TODO setting auto change color
 //TODO fav app
 //TODO lock app
 //TODO hide app
@@ -63,6 +64,7 @@ import com.loitp.data.ActivityData
 //reset o trang setting -> cho lam lai tu dau intro screen
 //what new dialog
 //background color nho set wallpaper
+//setting auto change color
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
@@ -80,10 +82,20 @@ class LApplication : BaseApplication() {
     override fun onAppInBackground() {
         super.onAppInBackground()
         logD("onAppInBackground")
+        EventBus.getDefault().post(
+            AppLife().apply {
+                isOnBackground = true
+            }
+        )
     }
 
     override fun onAppInForeground() {
         super.onAppInForeground()
         logD("onAppInForeground")
+        EventBus.getDefault().post(
+            AppLife().apply {
+                isOnBackground = false
+            }
+        )
     }
 }

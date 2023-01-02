@@ -63,7 +63,7 @@ class IntroActivity : BaseFontActivity() {
 
     private fun setWallpaper() {
         LUIUtil.setWallpaperAndLockScreen(
-            activity = this@IntroActivity,
+            context = this@IntroActivity,
             color = C.getColorBackground(),
             isSetWallpaper = true,
             isSetLockScreen = true,
