@@ -38,6 +38,7 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         setColorFilter(colorBackground)
     }
     val appDrawerIcon: ScrollbarIconView = cvSearchBarContainer.appDrawerIcon.apply {
+        setColorFilter(colorBackground)
         appDrawer = launcherActivity.appDrawer
     }
     val fabBack: FloatingActionButton = launcherActivity.fabBack.apply {

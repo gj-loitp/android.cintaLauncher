@@ -20,7 +20,10 @@
         android:paddingBottom="@dimen/margin_padding_medium"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <include layout="@layout/view_app_drawer" />
+    <include
+        layout="@layout/view_app_drawer"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabSetting"
@@ -84,7 +87,8 @@
             android:layout_gravity="end"
             android:padding="@dimen/margin_padding_small"
             android:src="@drawable/ic_drawer_scroll"
-            tools:ignore="ImageContrastCheck" />
+            tools:ignore="ImageContrastCheck"
+            tools:tint="@color/color_test_background" />
     </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
