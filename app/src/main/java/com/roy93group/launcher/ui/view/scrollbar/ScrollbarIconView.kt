@@ -131,7 +131,7 @@ class ScrollbarIconView @JvmOverloads constructor(
                 /* innerRadii = */ null
             )
         ).apply {
-            paint.color = C.getColorPrimary()
+            paint.color = C.getColorBackground()
         }
         val p = 16.dp.toPixels(this)
         when (orientation) {

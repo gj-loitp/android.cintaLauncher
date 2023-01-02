@@ -16,9 +16,23 @@ import android.widget.ImageView
 @SuppressLint("AppCompatCustomView")
 class BackdropImageView : ImageView {
     constructor(c: Context) : super(c)
-    constructor(c: Context, a: AttributeSet?) : this(c, a, 0, 0)
-    constructor(c: Context, a: AttributeSet?, da: Int) : this(c, a, da, 0)
-    constructor(c: Context, a: AttributeSet?, da: Int, dr: Int) : super(c, a, da, dr)
+    constructor(
+        c: Context,
+        a: AttributeSet?
+    ) : this(c, a, 0, 0)
+
+    constructor(
+        c: Context,
+        a: AttributeSet?,
+        da: Int
+    ) : this(c, a, da, 0)
+
+    constructor(
+        c: Context,
+        a: AttributeSet?,
+        da: Int,
+        dr: Int
+    ) : super(c, a, da, dr)
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         setMeasuredDimension(

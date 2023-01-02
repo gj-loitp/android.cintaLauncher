@@ -2,6 +2,7 @@ package com.roy93group.launcher.ui.view.scrollbar.alphabet
 
 import android.content.Context
 import android.graphics.Canvas
+import com.loitp.core.utilities.LUIUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.providers.app.AppCollection
@@ -27,7 +28,7 @@ class AlphabetScrollbarController(
 
     private val paint by scrollbar::paint
 
-    var textColor = C.COLOR_FAST_SCROLL_TEXT
+    var textColor = LUIUtil.setAlphaComponent(C.getColorPrimary(), 95)
         set(value) {
             field = value
             paint.color = value
@@ -70,7 +71,7 @@ class AlphabetScrollbarController(
         paint.apply {
             textSize = 16.dp.toFloatPixels(scrollbar)
         }
-        highlightColor = C.COLOR_FAST_SCROLL_TEXT_HIGHLIGHT
+        highlightColor = C.getColorPrimary()
         scrollbar.invalidate()
     }
 

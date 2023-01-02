@@ -17,9 +17,23 @@ import io.posidon.android.conveniencelib.Device
 
 class SeeThoughView : View {
     constructor(c: Context) : super(c)
-    constructor(c: Context, a: AttributeSet?) : this(c = c, a = a, da = 0, dr = 0)
-    constructor(c: Context, a: AttributeSet?, da: Int) : this(c = c, a = a, da = da, dr = 0)
-    constructor(c: Context, a: AttributeSet?, da: Int, dr: Int) : super(c, a, da, dr)
+    constructor(
+        c: Context,
+        a: AttributeSet?
+    ) : this(c = c, a = a, da = 0, dr = 0)
+
+    constructor(
+        c: Context,
+        a: AttributeSet?,
+        da: Int
+    ) : this(c = c, a = a, da = da, dr = 0)
+
+    constructor(
+        c: Context,
+        a: AttributeSet?,
+        da: Int,
+        dr: Int
+    ) : super(c, a, da, dr)
 
     var drawable: Drawable? = null
         set(value) {

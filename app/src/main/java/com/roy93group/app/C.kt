@@ -7,7 +7,6 @@ import android.content.Context.VIBRATOR_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
@@ -98,9 +97,6 @@ object C {
     private val COLOR_14 = LAppResource.getColor(R.color.color14)
     val COLOR_15 = LAppResource.getColor(R.color.color15)
     private val COLOR_16 = LAppResource.getColor(R.color.color16)
-
-    val COLOR_FAST_SCROLL_TEXT = getColorBackground()
-    const val COLOR_FAST_SCROLL_TEXT_HIGHLIGHT = Color.WHITE
 
     val colors = intArrayOf(
         COLOR_0,

@@ -15,8 +15,16 @@ import android.view.MotionEvent
 class ExpandableListView : android.widget.ExpandableListView {
 
     constructor(context: Context) : super(context)
-    constructor(context: Context, attr: AttributeSet) : super(context, attr)
-    constructor(context: Context, attr: AttributeSet, defStyleAttr: Int) : super(
+    constructor(
+        context: Context,
+        attr: AttributeSet
+    ) : super(context, attr)
+
+    constructor(
+        context: Context,
+        attr: AttributeSet,
+        defStyleAttr: Int
+    ) : super(
         context,
         attr,
         defStyleAttr
