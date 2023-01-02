@@ -64,6 +64,7 @@ class BottomSheetAboutLauncher(
         tvTitle.setTextColor(colorPrimary)
 
         layoutVersion.apply {
+            v.setBackgroundColor(colorBackground)
             tv1.apply {
                 setTextColor(colorPrimary)
                 text = "Version: ${BuildConfig.VERSION_NAME}"
@@ -77,6 +78,7 @@ class BottomSheetAboutLauncher(
             }
         }
         layoutChangelog.apply {
+            v.setBackgroundColor(colorPrimary)
             tv1.apply {
                 setTextColor(colorPrimary)
                 text = getString(R.string.changelog)
@@ -90,6 +92,7 @@ class BottomSheetAboutLauncher(
             }
         }
         layoutHallOfFame.apply {
+            v.setBackgroundColor(colorPrimary)
             tv1.apply {
                 setTextColor(colorPrimary)
                 text = getString(R.string.hall_of_fame)
@@ -103,9 +106,10 @@ class BottomSheetAboutLauncher(
             }
         }
         layoutContactTheDeveloper.apply {
+            v.setBackgroundColor(colorPrimary)
             tv1.apply {
                 setTextColor(colorPrimary)
-                text = getString(R.string.hall_of_fame)
+                text = getString(R.string.contact_the_dev)
             }
             tv2.apply {
                 setTextColor(colorPrimary)

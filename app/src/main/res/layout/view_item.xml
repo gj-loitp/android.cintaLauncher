@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <View
+        android:id="@+id/v"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_1"
         tools:background="@color/color_test_primary" />
