@@ -1,13 +1,10 @@
 package com.roy93group.launcher.ui.popup.listPopup.viewHolders
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.widget.SwitchCompat
 import com.roy93group.app.C
-import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
+import kotlinx.android.synthetic.main.view_list_popup_switch_item.view.*
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -17,33 +14,38 @@ import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
  * freuss47@gmail.com
  */
 class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
-
-    val icon: ImageView = itemView.findViewById(R.id.icon)
-    val text: TextView = itemView.findViewById(R.id.text)
-    val description: TextView = itemView.findViewById(R.id.description)
-    private val toggle: SwitchCompat = itemView.findViewById(R.id.toggle)
-
     override fun onBind(item: ListPopupItem) {
-        text.text = item.text
-        description.text = item.description
 
+        itemView.text.apply {
+            setTextColor(colorPrimary)
+            text = item.text
+        }
+        itemView.description.apply {
+            setTextColor(colorPrimary)
+            text = item.description
+            applyIfNotNull(view = this, value = item.description) { view, value ->
+                view.text = value
+            }
+        }
         itemView.setOnClickListener {
-            toggle.toggle()
+            itemView.toggle.toggle()
         }
 
-        toggle.trackDrawable = C.generateTrackDrawable(C.getColorBackground())
-        toggle.thumbDrawable = C.generateThumbDrawable(
-            context = itemView.context,
-            color = C.getColorPrimary()
-        )
+        itemView.toggle.apply {
+            trackDrawable = C.generateTrackDrawable(colorBackground)
+            thumbDrawable = C.generateThumbDrawable(
+                context = itemView.context,
+                color = colorPrimary
+            )
+            isChecked = (item.value as? Boolean) ?: false
+            setOnCheckedChangeListener(item.onToggle)
+        }
 
-        applyIfNotNull(view = description, value = item.description) { view, value ->
-            view.text = value
+        itemView.icon.apply {
+            setColorFilter(colorPrimary)
+            applyIfNotNull(view = this, value = item.icon) { view, value ->
+                view.setImageDrawable(value)
+            }
         }
-        applyIfNotNull(view = icon, value = item.icon) { view, value ->
-            view.setImageDrawable(value)
-        }
-        toggle.isChecked = (item.value as? Boolean) ?: false
-        toggle.setOnCheckedChangeListener(item.onToggle)
     }
 }
