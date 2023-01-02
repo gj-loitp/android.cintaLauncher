@@ -183,8 +183,6 @@ object DrawerLongPressPopup {
                         val result = C.updatePrimaryColor(newColor)
                         if (result) {
                             launcherActivity.recreate()
-                        } else {
-                            //TODO show msg for case false
                         }
                     })
             },
