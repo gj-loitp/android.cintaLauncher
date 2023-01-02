@@ -174,13 +174,31 @@ object DrawerLongPressPopup {
                 icon = ContextCompat.getDrawable(context, R.drawable.baseline_palette_black_48),
             ) {
                 onDismiss.invoke()
-                C.launchColor(activity = launcherActivity,
+                C.launchColorPrimary(activity = launcherActivity,
                     isCancelableFragment = true,
                     title = LAppResource.getString(R.string.color),
                     des = LAppResource.getString(R.string.pick_your_favorite_color),
                     warning = LAppResource.getString(R.string.the_color_launcher_will_be_restarted),
                     onDismiss = { newColor ->
                         val result = C.updatePrimaryColor(newColor)
+                        if (result) {
+                            launcherActivity.recreate()
+                        }
+                    })
+            },
+            ListPopupItem(
+                text = context.getString(R.string.color_background),
+                description = context.getString(R.string.pick_your_favorite_color_background),
+                icon = ContextCompat.getDrawable(context, R.drawable.baseline_palette_black_48),
+            ) {
+                onDismiss.invoke()
+                C.launchColorBackground(activity = launcherActivity,
+                    isCancelableFragment = true,
+                    title = LAppResource.getString(R.string.color_background),
+                    des = LAppResource.getString(R.string.pick_your_favorite_color_background),
+                    warning = LAppResource.getString(R.string.the_color_launcher_will_be_restarted),
+                    onDismiss = { newColor ->
+                        val result = C.updateBackgroundColor(newColor)
                         if (result) {
                             launcherActivity.recreate()
                         }

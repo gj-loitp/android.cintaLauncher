@@ -56,6 +56,7 @@
     <string name="pick_your_favorite_color_background">Pick your favorite color for setting wallpaper</string>
     <string name="the_color_launcher_will_be_restarted">The Color launcher will be restarted</string>
     <string name="color">Main color</string>
+    <string name="color_background">Background color</string>
     <string name="missing_a_feature">Missing a feature?</string>
     <string name="missing_a_feature_msg">Anything you\'re missing in our product? Drop a message here to let us know!</string>
     <string name="app_info">App info</string>
