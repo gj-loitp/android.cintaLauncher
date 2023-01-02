@@ -23,7 +23,6 @@ import com.loitp.data.ActivityData
 //TODO app badge
 //TODO sort app drawer theo tan suat
 //TODO what new dialog
-//TODO animation intro
 //TODO tich hop he sinh thai app roy93group
 
 //TODO apple recolor
@@ -31,6 +30,7 @@ import com.loitp.data.ActivityData
 //TODO setting view_app_card enable/disabled card use compat
 //TODO custom font screen
 //TODO gg pay
+//TODO animation intro blob animation
 
 //done
 //chon man hinh chu o screen setting
