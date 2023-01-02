@@ -16,7 +16,6 @@ import com.loitp.data.ActivityData
 //https://console.firebase.google.com/u/0/project/cinta-launcher-71015/overview
 //TODO firebase set is_show_flickr_gallery true when app available
 
-//TODO reset o trang setting -> cho lam lai tu dau intro screen
 //TODO setting auto change color
 //TODO apple recolor
 //TODO fav app
@@ -61,6 +60,7 @@ import com.loitp.data.ActivityData
 //setting enable/disable swipe out rv de open search screen
 //fix android 13 permisson storage
 //setting background color
+//reset o trang setting -> cho lam lai tu dau intro screen
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
