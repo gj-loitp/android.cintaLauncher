@@ -17,6 +17,7 @@ import com.loitp.data.ActivityData
 //TODO firebase set is_show_flickr_gallery true when app available
 //TODO update string changelog_detail every build
 
+//TODO background color nho set wallpaper
 //TODO setting auto change color
 //TODO fav app
 //TODO lock app
