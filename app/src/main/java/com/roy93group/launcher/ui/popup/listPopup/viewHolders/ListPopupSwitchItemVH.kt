@@ -1,7 +1,7 @@
 package com.roy93group.launcher.ui.popup.listPopup.viewHolders
 
 import android.view.View
-import com.roy93group.app.C
+import com.loitp.core.utilities.LUIUtil
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
 import kotlinx.android.synthetic.main.view_list_popup_switch_item.view.*
@@ -32,11 +32,10 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
         }
 
         itemView.toggle.apply {
-            trackDrawable = C.generateTrackDrawable(colorBackground)
-            thumbDrawable = C.generateThumbDrawable(
-                context = itemView.context,
-                color = colorPrimary
-            )
+            bgOffColor = LUIUtil.setAlphaComponent(colorPrimary, 90)
+            bgOnColor = LUIUtil.setAlphaComponent(colorPrimary, 90)
+            toggleOffColor = colorPrimary
+            toggleOnColor = colorPrimary
             isChecked = (item.value as? Boolean) ?: false
             setOnCheckedChangeListener(item.onToggle)
         }
