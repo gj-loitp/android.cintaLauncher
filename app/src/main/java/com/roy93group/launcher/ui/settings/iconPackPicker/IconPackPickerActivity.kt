@@ -3,8 +3,6 @@ package com.roy93group.launcher.ui.settings.iconPackPicker
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.annotation.Keep
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
@@ -19,6 +17,7 @@ import com.roy93group.launcher.ui.settings.iconPackPicker.viewHolders.IconPackVi
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.conveniencelib.getStatusBarHeight
 import io.posidon.android.launcherutils.IconTheming
+import kotlinx.android.synthetic.main.activity_settings_icon_pack_picker.*
 import java.util.*
 
 /**
@@ -31,17 +30,23 @@ import java.util.*
 class IconPackPickerActivity : SettingsActivity() {
 
     override fun init(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_settings_icon_pack_picker)
-
+        C.changeStatusBarContrastStyle(this)
         setupViews()
     }
 
+    override fun setLayoutResourceId(): Int {
+        return R.layout.activity_settings_icon_pack_picker
+    }
+
     private fun setupViews() {
-        findViewById<AppCompatTextView>(R.id.tvIconPacks).apply {
-            setTextColor(C.getColorPrimary())
+        val colorPrimary = C.getColorPrimary()
+        val colorBackground = C.getColorBackground()
+
+        cl.setBackgroundColor(colorBackground)
+        tvIconPacks.apply {
+            setTextColor(colorPrimary)
         }
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val btGetMoreThemes = findViewById<AppCompatButton>(R.id.btGetMoreThemes).apply {
+        btGetMoreThemes.apply {
             C.setBackground(this)
         }
 

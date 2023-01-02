@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    tools:background="@color/color_test_background">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvIconPacks"
@@ -29,13 +30,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_padding_medium"
-        android:background="@drawable/ripple_color_test"
         android:paddingStart="@dimen/margin_padding_medium"
         android:paddingEnd="@dimen/margin_padding_medium"
         android:text="@string/get_more_themes"
-        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_medium"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:background="@drawable/ripple_color_test"
+        tools:textColor="@color/color_test_primary" />
 </androidx.constraintlayout.widget.ConstraintLayout>
