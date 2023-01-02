@@ -89,17 +89,17 @@
     <string name="changelog">Changelog</string>
     <string name="changelog_des">List of changes in the lasted version of the application</string>
     <string name="changelog_detail">\n
-        \nVersion: 2023.01.02
-        \nBug fixed
-        \nAdd new screen to config background color
-        \nAdd new screen About Color launcher
+        \n✪ Version: 2023.01.02
+        \n- Bug fixed
+        \n- Add new screen to config background color
+        \n- Add new screen About Color launcher
         \n-----
-        \nVersion:2022.12.29
-        \nBug fixed
-        \nPerformances improved
+        \n✪ Version: 2022.12.29
+        \n- Bug fixed
+        \n- Performances improved
         \n-----
-        \nVersion:2022.12.18
-        \nPublish first version into PlayStore
+        \n✪ Version: 2022.12.18
+        \n- Publish first version into PlayStore
     </string>
     <string name="hall_of_fame">Hall of Fame</string>
     <string name="hall_of_fame_des">Thank to everyone who helped make the application better</string>
