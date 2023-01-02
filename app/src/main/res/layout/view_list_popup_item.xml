@@ -8,45 +8,43 @@
     android:paddingTop="@dimen/margin_padding_tiny"
     android:paddingEnd="@dimen/margin_padding_medium"
     android:paddingBottom="@dimen/margin_padding_tiny"
-    tools:background="@color/color_test_primary">
+    tools:background="@color/color_test_background">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/icon"
-        android:layout_width="@dimen/w_45"
-        android:layout_height="@dimen/w_45"
-        android:scaleType="fitCenter"
+        android:layout_width="@dimen/w_35"
+        android:layout_height="@dimen/w_35"
+        android:scaleType="centerCrop"
         app:layout_constraintBaseline_toBottomOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/colorPrimary"
-        tools:src="@drawable/ic_launcher" />
+        tools:src="@drawable/ic_launcher"
+        tools:tint="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_padding_small"
-        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_medium"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/greenYellow"
-        tools:text="@string/app_name" />
+        tools:text="@string/app_name"
+        tools:textColor="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/text"
         app:layout_constraintTop_toBottomOf="@+id/text"
-        tools:background="@color/yellow"
-        tools:text="@string/app_name" />
+        tools:text="@string/app_name"
+        tools:textColor="@color/color_test_primary" />
 </androidx.constraintlayout.widget.ConstraintLayout>

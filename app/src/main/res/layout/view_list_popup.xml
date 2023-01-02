@@ -24,7 +24,9 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/margin_padding_medium"
+                android:paddingBottom="@dimen/margin_padding_medium" />
         </FrameLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

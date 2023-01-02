@@ -1,11 +1,9 @@
 package com.roy93group.launcher.ui.popup.listPopup.viewHolders
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
+import kotlinx.android.synthetic.main.view_list_popup_item.view.*
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -15,21 +13,26 @@ import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
  * freuss47@gmail.com
  */
 class ListPopupItemVH(itemView: View) : ListPopupVH(itemView) {
-    val icon: ImageView = itemView.findViewById(R.id.icon)
-    val text: TextView = itemView.findViewById(R.id.text)
-    val description: TextView = itemView.findViewById(R.id.description)
-
     override fun onBind(item: ListPopupItem) {
-        text.text = item.text
-        description.text = item.description
 
+        itemView.text.apply {
+            setTextColor(colorPrimary)
+            text = item.text
+        }
+        itemView.description.apply {
+            setTextColor(colorPrimary)
+            text = item.description
+            applyIfNotNull(view = this, value = item.description) { view, value ->
+                view.text = value
+            }
+        }
+        itemView.icon.apply {
+            setColorFilter(colorPrimary)
+            applyIfNotNull(view = this, value = item.icon) { view, value ->
+                view.setImageDrawable(value)
+            }
+        }
         itemView.setOnClickListener(item.onClick)
 
-        applyIfNotNull(view = description, value = item.description) { view, value ->
-            view.text = value
-        }
-        applyIfNotNull(view = icon, value = item.icon) { view, value ->
-            view.setImageDrawable(value)
-        }
     }
 }
