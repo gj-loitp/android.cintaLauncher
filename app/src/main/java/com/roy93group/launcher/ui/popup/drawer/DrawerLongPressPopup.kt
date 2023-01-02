@@ -19,6 +19,7 @@ import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LActivityUtil
 import com.loitp.core.utilities.LAppResource
 import com.loitp.core.utilities.LSocialUtil
+import com.loitp.core.utilities.LUIUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
@@ -202,6 +203,12 @@ object DrawerLongPressPopup {
                     onDismiss = { newColor ->
                         val result = C.updateBackgroundColor(newColor)
                         if (result) {
+                            LUIUtil.setWallpaperAndLockScreen(
+                                activity = launcherActivity,
+                                color = newColor,
+                                isSetWallpaper = true,
+                                isSetLockScreen = true,
+                            )
                             launcherActivity.recreate()
                         }
                     })

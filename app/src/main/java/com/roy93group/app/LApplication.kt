@@ -17,7 +17,6 @@ import com.loitp.data.ActivityData
 //TODO firebase set is_show_flickr_gallery true when app available
 //TODO update string changelog_detail every build
 
-//TODO background color nho set wallpaper
 //TODO setting auto change color
 //TODO fav app
 //TODO lock app
@@ -63,6 +62,7 @@ import com.loitp.data.ActivityData
 //setting background color
 //reset o trang setting -> cho lam lai tu dau intro screen
 //what new dialog
+//background color nho set wallpaper
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
