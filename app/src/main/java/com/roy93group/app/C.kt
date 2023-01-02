@@ -36,10 +36,7 @@ import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.util.FakeLauncherActivity
 import com.roy93group.lookerupper.ui.a.SearchActivity
-import com.roy93group.views.BottomSheetAppOption
-import com.roy93group.views.BottomSheetColorBackground
-import com.roy93group.views.BottomSheetColorPrimary
-import com.roy93group.views.BottomSheetOption
+import com.roy93group.views.*
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 
@@ -350,7 +347,6 @@ object C {
         fragment.show(activity.supportFragmentManager, fragment.tag)
     }
 
-
     fun isValidColor(): Boolean {
         if (getColorPrimary() == getColorBackground()) {
             return false
@@ -563,5 +559,15 @@ object C {
         color: Int
     ) {
         TextViewCompat.setCompoundDrawableTintList(tv, ColorStateList.valueOf(color))
+    }
+
+    fun launchAboutLauncher(
+        activity: AppCompatActivity,
+        isCancelableFragment: Boolean = true,
+    ) {
+        val fragment = BottomSheetAboutLauncher(
+            isCancelableFragment = isCancelableFragment,
+        )
+        fragment.show(activity.supportFragmentManager, fragment.tag)
     }
 }

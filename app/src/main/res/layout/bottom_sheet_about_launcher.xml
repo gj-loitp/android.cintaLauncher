@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:cardBackgroundColor="@color/color_test_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/margin_padding_medium"
+        android:paddingTop="@dimen/margin_padding_small"
+        android:paddingEnd="@dimen/margin_padding_medium"
+        android:paddingBottom="@dimen/margin_padding_large">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSlider"
+            android:layout_width="@dimen/w_50"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_slider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:tint="@color/color_test_primary" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about"
+            android:textSize="@dimen/txt_50"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/ivSlider"
+            tools:textColor="@color/color_test_primary" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pick_your_favorite_color_background"
+            android:textSize="@dimen/txt_large"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:textColor="@color/color_test_primary" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

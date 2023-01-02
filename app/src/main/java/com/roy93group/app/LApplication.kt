@@ -22,7 +22,6 @@ import com.loitp.data.ActivityData
 //TODO hide app
 //TODO app badge
 //TODO sort app drawer theo tan suat
-//TODO what new dialog
 //TODO tich hop he sinh thai app roy93group
 
 //TODO apple recolor
@@ -61,6 +60,7 @@ import com.loitp.data.ActivityData
 //fix android 13 permisson storage
 //setting background color
 //reset o trang setting -> cho lam lai tu dau intro screen
+//what new dialog
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

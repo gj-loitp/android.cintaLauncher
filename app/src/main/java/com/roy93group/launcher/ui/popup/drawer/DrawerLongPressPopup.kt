@@ -290,6 +290,16 @@ object DrawerLongPressPopup {
                 )
             },
             ListPopupItem(
+                text = context.getString(R.string.about_color_launcher),
+                description = context.getString(R.string.about_color_launcher_des),
+                icon = ContextCompat.getDrawable(
+                    context,
+                    R.drawable.baseline_info_black_24dp
+                ),
+            ) {
+                C.launchAboutLauncher(activity = launcherActivity, isCancelableFragment = true)
+            },
+            ListPopupItem(
                 text = context.getString(R.string.restart_color_launcher),
                 description = context.getString(R.string.restart_color_launcher_des),
                 icon = ContextCompat.getDrawable(

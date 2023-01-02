@@ -83,4 +83,7 @@
     <string name="err_same_color">These two colors cannot be the same. Please choose other color.</string>
     <string name="restart_color_launcher">Restart Color Launcher</string>
     <string name="restart_color_launcher_des">Use if you run into problems with the application</string>
+    <string name="about">About</string>
+    <string name="about_color_launcher">About Color Launcher</string>
+    <string name="about_color_launcher_des">Version, purchase status, contacts</string>
 </resources>
