@@ -1,38 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/round_medium"
-    app:cardElevation="@dimen/margin_padding_small"
-    app:cardUseCompatPadding="true"
-    tools:cardBackgroundColor="@color/color_test_background">
+    android:background="@color/transparent">
 
-    <FrameLayout
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/margin_padding_small"
-        android:paddingBottom="@dimen/margin_padding_small">
+        app:cardCornerRadius="@dimen/round_medium"
+        app:cardElevation="@dimen/margin_padding_small"
+        app:cardUseCompatPadding="true"
+        tools:cardBackgroundColor="@color/color_test_background">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </FrameLayout>
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/margin_padding_small"
+            android:paddingBottom="@dimen/margin_padding_small">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabDismiss"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:backgroundTint="@color/colorPrimary"
-        android:contentDescription="@string/app_name"
-        app:borderWidth="0dp"
-        app:fabCustomSize="@dimen/w_30"
-        app:maxImageSize="@dimen/w_20"
-        app:rippleColor="@color/transparent"
-        app:srcCompat="@drawable/ic_cross"
-        tools:tint="@color/color_test_primary" />
-</com.google.android.material.card.MaterialCardView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabDismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/colorPrimary"
+            android:contentDescription="@string/app_name"
+            app:borderWidth="0dp"
+            app:fabCustomSize="@dimen/w_30"
+            app:maxImageSize="@dimen/w_20"
+            app:rippleColor="@color/transparent"
+            app:srcCompat="@drawable/ic_cross"
+            tools:tint="@color/color_test_primary" />
+
+    </com.google.android.material.card.MaterialCardView>
+</FrameLayout>
