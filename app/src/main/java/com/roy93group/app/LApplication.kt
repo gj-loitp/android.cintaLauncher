@@ -17,7 +17,6 @@ import com.loitp.data.ActivityData
 //TODO firebase set is_show_flickr_gallery true when app available
 
 //TODO setting auto change color
-//TODO apple recolor
 //TODO fav app
 //TODO lock app
 //TODO hide app
@@ -26,11 +25,12 @@ import com.loitp.data.ActivityData
 //TODO what new dialog
 //TODO animation intro
 //TODO tich hop he sinh thai app roy93group
-//TODO gg pay
-//TODO spotlight
 
+//TODO apple recolor
+//TODO spotlight
 //TODO setting view_app_card enable/disabled card use compat
 //TODO custom font screen
+//TODO gg pay
 
 //done
 //chon man hinh chu o screen setting
