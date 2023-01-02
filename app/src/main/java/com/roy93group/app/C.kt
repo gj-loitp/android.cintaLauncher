@@ -570,4 +570,18 @@ object C {
         )
         fragment.show(activity.supportFragmentManager, fragment.tag)
     }
+
+    fun launchSheetText(
+        activity: FragmentActivity,
+        isCancelableFragment: Boolean = true,
+        title: String,
+        content: String,
+    ) {
+        val fragment = BottomSheetText(
+            isCancelableFragment = isCancelableFragment,
+            title = title,
+            content = content,
+        )
+        fragment.show(activity.supportFragmentManager, fragment.tag)
+    }
 }
