@@ -18,8 +18,11 @@ class IconPackViewHolder(
     val type: Int
 ) : RecyclerView.ViewHolder(itemView) {
     fun bind(iconPack: IconPackPickerActivity.IconPack) {
+        val colorPrimary = C.getColorPrimary()
+
         itemView.text.apply {
-            setTextColor(C.getColorPrimary())
+            setTextColor(colorPrimary)
+            C.setDrawableTint(this, colorPrimary)
             text = iconPack.label
         }
         itemView.icon.setImageDrawable(iconPack.icon)

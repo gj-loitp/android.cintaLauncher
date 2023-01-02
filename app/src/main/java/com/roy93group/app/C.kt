@@ -23,7 +23,9 @@ import android.provider.Settings
 import android.util.StateSet
 import android.view.View
 import android.widget.CompoundButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
 import com.loitp.core.base.BaseActivity
@@ -525,7 +527,10 @@ object C {
         v?.backgroundTintList = ColorStateList.valueOf(colorPrimary)
     }
 
-    fun setButtonTintList(v: CompoundButton, color: Int) {
+    fun setButtonTintList(
+        v: CompoundButton,
+        color: Int
+    ) {
         val colorStateList = ColorStateList(
             arrayOf(
                 intArrayOf(-android.R.attr.state_enabled),
@@ -536,5 +541,12 @@ object C {
             )
         )
         v.buttonTintList = colorStateList
+    }
+
+    fun setDrawableTint(
+        tv: TextView,
+        color: Int
+    ) {
+        TextViewCompat.setCompoundDrawableTintList(tv, ColorStateList.valueOf(color))
     }
 }

@@ -20,12 +20,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_padding_medium"
+        android:drawableEnd="@drawable/baseline_drag_indicator_black_24dp"
+        android:gravity="center|start"
         android:textSize="@dimen/txt_medium"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/icon"
         app:layout_constraintTop_toTopOf="@+id/icon"
+        tools:drawableTint="@color/color_test_primary"
         tools:text="@string/app_name"
         tools:textColor="@color/color_test_primary" />
 

@@ -9,12 +9,10 @@ package com.roy93group.views
  */
 import android.annotation.SuppressLint
 import android.content.DialogInterface
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.TextViewCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LDeviceUtil
@@ -72,7 +70,7 @@ class BottomSheetAppOption(
         tvTitle.setTextColor(colorPrimary)
         tvInfo.apply {
             setTextColor(colorPrimary)
-            TextViewCompat.setCompoundDrawableTintList(this, ColorStateList.valueOf(colorPrimary))
+            C.setDrawableTint(this, colorPrimary)
             (item as? App)?.let { app ->
                 this.text = "Label: ${app.label}\nPackage name: ${app.packageName}"
                 setSafeOnClickListener {
