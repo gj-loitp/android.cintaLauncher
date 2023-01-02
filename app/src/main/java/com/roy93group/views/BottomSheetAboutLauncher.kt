@@ -89,5 +89,34 @@ class BottomSheetAboutLauncher(
                 //TODO
             }
         }
+        layoutHallOfFame.apply {
+            tv1.apply {
+                setTextColor(colorPrimary)
+                text = getString(R.string.hall_of_fame)
+            }
+            tv2.apply {
+                setTextColor(colorPrimary)
+                text = getString(R.string.hall_of_fame_des)
+            }
+            setSafeOnClickListener {
+                //TODO
+            }
+        }
+        layoutContactTheDeveloper.apply {
+            tv1.apply {
+                setTextColor(colorPrimary)
+                text = getString(R.string.hall_of_fame)
+            }
+            tv2.apply {
+                setTextColor(colorPrimary)
+                text = getString(R.string.contact_the_dev_des)
+            }
+            setSafeOnClickListener {
+                LSocialUtil.openUrlInBrowser(
+                    context = requireContext(),
+                    url = "https://www.facebook.com/loitp93/"
+                )
+            }
+        }
     }
 }

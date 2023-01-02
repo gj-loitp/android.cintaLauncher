@@ -54,6 +54,14 @@
                     android:id="@+id/layoutChangelog"
                     layout="@layout/view_item" />
 
+                <include
+                    android:id="@+id/layoutHallOfFame"
+                    layout="@layout/view_item" />
+
+                <include
+                    android:id="@+id/layoutContactTheDeveloper"
+                    layout="@layout/view_item" />
+
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
 
