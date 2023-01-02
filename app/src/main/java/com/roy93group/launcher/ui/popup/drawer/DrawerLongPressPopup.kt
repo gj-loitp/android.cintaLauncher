@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.get
 import com.google.firebase.remoteconfig.ktx.remoteConfig
+import com.loitp.core.base.BaseActivity
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LActivityUtil
 import com.loitp.core.utilities.LAppResource
@@ -25,6 +26,7 @@ import com.roy93group.launcher.storage.DoReshapeAdaptiveIconsSetting.doReshapeAd
 import com.roy93group.launcher.storage.ScrollbarControllerSetting.scrollbarController
 import com.roy93group.launcher.storage.Settings
 import com.roy93group.launcher.ui.LauncherActivity
+import com.roy93group.launcher.ui.intro.IntroActivity
 import com.roy93group.launcher.ui.popup.PopupUtils
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupAdapter
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
@@ -286,6 +288,19 @@ object DrawerLongPressPopup {
                             "The more detail you can share, the better.\n" +
                             "\nThanks for taking the time - we'll get back to you as soon as possible to ask a few clarifying question or to give you an update \uD83D\uDE4F\n\n"
                 )
+            },
+            ListPopupItem(
+                text = context.getString(R.string.restart_color_launcher),
+                description = context.getString(R.string.restart_color_launcher_des),
+                icon = ContextCompat.getDrawable(
+                    context,
+                    R.drawable.baseline_restart_alt_black_24dp
+                ),
+            ) {
+                (launcherActivity as? BaseActivity)?.apply {
+                    launchActivity(IntroActivity::class.java)
+                    finishAfterTransition()
+                }
             },
         )
     }
