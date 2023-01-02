@@ -65,6 +65,7 @@ object DrawerLongPressPopup {
 
         content.fabDismiss.apply {
             setColorFilter(colorBackground)
+            C.setBackgroundTintList(this)
             setSafeOnClickListener {
                 window.dismiss()
             }

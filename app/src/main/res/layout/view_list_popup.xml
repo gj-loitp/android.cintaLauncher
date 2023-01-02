@@ -32,13 +32,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:backgroundTint="@color/colorPrimary"
             android:contentDescription="@string/app_name"
+            android:elevation="@dimen/margin_padding_small"
             app:borderWidth="0dp"
             app:fabCustomSize="@dimen/w_30"
             app:maxImageSize="@dimen/w_20"
             app:rippleColor="@color/transparent"
             app:srcCompat="@drawable/ic_cross"
+            tools:backgroundTint="@color/colorPrimary"
             tools:tint="@color/color_test_primary" />
 
     </com.google.android.material.card.MaterialCardView>
