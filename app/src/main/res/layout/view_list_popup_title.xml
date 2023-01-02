@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/margin_padding_tiny"
     android:paddingEnd="@dimen/margin_padding_medium"
     android:paddingBottom="@dimen/margin_padding_tiny"
-    tools:background="@color/color_test_primary">
+    tools:background="@color/color_test_background">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text"
@@ -16,11 +16,11 @@
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:singleLine="true"
-        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_large"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/app_name" />
+        tools:text="@string/app_name"
+        tools:textColor="@color/colorPrimary" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/description"
@@ -28,8 +28,8 @@
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:singleLine="true"
-        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/txt_small"
         app:layout_constraintTop_toBottomOf="@+id/text"
-        tools:text="@string/app_name" />
+        tools:text="@string/app_name"
+        tools:textColor="@color/colorPrimary" />
 </androidx.constraintlayout.widget.ConstraintLayout>
