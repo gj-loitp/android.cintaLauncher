@@ -11,8 +11,6 @@ import androidx.appcompat.widget.ListPopupWindow
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.card.MaterialCardView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.get
 import com.google.firebase.remoteconfig.ktx.remoteConfig
@@ -32,6 +30,7 @@ import com.roy93group.launcher.ui.popup.listPopup.ListPopupAdapter
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
 import com.roy93group.launcher.ui.settings.iconPackPicker.IconPackPickerActivity
 import io.posidon.android.conveniencelib.Device
+import kotlinx.android.synthetic.main.view_list_popup.view.*
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -52,6 +51,9 @@ object DrawerLongPressPopup {
         settings: Settings,
         reloadApps: () -> Unit,
     ) {
+        val colorPrimary = C.getColorPrimary()
+        val colorBackground = C.getColorBackground()
+
         val content = LayoutInflater.from(parent.context).inflate(R.layout.view_list_popup, null)
         val window = PopupWindow(
             /* contentView = */ content,
@@ -61,14 +63,17 @@ object DrawerLongPressPopup {
         )
         PopupUtils.setCurrent(window)
 
-        val fabDismiss = content.findViewById<FloatingActionButton>(R.id.fabDismiss).apply {
-            setColorFilter(C.getColorPrimary())
+        content.fabDismiss.apply {
+            setColorFilter(colorBackground)
+            setSafeOnClickListener {
+                window.dismiss()
+            }
         }
 
-        content.findViewById<MaterialCardView>(R.id.card).apply {
-            setCardBackgroundColor(C.getColorPrimary())
+        content.card.apply {
+            setCardBackgroundColor(colorBackground)
         }
-        content.findViewById<RecyclerView>(R.id.recyclerView).apply {
+        content.recyclerView.apply {
             layoutManager = LinearLayoutManager(
                 /* context = */ context,
                 /* orientation = */RecyclerView.VERTICAL,
@@ -96,10 +101,6 @@ object DrawerLongPressPopup {
                 }
                 update()
             }
-        }
-
-        fabDismiss.setSafeOnClickListener {
-            window.dismiss()
         }
 
         val gravity = Gravity.CENTER
