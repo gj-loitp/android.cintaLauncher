@@ -23,9 +23,6 @@ class SectionHeaderItem(override val label: String) : AppDrawerAdapter.DrawerIte
     override fun getItemViewType() = SECTION_HEADER
 }
 
-private val colorPrimary = C.getColorPrimary()
-private val colorBackground = C.getColorBackground()
-
 @SuppressLint("ClickableViewAccessibility")
 fun bindSectionHeaderViewHolder(
     holder: SectionHeaderViewHolder,
@@ -34,6 +31,9 @@ fun bindSectionHeaderViewHolder(
     launcherActivity: LauncherActivity,
     isDisplayAppIcon: Boolean,
 ) {
+    val colorPrimary = C.getColorPrimary()
+    val colorBackground = C.getColorBackground()
+
     holder.itemView.text.text = item.label
     if (isHighlighted) {
         holder.itemView.setBackgroundColor(colorPrimary)
@@ -42,16 +42,4 @@ fun bindSectionHeaderViewHolder(
         holder.itemView.setBackgroundColor(Color.TRANSPARENT)
         holder.itemView.text.setTextColor(colorPrimary)
     }
-
-//    var x = 0f
-//    var y = 0f
-//    holder.itemView.setOnTouchListener { _, e ->
-//        when (e.action and MotionEvent.ACTION_MASK) {
-//            MotionEvent.ACTION_DOWN -> {
-//                x = e.rawX
-//                y = e.rawY
-//            }
-//        }
-//        false
-//    }
 }
