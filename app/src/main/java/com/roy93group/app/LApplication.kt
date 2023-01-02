@@ -16,9 +16,7 @@ import com.loitp.data.ActivityData
 //https://console.firebase.google.com/u/0/project/cinta-launcher-71015/overview
 //TODO firebase set is_show_flickr_gallery true when app available
 
-//TODO setting view_app_card enable/disaled card use compat
 //TODO setting background color
-//TODO background color black -> custom color
 //TODO reset o trang setting -> cho lam lai tu dau intro screen
 //TODO setting auto change color
 //TODO apple recolor
@@ -33,7 +31,8 @@ import com.loitp.data.ActivityData
 //TODO gg pay
 //TODO spotlight
 
-//feat custom font?
+//TODO setting view_app_card enable/disabled card use compat
+//TODO custom font screen
 
 //done
 //chon man hinh chu o screen setting
