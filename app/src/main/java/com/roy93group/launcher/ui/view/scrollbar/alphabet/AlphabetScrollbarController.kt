@@ -28,7 +28,7 @@ class AlphabetScrollbarController(
 
     private val paint by scrollbar::paint
 
-    var textColor = LUIUtil.setAlphaComponent(C.getColorPrimary(), 100)
+    var textColor = LUIUtil.setAlphaComponent(C.getColorPrimary(), 255 * 70 / 100)
         set(value) {
             field = value
             paint.color = value
