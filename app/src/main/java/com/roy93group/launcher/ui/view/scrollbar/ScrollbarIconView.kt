@@ -51,12 +51,16 @@ class ScrollbarIconView @JvmOverloads constructor(
     private var counter = 0
     private val countDetectMoving = 10
 
+    private var isAppDrawerOpenBefore = false
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(e: MotionEvent): Boolean {
-
         when (e.action) {
             MotionEvent.ACTION_DOWN -> {
-                appDrawer?.open()
+                appDrawer?.apply {
+                    isAppDrawerOpenBefore = this.isOpen
+                    this.open()
+                }
             }
             MotionEvent.ACTION_MOVE -> {
                 counter++
@@ -97,7 +101,15 @@ class ScrollbarIconView @JvmOverloads constructor(
                     )
                     it.dismiss()
                 }
+                if (counter > countDetectMoving) {
+                    //do nothing
+                } else {
+                    if (isAppDrawerOpenBefore) {
+                        appDrawer?.close()
+                    }
+                }
                 counter = 0
+
             }
         }
         return true
