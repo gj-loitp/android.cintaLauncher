@@ -18,6 +18,7 @@ import org.greenrobot.eventbus.EventBus
 //TODO firebase set is_show_flickr_gallery true when app available
 //TODO update string changelog_detail every build
 
+//TODO spotlight
 //TODO fav app
 //TODO lock app
 //TODO hide app
@@ -26,9 +27,7 @@ import org.greenrobot.eventbus.EventBus
 //TODO tich hop he sinh thai app roy93group
 //TODO add setSafeOnClickListenerElastic
 //TODO search kha la khi khan, check xem keyword nhu nao
-
 //TODO apple recolor
-//TODO spotlight
 //TODO setting view_app_card enable/disabled card use compat
 //TODO custom font screen
 //TODO gg pay
