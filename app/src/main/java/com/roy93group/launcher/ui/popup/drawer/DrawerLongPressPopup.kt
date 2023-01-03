@@ -185,7 +185,6 @@ object DrawerLongPressPopup {
                     onDismiss = { newColor ->
                         val result = C.updatePrimaryColor(newColor)
                         if (result) {
-//                            launcherActivity.recreate()
                             launcherActivity.updateTheme()
                         }
                     })
@@ -210,7 +209,6 @@ object DrawerLongPressPopup {
                                 isSetWallpaper = true,
                                 isSetLockScreen = true,
                             )
-//                            launcherActivity.recreate()
                             launcherActivity.updateTheme()
                         }
                     })

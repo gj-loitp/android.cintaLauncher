@@ -313,5 +313,8 @@ class LauncherActivity : BaseFontActivity() {
         feedProfiles.feedFilterAdapter.notifyDataSetChanged()
         appDrawer.adapter.notifyDataSetChanged()
         rvFeed.adapter = feedAdapter
+        C.changeStatusBarContrastStyle(this)
+        flHomeContainer.setBackgroundColor(C.getColorBackground())
+        bottomBar.updateTheme()
     }
 }

@@ -23,8 +23,8 @@ import kotlinx.android.synthetic.main.activity_launcher.view.*
 class BottomBar(val launcherActivity: LauncherActivity) {
 
     val scrollBar: Scrollbar get() = appDrawerIcon.scrollBar
-    val colorPrimary = C.getColorPrimary()
-    val colorBackground = C.getColorBackground()
+    var colorPrimary = C.getColorPrimary()
+    var colorBackground = C.getColorBackground()
 
     val cvSearchBarContainer: CardView = launcherActivity.cvSearchBarContainer.apply {
         setCardBackgroundColor(colorPrimary)
@@ -61,6 +61,23 @@ class BottomBar(val launcherActivity: LauncherActivity) {
                 settings = launcherActivity.settings,
                 reloadApps = launcherActivity::loadApps
             )
+        }
+    }
+
+    fun updateTheme() {
+        colorPrimary = C.getColorPrimary()
+        colorBackground = C.getColorBackground()
+
+        cvSearchBarContainer.setCardBackgroundColor(colorPrimary)
+        ivSearch.setColorFilter(colorBackground)
+        appDrawerIcon.setColorFilter(colorBackground)
+        fabBack.apply {
+            C.setBackgroundTintList(this)
+            setColorFilter(colorBackground)
+        }
+        fabSetting.apply {
+            C.setBackgroundTintList(this)
+            setColorFilter(colorBackground)
         }
     }
 }
