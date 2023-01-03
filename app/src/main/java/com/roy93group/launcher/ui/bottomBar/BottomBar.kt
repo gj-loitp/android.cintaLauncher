@@ -41,13 +41,6 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         setColorFilter(colorBackground)
         appDrawer = launcherActivity.appDrawer
     }
-    val fabBack: FloatingActionButton = launcherActivity.fabBack.apply {
-        C.setBackgroundTintList(this)
-        setColorFilter(colorBackground)
-        this.setOnClickListener {
-            launcherActivity.appDrawer.close()
-        }
-    }
     val fabSetting: FloatingActionButton = launcherActivity.fabSetting.apply {
         C.setBackgroundTintList(this)
         setColorFilter(colorBackground)
@@ -71,10 +64,6 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         cvSearchBarContainer.setCardBackgroundColor(colorPrimary)
         ivSearch.setColorFilter(colorBackground)
         appDrawerIcon.setColorFilter(colorBackground)
-        fabBack.apply {
-            C.setBackgroundTintList(this)
-            setColorFilter(colorBackground)
-        }
         fabSetting.apply {
             C.setBackgroundTintList(this)
             setColorFilter(colorBackground)

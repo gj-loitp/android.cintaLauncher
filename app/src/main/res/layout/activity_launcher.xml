@@ -34,29 +34,12 @@
         android:visibility="gone"
         app:borderWidth="0dp"
         app:fabSize="mini"
-        app:layout_constraintBottom_toTopOf="@+id/fabBack"
-        app:layout_constraintEnd_toEndOf="@+id/fabBack"
+        app:layout_constraintBottom_toTopOf="@+id/cvSearchBarContainer"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_settings_black_48dp"
         app:useCompatPadding="true"
         tools:backgroundTint="@color/color_test_primary"
         tools:ignore="DuplicateSpeakableTextCheck"
-        tools:tint="@color/color_test_background"
-        tools:visibility="visible" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/app_name"
-        android:elevation="@dimen/margin_padding_medium"
-        android:visibility="gone"
-        app:borderWidth="0dp"
-        app:fabSize="mini"
-        app:layout_constraintBottom_toTopOf="@+id/cvSearchBarContainer"
-        app:layout_constraintEnd_toEndOf="@+id/cvSearchBarContainer"
-        app:srcCompat="@drawable/ic_cross"
-        app:useCompatPadding="true"
-        tools:backgroundTint="@color/color_test_primary"
         tools:tint="@color/color_test_background"
         tools:visibility="visible" />
 

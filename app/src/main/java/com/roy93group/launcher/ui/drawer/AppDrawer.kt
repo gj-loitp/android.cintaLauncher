@@ -99,7 +99,6 @@ class AppDrawer(
     private var currentValueAnimator: ValueAnimator? = null
 
     fun open() {
-        launcherActivity.bottomBar.fabBack.isVisible = true
         launcherActivity.bottomBar.fabSetting.isVisible = true
         if (isOpen) return
         ItemLongPress.currentPopup?.dismiss()
@@ -152,7 +151,6 @@ class AppDrawer(
     }
 
     fun close() {
-        launcherActivity.bottomBar.fabBack.isVisible = false
         launcherActivity.bottomBar.fabSetting.isVisible = false
         if (!isOpen) return
         ItemLongPress.currentPopup?.dismiss()
