@@ -27,7 +27,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
-import com.loitp.core.base.BaseActivity
 import com.loitp.core.common.Constants
 import com.loitp.core.helper.gallery.GalleryCoreSplashActivity
 import com.loitp.core.utilities.*
@@ -60,6 +59,7 @@ object C {
     private const val KEY_GRAVITY_VALUE = "KEY_GRAVITY_VALUE"
     private const val KEY_IS_CHECKED_VALUE = "KEY_IS_CHECKED_VALUE"
     private const val KEY_OPEN_SEARCH_WHEN_SCROLL_TOP = "KEY_OPEN_SEARCH_WHEN_SCROLL_TOP"
+    private const val KEY_DISPLAY_FILTER_VIEWS = "KEY_DISPLAY_FILTER_VIEWS"
     private const val KEY_DISPLAY_APP_ICON = "KEY_DISPLAY_APP_ICON"
     private const val KEY_FORCE_COLOR_ICON = "KEY_FORCE_COLOR_ICON"
     private const val KEY_AUTO_COLOR_CHANGER = "KEY_AUTO_COLOR_CHANGER"
@@ -500,6 +500,14 @@ object C {
 
     fun getOpenSearchWhenScrollTop(): Boolean {
         return LSharedPrefsUtil.instance.getBoolean(KEY_OPEN_SEARCH_WHEN_SCROLL_TOP, true)
+    }
+
+    fun setDisplayFilterViews(isEnable: Boolean) {
+        LSharedPrefsUtil.instance.putBoolean(KEY_DISPLAY_FILTER_VIEWS, isEnable)
+    }
+
+    fun getDisplayFilterViews(): Boolean {
+        return LSharedPrefsUtil.instance.getBoolean(KEY_DISPLAY_FILTER_VIEWS, true)
     }
 
     fun setAutoColorChanger(isEnable: Boolean) {

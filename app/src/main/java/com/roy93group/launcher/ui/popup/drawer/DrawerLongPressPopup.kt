@@ -170,6 +170,15 @@ object DrawerLongPressPopup {
                     C.setOpenSearchWhenScrollTop(value)
                 }
             ),
+            ListPopupItem(
+                text = context.getString(R.string.display_filter_view),
+                description = context.getString(R.string.display_filter_view_des),
+                icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_filter_list_24),
+                value = C.getDisplayFilterViews(),
+                onToggle = { _, value ->
+                    C.setDisplayFilterViews(value)
+                }
+            ),
             ListPopupItem(text = context.getString(R.string.theme), isTitle = true),
             ListPopupItem(
                 text = context.getString(R.string.color),

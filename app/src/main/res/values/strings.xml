@@ -122,4 +122,6 @@
     <string name="ad_des">We need ads, just like you need Color Launcher for your daily life.
         \nWe will work to make you happy when using Color Launcher.
         \nSincerely thank.</string>
+    <string name="display_filter_view">Display filter view</string>
+    <string name="display_filter_view_des">Display some components such as Home, Today, Notifications, News…</string>
 </resources>
