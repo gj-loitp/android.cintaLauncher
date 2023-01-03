@@ -7,7 +7,6 @@ import com.loitp.core.utilities.LUIUtil
 import com.loitp.data.ActivityData
 import org.greenrobot.eventbus.EventBus
 
-
 /**
  * Updated by Loitp on 2022.12.16
  * Galaxy One company,

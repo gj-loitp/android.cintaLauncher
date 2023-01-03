@@ -214,7 +214,7 @@ object DrawerLongPressPopup {
                         val result = C.updateBackgroundColor(newColor)
                         if (result) {
                             LUIUtil.setWallpaperAndLockScreen(
-                                context = launcherActivity,
+                                context = context,
                                 color = newColor,
                                 isSetWallpaper = true,
                                 isSetLockScreen = true,
