@@ -112,17 +112,6 @@ class IntroActivity : BaseFontActivity() {
         }
     }
 
-//    override fun onActivityResult(
-//        requestCode: Int,
-//        resultCode: Int,
-//        data: Intent?
-//    ) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == 0) {
-//            (stack.peek() as? FrmPermissions)?.updatePermissionStatus()
-//        }
-//    }
-
     fun updateUI() {
         val colorBackground = C.getColorBackground()
         val colorPrimary = C.getColorPrimary()
@@ -158,5 +147,9 @@ class IntroActivity : BaseFontActivity() {
             activity = this,
             isCheckedPolicy = toggle?.isChecked ?: true
         )
+    }
+
+    fun showLayoutPolicy() {
+        llPolicy.isVisible = true
     }
 }

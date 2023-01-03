@@ -2,6 +2,8 @@ package com.roy93group.launcher.ui.intro
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
+import com.loitp.core.utilities.LUIUtil
 import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
@@ -29,7 +31,6 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
     ) {
         super.onViewCreated(view, savedInstanceState)
         updateUI()
-
         colorPicker.apply {
             colors = C.colors
             setOnColorChangedListener(object : OnColorChangedListener {
@@ -44,6 +45,7 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
                 }
             })
         }
+        startAnim()
     }
 
     override fun onResume() {
@@ -57,5 +59,21 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
         ivLogo.setColorFilter(colorPrimary)
         tv.setTextColor(colorPrimary)
         tvDes.setTextColor(colorPrimary)
+    }
+
+    private fun startAnim() {
+        ivLogo.isVisible = true
+        LUIUtil.setDelay(300) {
+            tv.isVisible = true
+            LUIUtil.setDelay(300) {
+                tvDes.isVisible = true
+                LUIUtil.setDelay(300) {
+                    colorPicker.isVisible = true
+                    LUIUtil.setDelay(300) {
+                        (activity as? IntroActivity)?.showLayoutPolicy()
+                    }
+                }
+            }
+        }
     }
 }

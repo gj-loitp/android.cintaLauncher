@@ -40,7 +40,6 @@ import org.greenrobot.eventbus.EventBus
 //TODO RSS tuong tu nhu app iBao
 //TODO android sliding up panel
 //TODO tile progress view
-//TODO type text view in intro
 //TODO wheel spinner
 
 //done
