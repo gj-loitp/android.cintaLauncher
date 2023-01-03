@@ -19,6 +19,7 @@ import org.greenrobot.eventbus.EventBus
 //TODO firebase set is_show_flickr_gallery true when app available
 //TODO update string changelog_detail every build
 
+//TODO luon luon an cai thanh filter view
 //TODO fav app
 //TODO lock app
 //TODO hide app

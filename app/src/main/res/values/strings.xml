@@ -89,6 +89,10 @@
     <string name="changelog">Changelog</string>
     <string name="changelog_des">List of changes in the lasted version of the application</string>
     <string name="changelog_detail">\n
+        \n✪ Version: 2023.01.10
+        \n- Auto color changer
+        \n- Performances improved
+        \n-----
         \n✪ Version: 2023.01.02
         \n- Bug fixed
         \n- Add new screen to config background color
