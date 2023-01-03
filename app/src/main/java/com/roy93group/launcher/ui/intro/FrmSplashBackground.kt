@@ -45,7 +45,6 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
                 }
             })
         }
-        startAnim()
     }
 
     override fun onResume() {
@@ -59,21 +58,5 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
         ivLogo.setColorFilter(colorPrimary)
         tv.setTextColor(colorPrimary)
         tvDes.setTextColor(colorPrimary)
-    }
-
-    private fun startAnim() {
-        ivLogo.isVisible = true
-        LUIUtil.setDelay(300) {
-            tv.isVisible = true
-            LUIUtil.setDelay(300) {
-                tvDes.isVisible = true
-                LUIUtil.setDelay(300) {
-                    colorPicker.isVisible = true
-                    LUIUtil.setDelay(300) {
-                        (activity as? IntroActivity)?.showLayoutPolicy()
-                    }
-                }
-            }
-        }
     }
 }

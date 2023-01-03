@@ -13,11 +13,9 @@
         android:layout_width="@dimen/w_100"
         android:layout_height="@dimen/w_100"
         android:src="@drawable/ic_launcher"
-        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/tv"
         app:layout_constraintStart_toStartOf="parent"
-        tools:tint="@color/color_test_primary"
-        tools:visibility="visible" />
+        tools:tint="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv"
@@ -26,10 +24,8 @@
         android:text="@string/app_name"
         android:textSize="@dimen/txt_50"
         android:textStyle="bold"
-        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/tvDes"
-        tools:textColor="@color/color_test_primary"
-        tools:visibility="visible" />
+        tools:textColor="@color/color_test_primary" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvDes"
@@ -37,20 +33,16 @@
         android:layout_height="wrap_content"
         android:text="@string/pick_your_favorite_color_background"
         android:textSize="@dimen/txt_medium"
-        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/colorPicker"
-        tools:textColor="@color/color_test_primary"
-        tools:visibility="visible" />
+        tools:textColor="@color/color_test_primary" />
 
     <com.loitp.picker.shiftColor.LineColorPicker
         android:id="@+id/colorPicker"
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_55"
         android:layout_marginTop="@dimen/margin_padding_medium"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:lcpOrientation="horizontal"
         tools:background="@color/color_test_primary"
-        tools:lcpSelectedColorIndex="0"
-        tools:visibility="visible" />
+        tools:lcpSelectedColorIndex="0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

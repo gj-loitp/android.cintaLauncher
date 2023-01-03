@@ -148,8 +148,4 @@ class IntroActivity : BaseFontActivity() {
             isCheckedPolicy = toggle?.isChecked ?: true
         )
     }
-
-    fun showLayoutPolicy() {
-        llPolicy.isVisible = true
-    }
 }
