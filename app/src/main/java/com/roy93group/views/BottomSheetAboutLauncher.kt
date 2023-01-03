@@ -152,8 +152,7 @@ class BottomSheetAboutLauncher(
                     putExtra(Constants.AD_HELPER_COLOR_PRIMARY, colorPrimary)
                     putExtra(Constants.AD_HELPER_COLOR_BACKGROUND, colorBackground)
                     putExtra(Constants.AD_HELPER_COLOR_STATUS_BAR, colorBackground)
-                    val lightIcons = colorBackground != C.COLOR_15
-                    putExtra(Constants.AD_HELPER_IS_LIGHT_ICON_STATUS_BAR, lightIcons)
+                    putExtra(Constants.AD_HELPER_IS_LIGHT_ICON_STATUS_BAR, C.isLightIconStatusBar())
                 }
                 startActivity(intent)
                 LActivityUtil.tranIn(context)

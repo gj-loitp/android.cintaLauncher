@@ -20,7 +20,6 @@ import org.greenrobot.eventbus.EventBus
 //TODO update string changelog_detail every build
 
 //TODO leak canary
-//TODO change changeStatusBarContrastStyle
 //TODO luon luon an cai thanh filter view
 //TODO fav app
 //TODO lock app

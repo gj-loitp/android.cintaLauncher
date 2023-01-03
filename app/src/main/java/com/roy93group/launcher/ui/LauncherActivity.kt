@@ -73,7 +73,7 @@ class LauncherActivity : BaseFontActivity() {
     val appDrawer by lazy {
         AppDrawer(this)
     }
-    val bottomBar by lazy {
+    private val bottomBar by lazy {
         BottomBar(this)
     }
     val feedProfiles by lazy {
@@ -87,7 +87,11 @@ class LauncherActivity : BaseFontActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        C.changeStatusBarContrastStyle(this)
+
+        changeStatusBarContrastStyle(
+            lightIcons = C.isLightIconStatusBar(),
+            colorBackground = C.getColorBackground()
+        )
         fetchRemoteConfig()
         StackTraceActivity.init(applicationContext)
         configureWindow()
@@ -313,7 +317,10 @@ class LauncherActivity : BaseFontActivity() {
         feedProfiles.feedFilterAdapter.notifyDataSetChanged()
         appDrawer.adapter.notifyDataSetChanged()
         rvFeed.adapter = feedAdapter
-        C.changeStatusBarContrastStyle(this)
+        changeStatusBarContrastStyle(
+            lightIcons = C.isLightIconStatusBar(),
+            colorBackground = C.getColorBackground()
+        )
         flHomeContainer.setBackgroundColor(C.getColorBackground())
         bottomBar.updateTheme()
     }

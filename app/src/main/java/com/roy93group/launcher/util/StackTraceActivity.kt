@@ -58,7 +58,10 @@ class StackTraceActivity : BaseFontActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        C.changeStatusBarContrastStyle(activity = this)
+        changeStatusBarContrastStyle(
+            lightIcons = C.isLightIconStatusBar(),
+            colorBackground = C.getColorBackground()
+        )
         setupViews()
     }
 

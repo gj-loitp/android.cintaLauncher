@@ -73,7 +73,10 @@ class SearchActivity : BaseFontActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        C.changeStatusBarContrastStyle(this)
+        changeStatusBarContrastStyle(
+            lightIcons = C.isLightIconStatusBar(),
+            colorBackground = C.getColorBackground()
+        )
 
         settings.init(this)
         searcher.onCreate(this)

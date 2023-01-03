@@ -30,7 +30,10 @@ import java.util.*
 class IconPackPickerActivity : SettingsActivity() {
 
     override fun init(savedInstanceState: Bundle?) {
-        C.changeStatusBarContrastStyle(this)
+        changeStatusBarContrastStyle(
+            lightIcons = C.isLightIconStatusBar(),
+            colorBackground = C.getColorBackground()
+        )
         setupViews()
     }
 

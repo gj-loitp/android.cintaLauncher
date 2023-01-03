@@ -526,24 +526,8 @@ object C {
         return LSharedPrefsUtil.instance.getBoolean(KEY_FORCE_COLOR_ICON, false)
     }
 
-    fun changeStatusBarContrastStyle(
-        activity: BaseActivity
-    ) {
-        val lightIcons = getColorBackground() != COLOR_15
-
-        val decorView: View = activity.window.decorView
-        if (lightIcons) {
-            decorView.systemUiVisibility =
-                decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
-        } else {
-            decorView.systemUiVisibility =
-                decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        }
-
-        activity.setCustomStatusBar(
-            colorStatusBar = colorBackground,
-            colorNavigationBar = colorBackground
-        )
+    fun isLightIconStatusBar(): Boolean {
+        return getColorBackground() != COLOR_15
     }
 
     fun setBackgroundTintList(v: View?) {
