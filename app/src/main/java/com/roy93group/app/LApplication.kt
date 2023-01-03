@@ -25,6 +25,7 @@ import org.greenrobot.eventbus.EventBus
 //TODO sort app drawer theo tan suat
 //TODO tich hop he sinh thai app roy93group
 //TODO add setSafeOnClickListenerElastic
+//TODO search kha la khi khan, check xem keyword nhu nao
 
 //TODO apple recolor
 //TODO spotlight
@@ -32,8 +33,12 @@ import org.greenrobot.eventbus.EventBus
 //TODO custom font screen
 //TODO gg pay
 //TODO animation intro blob animation
+//TODO animation animated stars view
+//TODO animation konfetti
+//TODO animation snowfall
 //TODO pinned app o search bar
 //TODO change status bar cua flickr screen
+//TODO RSS tuong tu nhu app iBao
 
 //done
 //chon man hinh chu o screen setting
