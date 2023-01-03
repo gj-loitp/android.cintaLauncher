@@ -26,6 +26,7 @@ import org.greenrobot.eventbus.EventBus
 //TODO app badge
 //TODO sort app drawer theo tan suat
 //TODO tich hop he sinh thai app roy93group
+//TODO add setSafeOnClickListenerElastic
 
 //TODO apple recolor
 //TODO spotlight

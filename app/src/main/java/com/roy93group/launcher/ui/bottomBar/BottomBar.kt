@@ -3,6 +3,7 @@ package com.roy93group.launcher.ui.bottomBar
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
 import com.loitp.core.utilities.LScreenUtil
+import com.loitp.core.utilities.LUIUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.popup.drawer.DrawerLongPressPopup
@@ -32,27 +33,26 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         }
     }
 
-    @Suppress("unused")
-    val ivSearch: AppCompatImageView = launcherActivity.ivSearch.apply {
-        setColorFilter(colorBackground)
-    }
     val appDrawerIcon: ScrollbarIconView = cvSearchBarContainer.appDrawerIcon.apply {
         setColorFilter(colorBackground)
         appDrawer = launcherActivity.appDrawer
     }
-    val ivSetting: AppCompatImageView = launcherActivity.ivSetting.apply {
+    private val ivSetting: AppCompatImageView = launcherActivity.ivSetting.apply {
         setColorFilter(colorBackground)
-        this.setOnClickListener {
-            DrawerLongPressPopup.show(
-                launcherActivity = launcherActivity,
-                parent = this,
-                touchX = LScreenUtil.screenWidth / 2f,
-                touchY = LScreenUtil.screenHeight / 2f,
-                navbarHeight = launcherActivity.getNavigationBarHeight(),
-                settings = launcherActivity.settings,
-                reloadApps = launcherActivity::loadApps
-            )
-        }
+        LUIUtil.setSafeOnClickListenerElastic(
+            view = this,
+            runnable = {
+                DrawerLongPressPopup.show(
+                    launcherActivity = launcherActivity,
+                    parent = this,
+                    touchX = LScreenUtil.screenWidth / 2f,
+                    touchY = LScreenUtil.screenHeight / 2f,
+                    navbarHeight = launcherActivity.getNavigationBarHeight(),
+                    settings = launcherActivity.settings,
+                    reloadApps = launcherActivity::loadApps
+                )
+            }
+        )
     }
 
     fun updateTheme() {
@@ -60,7 +60,6 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         colorBackground = C.getColorBackground()
 
         cvSearchBarContainer.setCardBackgroundColor(colorPrimary)
-        ivSearch.setColorFilter(colorBackground)
         appDrawerIcon.setColorFilter(colorBackground)
         ivSetting.apply {
             C.setBackgroundTintList(this)

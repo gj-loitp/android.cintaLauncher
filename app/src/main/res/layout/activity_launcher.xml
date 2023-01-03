@@ -38,19 +38,9 @@
         tools:cardBackgroundColor="@color/color_test_primary">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivSearch"
-            android:layout_width="@dimen/search_bar_height"
-            android:layout_height="@dimen/search_bar_height"
-            android:padding="@dimen/margin_padding_small"
-            android:src="@drawable/ic_search"
-            app:tint="@color/color_test_background" />
-
-        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivSetting"
             android:layout_width="@dimen/search_bar_height"
             android:layout_height="@dimen/search_bar_height"
-            android:layout_gravity="start"
-            android:layout_marginStart="@dimen/search_bar_height"
             android:padding="@dimen/margin_padding_small"
             android:src="@drawable/ic_baseline_settings_24"
             app:tint="@color/color_test_background" />
