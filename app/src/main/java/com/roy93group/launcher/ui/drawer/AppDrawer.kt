@@ -31,7 +31,7 @@ class AppDrawer(
     val launcherActivity: LauncherActivity
 ) {
 
-    private val adapter = AppDrawerAdapter(launcherActivity)
+    val adapter = AppDrawerAdapter(launcherActivity)
     private var layoutManager: TurnLayoutManager? = null
 
     private var seekRadiusValue = C.getSeekRadiusValue()

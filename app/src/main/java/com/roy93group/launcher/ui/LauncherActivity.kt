@@ -1,5 +1,6 @@
 package com.roy93group.launcher.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.LauncherApps
 import android.content.res.Configuration
@@ -45,6 +46,7 @@ import com.roy93group.launcher.util.StackTraceActivity
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.launcherutils.LiveWallpaper
 import kotlinx.android.synthetic.main.activity_launcher.*
+import kotlinx.android.synthetic.main.view_app_drawer.*
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import kotlin.math.abs
@@ -304,5 +306,12 @@ class LauncherActivity : BaseFontActivity() {
         if (appLife?.isOnBackground == true) {
             C.configAutoColorChanger(this)
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateTheme() {
+        feedProfiles.feedFilterAdapter.notifyDataSetChanged()
+        appDrawer.adapter.notifyDataSetChanged()
+        rvFeed.adapter = feedAdapter
     }
 }

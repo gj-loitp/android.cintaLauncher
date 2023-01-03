@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_launcher.*
  */
 class FeedProfiles(val launcherActivity: LauncherActivity) {
 
-    private val feedFilterAdapter = FeedProfileAdapter(launcherActivity.launcherContext)
+    val feedFilterAdapter = FeedProfileAdapter(launcherActivity.launcherContext)
     val rvFeedFilters: RecyclerView =
         launcherActivity.rvFeedFilters.apply {
             layoutManager = LinearLayoutManager(
