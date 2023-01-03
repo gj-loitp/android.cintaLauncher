@@ -27,8 +27,6 @@ import org.greenrobot.eventbus.EventBus
 //TODO sort app drawer theo tan suat
 //TODO tich hop he sinh thai app roy93group
 //TODO add setSafeOnClickListenerElastic
-//TODO why see ad
-//TODO pinned app o search bar
 
 //TODO apple recolor
 //TODO spotlight
@@ -36,6 +34,7 @@ import org.greenrobot.eventbus.EventBus
 //TODO custom font screen
 //TODO gg pay
 //TODO animation intro blob animation
+//TODO pinned app o search bar
 
 //done
 //chon man hinh chu o screen setting
@@ -69,6 +68,7 @@ import org.greenrobot.eventbus.EventBus
 //what new dialog
 //background color nho set wallpaper
 //setting auto change color
+//why see ad
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

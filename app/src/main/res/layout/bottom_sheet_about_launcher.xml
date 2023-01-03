@@ -62,6 +62,10 @@
                     android:id="@+id/layoutContactTheDeveloper"
                     layout="@layout/view_item" />
 
+                <include
+                    android:id="@+id/layoutWhyDoISeeAd"
+                    layout="@layout/view_item" />
+
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
 

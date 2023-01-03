@@ -8,12 +8,16 @@ package com.roy93group.views
  * freuss47@gmail.com
  */
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.loitp.core.common.Constants
 import com.loitp.core.ext.setSafeOnClickListener
+import com.loitp.core.helper.adHelper.AdHelperActivity
+import com.loitp.core.utilities.LActivityUtil
 import com.loitp.core.utilities.LSocialUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.BuildConfig
@@ -130,6 +134,24 @@ class BottomSheetAboutLauncher(
                     context = requireContext(),
                     url = "https://www.facebook.com/loitp93/"
                 )
+            }
+        }
+        layoutWhyDoISeeAd.apply {
+            v.setBackgroundColor(colorPrimary)
+            tv1.apply {
+                setTextColor(colorPrimary)
+                text = getString(R.string.why_u_see_ad_en)
+            }
+            tv2.apply {
+                setTextColor(colorPrimary)
+                text = getString(R.string.contact_the_dev_des)
+            }
+            setSafeOnClickListener {
+                val intent = Intent(context, AdHelperActivity::class.java).apply {
+                    putExtra(Constants.AD_HELPER_IS_ENGLISH_LANGUAGE, true)
+                }
+                startActivity(intent)
+                LActivityUtil.tranIn(context)
             }
         }
     }
