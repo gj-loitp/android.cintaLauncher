@@ -99,7 +99,6 @@ class AppDrawer(
     private var currentValueAnimator: ValueAnimator? = null
 
     fun open() {
-        launcherActivity.bottomBar.fabSetting.isVisible = true
         if (isOpen) return
         ItemLongPress.currentPopup?.dismiss()
         val sbh = launcherActivity.getStatusBarHeight()
@@ -151,7 +150,6 @@ class AppDrawer(
     }
 
     fun close() {
-        launcherActivity.bottomBar.fabSetting.isVisible = false
         if (!isOpen) return
         ItemLongPress.currentPopup?.dismiss()
         launcherActivity.feedProfiles.rvFeedFilters.isVisible = true

@@ -25,24 +25,6 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabSetting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/app_name"
-        android:elevation="@dimen/margin_padding_medium"
-        android:visibility="gone"
-        app:borderWidth="0dp"
-        app:fabSize="mini"
-        app:layout_constraintBottom_toTopOf="@+id/cvSearchBarContainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_settings_black_48dp"
-        app:useCompatPadding="true"
-        tools:backgroundTint="@color/color_test_primary"
-        tools:ignore="DuplicateSpeakableTextCheck"
-        tools:tint="@color/color_test_background"
-        tools:visibility="visible" />
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvSearchBarContainer"
         android:layout_width="match_parent"
@@ -61,6 +43,16 @@
             android:layout_height="@dimen/search_bar_height"
             android:padding="@dimen/margin_padding_small"
             android:src="@drawable/ic_search"
+            app:tint="@color/color_test_background" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSetting"
+            android:layout_width="@dimen/search_bar_height"
+            android:layout_height="@dimen/search_bar_height"
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/search_bar_height"
+            android:padding="@dimen/margin_padding_small"
+            android:src="@drawable/ic_baseline_settings_24"
             app:tint="@color/color_test_background" />
 
         <com.roy93group.launcher.ui.view.scrollbar.ScrollbarIconView

@@ -2,7 +2,6 @@ package com.roy93group.launcher.ui.bottomBar
 
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.loitp.core.utilities.LScreenUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.ui.LauncherActivity
@@ -41,8 +40,7 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         setColorFilter(colorBackground)
         appDrawer = launcherActivity.appDrawer
     }
-    val fabSetting: FloatingActionButton = launcherActivity.fabSetting.apply {
-        C.setBackgroundTintList(this)
+    val ivSetting: AppCompatImageView = launcherActivity.ivSetting.apply {
         setColorFilter(colorBackground)
         this.setOnClickListener {
             DrawerLongPressPopup.show(
@@ -64,7 +62,7 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         cvSearchBarContainer.setCardBackgroundColor(colorPrimary)
         ivSearch.setColorFilter(colorBackground)
         appDrawerIcon.setColorFilter(colorBackground)
-        fabSetting.apply {
+        ivSetting.apply {
             C.setBackgroundTintList(this)
             setColorFilter(colorBackground)
         }
