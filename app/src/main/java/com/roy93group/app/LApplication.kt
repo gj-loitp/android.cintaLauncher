@@ -19,6 +19,8 @@ import org.greenrobot.eventbus.EventBus
 //TODO firebase set is_show_flickr_gallery true when app available
 //TODO update string changelog_detail every build
 
+//TODO leak canary
+//TODO change changeStatusBarContrastStyle
 //TODO luon luon an cai thanh filter view
 //TODO fav app
 //TODO lock app
@@ -35,6 +37,7 @@ import org.greenrobot.eventbus.EventBus
 //TODO gg pay
 //TODO animation intro blob animation
 //TODO pinned app o search bar
+//TODO change status bar cua flickr screen
 
 //done
 //chon man hinh chu o screen setting
