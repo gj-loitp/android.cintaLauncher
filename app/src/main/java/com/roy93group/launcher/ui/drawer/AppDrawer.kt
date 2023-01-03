@@ -101,7 +101,7 @@ class AppDrawer(
     fun open() {
         if (isOpen) return
         ItemLongPress.currentPopup?.dismiss()
-        val sbh = launcherActivity.getStatusBarHeight()
+//        val sbh = launcherActivity.getStatusBarHeight()
 //        launcherActivity.rvApp.setPadding(
 //            launcherActivity.rvApp.paddingLeft,
 //            sbh,

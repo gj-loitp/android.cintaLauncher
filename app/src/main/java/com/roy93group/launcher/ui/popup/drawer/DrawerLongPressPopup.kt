@@ -177,6 +177,7 @@ object DrawerLongPressPopup {
                 value = C.getDisplayFilterViews(),
                 onToggle = { _, value ->
                     C.setDisplayFilterViews(value)
+                    launcherActivity.feedProfiles.updateTheme()
                 }
             ),
             ListPopupItem(text = context.getString(R.string.theme), isTitle = true),

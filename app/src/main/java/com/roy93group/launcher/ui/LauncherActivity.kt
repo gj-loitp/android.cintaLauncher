@@ -9,7 +9,6 @@ import android.graphics.drawable.*
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -112,7 +111,6 @@ class LauncherActivity : BaseFontActivity() {
                 onBottom = {
                 },
                 onScrolled = { isScrollDown ->
-                    feedProfiles.rvFeedFilters.isVisible = !isScrollDown
                 },
             )
             layoutManager = LinearLayoutManager(
@@ -314,7 +312,7 @@ class LauncherActivity : BaseFontActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateTheme() {
-        feedProfiles.feedFilterAdapter.notifyDataSetChanged()
+        feedProfiles.updateTheme()
         appDrawer.adapter.notifyDataSetChanged()
         rvFeed.adapter = feedAdapter
         changeStatusBarContrastStyle(

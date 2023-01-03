@@ -1,8 +1,11 @@
 package com.roy93group.launcher.ui.feedProfiles
 
+import android.annotation.SuppressLint
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.profiles.FeedProfile
 import com.roy93group.launcher.ui.LauncherActivity
@@ -17,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_launcher.*
  */
 class FeedProfiles(val launcherActivity: LauncherActivity) {
 
-    val feedFilterAdapter = FeedProfileAdapter(launcherActivity.launcherContext)
+    private val feedFilterAdapter = FeedProfileAdapter(launcherActivity.launcherContext)
     val rvFeedFilters: RecyclerView =
         launcherActivity.rvFeedFilters.apply {
             layoutManager = LinearLayoutManager(
@@ -66,5 +69,15 @@ class FeedProfiles(val launcherActivity: LauncherActivity) {
                 onlyToday = false,
             ),
         )
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateTheme() {
+        if (C.getDisplayFilterViews()) {
+            rvFeedFilters.isVisible = true
+            feedFilterAdapter.notifyDataSetChanged()
+        } else {
+            rvFeedFilters.isVisible = false
+        }
     }
 }
