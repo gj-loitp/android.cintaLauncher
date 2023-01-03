@@ -144,7 +144,7 @@ class BottomSheetAboutLauncher(
             }
             tv2.apply {
                 setTextColor(colorPrimary)
-                text = getString(R.string.contact_the_dev_des)
+                text = getString(R.string.ad_des)
             }
             setSafeOnClickListener {
                 val intent = Intent(context, AdHelperActivity::class.java).apply {
