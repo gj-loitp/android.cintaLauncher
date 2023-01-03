@@ -35,7 +35,6 @@ import com.loitp.core.utilities.*
 import com.loitp.data.ActivityData
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
-import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.util.FakeLauncherActivity
 import com.roy93group.lookerupper.ui.a.SearchActivity
 import com.roy93group.views.*
@@ -601,35 +600,30 @@ object C {
     fun configAutoColorChanger(context: Context) {
         if (getAutoColorChanger()) {
             //TODO
-            Log.e("loitpp", ">>> configAutoColorChanger")
-            val newColorPrimary = colors.random()
-
-            fun getColor(exceptColor: Int): Int {
-                val newColor = colors.random()
-                return if (exceptColor == newColor) {
-                    getColor(exceptColor)
-                } else {
-                    newColor
-                }
-            }
-
-            val newColorBackground = getColor(newColorPrimary)
-            if (newColorPrimary != newColorBackground) {
-                val resultUpdatePrimaryColor = updatePrimaryColor(newColorPrimary)
-                val resultUpdateBackgroundColor = updateBackgroundColor(newColorBackground)
-                if (resultUpdatePrimaryColor && resultUpdateBackgroundColor) {
-                    LUIUtil.setWallpaperAndLockScreen(
-                        context = context,
-                        color = newColorBackground,
-                        isSetWallpaper = true,
-                        isSetLockScreen = true,
-                    )
-                }
-                val i = Intent(context, LauncherActivity::class.java)
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                context.startActivity(i)
-                (context as? LauncherActivity)?.finishAfterTransition()
-            }
+//            val newColorPrimary = colors.random()
+//
+//            fun getColor(exceptColor: Int): Int {
+//                val newColor = colors.random()
+//                return if (exceptColor == newColor) {
+//                    getColor(exceptColor)
+//                } else {
+//                    newColor
+//                }
+//            }
+//
+//            val newColorBackground = getColor(newColorPrimary)
+//            if (newColorPrimary != newColorBackground) {
+//                val resultUpdatePrimaryColor = updatePrimaryColor(newColorPrimary)
+//                val resultUpdateBackgroundColor = updateBackgroundColor(newColorBackground)
+//                if (resultUpdatePrimaryColor && resultUpdateBackgroundColor) {
+//                    LUIUtil.setWallpaperAndLockScreen(
+//                        context = context,
+//                        color = newColorBackground,
+//                        isSetWallpaper = true,
+//                        isSetLockScreen = true,
+//                    )
+//                }
+//            }
         }
     }
 }
