@@ -27,6 +27,8 @@ import org.greenrobot.eventbus.EventBus
 //TODO sort app drawer theo tan suat
 //TODO tich hop he sinh thai app roy93group
 //TODO add setSafeOnClickListenerElastic
+//TODO why see ad
+//TODO pinned app o search bar
 
 //TODO apple recolor
 //TODO spotlight

@@ -55,6 +55,10 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         )
     }
 
+    private val tvSearch = launcherActivity.tvSearch.apply {
+        setTextColor(colorBackground)
+    }
+
     fun updateTheme() {
         colorPrimary = C.getColorPrimary()
         colorBackground = C.getColorBackground()

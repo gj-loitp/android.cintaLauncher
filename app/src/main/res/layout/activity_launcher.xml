@@ -45,6 +45,18 @@
             android:src="@drawable/ic_baseline_settings_24"
             app:tint="@color/color_test_background" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSearch"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_bar_height"
+            android:layout_marginStart="@dimen/search_bar_height"
+            android:layout_marginEnd="@dimen/search_bar_height"
+            android:gravity="start|center"
+            android:text="@string/smart_search"
+            android:textSize="@dimen/txt_medium"
+            android:textStyle="bold"
+            tools:textColor="@color/color_test_background" />
+
         <com.roy93group.launcher.ui.view.scrollbar.ScrollbarIconView
             android:id="@+id/appDrawerIcon"
             android:layout_width="@dimen/search_bar_height"
