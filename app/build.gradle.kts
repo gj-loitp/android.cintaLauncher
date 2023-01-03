@@ -55,7 +55,9 @@ dependencies {
     implementation("com.google.firebase:firebase-config-ktx:21.2.0")
     implementation("com.github.cdflynn:turn-layout-manager:v1.3.1")
     implementation("com.github.Chrisvin:RubberPicker:v1.5")
-//    implementation("com.jakewharton:process-phoenix:2.1.2")
+
+    // debugImplementation because LeakCanary should only run in debug builds.
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.10")
 }
 
 configurations.all {
