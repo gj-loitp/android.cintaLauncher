@@ -20,7 +20,6 @@ import org.greenrobot.eventbus.EventBus
 //TODO update string changelog_detail every build
 
 //TODO leak canary
-//TODO luon luon an cai thanh filter view
 //TODO fav app
 //TODO lock app
 //TODO hide app
@@ -71,6 +70,7 @@ import org.greenrobot.eventbus.EventBus
 //background color nho set wallpaper
 //setting auto change color
 //why see ad
+//luon luon an cai thanh filter view
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
