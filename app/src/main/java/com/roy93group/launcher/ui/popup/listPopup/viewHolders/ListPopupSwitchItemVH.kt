@@ -35,6 +35,7 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
         itemView.toggle.apply {
             colorOn = colorPrimary
             colorOff = colorBackground
+            setColorBorder(colorPrimary)
             isOn = (item.value as? Boolean) ?: false
             this.setOnToggledListener(object : OnToggledListener {
                 override fun onSwitched(labeledSwitch: LabeledSwitch, isOn: Boolean) {
