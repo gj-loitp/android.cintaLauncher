@@ -75,6 +75,7 @@ fun bindAppViewHolder(
         text = item.label
         setTextColor(colorPrimary)
     }
+
     holder.itemView.tvLineTitle.apply {
         setTextColor(colorPrimary)
         applyIfNotNull(
