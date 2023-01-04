@@ -33,6 +33,7 @@ import org.greenrobot.eventbus.EventBus
 //TODO pinned app o search bar
 //TODO change status bar cua flickr screen sdk base master
 //TODO android sliding up panel
+//TODO recycler view pull like ios
 
 //suggestion
 //animation intro blob animation
