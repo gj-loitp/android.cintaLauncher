@@ -109,6 +109,7 @@ class StackTraceActivity : BaseFontActivity() {
             tvStackTrace.text = str
 
             btSend.setSafeOnClickListener {
+                onBaseBackPressed()
                 ShareCompat.IntentBuilder(this)
                     .setType("text/plain")
                     .setText(str)
