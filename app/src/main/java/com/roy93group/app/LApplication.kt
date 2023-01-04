@@ -28,7 +28,6 @@ import org.greenrobot.eventbus.EventBus
 //TODO add setSafeOnClickListenerElastic
 //TODO search kha la khi khan, check xem keyword nhu nao
 //TODO setting view_app_card enable/disabled card use compat
-//TODO custom font screen
 //TODO gg pay
 //TODO animation intro blob animation
 //TODO animation konfetti
@@ -76,6 +75,7 @@ import org.greenrobot.eventbus.EventBus
 //luon luon an cai thanh filter view
 //efx recolor, da check roi nhung ko co dep
 //animation animated stars view
+//custom font screen <<< kho xu ly trong case text style bold, italic
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
