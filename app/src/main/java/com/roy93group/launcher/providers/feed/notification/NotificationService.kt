@@ -83,9 +83,9 @@ class NotificationService : NotificationListenerService() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         val msm = getSystemService(MediaSessionManager::class.java)
         msm.removeOnActiveSessionsChangedListener(::onMediaControllersUpdated)
+        super.onDestroy()
     }
 
     override fun onListenerConnected() {

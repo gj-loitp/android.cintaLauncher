@@ -69,6 +69,7 @@ class FeedProfiles(val launcherActivity: LauncherActivity) {
                 onlyToday = false,
             ),
         )
+        updateTheme()
     }
 
     @SuppressLint("NotifyDataSetChanged")
