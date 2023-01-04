@@ -25,7 +25,6 @@ import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
 import com.loitp.core.common.Constants
-import com.loitp.core.ext.getBackgroundColor
 import com.loitp.core.helper.gallery.GalleryCoreSplashActivity
 import com.loitp.core.utilities.*
 import com.loitp.data.ActivityData
@@ -616,17 +615,5 @@ object C {
                 }
             }
         }
-    }
-
-    fun recolor(
-        view: View,
-        endColor: Int
-    ) {
-        LUIUtil.recolor(
-            view = view,
-            startColor = view.getBackgroundColor(),
-            endColor = endColor,
-            duration = 300
-        )
     }
 }

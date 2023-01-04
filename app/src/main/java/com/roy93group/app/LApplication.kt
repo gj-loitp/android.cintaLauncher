@@ -27,7 +27,6 @@ import org.greenrobot.eventbus.EventBus
 //TODO tich hop he sinh thai app roy93group
 //TODO add setSafeOnClickListenerElastic
 //TODO search kha la khi khan, check xem keyword nhu nao
-//TODO apple recolor
 //TODO setting view_app_card enable/disabled card use compat
 //TODO custom font screen
 //TODO gg pay
@@ -76,6 +75,7 @@ import org.greenrobot.eventbus.EventBus
 //setting auto change color
 //why see ad
 //luon luon an cai thanh filter view
+//efx recolor, da check roi nhung ko co dep
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

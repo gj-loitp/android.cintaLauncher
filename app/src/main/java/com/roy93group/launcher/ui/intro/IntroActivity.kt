@@ -121,7 +121,7 @@ class IntroActivity : BaseFontActivity() {
             colorBackground = colorBackground,
         )
 
-        C.recolor(view = cl, endColor = colorBackground)
+        cl.setBackgroundColor(colorBackground)
 
         toggle.apply {
             trackDrawable = C.generateTrackDrawable(colorPrimary)
