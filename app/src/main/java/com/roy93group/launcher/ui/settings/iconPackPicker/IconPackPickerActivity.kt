@@ -32,7 +32,8 @@ class IconPackPickerActivity : SettingsActivity() {
     override fun init(savedInstanceState: Bundle?) {
         changeStatusBarContrastStyle(
             lightIcons = C.isLightIconStatusBar(),
-            colorBackground = C.getColorBackground()
+            colorBackground = C.getColorBackground(),
+            withRecolorEfx = false,
         )
         setupViews()
     }

@@ -75,7 +75,8 @@ class SearchActivity : BaseFontActivity() {
         super.onCreate(savedInstanceState)
         changeStatusBarContrastStyle(
             lightIcons = C.isLightIconStatusBar(),
-            colorBackground = C.getColorBackground()
+            colorBackground = C.getColorBackground(),
+            withRecolorEfx = false,
         )
 
         settings.init(this)

@@ -60,7 +60,8 @@ class StackTraceActivity : BaseFontActivity() {
         super.onCreate(savedInstanceState)
         changeStatusBarContrastStyle(
             lightIcons = C.isLightIconStatusBar(),
-            colorBackground = C.getColorBackground()
+            colorBackground = C.getColorBackground(),
+            withRecolorEfx = false,
         )
         setupViews()
     }

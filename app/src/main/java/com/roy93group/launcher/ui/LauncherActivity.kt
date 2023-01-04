@@ -89,7 +89,8 @@ class LauncherActivity : BaseFontActivity() {
 
         changeStatusBarContrastStyle(
             lightIcons = C.isLightIconStatusBar(),
-            colorBackground = C.getColorBackground()
+            colorBackground = C.getColorBackground(),
+            withRecolorEfx = false,
         )
         fetchRemoteConfig()
         StackTraceActivity.init(applicationContext)
@@ -317,7 +318,8 @@ class LauncherActivity : BaseFontActivity() {
         rvFeed.adapter = feedAdapter
         changeStatusBarContrastStyle(
             lightIcons = C.isLightIconStatusBar(),
-            colorBackground = C.getColorBackground()
+            colorBackground = C.getColorBackground(),
+            withRecolorEfx = false,
         )
         flHomeContainer.setBackgroundColor(C.getColorBackground())
         bottomBar.updateTheme()
