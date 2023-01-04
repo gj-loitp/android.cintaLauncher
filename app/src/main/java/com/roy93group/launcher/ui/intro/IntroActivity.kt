@@ -10,6 +10,8 @@ import com.loitp.core.base.BaseFontActivity
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LSocialUtil
 import com.loitp.core.utilities.LUIUtil
+import com.loitp.views.sw.toggle.LabeledSwitch
+import com.loitp.views.sw.toggle.OnToggledListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.activity_intro.*
@@ -73,9 +75,11 @@ class IntroActivity : BaseFontActivity() {
     private fun setupViews() {
         updateUI()
 
-        toggle.setOnCheckedChangeListener { _, b ->
-            btNext.isVisible = b
-        }
+        toggle.setOnToggledListener(object : OnToggledListener {
+            override fun onSwitched(labeledSwitch: LabeledSwitch, isOn: Boolean) {
+                btNext.isVisible = isOn
+            }
+        })
         btNext.setSafeOnClickListener {
             nextScreen()
         }
@@ -125,9 +129,9 @@ class IntroActivity : BaseFontActivity() {
         cl.setBackgroundColor(colorBackground)
 
         toggle.apply {
-            trackDrawable = C.generateTrackDrawable(colorPrimary)
-            thumbDrawable =
-                C.generateThumbDrawable(context = context, color = colorBackground)
+            colorOn = colorPrimary
+            colorOff = colorBackground
+            setColorBorder(colorPrimary)
         }
         btNext.apply {
             setTextColor(colorBackground)
@@ -147,7 +151,7 @@ class IntroActivity : BaseFontActivity() {
 
         stack.peek()?.next(
             activity = this,
-            isCheckedPolicy = toggle?.isChecked ?: true
+            isCheckedPolicy = toggle?.isOn ?: true
         )
     }
 }

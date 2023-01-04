@@ -37,12 +37,19 @@
             android:paddingTop="@dimen/margin_padding_small"
             android:paddingEnd="@dimen/margin_padding_medium">
 
-            <androidx.appcompat.widget.SwitchCompat
+            <com.loitp.views.sw.toggle.LabeledSwitch
                 android:id="@+id/toggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:layout_gravity="center"
+                android:textSize="@dimen/txt_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:on="true"
+                tools:colorBorder="@color/transparent"
+                tools:colorOff="@color/color_test_background"
+                tools:colorOn="@color/color_test_primary"
+                tools:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPolicy"
