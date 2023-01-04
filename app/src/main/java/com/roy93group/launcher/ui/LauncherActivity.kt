@@ -72,7 +72,7 @@ class LauncherActivity : BaseFontActivity() {
     val appDrawer by lazy {
         AppDrawer(this)
     }
-    private val bottomBar by lazy {
+    val bottomBar by lazy {
         BottomBar(this)
     }
     val feedProfiles by lazy {

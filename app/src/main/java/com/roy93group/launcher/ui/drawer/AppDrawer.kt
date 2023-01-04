@@ -101,13 +101,13 @@ class AppDrawer(
     fun open() {
         if (isOpen) return
         ItemLongPress.currentPopup?.dismiss()
-//        val sbh = launcherActivity.getStatusBarHeight()
-//        launcherActivity.rvApp.setPadding(
-//            launcherActivity.rvApp.paddingLeft,
-//            sbh,
-//            launcherActivity.rvApp.paddingRight,
-//            launcherActivity.bottomBar.cvSearchBarContainer.measuredHeight + launcherActivity.bottomBar.cvSearchBarContainer.marginBottom + launcherActivity.bottomBar.cvSearchBarContainer.marginTop
-//        )
+        val sbh = launcherActivity.getStatusBarHeight()
+        launcherActivity.rvApp.setPadding(
+            launcherActivity.rvApp.paddingLeft,
+            sbh,
+            launcherActivity.rvApp.paddingRight,
+            launcherActivity.rvApp.paddingBottom,
+        )
         launcherActivity.flAppDrawerContainer.isVisible = true
         launcherActivity.rvFeed.stopScroll()
         launcherActivity.feedProfiles.rvFeedFilters.animate()
