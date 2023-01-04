@@ -118,10 +118,11 @@ class IntroActivity : BaseFontActivity() {
 
         changeStatusBarContrastStyle(
             lightIcons = C.isLightIconStatusBar(),
-            colorBackground = C.getColorBackground()
+            colorBackground = colorBackground
         )
 
-        cl.setBackgroundColor(colorBackground)
+        C.recolor(view = cl, endColor = colorBackground)
+
         toggle.apply {
             trackDrawable = C.generateTrackDrawable(colorPrimary)
             thumbDrawable =

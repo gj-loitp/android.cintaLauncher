@@ -7,10 +7,8 @@ import android.content.Context.VIBRATOR_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.LayerDrawable
-import android.graphics.drawable.StateListDrawable
+import android.graphics.Color
+import android.graphics.drawable.*
 import android.net.Uri
 import android.os.Build
 import android.os.VibrationEffect
@@ -39,6 +37,7 @@ import com.roy93group.lookerupper.ui.a.SearchActivity
 import com.roy93group.views.*
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
+import kotlinx.android.synthetic.main.activity_intro.*
 import kotlinx.android.synthetic.main.activity_launcher.*
 import kotlinx.android.synthetic.main.view_app_drawer.*
 
@@ -617,5 +616,16 @@ object C {
                 }
             }
         }
+    }
+
+    fun recolor(view: View, endColor: Int) {
+        val getCurrentBackgroundColor =
+            (view.background as? ColorDrawable?)?.color ?: Color.TRANSPARENT
+        LUIUtil.recolor(
+            view = view,
+            startColor = getCurrentBackgroundColor,
+            endColor = endColor,
+            duration = 300
+        )
     }
 }
