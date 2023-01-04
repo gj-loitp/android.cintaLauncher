@@ -4,13 +4,13 @@ import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.loitp.core.ext.setSafeOnClickListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.notification.NotificationService
 import com.roy93group.launcher.ui.LauncherActivity
+import com.roy93group.views.LinearLayoutManagerWrapper
 import io.posidon.android.conveniencelib.getStatusBarHeight
 import kotlinx.android.synthetic.main.view_feed_home.view.*
 
@@ -23,12 +23,11 @@ class HomeViewHolder(
     private val notificationIconsAdapter = NotificationIconsAdapter()
 
     private val rvNotificationIconList: RecyclerView = itemView.rvNotificationIconList.apply {
-        layoutManager =
-            LinearLayoutManager(
-                /* context = */ itemView.context,
-                /* orientation = */RecyclerView.HORIZONTAL,
-                /* reverseLayout = */false
-            )
+        layoutManager = LinearLayoutManagerWrapper(
+            /* context = */ itemView.context,
+            /* orientation = */RecyclerView.HORIZONTAL,
+            /* reverseLayout = */false
+        )
         adapter = notificationIconsAdapter
     }
 
@@ -67,17 +66,15 @@ class HomeViewHolder(
             rvNotificationIconList.isVisible = true
 
             this.isForceColorIcon = isForceColorIcon
-            if (notificationIconsAdapter.updateItems(
-                    items = icons,
-                    isForceColorIcon = isForceColorIcon
-                )
-            ) {
-                itemView.tvNotificationIconText.text = itemView.resources.getQuantityString(
-                    /* id = */ R.plurals.x_notifications,
-                    /* quantity = */ icons.size,
-                    /* ...formatArgs = */ icons.size
-                )
-            }
+            notificationIconsAdapter.updateItems(
+                items = icons,
+                isForceColorIcon = isForceColorIcon
+            )
+            itemView.tvNotificationIconText.text = itemView.resources.getQuantityString(
+                /* id = */ R.plurals.x_notifications,
+                /* quantity = */ icons.size,
+                /* ...formatArgs = */ icons.size
+            )
         }
     }
 }

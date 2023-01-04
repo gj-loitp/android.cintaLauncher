@@ -65,8 +65,7 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
     fun updateItems(
         items: List<Drawable>,
         isForceColorIcon: Boolean
-    ): Boolean {
-        val numberChanged = this.items.size != items.size
+    ) {
         this.items = items
         this.isForceColorIcon = isForceColorIcon
         try {
@@ -74,6 +73,5 @@ class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.I
         } catch (e: Exception) {
             notifyDataSetChanged()
         }
-        return numberChanged
     }
 }
