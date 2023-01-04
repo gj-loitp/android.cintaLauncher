@@ -49,16 +49,17 @@
         tools:text="@string/app_name"
         tools:textColor="@color/color_test_primary" />
 
-    <com.loitp.views.sw.appcompatSw.LColorSwitchCompat
+    <com.loitp.views.sw.toggle.LabeledSwitch
         android:id="@+id/toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textSize="@dimen/txt_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:bgOffColor="@color/color_test_primary"
-        tools:bgOnColor="@color/color_test_primary"
-        tools:toggleOffColor="@color/color_test_primary"
-        tools:toggleOnColor="@color/color_test_primary" />
+        tools:colorBorder="@color/transparent"
+        tools:colorOff="@color/color_test_background"
+        tools:colorOn="@color/color_test_primary"
+        tools:layout_constraintTop_toTopOf="parent"
+        tools:on="false" />
 </androidx.constraintlayout.widget.ConstraintLayout>

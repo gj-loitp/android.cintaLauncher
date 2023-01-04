@@ -1,7 +1,8 @@
 package com.roy93group.launcher.ui.popup.listPopup.viewHolders
 
 import android.view.View
-import com.loitp.core.utilities.LUIUtil
+import com.loitp.views.sw.toggle.LabeledSwitch
+import com.loitp.views.sw.toggle.OnToggledListener
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
 import kotlinx.android.synthetic.main.view_list_popup_switch_item.view.*
@@ -28,16 +29,18 @@ class ListPopupSwitchItemVH(itemView: View) : ListPopupVH(itemView) {
             }
         }
         itemView.setOnClickListener {
-            itemView.toggle.toggle()
+            itemView.toggle.performClick()
         }
 
         itemView.toggle.apply {
-            bgOffColor = LUIUtil.setAlphaComponent(colorPrimary, 90)
-            bgOnColor = LUIUtil.setAlphaComponent(colorPrimary, 90)
-            toggleOffColor = colorPrimary
-            toggleOnColor = colorPrimary
-            isChecked = (item.value as? Boolean) ?: false
-            setOnCheckedChangeListener(item.onToggle)
+            colorOn = colorPrimary
+            colorOff = colorBackground
+            isOn = (item.value as? Boolean) ?: false
+            this.setOnToggledListener(object : OnToggledListener {
+                override fun onSwitched(labeledSwitch: LabeledSwitch, isOn: Boolean) {
+                    item.onToggle?.invoke(labeledSwitch, isOn)
+                }
+            })
         }
 
         itemView.icon.apply {
