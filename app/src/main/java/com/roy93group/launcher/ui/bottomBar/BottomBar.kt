@@ -69,5 +69,6 @@ class BottomBar(val launcherActivity: LauncherActivity) {
             C.setBackgroundTintList(this)
             setColorFilter(colorBackground)
         }
+        tvSearch.setTextColor(colorBackground)
     }
 }
