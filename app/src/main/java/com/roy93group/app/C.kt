@@ -170,34 +170,34 @@ object C {
         LActivityUtil.tranIn(activity)
     }
 
-    fun generateTrackDrawable(color: Int): Drawable {
-        val out = StateListDrawable()
-        out.addState(
-            intArrayOf(android.R.attr.state_checked),
-            generateBG(color)
-        )
-        out.addState(
-            StateSet.WILD_CARD,
-            generateBG(color)
-        )
-        return out
-    }
-
-    fun generateThumbDrawable(
-        context: Context,
-        color: Int
-    ): Drawable {
-        val out = StateListDrawable()
-        out.addState(
-            intArrayOf(android.R.attr.state_checked),
-            generateCircle(context = context, color = color)
-        )
-        out.addState(
-            StateSet.WILD_CARD,
-            generateCircle(context = context, color = color)
-        )
-        return out
-    }
+//    fun generateTrackDrawable(color: Int): Drawable {
+//        val out = StateListDrawable()
+//        out.addState(
+//            intArrayOf(android.R.attr.state_checked),
+//            generateBG(color)
+//        )
+//        out.addState(
+//            StateSet.WILD_CARD,
+//            generateBG(color)
+//        )
+//        return out
+//    }
+//
+//    fun generateThumbDrawable(
+//        context: Context,
+//        color: Int
+//    ): Drawable {
+//        val out = StateListDrawable()
+//        out.addState(
+//            intArrayOf(android.R.attr.state_checked),
+//            generateCircle(context = context, color = color)
+//        )
+//        out.addState(
+//            StateSet.WILD_CARD,
+//            generateCircle(context = context, color = color)
+//        )
+//        return out
+//    }
 
     private fun generateCircle(
         context: Context,
