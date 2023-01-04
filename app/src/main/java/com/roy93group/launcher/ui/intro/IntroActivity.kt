@@ -118,7 +118,7 @@ class IntroActivity : BaseFontActivity() {
 
         changeStatusBarContrastStyle(
             lightIcons = C.isLightIconStatusBar(),
-            colorBackground = colorBackground
+            colorBackground = colorBackground,
         )
 
         C.recolor(view = cl, endColor = colorBackground)

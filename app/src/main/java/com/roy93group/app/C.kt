@@ -7,7 +7,6 @@ import android.content.Context.VIBRATOR_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.graphics.drawable.*
 import android.net.Uri
 import android.os.Build
@@ -26,6 +25,7 @@ import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
 import com.loitp.core.common.Constants
+import com.loitp.core.ext.getBackgroundColor
 import com.loitp.core.helper.gallery.GalleryCoreSplashActivity
 import com.loitp.core.utilities.*
 import com.loitp.data.ActivityData
@@ -618,12 +618,13 @@ object C {
         }
     }
 
-    fun recolor(view: View, endColor: Int) {
-        val getCurrentBackgroundColor =
-            (view.background as? ColorDrawable?)?.color ?: Color.TRANSPARENT
+    fun recolor(
+        view: View,
+        endColor: Int
+    ) {
         LUIUtil.recolor(
             view = view,
-            startColor = getCurrentBackgroundColor,
+            startColor = view.getBackgroundColor(),
             endColor = endColor,
             duration = 300
         )
