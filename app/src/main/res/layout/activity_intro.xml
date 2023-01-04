@@ -9,6 +9,19 @@
     android:background="@color/colorPrimary"
     tools:background="@color/color_test_background">
 
+    <com.loitp.anim.animatedStars.AnimatedStarsView
+        android:id="@+id/stars"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:starsView_bigStarThreshold="@dimen/w_1"
+        app:starsView_maxStarSize="@dimen/w_15"
+        app:starsView_meteoritesColors="@array/meteorites_colors"
+        app:starsView_meteoritesEnabled="true"
+        app:starsView_meteoritesInterval="3000"
+        app:starsView_minStarSize="@dimen/w_1"
+        app:starsView_starColors="@array/star_colors"
+        app:starsView_starCount="50" />
+
     <FrameLayout
         android:id="@+id/flContainer"
         android:layout_width="0dp"
@@ -79,4 +92,5 @@
             tools:background="@drawable/ripple_color_test"
             tools:textColor="@color/colorPrimary" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

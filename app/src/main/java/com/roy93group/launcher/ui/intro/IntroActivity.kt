@@ -154,4 +154,14 @@ class IntroActivity : BaseFontActivity() {
             isCheckedPolicy = toggle?.isOn ?: true
         )
     }
+
+    override fun onStart() {
+        super.onStart()
+        stars.onStart()
+    }
+
+    override fun onStop() {
+        stars.onStop()
+        super.onStop()
+    }
 }

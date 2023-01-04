@@ -19,4 +19,44 @@
         <item name="android:navigationBarColor">@color/colorPrimary</item>
     </style>
 
+    <integer-array name="star_colors">
+        <item>@color/red</item>
+        <item>@color/green</item>
+        <item>@color/blue</item>
+        <item>@color/deepPink</item>
+        <item>@color/white</item>
+        <item>@color/cyan</item>
+        <item>@color/aliceBlue</item>
+        <item>@color/aqua</item>
+        <item>@color/azure</item>
+        <item>@color/bisque</item>
+        <item>@color/blueViolet</item>
+        <item>@color/brown</item>
+        <item>@color/crimson</item>
+        <item>@color/darkRed</item>
+        <item>@color/deepPink</item>
+        <item>@color/forestGreen</item>
+        <item>@color/greenYellow</item>
+    </integer-array>
+
+    <integer-array name="meteorites_colors">
+        <item>@color/red</item>
+        <item>@color/green</item>
+        <item>@color/blue</item>
+        <item>@color/deepPink</item>
+        <item>@color/white</item>
+        <item>@color/cyan</item>
+        <item>@color/aliceBlue</item>
+        <item>@color/aqua</item>
+        <item>@color/azure</item>
+        <item>@color/bisque</item>
+        <item>@color/blueViolet</item>
+        <item>@color/brown</item>
+        <item>@color/crimson</item>
+        <item>@color/darkRed</item>
+        <item>@color/deepPink</item>
+        <item>@color/forestGreen</item>
+        <item>@color/greenYellow</item>
+    </integer-array>
+
 </resources>

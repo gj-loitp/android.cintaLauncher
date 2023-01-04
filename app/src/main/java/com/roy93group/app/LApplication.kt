@@ -31,7 +31,6 @@ import org.greenrobot.eventbus.EventBus
 //TODO custom font screen
 //TODO gg pay
 //TODO animation intro blob animation
-//TODO animation animated stars view
 //TODO animation konfetti
 //TODO animation snowfall
 //TODO pinned app o search bar
@@ -76,6 +75,7 @@ import org.greenrobot.eventbus.EventBus
 //why see ad
 //luon luon an cai thanh filter view
 //efx recolor, da check roi nhung ko co dep
+//animation animated stars view
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

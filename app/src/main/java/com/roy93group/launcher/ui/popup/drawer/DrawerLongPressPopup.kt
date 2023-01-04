@@ -334,7 +334,6 @@ object DrawerLongPressPopup {
             ) {
                 (launcherActivity as? BaseActivity)?.apply {
                     launchActivity(IntroActivity::class.java)
-                    finishAfterTransition()
                 }
             },
         )
