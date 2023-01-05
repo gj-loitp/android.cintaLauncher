@@ -1,11 +1,24 @@
 package com.roy93group.launcher.ui.intro
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.view.animation.AnimationUtils
+import com.loitp.core.utilities.LUIUtil
 import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.frm_intro_splash_background.*
+import kotlinx.android.synthetic.main.l_fancy_showcaseanimated_view.*
+import kotlinx.android.synthetic.main.l_fancy_showcaseanimated_view.view.*
+import me.toptas.fancyshowcase.FancyShowCaseQueue
+import me.toptas.fancyshowcase.FancyShowCaseView
+import me.toptas.fancyshowcase.FocusShape
+import me.toptas.fancyshowcase.listener.DismissListener
+import me.toptas.fancyshowcase.listener.OnViewInflateListener
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -43,6 +56,46 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
                 }
             })
         }
+
+        fancyView = FancyShowCaseView.Builder(requireActivity())
+            .focusOn(colorPicker)
+            .backgroundColor(Color.YELLOW)
+            .focusShape(FocusShape.CIRCLE)
+            .focusBorderColor(Color.GREEN)
+            .focusBorderSize(15)
+//            .showOnce()
+            .dismissListener(object : DismissListener {
+                override fun onDismiss(id: String?) {
+
+                }
+
+                override fun onSkipped(id: String?) {
+
+                }
+            })
+            .customView(R.layout.l_fancy_showcaseanimated_view, object : OnViewInflateListener {
+                override fun onViewInflated(view: View) {
+                    LUIUtil.recolorStatusBar(
+                        context = requireContext(),
+                        startColor = null,
+                        endColor = Color.RED
+                    )
+                    LUIUtil.recolorNavigationBar(
+                        context = requireContext(),
+                        startColor = null,
+                        endColor = Color.RED
+                    )
+                    setAnimatedContent(fancyView)
+                }
+            })
+            .build()
+
+        queue = FancyShowCaseQueue().apply {
+            fancyView?.let {
+                add(it)
+            }
+            show()
+        }
     }
 
     override fun onResume() {
@@ -56,5 +109,41 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
         ivLogo.setColorFilter(colorPrimary)
         tv.setTextColor(colorPrimary)
         tvDes.setTextColor(colorPrimary)
+    }
+
+    private var queue: FancyShowCaseQueue? = null
+    private var fancyView: FancyShowCaseView? = null
+
+    @SuppressLint("SetTextI18n")
+    private fun setAnimatedContent(
+        fancyShowCaseView: FancyShowCaseView?
+    ) {
+        if (fancyShowCaseView == null) {
+            return
+        }
+        Handler(Looper.getMainLooper()).postDelayed({
+            fancyShowCaseView.btnNext.setOnClickListener {
+                fancyShowCaseView.hide()
+            }
+            fancyShowCaseView.btnDismiss.setOnClickListener {
+                queue?.cancel(true)
+            }
+
+            val mainAnimation = AnimationUtils.loadAnimation(
+                /* context = */ context,
+                /* id = */ R.anim.slide_in_left_fancy_showcase
+            )
+            mainAnimation.fillAfter = true
+
+            val subAnimation = AnimationUtils.loadAnimation(
+                /* context = */ context,
+                /* id = */ R.anim.slide_in_left_fancy_showcase
+            )
+            subAnimation.fillAfter = true
+            fancyShowCaseView.tvMain.startAnimation(mainAnimation)
+            Handler(Looper.getMainLooper()).postDelayed({
+                fancyShowCaseView.tvSub.startAnimation(subAnimation)
+            }, 80)
+        }, 200)
     }
 }
