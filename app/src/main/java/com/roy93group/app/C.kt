@@ -16,7 +16,6 @@ import android.os.VibratorManager
 import android.provider.AlarmClock
 import android.provider.CalendarContract
 import android.provider.Settings
-import android.util.StateSet
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.TextView
@@ -38,7 +37,12 @@ import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
 import kotlinx.android.synthetic.main.activity_intro.*
 import kotlinx.android.synthetic.main.activity_launcher.*
+import kotlinx.android.synthetic.main.frm_intro_splash_background.*
 import kotlinx.android.synthetic.main.view_app_drawer.*
+import me.toptas.fancyshowcase.FancyShowCaseView
+import me.toptas.fancyshowcase.FocusShape
+import me.toptas.fancyshowcase.listener.DismissListener
+import me.toptas.fancyshowcase.listener.OnViewInflateListener
 
 
 /**
@@ -615,5 +619,42 @@ object C {
                 }
             }
         }
+    }
+
+    fun createFancyShowcase(
+        activity: Activity,
+        focusView: View,
+        backgroundColor: Int,
+        borderColor: Int,
+        idShowOne: String,
+        onDismissListener: DismissListener? = null,
+        onViewInflated: ((View) -> Unit)? = null,
+    ): FancyShowCaseView {
+        val fancyView = FancyShowCaseView.Builder(activity)
+            .focusOn(focusView)
+            .backgroundColor(backgroundColor)
+            .focusShape(FocusShape.CIRCLE)
+            .focusBorderColor(borderColor)
+            .focusBorderSize(15)
+            .showOnce(idShowOne)
+            .customView(R.layout.layout_show_case, object : OnViewInflateListener {
+                override fun onViewInflated(view: View) {
+                    LUIUtil.recolorStatusBar(
+                        context = view.context,
+                        startColor = null,
+                        endColor = backgroundColor
+                    )
+                    LUIUtil.recolorNavigationBar(
+                        context = view.context,
+                        startColor = null,
+                        endColor = backgroundColor
+                    )
+                    onViewInflated?.invoke(view)
+                }
+            })
+        onDismissListener?.let {
+            fancyView.dismissListener(it)
+        }
+        return fancyView.build()
     }
 }

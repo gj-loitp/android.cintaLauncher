@@ -8,18 +8,14 @@ import android.os.Looper
 import android.view.View
 import android.view.animation.AnimationUtils
 import com.loitp.core.ext.setSafeOnClickListener
-import com.loitp.core.utilities.LUIUtil
 import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.frm_intro_splash_background.*
-import kotlinx.android.synthetic.main.l_fancy_showcaseanimated_view.*
-import kotlinx.android.synthetic.main.l_fancy_showcaseanimated_view.view.*
+import kotlinx.android.synthetic.main.layout_show_case.view.*
 import me.toptas.fancyshowcase.FancyShowCaseQueue
 import me.toptas.fancyshowcase.FancyShowCaseView
-import me.toptas.fancyshowcase.FocusShape
 import me.toptas.fancyshowcase.listener.DismissListener
-import me.toptas.fancyshowcase.listener.OnViewInflateListener
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -29,6 +25,8 @@ import me.toptas.fancyshowcase.listener.OnViewInflateListener
  * freuss47@gmail.com
  */
 class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
+    private var queue: FancyShowCaseQueue? = null
+    private var fancyView: FancyShowCaseView? = null
 
     override fun next(
         activity: IntroActivity,
@@ -58,38 +56,25 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
             })
         }
 
-        fancyView = FancyShowCaseView.Builder(requireActivity())
-            .focusOn(colorPicker)
-            .backgroundColor(Color.YELLOW)
-            .focusShape(FocusShape.CIRCLE)
-            .focusBorderColor(Color.GREEN)
-            .focusBorderSize(15)
-//            .showOnce()
-            .dismissListener(object : DismissListener {
+        fancyView = C.createFancyShowcase(
+            activity = requireActivity(),
+            focusView = colorPicker,
+            backgroundColor = Color.RED,
+            borderColor = Color.YELLOW,
+            idShowOne = "1",
+            onDismissListener = object : DismissListener {
                 override fun onDismiss(id: String?) {
 
                 }
 
                 override fun onSkipped(id: String?) {
+                }
 
-                }
-            })
-            .customView(R.layout.l_fancy_showcaseanimated_view, object : OnViewInflateListener {
-                override fun onViewInflated(view: View) {
-                    LUIUtil.recolorStatusBar(
-                        context = requireContext(),
-                        startColor = null,
-                        endColor = Color.RED
-                    )
-                    LUIUtil.recolorNavigationBar(
-                        context = requireContext(),
-                        startColor = null,
-                        endColor = Color.RED
-                    )
-                    setAnimatedContent(fancyView)
-                }
-            })
-            .build()
+            },
+            onViewInflated = {
+                setAnimatedContent(fancyView)
+            }
+        )
 
         queue = FancyShowCaseQueue().apply {
             fancyView?.let {
@@ -111,9 +96,6 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
         tv.setTextColor(colorPrimary)
         tvDes.setTextColor(colorPrimary)
     }
-
-    private var queue: FancyShowCaseQueue? = null
-    private var fancyView: FancyShowCaseView? = null
 
     @SuppressLint("SetTextI18n")
     private fun setAnimatedContent(
