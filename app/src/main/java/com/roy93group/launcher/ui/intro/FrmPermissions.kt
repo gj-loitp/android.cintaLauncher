@@ -17,6 +17,10 @@ import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.LauncherActivity
 import kotlinx.android.synthetic.main.frm_intro_permissions.*
+import me.toptas.fancyshowcase.FancyShowCaseQueue
+import me.toptas.fancyshowcase.FancyShowCaseView
+import me.toptas.fancyshowcase.FocusShape
+import me.toptas.fancyshowcase.listener.DismissListener
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -39,6 +43,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
         tickStorage.isVisible = false
 
         updatePermissionStatus()
+        initShowcase()
     }
 
     private fun setupViews() {
@@ -219,5 +224,34 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
         return (tickContacts.isVisible
                 && tickNotifications.isVisible
                 && tickUsageAccess.isVisible)
+    }
+
+    private fun initShowcase() {
+        var fancyView: FancyShowCaseView? = null
+        fancyView = C.createFancyShowcase(
+            activity = requireActivity(),
+            focusView = buttonContacts,
+            idShowOne = true,
+            focusShape = FocusShape.CIRCLE,
+            onDismissListener = object : DismissListener {
+                override fun onDismiss(id: String?) {
+
+                }
+
+                override fun onSkipped(id: String?) {
+                }
+            },
+            onViewInflated = {
+                C.showFancyShowCaseView(
+                    fancyShowCaseView = fancyView,
+                    textMain = getString(R.string.grant_permissions),
+                    textSub = getString(R.string.app_name) + " " + getString(R.string.needs_per),
+                )
+            }
+        )
+        FancyShowCaseQueue().apply {
+            add(fancyView)
+            show()
+        }
     }
 }
