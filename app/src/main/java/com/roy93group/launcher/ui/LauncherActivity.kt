@@ -45,7 +45,13 @@ import com.roy93group.launcher.util.StackTraceActivity
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.launcherutils.LiveWallpaper
 import kotlinx.android.synthetic.main.activity_launcher.*
+import kotlinx.android.synthetic.main.activity_launcher.view.*
+import kotlinx.android.synthetic.main.frm_intro_splash_primary.*
 import kotlinx.android.synthetic.main.view_app_drawer.*
+import me.toptas.fancyshowcase.FancyShowCaseQueue
+import me.toptas.fancyshowcase.FancyShowCaseView
+import me.toptas.fancyshowcase.FocusShape
+import me.toptas.fancyshowcase.listener.DismissListener
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import kotlin.math.abs
@@ -170,6 +176,38 @@ class LauncherActivity : BaseActivityFont() {
         launcherApps.registerCallback(AppCallback(callback = ::loadApps))
 
         loadApps()
+
+        initShowcase()
+    }
+
+    private fun initShowcase() {
+        var fancyView: FancyShowCaseView? = null
+        fancyView = C.createFancyShowcase(
+            activity = this,
+            focusView = bottomBar.cvSearchBarContainer,
+            idShowOne = true,
+            focusShape = FocusShape.CIRCLE,
+            onDismissListener = object : DismissListener {
+                override fun onDismiss(id: String?) {
+
+                }
+
+                override fun onSkipped(id: String?) {
+                }
+            },
+            onViewInflated = {
+                C.showFancyShowCaseView(
+                    fancyShowCaseView = fancyView,
+                    textMain = getString(R.string.home_page),
+                    textSub = getString(R.string.show_case_bottom_bar),
+                    gravity = Gravity.CENTER,
+                )
+            }
+        )
+        FancyShowCaseQueue().apply {
+            add(fancyView)
+            show()
+        }
     }
 
     override fun onBaseBackPressed() {

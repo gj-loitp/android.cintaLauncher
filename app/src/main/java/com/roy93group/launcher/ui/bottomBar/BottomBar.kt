@@ -11,7 +11,6 @@ import com.roy93group.launcher.ui.view.scrollbar.Scrollbar
 import com.roy93group.launcher.ui.view.scrollbar.ScrollbarIconView
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 import kotlinx.android.synthetic.main.activity_launcher.*
-import kotlinx.android.synthetic.main.activity_launcher.view.*
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -33,7 +32,7 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         }
     }
 
-    val appDrawerIcon: ScrollbarIconView = cvSearchBarContainer.appDrawerIcon.apply {
+    val appDrawerIcon: ScrollbarIconView = launcherActivity.appDrawerIcon.apply {
         setColorFilter(colorBackground)
         appDrawer = launcherActivity.appDrawer
     }
