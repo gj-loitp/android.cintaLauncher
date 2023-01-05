@@ -9,14 +9,12 @@ import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.drawable.*
 import android.net.Uri
-import android.os.Build
-import android.os.VibrationEffect
-import android.os.Vibrator
-import android.os.VibratorManager
+import android.os.*
 import android.provider.AlarmClock
 import android.provider.CalendarContract
 import android.provider.Settings
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.CompoundButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +22,7 @@ import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
 import com.loitp.core.common.Constants
+import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.helper.gallery.GalleryCoreSplashActivityFont
 import com.loitp.core.utilities.*
 import com.loitp.data.ActivityData
@@ -38,6 +37,7 @@ import io.posidon.android.conveniencelib.units.toPixels
 import kotlinx.android.synthetic.main.activity_intro.*
 import kotlinx.android.synthetic.main.activity_launcher.*
 import kotlinx.android.synthetic.main.frm_intro_splash_background.*
+import kotlinx.android.synthetic.main.layout_show_case.view.*
 import kotlinx.android.synthetic.main.view_app_drawer.*
 import me.toptas.fancyshowcase.FancyShowCaseView
 import me.toptas.fancyshowcase.FocusShape
@@ -656,5 +656,40 @@ object C {
             fancyView.dismissListener(it)
         }
         return fancyView.build()
+    }
+
+    fun showFancyShowCaseView(
+        fancyShowCaseView: FancyShowCaseView?,
+        onHide: ((Unit) -> Unit)? = null,
+        onDismiss: ((Unit) -> Unit)? = null,
+    ) {
+        if (fancyShowCaseView == null) {
+            return
+        }
+        Handler(Looper.getMainLooper()).postDelayed({
+            fancyShowCaseView.btnNext.setSafeOnClickListener {
+                fancyShowCaseView.hide()
+                onHide?.invoke(Unit)
+            }
+            fancyShowCaseView.btnDismiss.setSafeOnClickListener {
+//                queue?.cancel(true)
+                onDismiss?.invoke(Unit)
+            }
+
+            val mainAnimation = AnimationUtils.loadAnimation(
+                /* context = */ fancyShowCaseView.context,
+                /* id = */ R.anim.slide_in_left_fancy_showcase
+            )
+            mainAnimation.fillAfter = true
+            val subAnimation = AnimationUtils.loadAnimation(
+                /* context = */ fancyShowCaseView.context,
+                /* id = */ R.anim.slide_in_left_fancy_showcase
+            )
+            subAnimation.fillAfter = true
+            fancyShowCaseView.tvMain.startAnimation(mainAnimation)
+            Handler(Looper.getMainLooper()).postDelayed({
+                fancyShowCaseView.tvSub.startAnimation(subAnimation)
+            }, 80)
+        }, 200)
     }
 }
