@@ -2,8 +2,6 @@ package com.roy93group.launcher.ui.intro
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
-import com.loitp.core.utilities.LUIUtil
 import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R

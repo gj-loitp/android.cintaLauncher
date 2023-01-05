@@ -11,7 +11,7 @@ import com.loitp.annotation.IsAutoAnimation
 import com.loitp.annotation.IsFullScreen
 import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
-import com.loitp.core.base.BaseFontActivity
+import com.loitp.core.base.BaseActivityFont
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LActivityUtil
 import com.roy93group.app.C
@@ -31,7 +31,7 @@ import kotlin.system.exitProcess
 @IsFullScreen(false)
 @IsAutoAnimation(false)
 @IsKeepScreenOn(false)
-class StackTraceActivity : BaseFontActivity() {
+class StackTraceActivity : BaseActivityFont() {
 
     companion object {
         fun init(context: Context) {

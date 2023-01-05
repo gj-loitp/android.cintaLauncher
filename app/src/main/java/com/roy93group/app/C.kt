@@ -25,7 +25,7 @@ import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
 import com.loitp.core.common.Constants
-import com.loitp.core.helper.gallery.GalleryCoreSplashActivity
+import com.loitp.core.helper.gallery.GalleryCoreSplashActivityFont
 import com.loitp.core.utilities.*
 import com.loitp.data.ActivityData
 import com.roy93group.launcher.R
@@ -247,7 +247,7 @@ object C {
     }
 
     fun launchWallpaper(activity: Activity) {
-        val intent = Intent(activity, GalleryCoreSplashActivity::class.java)
+        val intent = Intent(activity, GalleryCoreSplashActivityFont::class.java)
         intent.putExtra(Constants.BKG_SPLASH_SCREEN, Constants.URL_IMG_11)
         // neu muon remove albumn nao thi cu pass id cua albumn do
         val removeAlbumFlickrList = ArrayList<String>()

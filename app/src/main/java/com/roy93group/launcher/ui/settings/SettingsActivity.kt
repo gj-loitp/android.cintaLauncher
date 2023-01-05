@@ -1,7 +1,7 @@
 package com.roy93group.launcher.ui.settings
 
 import android.os.Bundle
-import com.loitp.core.base.BaseFontActivity
+import com.loitp.core.base.BaseActivityFont
 import com.roy93group.launcher.storage.Settings
 
 /**
@@ -11,7 +11,7 @@ import com.roy93group.launcher.storage.Settings
  * +840766040293
  * freuss47@gmail.com
  */
-abstract class SettingsActivity : BaseFontActivity() {
+abstract class SettingsActivity : BaseActivityFont() {
 
     val settings = Settings()
 

@@ -98,8 +98,7 @@
             android:name=".ui.intro.IntroActivity"
             android:allowEmbedded="false"
             android:configChanges="navigation|density|screenSize|smallestScreenSize"
-            android:excludeFromRecents="true"
-            android:launchMode="singleInstance" />
+            android:excludeFromRecents="true" />
 
         <activity
             android:name=".util.FakeLauncherActivity"

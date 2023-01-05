@@ -6,7 +6,7 @@ import com.loitp.annotation.IsAutoAnimation
 import com.loitp.annotation.IsFullScreen
 import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
-import com.loitp.core.base.BaseFontActivity
+import com.loitp.core.base.BaseActivityFont
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LSocialUtil
 import com.loitp.core.utilities.LUIUtil
@@ -28,7 +28,7 @@ import java.util.*
 @IsFullScreen(false)
 @IsAutoAnimation(false)
 @IsKeepScreenOn(false)
-class IntroActivity : BaseFontActivity() {
+class IntroActivity : BaseActivityFont() {
 
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_intro

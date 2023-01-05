@@ -20,7 +20,7 @@ import com.loitp.annotation.IsAutoAnimation
 import com.loitp.annotation.IsFullScreen
 import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
-import com.loitp.core.base.BaseFontActivity
+import com.loitp.core.base.BaseActivityFont
 import com.loitp.core.utilities.LUIUtil
 import com.roy93group.app.AppLife
 import com.roy93group.app.C
@@ -50,7 +50,6 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import kotlin.math.abs
 
-
 /**
  * Updated by Loitp on 2022.12.16
  * Galaxy One company,
@@ -62,7 +61,7 @@ import kotlin.math.abs
 @IsFullScreen(false)
 @IsAutoAnimation(false)
 @IsKeepScreenOn(false)
-class LauncherActivity : BaseFontActivity() {
+class LauncherActivity : BaseActivityFont() {
 
     val launcherContext = LauncherContext()
     val settings by launcherContext::settings

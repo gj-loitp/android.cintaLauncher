@@ -13,7 +13,7 @@ import com.loitp.annotation.IsAutoAnimation
 import com.loitp.annotation.IsFullScreen
 import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
-import com.loitp.core.base.BaseFontActivity
+import com.loitp.core.base.BaseActivityFont
 import com.loitp.core.common.Constants
 import com.loitp.core.ext.changeLayersColor
 import com.loitp.core.utilities.LActivityUtil
@@ -44,7 +44,7 @@ import kotlin.math.abs
 @IsFullScreen(false)
 @IsAutoAnimation(false)
 @IsKeepScreenOn(false)
-class SearchActivity : BaseFontActivity() {
+class SearchActivity : BaseActivityFont() {
 
     lateinit var adapter: SearchAdapter
     val settings = Settings()

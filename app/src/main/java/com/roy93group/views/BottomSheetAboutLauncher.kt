@@ -16,7 +16,7 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.loitp.core.common.Constants
 import com.loitp.core.ext.setSafeOnClickListener
-import com.loitp.core.helper.adHelper.AdHelperActivity
+import com.loitp.core.helper.adHelper.AdHelperActivityFont
 import com.loitp.core.utilities.LActivityUtil
 import com.loitp.core.utilities.LSocialUtil
 import com.roy93group.app.C
@@ -147,7 +147,7 @@ class BottomSheetAboutLauncher(
                 text = getString(R.string.ad_des)
             }
             setSafeOnClickListener {
-                val intent = Intent(context, AdHelperActivity::class.java).apply {
+                val intent = Intent(context, AdHelperActivityFont::class.java).apply {
                     putExtra(Constants.AD_HELPER_IS_ENGLISH_LANGUAGE, true)
                     putExtra(Constants.AD_HELPER_COLOR_PRIMARY, colorPrimary)
                     putExtra(Constants.AD_HELPER_COLOR_BACKGROUND, colorBackground)
