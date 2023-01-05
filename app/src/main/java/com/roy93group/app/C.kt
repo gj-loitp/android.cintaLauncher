@@ -672,10 +672,8 @@ object C {
                 onHide?.invoke(Unit)
             }
             fancyShowCaseView.btnDismiss.setSafeOnClickListener {
-//                queue?.cancel(true)
                 onDismiss?.invoke(Unit)
             }
-
             val mainAnimation = AnimationUtils.loadAnimation(
                 /* context = */ fancyShowCaseView.context,
                 /* id = */ R.anim.slide_in_left_fancy_showcase
