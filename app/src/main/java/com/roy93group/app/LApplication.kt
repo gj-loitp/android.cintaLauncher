@@ -18,7 +18,6 @@ import org.greenrobot.eventbus.EventBus
 //TODO firebase set is_show_flickr_gallery true when app available
 //TODO update string changelog_detail every build
 
-//TODO spotlight
 //TODO fav app
 //TODO lock app
 //TODO hide app
@@ -80,6 +79,7 @@ import org.greenrobot.eventbus.EventBus
 //efx recolor, da check roi nhung ko co dep
 //animation animated stars view
 //custom font screen <<< kho xu ly trong case text style bold, italic
+//showcase
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

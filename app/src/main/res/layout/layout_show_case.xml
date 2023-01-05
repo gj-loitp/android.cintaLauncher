@@ -25,7 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_padding_medium"
-        android:textSize="@dimen/txt_medium"
+        android:textSize="@dimen/txt_large"
+        android:textStyle="bold"
         tools:text="My fancy description can be a longer text."
         tools:textColor="@color/color_test_primary" />
 
