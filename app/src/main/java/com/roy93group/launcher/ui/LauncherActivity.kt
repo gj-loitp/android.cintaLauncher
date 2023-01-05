@@ -77,7 +77,7 @@ class LauncherActivity : BaseActivityFont() {
     val appDrawer by lazy {
         AppDrawer(this)
     }
-    val bottomBar by lazy {
+    private val bottomBar by lazy {
         BottomBar(this)
     }
     val feedProfiles by lazy {
@@ -116,7 +116,7 @@ class LauncherActivity : BaseActivityFont() {
                 },
                 onBottom = {
                 },
-                onScrolled = { isScrollDown ->
+                onScrolled = {
                 },
             )
             layoutManager = LinearLayoutManager(
@@ -200,7 +200,7 @@ class LauncherActivity : BaseActivityFont() {
                     textSub = getString(R.string.show_case_bottom_bar),
                     gravity = Gravity.CENTER,
                 )
-            }
+            },
         )
         FancyShowCaseQueue().apply {
             add(fancyView)

@@ -222,13 +222,13 @@ object C {
         }
     }
 
-    private fun generateBG(color: Int): Drawable {
-        return GradientDrawable().apply {
-            cornerRadius = Float.MAX_VALUE
-            setColor(color)
-            setStroke(1, 0x88000000.toInt())
-        }
-    }
+//    private fun generateBG(color: Int): Drawable {
+//        return GradientDrawable().apply {
+//            cornerRadius = Float.MAX_VALUE
+//            setColor(color)
+//            setStroke(1, 0x88000000.toInt())
+//        }
+//    }
 
     fun chooseLauncher(activity: Activity) {
         val componentName = ComponentName(activity, FakeLauncherActivity::class.java)
@@ -630,7 +630,7 @@ object C {
     ): FancyShowCaseView {
         val fancyView = FancyShowCaseView.Builder(activity)
             .focusOn(focusView)
-            .backgroundColor(LUIUtil.setAlphaComponent(colorBackground, 255 * 80 / 100))
+            .backgroundColor(colorBackground)
             .focusShape(focusShape)
             .focusBorderColor(colorPrimary)
             .focusBorderSize(15)

@@ -2,9 +2,7 @@ package com.roy93group.app
 
 import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseApplication
-import com.loitp.core.common.Constants
 import com.loitp.core.utilities.LUIUtil
-import com.loitp.data.ActivityData
 import org.greenrobot.eventbus.EventBus
 
 /**
@@ -106,7 +104,6 @@ class LApplication : BaseApplication() {
 
     override fun onAppInForeground() {
         super.onAppInForeground()
-        logD("onAppInForeground")
         EventBus.getDefault().post(
             AppLife().apply {
                 isOnBackground = false
