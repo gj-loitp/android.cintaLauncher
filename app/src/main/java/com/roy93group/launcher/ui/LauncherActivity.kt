@@ -242,6 +242,9 @@ class LauncherActivity : BaseActivityFont() {
         }
         PopupUtils.dismissCurrent()
         SuggestionsManager.onPause(settings = settings, context = this)
+        if (C.isDefaultLauncher(context = this)) {
+            initShowcase()
+        }
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {

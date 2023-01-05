@@ -230,6 +230,18 @@ object C {
 //        }
 //    }
 
+    fun isDefaultLauncher(context: Context): Boolean {
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        val resolveInfo =
+            context.packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
+        val currentLauncherName = resolveInfo?.activityInfo?.packageName
+        if (currentLauncherName == context.packageName) {
+            return true
+        }
+        return false
+    }
+
     fun chooseLauncher(activity: Activity) {
         val componentName = ComponentName(activity, FakeLauncherActivity::class.java)
         activity.packageManager.setComponentEnabledSetting(
