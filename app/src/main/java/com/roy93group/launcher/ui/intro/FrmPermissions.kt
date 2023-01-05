@@ -13,7 +13,6 @@ import androidx.core.view.isVisible
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LActivityUtil
 import com.roy93group.app.C
-import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.LauncherActivity
@@ -219,9 +218,6 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
     }
 
     private fun isFullPermission(): Boolean {
-        if (BuildConfig.DEBUG) {
-            return true
-        }
         return (tickContacts.isVisible
                 && tickNotifications.isVisible
                 && tickUsageAccess.isVisible)
