@@ -33,7 +33,7 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
     ) {
         super.onViewCreated(view, savedInstanceState)
         updateUI()
-        colorPicker.apply {
+        colorPickerBackground.apply {
             colors = C.colors
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
@@ -67,7 +67,7 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
         var fancyView: FancyShowCaseView? = null
         fancyView = C.createFancyShowcase(
             activity = requireActivity(),
-            focusView = colorPicker,
+            focusView = colorPickerBackground,
             idShowOne = true,
             focusShape = FocusShape.ROUNDED_RECTANGLE,
             onDismissListener = object : DismissListener {

@@ -54,6 +54,7 @@
     <string name="rate_5_stars">If you enjoy using Color launcher, would you mind taking a moment to rate it? It will not take more than a minute. Thanks for your support!</string>
     <string name="this_is_color_picker">This is color picker</string>
     <string name="pick_your_favorite_color">Pick your favorite color</string>
+    <string name="pick_your_favorite_color_showcase">Next, pick your favorite color</string>
     <string name="pick_your_favorite_color_background">Pick your favorite color for setting wallpaper</string>
     <string name="the_color_launcher_will_be_restarted">The Color launcher will be restarted</string>
     <string name="color">Main color</string>
@@ -129,4 +130,5 @@
     <string name="display_filter_view">Display filter view</string>
     <string name="display_filter_view_des">Display some components such as Home, Today, Notifications, News…</string>
     <string name="hi_guys_this_is_color_launcher">Hi guys, this is your new launcher</string>
+    <string name="great_choice">Great choice!</string>
 </resources>
