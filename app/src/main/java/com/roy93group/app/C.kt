@@ -624,13 +624,14 @@ object C {
         activity: Activity,
         focusView: View,
         idShowOne: Boolean,
+        focusShape: FocusShape,
         onDismissListener: DismissListener? = null,
         onViewInflated: ((View) -> Unit)? = null,
     ): FancyShowCaseView {
         val fancyView = FancyShowCaseView.Builder(activity)
             .focusOn(focusView)
-            .backgroundColor(LUIUtil.setAlphaComponent(colorBackground, 255 * 70 / 100))
-            .focusShape(FocusShape.CIRCLE)
+            .backgroundColor(LUIUtil.setAlphaComponent(colorBackground, 255 * 80 / 100))
+            .focusShape(focusShape)
             .focusBorderColor(colorPrimary)
             .focusBorderSize(15)
             .customView(R.layout.layout_show_case, object : OnViewInflateListener {
