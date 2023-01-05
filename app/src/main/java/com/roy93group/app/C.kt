@@ -630,7 +630,7 @@ object C {
     ): FancyShowCaseView {
         val fancyView = FancyShowCaseView.Builder(activity)
             .focusOn(focusView)
-            .backgroundColor(colorBackground)
+            .backgroundColor(LUIUtil.setAlphaComponent(colorBackground, 255 * 70 / 100))
             .focusShape(FocusShape.CIRCLE)
             .focusBorderColor(colorPrimary)
             .focusBorderSize(15)
