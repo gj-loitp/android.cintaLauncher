@@ -68,7 +68,7 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
         fancyView = C.createFancyShowcase(
             activity = requireActivity(),
             focusView = colorPicker,
-            idShowOne = false,
+            idShowOne = true,
             focusShape = FocusShape.ROUNDED_RECTANGLE,
             onDismissListener = object : DismissListener {
                 override fun onDismiss(id: String?) {
