@@ -1,56 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:background="@color/yellow">
+    tools:background="@color/color_test_background">
 
-    <RelativeLayout
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="@dimen/margin_padding_medium"
-        tools:ignore="UselessParent">
+        android:textSize="@dimen/txt_50"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="My Fancy Title"
+        tools:textColor="@color/color_test_primary" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvMain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="My Fancy Title"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/txt_50" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_padding_medium"
+        android:paddingEnd="@dimen/margin_padding_medium"
+        android:textSize="@dimen/txt_medium"
+        app:layout_constraintTop_toBottomOf="@+id/tvMain"
+        tools:text="My fancy description can be a longer text."
+        tools:textColor="@color/color_test_primary" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvMain"
-            android:text="My fancy description can be a longer text."
-            android:textColor="@color/black"
-            android:textSize="@dimen/txt_medium" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/btnDismiss"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="Dismiss"
-            android:textColor="@color/deepPink"
-            android:textSize="@dimen/txt_large"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/btnNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:text="Next"
-            android:textColor="@color/deepPink"
-            android:textSize="@dimen/txt_large"
-            tools:ignore="TouchTargetSizeCheck" />
-
-    </RelativeLayout>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

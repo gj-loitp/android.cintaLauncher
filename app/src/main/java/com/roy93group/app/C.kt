@@ -22,7 +22,6 @@ import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
 import com.loitp.core.common.Constants
-import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.helper.gallery.GalleryCoreSplashActivityFont
 import com.loitp.core.utilities.*
 import com.loitp.data.ActivityData
@@ -660,20 +659,13 @@ object C {
 
     fun showFancyShowCaseView(
         fancyShowCaseView: FancyShowCaseView?,
-        onHide: ((Unit) -> Unit)? = null,
-        onDismiss: ((Unit) -> Unit)? = null,
+        textMain: String,
+        textSub: String,
     ) {
         if (fancyShowCaseView == null) {
             return
         }
         Handler(Looper.getMainLooper()).postDelayed({
-            fancyShowCaseView.btnNext.setSafeOnClickListener {
-                fancyShowCaseView.hide()
-                onHide?.invoke(Unit)
-            }
-            fancyShowCaseView.btnDismiss.setSafeOnClickListener {
-                onDismiss?.invoke(Unit)
-            }
             val mainAnimation = AnimationUtils.loadAnimation(
                 /* context = */ fancyShowCaseView.context,
                 /* id = */ R.anim.slide_in_left_fancy_showcase
@@ -684,9 +676,19 @@ object C {
                 /* id = */ R.anim.slide_in_left_fancy_showcase
             )
             subAnimation.fillAfter = true
-            fancyShowCaseView.tvMain.startAnimation(mainAnimation)
+
+            fancyShowCaseView.tvMain.apply {
+                text = textMain
+                setTextColor(colorPrimary)
+                startAnimation(mainAnimation)
+            }
+
             Handler(Looper.getMainLooper()).postDelayed({
-                fancyShowCaseView.tvSub.startAnimation(subAnimation)
+                fancyShowCaseView.tvSub.apply {
+                    text = textSub
+                    setTextColor(colorPrimary)
+                    startAnimation(subAnimation)
+                }
             }, 80)
         }, 200)
     }

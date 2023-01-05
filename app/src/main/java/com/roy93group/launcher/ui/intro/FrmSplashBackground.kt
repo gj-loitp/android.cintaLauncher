@@ -63,7 +63,6 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
     }
 
     private fun initShowcase() {
-        var queue: FancyShowCaseQueue? = null
         var fancyView: FancyShowCaseView? = null
         fancyView = C.createFancyShowcase(
             activity = requireActivity(),
@@ -80,15 +79,12 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
             onViewInflated = {
                 C.showFancyShowCaseView(
                     fancyShowCaseView = fancyView,
-                    onHide = null,
-                    onDismiss = {
-                        queue?.cancel(true)
-                    }
+                    textMain = "1122",
+                    textSub = "SUbbbbb",
                 )
             }
         )
-
-        queue = FancyShowCaseQueue().apply {
+        FancyShowCaseQueue().apply {
             add(fancyView)
             show()
         }
