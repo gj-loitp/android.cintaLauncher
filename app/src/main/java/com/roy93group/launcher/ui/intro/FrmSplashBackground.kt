@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.view.animation.AnimationUtils
+import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.utilities.LUIUtil
 import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
@@ -122,10 +123,10 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
             return
         }
         Handler(Looper.getMainLooper()).postDelayed({
-            fancyShowCaseView.btnNext.setOnClickListener {
+            fancyShowCaseView.btnNext.setSafeOnClickListener {
                 fancyShowCaseView.hide()
             }
-            fancyShowCaseView.btnDismiss.setOnClickListener {
+            fancyShowCaseView.btnDismiss.setSafeOnClickListener {
                 queue?.cancel(true)
             }
 
