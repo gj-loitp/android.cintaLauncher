@@ -176,8 +176,6 @@ class LauncherActivity : BaseActivityFont() {
         launcherApps.registerCallback(AppCallback(callback = ::loadApps))
 
         loadApps()
-
-        initShowcase()
     }
 
     private fun initShowcase() {

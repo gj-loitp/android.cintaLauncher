@@ -87,7 +87,7 @@ class LApplication : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
 
-        ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_ZOOM
+//        ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_ZOOM
 //        LUIUtil.fontForAll = Constants.FONT_PATH
         LUIUtil.setDarkTheme(true)
         C.getPrimaryColor()
