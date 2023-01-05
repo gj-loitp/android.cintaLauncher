@@ -17,7 +17,7 @@
         android:id="@+id/rvFeedFilters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/margin_padding_medium"
+        android:paddingBottom="@dimen/margin_padding_large"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <include

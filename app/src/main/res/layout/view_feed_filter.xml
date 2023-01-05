@@ -5,7 +5,7 @@
     android:id="@+id/card"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/round_larger"
+    app:cardCornerRadius="@dimen/round_small"
     app:cardElevation="@dimen/margin_padding_small"
     app:cardUseCompatPadding="true"
     tools:cardBackgroundColor="@color/color_test_background">
