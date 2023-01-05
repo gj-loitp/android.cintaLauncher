@@ -5,6 +5,7 @@ import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
@@ -246,6 +247,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                     fancyShowCaseView = fancyView,
                     textMain = getString(R.string.grant_permissions),
                     textSub = getString(R.string.app_name) + " " + getString(R.string.needs_per),
+                    gravity = Gravity.CENTER,
                 )
             }
         )

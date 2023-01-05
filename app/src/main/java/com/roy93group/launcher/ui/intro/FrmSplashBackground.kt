@@ -1,6 +1,7 @@
 package com.roy93group.launcher.ui.intro
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
@@ -83,6 +84,7 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
                     fancyShowCaseView = fancyView,
                     textMain = getString(R.string.hi_guys_this_is_color_launcher),
                     textSub = getString(R.string.pick_your_favorite_color_background),
+                    gravity = Gravity.CENTER,
                 )
             }
         )

@@ -1,6 +1,7 @@
 package com.roy93group.launcher.ui.intro
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.picker.shiftColor.OnColorChangedListener
@@ -88,6 +89,7 @@ class FrmSplashPrimary : FrmWithNext(R.layout.frm_intro_splash_primary) {
                     fancyShowCaseView = fancyView,
                     textMain = getString(R.string.great_choice),
                     textSub = getString(R.string.pick_your_favorite_color_showcase),
+                    gravity = Gravity.CENTER,
                 )
             }
         )

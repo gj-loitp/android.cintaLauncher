@@ -662,6 +662,7 @@ object C {
         fancyShowCaseView: FancyShowCaseView?,
         textMain: String,
         textSub: String,
+        gravity: Int,
     ) {
         if (fancyShowCaseView == null) {
             return
@@ -677,6 +678,7 @@ object C {
                 /* id = */ R.anim.slide_in_left_fancy_showcase
             )
             subAnimation.fillAfter = true
+            fancyShowCaseView.llc.gravity = gravity
 
             fancyShowCaseView.tvMain.apply {
                 text = textMain
