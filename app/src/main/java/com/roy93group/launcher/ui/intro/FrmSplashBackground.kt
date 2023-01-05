@@ -1,7 +1,6 @@
 package com.roy93group.launcher.ui.intro
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -59,9 +58,7 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
         fancyView = C.createFancyShowcase(
             activity = requireActivity(),
             focusView = colorPicker,
-            backgroundColor = Color.RED,
-            borderColor = Color.YELLOW,
-            idShowOne = "1",
+            idShowOne = false,
             onDismissListener = object : DismissListener {
                 override fun onDismiss(id: String?) {
 

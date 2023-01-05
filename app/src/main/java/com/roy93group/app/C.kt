@@ -624,34 +624,34 @@ object C {
     fun createFancyShowcase(
         activity: Activity,
         focusView: View,
-        backgroundColor: Int,
-        borderColor: Int,
-        idShowOne: String,
+        idShowOne: Boolean,
         onDismissListener: DismissListener? = null,
         onViewInflated: ((View) -> Unit)? = null,
     ): FancyShowCaseView {
         val fancyView = FancyShowCaseView.Builder(activity)
             .focusOn(focusView)
-            .backgroundColor(backgroundColor)
+            .backgroundColor(colorBackground)
             .focusShape(FocusShape.CIRCLE)
-            .focusBorderColor(borderColor)
+            .focusBorderColor(colorPrimary)
             .focusBorderSize(15)
-            .showOnce(idShowOne)
             .customView(R.layout.layout_show_case, object : OnViewInflateListener {
                 override fun onViewInflated(view: View) {
                     LUIUtil.recolorStatusBar(
                         context = view.context,
                         startColor = null,
-                        endColor = backgroundColor
+                        endColor = colorBackground
                     )
                     LUIUtil.recolorNavigationBar(
                         context = view.context,
                         startColor = null,
-                        endColor = backgroundColor
+                        endColor = colorBackground
                     )
                     onViewInflated?.invoke(view)
                 }
             })
+        if (idShowOne) {
+            fancyView.showOnce(focusView.id.toString())
+        }
         onDismissListener?.let {
             fancyView.dismissListener(it)
         }
