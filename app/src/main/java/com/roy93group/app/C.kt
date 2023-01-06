@@ -233,8 +233,19 @@ object C {
     fun isDefaultLauncher(context: Context): Boolean {
         val intent = Intent(Intent.ACTION_MAIN)
         intent.addCategory(Intent.CATEGORY_HOME)
-        val resolveInfo =
+
+//        val resolveInfo =
+//            context.packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
+
+        val resolveInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            context.packageManager.resolveActivity(
+                intent,
+                PackageManager.ResolveInfoFlags.of(PackageManager.MATCH_DEFAULT_ONLY.toLong())
+            )
+        } else {
             context.packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
+        }
+
         val currentLauncherName = resolveInfo?.activityInfo?.packageName
         if (currentLauncherName == context.packageName) {
             return true
