@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.loitp.core.ext.searchIconPack
 import com.loitp.core.ext.setSafeOnClickListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
@@ -118,7 +119,7 @@ class IconPackPickerActivity : SettingsActivity() {
         th.attachToRecyclerView(recyclerView)
 
         btGetMoreThemes.setSafeOnClickListener {
-            C.searchIconPack(this)
+            this.searchIconPack()
         }
     }
 

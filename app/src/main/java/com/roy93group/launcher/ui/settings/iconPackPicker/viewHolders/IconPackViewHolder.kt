@@ -2,6 +2,7 @@ package com.roy93group.launcher.ui.settings.iconPackPicker.viewHolders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.loitp.core.ext.setDrawableTint
 import com.roy93group.app.C
 import com.roy93group.launcher.ui.settings.iconPackPicker.IconPackPickerActivity
 import kotlinx.android.synthetic.main.view_icon_packs_item.view.*
@@ -22,7 +23,7 @@ class IconPackViewHolder(
 
         itemView.text.apply {
             setTextColor(colorPrimary)
-            C.setDrawableTint(this, colorPrimary)
+            this.setDrawableTint(colorPrimary)
             text = iconPack.label
         }
         itemView.icon.setImageDrawable(iconPack.icon)

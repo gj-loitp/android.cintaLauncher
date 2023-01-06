@@ -21,6 +21,7 @@ import com.loitp.annotation.IsFullScreen
 import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseActivityFont
+import com.loitp.core.ext.isDefaultLauncher
 import com.loitp.core.utilities.LUIUtil
 import com.roy93group.app.AppLife
 import com.roy93group.app.C
@@ -242,7 +243,7 @@ class LauncherActivity : BaseActivityFont() {
         }
         PopupUtils.dismissCurrent()
         SuggestionsManager.onPause(settings = settings, context = this)
-        if (C.isDefaultLauncher(context = this)) {
+        if (this.isDefaultLauncher()) {
             initShowcase()
         }
     }

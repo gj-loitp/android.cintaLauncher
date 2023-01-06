@@ -2,6 +2,7 @@ package com.roy93group.launcher.ui.bottomBar
 
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
+import com.loitp.core.ext.setBackgroundTintList
 import com.loitp.core.utilities.LScreenUtil
 import com.loitp.core.utilities.LUIUtil
 import com.roy93group.app.C
@@ -65,7 +66,7 @@ class BottomBar(val launcherActivity: LauncherActivity) {
         cvSearchBarContainer.setCardBackgroundColor(colorPrimary)
         appDrawerIcon.setColorFilter(colorBackground)
         ivSetting.apply {
-            C.setBackgroundTintList(this)
+            this.setBackgroundTintList(colorPrimary)
             setColorFilter(colorBackground)
         }
         tvSearch.setTextColor(colorBackground)

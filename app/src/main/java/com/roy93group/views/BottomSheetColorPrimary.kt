@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.loitp.core.ext.vibrate
 import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
@@ -88,7 +89,7 @@ class BottomSheetColorPrimary(
             setSelectedColor(colorPrimary)
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
-                    C.vibrate(milliseconds = 10)
+                    context.vibrate(milliseconds = 10L)
                     if (c == colorBackground) {
                         (activity as? LauncherActivity)?.showShortError(getString(R.string.err_same_color))
                     } else {

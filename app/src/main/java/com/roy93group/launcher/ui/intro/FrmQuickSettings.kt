@@ -3,7 +3,7 @@ package com.roy93group.launcher.ui.intro
 import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
-import com.loitp.core.utilities.LActivityUtil
+import com.loitp.core.ext.tranIn
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.LauncherActivity
 
@@ -32,6 +32,6 @@ class FrmQuickSettings : FrmWithNext(R.layout.frm_intro_settings) {
             /* p2 = */ PackageManager.DONT_KILL_APP
         )
         startActivity(Intent(requireContext(), LauncherActivity::class.java))
-        LActivityUtil.tranIn(requireContext())
+        requireContext().tranIn()
     }
 }

@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.loitp.core.ext.vibrate
 import com.roy93group.app.C
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.lookerupper.data.results.AppResult
@@ -57,7 +58,7 @@ class AppSearchVH(
         }
 
         itemView.setOnLongClickListener {
-            C.vibrate(500L)
+            it.context.vibrate(500L)
             C.launchAppOption(
                 activity = activity,
                 item = result.app,

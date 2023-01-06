@@ -14,6 +14,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.loitp.core.ext.setButtonTintList
+import com.loitp.core.ext.vibrate
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.bottom_sheet_option.*
@@ -82,12 +84,12 @@ class BottomSheetOption(
         rb0.apply {
             text = value0
             setTextColor(colorPrimary)
-            C.setButtonTintList(this, colorPrimary)
+            this.setButtonTintList(colorPrimary)
         }
         rb1.apply {
             text = value1
             setTextColor(colorPrimary)
-            C.setButtonTintList(this, colorPrimary)
+            this.setButtonTintList(colorPrimary)
         }
 
         when (firstIndexCheck) {
@@ -98,14 +100,14 @@ class BottomSheetOption(
 
         rb0.setOnCheckedChangeListener { _, b ->
             if (b) {
-                C.vibrate(milliseconds = 500)
+                context?.vibrate(milliseconds = 500L)
                 onConfirm?.invoke(0)
                 dismiss()
             }
         }
         rb1.setOnCheckedChangeListener { _, b ->
             if (b) {
-                C.vibrate(milliseconds = 500)
+                context?.vibrate(milliseconds = 500L)
                 onConfirm?.invoke(1)
                 dismiss()
             }

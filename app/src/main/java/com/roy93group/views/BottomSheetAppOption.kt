@@ -14,9 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.loitp.core.ext.setSafeOnClickListener
-import com.loitp.core.utilities.LDeviceUtil
-import com.loitp.core.utilities.LSocialUtil
+import com.loitp.core.ext.*
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
@@ -70,11 +68,11 @@ class BottomSheetAppOption(
         tvTitle.setTextColor(colorPrimary)
         tvInfo.apply {
             setTextColor(colorPrimary)
-            C.setDrawableTint(this, colorPrimary)
+            this.setDrawableTint(colorPrimary)
             (item as? App)?.let { app ->
                 this.text = "Label: ${app.label}\nPackage name: ${app.packageName}"
                 setSafeOnClickListener {
-                    LDeviceUtil.setClipboard(app.packageName)
+                    context.setClipboard(app.packageName)
                 }
             }
         }
@@ -85,18 +83,18 @@ class BottomSheetAppOption(
         btAppSetting.setSafeOnClickListener {
             (item as? App)?.packageName?.let { packageName ->
                 dismiss()
-                C.launchSystemSetting(context = requireContext(), packageName = packageName)
+                context?.launchSystemSetting(packageName = packageName)
             }
         }
         btPlayStore.setSafeOnClickListener {
             (item as? App)?.packageName?.let { packageName ->
                 dismiss()
-                LSocialUtil.rateApp(activity = requireActivity(), packageName = packageName)
+                activity?.rateApp(packageName = packageName)
             }
         }
         btUninstall.setSafeOnClickListener {
             (item as? App)?.packageName?.let { packageName ->
-                C.uninstallApp(activity = requireActivity(), packageName = packageName)
+                activity?.uninstallApp(packageName = packageName)
                 dismiss()
             }
         }

@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.loitp.core.ext.vibrate
 import com.roy93group.app.C
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.data.items.LauncherItem
@@ -105,7 +106,7 @@ fun bindAppViewHolder(
     }
 
     holder.itemView.setOnLongClickListener {
-        C.vibrate(500L)
+        it.context.vibrate(500L)
         C.launchAppOption(
             activity = launcherActivity,
             item = item,

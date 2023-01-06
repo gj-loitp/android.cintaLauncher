@@ -10,12 +10,14 @@ import android.view.View
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.loitp.core.ext.chooseLauncher
 import com.loitp.core.ext.setSafeOnClickListener
-import com.loitp.core.utilities.LActivityUtil
+import com.loitp.core.ext.tranIn
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.LauncherActivity
+import com.roy93group.launcher.util.FakeLauncherActivity
 import kotlinx.android.synthetic.main.frm_intro_permissions.*
 import me.toptas.fancyshowcase.FancyShowCaseQueue
 import me.toptas.fancyshowcase.FancyShowCaseView
@@ -157,8 +159,8 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                         /* cls = */ LauncherActivity::class.java
                     )
                 )
-                LActivityUtil.tranIn(activity)
-                C.chooseLauncher(requireActivity())
+                activity.tranIn()
+                activity.chooseLauncher(FakeLauncherActivity::class.java)
             } else {
                 activity.showSnackBarError(getString(R.string.pls_read_policy_first))
             }
@@ -204,7 +206,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                     Intent.FLAG_ACTIVITY_NEW_TASK
                 )
             )
-            LActivityUtil.tranIn(activity)
+            activity?.tranIn()
         }
     }
 
@@ -214,7 +216,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                 Intent.FLAG_ACTIVITY_NEW_TASK
             )
         )
-        LActivityUtil.tranIn(activity)
+        activity?.tranIn()
     }
 
     private fun isFullPermission(): Boolean {

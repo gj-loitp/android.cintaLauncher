@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.loitp.core.ext.launchCalendar
+import com.loitp.core.ext.launchClockApp
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.*
@@ -154,9 +156,9 @@ class FeedAdapter(
                 holder = holder as HomeViewHolder,
                 isForceColorIcon = isForceColorIcon,
                 onClickClock = {
-                    C.launchClockApp(launcherActivity)
+                    launcherActivity.launchClockApp()
                 }, onClickCalendar = {
-                    C.launchCalendar(launcherActivity)
+                    launcherActivity.launchCalendar()
                 })
         }
         if (holder.itemViewType == TYPE_EMPTY) {

@@ -13,7 +13,7 @@ import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseActivityFont
 import com.loitp.core.ext.setSafeOnClickListener
-import com.loitp.core.utilities.LActivityUtil
+import com.loitp.core.ext.tranIn
 import com.roy93group.app.C
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
@@ -42,7 +42,7 @@ class StackTraceActivity : BaseActivityFont() {
                             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             .putExtra("throwable", throwable)
                     )
-                    LActivityUtil.tranIn(context)
+                    context.tranIn()
                     Process.killProcess(Process.myPid())
                     exitProcess(0)
                 } catch (e: Throwable) {

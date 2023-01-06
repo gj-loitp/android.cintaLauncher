@@ -13,7 +13,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.app.C
+import com.loitp.core.ext.vibrate
 import com.roy93group.launcher.R
 import io.posidon.android.conveniencelib.AnimUtils
 import io.posidon.android.conveniencelib.onEnd
@@ -128,7 +128,7 @@ class SwipeLayout(
             currentAnimator = null
             if (isCanceled) return
             if (isSwipeAble) {
-                C.vibrate(milliseconds = 500)
+                context.vibrate(milliseconds = 500L)
                 onSwipeAway?.invoke(this@SwipeLayout)
             } else bounceBack()
         }

@@ -16,7 +16,7 @@ import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseActivityFont
 import com.loitp.core.common.Constants
 import com.loitp.core.ext.changeLayersColor
-import com.loitp.core.utilities.LActivityUtil
+import com.loitp.core.ext.tranIn
 import com.loitp.core.utilities.LUIUtil
 import com.loitp.data.ActivityData
 import com.roy93group.app.C
@@ -135,7 +135,7 @@ class SearchActivity : BaseActivityFont() {
                     val viewSearch = Intent(Intent.ACTION_WEB_SEARCH)
                     viewSearch.putExtra(SearchManager.QUERY, v.text)
                     v.context.startActivity(viewSearch)
-                    LActivityUtil.tranIn(v.context)
+                    v.context.tranIn()
                     true
                 } else false
             }

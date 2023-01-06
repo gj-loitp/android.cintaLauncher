@@ -16,8 +16,8 @@ import android.view.ViewGroup
 import android.widget.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.jem.rubberpicker.RubberSeekBar
+import com.loitp.core.ext.setButtonTintList
 import com.loitp.core.ext.setSafeOnClickListener
-import com.loitp.core.utilities.LAppResource
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.bottom_sheet_customize_app_drawer.*
@@ -156,14 +156,14 @@ class BottomSheetCustomizeAppDrawer(
 
         updateUIGravity()
         btGravity.setSafeOnClickListener {
-            val title = LAppResource.getString(R.string.gravity)
-            val value0 = LAppResource.getString(R.string.start)
-            val value1 = LAppResource.getString(R.string.end)
+            val title = getString(R.string.gravity)
+            val value0 = getString(R.string.start)
+            val value1 = getString(R.string.end)
             C.launchSelector(
                 activity = activity,
                 isCancelableFragment = true,
                 title = title,
-                des = LAppResource.getString(R.string.pick_your_choice),
+                des = getString(R.string.pick_your_choice),
                 value0 = value0,
                 value1 = value1,
                 firstIndexCheck = gravityValue,
@@ -178,14 +178,14 @@ class BottomSheetCustomizeAppDrawer(
 
         updateUIOrientation()
         btOrientation.setSafeOnClickListener {
-            val title = LAppResource.getString(R.string.orientation)
-            val value0 = LAppResource.getString(R.string.vertical)
-            val value1 = LAppResource.getString(R.string.horizontal)
+            val title = getString(R.string.orientation)
+            val value0 = getString(R.string.vertical)
+            val value1 = getString(R.string.horizontal)
             C.launchSelector(
                 activity = activity,
                 isCancelableFragment = true,
                 title = title,
-                des = LAppResource.getString(R.string.pick_your_choice),
+                des = getString(R.string.pick_your_choice),
                 value0 = value0,
                 value1 = value1,
                 firstIndexCheck = orientationValue,
@@ -200,7 +200,7 @@ class BottomSheetCustomizeAppDrawer(
 
         cbRotate.apply {
             setTextColor(colorPrimary)
-            C.setButtonTintList(this, colorPrimary)
+            this.setButtonTintList(colorPrimary)
             isChecked = isCheckedValue
             setOnCheckedChangeListener { _, isChecked ->
                 onRotate?.invoke(isChecked)
@@ -209,7 +209,7 @@ class BottomSheetCustomizeAppDrawer(
 
         cbDisplayAppIcon.apply {
             setTextColor(colorPrimary)
-            C.setButtonTintList(this, colorPrimary)
+            this.setButtonTintList(colorPrimary)
             isChecked = isDisplayAppIcon
             setOnCheckedChangeListener { _, isChecked ->
                 onDisplayAppIcon?.invoke(isChecked)
@@ -218,7 +218,7 @@ class BottomSheetCustomizeAppDrawer(
 
         cbForceColorIcon.apply {
             setTextColor(colorPrimary)
-            C.setButtonTintList(this, colorPrimary)
+            this.setButtonTintList(colorPrimary)
             isChecked = isForceColorIcon
             setOnCheckedChangeListener { _, isChecked ->
                 onForceColorIcon?.invoke(isChecked)
@@ -228,9 +228,9 @@ class BottomSheetCustomizeAppDrawer(
 
     @SuppressLint("SetTextI18n")
     private fun updateUIGravity() {
-        val title = LAppResource.getString(R.string.gravity)
-        val value0 = LAppResource.getString(R.string.start)
-        val value1 = LAppResource.getString(R.string.end)
+        val title = getString(R.string.gravity)
+        val value0 = getString(R.string.start)
+        val value1 = getString(R.string.end)
         if (gravityValue == 0) {
             btGravity.text = "$title: $value0"
         } else {
@@ -240,9 +240,9 @@ class BottomSheetCustomizeAppDrawer(
 
     @SuppressLint("SetTextI18n")
     private fun updateUIOrientation() {
-        val title = LAppResource.getString(R.string.orientation)
-        val value0 = LAppResource.getString(R.string.vertical)
-        val value1 = LAppResource.getString(R.string.horizontal)
+        val title = getString(R.string.orientation)
+        val value0 = getString(R.string.vertical)
+        val value1 = getString(R.string.horizontal)
         if (orientationValue == 0) {
             btOrientation.text = "$title: $value0"
         } else {

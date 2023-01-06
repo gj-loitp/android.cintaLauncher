@@ -10,6 +10,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.PopupWindow
+import com.loitp.core.ext.vibrate
 import com.roy93group.app.C
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.ScrollbarControllerSetting
@@ -22,6 +23,7 @@ import io.posidon.android.conveniencelib.Device
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
+import io.posidon.android.conveniencelib.vibrate
 import kotlin.math.abs
 
 
@@ -67,7 +69,7 @@ class ScrollbarIconView @JvmOverloads constructor(
                 if (counter > countDetectMoving) {
 
                     if (counter % 5 == 0) {
-                        C.vibrate(milliseconds = 10)
+                        this.context.vibrate(10L)
                     }
 
                     val d = abs(e.x / e.y)

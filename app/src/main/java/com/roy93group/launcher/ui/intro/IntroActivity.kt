@@ -6,9 +6,9 @@ import com.loitp.annotation.IsAutoAnimation
 import com.loitp.annotation.IsFullScreen
 import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
-import com.loitp.core.base.BaseActivityFancyShowcaseFont
+import com.loitp.core.base.BaseActivityFancyShowcase
+import com.loitp.core.ext.openBrowserPolicy
 import com.loitp.core.ext.setSafeOnClickListener
-import com.loitp.core.utilities.LSocialUtil
 import com.loitp.core.utilities.LUIUtil
 import com.loitp.views.sw.toggle.LabeledSwitch
 import com.loitp.views.sw.toggle.OnToggledListener
@@ -28,7 +28,7 @@ import java.util.*
 @IsFullScreen(false)
 @IsAutoAnimation(false)
 @IsKeepScreenOn(false)
-class IntroActivity : BaseActivityFancyShowcaseFont() {
+class IntroActivity : BaseActivityFancyShowcase() {
 
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_intro
@@ -84,7 +84,7 @@ class IntroActivity : BaseActivityFancyShowcaseFont() {
             nextScreen()
         }
         tvPolicy.setSafeOnClickListener {
-            LSocialUtil.openBrowserPolicy(this)
+            this.openBrowserPolicy()
         }
     }
 

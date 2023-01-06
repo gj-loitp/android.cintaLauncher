@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.loitp.core.utilities.LUIUtil
+import com.loitp.core.ext.setMarginsDp
 import com.roy93group.app.C
 import com.roy93group.launcher.LauncherContext
 import com.roy93group.launcher.R
@@ -81,16 +81,14 @@ class FeedProfileAdapter(
         holder.itemView.card.apply {
             setCardBackgroundColor(colorPrimary)
             if (i == (items.size - 1)) {
-                LUIUtil.setMarginsDp(
-                    view = this,
+                this.setMarginsDp(
                     leftDp = 8,
                     topDp = 0,
                     rightDp = 8,
                     bottomDp = 0,
                 )
             } else {
-                LUIUtil.setMarginsDp(
-                    view = this,
+                this.setMarginsDp(
                     leftDp = 8,
                     topDp = 0,
                     rightDp = 0,

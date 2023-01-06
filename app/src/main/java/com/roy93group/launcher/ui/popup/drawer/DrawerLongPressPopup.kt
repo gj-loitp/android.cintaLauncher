@@ -15,10 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.get
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.loitp.core.base.BaseActivity
-import com.loitp.core.ext.setSafeOnClickListener
-import com.loitp.core.utilities.LActivityUtil
-import com.loitp.core.utilities.LAppResource
-import com.loitp.core.utilities.LSocialUtil
+import com.loitp.core.ext.*
 import com.loitp.core.utilities.LUIUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.BuildConfig
@@ -32,6 +29,7 @@ import com.roy93group.launcher.ui.popup.PopupUtils
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupAdapter
 import com.roy93group.launcher.ui.popup.listPopup.ListPopupItem
 import com.roy93group.launcher.ui.settings.iconPackPicker.IconPackPickerActivity
+import com.roy93group.launcher.util.FakeLauncherActivity
 import io.posidon.android.conveniencelib.Device
 import kotlinx.android.synthetic.main.view_list_popup.view.*
 
@@ -68,7 +66,7 @@ object DrawerLongPressPopup {
 
         content.fabDismiss.apply {
             setColorFilter(colorBackground)
-            C.setBackgroundTintList(this)
+            this.setBackgroundTintList(colorPrimary)
             setSafeOnClickListener {
                 window.dismiss()
             }
@@ -133,7 +131,7 @@ object DrawerLongPressPopup {
                 description = context.getString(R.string.default_home_app),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_home),
             ) {
-                C.chooseLauncher(launcherActivity)
+                launcherActivity.chooseLauncher(FakeLauncherActivity::class.java)
             },
             ListPopupItem(
                 text = context.getString(R.string.scrollbar_controller),
@@ -144,10 +142,10 @@ object DrawerLongPressPopup {
                 C.launchSelector(
                     activity = launcherActivity,
                     isCancelableFragment = true,
-                    title = LAppResource.getString(R.string.setting),
-                    des = LAppResource.getString(R.string.app_sorting),
-                    value0 = LAppResource.getString(R.string.alphabetic),
-                    value1 = LAppResource.getString(R.string.by_hue),
+                    title = context.getString(R.string.setting),
+                    des = context.getString(R.string.app_sorting),
+                    value0 = context.getString(R.string.alphabetic),
+                    value1 = context.getString(R.string.by_hue),
                     firstIndexCheck = settings.scrollbarController,
                     onConfirm = { index ->
                         settings.edit(context) {
@@ -189,9 +187,9 @@ object DrawerLongPressPopup {
                 onDismiss.invoke()
                 C.launchColorPrimary(activity = launcherActivity,
                     isCancelableFragment = true,
-                    title = LAppResource.getString(R.string.color),
-                    des = LAppResource.getString(R.string.pick_your_favorite_color),
-                    warning = LAppResource.getString(R.string.the_color_launcher_will_be_restarted),
+                    title = context.getString(R.string.color),
+                    des = context.getString(R.string.pick_your_favorite_color),
+                    warning = context.getString(R.string.the_color_launcher_will_be_restarted),
                     onDismiss = { newColor ->
                         val result = C.updatePrimaryColor(newColor)
                         if (result) {
@@ -207,9 +205,9 @@ object DrawerLongPressPopup {
                 onDismiss.invoke()
                 C.launchColorBackground(activity = launcherActivity,
                     isCancelableFragment = true,
-                    title = LAppResource.getString(R.string.color_background),
-                    des = LAppResource.getString(R.string.pick_your_favorite_color_background),
-                    warning = LAppResource.getString(R.string.the_color_launcher_will_be_restarted),
+                    title = context.getString(R.string.color_background),
+                    des = context.getString(R.string.pick_your_favorite_color_background),
+                    warning = context.getString(R.string.the_color_launcher_will_be_restarted),
                     onDismiss = { newColor ->
                         val result = C.updateBackgroundColor(newColor)
                         if (result) {
@@ -248,7 +246,7 @@ object DrawerLongPressPopup {
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_shapes),
             ) {
                 context.startActivity(Intent(context, IconPackPickerActivity::class.java))
-                LActivityUtil.tranIn(context)
+                context.tranIn()
             },
             ListPopupItem(
                 text = context.getString(R.string.reshape_adaptive_icons),
@@ -279,34 +277,33 @@ object DrawerLongPressPopup {
                 description = context.getString(R.string.read_policy),
                 icon = ContextCompat.getDrawable(context, R.drawable.baseline_policy_black_48),
             ) {
-                LSocialUtil.openBrowserPolicy(context)
+                context.openBrowserPolicy()
             },
             ListPopupItem(
                 text = context.getString(R.string.rate_app_en),
                 description = context.getString(R.string.rate_5_stars),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_thumb_up_alt_black_48dp),
             ) {
-                LSocialUtil.rateApp(launcherActivity)
+                launcherActivity.rateApp()
             },
             ListPopupItem(
                 text = context.getString(R.string.more_app_en),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_card_giftcard_black_48dp),
             ) {
-                LSocialUtil.moreApp(launcherActivity)
+                launcherActivity.moreApp()
             },
             ListPopupItem(
                 text = context.getString(R.string.share_app_en),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_share_black_48dp),
             ) {
-                LSocialUtil.shareApp(launcherActivity)
+                launcherActivity.shareApp()
             },
             ListPopupItem(
                 text = context.getString(R.string.missing_a_feature),
                 description = context.getString(R.string.missing_a_feature_msg),
                 icon = ContextCompat.getDrawable(context, R.drawable.baseline_pan_tool_black_48),
             ) {
-                LSocialUtil.sendEmail(
-                    activity = launcherActivity,
+                launcherActivity.sendEmail(
                     to = "roy93group@gmail.com",
                     subject = "Feature Request",
                     body = "Please describe the feature you need.\n" +

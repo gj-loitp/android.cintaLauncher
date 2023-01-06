@@ -1,43 +1,29 @@
 package com.roy93group.app
 
 import android.app.Activity
-import android.content.ComponentName
 import android.content.Context
-import android.content.Context.VIBRATOR_SERVICE
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.content.res.ColorStateList
-import android.graphics.drawable.*
-import android.net.Uri
-import android.os.*
-import android.provider.AlarmClock
-import android.provider.CalendarContract
-import android.provider.Settings
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.CompoundButton
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
 import com.loitp.core.common.Constants
-import com.loitp.core.helper.gallery.GalleryCoreSplashActivityFont
-import com.loitp.core.utilities.*
+import com.loitp.core.ext.getColor
+import com.loitp.core.ext.tranIn
+import com.loitp.core.ext.vibrate
+import com.loitp.core.helper.gallery.GalleryCoreSplashActivity
+import com.loitp.core.utilities.LSharedPrefsUtil
+import com.loitp.core.utilities.LUIUtil
 import com.loitp.data.ActivityData
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.ui.LauncherActivity
-import com.roy93group.launcher.util.FakeLauncherActivity
 import com.roy93group.lookerupper.ui.a.SearchActivity
 import com.roy93group.views.*
-import io.posidon.android.conveniencelib.units.dp
-import io.posidon.android.conveniencelib.units.toPixels
-import kotlinx.android.synthetic.main.activity_intro.*
-import kotlinx.android.synthetic.main.activity_launcher.*
-import kotlinx.android.synthetic.main.frm_intro_splash_background.*
 import kotlinx.android.synthetic.main.layout_show_case.view.*
-import kotlinx.android.synthetic.main.view_app_drawer.*
 import me.toptas.fancyshowcase.FancyShowCaseView
 import me.toptas.fancyshowcase.FocusShape
 import me.toptas.fancyshowcase.listener.DismissListener
@@ -65,8 +51,8 @@ object C {
     private const val KEY_FORCE_COLOR_ICON = "KEY_FORCE_COLOR_ICON"
     private const val KEY_AUTO_COLOR_CHANGER = "KEY_AUTO_COLOR_CHANGER"
 
-    private var colorPrimary = LAppResource.getColor(R.color.color0)
-    private var colorBackground = LAppResource.getColor(R.color.colorPrimary)
+    private var colorPrimary = getColor(R.color.color0)
+    private var colorBackground = getColor(R.color.colorPrimary)
     private fun setColorPrimary(c: Int) {
         this.colorPrimary = c
     }
@@ -83,23 +69,23 @@ object C {
         return this.colorBackground
     }
 
-    private var COLOR_0 = LAppResource.getColor(R.color.color0)
-    private val COLOR_1 = LAppResource.getColor(R.color.color1)
-    private val COLOR_2 = LAppResource.getColor(R.color.color2)
-    private val COLOR_3 = LAppResource.getColor(R.color.color3)
-    private val COLOR_4 = LAppResource.getColor(R.color.color4)
-    private val COLOR_5 = LAppResource.getColor(R.color.color5)
-    private val COLOR_6 = LAppResource.getColor(R.color.color6)
-    private val COLOR_7 = LAppResource.getColor(R.color.color7)
-    private val COLOR_8 = LAppResource.getColor(R.color.color8)
-    private val COLOR_9 = LAppResource.getColor(R.color.color9)
-    private val COLOR_10 = LAppResource.getColor(R.color.color10)
-    private val COLOR_11 = LAppResource.getColor(R.color.color11)
-    private val COLOR_12 = LAppResource.getColor(R.color.color12)
-    private val COLOR_13 = LAppResource.getColor(R.color.color13)
-    private val COLOR_14 = LAppResource.getColor(R.color.color14)
-    val COLOR_15 = LAppResource.getColor(R.color.color15)
-    private val COLOR_16 = LAppResource.getColor(R.color.color16)
+    private var COLOR_0 = getColor(R.color.color0)
+    private val COLOR_1 = getColor(R.color.color1)
+    private val COLOR_2 = getColor(R.color.color2)
+    private val COLOR_3 = getColor(R.color.color3)
+    private val COLOR_4 = getColor(R.color.color4)
+    private val COLOR_5 = getColor(R.color.color5)
+    private val COLOR_6 = getColor(R.color.color6)
+    private val COLOR_7 = getColor(R.color.color7)
+    private val COLOR_8 = getColor(R.color.color8)
+    private val COLOR_9 = getColor(R.color.color9)
+    private val COLOR_10 = getColor(R.color.color10)
+    private val COLOR_11 = getColor(R.color.color11)
+    private val COLOR_12 = getColor(R.color.color12)
+    private val COLOR_13 = getColor(R.color.color13)
+    private val COLOR_14 = getColor(R.color.color14)
+    val COLOR_15 = getColor(R.color.color15)
+    private val COLOR_16 = getColor(R.color.color16)
 
     val colors = intArrayOf(
         COLOR_0,
@@ -121,155 +107,8 @@ object C {
         COLOR_16,
     )
 
-    fun searchIconPack(activity: Activity) {
-        val url = "market://search?q=icon%20pack&c=apps"
-        try {
-            activity.startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse(url)
-                )
-            )
-            LActivityUtil.tranIn(activity)
-        } catch (ex: Exception) {
-            LSocialUtil.moreApp(activity)
-        }
-    }
-
-    fun vibrate(milliseconds: Long) {
-        val vib = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            val vibratorManager =
-                LAppResource.application.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
-            vibratorManager.defaultVibrator
-        } else {
-            @Suppress("DEPRECATION")
-            LAppResource.application.getSystemService(VIBRATOR_SERVICE) as Vibrator
-        }
-
-        vib.vibrate(
-            VibrationEffect.createOneShot(
-                /* milliseconds = */ milliseconds,
-                /* amplitude = */ VibrationEffect.DEFAULT_AMPLITUDE
-            )
-        )
-    }
-
-    fun launchClockApp(activity: Activity) {
-        try {
-            val i = Intent(AlarmClock.ACTION_SHOW_ALARMS)
-            activity.startActivity(i)
-            LActivityUtil.tranIn(activity)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    fun launchCalendar(activity: Activity) {
-        val calendarUri = CalendarContract.CONTENT_URI
-            .buildUpon()
-            .appendPath("time")
-            .build()
-        activity.startActivity(Intent(Intent.ACTION_VIEW, calendarUri))
-        LActivityUtil.tranIn(activity)
-    }
-
-//    fun generateTrackDrawable(color: Int): Drawable {
-//        val out = StateListDrawable()
-//        out.addState(
-//            intArrayOf(android.R.attr.state_checked),
-//            generateBG(color)
-//        )
-//        out.addState(
-//            StateSet.WILD_CARD,
-//            generateBG(color)
-//        )
-//        return out
-//    }
-//
-//    fun generateThumbDrawable(
-//        context: Context,
-//        color: Int
-//    ): Drawable {
-//        val out = StateListDrawable()
-//        out.addState(
-//            intArrayOf(android.R.attr.state_checked),
-//            generateCircle(context = context, color = color)
-//        )
-//        out.addState(
-//            StateSet.WILD_CARD,
-//            generateCircle(context = context, color = color)
-//        )
-//        return out
-//    }
-
-    private fun generateCircle(
-        context: Context,
-        color: Int
-    ): Drawable {
-        val r = 18.dp.toPixels(context)
-        val inset = 4.dp.toPixels(context)
-        return LayerDrawable(
-            arrayOf(
-                GradientDrawable().apply {
-                    shape = GradientDrawable.OVAL
-                    setColor(color)
-                    setSize(r, r)
-                    setStroke(1, 0x33000000)
-                },
-            )
-        ).apply {
-            setLayerInset(0, inset, inset, inset, inset)
-        }
-    }
-
-//    private fun generateBG(color: Int): Drawable {
-//        return GradientDrawable().apply {
-//            cornerRadius = Float.MAX_VALUE
-//            setColor(color)
-//            setStroke(1, 0x88000000.toInt())
-//        }
-//    }
-
-    fun isDefaultLauncher(context: Context): Boolean {
-        val intent = Intent(Intent.ACTION_MAIN)
-        intent.addCategory(Intent.CATEGORY_HOME)
-        val resolveInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            context.packageManager.resolveActivity(
-                intent,
-                PackageManager.ResolveInfoFlags.of(PackageManager.MATCH_DEFAULT_ONLY.toLong())
-            )
-        } else {
-            context.packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
-        }
-
-        val currentLauncherName = resolveInfo?.activityInfo?.packageName
-        if (currentLauncherName == context.packageName) {
-            return true
-        }
-        return false
-    }
-
-    fun chooseLauncher(activity: Activity) {
-        val componentName = ComponentName(activity, FakeLauncherActivity::class.java)
-        activity.packageManager.setComponentEnabledSetting(
-            /* p0 = */ componentName,
-            /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-            /* p2 = */ PackageManager.DONT_KILL_APP
-        )
-        val selector = Intent(Intent.ACTION_MAIN)
-        selector.addCategory(Intent.CATEGORY_HOME)
-        selector.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        activity.startActivity(selector)
-        LActivityUtil.tranIn(activity)
-        activity.packageManager.setComponentEnabledSetting(
-            /* p0 = */ componentName,
-            /* p1 = */ PackageManager.COMPONENT_ENABLED_STATE_DEFAULT,
-            /* p2 = */ PackageManager.DONT_KILL_APP
-        )
-    }
-
     fun launchWallpaper(activity: Activity) {
-        val intent = Intent(activity, GalleryCoreSplashActivityFont::class.java)
+        val intent = Intent(activity, GalleryCoreSplashActivity::class.java)
         intent.putExtra(Constants.BKG_SPLASH_SCREEN, Constants.URL_IMG_11)
         // neu muon remove albumn nao thi cu pass id cua albumn do
         val removeAlbumFlickrList = ArrayList<String>()
@@ -279,7 +118,7 @@ object C {
             removeAlbumFlickrList
         )
         activity.startActivity(intent)
-        LActivityUtil.tranIn(activity)
+        activity.tranIn()
     }
 
     fun setBackground(v: View?) {
@@ -391,7 +230,7 @@ object C {
     fun getPrimaryColor() {
         val c = LSharedPrefsUtil.instance.getInt(
             key = KEY_PRIMARY_COLOR,
-            defaultValue = LAppResource.getColor(R.color.color0)
+            defaultValue = getColor(R.color.color0)
         )
         setColorPrimary(c)
     }
@@ -409,7 +248,7 @@ object C {
     fun getBackgroundColor() {
         val c = LSharedPrefsUtil.instance.getInt(
             key = KEY_BACKGROUND_COLOR,
-            defaultValue = LAppResource.getColor(R.color.colorPrimary)
+            defaultValue = getColor(R.color.colorPrimary)
         )
         setColorBackground(c)
     }
@@ -428,36 +267,16 @@ object C {
         fragment.show(activity.supportFragmentManager, fragment.tag)
     }
 
-    fun launchSystemSetting(
-        context: Context,
-        packageName: String
-    ) {
-        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-        intent.data = Uri.parse("package:$packageName")
-        context.startActivity(intent)
-        LActivityUtil.tranIn(context)
-    }
-
-    fun uninstallApp(
-        activity: Activity,
-        packageName: String
-    ) {
-        val intent = Intent(Intent.ACTION_DELETE)
-        intent.data = Uri.parse("package:$packageName")
-        activity.startActivity(intent)
-        LActivityUtil.tranIn(activity)
-    }
-
     fun goToSearchScreen(context: Context) {
         ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_SLIDE_UP
-        vibrate(milliseconds = 100)
+        context.vibrate(milliseconds = 100L)
         context.startActivity(
             Intent(
                 context,
                 SearchActivity::class.java
             ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         )
-        LActivityUtil.tranIn(context)
+        context.tranIn()
     }
 
     fun setSeekRadiusValue(seekRadiusValue: Int) {
@@ -556,33 +375,6 @@ object C {
 
     fun isLightIconStatusBar(): Boolean {
         return getColorBackground() != COLOR_15
-    }
-
-    fun setBackgroundTintList(v: View?) {
-        v?.backgroundTintList = ColorStateList.valueOf(colorPrimary)
-    }
-
-    fun setButtonTintList(
-        v: CompoundButton,
-        color: Int
-    ) {
-        val colorStateList = ColorStateList(
-            arrayOf(
-                intArrayOf(-android.R.attr.state_enabled),
-                intArrayOf(android.R.attr.state_enabled)
-            ), intArrayOf(
-                color,  // disabled
-                color // enabled
-            )
-        )
-        v.buttonTintList = colorStateList
-    }
-
-    fun setDrawableTint(
-        tv: TextView,
-        color: Int
-    ) {
-        TextViewCompat.setCompoundDrawableTintList(tv, ColorStateList.valueOf(color))
     }
 
     fun launchAboutLauncher(
@@ -698,7 +490,6 @@ object C {
             )
             subAnimation.fillAfter = true
             fancyShowCaseView.llc.gravity = gravity
-
             fancyShowCaseView.tvMain.apply {
                 text = textMain
                 setTextColor(colorPrimary)

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import com.loitp.core.ext.setSafeOnClickListener
+import com.loitp.core.ext.vibrate
 import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
@@ -46,7 +47,7 @@ class FrmSplashPrimary : FrmWithNext(R.layout.frm_intro_splash_primary) {
             setBackgroundColor(C.getColorPrimary())
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
-                    C.vibrate(milliseconds = 10)
+                    context?.vibrate(10L)
                     setBackgroundColor(c)
                     val result = C.updatePrimaryColor(c)
                     if (result) {

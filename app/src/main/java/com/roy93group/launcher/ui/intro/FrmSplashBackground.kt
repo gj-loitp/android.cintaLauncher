@@ -3,6 +3,7 @@ package com.roy93group.launcher.ui.intro
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import com.loitp.core.ext.vibrate
 import com.loitp.picker.shiftColor.OnColorChangedListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
@@ -38,7 +39,7 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
             colors = C.colors
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
-                    C.vibrate(milliseconds = 10)
+                    context.vibrate(10L)
                     val result = C.updateBackgroundColor(c)
                     if (result) {
                         (activity as? IntroActivity)?.updateUI()
