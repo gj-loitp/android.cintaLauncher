@@ -13,7 +13,7 @@ import androidx.core.view.isVisible
 import com.loitp.core.ext.chooseLauncher
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.ext.tranIn
-import com.roy93group.app.C
+import com.roy93group.ext.*
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.LauncherActivity
@@ -49,8 +49,8 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
     }
 
     private fun setupViews() {
-        val colorPrimary = C.getColorPrimary()
-        val colorBackground = C.getColorBackground()
+        val colorPrimary = getColorPrimary()
+        val colorBackground = getColorBackground()
 
         tickStorage.setColorFilter(colorPrimary)
         tickContacts.setColorFilter(colorPrimary)
@@ -66,25 +66,25 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
         tvStorageDes.setTextColor(colorPrimary)
         buttonStorage.apply {
             setTextColor(colorBackground)
-            C.setBackground(this)
+            this.setBackgroundLauncher()
         }
         tvContacts.setTextColor(colorPrimary)
         tvContactsDes.setTextColor(colorPrimary)
         buttonContacts.apply {
             setTextColor(colorBackground)
-            C.setBackground(this)
+            this.setBackgroundLauncher()
         }
         tvNotifications.setTextColor(colorPrimary)
         tvNotificationsDes.setTextColor(colorPrimary)
         buttonNotifications.apply {
             setTextColor(colorBackground)
-            C.setBackground(this)
+            this.setBackgroundLauncher()
         }
         tvUsageAccess.setTextColor(colorPrimary)
         tvUsageAccessDes.setTextColor(colorPrimary)
         buttonUsageAccess.apply {
             setTextColor(colorBackground)
-            C.setBackground(this)
+            this.setBackgroundLauncher()
         }
     }
 
@@ -227,8 +227,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
 
     private fun initShowcase() {
         var fancyView: FancyShowCaseView? = null
-        fancyView = C.createFancyShowcase(
-            activity = requireActivity(),
+        fancyView = activity?.createFancyShowcase(
             focusView = buttonContacts,
             idShowOne = true,
             focusShape = FocusShape.CIRCLE,
@@ -241,8 +240,7 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
                 }
             },
             onViewInflated = {
-                C.showFancyShowCaseView(
-                    fancyShowCaseView = fancyView,
+                fancyView.showFancyShowCaseView(
                     textMain = getString(R.string.grant_permissions),
                     textSub = getString(R.string.app_name) + " " + getString(R.string.needs_per),
                     gravity = Gravity.CENTER,
@@ -250,7 +248,9 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
             }
         )
         FancyShowCaseQueue().apply {
-            add(fancyView)
+            fancyView?.let {
+                add(it)
+            }
             show()
         }
     }

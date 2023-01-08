@@ -19,7 +19,9 @@ import com.loitp.core.ext.addTextChangedDelayListener
 import com.loitp.core.ext.changeLayersColor
 import com.loitp.core.ext.tranIn
 import com.loitp.data.ActivityData
-import com.roy93group.app.C
+import com.roy93group.ext.getColorBackground
+import com.roy93group.ext.getColorPrimary
+import com.roy93group.ext.isLightIconStatusBar
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.Settings
 import com.roy93group.launcher.ui.popup.appItem.ItemLongPress
@@ -74,8 +76,8 @@ class SearchActivity : BaseActivityFont() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         changeStatusBarContrastStyle(
-            lightIcons = C.isLightIconStatusBar(),
-            colorBackground = C.getColorBackground(),
+            lightIcons = isLightIconStatusBar(),
+            colorBackground = getColorBackground(),
             withRecolorEfx = false,
         )
 
@@ -85,8 +87,8 @@ class SearchActivity : BaseActivityFont() {
     }
 
     private fun setupViews() {
-        val colorPrimary = C.getColorPrimary()
-        val colorBackground = C.getColorBackground()
+        val colorPrimary = getColorPrimary()
+        val colorBackground = getColorBackground()
 
         fl.setBackgroundColor(colorBackground)
         cardView.setCardBackgroundColor(colorPrimary)

@@ -4,7 +4,9 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.app.C
+import com.roy93group.ext.C
+import com.roy93group.ext.getColorBackground
+import com.roy93group.ext.getColorPrimary
 import com.roy93group.launcher.R
 import com.roy93group.lookerupper.data.results.InstantAnswerResult
 import com.roy93group.lookerupper.data.results.SearchResult
@@ -16,8 +18,8 @@ class AnswerSearchVH(
 ) : SearchVH(itemView) {
 
     private val infoBoxAdapter = InfoBoxAdapter()
-    val colorPrimary = C.getColorPrimary()
-    val colorBackground = C.getColorBackground()
+    val colorPrimary = getColorPrimary()
+    val colorBackground = getColorBackground()
 
     override fun onBind(
         result: SearchResult,

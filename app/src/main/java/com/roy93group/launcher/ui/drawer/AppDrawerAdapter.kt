@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.app.C
+import com.roy93group.ext.getDisplayAppIcon
+import com.roy93group.ext.getForceColorIcon
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.ui.LauncherActivity
@@ -32,8 +33,8 @@ class AppDrawerAdapter(
     }
 
     var indexer: HighlightSectionIndexer? = null
-    private var isDisplayAppIcon = C.getDisplayAppIcon(launcherActivity)
-    private var isForceColorIcon = C.getForceColorIcon(launcherActivity)
+    private var isDisplayAppIcon = launcherActivity.getDisplayAppIcon()
+    private var isForceColorIcon = launcherActivity.getForceColorIcon()
 
     @SuppressLint("NotifyDataSetChanged")
     fun setIsDisplayAppIcon(isDisplayAppIcon: Boolean) {

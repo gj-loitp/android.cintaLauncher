@@ -5,7 +5,7 @@ import android.view.Gravity
 import android.view.View
 import com.loitp.core.ext.vibrate
 import com.loitp.picker.shiftColor.OnColorChangedListener
-import com.roy93group.app.C
+import com.roy93group.ext.*
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.frm_intro_splash_background.*
 import me.toptas.fancyshowcase.FancyShowCaseQueue
@@ -36,11 +36,11 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
         super.onViewCreated(view, savedInstanceState)
         updateUI()
         colorPickerBackground.apply {
-            colors = C.colors
+            colors = colorsPicker
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
                     context.vibrate(10L)
-                    val result = C.updateBackgroundColor(context, c)
+                    val result = context.updateBackgroundColor(c)
                     if (result) {
                         (activity as? IntroActivity)?.updateUI()
                     } else {
@@ -58,7 +58,7 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
     }
 
     private fun updateUI() {
-        val colorPrimary = C.getColorPrimary()
+        val colorPrimary = getColorPrimary()
 
         ivLogo.setColorFilter(colorPrimary)
         tv.setTextColor(colorPrimary)
@@ -67,8 +67,7 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
 
     private fun initShowcase() {
         var fancyView: FancyShowCaseView? = null
-        fancyView = C.createFancyShowcase(
-            activity = requireActivity(),
+        fancyView = activity?.createFancyShowcase(
             focusView = colorPickerBackground,
             idShowOne = true,
             focusShape = FocusShape.ROUNDED_RECTANGLE,
@@ -81,8 +80,7 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
                 }
             },
             onViewInflated = {
-                C.showFancyShowCaseView(
-                    fancyShowCaseView = fancyView,
+                fancyView.showFancyShowCaseView(
                     textMain = getString(R.string.hi_guys_this_is_color_launcher),
                     textSub = getString(R.string.pick_your_favorite_color_background),
                     gravity = Gravity.CENTER,
@@ -90,7 +88,9 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
             }
         )
         FancyShowCaseQueue().apply {
-            add(fancyView)
+            fancyView?.let {
+                add(it)
+            }
             show()
         }
     }

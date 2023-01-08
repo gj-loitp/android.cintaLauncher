@@ -5,7 +5,8 @@ import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import androidx.core.view.isVisible
-import com.roy93group.app.C
+import com.roy93group.ext.C
+import com.roy93group.ext.getColorPrimary
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
 import com.roy93group.lookerupper.data.results.CompactAppResult
@@ -24,7 +25,7 @@ class CompactSearchVH(
     itemView: View,
     val activity: Activity
 ) : SearchVH(itemView) {
-    private val colorPrimary = C.getColorPrimary()
+    private val colorPrimary = getColorPrimary()
 //    private val colorBackground = C.getColorBackground()
 
     override fun onBind(

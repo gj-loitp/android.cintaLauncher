@@ -18,7 +18,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.jem.rubberpicker.RubberSeekBar
 import com.loitp.core.ext.setButtonTintListColor
 import com.loitp.core.ext.setSafeOnClickListener
-import com.roy93group.app.C
+import com.roy93group.ext.*
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.bottom_sheet_customize_app_drawer.*
 
@@ -74,12 +74,12 @@ class BottomSheetCustomizeAppDrawer(
     }
 
     private fun setupViews() {
-        val colorPrimary = C.getColorPrimary()
-        val colorBackground = C.getColorBackground()
+        val colorPrimary = getColorPrimary()
+        val colorBackground = getColorBackground()
 
         llRoot.apply {
             setCardBackgroundColor(colorBackground)
-            C.setCornerCardView(cardView = this)
+            this.setCornerCardViewLauncher()
         }
 
         ivSlider.setColorFilter(colorPrimary)
@@ -159,8 +159,7 @@ class BottomSheetCustomizeAppDrawer(
             val title = getString(R.string.gravity)
             val value0 = getString(R.string.start)
             val value1 = getString(R.string.end)
-            C.launchSelector(
-                activity = activity,
+            activity.launchSelector(
                 isCancelableFragment = true,
                 title = title,
                 des = getString(R.string.pick_your_choice),
@@ -181,8 +180,7 @@ class BottomSheetCustomizeAppDrawer(
             val title = getString(R.string.orientation)
             val value0 = getString(R.string.vertical)
             val value1 = getString(R.string.horizontal)
-            C.launchSelector(
-                activity = activity,
+            activity.launchSelector(
                 isCancelableFragment = true,
                 title = title,
                 des = getString(R.string.pick_your_choice),

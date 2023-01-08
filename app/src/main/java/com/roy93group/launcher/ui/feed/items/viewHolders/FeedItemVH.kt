@@ -10,7 +10,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.app.C
+import com.roy93group.ext.C
+import com.roy93group.ext.COLOR_15
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.formatTimeAgo
 import com.roy93group.launcher.ui.feed.ActionsAdapter
@@ -96,7 +97,7 @@ open class FeedItemVH(
                 if (isForceColorIcon) {
                     setColorFilter(colorPrimary)
                 } else {
-                    if (colorBackground == C.COLOR_15) {
+                    if (colorBackground == COLOR_15) {
                         setColorFilter(colorPrimary)
                     } else {
                         setColorFilter(Color.TRANSPARENT)

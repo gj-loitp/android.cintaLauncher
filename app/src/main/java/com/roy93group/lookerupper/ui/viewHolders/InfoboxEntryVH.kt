@@ -3,7 +3,8 @@ package com.roy93group.lookerupper.ui.viewHolders
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.app.C
+import com.roy93group.ext.C
+import com.roy93group.ext.getColorPrimary
 import kotlinx.android.synthetic.main.view_search_result_answer_info_box_entry.view.*
 
 /**
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.view_search_result_answer_info_box_entry.v
  * freuss47@gmail.com
  */
 class InfoboxEntryVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val colorPrimary = C.getColorPrimary()
+    val colorPrimary = getColorPrimary()
 
     val label: TextView = itemView.label.apply {
         setTextColor(colorPrimary)

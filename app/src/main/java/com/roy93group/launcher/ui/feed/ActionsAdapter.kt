@@ -5,7 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.app.C
+import com.roy93group.ext.C
+import com.roy93group.ext.getColorBackground
+import com.roy93group.ext.setBackgroundLauncher
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItemAction
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
@@ -40,7 +42,7 @@ class ActionsAdapter(
         holder: ActionViewHolder,
         i: Int
     ) {
-        val colorBackground = C.getColorBackground()
+        val colorBackground = getColorBackground()
         val action = actions[i]
 
         holder.itemView.tvActionText.apply {
@@ -56,7 +58,7 @@ class ActionsAdapter(
             )
         }
         holder.itemView.llRoot.apply {
-            C.setBackground(this)
+            this.setBackgroundLauncher()
         }
         holder.itemView.setOnClickListener(action.onTap)
     }

@@ -6,7 +6,9 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.loitp.core.ext.vibrate
-import com.roy93group.app.C
+import com.roy93group.ext.getColorBackground
+import com.roy93group.ext.getColorPrimary
+import com.roy93group.ext.launchAppOption
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
@@ -43,8 +45,8 @@ fun bindAppViewHolder(
     isLastItem: Boolean,
     index: Int,
 ) {
-    val colorPrimary = C.getColorPrimary()
-    val colorBackground = C.getColorBackground()
+    val colorPrimary = getColorPrimary()
+    val colorBackground = getColorBackground()
 
     holder.cardView.apply {
         setCardBackgroundColor(colorBackground)
@@ -107,8 +109,7 @@ fun bindAppViewHolder(
 
     holder.itemView.setOnLongClickListener {
         it.context.vibrate(500L)
-        C.launchAppOption(
-            activity = launcherActivity,
+        launcherActivity.launchAppOption(
             item = item,
             isCancelableFragment = true,
             onDismiss = {

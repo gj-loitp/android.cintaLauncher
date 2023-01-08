@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.loitp.core.ext.launchCalendar
 import com.loitp.core.ext.launchClockApp
-import com.roy93group.app.C
+import com.roy93group.ext.getDisplayAppIcon
+import com.roy93group.ext.getForceColorIcon
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.*
 import com.roy93group.launcher.ui.LauncherActivity
@@ -41,8 +42,8 @@ class FeedAdapter(
     }
 
     inline val context: Context get() = launcherActivity
-    private var isDisplayAppIcon = C.getDisplayAppIcon(context)
-    private var isForceColorIcon = C.getForceColorIcon(context)
+    private var isDisplayAppIcon = context.getDisplayAppIcon()
+    private var isForceColorIcon = context.getForceColorIcon()
     private var items: List<FeedItem> = emptyList()
 
     @SuppressLint("NotifyDataSetChanged")

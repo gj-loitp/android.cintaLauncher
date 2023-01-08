@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.loitp.core.ext.searchIconPack
 import com.loitp.core.ext.setSafeOnClickListener
-import com.roy93group.app.C
+import com.roy93group.ext.*
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.settings.SettingsActivity
 import com.roy93group.launcher.ui.settings.iconPackPicker.viewHolders.IconPackViewHolder
@@ -32,8 +32,8 @@ class IconPackPickerActivity : SettingsActivity() {
 
     override fun init(savedInstanceState: Bundle?) {
         changeStatusBarContrastStyle(
-            lightIcons = C.isLightIconStatusBar(),
-            colorBackground = C.getColorBackground(),
+            lightIcons = isLightIconStatusBar(),
+            colorBackground = getColorBackground(),
             withRecolorEfx = false,
         )
         setupViews()
@@ -44,15 +44,15 @@ class IconPackPickerActivity : SettingsActivity() {
     }
 
     private fun setupViews() {
-        val colorPrimary = C.getColorPrimary()
-        val colorBackground = C.getColorBackground()
+        val colorPrimary = getColorPrimary()
+        val colorBackground = getColorBackground()
 
         cl.setBackgroundColor(colorBackground)
         tvIconPacks.apply {
             setTextColor(colorPrimary)
         }
         btGetMoreThemes.apply {
-            C.setBackground(this)
+            this.setBackgroundLauncher()
         }
 
         val iconPacks = IconTheming.getAvailableIconPacks(packageManager).mapTo(LinkedList()) {

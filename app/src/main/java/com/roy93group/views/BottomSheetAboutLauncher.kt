@@ -15,12 +15,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.loitp.core.common.Constants
-import com.loitp.core.ext.openUrlInBrowser
-import com.loitp.core.ext.rateApp
-import com.loitp.core.ext.setSafeOnClickListener
-import com.loitp.core.ext.tranIn
+import com.loitp.core.ext.*
 import com.loitp.core.helper.adHelper.AdHelperActivity
-import com.roy93group.app.C
+import com.roy93group.ext.*
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.bottom_sheet_about_launcher.*
@@ -58,12 +55,12 @@ class BottomSheetAboutLauncher(
 
     @SuppressLint("SetTextI18n")
     private fun setupViews() {
-        val colorPrimary = C.getColorPrimary()
-        val colorBackground = C.getColorBackground()
+        val colorPrimary = getColorPrimary()
+        val colorBackground = getColorBackground()
 
         llRoot.apply {
             setCardBackgroundColor(colorBackground)
-            C.setCornerCardView(cardView = this)
+            this.setCornerCardViewLauncher()
         }
         ivSlider.setColorFilter(colorPrimary)
         tvTitle.setTextColor(colorPrimary)
@@ -93,8 +90,7 @@ class BottomSheetAboutLauncher(
                 text = getString(R.string.changelog_des)
             }
             setSafeOnClickListener {
-                C.launchSheetText(
-                    activity = requireActivity(),
+                activity?.launchSheetText(
                     isCancelableFragment = true,
                     title = getString(R.string.changelog),
                     content = getString(R.string.changelog_detail)
@@ -112,8 +108,7 @@ class BottomSheetAboutLauncher(
                 text = getString(R.string.hall_of_fame_des)
             }
             setSafeOnClickListener {
-                C.launchSheetText(
-                    activity = requireActivity(),
+                activity?.launchSheetText(
                     isCancelableFragment = true,
                     title = getString(R.string.hall_of_fame),
                     content = getString(R.string.hall_of_fame_detail)
@@ -152,7 +147,7 @@ class BottomSheetAboutLauncher(
                     putExtra(Constants.AD_HELPER_COLOR_PRIMARY, colorPrimary)
                     putExtra(Constants.AD_HELPER_COLOR_BACKGROUND, colorBackground)
                     putExtra(Constants.AD_HELPER_COLOR_STATUS_BAR, colorBackground)
-                    putExtra(Constants.AD_HELPER_IS_LIGHT_ICON_STATUS_BAR, C.isLightIconStatusBar())
+                    putExtra(Constants.AD_HELPER_IS_LIGHT_ICON_STATUS_BAR, isLightIconStatusBar())
                 }
                 startActivity(intent)
                 context.tranIn()

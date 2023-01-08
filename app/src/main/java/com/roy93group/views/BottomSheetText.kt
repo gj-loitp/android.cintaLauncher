@@ -12,7 +12,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.roy93group.app.C
+import com.loitp.core.ext.setCornerCardView
+import com.roy93group.ext.getColorBackground
+import com.roy93group.ext.getColorPrimary
+import com.roy93group.ext.setCornerCardViewLauncher
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.bottom_sheet_text.*
 
@@ -49,12 +52,12 @@ class BottomSheetText(
     }
 
     private fun setupViews() {
-        val colorPrimary = C.getColorPrimary()
-        val colorBackground = C.getColorBackground()
+        val colorPrimary = getColorPrimary()
+        val colorBackground = getColorBackground()
 
         llRoot.apply {
             setCardBackgroundColor(colorBackground)
-            C.setCornerCardView(cardView = this)
+            this.setCornerCardViewLauncher()
         }
         ivSlider.setColorFilter(colorPrimary)
         tvTitle.apply {

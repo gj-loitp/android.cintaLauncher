@@ -5,7 +5,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.roy93group.app.C
+import com.roy93group.ext.C
+import com.roy93group.ext.getColorPrimary
 import com.roy93group.launcher.R
 import com.roy93group.lookerupper.data.results.ContactResult
 import com.roy93group.lookerupper.data.results.SearchResult
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.view_search_result_contact.view.*
 class ContactSearchVH(
     itemView: View
 ) : SearchVH(itemView) {
-    private val colorPrimary = C.getColorPrimary()
+    private val colorPrimary = getColorPrimary()
 //    private val colorBackground = C.getColorBackground()
 
     override fun onBind(

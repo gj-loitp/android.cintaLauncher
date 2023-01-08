@@ -6,7 +6,9 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.loitp.core.ext.setSafeOnClickListener
-import com.roy93group.app.C
+import com.roy93group.ext.C
+import com.roy93group.ext.getColorPrimary
+import com.roy93group.ext.getForceColorIcon
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.notification.NotificationService
 import com.roy93group.launcher.ui.LauncherActivity
@@ -18,8 +20,8 @@ class HomeViewHolder(
     val launcherActivity: LauncherActivity,
     itemView: View,
 ) : RecyclerView.ViewHolder(itemView) {
-    private var isForceColorIcon = C.getForceColorIcon(launcherActivity)
-    private var colorPrimary = C.getColorPrimary()
+    private var isForceColorIcon = launcherActivity.getForceColorIcon()
+    private var colorPrimary = getColorPrimary()
     private val notificationIconsAdapter = NotificationIconsAdapter(launcherActivity)
 
     private val rvNotificationIconList: RecyclerView = itemView.rvNotificationIconList.apply {
@@ -89,7 +91,7 @@ fun bindHomeViewHolder(
     onClickClock: ((Unit) -> Unit),
     onClickCalendar: ((Unit) -> Unit)
 ) {
-    val colorPrimary = C.getColorPrimary()
+    val colorPrimary = getColorPrimary()
 //    val colorBackground = C.getColorBackground()
 
     holder.updateNotificationIcons(isForceColorIcon = isForceColorIcon, colorPrimary = colorPrimary)

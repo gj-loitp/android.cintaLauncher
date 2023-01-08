@@ -5,7 +5,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.app.C
+import com.roy93group.ext.getDisplayFilterViews
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.profiles.FeedProfile
 import com.roy93group.launcher.ui.LauncherActivity
@@ -74,7 +74,7 @@ class FeedProfiles(val launcherActivity: LauncherActivity) {
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateTheme() {
-        if (C.getDisplayFilterViews(context = launcherActivity)) {
+        if (launcherActivity.getDisplayFilterViews()) {
             rvFeedFilters.isVisible = true
             feedFilterAdapter.notifyDataSetChanged()
         } else {

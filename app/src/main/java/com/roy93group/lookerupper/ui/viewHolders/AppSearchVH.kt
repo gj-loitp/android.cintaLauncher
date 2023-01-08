@@ -5,7 +5,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.loitp.core.ext.vibrate
-import com.roy93group.app.C
+import com.roy93group.ext.getColorBackground
+import com.roy93group.ext.getColorPrimary
+import com.roy93group.ext.launchAppOption
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.lookerupper.data.results.AppResult
 import com.roy93group.lookerupper.data.results.SearchResult
@@ -23,8 +25,8 @@ class AppSearchVH(
     val activity: AppCompatActivity
 ) : SearchVH(itemView) {
 
-    private val colorPrimary = C.getColorPrimary()
-    private val colorBackground = C.getColorBackground()
+    private val colorPrimary = getColorPrimary()
+    private val colorBackground = getColorBackground()
 
     override fun onBind(
         result: SearchResult,
@@ -59,8 +61,7 @@ class AppSearchVH(
 
         itemView.setOnLongClickListener {
             it.context.vibrate(500L)
-            C.launchAppOption(
-                activity = activity,
+            activity.launchAppOption(
                 item = result.app,
                 isCancelableFragment = true,
                 onDismiss = {

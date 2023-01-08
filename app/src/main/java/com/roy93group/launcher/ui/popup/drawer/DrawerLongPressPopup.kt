@@ -16,7 +16,7 @@ import com.google.firebase.remoteconfig.ktx.get
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.loitp.core.base.BaseActivity
 import com.loitp.core.ext.*
-import com.roy93group.app.C
+import com.roy93group.ext.*
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.DoReshapeAdaptiveIconsSetting.doReshapeAdaptiveIcons
@@ -51,8 +51,8 @@ object DrawerLongPressPopup {
         settings: Settings,
         reloadApps: () -> Unit,
     ) {
-        val colorPrimary = C.getColorPrimary()
-        val colorBackground = C.getColorBackground()
+        val colorPrimary = getColorPrimary()
+        val colorBackground = getColorBackground()
 
         val content = LayoutInflater.from(parent.context).inflate(R.layout.view_list_popup, null)
         val window = PopupWindow(
@@ -138,8 +138,7 @@ object DrawerLongPressPopup {
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_sorting),
             ) {
                 onDismiss.invoke()
-                C.launchSelector(
-                    activity = launcherActivity,
+                launcherActivity.launchSelector(
                     isCancelableFragment = true,
                     title = context.getString(R.string.setting),
                     des = context.getString(R.string.app_sorting),
@@ -162,18 +161,18 @@ object DrawerLongPressPopup {
                 text = context.getString(R.string.smart_search),
                 description = context.getString(R.string.enable_search_when_scroll_to_top),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_shapes),
-                value = C.getOpenSearchWhenScrollTop(context),
+                value = context.getOpenSearchWhenScrollTop(),
                 onToggle = { _, value ->
-                    C.setOpenSearchWhenScrollTop(context, value)
+                    context.setOpenSearchWhenScrollTop(value)
                 }
             ),
             ListPopupItem(
                 text = context.getString(R.string.display_filter_view),
                 description = context.getString(R.string.display_filter_view_des),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_filter_list_24),
-                value = C.getDisplayFilterViews(context),
+                value = context.getDisplayFilterViews(),
                 onToggle = { _, value ->
-                    C.setDisplayFilterViews(context, value)
+                    context.setDisplayFilterViews(value)
                     launcherActivity.feedProfiles.updateTheme()
                 }
             ),
@@ -184,13 +183,13 @@ object DrawerLongPressPopup {
                 icon = ContextCompat.getDrawable(context, R.drawable.baseline_palette_black_48),
             ) {
                 onDismiss.invoke()
-                C.launchColorPrimary(activity = launcherActivity,
+                launcherActivity.launchColorPrimary(
                     isCancelableFragment = true,
                     title = context.getString(R.string.color),
                     des = context.getString(R.string.pick_your_favorite_color),
                     warning = context.getString(R.string.the_color_launcher_will_be_restarted),
                     onDismiss = { newColor ->
-                        val result = C.updatePrimaryColor(context, newColor)
+                        val result = context.updatePrimaryColor(newColor)
                         if (result) {
                             launcherActivity.updateTheme()
                         }
@@ -202,13 +201,13 @@ object DrawerLongPressPopup {
                 icon = ContextCompat.getDrawable(context, R.drawable.baseline_palette_black_48),
             ) {
                 onDismiss.invoke()
-                C.launchColorBackground(activity = launcherActivity,
+                launcherActivity.launchColorBackground(
                     isCancelableFragment = true,
                     title = context.getString(R.string.color_background),
                     des = context.getString(R.string.pick_your_favorite_color_background),
                     warning = context.getString(R.string.the_color_launcher_will_be_restarted),
                     onDismiss = { newColor ->
-                        val result = C.updateBackgroundColor(context, newColor)
+                        val result = context.updateBackgroundColor(newColor)
                         if (result) {
                             context.setWallpaperAndLockScreen(
                                 color = newColor,
@@ -222,9 +221,9 @@ object DrawerLongPressPopup {
             ListPopupItem(
                 text = context.getString(R.string.auto_color),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_hdr_auto_24),
-                value = C.getAutoColorChanger(context),
+                value = context.getAutoColorChanger(),
                 onToggle = { _, value ->
-                    C.setAutoColorChanger(context, value)
+                    context.setAutoColorChanger(value)
                 }
             ),
             ListPopupItem(
@@ -234,7 +233,7 @@ object DrawerLongPressPopup {
                 val isShowFlickrGallery =
                     Firebase.remoteConfig["is_show_flickr_gallery"].asBoolean()
                 if (isShowFlickrGallery || BuildConfig.DEBUG) {
-                    C.launchWallpaper(launcherActivity)
+                    launcherActivity.launchWallpaper()
                 } else {
                     launcherActivity.showShortError(context.getString(R.string.err_unknown_en))
                 }
@@ -317,7 +316,7 @@ object DrawerLongPressPopup {
                     R.drawable.baseline_info_black_24dp
                 ),
             ) {
-                C.launchAboutLauncher(activity = launcherActivity, isCancelableFragment = true)
+                launcherActivity.launchAboutLauncher(isCancelableFragment = true)
             },
             ListPopupItem(
                 text = context.getString(R.string.restart_color_launcher),

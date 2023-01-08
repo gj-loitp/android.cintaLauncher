@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.app.C
+import com.roy93group.ext.C
+import com.roy93group.ext.getDisplayAppIcon
+import com.roy93group.ext.getForceColorIcon
 import com.roy93group.launcher.R
 import com.roy93group.lookerupper.data.results.*
 import com.roy93group.lookerupper.ui.viewHolders.*
@@ -31,8 +33,8 @@ class SearchAdapter(
     }
 
     private var results = emptyList<SearchResult>()
-    private val isDisplayAppIcon = C.getDisplayAppIcon(activity)
-    private val isForceColorIcon = C.getForceColorIcon(activity)
+    private val isDisplayAppIcon = activity.getDisplayAppIcon()
+    private val isForceColorIcon = activity.getForceColorIcon()
 
     override fun getItemViewType(i: Int): Int {
         return when (results[i]) {

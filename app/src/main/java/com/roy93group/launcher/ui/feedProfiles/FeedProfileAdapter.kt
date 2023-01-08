@@ -7,7 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.loitp.core.ext.setMarginsDp
-import com.roy93group.app.C
+import com.roy93group.ext.getColorBackground
+import com.roy93group.ext.getColorPrimary
 import com.roy93group.launcher.LauncherContext
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.profiles.FeedProfile
@@ -57,8 +58,8 @@ class FeedProfileAdapter(
         holder: FeedFilterVH,
         i: Int
     ) {
-        val colorPrimary = C.getColorPrimary()
-        val colorBackground = C.getColorBackground()
+        val colorPrimary = getColorPrimary()
+        val colorBackground = getColorBackground()
 
         val item = items[i]
         holder.itemView.text.apply {

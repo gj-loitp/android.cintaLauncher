@@ -24,7 +24,7 @@ import com.loitp.core.base.BaseActivityFont
 import com.loitp.core.ext.isDefaultLauncher
 import com.loitp.core.ext.setScrollChange
 import com.roy93group.app.AppLife
-import com.roy93group.app.C
+import com.roy93group.ext.*
 import com.roy93group.launcher.LauncherContext
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
@@ -94,8 +94,8 @@ class LauncherActivity : BaseActivityFont() {
         super.onCreate(savedInstanceState)
 
         changeStatusBarContrastStyle(
-            lightIcons = C.isLightIconStatusBar(),
-            colorBackground = C.getColorBackground(),
+            lightIcons = isLightIconStatusBar(),
+            colorBackground = getColorBackground(),
             withRecolorEfx = false,
         )
         fetchRemoteConfig()
@@ -103,15 +103,15 @@ class LauncherActivity : BaseActivityFont() {
         configureWindow()
         settings.init(applicationContext)
 
-        flHomeContainer.setBackgroundColor(C.getColorBackground())
+        flHomeContainer.setBackgroundColor(getColorBackground())
         feedAdapter = FeedAdapter(this).apply {
             setHasStableIds(true)
         }
         rvFeed.apply {
             this.setScrollChange(
                 onTop = {
-                    if (C.getOpenSearchWhenScrollTop(context)) {
-                        C.goToSearchScreen(context)
+                    if (context.getOpenSearchWhenScrollTop()) {
+                        context.goToSearchScreen()
                     }
                 },
                 onBottom = {
@@ -180,8 +180,7 @@ class LauncherActivity : BaseActivityFont() {
 
     private fun initShowcase() {
         var fancyView: FancyShowCaseView? = null
-        fancyView = C.createFancyShowcase(
-            activity = this,
+        fancyView = this.createFancyShowcase(
             focusView = bottomBar.cvSearchBarContainer,
             idShowOne = true,
             focusShape = FocusShape.CIRCLE,
@@ -194,8 +193,7 @@ class LauncherActivity : BaseActivityFont() {
                 }
             },
             onViewInflated = {
-                C.showFancyShowCaseView(
-                    fancyShowCaseView = fancyView,
+                fancyView.showFancyShowCaseView(
                     textMain = getString(R.string.home_page),
                     textSub = getString(R.string.show_case_bottom_bar),
                     gravity = Gravity.CENTER,
@@ -345,21 +343,23 @@ class LauncherActivity : BaseActivityFont() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onAppLife(appLife: AppLife?) {
         if (appLife?.isOnBackground == true) {
-            C.configAutoColorChanger(this)
+            this.configAutoColorChanger()
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateTheme() {
+        val colorBackground = getColorBackground()
+
         feedProfiles.updateTheme()
         appDrawer.adapter.notifyDataSetChanged()
         rvFeed.adapter = feedAdapter
         changeStatusBarContrastStyle(
-            lightIcons = C.isLightIconStatusBar(),
-            colorBackground = C.getColorBackground(),
+            lightIcons = isLightIconStatusBar(),
+            colorBackground = colorBackground,
             withRecolorEfx = false,
         )
-        flHomeContainer.setBackgroundColor(C.getColorBackground())
+        flHomeContainer.setBackgroundColor(colorBackground)
         bottomBar.updateTheme()
     }
 }

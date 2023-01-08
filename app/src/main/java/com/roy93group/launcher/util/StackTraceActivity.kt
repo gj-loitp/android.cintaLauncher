@@ -14,7 +14,7 @@ import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseActivityFont
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.ext.tranIn
-import com.roy93group.app.C
+import com.roy93group.ext.*
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.activity_stack_trace.*
@@ -59,8 +59,8 @@ class StackTraceActivity : BaseActivityFont() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         changeStatusBarContrastStyle(
-            lightIcons = C.isLightIconStatusBar(),
-            colorBackground = C.getColorBackground(),
+            lightIcons = isLightIconStatusBar(),
+            colorBackground = getColorBackground(),
             withRecolorEfx = false,
         )
         setupViews()
@@ -68,15 +68,15 @@ class StackTraceActivity : BaseActivityFont() {
 
     private fun setupViews() {
         try {
-            val colorPrimary = C.getColorPrimary()
-            val colorBackground = C.getColorBackground()
+            val colorPrimary = getColorPrimary()
+            val colorBackground = getColorBackground()
 
             cl.setBackgroundColor(colorBackground)
             tvTitle.setTextColor(colorPrimary)
             tvStackTrace.setTextColor(colorPrimary)
             btSend.apply {
                 setTextColor(colorBackground)
-                C.setBackground(this)
+                this.setBackgroundLauncher()
             }
 
             val t = intent.extras!!["throwable"] as Throwable

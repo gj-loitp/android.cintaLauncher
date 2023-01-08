@@ -15,7 +15,7 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.loitp.core.ext.vibrate
 import com.loitp.picker.shiftColor.OnColorChangedListener
-import com.roy93group.app.C
+import com.roy93group.ext.*
 import com.roy93group.launcher.R
 import com.roy93group.launcher.ui.LauncherActivity
 import kotlinx.android.synthetic.main.bottom_sheet_color_background.*
@@ -27,7 +27,7 @@ class BottomSheetColorBackground(
     private val warning: String,
     private val onDismiss: ((Int) -> Unit)? = null
 ) : BottomSheetDialogFragment() {
-    private var newColorBackground = C.getColorBackground()
+    private var newColorBackground = getColorBackground()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,18 +54,18 @@ class BottomSheetColorBackground(
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        if (newColorBackground != C.getColorBackground()) {
+        if (newColorBackground != getColorBackground()) {
             onDismiss?.invoke(newColorBackground)
         }
     }
 
     private fun setupViews() {
-        val colorPrimary = C.getColorPrimary()
-        val colorBackground = C.getColorBackground()
+        val colorPrimary = getColorPrimary()
+        val colorBackground = getColorBackground()
 
         llRoot.apply {
             setCardBackgroundColor(colorBackground)
-            C.setCornerCardView(cardView = this)
+            this.setCornerCardViewLauncher()
         }
         ivSlider.setColorFilter(colorPrimary)
 
@@ -84,7 +84,7 @@ class BottomSheetColorBackground(
         }
 
         colorPicker.apply {
-            colors = C.colors
+            colors = colorsPicker
             setBackgroundColor(colorPrimary)
             setSelectedColor(colorPrimary)
             setOnColorChangedListener(object : OnColorChangedListener {

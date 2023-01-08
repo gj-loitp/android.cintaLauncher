@@ -11,7 +11,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.PopupWindow
 import com.loitp.core.ext.vibrate
-import com.roy93group.app.C
+import com.roy93group.ext.C
+import com.roy93group.ext.getColorBackground
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.ScrollbarControllerSetting
 import com.roy93group.launcher.storage.ScrollbarControllerSetting.scrollbarController
@@ -23,7 +24,6 @@ import io.posidon.android.conveniencelib.Device
 import io.posidon.android.conveniencelib.getNavigationBarHeight
 import io.posidon.android.conveniencelib.units.dp
 import io.posidon.android.conveniencelib.units.toPixels
-import io.posidon.android.conveniencelib.vibrate
 import kotlin.math.abs
 
 
@@ -145,7 +145,7 @@ class ScrollbarIconView @JvmOverloads constructor(
                 /* innerRadii = */ null
             )
         ).apply {
-            paint.color = C.getColorBackground()
+            paint.color = getColorBackground()
         }
         val p = 16.dp.toPixels(this)
         when (orientation) {

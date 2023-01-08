@@ -12,7 +12,7 @@ import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.ext.setWallpaperAndLockScreen
 import com.loitp.views.sw.toggle.LabeledSwitch
 import com.loitp.views.sw.toggle.OnToggledListener
-import com.roy93group.app.C
+import com.roy93group.ext.*
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.activity_intro.*
 import java.util.*
@@ -65,7 +65,7 @@ class IntroActivity : BaseActivityFancyShowcase() {
 
     private fun setWallpaper() {
         baseContext.setWallpaperAndLockScreen(
-            color = C.getColorBackground(),
+            color = getColorBackground(),
             isSetWallpaper = true,
             isSetLockScreen = true,
         )
@@ -116,11 +116,11 @@ class IntroActivity : BaseActivityFancyShowcase() {
     }
 
     fun updateUI() {
-        val colorBackground = C.getColorBackground()
-        val colorPrimary = C.getColorPrimary()
+        val colorBackground = getColorBackground()
+        val colorPrimary = getColorPrimary()
 
         changeStatusBarContrastStyle(
-            lightIcons = C.isLightIconStatusBar(),
+            lightIcons = isLightIconStatusBar(),
             colorBackground = colorBackground,
             withRecolorEfx = false,
         )
@@ -134,7 +134,7 @@ class IntroActivity : BaseActivityFancyShowcase() {
         }
         btNext.apply {
             setTextColor(colorBackground)
-            C.setBackground(this)
+            this.setBackgroundLauncher()
         }
         tvPolicy.apply {
             setTextColor(colorPrimary)
@@ -143,7 +143,7 @@ class IntroActivity : BaseActivityFancyShowcase() {
     }
 
     private fun nextScreen() {
-        if (!C.isValidColor()) {
+        if (!isValidColor()) {
             showSnackBarError(getString(R.string.err_same_color))
             return
         }

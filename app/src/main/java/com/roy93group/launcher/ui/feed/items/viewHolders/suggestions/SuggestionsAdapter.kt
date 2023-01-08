@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.app.C
+import com.roy93group.ext.getDisplayAppIcon
+import com.roy93group.ext.getForceColorIcon
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.ui.LauncherActivity
@@ -24,8 +25,8 @@ class SuggestionsAdapter(
 ) : RecyclerView.Adapter<AppViewHolder>() {
 
     private var items: List<LauncherItem> = emptyList()
-    private var isDisplayAppIcon = C.getDisplayAppIcon(launcherActivity)
-    private var isForceColorIcon = C.getForceColorIcon(launcherActivity)
+    private var isDisplayAppIcon = launcherActivity.getDisplayAppIcon()
+    private var isForceColorIcon = launcherActivity.getForceColorIcon()
 
     override fun getItemCount(): Int = items.size
 

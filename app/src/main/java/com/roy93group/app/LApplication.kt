@@ -3,6 +3,8 @@ package com.roy93group.app
 import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseApplication
 import com.loitp.core.ext.setDarkTheme
+import com.roy93group.ext.getBackgroundColor
+import com.roy93group.ext.getPrimaryColor
 import org.greenrobot.eventbus.EventBus
 
 /**
@@ -88,8 +90,8 @@ class LApplication : BaseApplication() {
 //        ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_ZOOM
 //        LUIUtil.fontForAll = Constants.FONT_PATH
         setDarkTheme(true)
-        C.getPrimaryColor(this)
-        C.getBackgroundColor(this)
+        this.getPrimaryColor()
+        this.getBackgroundColor()
     }
 
     override fun onAppInBackground() {

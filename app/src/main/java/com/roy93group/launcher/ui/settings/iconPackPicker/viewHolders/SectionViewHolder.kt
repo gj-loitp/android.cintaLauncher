@@ -2,7 +2,8 @@ package com.roy93group.launcher.ui.settings.iconPackPicker.viewHolders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.app.C
+import com.roy93group.ext.C
+import com.roy93group.ext.getColorPrimary
 import kotlinx.android.synthetic.main.view_icon_packs_section.view.*
 
 /**
@@ -16,7 +17,7 @@ class SectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(string: String) {
 
         itemView.text.apply {
-            setTextColor(C.getColorPrimary())
+            setTextColor(getColorPrimary())
             text = string
         }
     }

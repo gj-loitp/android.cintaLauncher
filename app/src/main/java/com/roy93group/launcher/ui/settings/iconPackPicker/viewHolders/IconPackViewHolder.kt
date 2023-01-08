@@ -3,7 +3,8 @@ package com.roy93group.launcher.ui.settings.iconPackPicker.viewHolders
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.loitp.core.ext.setDrawableTint
-import com.roy93group.app.C
+import com.roy93group.ext.C
+import com.roy93group.ext.getColorPrimary
 import com.roy93group.launcher.ui.settings.iconPackPicker.IconPackPickerActivity
 import kotlinx.android.synthetic.main.view_icon_packs_item.view.*
 
@@ -19,7 +20,7 @@ class IconPackViewHolder(
     val type: Int
 ) : RecyclerView.ViewHolder(itemView) {
     fun bind(iconPack: IconPackPickerActivity.IconPack) {
-        val colorPrimary = C.getColorPrimary()
+        val colorPrimary = getColorPrimary()
 
         itemView.text.apply {
             setTextColor(colorPrimary)

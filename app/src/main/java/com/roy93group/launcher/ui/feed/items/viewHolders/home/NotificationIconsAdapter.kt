@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.app.C
+import com.roy93group.ext.*
 import com.roy93group.launcher.R
 import kotlinx.android.synthetic.main.view_feed_home_notification_icon.view.*
 
@@ -22,9 +22,9 @@ import kotlinx.android.synthetic.main.view_feed_home_notification_icon.view.*
 class NotificationIconsAdapter(
     val context: Context
 ) : RecyclerView.Adapter<NotificationIconsAdapter.IconViewHolder>() {
-    private val colorPrimary = C.getColorPrimary()
-    private val colorBackground = C.getColorBackground()
-    private var isForceColorIcon = C.getForceColorIcon(context)
+    private val colorPrimary = getColorPrimary()
+    private val colorBackground = getColorBackground()
+    private var isForceColorIcon = context.getForceColorIcon()
     private var items = emptyList<Drawable>()
 
     class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -52,7 +52,7 @@ class NotificationIconsAdapter(
             if (isForceColorIcon) {
                 setColorFilter(colorPrimary)
             } else {
-                if (colorBackground == C.COLOR_15) {
+                if (colorBackground == COLOR_15) {
                     setColorFilter(colorPrimary)
                 } else {
                     setColorFilter(Color.TRANSPARENT)

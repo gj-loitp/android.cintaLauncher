@@ -4,7 +4,8 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.app.C
+import com.roy93group.ext.getColorBackground
+import com.roy93group.ext.getColorPrimary
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter.Companion.SECTION_HEADER
@@ -31,8 +32,8 @@ fun bindSectionHeaderViewHolder(
     launcherActivity: LauncherActivity,
     isDisplayAppIcon: Boolean,
 ) {
-    val colorPrimary = C.getColorPrimary()
-    val colorBackground = C.getColorBackground()
+    val colorPrimary = getColorPrimary()
+    val colorBackground = getColorBackground()
 
     holder.itemView.text.text = item.label
     if (isHighlighted) {

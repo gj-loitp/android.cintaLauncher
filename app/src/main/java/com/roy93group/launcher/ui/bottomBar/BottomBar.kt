@@ -6,7 +6,9 @@ import com.loitp.core.ext.screenHeight
 import com.loitp.core.ext.screenWidth
 import com.loitp.core.ext.setBackgroundTintList
 import com.loitp.core.ext.setSafeOnClickListenerElastic
-import com.roy93group.app.C
+import com.roy93group.ext.getColorBackground
+import com.roy93group.ext.getColorPrimary
+import com.roy93group.ext.goToSearchScreen
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.popup.drawer.DrawerLongPressPopup
 import com.roy93group.launcher.ui.view.scrollbar.Scrollbar
@@ -24,13 +26,13 @@ import kotlinx.android.synthetic.main.activity_launcher.*
 class BottomBar(val launcherActivity: LauncherActivity) {
 
     val scrollBar: Scrollbar get() = appDrawerIcon.scrollBar
-    var colorPrimary = C.getColorPrimary()
-    var colorBackground = C.getColorBackground()
+    var colorPrimary = getColorPrimary()
+    var colorBackground = getColorBackground()
 
     val cvSearchBarContainer: CardView = launcherActivity.cvSearchBarContainer.apply {
         setCardBackgroundColor(colorPrimary)
         setOnClickListener {
-            C.goToSearchScreen(it.context)
+            it.context.goToSearchScreen()
         }
     }
 
@@ -60,8 +62,8 @@ class BottomBar(val launcherActivity: LauncherActivity) {
     }
 
     fun updateTheme() {
-        colorPrimary = C.getColorPrimary()
-        colorBackground = C.getColorBackground()
+        colorPrimary = getColorPrimary()
+        colorBackground = getColorBackground()
 
         cvSearchBarContainer.setCardBackgroundColor(colorPrimary)
         appDrawerIcon.setColorFilter(colorBackground)
