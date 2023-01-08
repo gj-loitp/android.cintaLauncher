@@ -16,7 +16,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.jem.rubberpicker.RubberSeekBar
-import com.loitp.core.ext.setButtonTintList
+import com.loitp.core.ext.setButtonTintListColor
 import com.loitp.core.ext.setSafeOnClickListener
 import com.roy93group.app.C
 import com.roy93group.launcher.R
@@ -79,7 +79,7 @@ class BottomSheetCustomizeAppDrawer(
 
         llRoot.apply {
             setCardBackgroundColor(colorBackground)
-            C.setCornerCardView(activity = requireActivity(), cardView = this)
+            C.setCornerCardView(cardView = this)
         }
 
         ivSlider.setColorFilter(colorPrimary)
@@ -200,7 +200,7 @@ class BottomSheetCustomizeAppDrawer(
 
         cbRotate.apply {
             setTextColor(colorPrimary)
-            this.setButtonTintList(colorPrimary)
+            this.setButtonTintListColor(colorPrimary)
             isChecked = isCheckedValue
             setOnCheckedChangeListener { _, isChecked ->
                 onRotate?.invoke(isChecked)
@@ -209,7 +209,7 @@ class BottomSheetCustomizeAppDrawer(
 
         cbDisplayAppIcon.apply {
             setTextColor(colorPrimary)
-            this.setButtonTintList(colorPrimary)
+            this.setButtonTintListColor(colorPrimary)
             isChecked = isDisplayAppIcon
             setOnCheckedChangeListener { _, isChecked ->
                 onDisplayAppIcon?.invoke(isChecked)
@@ -218,7 +218,7 @@ class BottomSheetCustomizeAppDrawer(
 
         cbForceColorIcon.apply {
             setTextColor(colorPrimary)
-            this.setButtonTintList(colorPrimary)
+            this.setButtonTintListColor(colorPrimary)
             isChecked = isForceColorIcon
             setOnCheckedChangeListener { _, isChecked ->
                 onForceColorIcon?.invoke(isChecked)

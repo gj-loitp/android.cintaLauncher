@@ -11,12 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.card.MaterialCardView
 import com.loitp.core.common.Constants
-import com.loitp.core.ext.getColor
-import com.loitp.core.ext.tranIn
-import com.loitp.core.ext.vibrate
+import com.loitp.core.ext.*
 import com.loitp.core.helper.gallery.GalleryCoreSplashActivity
-import com.loitp.core.utilities.LSharedPrefsUtil
-import com.loitp.core.utilities.LUIUtil
 import com.loitp.data.ActivityData
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
@@ -28,7 +24,6 @@ import me.toptas.fancyshowcase.FancyShowCaseView
 import me.toptas.fancyshowcase.FocusShape
 import me.toptas.fancyshowcase.listener.DismissListener
 import me.toptas.fancyshowcase.listener.OnViewInflateListener
-
 
 /**
  * Created by Loitp on 23,November,2022
@@ -217,36 +212,44 @@ object C {
         return true
     }
 
-    fun updatePrimaryColor(newColor: Int): Boolean {
+    fun updatePrimaryColor(
+        context: Context,
+        newColor: Int
+    ): Boolean {
         return if (newColor == getColorBackground()) {
             false
         } else {
             setColorPrimary(newColor)
-            LSharedPrefsUtil.instance.putInt(KEY_PRIMARY_COLOR, newColor)
+            context.putInt(KEY_PRIMARY_COLOR, newColor)
             true
         }
     }
 
-    fun getPrimaryColor() {
-        val c = LSharedPrefsUtil.instance.getInt(
+    fun getPrimaryColor(context: Context) {
+        val c = context.getInt(
             key = KEY_PRIMARY_COLOR,
             defaultValue = getColor(R.color.color0)
         )
         setColorPrimary(c)
     }
 
-    fun updateBackgroundColor(newColor: Int): Boolean {
+    fun updateBackgroundColor(
+        context: Context,
+        newColor: Int
+    ): Boolean {
         return if (newColor == getColorPrimary()) {
             false
         } else {
             setColorBackground(newColor)
-            LSharedPrefsUtil.instance.putInt(KEY_BACKGROUND_COLOR, newColor)
+            context.putInt(KEY_BACKGROUND_COLOR, newColor)
             true
         }
     }
 
-    fun getBackgroundColor() {
-        val c = LSharedPrefsUtil.instance.getInt(
+    fun getBackgroundColor(
+        context: Context,
+    ) {
+        val c = context.getInt(
             key = KEY_BACKGROUND_COLOR,
             defaultValue = getColor(R.color.colorPrimary)
         )
@@ -279,53 +282,67 @@ object C {
         context.tranIn()
     }
 
-    fun setSeekRadiusValue(seekRadiusValue: Int) {
-        LSharedPrefsUtil.instance.putInt(KEY_SEEK_RADIUS_VALUE, seekRadiusValue)
+    fun setSeekRadiusValue(
+        context: Context,
+        seekRadiusValue: Int
+    ) {
+        context.putInt(KEY_SEEK_RADIUS_VALUE, seekRadiusValue)
     }
 
-    fun getSeekRadiusValue(): Int {
-        return LSharedPrefsUtil.instance.getInt(KEY_SEEK_RADIUS_VALUE, 0)
+    fun getSeekRadiusValue(context: Context): Int {
+        return context.getInt(KEY_SEEK_RADIUS_VALUE, 0)
     }
 
-    fun setSeekPeekValue(seekPeekValue: Int) {
-        LSharedPrefsUtil.instance.putInt(KEY_SEEK_PEEK_VALUE, seekPeekValue)
+    fun setSeekPeekValue(
+        context: Context,
+        seekPeekValue: Int
+    ) {
+        context.putInt(KEY_SEEK_PEEK_VALUE, seekPeekValue)
     }
 
-    fun getSeekPeekValue(): Int {
-        return LSharedPrefsUtil.instance.getInt(KEY_SEEK_PEEK_VALUE, 0)
+    fun getSeekPeekValue(context: Context): Int {
+        return context.getInt(KEY_SEEK_PEEK_VALUE, 0)
     }
 
-    fun setOrientationValue(orientationValue: Int) {
-        LSharedPrefsUtil.instance.putInt(KEY_ORIENTATION_VALUE, orientationValue)
+    fun setOrientationValue(
+        context: Context,
+        orientationValue: Int
+    ) {
+        context.putInt(KEY_ORIENTATION_VALUE, orientationValue)
     }
 
-    fun getOrientationValue(): Int {
-        return LSharedPrefsUtil.instance.getInt(KEY_ORIENTATION_VALUE, 1)
+    fun getOrientationValue(context: Context): Int {
+        return context.getInt(KEY_ORIENTATION_VALUE, 1)
     }
 
-    fun setGravityValue(gravityValue: Int) {
-        LSharedPrefsUtil.instance.putInt(KEY_GRAVITY_VALUE, gravityValue)
+    fun setGravityValue(
+        context: Context,
+        gravityValue: Int
+    ) {
+        context.putInt(KEY_GRAVITY_VALUE, gravityValue)
     }
 
-    fun getGravityValue(): Int {
-        return LSharedPrefsUtil.instance.getInt(KEY_GRAVITY_VALUE, 0)
+    fun getGravityValue(context: Context): Int {
+        return context.getInt(KEY_GRAVITY_VALUE, 0)
     }
 
-    fun setChecked(isCheckedValue: Boolean) {
-        LSharedPrefsUtil.instance.putBoolean(KEY_IS_CHECKED_VALUE, isCheckedValue)
+    fun setChecked(
+        context: Context,
+        isCheckedValue: Boolean
+    ) {
+        context.putBoolean(KEY_IS_CHECKED_VALUE, isCheckedValue)
     }
 
-    fun getChecked(): Boolean {
-        return LSharedPrefsUtil.instance.getBoolean(KEY_IS_CHECKED_VALUE, false)
+    fun getChecked(context: Context): Boolean {
+        return context.getBoolean(KEY_IS_CHECKED_VALUE, false)
     }
 
-    fun setCornerCardView(activity: Activity, cardView: MaterialCardView) {
-        val radiusTL = activity.resources.getDimension(R.dimen.round_large)
-        val radiusTR = activity.resources.getDimension(R.dimen.round_large)
+    fun setCornerCardView(cardView: MaterialCardView) {
+        val radiusTL = cardView.context.resources.getDimension(R.dimen.round_large)
+        val radiusTR = cardView.context.resources.getDimension(R.dimen.round_large)
         val radiusBL = 0f
         val radiusBR = 0f
-        LUIUtil.setCornerCardView(
-            cardView = cardView,
+        cardView.setCornerCardView(
             radiusTL = radiusTL,
             radiusTR = radiusTR,
             radiusBL = radiusBL,
@@ -333,44 +350,59 @@ object C {
         )
     }
 
-    fun setOpenSearchWhenScrollTop(isEnable: Boolean) {
-        LSharedPrefsUtil.instance.putBoolean(KEY_OPEN_SEARCH_WHEN_SCROLL_TOP, isEnable)
+    fun setOpenSearchWhenScrollTop(
+        context: Context,
+        isEnable: Boolean
+    ) {
+        context.putBoolean(KEY_OPEN_SEARCH_WHEN_SCROLL_TOP, isEnable)
     }
 
-    fun getOpenSearchWhenScrollTop(): Boolean {
-        return LSharedPrefsUtil.instance.getBoolean(KEY_OPEN_SEARCH_WHEN_SCROLL_TOP, true)
+    fun getOpenSearchWhenScrollTop(context: Context): Boolean {
+        return context.getBoolean(KEY_OPEN_SEARCH_WHEN_SCROLL_TOP, true)
     }
 
-    fun setDisplayFilterViews(isEnable: Boolean) {
-        LSharedPrefsUtil.instance.putBoolean(KEY_DISPLAY_FILTER_VIEWS, isEnable)
+    fun setDisplayFilterViews(
+        context: Context,
+        isEnable: Boolean
+    ) {
+        context.putBoolean(KEY_DISPLAY_FILTER_VIEWS, isEnable)
     }
 
-    fun getDisplayFilterViews(): Boolean {
-        return LSharedPrefsUtil.instance.getBoolean(KEY_DISPLAY_FILTER_VIEWS, true)
+    fun getDisplayFilterViews(context: Context): Boolean {
+        return context.getBoolean(KEY_DISPLAY_FILTER_VIEWS, true)
     }
 
-    fun setAutoColorChanger(isEnable: Boolean) {
-        LSharedPrefsUtil.instance.putBoolean(KEY_AUTO_COLOR_CHANGER, isEnable)
+    fun setAutoColorChanger(
+        context: Context,
+        isEnable: Boolean
+    ) {
+        context.putBoolean(KEY_AUTO_COLOR_CHANGER, isEnable)
     }
 
-    fun getAutoColorChanger(): Boolean {
-        return LSharedPrefsUtil.instance.getBoolean(KEY_AUTO_COLOR_CHANGER, false)
+    fun getAutoColorChanger(context: Context): Boolean {
+        return context.getBoolean(KEY_AUTO_COLOR_CHANGER, false)
     }
 
-    fun setDisplayAppIcon(isDisplay: Boolean) {
-        LSharedPrefsUtil.instance.putBoolean(KEY_DISPLAY_APP_ICON, isDisplay)
+    fun setDisplayAppIcon(
+        context: Context,
+        isDisplay: Boolean
+    ) {
+        context.putBoolean(KEY_DISPLAY_APP_ICON, isDisplay)
     }
 
-    fun getDisplayAppIcon(): Boolean {
-        return LSharedPrefsUtil.instance.getBoolean(KEY_DISPLAY_APP_ICON, true)
+    fun getDisplayAppIcon(context: Context): Boolean {
+        return context.getBoolean(KEY_DISPLAY_APP_ICON, true)
     }
 
-    fun setForceColorIcon(isForceColorIcon: Boolean) {
-        LSharedPrefsUtil.instance.putBoolean(KEY_FORCE_COLOR_ICON, isForceColorIcon)
+    fun setForceColorIcon(
+        context: Context,
+        isForceColorIcon: Boolean
+    ) {
+        context.putBoolean(KEY_FORCE_COLOR_ICON, isForceColorIcon)
     }
 
-    fun getForceColorIcon(): Boolean {
-        return LSharedPrefsUtil.instance.getBoolean(KEY_FORCE_COLOR_ICON, false)
+    fun getForceColorIcon(context: Context): Boolean {
+        return context.getBoolean(KEY_FORCE_COLOR_ICON, false)
     }
 
     fun isLightIconStatusBar(): Boolean {
@@ -402,7 +434,7 @@ object C {
     }
 
     fun configAutoColorChanger(launcherActivity: LauncherActivity) {
-        if (getAutoColorChanger()) {
+        if (getAutoColorChanger(launcherActivity)) {
             val newColorPrimary = colors.random()
 
             fun getColor(exceptColor: Int): Int {
@@ -416,11 +448,16 @@ object C {
 
             val newColorBackground = getColor(newColorPrimary)
             if (newColorPrimary != newColorBackground) {
-                val resultUpdatePrimaryColor = updatePrimaryColor(newColorPrimary)
-                val resultUpdateBackgroundColor = updateBackgroundColor(newColorBackground)
+                val resultUpdatePrimaryColor = updatePrimaryColor(
+                    context = launcherActivity,
+                    newColor = newColorPrimary
+                )
+                val resultUpdateBackgroundColor = updateBackgroundColor(
+                    context = launcherActivity,
+                    newColor = newColorBackground
+                )
                 if (resultUpdatePrimaryColor && resultUpdateBackgroundColor) {
-                    LUIUtil.setWallpaperAndLockScreen(
-                        context = launcherActivity,
+                    launcherActivity.setWallpaperAndLockScreen(
                         color = newColorBackground,
                         isSetWallpaper = true,
                         isSetLockScreen = true,
@@ -447,13 +484,11 @@ object C {
             .focusBorderSize(15)
             .customView(R.layout.layout_show_case, object : OnViewInflateListener {
                 override fun onViewInflated(view: View) {
-                    LUIUtil.recolorStatusBar(
-                        context = view.context,
+                    view.context.recolorStatusBar(
                         startColor = null,
                         endColor = colorBackground
                     )
-                    LUIUtil.recolorNavigationBar(
-                        context = view.context,
+                    view.context.recolorNavigationBar(
                         startColor = null,
                         endColor = colorBackground
                     )

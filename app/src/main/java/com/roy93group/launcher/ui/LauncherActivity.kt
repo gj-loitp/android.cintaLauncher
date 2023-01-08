@@ -22,7 +22,7 @@ import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseActivityFont
 import com.loitp.core.ext.isDefaultLauncher
-import com.loitp.core.utilities.LUIUtil
+import com.loitp.core.ext.setScrollChange
 import com.roy93group.app.AppLife
 import com.roy93group.app.C
 import com.roy93group.launcher.LauncherContext
@@ -108,10 +108,9 @@ class LauncherActivity : BaseActivityFont() {
             setHasStableIds(true)
         }
         rvFeed.apply {
-            LUIUtil.setScrollChange(
-                recyclerView = this,
+            this.setScrollChange(
                 onTop = {
-                    if (C.getOpenSearchWhenScrollTop()) {
+                    if (C.getOpenSearchWhenScrollTop(context)) {
                         C.goToSearchScreen(context)
                     }
                 },

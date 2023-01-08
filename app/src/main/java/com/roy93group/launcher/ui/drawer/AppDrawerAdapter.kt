@@ -32,8 +32,8 @@ class AppDrawerAdapter(
     }
 
     var indexer: HighlightSectionIndexer? = null
-    private var isDisplayAppIcon = C.getDisplayAppIcon()
-    private var isForceColorIcon = C.getForceColorIcon()
+    private var isDisplayAppIcon = C.getDisplayAppIcon(launcherActivity)
+    private var isForceColorIcon = C.getForceColorIcon(launcherActivity)
 
     @SuppressLint("NotifyDataSetChanged")
     fun setIsDisplayAppIcon(isDisplayAppIcon: Boolean) {

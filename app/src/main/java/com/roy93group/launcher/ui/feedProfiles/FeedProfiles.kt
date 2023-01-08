@@ -74,7 +74,7 @@ class FeedProfiles(val launcherActivity: LauncherActivity) {
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateTheme() {
-        if (C.getDisplayFilterViews()) {
+        if (C.getDisplayFilterViews(context = launcherActivity)) {
             rvFeedFilters.isVisible = true
             feedFilterAdapter.notifyDataSetChanged()
         } else {

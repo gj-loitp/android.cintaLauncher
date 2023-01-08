@@ -15,9 +15,9 @@ import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseActivityFont
 import com.loitp.core.common.Constants
+import com.loitp.core.ext.addTextChangedDelayListener
 import com.loitp.core.ext.changeLayersColor
 import com.loitp.core.ext.tranIn
-import com.loitp.core.utilities.LUIUtil
 import com.loitp.data.ActivityData
 import com.roy93group.app.C
 import com.roy93group.launcher.R
@@ -121,8 +121,7 @@ class SearchActivity : BaseActivityFont() {
             }
         }
         etSearchBarText?.run {
-            LUIUtil.addTextChangedListener(
-                editText = this,
+            this.addTextChangedDelayListener(
                 delayInMls = 700,
                 afterTextChanged = { s ->
 //                    logD("doOnTextChanged $s")

@@ -41,8 +41,8 @@ class FeedAdapter(
     }
 
     inline val context: Context get() = launcherActivity
-    private var isDisplayAppIcon = C.getDisplayAppIcon()
-    private var isForceColorIcon = C.getForceColorIcon()
+    private var isDisplayAppIcon = C.getDisplayAppIcon(context)
+    private var isForceColorIcon = C.getForceColorIcon(context)
     private var items: List<FeedItem> = emptyList()
 
     @SuppressLint("NotifyDataSetChanged")

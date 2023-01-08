@@ -54,7 +54,7 @@ class BottomSheetText(
 
         llRoot.apply {
             setCardBackgroundColor(colorBackground)
-            C.setCornerCardView(activity = requireActivity(), cardView = this)
+            C.setCornerCardView(cardView = this)
         }
         ivSlider.setColorFilter(colorPrimary)
         tvTitle.apply {

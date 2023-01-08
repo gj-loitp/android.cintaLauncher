@@ -14,7 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.loitp.core.ext.setButtonTintList
+import com.loitp.core.ext.setButtonTintListColor
 import com.loitp.core.ext.vibrate
 import com.roy93group.app.C
 import com.roy93group.launcher.R
@@ -69,7 +69,7 @@ class BottomSheetOption(
 
         llRoot.apply {
             setCardBackgroundColor(colorBackground)
-            C.setCornerCardView(activity = requireActivity(), cardView = this)
+            C.setCornerCardView(cardView = this)
         }
         ivSlider.setColorFilter(colorPrimary)
         tvTitle.apply {
@@ -84,12 +84,12 @@ class BottomSheetOption(
         rb0.apply {
             text = value0
             setTextColor(colorPrimary)
-            this.setButtonTintList(colorPrimary)
+            this.setButtonTintListColor(colorPrimary)
         }
         rb1.apply {
             text = value1
             setTextColor(colorPrimary)
-            this.setButtonTintList(colorPrimary)
+            this.setButtonTintListColor(colorPrimary)
         }
 
         when (firstIndexCheck) {

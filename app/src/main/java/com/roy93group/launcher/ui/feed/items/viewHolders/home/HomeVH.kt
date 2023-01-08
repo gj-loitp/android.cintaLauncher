@@ -18,9 +18,9 @@ class HomeViewHolder(
     val launcherActivity: LauncherActivity,
     itemView: View,
 ) : RecyclerView.ViewHolder(itemView) {
-    private var isForceColorIcon = C.getForceColorIcon()
+    private var isForceColorIcon = C.getForceColorIcon(launcherActivity)
     private var colorPrimary = C.getColorPrimary()
-    private val notificationIconsAdapter = NotificationIconsAdapter()
+    private val notificationIconsAdapter = NotificationIconsAdapter(launcherActivity)
 
     private val rvNotificationIconList: RecyclerView = itemView.rvNotificationIconList.apply {
         layoutManager = LinearLayoutManagerWrapper(

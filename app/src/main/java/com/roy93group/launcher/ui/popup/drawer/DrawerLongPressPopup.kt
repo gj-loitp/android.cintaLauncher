@@ -16,7 +16,6 @@ import com.google.firebase.remoteconfig.ktx.get
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.loitp.core.base.BaseActivity
 import com.loitp.core.ext.*
-import com.loitp.core.utilities.LUIUtil
 import com.roy93group.app.C
 import com.roy93group.launcher.BuildConfig
 import com.roy93group.launcher.R
@@ -163,18 +162,18 @@ object DrawerLongPressPopup {
                 text = context.getString(R.string.smart_search),
                 description = context.getString(R.string.enable_search_when_scroll_to_top),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_shapes),
-                value = C.getOpenSearchWhenScrollTop(),
+                value = C.getOpenSearchWhenScrollTop(context),
                 onToggle = { _, value ->
-                    C.setOpenSearchWhenScrollTop(value)
+                    C.setOpenSearchWhenScrollTop(context, value)
                 }
             ),
             ListPopupItem(
                 text = context.getString(R.string.display_filter_view),
                 description = context.getString(R.string.display_filter_view_des),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_filter_list_24),
-                value = C.getDisplayFilterViews(),
+                value = C.getDisplayFilterViews(context),
                 onToggle = { _, value ->
-                    C.setDisplayFilterViews(value)
+                    C.setDisplayFilterViews(context, value)
                     launcherActivity.feedProfiles.updateTheme()
                 }
             ),
@@ -191,7 +190,7 @@ object DrawerLongPressPopup {
                     des = context.getString(R.string.pick_your_favorite_color),
                     warning = context.getString(R.string.the_color_launcher_will_be_restarted),
                     onDismiss = { newColor ->
-                        val result = C.updatePrimaryColor(newColor)
+                        val result = C.updatePrimaryColor(context, newColor)
                         if (result) {
                             launcherActivity.updateTheme()
                         }
@@ -209,10 +208,9 @@ object DrawerLongPressPopup {
                     des = context.getString(R.string.pick_your_favorite_color_background),
                     warning = context.getString(R.string.the_color_launcher_will_be_restarted),
                     onDismiss = { newColor ->
-                        val result = C.updateBackgroundColor(newColor)
+                        val result = C.updateBackgroundColor(context, newColor)
                         if (result) {
-                            LUIUtil.setWallpaperAndLockScreen(
-                                context = context,
+                            context.setWallpaperAndLockScreen(
                                 color = newColor,
                                 isSetWallpaper = true,
                                 isSetLockScreen = true,
@@ -224,9 +222,9 @@ object DrawerLongPressPopup {
             ListPopupItem(
                 text = context.getString(R.string.auto_color),
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_hdr_auto_24),
-                value = C.getAutoColorChanger(),
+                value = C.getAutoColorChanger(context),
                 onToggle = { _, value ->
-                    C.setAutoColorChanger(value)
+                    C.setAutoColorChanger(context, value)
                 }
             ),
             ListPopupItem(

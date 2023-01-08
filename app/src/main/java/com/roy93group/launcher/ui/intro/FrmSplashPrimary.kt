@@ -49,7 +49,7 @@ class FrmSplashPrimary : FrmWithNext(R.layout.frm_intro_splash_primary) {
                 override fun onColorChanged(c: Int) {
                     context?.vibrate(10L)
                     setBackgroundColor(c)
-                    val result = C.updatePrimaryColor(c)
+                    val result = C.updatePrimaryColor(context, c)
                     if (result) {
                         updateUI()
                         (activity as? IntroActivity)?.updateUI()

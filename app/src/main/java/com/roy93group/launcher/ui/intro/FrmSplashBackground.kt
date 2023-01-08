@@ -40,7 +40,7 @@ class FrmSplashBackground : FrmWithNext(R.layout.frm_intro_splash_background) {
             setOnColorChangedListener(object : OnColorChangedListener {
                 override fun onColorChanged(c: Int) {
                     context.vibrate(10L)
-                    val result = C.updateBackgroundColor(c)
+                    val result = C.updateBackgroundColor(context, c)
                     if (result) {
                         (activity as? IntroActivity)?.updateUI()
                     } else {

@@ -8,7 +8,7 @@ import android.view.animation.DecelerateInterpolator
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import cdflynn.android.library.turn.TurnLayoutManager
-import com.loitp.core.utilities.LUIUtil
+import com.loitp.core.ext.setScrollChange
 import com.roy93group.app.C
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.ui.LauncherActivity
@@ -34,20 +34,19 @@ class AppDrawer(
     val adapter = AppDrawerAdapter(launcherActivity)
     private var layoutManager: TurnLayoutManager? = null
 
-    private var seekRadiusValue = C.getSeekRadiusValue()
-    private var seekPeekValue = C.getSeekPeekValue()
-    private var orientationValue = C.getOrientationValue()
-    private var gravityValue = C.getGravityValue()
-    private var isCheckedValue = C.getChecked()
-    private var isDisplayAppIcon = C.getDisplayAppIcon()
-    private var isForceColorIcon = C.getForceColorIcon()
+    private var seekRadiusValue = C.getSeekRadiusValue(launcherActivity)
+    private var seekPeekValue = C.getSeekPeekValue(launcherActivity)
+    private var orientationValue = C.getOrientationValue(launcherActivity)
+    private var gravityValue = C.getGravityValue(launcherActivity)
+    private var isCheckedValue = C.getChecked(launcherActivity)
+    private var isDisplayAppIcon = C.getDisplayAppIcon(launcherActivity)
+    private var isForceColorIcon = C.getForceColorIcon(launcherActivity)
 
     @SuppressLint("ClickableViewAccessibility")
     fun init() {
-        LUIUtil.setScrollChange(
-            recyclerView = launcherActivity.rvApp,
+        launcherActivity.rvApp.setScrollChange(
             onTop = {
-                if (C.getOpenSearchWhenScrollTop()) {
+                if (C.getOpenSearchWhenScrollTop(launcherActivity)) {
                     C.goToSearchScreen(launcherActivity)
                 }
             },
@@ -212,12 +211,12 @@ class AppDrawer(
             onSeekRadiusValue = { value ->
                 seekRadiusValue = value
                 layoutManager?.setRadius(seekRadiusValue)
-                C.setSeekRadiusValue(seekRadiusValue)
+                C.setSeekRadiusValue(launcherActivity, seekRadiusValue)
             },
             onSeekPeekValue = { value ->
                 seekPeekValue = value
                 layoutManager?.setPeekDistance(seekPeekValue)
-                C.setSeekPeekValue(seekPeekValue)
+                C.setSeekPeekValue(launcherActivity, seekPeekValue)
             },
             onOrientation = { value ->
                 orientationValue = value
@@ -226,7 +225,7 @@ class AppDrawer(
                 } else {
                     layoutManager?.orientation = TurnLayoutManager.VERTICAL
                 }
-                C.setOrientationValue(orientationValue)
+                C.setOrientationValue(launcherActivity, orientationValue)
             },
             onGravity = { value ->
                 gravityValue = value
@@ -235,23 +234,23 @@ class AppDrawer(
                 } else {
                     layoutManager?.setGravity(TurnLayoutManager.Gravity.END)
                 }
-                C.setGravityValue(gravityValue)
+                C.setGravityValue(launcherActivity, gravityValue)
             },
             onRotate = { value ->
                 isCheckedValue = value
                 layoutManager?.setRotate(isCheckedValue)
-                C.setChecked(isCheckedValue)
+                C.setChecked(launcherActivity, isCheckedValue)
             },
             onDisplayAppIcon = { value ->
                 isDisplayAppIcon = value
                 adapter.setIsDisplayAppIcon(isDisplayAppIcon)
-                C.setDisplayAppIcon(isDisplayAppIcon)
+                C.setDisplayAppIcon(launcherActivity, isDisplayAppIcon)
                 launcherActivity.feedAdapter.setDisplayAppIcon(isDisplayAppIcon)
             },
             onForceColorIcon = { value ->
                 isForceColorIcon = value
                 adapter.setForceColorIcon(isForceColorIcon)
-                C.setForceColorIcon(isForceColorIcon)
+                C.setForceColorIcon(launcherActivity, isForceColorIcon)
                 launcherActivity.feedAdapter.setForceColorIcon(isForceColorIcon)
             },
             onResetAllValue = {
@@ -287,12 +286,12 @@ class AppDrawer(
                     setRotate(isCheckedValue)
                 }
 
-                C.setSeekRadiusValue(seekRadiusValue)
-                C.setSeekPeekValue(seekPeekValue)
-                C.setOrientationValue(orientationValue)
-                C.setGravityValue(gravityValue)
-                C.setChecked(isCheckedValue)
-                C.setDisplayAppIcon(isCheckedValue)
+                C.setSeekRadiusValue(launcherActivity, seekRadiusValue)
+                C.setSeekPeekValue(launcherActivity, seekPeekValue)
+                C.setOrientationValue(launcherActivity, orientationValue)
+                C.setGravityValue(launcherActivity, gravityValue)
+                C.setChecked(launcherActivity, isCheckedValue)
+                C.setDisplayAppIcon(launcherActivity, isCheckedValue)
             }
         )
         fragment.show(launcherActivity.supportFragmentManager, fragment.tag)

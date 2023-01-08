@@ -1,6 +1,7 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.home
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -18,10 +19,12 @@ import kotlinx.android.synthetic.main.view_feed_home_notification_icon.view.*
  * +840766040293
  * freuss47@gmail.com
  */
-class NotificationIconsAdapter : RecyclerView.Adapter<NotificationIconsAdapter.IconViewHolder>() {
+class NotificationIconsAdapter(
+    val context: Context
+) : RecyclerView.Adapter<NotificationIconsAdapter.IconViewHolder>() {
     private val colorPrimary = C.getColorPrimary()
     private val colorBackground = C.getColorBackground()
-    private var isForceColorIcon = C.getForceColorIcon()
+    private var isForceColorIcon = C.getForceColorIcon(context)
     private var items = emptyList<Drawable>()
 
     class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

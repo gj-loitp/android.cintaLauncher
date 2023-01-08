@@ -2,9 +2,10 @@ package com.roy93group.launcher.ui.bottomBar
 
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
+import com.loitp.core.ext.screenHeight
+import com.loitp.core.ext.screenWidth
 import com.loitp.core.ext.setBackgroundTintList
-import com.loitp.core.utilities.LScreenUtil
-import com.loitp.core.utilities.LUIUtil
+import com.loitp.core.ext.setSafeOnClickListenerElastic
 import com.roy93group.app.C
 import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.popup.drawer.DrawerLongPressPopup
@@ -39,14 +40,13 @@ class BottomBar(val launcherActivity: LauncherActivity) {
     }
     private val ivSetting: AppCompatImageView = launcherActivity.ivSetting.apply {
         setColorFilter(colorBackground)
-        LUIUtil.setSafeOnClickListenerElastic(
-            view = this,
+        this.setSafeOnClickListenerElastic(
             runnable = {
                 DrawerLongPressPopup.show(
                     launcherActivity = launcherActivity,
                     parent = this,
-                    touchX = LScreenUtil.screenWidth / 2f,
-                    touchY = LScreenUtil.screenHeight / 2f,
+                    touchX = screenWidth / 2f,
+                    touchY = screenHeight / 2f,
                     navbarHeight = launcherActivity.getNavigationBarHeight(),
                     settings = launcherActivity.settings,
                     reloadApps = launcherActivity::loadApps

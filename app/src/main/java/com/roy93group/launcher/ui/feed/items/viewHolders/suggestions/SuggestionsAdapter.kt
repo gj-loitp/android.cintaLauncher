@@ -24,8 +24,8 @@ class SuggestionsAdapter(
 ) : RecyclerView.Adapter<AppViewHolder>() {
 
     private var items: List<LauncherItem> = emptyList()
-    private var isDisplayAppIcon = C.getDisplayAppIcon()
-    private var isForceColorIcon = C.getForceColorIcon()
+    private var isDisplayAppIcon = C.getDisplayAppIcon(launcherActivity)
+    private var isForceColorIcon = C.getForceColorIcon(launcherActivity)
 
     override fun getItemCount(): Int = items.size
 

@@ -9,7 +9,7 @@ import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseActivityFancyShowcase
 import com.loitp.core.ext.openBrowserPolicy
 import com.loitp.core.ext.setSafeOnClickListener
-import com.loitp.core.utilities.LUIUtil
+import com.loitp.core.ext.setWallpaperAndLockScreen
 import com.loitp.views.sw.toggle.LabeledSwitch
 import com.loitp.views.sw.toggle.OnToggledListener
 import com.roy93group.app.C
@@ -64,8 +64,7 @@ class IntroActivity : BaseActivityFancyShowcase() {
     }
 
     private fun setWallpaper() {
-        LUIUtil.setWallpaperAndLockScreen(
-            context = baseContext,
+        baseContext.setWallpaperAndLockScreen(
             color = C.getColorBackground(),
             isSetWallpaper = true,
             isSetLockScreen = true,

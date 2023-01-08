@@ -31,8 +31,8 @@ class SearchAdapter(
     }
 
     private var results = emptyList<SearchResult>()
-    private val isDisplayAppIcon = C.getDisplayAppIcon()
-    private val isForceColorIcon = C.getForceColorIcon()
+    private val isDisplayAppIcon = C.getDisplayAppIcon(activity)
+    private val isForceColorIcon = C.getForceColorIcon(activity)
 
     override fun getItemViewType(i: Int): Int {
         return when (results[i]) {
