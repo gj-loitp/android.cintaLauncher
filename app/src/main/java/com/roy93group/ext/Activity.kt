@@ -143,10 +143,10 @@ fun FragmentActivity.launchSheetText(
 
 fun LauncherActivity.configAutoColorChanger() {
     if (this.getAutoColorChanger()) {
-        val newColorPrimary = com.loitp.core.ext.colors.random()
+        val newColorPrimary = colorsPicker.random()
 
         fun getColor(exceptColor: Int): Int {
-            val newColor = com.loitp.core.ext.colors.random()
+            val newColor = colorsPicker.random()
             return if (exceptColor == newColor) {
                 getColor(exceptColor)
             } else {
