@@ -14,7 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.loitp.core.common.Constants
+import com.loitp.core.common.*
 import com.loitp.core.ext.*
 import com.loitp.core.helper.adHelper.AdHelperActivity
 import com.roy93group.ext.*
@@ -143,11 +143,11 @@ class BottomSheetAboutLauncher(
             }
             setSafeOnClickListener {
                 val intent = Intent(context, AdHelperActivity::class.java).apply {
-                    putExtra(Constants.AD_HELPER_IS_ENGLISH_LANGUAGE, true)
-                    putExtra(Constants.AD_HELPER_COLOR_PRIMARY, colorPrimary)
-                    putExtra(Constants.AD_HELPER_COLOR_BACKGROUND, colorBackground)
-                    putExtra(Constants.AD_HELPER_COLOR_STATUS_BAR, colorBackground)
-                    putExtra(Constants.AD_HELPER_IS_LIGHT_ICON_STATUS_BAR, isLightIconStatusBar())
+                    putExtra(AD_HELPER_IS_ENGLISH_LANGUAGE, true)
+                    putExtra(AD_HELPER_COLOR_PRIMARY, colorPrimary)
+                    putExtra(AD_HELPER_COLOR_BACKGROUND, colorBackground)
+                    putExtra(AD_HELPER_COLOR_STATUS_BAR, colorBackground)
+                    putExtra(AD_HELPER_IS_LIGHT_ICON_STATUS_BAR, isLightIconStatusBar())
                 }
                 startActivity(intent)
                 context.tranIn()

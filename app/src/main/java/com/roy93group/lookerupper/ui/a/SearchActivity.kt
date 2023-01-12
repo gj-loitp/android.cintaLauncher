@@ -14,7 +14,7 @@ import com.loitp.annotation.IsFullScreen
 import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseActivityFont
-import com.loitp.core.common.Constants
+import com.loitp.core.common.TYPE_ACTIVITY_TRANSITION_ZOOM
 import com.loitp.core.ext.addTextChangedDelayListener
 import com.loitp.core.ext.changeLayersColor
 import com.loitp.core.ext.tranIn
@@ -174,7 +174,7 @@ class SearchActivity : BaseActivityFont() {
     }
 
     override fun onDestroy() {
-        ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_ZOOM
+        ActivityData.instance.type = TYPE_ACTIVITY_TRANSITION_ZOOM
         super.onDestroy()
     }
 }

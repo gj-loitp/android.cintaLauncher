@@ -32,7 +32,6 @@ import org.greenrobot.eventbus.EventBus
 //TODO pinned app o search bar
 //TODO change status bar cua flickr screen sdk base master
 //TODO android sliding up panel
-//TODO recycler view pull like ios
 //TODO moi lan pick 1 color tu color picker thi show 1 msg y nghia mau sac do cho user khoai
 
 //suggestion
@@ -80,6 +79,7 @@ import org.greenrobot.eventbus.EventBus
 //animation animated stars view
 //custom font screen <<< kho xu ly trong case text style bold, italic
 //showcase
+//recycler view pull like ios
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {

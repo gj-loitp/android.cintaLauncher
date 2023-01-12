@@ -8,7 +8,10 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
-import com.loitp.core.common.Constants
+import com.loitp.core.common.BKG_SPLASH_SCREEN
+import com.loitp.core.common.FLICKR_ID_STICKER
+import com.loitp.core.common.KEY_REMOVE_ALBUM_FLICKR_LIST
+import com.loitp.core.common.URL_IMG_11
 import com.loitp.core.ext.recolorNavigationBar
 import com.loitp.core.ext.recolorStatusBar
 import com.loitp.core.ext.setWallpaperAndLockScreen
@@ -34,12 +37,12 @@ import me.toptas.fancyshowcase.listener.OnViewInflateListener
 
 fun Activity.launchWallpaper() {
     val intent = Intent(this, GalleryCoreSplashActivity::class.java)
-    intent.putExtra(Constants.BKG_SPLASH_SCREEN, Constants.URL_IMG_11)
+    intent.putExtra(BKG_SPLASH_SCREEN, URL_IMG_11)
     // neu muon remove albumn nao thi cu pass id cua albumn do
     val removeAlbumFlickrList = ArrayList<String>()
-    removeAlbumFlickrList.add(Constants.FLICKR_ID_STICKER)
+    removeAlbumFlickrList.add(FLICKR_ID_STICKER)
     intent.putStringArrayListExtra(
-        Constants.KEY_REMOVE_ALBUM_FLICKR_LIST,
+        KEY_REMOVE_ALBUM_FLICKR_LIST,
         removeAlbumFlickrList
     )
     this.startActivity(intent)

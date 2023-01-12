@@ -2,7 +2,7 @@ package com.roy93group.ext
 
 import android.content.Context
 import android.content.Intent
-import com.loitp.core.common.Constants
+import com.loitp.core.common.TYPE_ACTIVITY_TRANSITION_SLIDE_UP
 import com.loitp.core.ext.tranIn
 import com.loitp.core.ext.vibrate
 import com.loitp.data.ActivityData
@@ -16,7 +16,7 @@ import com.roy93group.lookerupper.ui.a.SearchActivity
  * freuss47@gmail.com
  */
 fun Context.goToSearchScreen() {
-    ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_SLIDE_UP
+    ActivityData.instance.type = TYPE_ACTIVITY_TRANSITION_SLIDE_UP
     this.vibrate(milliseconds = 100L)
     this.startActivity(
         Intent(
