@@ -13,6 +13,7 @@ import android.widget.PopupWindow
 import com.loitp.core.ext.vibrate
 import com.roy93group.ext.C
 import com.roy93group.ext.getColorBackground
+import com.roy93group.ext.getColorPrimary
 import com.roy93group.launcher.R
 import com.roy93group.launcher.storage.ScrollbarControllerSetting
 import com.roy93group.launcher.storage.ScrollbarControllerSetting.scrollbarController
@@ -145,7 +146,7 @@ class ScrollbarIconView @JvmOverloads constructor(
                 /* innerRadii = */ null
             )
         ).apply {
-            paint.color = getColorBackground()
+            paint.color = getColorPrimary()
         }
         val p = 16.dp.toPixels(this)
         when (orientation) {

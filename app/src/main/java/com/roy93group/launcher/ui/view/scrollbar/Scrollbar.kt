@@ -157,7 +157,6 @@ class Scrollbar : View {
         }
     }
 
-
     var currentScrolledSectionStart = -1
         private set
     var currentScrolledSectionEnd = -1
