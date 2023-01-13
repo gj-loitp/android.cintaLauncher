@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:background="@color/color_test_primary" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.factor.bouncy.BouncyRecyclerView
         android:id="@+id/rvRecents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

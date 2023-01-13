@@ -10,7 +10,7 @@
     tools:background="@color/color_test_background"
     tools:visibility="visible">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.factor.bouncy.BouncyRecyclerView
         android:id="@+id/rvApp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -36,7 +36,7 @@
             tools:text="@string/app_name"
             tools:textColor="@color/color_test_primary" />
 
-        <androidx.core.widget.NestedScrollView
+        <com.factor.bouncy.BouncyNestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle">
@@ -50,7 +50,7 @@
                 android:textSize="@dimen/txt_medium"
                 tools:text="@string/large_text"
                 tools:textColor="@color/color_test_primary" />
-        </androidx.core.widget.NestedScrollView>
+        </com.factor.bouncy.BouncyNestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -32,7 +32,7 @@
         tools:lottie_colorFilter="@color/color_test_primary"
         tools:visibility="visible" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.factor.bouncy.BouncyRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

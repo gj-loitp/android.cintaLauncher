@@ -11,7 +11,7 @@
     app:cardUseCompatPadding="true"
     tools:cardBackgroundColor="@color/color_test_background">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.factor.bouncy.BouncyRecyclerView
         android:id="@+id/rvActions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -41,7 +41,7 @@
             tools:text="@string/app_name"
             tools:textColor="@color/color_test_primary" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.factor.bouncy.BouncyRecyclerView
             android:id="@+id/rvInfoBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

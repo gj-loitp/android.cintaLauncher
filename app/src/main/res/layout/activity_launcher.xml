@@ -8,12 +8,12 @@
     tools:background="@color/color_test_background"
     tools:context=".ui.LauncherActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.factor.bouncy.BouncyRecyclerView
         android:id="@+id/rvFeed"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.factor.bouncy.BouncyRecyclerView
         android:id="@+id/rvFeedFilters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

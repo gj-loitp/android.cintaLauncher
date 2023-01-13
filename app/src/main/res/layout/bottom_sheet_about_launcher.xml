@@ -36,7 +36,7 @@
             app:layout_constraintTop_toBottomOf="@+id/ivSlider"
             tools:textColor="@color/color_test_primary" />
 
-        <androidx.core.widget.NestedScrollView
+        <com.factor.bouncy.BouncyNestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle">
@@ -67,7 +67,7 @@
                     layout="@layout/view_item" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.core.widget.NestedScrollView>
+        </com.factor.bouncy.BouncyNestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
