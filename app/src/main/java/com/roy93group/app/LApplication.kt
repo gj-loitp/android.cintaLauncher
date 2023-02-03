@@ -29,7 +29,6 @@ import org.greenrobot.eventbus.EventBus
 //TODO search kha la khi khan, check xem keyword nhu nao
 //TODO setting view_app_card enable/disabled card use compat
 //TODO gg pay
-//TODO animation konfetti
 //TODO pinned app o search bar
 //TODO change status bar cua flickr screen sdk base master
 //TODO android sliding up panel
@@ -41,6 +40,7 @@ import org.greenrobot.eventbus.EventBus
 //page RSS tuong tu nhu app iBao
 //tile progress view
 //wheel spinner
+//animation konfetti
 
 //done
 //chon man hinh chu o screen setting
