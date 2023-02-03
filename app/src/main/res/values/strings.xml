@@ -90,8 +90,9 @@
     <string name="changelog">Changelog</string>
     <string name="changelog_des">List of changes in the lasted version of the application</string>
     <string name="changelog_detail">\n
-        \n✪ Version: 2023.01.25
+        \n✪ Version: 2023.02.04
         \n- Added physics-based bouncy overscroll effect
+        \n- Added feature on/off smart search
         \n-----
         \n✪ Version: 2023.01.10
         \n- Auto color changer
