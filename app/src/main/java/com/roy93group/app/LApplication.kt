@@ -30,7 +30,6 @@ import org.greenrobot.eventbus.EventBus
 //TODO setting view_app_card enable/disabled card use compat
 //TODO gg pay
 //TODO pinned app o search bar
-//TODO change status bar cua flickr screen sdk base master
 //TODO android sliding up panel
 //TODO moi lan pick 1 color tu color picker thi show 1 msg y nghia mau sac do cho user khoai
 
