@@ -17,16 +17,15 @@ import org.greenrobot.eventbus.EventBus
 //https://console.firebase.google.com/u/0/project/cinta-launcher-71015/overview
 //TODO firebase set is_show_flickr_gallery true when app available
 //TODO update string changelog_detail every build
+
 //TODO permision co kho khan o may xiaomi, samsung???
 //TODO fav app
 //TODO lock app
 //TODO hide app
 //TODO app badge
 //TODO sort app drawer theo tan suat
-//TODO tich hop he sinh thai app roy93group
 //TODO add setSafeOnClickListenerElastic
 //TODO search kha la khi khan, check xem keyword nhu nao
-//TODO setting view_app_card enable/disabled card use compat
 //TODO gg pay
 //TODO pinned app o search bar
 //TODO android sliding up panel
@@ -39,6 +38,7 @@ import org.greenrobot.eventbus.EventBus
 //tile progress view
 //wheel spinner
 //animation konfetti
+//tich hop he sinh thai app roy93group
 
 //done
 //chon man hinh chu o screen setting
