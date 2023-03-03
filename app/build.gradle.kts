@@ -56,6 +56,9 @@ dependencies {
     implementation("com.github.cdflynn:turn-layout-manager:v1.3.1")
     implementation("com.github.Chrisvin:RubberPicker:v1.5")
 
+//    https://github.com/SimformSolutionsPvtLtd/SSBiometricsAuthentication
+    implementation("androidx.biometric:biometric:1.2.0-alpha05")
+
     // debugImplementation because LeakCanary should only run in debug builds.
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.10")
 }
