@@ -10,6 +10,6 @@ import com.google.errorprone.annotations.Keep
  * freuss47@gmail.com
  */
 @Keep
-class AppLife() {
+class AppLife {
     var isOnBackground: Boolean? = null
 }
