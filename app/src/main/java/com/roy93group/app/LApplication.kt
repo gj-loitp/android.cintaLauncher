@@ -18,7 +18,6 @@ import org.greenrobot.eventbus.EventBus
 //TODO firebase set is_show_flickr_gallery true when app available
 //TODO update string changelog_detail every build
 
-//TODO lock app
 //TODO permision co kho khan o may xiaomi, samsung???
 //TODO fav app
 //TODO hide app
@@ -80,6 +79,7 @@ import org.greenrobot.eventbus.EventBus
 //showcase
 //recycler view pull like ios
 //turn off smart search
+//lock app
 
 @LogTag("LApplication")
 class LApplication : BaseApplication() {
