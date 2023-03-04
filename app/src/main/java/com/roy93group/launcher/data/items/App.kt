@@ -36,14 +36,12 @@ class App(
 
     companion object {
         fun parse(
-            string: String,
-            appsByName: HashMap<String, MutableList<App>>
+            string: String, appsByName: HashMap<String, MutableList<App>>
         ): App? {
             val (packageName, name, u) = string.split('/')
             val userHandle = u.toInt()
             return appsByName[packageName]?.find {
-                it.name == name &&
-                        it.userHandle.hashCode() == userHandle
+                it.name == name && it.userHandle.hashCode() == userHandle
             }
         }
     }
@@ -87,7 +85,9 @@ class App(
     override fun open(context: Context, view: View?) {
         try {
             context.getSystemService(LauncherApps::class.java).startMainActivity(
-                ComponentName(packageName, name), userHandle, view?.clipBounds,
+                ComponentName(packageName, name),
+                userHandle,
+                view?.clipBounds,
                 ActivityOptions.makeScaleUpAnimation(
                     /* source = */ view,
                     /* startX = */ 0,
