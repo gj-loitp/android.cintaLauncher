@@ -14,13 +14,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.loitp.core.ext.*
-import com.roy93group.ext.getColorBackground
-import com.roy93group.ext.getColorPrimary
-import com.roy93group.ext.isAppLock
-import com.roy93group.ext.setCornerCardViewLauncher
+import com.roy93group.ext.*
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.data.items.LauncherItem
@@ -33,9 +32,7 @@ class BottomSheetAppOption(
 ) : BottomSheetDialogFragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         isCancelable = isCancelableFragment
         return inflater.inflate(R.layout.bottom_sheet_app_option, container, false)
@@ -110,19 +107,64 @@ class BottomSheetAppOption(
             this.isVisible =
                 biometricManager.canAuthenticate() == BiometricManager.BIOMETRIC_SUCCESS
 
-            (item as? App)?.packageName?.let { packageName ->
-                val isAppLock = context.isAppLock(packageName)
-                if (isAppLock) {
-                    this.text = context.getString(R.string.unlock_app)
-                } else {
-                    this.text = context.getString(R.string.lock_app)
+            (item as? App)?.let { app ->
+                app.packageName.let { packageName ->
+                    val isAppLock = context.isAppLock(packageName)
+                    if (isAppLock) {
+                        this.text = context.getString(R.string.unlock_app)
+                    } else {
+                        this.text = context.getString(R.string.lock_app)
+                    }
+                    btLockUnlockApp.setSafeOnClickListener {
+                        toggleLockApp(
+                            appName = app.label, packageName = packageName, isAppLock = isAppLock
+                        )
+                    }
                 }
-            }
-
-            btLockUnlockApp.setSafeOnClickListener {
-
             }
         }
     }
 
+    private fun toggleLockApp(appName: String, packageName: String, isAppLock: Boolean) {
+        val description = if (isAppLock) {
+            "Unlock $appName?"
+        } else {
+            "Lock $appName?"
+        }
+
+        val promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle(requireContext().getString(R.string.verify_your_identity))
+            .setDescription(description)
+            .setNegativeButtonText(requireContext().getString(R.string.cancel)).build()
+        instanceOfBiometricPrompt(packageName = packageName, isAppLock = isAppLock).authenticate(
+            promptInfo
+        )
+
+    }
+
+    private fun instanceOfBiometricPrompt(
+        packageName: String, isAppLock: Boolean
+    ): BiometricPrompt {
+        val executor = ContextCompat.getMainExecutor(requireContext())
+        val callback = object : BiometricPrompt.AuthenticationCallback() {
+            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                super.onAuthenticationError(errorCode, errString)
+            }
+
+            override fun onAuthenticationFailed() {
+                super.onAuthenticationFailed()
+            }
+
+            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                super.onAuthenticationSucceeded(result)
+                if (isAppLock) {
+                    context?.setAppLock(packageName, false)
+                } else {
+                    context?.setAppLock(packageName, true)
+                }
+                dismiss()
+            }
+        }
+        return BiometricPrompt(requireActivity(), executor, callback)
+    }
 }
