@@ -1,11 +1,10 @@
 package com.roy93group.lookerupper.ui.viewHolders
 
-import android.app.Activity
 import android.graphics.Color
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.roy93group.ext.C
 import com.roy93group.ext.getColorPrimary
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
@@ -22,8 +21,7 @@ import kotlinx.android.synthetic.main.view_search_result_compact.view.*
  * freuss47@gmail.com
  */
 class CompactSearchVH(
-    itemView: View,
-    val activity: Activity
+    itemView: View, val activity: AppCompatActivity
 ) : SearchVH(itemView) {
     private val colorPrimary = getColorPrimary()
 //    private val colorBackground = C.getColorBackground()
@@ -42,9 +40,7 @@ class CompactSearchVH(
         itemView.subtitle.apply {
             setTextColor(colorPrimary)
             applyIfNotNull(
-                view = itemView.subtitle,
-                value = result.subtitle,
-                block = TextView::setText
+                view = itemView.subtitle, value = result.subtitle, block = TextView::setText
             )
         }
 
@@ -66,7 +62,7 @@ class CompactSearchVH(
             if (result is CompactAppResult) {
                 SuggestionsManager.onItemOpened(context = it.context, item = result.app)
             }
-            result.open(it)
+            result.open(activity = activity, view = it)
         }
     }
 }

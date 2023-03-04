@@ -56,7 +56,7 @@ class AppSearchVH(
 
         itemView.setOnClickListener {
             SuggestionsManager.onItemOpened(context = it.context, item = result.app)
-            result.open(it)
+            result.open(activity = activity, view = it)
         }
 
         itemView.setOnLongClickListener {

@@ -82,9 +82,7 @@ fun bindAppViewHolder(
     holder.itemView.tvLineTitle.apply {
         setTextColor(colorPrimary)
         applyIfNotNull(
-            view = this,
-            value = banner?.title,
-            block = TextView::setText
+            view = this, value = banner?.title, block = TextView::setText
         )
     }
 
@@ -95,26 +93,19 @@ fun bindAppViewHolder(
         } else {
             isVisible = true
             applyIfNotNull(
-                view = this,
-                value = banner?.text,
-                block = TextView::setText
+                view = this, value = banner?.text, block = TextView::setText
             )
         }
     }
 
     holder.itemView.setOnClickListener {
         SuggestionsManager.onItemOpened(context = it.context, item = item)
-        item.open(context = it.context.applicationContext, view = it)
+        item.open(activity = launcherActivity, view = it)
     }
 
     holder.itemView.setOnLongClickListener {
         it.context.vibrate(500L)
-        launcherActivity.launchAppOption(
-            item = item,
-            isCancelableFragment = true,
-            onDismiss = {
-            }
-        )
+        launcherActivity.launchAppOption(item = item, isCancelableFragment = true, onDismiss = {})
         return@setOnLongClickListener false
     }
 

@@ -5,6 +5,7 @@ import android.content.pm.ShortcutInfo
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.palette.graphics.Palette
 import io.posidon.android.conveniencelib.drawable.toBitmap
 
@@ -42,7 +43,7 @@ class ShortcutResult(
 
     fun getColor(): Int = _color
 
-    override fun open(view: View) {
+    override fun open(activity: AppCompatActivity, view: View) {
         try {
             val launcherApps = view.context.getSystemService(LauncherApps::class.java)
             launcherApps.startShortcut(shortcutInfo, null, null)

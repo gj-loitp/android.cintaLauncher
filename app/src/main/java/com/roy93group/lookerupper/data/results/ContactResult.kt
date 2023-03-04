@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.ContactsContract
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.loitp.core.ext.tranIn
 
 /**
@@ -24,7 +25,8 @@ class ContactResult private constructor(
     val isStarred: Boolean
 ) : SearchResult {
 
-    override fun open(view: View) {
+    override var relevance = Relevance(0f)
+    override fun open(activity: AppCompatActivity, view: View) {
         val viewContact = Intent(Intent.ACTION_VIEW)
         viewContact.data =
             Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, lookupKey)
@@ -33,8 +35,6 @@ class ContactResult private constructor(
         view.context.startActivity(viewContact)
         view.context.tranIn()
     }
-
-    override var relevance = Relevance(0f)
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

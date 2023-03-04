@@ -4,6 +4,7 @@ import android.content.pm.LauncherApps
 import android.content.pm.ShortcutInfo
 import android.graphics.drawable.Drawable
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.roy93group.launcher.data.items.App
 
 /**
@@ -26,8 +27,8 @@ class AppResult(
 
 //    fun getColor(): Int = app.getColor()
 
-    override fun open(view: View) {
-        app.open(context = view.context, view = view)
+    override fun open(activity: AppCompatActivity, view: View) {
+        app.open(activity = activity, view = view)
     }
 
     fun getStaticShortcuts(launcherApps: LauncherApps): List<ShortcutInfo> =

@@ -1,6 +1,7 @@
 package com.roy93group.lookerupper.data.results
 
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  * Updated by Loitp on 2022.12.18
@@ -12,7 +13,7 @@ import android.view.View
 interface SearchResult {
     val title: String
     val relevance: Relevance
-    fun open(view: View)
+    fun open(activity: AppCompatActivity, view: View)
 }
 
 @JvmInline

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.ext.C
 import com.roy93group.ext.getDisplayAppIcon
 import com.roy93group.ext.getForceColorIcon
 import com.roy93group.launcher.R
@@ -47,14 +46,12 @@ class SearchAdapter(
     }
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
+        parent: ViewGroup, viewType: Int
     ): SearchVH {
         return when (viewType) {
             RESULT_APP -> AppSearchVH(
                 itemView = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.view_smart_suggestion, parent, false),
-                activity = activity
+                    .inflate(R.layout.view_smart_suggestion, parent, false), activity = activity
             )
             RESULT_COMPACT -> CompactSearchVH(
                 itemView = LayoutInflater.from(parent.context)
@@ -62,10 +59,12 @@ class SearchAdapter(
                 activity = activity
             )
             RESULT_CONTACT -> ContactSearchVH(
+                activity = activity,
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_search_result_contact, parent, false)
             )
             RESULT_ANSWER -> AnswerSearchVH(
+                activity = activity,
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_search_result_answer, parent, false)
             )
@@ -74,8 +73,7 @@ class SearchAdapter(
     }
 
     override fun onBindViewHolder(
-        holder: SearchVH,
-        i: Int
+        holder: SearchVH, i: Int
     ) {
         holder.onBind(
             result = results[i],

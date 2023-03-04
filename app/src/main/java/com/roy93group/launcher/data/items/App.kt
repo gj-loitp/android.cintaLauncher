@@ -2,7 +2,6 @@ package com.roy93group.launcher.data.items
 
 import android.app.ActivityOptions
 import android.content.ComponentName
-import android.content.Context
 import android.content.pm.LauncherApps
 import android.content.pm.PackageManager
 import android.content.pm.ShortcutInfo
@@ -11,6 +10,11 @@ import android.os.Process
 import android.os.UserHandle
 import android.view.View
 import androidx.annotation.Keep
+import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
+import com.roy93group.ext.isAppLock
+import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItemWithBigImage
 import com.roy93group.launcher.providers.feed.FeedSorter
 import com.roy93group.launcher.providers.feed.notification.NotificationService
@@ -82,9 +86,11 @@ class App(
         val bgOpacity: Float,
     )
 
-    override fun open(context: Context, view: View?) {
-        try {
-            context.getSystemService(LauncherApps::class.java).startMainActivity(
+    override fun open(
+        activity: AppCompatActivity, view: View?
+    ) {
+        fun launch() {
+            activity.getSystemService(LauncherApps::class.java).startMainActivity(
                 ComponentName(packageName, name),
                 userHandle,
                 view?.clipBounds,
@@ -96,6 +102,19 @@ class App(
                     /* height = */ view?.measuredHeight ?: 0
                 ).toBundle()
             )
+        }
+        try {
+            val isAppLock = activity.isAppLock(packageName)
+            if (isAppLock) {
+                checkBiometric(
+                    activity = activity,
+                    appName = label,
+                    onSuccess = {
+                        launch()
+                    })
+            } else {
+                launch()
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -153,5 +172,44 @@ class App(
         result = 31 * result + name.hashCode()
         result = 31 * result + userHandle.hashCode()
         return result
+    }
+
+    private fun checkBiometric(
+        activity: AppCompatActivity,
+        appName: String,
+        onSuccess: (() -> Unit),
+    ) {
+        val promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle(activity.getString(R.string.verify_your_identity))
+            .setDescription("Unlock $appName?")
+            .setNegativeButtonText(activity.getString(R.string.cancel)).build()
+        instanceOfBiometricPrompt(
+            activity = activity, onSuccess = onSuccess
+        ).authenticate(
+            promptInfo
+        )
+
+    }
+
+    private fun instanceOfBiometricPrompt(
+        activity: AppCompatActivity,
+        onSuccess: (() -> Unit),
+    ): BiometricPrompt {
+        val executor = ContextCompat.getMainExecutor(activity)
+        val callback = object : BiometricPrompt.AuthenticationCallback() {
+            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                super.onAuthenticationError(errorCode, errString)
+            }
+
+            override fun onAuthenticationFailed() {
+                super.onAuthenticationFailed()
+            }
+
+            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                super.onAuthenticationSucceeded(result)
+                onSuccess.invoke()
+            }
+        }
+        return BiometricPrompt(activity, executor, callback)
     }
 }

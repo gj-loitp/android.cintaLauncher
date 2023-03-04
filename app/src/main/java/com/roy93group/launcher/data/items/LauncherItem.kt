@@ -1,8 +1,8 @@
 package com.roy93group.launcher.data.items
 
-import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  * Updated by Loitp on 2022.12.16
@@ -30,7 +30,7 @@ interface LauncherItem {
      * What to do when the item is clicked
      * [view] The view that was clicked
      */
-    fun open(context: Context, view: View?)
+    fun open(activity: AppCompatActivity, view: View?)
 
     /**
      * Text representation of the item, used to save it

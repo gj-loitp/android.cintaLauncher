@@ -3,6 +3,7 @@ package com.roy93group.lookerupper.data.results
 import android.content.Intent
 import android.net.Uri
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.loitp.core.ext.tranIn
 import com.roy93group.lookerupper.data.SearchQuery
 import com.willowtreeapps.fuzzywuzzy.diffutils.FuzzySearch
@@ -31,7 +32,7 @@ class InstantAnswerResult(
         ) / 100f
     )
 
-    override fun open(view: View) {
+    override fun open(activity: AppCompatActivity, view: View) {
         view.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(sourceUrl)))
         view.context.tranIn()
     }
