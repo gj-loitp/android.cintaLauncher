@@ -113,7 +113,10 @@ open class FeedItemVH(
             applyIfNotNull(view = this, value = feedItem.source, block = TextView::setText)
         }
 
-        itemView.setOnClickListener(feedItem::onTap)
+//        itemView.setOnClickListener(feedItem::onTap)
+        itemView.setOnClickListener {
+            feedItem.onTap(it)
+        }
 
         itemView.cvActionsContainer.apply {
             setCardBackgroundColor(colorPrimary)
