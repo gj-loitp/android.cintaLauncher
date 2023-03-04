@@ -18,9 +18,9 @@ import org.greenrobot.eventbus.EventBus
 //TODO firebase set is_show_flickr_gallery true when app available
 //TODO update string changelog_detail every build
 
+//TODO lock app
 //TODO permision co kho khan o may xiaomi, samsung???
 //TODO fav app
-//TODO lock app
 //TODO hide app
 //TODO app badge
 //TODO sort app drawer theo tan suat

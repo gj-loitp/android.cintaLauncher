@@ -90,6 +90,9 @@
     <string name="changelog">Changelog</string>
     <string name="changelog_des">List of changes in the lasted version of the application</string>
     <string name="changelog_detail">\n
+        \n✪ Version: 2023.03.04
+        \n- Added feature lock/unlock app by using biometric
+        \n-----\n
         \n✪ Version: 2023.02.04
         \n- Added physics-based bouncy overscroll effect
         \n- Added feature on/off smart search
