@@ -139,4 +139,6 @@
     <string name="hi_guys_this_is_color_launcher">Hi guys, this is your new launcher</string>
     <string name="great_choice">Great choice!</string>
     <string name="show_case_bottom_bar">✪ Tap anywhere to search\n✪ Tap the left icon to open setting\n✪ Tap the right icon to open/close your app drawer\n✪ Long press the right icon to quick scroll</string>
+    <string name="unlock_app">Unlock app</string>
+    <string name="lock_app">Lock app</string>
 </resources>

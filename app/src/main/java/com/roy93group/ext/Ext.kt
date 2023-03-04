@@ -252,3 +252,14 @@ fun Context.getForceColorIcon(): Boolean {
 fun isLightIconStatusBar(): Boolean {
     return getColorBackground() != COLOR_15
 }
+
+fun Context.setAppLock(
+    packageName: String,
+    isLock: Boolean
+) {
+    this.putBoolean(packageName, isLock)
+}
+
+fun Context.isAppLock(packageName: String): Boolean {
+    return this.getBoolean(packageName, false)
+}

@@ -13,10 +13,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.biometric.BiometricManager
+import androidx.core.view.isVisible
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.loitp.core.ext.*
 import com.roy93group.ext.getColorBackground
 import com.roy93group.ext.getColorPrimary
+import com.roy93group.ext.isAppLock
 import com.roy93group.ext.setCornerCardViewLauncher
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
@@ -81,6 +84,7 @@ class BottomSheetAppOption(
         btAppSetting.setTextColor(colorPrimary)
         btPlayStore.setTextColor(colorPrimary)
         btUninstall.setTextColor(colorPrimary)
+        btLockUnlockApp.setTextColor(colorPrimary)
 
         btAppSetting.setSafeOnClickListener {
             (item as? App)?.packageName?.let { packageName ->
@@ -98,6 +102,25 @@ class BottomSheetAppOption(
             (item as? App)?.packageName?.let { packageName ->
                 activity?.uninstallApp(packageName = packageName)
                 dismiss()
+            }
+        }
+
+        btLockUnlockApp.apply {
+            val biometricManager = BiometricManager.from(context)
+            this.isVisible =
+                biometricManager.canAuthenticate() == BiometricManager.BIOMETRIC_SUCCESS
+
+            (item as? App)?.packageName?.let { packageName ->
+                val isAppLock = context.isAppLock(packageName)
+                if (isAppLock) {
+                    this.text = context.getString(R.string.unlock_app)
+                } else {
+                    this.text = context.getString(R.string.lock_app)
+                }
+            }
+
+            btLockUnlockApp.setSafeOnClickListener {
+
             }
         }
     }
