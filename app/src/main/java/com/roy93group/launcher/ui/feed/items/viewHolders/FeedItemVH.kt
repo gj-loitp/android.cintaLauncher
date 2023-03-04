@@ -7,11 +7,15 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.ext.COLOR_15
+import com.roy93group.ext.isAppLock
+import com.roy93group.launcher.R
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.formatTimeAgo
 import com.roy93group.launcher.ui.feed.ActionsAdapter
@@ -112,9 +116,8 @@ open class FeedItemVH(
             applyIfNotNull(view = this, value = feedItem.source, block = TextView::setText)
         }
 
-//        itemView.setOnClickListener(feedItem::onTap)
         itemView.setOnClickListener {
-            feedItem.onTap(it)
+            handleOnClick(view = it, feedItem = feedItem)
         }
 
         itemView.cvActionsContainer.apply {
@@ -142,5 +145,51 @@ open class FeedItemVH(
 
         swipeLayout.setSwipeColor(colorPrimary)
         swipeLayout.setIconColor(colorBackground)
+    }
+
+    private fun handleOnClick(
+        view: View,
+        feedItem: FeedItem,
+    ) {
+        val packageName = feedItem.meta?.sourcePackageName
+        if (packageName.isNullOrEmpty()) {
+            return
+        }
+        val appName = feedItem.source
+        val isAppLock = activity.isAppLock(packageName)
+        if (isAppLock) {
+            val promptInfo = BiometricPrompt.PromptInfo.Builder()
+                .setTitle(activity.getString(R.string.verify_your_identity))
+                .setDescription("Unlock $appName?")
+                .setNegativeButtonText(activity.getString(R.string.cancel)).build()
+            instanceOfBiometricPrompt {
+                feedItem.onTap(view)
+            }.authenticate(
+                promptInfo
+            )
+        } else {
+            feedItem.onTap(view)
+        }
+    }
+
+    private fun instanceOfBiometricPrompt(
+        onSuccess: ((Unit) -> Unit)
+    ): BiometricPrompt {
+        val executor = ContextCompat.getMainExecutor(activity)
+        val callback = object : BiometricPrompt.AuthenticationCallback() {
+            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                super.onAuthenticationError(errorCode, errString)
+            }
+
+            override fun onAuthenticationFailed() {
+                super.onAuthenticationFailed()
+            }
+
+            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                super.onAuthenticationSucceeded(result)
+                onSuccess.invoke(Unit)
+            }
+        }
+        return BiometricPrompt(activity, executor, callback)
     }
 }
