@@ -24,8 +24,7 @@ import java.time.Instant
 object NotificationCreator {
 
     private fun getSmallIcon(
-        context: Context,
-        n: StatusBarNotification
+        context: Context, n: StatusBarNotification
     ): Drawable? {
         return n.notification.smallIcon?.loadDrawable(context) ?: n.notification.getLargeIcon()
             ?.loadDrawable(context)
@@ -33,15 +32,13 @@ object NotificationCreator {
 
     @Suppress("unused")
     fun getLargeIcon(
-        context: Context,
-        n: StatusBarNotification
+        context: Context, n: StatusBarNotification
     ): Drawable? {
         return n.notification.getLargeIcon()?.loadDrawable(context)
     }
 
     private fun getSource(
-        context: Context,
-        n: StatusBarNotification
+        context: Context, n: StatusBarNotification
     ): String {
         return context.packageManager.getApplicationLabel(
             context.packageManager.getApplicationInfo(
@@ -66,8 +63,9 @@ object NotificationCreator {
     private fun getText(extras: Bundle): CharSequence? {
         val messages = extras.getParcelableArray(Notification.EXTRA_MESSAGES)
         return if (messages == null) {
-            extras.getCharSequence(Notification.EXTRA_BIG_TEXT)
-                ?: extras.getCharSequence(Notification.EXTRA_TEXT)
+            extras.getCharSequence(Notification.EXTRA_BIG_TEXT) ?: extras.getCharSequence(
+                Notification.EXTRA_TEXT
+            )
         } else buildString {
             messages.forEach {
                 val bundle = it as Bundle
@@ -78,8 +76,7 @@ object NotificationCreator {
     }
 
     private fun getBigImage(
-        context: Context,
-        extras: Bundle
+        context: Context, extras: Bundle
     ): Drawable? {
         val b = extras[Notification.EXTRA_PICTURE] as Bitmap?
         if (b != null) {
@@ -98,10 +95,8 @@ object NotificationCreator {
 
     private fun getImportance(importance: Int): Int {
         return when (importance) {
-            NotificationManager.IMPORTANCE_NONE,
-            NotificationManager.IMPORTANCE_MIN -> -1
-            NotificationManager.IMPORTANCE_LOW,
-            NotificationManager.IMPORTANCE_DEFAULT -> 0
+            NotificationManager.IMPORTANCE_NONE, NotificationManager.IMPORTANCE_MIN -> -1
+            NotificationManager.IMPORTANCE_LOW, NotificationManager.IMPORTANCE_DEFAULT -> 0
             NotificationManager.IMPORTANCE_HIGH -> 1
             NotificationManager.IMPORTANCE_MAX -> 2
             else -> throw IllegalStateException("Invalid notification importance")
@@ -145,10 +140,10 @@ object NotificationCreator {
             }
         }?.toTypedArray() ?: emptyArray()
 
-        val id = (notification.id.toLong() shl 32 or
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) notification.uid.toLong()
-                else notification.packageName.hashCode().toLong()
-                ) xor (notification.tag?.longHash() ?: 0)
+        val id =
+            (notification.id.toLong() shl 32 or if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) notification.uid.toLong()
+            else notification.packageName.hashCode().toLong()) xor (notification.tag?.longHash()
+                ?: 0)
 
         val uid = buildString {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -184,14 +179,11 @@ object NotificationCreator {
                 override val actions = actions
                 override val instant = instant
                 override fun onTap(view: View) {
-                    try {
-                        notification.notification.contentIntent?.send()
-                        if (autoCancel)
-                            notificationService.cancelNotification(notification.key)
-                    } catch (e: Exception) {
-                        notificationService.cancelNotification(notification.key)
-                        e.printStackTrace()
-                    }
+                    handleOpTap(
+                        notification = notification,
+                        autoCancel = autoCancel,
+                        notificationService = notificationService
+                    )
                 }
 
                 override val isDismissible = isDismissible
@@ -218,14 +210,11 @@ object NotificationCreator {
                 override val actions = actions
                 override val instant = instant
                 override fun onTap(view: View) {
-                    try {
-                        notification.notification.contentIntent?.send()
-                        if (autoCancel)
-                            notificationService.cancelNotification(notification.key)
-                    } catch (e: Exception) {
-                        notificationService.cancelNotification(notification.key)
-                        e.printStackTrace()
-                    }
+                    handleOpTap(
+                        notification = notification,
+                        autoCancel = autoCancel,
+                        notificationService = notificationService
+                    )
                 }
 
                 override val isDismissible = isDismissible
@@ -252,14 +241,11 @@ object NotificationCreator {
                 override val actions = actions
                 override val instant = instant
                 override fun onTap(view: View) {
-                    try {
-                        notification.notification.contentIntent?.send()
-                        if (autoCancel)
-                            notificationService.cancelNotification(notification.key)
-                    } catch (e: Exception) {
-                        notificationService.cancelNotification(notification.key)
-                        e.printStackTrace()
-                    }
+                    handleOpTap(
+                        notification = notification,
+                        autoCancel = autoCancel,
+                        notificationService = notificationService
+                    )
                 }
 
                 override val isDismissible = isDismissible
@@ -282,14 +268,11 @@ object NotificationCreator {
             override val actions = actions
             override val instant = instant
             override fun onTap(view: View) {
-                try {
-                    notification.notification.contentIntent?.send()
-                    if (autoCancel)
-                        notificationService.cancelNotification(notification.key)
-                } catch (e: Exception) {
-                    notificationService.cancelNotification(notification.key)
-                    e.printStackTrace()
-                }
+                handleOpTap(
+                    notification = notification,
+                    autoCancel = autoCancel,
+                    notificationService = notificationService
+                )
             }
 
             override val isDismissible = isDismissible
@@ -300,6 +283,20 @@ object NotificationCreator {
             override val uid = uid
             override val id = id
             override val meta = meta
+        }
+    }
+
+    fun handleOpTap(
+        notification: StatusBarNotification,
+        autoCancel: Boolean,
+        notificationService: NotificationService
+    ) {
+        try {
+            notification.notification.contentIntent?.send()
+            if (autoCancel) notificationService.cancelNotification(notification.key)
+        } catch (e: Exception) {
+            notificationService.cancelNotification(notification.key)
+            e.printStackTrace()
         }
     }
 }
