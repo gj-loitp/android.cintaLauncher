@@ -6,11 +6,11 @@ import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.roy93group.ext.C
 import com.roy93group.ext.COLOR_15
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.formatTimeAgo
@@ -31,8 +31,9 @@ import java.time.Instant
  * freuss47@gmail.com
  */
 open class FeedItemVH(
+    activity: AppCompatActivity,
     itemView: View,
-) : FeedViewHolder(SwipeLayout(itemView)) {
+) : FeedViewHolder(activity, SwipeLayout(itemView)) {
     private val swipeLayout = this.itemView as SwipeLayout
 
     private val separatorDrawable = GradientDrawable().apply {
@@ -90,9 +91,7 @@ open class FeedItemVH(
         itemView.icon.apply {
             if (isDisplayAppIcon) {
                 applyIfNotNull(
-                    view = this,
-                    value = feedItem.sourceIcon,
-                    block = ImageView::setImageDrawable
+                    view = this, value = feedItem.sourceIcon, block = ImageView::setImageDrawable
                 )
                 if (isForceColorIcon) {
                     setColorFilter(colorPrimary)

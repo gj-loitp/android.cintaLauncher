@@ -2,6 +2,7 @@ package com.roy93group.launcher.ui.drawer.viewHolders
 
 import android.graphics.Color
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,6 @@ import com.roy93group.ext.launchAppOption
 import com.roy93group.launcher.data.items.App
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.providers.feed.suggestions.SuggestionsManager
-import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter.Companion.APP_ITEM
 import com.roy93group.launcher.ui.feed.items.viewHolders.applyIfNotNull
@@ -36,7 +36,7 @@ class AppItem(val item: App) : AppDrawerAdapter.DrawerItem {
 }
 
 fun bindAppViewHolder(
-    launcherActivity: LauncherActivity,
+    activity: AppCompatActivity,
     holder: AppViewHolder,
     item: LauncherItem,
     isFromSuggest: Boolean,
@@ -100,12 +100,12 @@ fun bindAppViewHolder(
 
     holder.itemView.setOnClickListener {
         SuggestionsManager.onItemOpened(context = it.context, item = item)
-        item.open(activity = launcherActivity, view = it)
+        item.open(activity = activity, view = it)
     }
 
     holder.itemView.setOnLongClickListener {
         it.context.vibrate(500L)
-        launcherActivity.launchAppOption(item = item, isCancelableFragment = true, onDismiss = {})
+        activity.launchAppOption(item = item, isCancelableFragment = true, onDismiss = {})
         return@setOnLongClickListener false
     }
 

@@ -1,11 +1,11 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders.suggestions
 
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.launcher.data.feed.items.FeedItem
 import com.roy93group.launcher.data.feed.items.FeedItemSuggestedApps
-import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.feed.items.viewHolders.FeedViewHolder
 import kotlinx.android.synthetic.main.view_feed_item_suggested_apps.view.*
 
@@ -17,11 +17,11 @@ import kotlinx.android.synthetic.main.view_feed_item_suggested_apps.view.*
  * freuss47@gmail.com
  */
 class SuggestedVH(
-    val launcherActivity: LauncherActivity,
+    activity: AppCompatActivity,
     itemView: View,
-) : FeedViewHolder(itemView) {
+) : FeedViewHolder(activity, itemView) {
 
-    val adapter = SuggestionsAdapter(launcherActivity = launcherActivity)
+    val adapter = SuggestionsAdapter(activity = activity)
 
     @Suppress("unused")
     val rvRecents: RecyclerView = itemView.rvRecents.apply {

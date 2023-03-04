@@ -4,6 +4,7 @@ import android.graphics.*
 import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.applyCanvas
 import androidx.core.graphics.toXfermode
 import com.roy93group.launcher.R
@@ -19,8 +20,9 @@ import kotlinx.android.synthetic.main.view_feed_item_media.view.*
  * freuss47@gmail.com
  */
 class FeedItemMediaVH(
+    activity: AppCompatActivity,
     itemView: View,
-) : FeedItemVH(itemView) {
+) : FeedItemVH(activity, itemView) {
 
     override fun onBind(
         feedItem: FeedItem,

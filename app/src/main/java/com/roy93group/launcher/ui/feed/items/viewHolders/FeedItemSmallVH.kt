@@ -1,6 +1,8 @@
 package com.roy93group.launcher.ui.feed.items.viewHolders
 
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import com.roy93group.launcher.ui.LauncherActivity
 
 /**
  * Updated by Loitp on 2022.12.17
@@ -10,5 +12,6 @@ import android.view.View
  * freuss47@gmail.com
  */
 class FeedItemSmallVH(
+    activity: AppCompatActivity,
     itemView: View,
-) : FeedItemVH(itemView)
+) : FeedItemVH(activity, itemView)

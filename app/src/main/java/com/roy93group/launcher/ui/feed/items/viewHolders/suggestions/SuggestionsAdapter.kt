@@ -3,13 +3,13 @@ package com.roy93group.launcher.ui.feed.items.viewHolders.suggestions
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.ext.getDisplayAppIcon
 import com.roy93group.ext.getForceColorIcon
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
-import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.drawer.viewHolders.AppViewHolder
 import com.roy93group.launcher.ui.drawer.viewHolders.bindAppViewHolder
 
@@ -21,12 +21,12 @@ import com.roy93group.launcher.ui.drawer.viewHolders.bindAppViewHolder
  * freuss47@gmail.com
  */
 class SuggestionsAdapter(
-    val launcherActivity: LauncherActivity,
+    val activity: AppCompatActivity,
 ) : RecyclerView.Adapter<AppViewHolder>() {
 
     private var items: List<LauncherItem> = emptyList()
-    private var isDisplayAppIcon = launcherActivity.getDisplayAppIcon()
-    private var isForceColorIcon = launcherActivity.getForceColorIcon()
+    private var isDisplayAppIcon = activity.getDisplayAppIcon()
+    private var isForceColorIcon = activity.getForceColorIcon()
 
     override fun getItemCount(): Int = items.size
 
@@ -46,7 +46,7 @@ class SuggestionsAdapter(
     ) {
         val item = items[i]
         bindAppViewHolder(
-            launcherActivity = launcherActivity,
+            activity = activity,
             holder = holder,
             item = item,
             isFromSuggest = true,

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.loitp.core.ext.launchCalendar
@@ -27,7 +28,7 @@ import kotlinx.android.synthetic.main.view_feed_item_plain.view.*
  * freuss47@gmail.com
  */
 class FeedAdapter(
-    val launcherActivity: LauncherActivity
+    val activity: AppCompatActivity
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -41,7 +42,7 @@ class FeedAdapter(
         private const val TYPE_EMPTY = 7
     }
 
-    inline val context: Context get() = launcherActivity
+    inline val context: Context get() = activity
     private var isDisplayAppIcon = context.getDisplayAppIcon()
     private var isForceColorIcon = context.getForceColorIcon()
     private var items: List<FeedItem> = emptyList()
@@ -68,8 +69,7 @@ class FeedAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun resetConfig(
-        isDisplayAppIcon: Boolean,
-        isForceColorIcon: Boolean
+        isDisplayAppIcon: Boolean, isForceColorIcon: Boolean
     ) {
         this.isDisplayAppIcon = isDisplayAppIcon
         this.isForceColorIcon = isForceColorIcon
@@ -103,40 +103,44 @@ class FeedAdapter(
     private var homeViewHolder: HomeViewHolder? = null
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
+        parent: ViewGroup, viewType: Int
     ): RecyclerView.ViewHolder {
         return when (viewType) {
             TYPE_HOME -> HomeViewHolder(
-                launcherActivity = launcherActivity,
+                activity = activity,
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_home, parent, false)
             ).also {
                 homeViewHolder = it
             }
             TYPE_PLAIN -> FeedItemVH(
+                activity = activity,
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_plain, parent, false),
             )
             TYPE_SMALL -> FeedItemSmallVH(
+                activity = activity,
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_small, parent, false),
             )
             TYPE_BIG_IMAGE -> FeedItemImageVH(
+                activity = activity,
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_image, parent, false),
             )
             TYPE_PROGRESS -> FeedItemProgressVH(
+                activity = activity,
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_progress, parent, false),
             )
 
             TYPE_MEDIA -> FeedItemMediaVH(
+                activity = activity,
                 itemView = LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_media, parent, false),
             )
             TYPE_SUGGESTED -> SuggestedVH(
-                launcherActivity = launcherActivity,
+                activity = activity,
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_feed_item_suggested_apps, parent, false),
             )
@@ -149,17 +153,16 @@ class FeedAdapter(
     }
 
     override fun onBindViewHolder(
-        holder: RecyclerView.ViewHolder,
-        i: Int
+        holder: RecyclerView.ViewHolder, i: Int
     ) {
         if (i == TYPE_HOME) {
-            return bindHomeViewHolder(
-                holder = holder as HomeViewHolder,
+            return bindHomeViewHolder(holder = holder as HomeViewHolder,
                 isForceColorIcon = isForceColorIcon,
                 onClickClock = {
-                    launcherActivity.launchClockApp()
-                }, onClickCalendar = {
-                    launcherActivity.launchCalendar()
+                    activity.launchClockApp()
+                },
+                onClickCalendar = {
+                    activity.launchCalendar()
                 })
         }
         if (holder.itemViewType == TYPE_EMPTY) {
@@ -176,6 +179,8 @@ class FeedAdapter(
         if (holder !is FeedItemVH) return
         val verticalPadding =
             holder.itemView.resources.getDimension(R.dimen.margin_padding_medium).toInt()
+
+        val getFeedBottomMargin = (activity as? LauncherActivity)?.getFeedBottomMargin() ?: 0
         holder.itemView.container?.apply {
             setPadding(
                 /* left = */
@@ -185,7 +190,7 @@ class FeedAdapter(
                 /* right = */
                 this.paddingRight,
                 /* bottom = */
-                if (i == itemCount - 1) verticalPadding + launcherActivity.getFeedBottomMargin() else verticalPadding,
+                if (i == itemCount - 1) verticalPadding + getFeedBottomMargin else verticalPadding,
             )
         }
     }

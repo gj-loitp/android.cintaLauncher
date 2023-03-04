@@ -3,6 +3,7 @@ package com.roy93group.launcher.ui.feed.items.viewHolders
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import com.bumptech.glide.Glide
@@ -28,8 +29,9 @@ import kotlinx.android.synthetic.main.view_feed_item_image.view.*
  * freuss47@gmail.com
  */
 open class FeedItemImageVH(
+    activity: AppCompatActivity,
     itemView: View,
-) : FeedItemVH(itemView) {
+) : FeedItemVH(activity, itemView) {
     private val requestOptions = RequestOptions()
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .downsample(DownsampleStrategy.AT_MOST)

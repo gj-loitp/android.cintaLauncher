@@ -4,13 +4,13 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.ext.getDisplayAppIcon
 import com.roy93group.ext.getForceColorIcon
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.App
-import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.drawer.viewHolders.*
 import com.roy93group.launcher.ui.view.recycler.HighlightSectionIndexer
 import com.roy93group.launcher.ui.view.scrollbar.ScrollbarController
@@ -24,7 +24,7 @@ import java.util.*
  * freuss47@gmail.com
  */
 class AppDrawerAdapter(
-    val launcherActivity: LauncherActivity
+    val activity: AppCompatActivity
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -33,8 +33,8 @@ class AppDrawerAdapter(
     }
 
     var indexer: HighlightSectionIndexer? = null
-    private var isDisplayAppIcon = launcherActivity.getDisplayAppIcon()
-    private var isForceColorIcon = launcherActivity.getForceColorIcon()
+    private var isDisplayAppIcon = activity.getDisplayAppIcon()
+    private var isForceColorIcon = activity.getForceColorIcon()
 
     @SuppressLint("NotifyDataSetChanged")
     fun setIsDisplayAppIcon(isDisplayAppIcon: Boolean) {
@@ -48,8 +48,7 @@ class AppDrawerAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun resetIsDisplayAppIcon(
-        isDisplayAppIcon: Boolean,
-        isForceColorIcon: Boolean
+        isDisplayAppIcon: Boolean, isForceColorIcon: Boolean
     ) {
         this.isDisplayAppIcon = isDisplayAppIcon
         this.isForceColorIcon = isForceColorIcon
@@ -82,8 +81,7 @@ class AppDrawerAdapter(
     override fun getItemViewType(i: Int) = items[i].getItemViewType()
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
+        parent: ViewGroup, viewType: Int
     ): RecyclerView.ViewHolder {
         return when (viewType) {
             SECTION_HEADER -> SectionHeaderViewHolder(
@@ -105,11 +103,9 @@ class AppDrawerAdapter(
                 holder = holder as SectionHeaderViewHolder,
                 item = item as SectionHeaderItem,
                 isHighlighted = indexer?.getHighlightI() == i,
-                launcherActivity = launcherActivity,
-                isDisplayAppIcon = isDisplayAppIcon,
             )
             APP_ITEM -> bindAppViewHolder(
-                launcherActivity = launcherActivity,
+                activity = activity,
                 holder = holder as AppViewHolder,
                 item = (item as AppItem).item,
                 isFromSuggest = false,
@@ -123,9 +119,7 @@ class AppDrawerAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateAppSections(
-        appSections: List<List<App>>,
-        activity: Activity,
-        controller: ScrollbarController
+        appSections: List<List<App>>, activity: Activity, controller: ScrollbarController
     ) {
         val newItems = LinkedList<DrawerItem>()
         for (section in appSections) {

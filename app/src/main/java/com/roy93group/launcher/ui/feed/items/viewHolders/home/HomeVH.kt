@@ -3,26 +3,25 @@ package com.roy93group.launcher.ui.feed.items.viewHolders.home
 import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.loitp.core.ext.setSafeOnClickListener
-import com.roy93group.ext.C
 import com.roy93group.ext.getColorPrimary
 import com.roy93group.ext.getForceColorIcon
 import com.roy93group.launcher.R
 import com.roy93group.launcher.providers.feed.notification.NotificationService
-import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.views.LinearLayoutManagerWrapper
 import io.posidon.android.conveniencelib.getStatusBarHeight
 import kotlinx.android.synthetic.main.view_feed_home.view.*
 
 class HomeViewHolder(
-    val launcherActivity: LauncherActivity,
+    val activity: AppCompatActivity,
     itemView: View,
 ) : RecyclerView.ViewHolder(itemView) {
-    private var isForceColorIcon = launcherActivity.getForceColorIcon()
+    private var isForceColorIcon = activity.getForceColorIcon()
     private var colorPrimary = getColorPrimary()
-    private val notificationIconsAdapter = NotificationIconsAdapter(launcherActivity)
+    private val notificationIconsAdapter = NotificationIconsAdapter(activity)
 
     private val rvNotificationIconList: RecyclerView = itemView.rvNotificationIconList.apply {
         layoutManager = LinearLayoutManagerWrapper(

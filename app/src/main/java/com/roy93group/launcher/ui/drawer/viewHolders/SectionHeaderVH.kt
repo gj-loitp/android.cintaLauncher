@@ -6,7 +6,6 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.roy93group.ext.getColorBackground
 import com.roy93group.ext.getColorPrimary
-import com.roy93group.launcher.ui.LauncherActivity
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter
 import com.roy93group.launcher.ui.drawer.AppDrawerAdapter.Companion.SECTION_HEADER
 import kotlinx.android.synthetic.main.view_app_drawer_section_header.view.*
@@ -29,8 +28,6 @@ fun bindSectionHeaderViewHolder(
     holder: SectionHeaderViewHolder,
     item: SectionHeaderItem,
     isHighlighted: Boolean,
-    launcherActivity: LauncherActivity,
-    isDisplayAppIcon: Boolean,
 ) {
     val colorPrimary = getColorPrimary()
     val colorBackground = getColorBackground()
