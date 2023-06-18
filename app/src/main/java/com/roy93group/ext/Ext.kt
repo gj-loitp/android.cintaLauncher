@@ -115,13 +115,13 @@ fun Context.updatePrimaryColor(
         false
     } else {
         setColorPrimary(newColor)
-        this.putInt(KEY_PRIMARY_COLOR, newColor)
+        this.putIntPref(KEY_PRIMARY_COLOR, newColor)
         true
     }
 }
 
 fun Context.getPrimaryColor() {
-    val c = this.getInt(
+    val c = this.getIntPref(
         key = KEY_PRIMARY_COLOR,
         defaultValue = getColor(R.color.color0)
     )
@@ -135,14 +135,14 @@ fun Context.updateBackgroundColor(
         false
     } else {
         setColorBackground(newColor)
-        this.putInt(KEY_BACKGROUND_COLOR, newColor)
+        this.putIntPref(KEY_BACKGROUND_COLOR, newColor)
         true
     }
 }
 
 fun Context.getBackgroundColor(
 ) {
-    val c = this.getInt(
+    val c = this.getIntPref(
         key = KEY_BACKGROUND_COLOR,
         defaultValue = getColor(R.color.colorPrimary)
     )
@@ -152,101 +152,101 @@ fun Context.getBackgroundColor(
 fun Context.setSeekRadiusValue(
     seekRadiusValue: Int
 ) {
-    this.putInt(KEY_SEEK_RADIUS_VALUE, seekRadiusValue)
+    this.putIntPref(KEY_SEEK_RADIUS_VALUE, seekRadiusValue)
 }
 
 fun Context.getSeekRadiusValue(): Int {
-    return this.getInt(KEY_SEEK_RADIUS_VALUE, 0)
+    return this.getIntPref(KEY_SEEK_RADIUS_VALUE, 0)
 }
 
 fun Context.setSeekPeekValue(
     seekPeekValue: Int
 ) {
-    this.putInt(KEY_SEEK_PEEK_VALUE, seekPeekValue)
+    this.putIntPref(KEY_SEEK_PEEK_VALUE, seekPeekValue)
 }
 
 fun Context.getSeekPeekValue(): Int {
-    return this.getInt(KEY_SEEK_PEEK_VALUE, 0)
+    return this.getIntPref(KEY_SEEK_PEEK_VALUE, 0)
 }
 
 fun Context.setOrientationValue(
     orientationValue: Int
 ) {
-    this.putInt(KEY_ORIENTATION_VALUE, orientationValue)
+    this.putIntPref(KEY_ORIENTATION_VALUE, orientationValue)
 }
 
 fun Context.getOrientationValue(): Int {
-    return this.getInt(KEY_ORIENTATION_VALUE, 1)
+    return this.getIntPref(KEY_ORIENTATION_VALUE, 1)
 }
 
 fun Context.setGravityValue(
     gravityValue: Int
 ) {
-    this.putInt(KEY_GRAVITY_VALUE, gravityValue)
+    this.putIntPref(KEY_GRAVITY_VALUE, gravityValue)
 }
 
 fun Context.getGravityValue(): Int {
-    return this.getInt(KEY_GRAVITY_VALUE, 0)
+    return this.getIntPref(KEY_GRAVITY_VALUE, 0)
 }
 
 fun Context.setChecked(
     isCheckedValue: Boolean
 ) {
-    this.putBoolean(KEY_IS_CHECKED_VALUE, isCheckedValue)
+    this.putBooleanPref(KEY_IS_CHECKED_VALUE, isCheckedValue)
 }
 
 fun Context.getChecked(): Boolean {
-    return this.getBoolean(KEY_IS_CHECKED_VALUE, false)
+    return this.getBooleanPref(KEY_IS_CHECKED_VALUE, false)
 }
 
 fun Context.setOpenSearchWhenScrollTop(
     isEnable: Boolean
 ) {
-    this.putBoolean(KEY_OPEN_SEARCH_WHEN_SCROLL_TOP, isEnable)
+    this.putBooleanPref(KEY_OPEN_SEARCH_WHEN_SCROLL_TOP, isEnable)
 }
 
 fun Context.getOpenSearchWhenScrollTop(): Boolean {
-    return this.getBoolean(KEY_OPEN_SEARCH_WHEN_SCROLL_TOP, true)
+    return this.getBooleanPref(KEY_OPEN_SEARCH_WHEN_SCROLL_TOP, true)
 }
 
 fun Context.setDisplayFilterViews(
     isEnable: Boolean
 ) {
-    this.putBoolean(KEY_DISPLAY_FILTER_VIEWS, isEnable)
+    this.putBooleanPref(KEY_DISPLAY_FILTER_VIEWS, isEnable)
 }
 
 fun Context.getDisplayFilterViews(): Boolean {
-    return this.getBoolean(KEY_DISPLAY_FILTER_VIEWS, true)
+    return this.getBooleanPref(KEY_DISPLAY_FILTER_VIEWS, true)
 }
 
 fun Context.setAutoColorChanger(
     isEnable: Boolean
 ) {
-    this.putBoolean(KEY_AUTO_COLOR_CHANGER, isEnable)
+    this.putBooleanPref(KEY_AUTO_COLOR_CHANGER, isEnable)
 }
 
 fun Context.getAutoColorChanger(): Boolean {
-    return this.getBoolean(KEY_AUTO_COLOR_CHANGER, false)
+    return this.getBooleanPref(KEY_AUTO_COLOR_CHANGER, false)
 }
 
 fun Context.setDisplayAppIcon(
     isDisplay: Boolean
 ) {
-    this.putBoolean(KEY_DISPLAY_APP_ICON, isDisplay)
+    this.putBooleanPref(KEY_DISPLAY_APP_ICON, isDisplay)
 }
 
 fun Context.getDisplayAppIcon(): Boolean {
-    return this.getBoolean(KEY_DISPLAY_APP_ICON, true)
+    return this.getBooleanPref(KEY_DISPLAY_APP_ICON, true)
 }
 
 fun Context.setForceColorIcon(
     isForceColorIcon: Boolean
 ) {
-    this.putBoolean(KEY_FORCE_COLOR_ICON, isForceColorIcon)
+    this.putBooleanPref(KEY_FORCE_COLOR_ICON, isForceColorIcon)
 }
 
 fun Context.getForceColorIcon(): Boolean {
-    return this.getBoolean(KEY_FORCE_COLOR_ICON, false)
+    return this.getBooleanPref(KEY_FORCE_COLOR_ICON, false)
 }
 
 fun isLightIconStatusBar(): Boolean {
@@ -257,9 +257,9 @@ fun Context.setAppLock(
     packageName: String,
     isLock: Boolean
 ) {
-    this.putBoolean(packageName, isLock)
+    this.putBooleanPref(packageName, isLock)
 }
 
 fun Context.isAppLock(packageName: String): Boolean {
-    return this.getBoolean(packageName, false)
+    return this.getBooleanPref(packageName, false)
 }

@@ -21,8 +21,8 @@ android {
         applicationId = "com.roy93group.cintalauncher"
         minSdk = 26
         targetSdk = 33
-        versionCode = 20230304
-        versionName = "2023.03.04"
+        versionCode = 20230618
+        versionName = "2023.06.18"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         signingConfig = signingConfigs.getByName("debug")
         multiDexEnabled = true
@@ -42,17 +42,17 @@ android {
 }
 
 dependencies {
-    implementation("com.github.tplloi:base:4.6.27")
+    implementation("com.github.tplloi:base:4.6.43")
     implementation("com.willowtreeapps:fuzzywuzzy-kotlin-jvm:0.9.0")
     implementation("io.posidon:android.launcherUtils:30aa020c1a")
     implementation("io.posidon:android.libduckduckgo:22.0")
     implementation("io.posidon:android.rsslib:22.0")
     implementation("io.posidon:android.conveniencelib:22.0")
     implementation("androidx.palette:palette-ktx:1.0.0")
-    implementation("com.google.firebase:firebase-bom:31.2.2")
-    implementation("com.google.firebase:firebase-analytics-ktx:21.2.0")
-    implementation("com.google.firebase:firebase-crashlytics-ktx:18.3.5")
-    implementation("com.google.firebase:firebase-config-ktx:21.2.1")
+    implementation("com.google.firebase:firebase-bom:32.1.1")
+    implementation("com.google.firebase:firebase-analytics-ktx:21.3.0")
+    implementation("com.google.firebase:firebase-crashlytics-ktx:18.3.7")
+    implementation("com.google.firebase:firebase-config-ktx:21.4.0")
     implementation("com.github.cdflynn:turn-layout-manager:v1.3.1")
     implementation("com.github.Chrisvin:RubberPicker:v1.5")
 
