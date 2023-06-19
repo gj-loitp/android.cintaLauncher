@@ -3,8 +3,10 @@ package com.roy93group.app
 import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseApplication
 import com.loitp.core.ext.setDarkTheme
+import com.loitp.restApi.restClient.RestClient
 import com.roy93group.ext.getBackgroundColor
 import com.roy93group.ext.getPrimaryColor
+import com.roy93group.launcher.R
 import org.greenrobot.eventbus.EventBus
 
 /**
@@ -89,6 +91,7 @@ class LApplication : BaseApplication() {
 
 //        ActivityData.instance.type = Constants.TYPE_ACTIVITY_TRANSITION_ZOOM
 //        LUIUtil.fontForAll = Constants.FONT_PATH
+        RestClient.init(baseApiUrl = getString(R.string.flickr_URL))
         setDarkTheme(true)
         this.getPrimaryColor()
         this.getBackgroundColor()

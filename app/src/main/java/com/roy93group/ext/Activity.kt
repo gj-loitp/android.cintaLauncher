@@ -17,6 +17,7 @@ import com.loitp.core.ext.recolorStatusBar
 import com.loitp.core.ext.setWallpaperAndLockScreen
 import com.loitp.core.ext.tranIn
 import com.loitp.core.helper.gallery.GalleryCoreSplashActivity
+import com.loitp.restApi.restClient.RestClient
 import com.roy93group.launcher.R
 import com.roy93group.launcher.data.items.LauncherItem
 import com.roy93group.launcher.ui.LauncherActivity
@@ -36,9 +37,10 @@ import me.toptas.fancyshowcase.listener.OnViewInflateListener
  */
 
 fun Activity.launchWallpaper() {
+    RestClient.init(baseApiUrl = getString(R.string.flickr_URL))
     val intent = Intent(this, GalleryCoreSplashActivity::class.java)
     intent.putExtra(BKG_SPLASH_SCREEN, URL_IMG_11)
-    // neu muon remove albumn nao thi cu pass id cua albumn do
+    // neu muon remove album nao thi cu pass id cua albumn do
     val removeAlbumFlickrList = ArrayList<String>()
     removeAlbumFlickrList.add(FLICKR_ID_STICKER)
     intent.putStringArrayListExtra(

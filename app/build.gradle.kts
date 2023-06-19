@@ -8,6 +8,9 @@ plugins {
 
 android {
     signingConfigs {
+//        create("debug") {
+//
+//        }
         create("release") {
             storeFile = file("keystore.jks")
             storePassword = "04021993"
@@ -21,28 +24,28 @@ android {
         applicationId = "com.roy93group.cintalauncher"
         minSdk = 26
         targetSdk = 33
-        versionCode = 20230618
-        versionName = "2023.06.18"
+        versionCode = 20230619
+        versionName = "2023.06.19"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        signingConfig = signingConfigs.getByName("debug")
+//        signingConfig = signingConfigs.getByName("debug")
         multiDexEnabled = true
     }
 
     buildTypes {
         getByName("release") {
+            isDebuggable = false
             isMinifyEnabled = true
             isShrinkResources = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+//            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     namespace = "com.roy93group.launcher"
 }
 
 dependencies {
-    implementation("com.github.tplloi:base:4.6.43")
+    implementation("com.github.tplloi:base:4.6.45")
     implementation("com.willowtreeapps:fuzzywuzzy-kotlin-jvm:0.9.0")
     implementation("io.posidon:android.launcherUtils:30aa020c1a")
     implementation("io.posidon:android.libduckduckgo:22.0")
