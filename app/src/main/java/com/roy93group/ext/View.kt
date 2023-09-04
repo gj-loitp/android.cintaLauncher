@@ -1,5 +1,9 @@
 package com.roy93group.ext
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
+import android.view.View
+import android.view.animation.Animation
 import com.google.android.material.card.MaterialCardView
 import com.loitp.core.ext.getDimenValue
 import com.loitp.core.ext.setCornerCardView
@@ -26,3 +30,16 @@ fun MaterialCardView.setCornerCardViewLauncher() {
     )
 }
 
+fun View.playAnimPulse() {
+    val scaleDown: ObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(
+        this,
+        PropertyValuesHolder.ofFloat("scaleX", 0.95f),
+        PropertyValuesHolder.ofFloat("scaleY", 0.95f)
+    )
+    scaleDown.duration = 300
+
+    scaleDown.repeatCount = ObjectAnimator.INFINITE
+    scaleDown.repeatMode = ObjectAnimator.REVERSE
+
+    scaleDown.start()
+}

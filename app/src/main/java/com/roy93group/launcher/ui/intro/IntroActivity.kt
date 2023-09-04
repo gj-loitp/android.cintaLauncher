@@ -8,6 +8,7 @@ import com.loitp.annotation.IsKeepScreenOn
 import com.loitp.annotation.LogTag
 import com.loitp.core.base.BaseActivityFancyShowcase
 import com.loitp.core.ext.openBrowserPolicy
+import com.loitp.core.ext.playAnimMoving
 import com.loitp.core.ext.setSafeOnClickListener
 import com.loitp.core.ext.setWallpaperAndLockScreen
 import com.loitp.views.sw.toggle.LabeledSwitch
@@ -79,6 +80,7 @@ class IntroActivity : BaseActivityFancyShowcase() {
                 btNext.isVisible = isOn
             }
         })
+        btNext.playAnimPulse()
         btNext.setSafeOnClickListener {
             nextScreen()
         }
