@@ -30,13 +30,15 @@ fun MaterialCardView.setCornerCardViewLauncher() {
     )
 }
 
-fun View.playAnimPulse() {
+fun View.playAnimPulse(
+    duration: Long = 300L
+) {
     val scaleDown: ObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(
         this,
         PropertyValuesHolder.ofFloat("scaleX", 0.95f),
         PropertyValuesHolder.ofFloat("scaleY", 0.95f)
     )
-    scaleDown.duration = 300
+    scaleDown.duration = duration
 
     scaleDown.repeatCount = ObjectAnimator.INFINITE
     scaleDown.repeatMode = ObjectAnimator.REVERSE

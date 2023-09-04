@@ -67,24 +67,28 @@ class FrmPermissions : FrmWithNext(R.layout.frm_intro_permissions) {
         buttonStorage.apply {
             setTextColor(colorBackground)
             this.setBackgroundLauncher()
+            this.playAnimPulse()
         }
         tvContacts.setTextColor(colorPrimary)
         tvContactsDes.setTextColor(colorPrimary)
         buttonContacts.apply {
             setTextColor(colorBackground)
             this.setBackgroundLauncher()
+            this.playAnimPulse()
         }
         tvNotifications.setTextColor(colorPrimary)
         tvNotificationsDes.setTextColor(colorPrimary)
         buttonNotifications.apply {
             setTextColor(colorBackground)
             this.setBackgroundLauncher()
+            this.playAnimPulse()
         }
         tvUsageAccess.setTextColor(colorPrimary)
         tvUsageAccessDes.setTextColor(colorPrimary)
         buttonUsageAccess.apply {
             setTextColor(colorBackground)
             this.setBackgroundLauncher()
+            this.playAnimPulse()
         }
     }
 
