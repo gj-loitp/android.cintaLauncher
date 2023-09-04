@@ -8,9 +8,6 @@ plugins {
 
 android {
     signingConfigs {
-//        create("debug") {
-//
-//        }
         create("release") {
             storeFile = file("keystore.jks")
             storePassword = "04021993"
@@ -24,8 +21,8 @@ android {
         applicationId = "com.roy93group.cintalauncher"
         minSdk = 26
         targetSdk = 33
-        versionCode = 20230619
-        versionName = "2023.06.19"
+        versionCode = 20230904
+        versionName = "2023.09.04"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 //        signingConfig = signingConfigs.getByName("debug")
         multiDexEnabled = true
@@ -52,10 +49,10 @@ dependencies {
     implementation("io.posidon:android.rsslib:22.0")
     implementation("io.posidon:android.conveniencelib:22.0")
     implementation("androidx.palette:palette-ktx:1.0.0")
-    implementation("com.google.firebase:firebase-bom:32.1.1")
+    implementation("com.google.firebase:firebase-bom:32.2.3")
     implementation("com.google.firebase:firebase-analytics-ktx:21.3.0")
-    implementation("com.google.firebase:firebase-crashlytics-ktx:18.3.7")
-    implementation("com.google.firebase:firebase-config-ktx:21.4.0")
+    implementation("com.google.firebase:firebase-crashlytics-ktx:18.4.1")
+    implementation("com.google.firebase:firebase-config-ktx:21.4.1")
     implementation("com.github.cdflynn:turn-layout-manager:v1.3.1")
     implementation("com.github.Chrisvin:RubberPicker:v1.5")
 
