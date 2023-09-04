@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.loitp.core.common.*
 import com.loitp.core.ext.*
@@ -151,6 +152,32 @@ class BottomSheetAboutLauncher(
                 }
                 startActivity(intent)
                 context.tranIn()
+            }
+        }
+        layoutGithub.apply {
+            v.setBackgroundColor(colorPrimary)
+            tv1.apply {
+                setTextColor(colorPrimary)
+                text = context.getString(R.string.github)
+            }
+            tv2.apply {
+                setTextColor(colorPrimary)
+                text = context.getString(R.string.checkout_the_source_codes)
+            }
+            setSafeOnClickListener {
+                if (BuildConfig.DEBUG) {
+                    context.openUrlInBrowser("https://github.com/tplloi/android.cintaLauncher")
+                } else {
+                    Toast.makeText(
+                        /* context = */ context,
+                        /* text = */ "This feature is only available in Debug mode",
+                        /* duration = */ Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            setOnLongClickListener {
+                context.openUrlInBrowser("https://github.com/tplloi/android.cintaLauncher")
+                false
             }
         }
     }

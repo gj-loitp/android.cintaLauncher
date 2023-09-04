@@ -66,6 +66,10 @@
                     android:id="@+id/layoutWhyDoISeeAd"
                     layout="@layout/view_item" />
 
+                <include
+                    android:id="@+id/layoutGithub"
+                    layout="@layout/view_item" />
+
             </androidx.appcompat.widget.LinearLayoutCompat>
         </com.factor.bouncy.BouncyNestedScrollView>
 

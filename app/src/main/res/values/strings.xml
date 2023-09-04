@@ -147,4 +147,6 @@
     <string name="unlock_app">Unlock app</string>
     <string name="lock_app">Lock app</string>
     <string name="verify_your_identity">Verify your identity</string>
+    <string name="github">Github</string>
+    <string name="checkout_the_source_codes">Checkout the source codes.</string>
 </resources>
