@@ -49,6 +49,7 @@ dependencies {
     implementation("io.posidon:android.rsslib:22.0")
     implementation("io.posidon:android.conveniencelib:22.0")
     implementation("androidx.palette:palette-ktx:1.0.0")
+    //noinspection BomWithoutPlatform
     implementation("com.google.firebase:firebase-bom:32.2.3")
     implementation("com.google.firebase:firebase-analytics-ktx:21.3.0")
     implementation("com.google.firebase:firebase-crashlytics-ktx:18.4.1")
