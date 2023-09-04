@@ -148,6 +148,7 @@ class LauncherActivity : BaseActivityFont() {
                         v?.visibility = View.INVISIBLE
                         return@setOnDragListener true
                     }
+
                     DragEvent.ACTION_DRAG_LOCATION -> {
                         val v = (event.localState as? View?)
                         if (v != null) {
@@ -160,6 +161,7 @@ class LauncherActivity : BaseActivityFont() {
                             }
                         }
                     }
+
                     DragEvent.ACTION_DRAG_ENDED,
                     DragEvent.ACTION_DROP -> {
                         val v = (event.localState as? View?)
@@ -300,8 +302,7 @@ class LauncherActivity : BaseActivityFont() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
-        val searchBarY =
-            getNavigationBarHeight() + resources.getDimension(R.dimen.margin_padding_medium).toInt()
+        val searchBarY = getNavigationBarHeight()
         val feedFilterY = searchBarY + resources.getDimension(R.dimen.search_bar_height).toInt()
 
         bottomBar.cvSearchBarContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {

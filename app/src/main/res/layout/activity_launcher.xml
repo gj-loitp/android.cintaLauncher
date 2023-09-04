@@ -29,7 +29,7 @@
         android:id="@+id/cvSearchBarContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/round_large"
+        app:cardCornerRadius="@dimen/round_medium"
         app:cardElevation="@dimen/margin_padding_small"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"

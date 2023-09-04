@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_launcher.*
  * +840766040293
  * freuss47@gmail.com
  */
-class BottomBar(val launcherActivity: LauncherActivity) {
+class BottomBar(private val launcherActivity: LauncherActivity) {
 
     val scrollBar: Scrollbar get() = appDrawerIcon.scrollBar
     var colorPrimary = getColorPrimary()
