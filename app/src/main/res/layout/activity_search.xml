@@ -16,7 +16,7 @@
         android:padding="@dimen/w_50"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/happy_new_year_2023"
+        app:lottie_rawRes="@raw/anim_search"
         app:lottie_speed="1"
         tools:lottie_colorFilter="@color/color_test_primary" />
 
