@@ -15,14 +15,14 @@ android {
             keyPassword = "04021993"
         }
     }
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.roy93group.cintalauncher"
         minSdk = 26
-        targetSdk = 33
-        versionCode = 20230904
-        versionName = "2023.09.04"
+        targetSdk = 34
+        versionCode = 20231224
+        versionName = "2023.12.24"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 //        signingConfig = signingConfigs.getByName("debug")
         multiDexEnabled = true
@@ -56,12 +56,10 @@ dependencies {
     implementation("com.google.firebase:firebase-config-ktx:21.4.1")
     implementation("com.github.cdflynn:turn-layout-manager:v1.3.1")
     implementation("com.github.Chrisvin:RubberPicker:v1.5")
-
 //    https://github.com/SimformSolutionsPvtLtd/SSBiometricsAuthentication
     implementation("androidx.biometric:biometric:1.2.0-alpha05")
-
     // debugImplementation because LeakCanary should only run in debug builds.
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.10")
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 }
 
 configurations.all {
