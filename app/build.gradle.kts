@@ -15,12 +15,12 @@ android {
             keyPassword = "04021993"
         }
     }
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.roy93group.cintalauncher"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 20231224
         versionName = "2023.12.24"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
